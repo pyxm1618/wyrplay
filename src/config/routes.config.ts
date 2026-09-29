@@ -17,7 +17,7 @@ export const routeDefinitions = [
     ],
     title: "Would You Rather Questions – Play Fun Questions Online",
     description:
-      "Browse Would You Rather questions for kids, adults, couples, friends and parties. Pick A or B, vote instantly, and see how everyone else answered.",
+      "Browse Would You Rather questions for kids, adults, couples, friends and parties. Pick A or B, play instantly, and find the perfect dilemma for any group.",
     h1: "Would You Rather Questions",
     pageType: "WebApplication",
     relatedRoutes: [
