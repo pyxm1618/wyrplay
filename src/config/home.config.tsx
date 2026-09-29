@@ -23,7 +23,7 @@ export const homeConfig = {
       order: 10,
       eyebrow: "The Definitive Two-Choice Dilemma Engine",
       h1: homeRoute.h1,
-      lead: "Funny, hard, weird, and thought-provoking questions for friends, kids, couples, parties, classrooms, and more.",
+      lead: "Browse funny, hard, weird, and thought-provoking Would You Rather questions for friends, kids, couples, parties, classrooms, and more.",
       primaryCta: { label: "Start playing questions", href: "/#play" },
       secondaryCta: { label: "Browse kids dilemmas", href: "/would-you-rather-questions-for-kids" },
     },
@@ -31,15 +31,15 @@ export const homeConfig = {
       type: "tool-demo",
       enabled: true,
       order: 20,
-      heading: "Live Dilemma Arena",
-      body: "Pick Option A or Option B below to test your instincts. Use keyboard shortcuts (A / B) or launch Presenter Mode for big-screen projector games.",
+      heading: "Play Would You Rather Questions Online",
+      body: "Use these Would You Rather Questions to pick Option A or Option B and test your instincts. Use keyboard shortcuts (A / B) or launch Presenter Mode for big-screen projector games.",
       surface: (
         <>
           <DuelArena questions={homepageQuestions} categoryBadge="Featured Dilemmas" />
           <QuestionDirectory
             questions={homepageQuestions}
             title="Index of 50 Would You Rather Questions"
-            description="Explore our server-rendered dilemma archive below. Click 'Play this dilemma' on any question to load it instantly into the live arena above."
+            description="Explore our server-rendered Would You Rather Questions archive below. Click 'Play this dilemma' on any question to load it instantly into the live arena above."
           />
           <CategoryExplorer />
           <FeaturedCollectionsSection />
@@ -48,68 +48,14 @@ export const homeConfig = {
       ),
     },
     {
-      type: "use-cases",
-      enabled: true,
-      order: 30,
-      heading: "Curated Thematic Question Decks",
-      intro: "Browse specialized collections designed for different social dynamics, age groups, and settings.",
-      items: [
-        {
-          title: "Questions for Kids",
-          body: "Clean, imaginative, and school-safe dilemmas tailored for elementary students, morning classroom meetings, and family road trips.",
-          href: "/would-you-rather-questions-for-kids",
-        },
-        {
-          title: "Funny Questions",
-          body: "Bizarre trade-offs, silly superpowers, and hilarious social catastrophes guaranteed to crack up any party.",
-          href: "/funny-would-you-rather-questions",
-        },
-        {
-          title: "Hard Questions",
-          body: "Agonizing moral crossroads and deep philosophical trade-offs where both choices test your personal principles.",
-          href: "/hard-would-you-rather-questions",
-        },
-        {
-          title: "Questions for Friends",
-          body: "Lively banter, loyalties, and playful roasts designed for weekend hangouts and late-night game tables.",
-          href: "/would-you-rather-questions-for-friends",
-        },
-        {
-          title: "Questions for Couples",
-          body: "Thoughtful conversation starters that reveal your partner's quirks, values, and relationship perspectives over dinner.",
-          href: "/would-you-rather-questions-for-couples",
-        },
-      ],
-    },
-    {
-      type: "how-it-works",
-      enabled: true,
-      order: 40,
-      heading: "Four Simple Rules to Play",
-      steps: [
-        {
-          title: "Pick a dilemma",
-          body: "Choose an engaging question from our catalog that fits your group's current mood and setting.",
-        },
-        {
-          title: "Lock in A or B",
-          body: "Every participant commits firmly to one option. Saying 'neither' or 'both' is strictly against the rules!",
-        },
-        {
-          title: "Defend your reasoning",
-          body: "Explain your rationale. The passionate disagreements and hilarious defenses are where the true fun begins.",
-        },
-      ],
-    },
-    {
       type: "features",
       enabled: true,
       order: 50,
-      heading: "Crafted for Genuine Social Play",
+      heading: "What Makes These Would You Rather Questions Easy to Play",
       items: [
         {
           title: "Three-dimensional taxonomy",
-          body: "Questions are categorized across Audience, Occasion, and Tone rather than dumped into a single confusing tag list.",
+          body: "Each set of Would You Rather Questions is categorized across Audience, Occasion, and Tone rather than dumped into a single confusing tag list.",
         },
         {
           title: "Classroom presenter mode",
@@ -130,12 +76,12 @@ export const homeConfig = {
         {
           question: "What makes a great Would You Rather question?",
           answer:
-            "A compelling dilemma balances two equally appealing or equally difficult choices. If one side is an obvious winner, the discussion ends instantly. The best questions force players to weigh competing personal values.",
+            "A compelling dilemma balances two equally appealing or equally difficult choices. If one side is an obvious winner, the discussion ends instantly. The best Would You Rather Questions force players to weigh competing personal values.",
         },
         {
           question: "Can I use these questions in school or at work?",
           answer:
-            "Yes! Our Kids and Coworkers categories are strictly clean, inclusive, and appropriate for classroom morning meetings, icebreakers, and corporate workshops.",
+            "Yes! These Would You Rather Questions include clean, inclusive options for Kids and Coworkers that fit classroom morning meetings, icebreakers, and corporate workshops.",
         },
         {
           question: "How does Presenter Mode work?",
@@ -148,7 +94,7 @@ export const homeConfig = {
       type: "related-resources",
       enabled: true,
       order: 70,
-      heading: "Explore All Five Core Collections",
+      heading: "Explore More Would You Rather Questions",
       links: [
         {
           label: "Explore kids questions",
@@ -182,7 +128,7 @@ export const homeConfig = {
       enabled: true,
       order: 80,
       heading: "Ready to Test Your Instincts?",
-      body: "Pick a question, choose your stance, and see if your friends agree with your logic.",
+      body: "Pick one of our Would You Rather Questions, choose your stance, and see if your friends agree with your logic.",
       cta: { label: "Play the first dilemma now", href: "/#play" },
     },
   ] as const satisfies readonly LandingSection[],

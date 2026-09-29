@@ -1291,8 +1291,14 @@ export const QUESTIONS_DATABASE: readonly Question[] = [
   },
 ];
 
+const AUDIENCE_COLLECTIONS = new Set<FeaturedCollectionKey>(["kids", "friends", "couples"]);
+
 export function getQuestionsByCollection(collectionKey: FeaturedCollectionKey): readonly Question[] {
-  return QUESTIONS_DATABASE.filter((q) => q.collections.includes(collectionKey));
+  return QUESTIONS_DATABASE.filter((q) => {
+    if (!q.collections.includes(collectionKey)) return false;
+    if (!AUDIENCE_COLLECTIONS.has(collectionKey)) return true;
+    return q.audience === collectionKey;
+  });
 }
 
 export function getHomepageQuestions(count = 50): readonly Question[] {

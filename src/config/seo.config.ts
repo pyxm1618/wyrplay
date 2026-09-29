@@ -11,7 +11,7 @@ export const seoConfig = {
   defaultTitle: "Would You Rather Questions",
   titleTemplate: "%s · Would You Rather",
   defaultDescription:
-    "Browse Would You Rather questions for kids, adults, couples, friends and parties. Pick A or B, vote instantly, and see how everyone else answered.",
+    "Browse Would You Rather questions for kids, adults, couples, friends and parties. Pick A or B, play instantly, and find the perfect dilemma for any group.",
   defaultOgImage: "/og/default.svg",
-  releaseStatus: "draft",
+  releaseStatus: "reviewed",
 } as const satisfies SiteSeoConfig;
