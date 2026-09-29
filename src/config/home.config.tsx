@@ -32,14 +32,14 @@ export const homeConfig = {
       enabled: true,
       order: 20,
       heading: "Play Would You Rather Questions Online",
-      body: "Use these Would You Rather Questions to pick Option A or Option B and test your instincts. Use keyboard shortcuts (A / B) or launch Presenter Mode for big-screen projector games.",
+      body: "Pick Option A or Option B and test your instincts. Use keyboard shortcuts (A / B) or launch Presenter Mode for big-screen projector games.",
       surface: (
         <>
           <DuelArena questions={homepageQuestions} categoryBadge="Featured Dilemmas" />
           <QuestionDirectory
             questions={homepageQuestions}
             title="Index of 50 Would You Rather Questions"
-            description="Explore our server-rendered Would You Rather Questions archive below. Click 'Play this dilemma' on any question to load it instantly into the live arena above."
+            description="Explore our server-rendered dilemma archive below. Click 'Play this dilemma' on any question to load it instantly into the live arena above."
           />
           <CategoryExplorer />
           <FeaturedCollectionsSection />
@@ -51,11 +51,11 @@ export const homeConfig = {
       type: "features",
       enabled: true,
       order: 50,
-      heading: "What Makes These Would You Rather Questions Easy to Play",
+      heading: "Crafted for Genuine Social Play",
       items: [
         {
           title: "Three-dimensional taxonomy",
-          body: "Each set of Would You Rather Questions is categorized across Audience, Occasion, and Tone rather than dumped into a single confusing tag list.",
+          body: "Questions are categorized across Audience, Occasion, and Tone rather than dumped into a single confusing tag list.",
         },
         {
           title: "Classroom presenter mode",
@@ -76,12 +76,12 @@ export const homeConfig = {
         {
           question: "What makes a great Would You Rather question?",
           answer:
-            "A compelling dilemma balances two equally appealing or equally difficult choices. If one side is an obvious winner, the discussion ends instantly. The best Would You Rather Questions force players to weigh competing personal values.",
+            "A compelling dilemma balances two equally appealing or equally difficult choices. If one side is an obvious winner, the discussion ends instantly. The best questions force players to weigh competing personal values.",
         },
         {
           question: "Can I use these questions in school or at work?",
           answer:
-            "Yes! These Would You Rather Questions include clean, inclusive options for Kids and Coworkers that fit classroom morning meetings, icebreakers, and corporate workshops.",
+            "Yes! Our Kids and Coworkers categories are strictly clean, inclusive, and appropriate for classroom morning meetings, icebreakers, and corporate workshops.",
         },
         {
           question: "How does Presenter Mode work?",
@@ -128,7 +128,7 @@ export const homeConfig = {
       enabled: true,
       order: 80,
       heading: "Ready to Test Your Instincts?",
-      body: "Pick one of our Would You Rather Questions, choose your stance, and see if your friends agree with your logic.",
+      body: "Pick a question, choose your stance, and see if your friends agree with your logic.",
       cta: { label: "Play the first dilemma now", href: "/#play" },
     },
   ] as const satisfies readonly LandingSection[],
