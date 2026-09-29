@@ -29,7 +29,7 @@ export const routeDefinitions = [
     ],
     lastModified: "2026-09-29",
     reviewStatus: "reviewed",
-    reviewFingerprint: "2e9c08dfcf2647771b9fa5830fb47f1eddafdd97a03822a8205ee125bcfc4315",
+    reviewFingerprint: "82443cae2c9a75367a00acf5fa3615c536f9e0e10eb21d578929e60ad9dc5691",
   },
   {
     route: "/would-you-rather-questions-for-kids",
