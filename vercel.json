@@ -1,21 +1,3 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "crons": [
-    {
-      "path": "/api/internal/jobs/commerce",
-      "schedule": "*/5 * * * *"
-    },
-    {
-      "path": "/api/internal/jobs/reconcile",
-      "schedule": "17 * * * *"
-    },
-    {
-      "path": "/api/internal/jobs/credit-expiry",
-      "schedule": "31 * * * *"
-    },
-    {
-      "path": "/api/internal/jobs/account-deletion",
-      "schedule": "47 * * * *"
-    }
-  ]
+  "$schema": "https://openapi.vercel.sh/vercel.json"
 }
