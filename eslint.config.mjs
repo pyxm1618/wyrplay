@@ -194,7 +194,7 @@ const productModuleBoundaryRule = {
 export default defineConfig([
   ...nextVitals,
   ...nextTypeScript,
-  globalIgnores([".next/**", "coverage/**", "playwright-report/**", "test-results/**"]),
+  globalIgnores([".next/**", ".worktrees/**", "coverage/**", "playwright-report/**", "test-results/**"]),
   {
     files: ["src/platform/**/*.ts", "src/platform/**/*.tsx"],
     rules: {

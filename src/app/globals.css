@@ -1,46 +1,74 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Design tokens
-   Semantic variables drive both themes; Tailwind utilities read them through
-   the `@theme inline` block below, so `bg-surface` / `text-muted` stay correct
-   in light and dark without duplicating utility classes in components.
+   Design Tokens & Foundations (Editorial Dilemma Tension System)
+   Inspired by would-you-rather-v3.html
+   Amber Gold (#e27d32) vs Glacial Cyan (#19a4b8)
 --------------------------------------------------------------------------- */
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
-  --background: oklch(0.99 0.002 265);
-  --foreground: oklch(0.21 0.012 265);
-  --surface: oklch(1 0 0);
-  --surface-muted: oklch(0.97 0.004 265);
-  --border: oklch(0.91 0.006 265);
-  --muted: oklch(0.52 0.014 265);
-  --accent: oklch(0.53 0.19 265);
-  --accent-hover: oklch(0.47 0.19 265);
-  --accent-foreground: oklch(0.99 0.002 265);
-  --inverse: oklch(0.19 0.012 265);
-  --inverse-foreground: oklch(0.97 0.004 265);
-  --ring: oklch(0.53 0.19 265);
+  /* Default Dark (Obsidian Cinematic) */
+  --background: #0a0b0d;
+  --foreground: #f2f3f5;
+  --surface: #121418;
+  --surface-muted: #181b21;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-active: rgba(255, 255, 255, 0.28);
+  --muted: #9da1b0;
+  --muted-dark: #5c6070;
+  
+  --accent: #e27d32;
+  --accent-hover: #f0893f;
+  --accent-foreground: #ffffff;
+  --inverse: #f2f3f5;
+  --inverse-foreground: #0a0b0d;
+  --ring: #e27d32;
+
+  /* Dual Polarity Energies */
+  --polarity-a: #e27d32;
+  --polarity-a-bg: rgba(226, 125, 50, 0.12);
+  --polarity-a-glow: rgba(226, 125, 50, 0.35);
+  --polarity-a-border: rgba(226, 125, 50, 0.3);
+
+  --polarity-b: #19a4b8;
+  --polarity-b-bg: rgba(25, 164, 184, 0.12);
+  --polarity-b-glow: rgba(25, 164, 184, 0.35);
+  --polarity-b-border: rgba(25, 164, 184, 0.3);
+
+  --font-serif: "Newsreader", "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --font-display: "Cinzel", var(--font-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
+[data-theme="light"] {
+  color-scheme: light;
 
-    --background: oklch(0.17 0.011 265);
-    --foreground: oklch(0.96 0.004 265);
-    --surface: oklch(0.21 0.013 265);
-    --surface-muted: oklch(0.24 0.014 265);
-    --border: oklch(0.31 0.016 265);
-    --muted: oklch(0.71 0.016 265);
-    --accent: oklch(0.68 0.16 265);
-    --accent-hover: oklch(0.74 0.16 265);
-    --accent-foreground: oklch(0.17 0.011 265);
-    --inverse: oklch(0.96 0.004 265);
-    --inverse-foreground: oklch(0.19 0.012 265);
-    --ring: oklch(0.68 0.16 265);
-  }
+  --background: #f7f6f2;
+  --foreground: #121316;
+  --surface: #ffffff;
+  --surface-muted: #f0efe9;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-active: rgba(0, 0, 0, 0.24);
+  --muted: #575965;
+  --muted-dark: #8e909d;
+  
+  --accent: #e27d32;
+  --accent-hover: #c75c12;
+  --accent-foreground: #ffffff;
+  --inverse: #121316;
+  --inverse-foreground: #f7f6f2;
+  --ring: #e27d32;
+
+  --polarity-a: #d96d20;
+  --polarity-a-bg: rgba(217, 109, 32, 0.08);
+  --polarity-a-glow: rgba(217, 109, 32, 0.2);
+  --polarity-a-border: rgba(217, 109, 32, 0.25);
+
+  --polarity-b: #12899b;
+  --polarity-b-bg: rgba(18, 137, 155, 0.08);
+  --polarity-b-glow: rgba(18, 137, 155, 0.2);
+  --polarity-b-border: rgba(18, 137, 155, 0.25);
 }
 
 @theme inline {
@@ -57,13 +85,17 @@
   --color-inverse-foreground: var(--inverse-foreground);
   --color-ring: var(--ring);
 
-  --font-sans:
-    ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-    "Noto Sans", Arial, sans-serif;
+  --color-polarity-a: var(--polarity-a);
+  --color-polarity-b: var(--polarity-b);
 
-  --text-display: 3.25rem;
-  --text-display--line-height: 1.06;
-  --text-display--letter-spacing: -0.028em;
+  --font-sans:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  --font-serif: var(--font-serif);
+
+  --text-display: 3.5rem;
+  --text-display--line-height: 1.08;
+  --text-display--letter-spacing: -0.03em;
 }
 
 @layer base {
@@ -72,14 +104,38 @@
   }
 
   body {
-    background: var(--color-background);
+    background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 35% 0%, rgba(226, 125, 50, 0.035) 0%, transparent 55%),
+      radial-gradient(circle at 80% 90%, rgba(25, 164, 184, 0.035) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
   }
 
   :focus-visible {
     outline: 2px solid var(--color-ring);
     outline-offset: 2px;
   }
+}
+
+.font-editorial {
+  font-family: var(--font-serif);
+}
+
+.font-display {
+  font-family: var(--font-display);
 }

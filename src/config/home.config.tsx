@@ -1,9 +1,19 @@
 import type { LandingSection } from "@/components/landing/landing-page";
+import {
+  CategoryExplorer,
+  DuelArena,
+  EditorialGuideSection,
+  FeaturedCollectionsSection,
+  getHomepageQuestions,
+  QuestionDirectory,
+} from "@/modules/would-you-rather";
 
 import { routeRegistry } from "./routes.config";
 
 const homeRoute = routeRegistry.get("/");
 if (homeRoute.class !== "public_indexable") throw new Error("home route must be indexable");
+
+const homepageQuestions = getHomepageQuestions(50);
 
 export const homeConfig = {
   sections: [
@@ -11,50 +21,63 @@ export const homeConfig = {
       type: "hero",
       enabled: true,
       order: 10,
-      eyebrow: "SEO-first neutral starter",
+      eyebrow: "The Definitive Two-Choice Dilemma Engine",
       h1: homeRoute.h1,
-      lead: "Launch a useful public web product before committing to authentication, email or payments. The starter keeps SEO-critical copy server-rendered and lets product modules stay completely off until validation justifies them.",
-      primaryCta: { label: "Explore the launch checklist", href: "/seo-starter-checklist" },
-      secondaryCta: { label: "Review pricing structure", href: "/pricing" },
+      lead: "Funny, hard, weird, and thought-provoking questions for friends, kids, couples, parties, classrooms, and more.",
+      primaryCta: { label: "Start playing questions", href: "/#play" },
+      secondaryCta: { label: "Browse kids dilemmas", href: "/would-you-rather-questions-for-kids" },
     },
     {
       type: "tool-demo",
       enabled: true,
       order: 20,
-      heading: "Put the product surface before supporting copy",
-      body: "For tools, calculators and generators, replace this neutral surface with the real server-rendered or progressively enhanced product experience. Authentication and commerce are not prerequisites for the first launch.",
+      heading: "Live Dilemma Arena",
+      body: "Pick Option A or Option B below to test your instincts. Use keyboard shortcuts (A / B) or launch Presenter Mode for big-screen projector games.",
       surface: (
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
-            Product-first boundary
-          </p>
-          <strong className="mt-3 block text-base font-semibold text-foreground">
-            Useful surface → supporting explanation → optional platform modules
-          </strong>
-          <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
-            Swap this panel for the product itself without rebuilding the SEO shell.
-          </p>
-        </div>
+        <>
+          <DuelArena questions={homepageQuestions} categoryBadge="Featured Dilemmas" />
+          <QuestionDirectory
+            questions={homepageQuestions}
+            title="Index of 50 Would You Rather Questions"
+            description="Explore our server-rendered dilemma archive below. Click 'Play this dilemma' on any question to load it instantly into the live arena above."
+          />
+          <CategoryExplorer />
+          <FeaturedCollectionsSection />
+          <EditorialGuideSection />
+        </>
       ),
     },
     {
       type: "use-cases",
       enabled: true,
       order: 30,
-      heading: "Start with one clear search intent",
+      heading: "Curated Thematic Question Decks",
+      intro: "Browse specialized collections designed for different social dynamics, age groups, and settings.",
       items: [
         {
-          title: "SEO-first tools",
-          body: "Ship one useful tool and the content required to satisfy its search intent before expanding into adjacent topics.",
-          href: "/seo-starter-checklist",
+          title: "Questions for Kids",
+          body: "Clean, imaginative, and school-safe dilemmas tailored for elementary students, morning classroom meetings, and family road trips.",
+          href: "/would-you-rather-questions-for-kids",
         },
         {
-          title: "Focused product landing pages",
-          body: "Add a page only when it serves a genuinely distinct intent rather than splitting synonyms into thin doorway pages.",
+          title: "Funny Questions",
+          body: "Bizarre trade-offs, silly superpowers, and hilarious social catastrophes guaranteed to crack up any party.",
+          href: "/funny-would-you-rather-questions",
         },
         {
-          title: "Validated paid utilities",
-          body: "Enable auth, payment, credits and subscriptions after the public product proves that users value the workflow.",
+          title: "Hard Questions",
+          body: "Agonizing moral crossroads and deep philosophical trade-offs where both choices test your personal principles.",
+          href: "/hard-would-you-rather-questions",
+        },
+        {
+          title: "Questions for Friends",
+          body: "Lively banter, loyalties, and playful roasts designed for weekend hangouts and late-night game tables.",
+          href: "/would-you-rather-questions-for-friends",
+        },
+        {
+          title: "Questions for Couples",
+          body: "Thoughtful conversation starters that reveal your partner's quirks, values, and relationship perspectives over dinner.",
+          href: "/would-you-rather-questions-for-couples",
         },
       ],
     },
@@ -62,19 +85,19 @@ export const homeConfig = {
       type: "how-it-works",
       enabled: true,
       order: 40,
-      heading: "A repeatable SEO launch sequence",
+      heading: "Four Simple Rules to Play",
       steps: [
         {
-          title: "Configure",
-          body: "Replace site identity, canonical origin, TDH, primary intent, logo and legal operator facts in the small config surface.",
+          title: "Pick a dilemma",
+          body: "Choose an engaging question from our catalog that fits your group's current mood and setting.",
         },
         {
-          title: "Publish useful HTML",
-          body: "Keep the product surface and supporting content server-rendered, crawlable and linked through normal anchors.",
+          title: "Lock in A or B",
+          body: "Every participant commits firmly to one option. Saying 'neither' or 'both' is strictly against the rules!",
         },
         {
-          title: "Validate before expanding",
-          body: "Submit the sitemap, observe indexing and demand, then add only the product modules and landing pages that earn their complexity.",
+          title: "Defend your reasoning",
+          body: "Explain your rationale. The passionate disagreements and hilarious defenses are where the true fun begins.",
         },
       ],
     },
@@ -82,98 +105,85 @@ export const homeConfig = {
       type: "features",
       enabled: true,
       order: 50,
-      heading: "Platform features stay optional",
+      heading: "Crafted for Genuine Social Play",
       items: [
         {
-          title: "Intent-aware SEO registry",
-          body: "Indexable routes declare search intent, keyword focus, TDH, canonical, related routes and review state in one place.",
+          title: "Three-dimensional taxonomy",
+          body: "Questions are categorized across Audience, Occasion, and Tone rather than dumped into a single confusing tag list.",
         },
         {
-          title: "Server-first marketing",
-          body: "The default homepage does not need authentication, commerce or analytics JavaScript to render its core content.",
+          title: "Classroom presenter mode",
+          body: "Launch a clean, distraction-free fullscreen display with keyboard navigation for TV screens and school smartboards.",
         },
         {
-          title: "Fail-closed release gates",
-          body: "Placeholder domains, draft legal facts, broken internal links and unsafe deployment modes block production verification.",
-        },
-      ],
-    },
-    {
-      type: "comparison",
-      enabled: false,
-      order: 60,
-      heading: "Evidence or comparison",
-      body: "Enable this section only when the downstream product has truthful, visible evidence worth comparing.",
-      items: [
-        {
-          title: "No fabricated proof",
-          body: "Do not add ratings, reviews or claims merely to populate a schema or landing-page pattern.",
+          title: "Zero fake metrics",
+          body: "No fabricated vote percentages or bot activity. You get pure, high-craft editorial dilemmas designed to spark authentic conversation.",
         },
       ],
     },
     {
       type: "faq",
       enabled: true,
-      order: 70,
-      heading: "SEO-first starter questions",
+      order: 60,
+      heading: "Frequently Asked Questions",
       items: [
         {
-          question: "Do I need authentication for the first launch?",
+          question: "What makes a great Would You Rather question?",
           answer:
-            "No. The neutral starter keeps authentication, email, commerce, credits, subscriptions and analytics disabled by default.",
+            "A compelling dilemma balances two equally appealing or equally difficult choices. If one side is an obvious winner, the discussion ends instantly. The best questions force players to weigh competing personal values.",
         },
         {
-          question: "Should every related keyword become a separate page?",
+          question: "Can I use these questions in school or at work?",
           answer:
-            "No. Create a separate landing page only when it serves a distinct search intent and can provide genuinely useful standalone content.",
+            "Yes! Our Kids and Coworkers categories are strictly clean, inclusive, and appropriate for classroom morning meetings, icebreakers, and corporate workshops.",
         },
         {
-          question: "Does the starter guarantee rankings?",
+          question: "How does Presenter Mode work?",
           answer:
-            "No. It enforces technical and on-page hygiene, but rankings still depend on usefulness, competition, authority and search demand.",
+            "Click the 'Presenter Mode' badge on the arena to enter an uncluttered, high-contrast fullscreen layout optimized for classroom projectors and living room televisions.",
         },
-      ],
-    },
-    {
-      type: "seo-content",
-      enabled: true,
-      order: 80,
-      heading: "What the SEO-first starter standardizes",
-      paragraphs: [
-        "The starter centralizes route intent, canonical policy, title and description generation, one primary H1, structured data, internal-link relationships, locale alternates and production review gates. Those controls make obvious launch mistakes mechanically detectable instead of relying on a final manual sweep.",
-        "Product positioning and copy remain downstream responsibilities. The starter provides a reliable delivery surface without creating doorway pages, hidden keyword blocks, fake review markup or client-only content that crawlers and users cannot depend on.",
       ],
     },
     {
       type: "related-resources",
       enabled: true,
-      order: 90,
-      heading: "Related launch resources",
+      order: 70,
+      heading: "Explore All Five Core Collections",
       links: [
         {
-          label: "SEO starter launch checklist",
-          href: "/seo-starter-checklist",
-          description: "Use the reusable landing-page pattern and pre-launch validation checklist.",
+          label: "Explore kids questions",
+          href: "/would-you-rather-questions-for-kids",
+          description: "25+ clean and imaginative dilemmas for children and classrooms.",
         },
         {
-          label: "Web product pricing template",
-          href: "/pricing",
-          description: "See how monetization can remain separate from the SEO launch surface.",
+          label: "Browse funny dilemmas",
+          href: "/funny-would-you-rather-questions",
+          description: "Absurd, laugh-out-loud scenarios for parties and road trips.",
         },
         {
-          label: "Privacy notice template",
-          href: "/privacy",
-          description: "Replace draft operator and provider facts before production release.",
+          label: "Challenge hard dilemmas",
+          href: "/hard-would-you-rather-questions",
+          description: "Tough moral and philosophical trade-offs with no easy answers.",
+        },
+        {
+          label: "See friends questions",
+          href: "/would-you-rather-questions-for-friends",
+          description: "Hilarious banter and friendly roasts for game night groups.",
+        },
+        {
+          label: "Discover couples dilemmas",
+          href: "/would-you-rather-questions-for-couples",
+          description: "Romantic and insightful conversation starters for partners.",
         },
       ],
     },
     {
       type: "final-cta",
       enabled: true,
-      order: 100,
-      heading: "Launch the useful public surface first",
-      body: "Replace the neutral brand, intent, TDH, logo, body copy and legal facts; keep optional product modules off until the site earns the next phase.",
-      cta: { label: "Open the SEO launch checklist", href: "/seo-starter-checklist" },
+      order: 80,
+      heading: "Ready to Test Your Instincts?",
+      body: "Pick a question, choose your stance, and see if your friends agree with your logic.",
+      cta: { label: "Play the first dilemma now", href: "/#play" },
     },
-  ] satisfies readonly LandingSection[],
-} as const;
+  ] as const satisfies readonly LandingSection[],
+};

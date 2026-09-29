@@ -8,10 +8,10 @@ export const seoConfig = {
   supportedLocales: siteConfig.supportedLocales,
   localeLabels: siteConfig.localeLabels,
   localePrefixStrategy: siteConfig.localePrefixStrategy,
-  defaultTitle: "Creat Web Sample",
-  titleTemplate: "%s | Creat Web Sample",
+  defaultTitle: "Would You Rather Questions",
+  titleTemplate: "%s · Would You Rather",
   defaultDescription:
-    "A neutral SEO-first starter for launching useful web products quickly with optional platform capabilities that remain disabled until needed.",
+    "Explore fun, funny, hard, and thought-provoking Would You Rather questions for kids, friends, couples, parties, classrooms, and more.",
   defaultOgImage: "/og/default.svg",
   releaseStatus: "draft",
 } as const satisfies SiteSeoConfig;

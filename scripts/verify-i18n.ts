@@ -30,7 +30,7 @@ for (const locale of siteConfig.supportedLocales) {
     if (!isHome && !bundle.landingSections[route.route]) {
       throw new Error(`missing localized landing content: ${locale}:${route.route}`);
     }
-    if (isHome && bundle.homeSections.length === 0) {
+    if (isHome && (bundle.homeSections as readonly unknown[]).length === 0) {
       throw new Error(`missing localized homepage content: ${locale}`);
     }
 

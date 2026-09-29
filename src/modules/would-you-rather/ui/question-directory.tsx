@@ -1,0 +1,90 @@
+"use client";
+
+import type { Question } from "../types";
+
+interface QuestionDirectoryProps {
+  readonly questions: readonly Question[];
+  readonly title?: string;
+  readonly description?: string;
+}
+
+export function QuestionDirectory({
+  questions,
+  title = "Browse All Questions",
+  description = "A complete, searchable directory of dilemmas to spark conversation anywhere.",
+}: QuestionDirectoryProps) {
+  const handlePlayQuestion = (questionId: string) => {
+    window.dispatchEvent(
+      new CustomEvent("wyr:pick-question", {
+        detail: { questionId },
+      })
+    );
+  };
+
+  return (
+    <section id="questions" className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+      {/* Section Header */}
+      <div className="mb-10 text-center sm:mb-14">
+        <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          {title}
+        </h2>
+        <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
+          {description}
+        </p>
+      </div>
+
+      {/* Questions Stack */}
+      <div className="space-y-4">
+        {questions.map((item, idx) => (
+          <article
+            key={item.id}
+            className="group flex flex-col justify-between gap-4 rounded-xl border border-border bg-surface p-5 transition-all hover:border-foreground/20 hover:shadow-md sm:flex-row sm:items-center sm:p-6"
+          >
+            <div className="flex-1 space-y-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="font-mono text-xs font-bold text-muted">
+                  #{String(idx + 1).padStart(2, "0")}
+                </span>
+                <span className="rounded-full bg-surface-muted px-2.5 py-0.5 text-[11px] font-semibold text-muted capitalize">
+                  {item.audience}
+                </span>
+                <span className="rounded-full bg-surface-muted px-2.5 py-0.5 text-[11px] font-semibold text-muted capitalize">
+                  {item.style}
+                </span>
+              </div>
+
+              <h3 className="font-serif text-lg font-bold text-foreground sm:text-xl">
+                {item.question}
+              </h3>
+
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs sm:text-sm">
+                <div className="flex items-center gap-1.5 text-muted">
+                  <span className="font-mono font-black text-[#e27d32]">A:</span>
+                  <span>{item.optionA}</span>
+                </div>
+                <span className="hidden text-border sm:inline">|</span>
+                <div className="flex items-center gap-1.5 text-muted">
+                  <span className="font-mono font-black text-[#19a4b8]">B:</span>
+                  <span>{item.optionB}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="shrink-0 pt-2 sm:pt-0">
+              <button
+                type="button"
+                onClick={() => handlePlayQuestion(item.id)}
+                className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-border bg-surface-muted px-4 py-2 text-xs font-bold text-foreground transition group-hover:border-[#e27d32]/40 group-hover:bg-[#e27d32]/10 group-hover:text-[#e27d32] sm:w-auto"
+              >
+                <span>Play this dilemma</span>
+                <svg className="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}

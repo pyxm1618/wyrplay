@@ -23,7 +23,7 @@ const neutralFeaturesConfig = {
   auth: { enabled: false, google: false, magicLink: false, password: false },
   email: { enabled: false },
   commerce: { enabled: false, oneTime: false, subscriptions: false, credits: false },
-  analytics: { enabled: false, ga4: false, clarity: false, consentRequired: true },
+  analytics: { enabled: false, ga4: false, clarity: false, consentRequired: false },
 } as const satisfies ProductConfig["features"];
 
 const useEnabledTestProfile =
