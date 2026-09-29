@@ -121,7 +121,7 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
           {
             label: "Return to home page",
             href: "/",
-            description: "Browse the master directory with over 100+ playable dilemmas.",
+            description: "Browse more playable dilemmas in the main Would You Rather directory.",
           },
         ],
       },
