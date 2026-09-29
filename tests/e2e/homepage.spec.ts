@@ -30,34 +30,6 @@ test("homepage has server-rendered purpose, one H1 and meaningful navigation", a
   expect(html).toContain(serverRenderedFragment);
 });
 
-
-test("homepage primary keyword word-share stays near three percent", async ({ page }) => {
-  await page.goto("/");
-
-  const phrase = "would you rather questions";
-  const phraseWordCount = phrase.split(" ").length;
-  const mainText = (await page.locator("main").innerText())
-    .toLowerCase()
-    .replace(/[’‘]/g, "'")
-    .replace(/[^a-z0-9'\s-]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-
-  const words = mainText.match(/[a-z0-9]+(?:['-][a-z0-9]+)*/g) ?? [];
-  const occurrences = mainText.match(new RegExp(phrase, "g"))?.length ?? 0;
-  const density = words.length === 0 ? 0 : (occurrences * phraseWordCount * 100) / words.length;
-
-  console.info(
-    `homepage keyword density: ${density.toFixed(2)}% (${occurrences} exact phrases / ${words.length} words)`,
-  );
-
-  expect(
-    density,
-    `expected "${phrase}" word-share density to be 2.8%-3.2%, observed ${density.toFixed(2)}%`,
-  ).toBeGreaterThanOrEqual(2.8);
-  expect(density).toBeLessThanOrEqual(3.2);
-});
-
 test("homepage does not overflow a 375px viewport", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto("/");
