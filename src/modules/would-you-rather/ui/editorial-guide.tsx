@@ -21,7 +21,7 @@ export function EditorialGuideSection() {
             How to Play Would You Rather
           </h2>
           <p className="mt-2 text-sm text-muted">
-            Use four simple steps to turn any quiet gathering into an unforgettable conversation.
+            Use these Would You Rather Questions in four simple steps to turn any quiet gathering into an unforgettable conversation.
           </p>
 
           <ol className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
