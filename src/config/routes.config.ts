@@ -15,9 +15,9 @@ export const routeDefinitions = [
       "would you rather questions for kids",
       "hard would you rather questions",
     ],
-    title: "Would You Rather Questions – Funny, Hard & Fun Questions",
+    title: "Would You Rather Questions – Play, Vote & Compare Answers",
     description:
-      "Explore fun, funny, hard, and thought-provoking Would You Rather questions for kids, friends, couples, parties, classrooms, and more.",
+      "Browse Would You Rather questions for kids, adults, couples, friends and parties. Pick A or B, vote instantly, and see how everyone else answered.",
     h1: "Would You Rather Questions",
     pageType: "WebApplication",
     relatedRoutes: [
@@ -29,7 +29,7 @@ export const routeDefinitions = [
     ],
     lastModified: "2026-09-29",
     reviewStatus: "reviewed",
-    reviewFingerprint: "cabd27558feaa22159024a63f975f36d19577400789bf1e82a7abe7662f9b9db",
+    reviewFingerprint: "76d248a6ba77a0114e5c0329e2b2a8e1858b8ea3b0f2d81f3d39609c9417bed6",
   },
   {
     route: "/would-you-rather-questions-for-kids",

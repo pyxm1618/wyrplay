@@ -1,3 +1,13 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json"
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/internal/jobs/reconcile",
+      "schedule": "17 * * * *"
+    },
+    {
+      "path": "/api/internal/jobs/account-deletion",
+      "schedule": "47 * * * *"
+    }
+  ]
 }
