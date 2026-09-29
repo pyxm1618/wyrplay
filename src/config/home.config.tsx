@@ -48,60 +48,6 @@ export const homeConfig = {
       ),
     },
     {
-      type: "use-cases",
-      enabled: true,
-      order: 30,
-      heading: "Curated Thematic Question Decks",
-      intro: "Browse specialized collections designed for different social dynamics, age groups, and settings.",
-      items: [
-        {
-          title: "Questions for Kids",
-          body: "Clean, imaginative, and school-safe dilemmas tailored for elementary students, morning classroom meetings, and family road trips.",
-          href: "/would-you-rather-questions-for-kids",
-        },
-        {
-          title: "Funny Questions",
-          body: "Bizarre trade-offs, silly superpowers, and hilarious social catastrophes guaranteed to crack up any party.",
-          href: "/funny-would-you-rather-questions",
-        },
-        {
-          title: "Hard Questions",
-          body: "Agonizing moral crossroads and deep philosophical trade-offs where both choices test your personal principles.",
-          href: "/hard-would-you-rather-questions",
-        },
-        {
-          title: "Questions for Friends",
-          body: "Lively banter, loyalties, and playful roasts designed for weekend hangouts and late-night game tables.",
-          href: "/would-you-rather-questions-for-friends",
-        },
-        {
-          title: "Questions for Couples",
-          body: "Thoughtful conversation starters that reveal your partner's quirks, values, and relationship perspectives over dinner.",
-          href: "/would-you-rather-questions-for-couples",
-        },
-      ],
-    },
-    {
-      type: "how-it-works",
-      enabled: true,
-      order: 40,
-      heading: "Four Simple Rules to Play",
-      steps: [
-        {
-          title: "Pick a dilemma",
-          body: "Choose an engaging question from our catalog that fits your group's current mood and setting.",
-        },
-        {
-          title: "Lock in A or B",
-          body: "Every participant commits firmly to one option. Saying 'neither' or 'both' is strictly against the rules!",
-        },
-        {
-          title: "Defend your reasoning",
-          body: "Explain your rationale. The passionate disagreements and hilarious defenses are where the true fun begins.",
-        },
-      ],
-    },
-    {
       type: "features",
       enabled: true,
       order: 50,
