@@ -19,7 +19,7 @@ export function FeaturedCollectionsSection() {
           Featured Collections
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-          Hand-picked sets tailored for specific occasions and audiences. Each collection is fully playable and independently indexed.
+          Explore Would You Rather Questions tailored for specific occasions and audiences. Each collection is fully playable and independently indexed.
         </p>
       </div>
 
