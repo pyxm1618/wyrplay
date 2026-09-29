@@ -8,7 +8,7 @@ export function EditorialGuideSection() {
             What Is Would You Rather?
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
-            <strong>Would You Rather</strong> is a timeless social decision game where players are presented with two distinct, often challenging or absurd alternatives, and must choose exactly one. Unlike ordinary trivia or quiz games, there are no mathematically correct answers. The entire magic lies in the forced choice—revealing personal values, eccentric humor, hidden priorities, and instinctive logic.
+            <strong>Would You Rather Questions</strong> power a timeless social decision game where players are presented with two distinct, often challenging or absurd alternatives, and must choose exactly one. Unlike ordinary trivia or quiz games, there are no mathematically correct answers. The entire magic lies in the forced choice—revealing personal values, eccentric humor, hidden priorities, and instinctive logic.
           </p>
           <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
             From harmless, clean Would You Rather questions for kids in morning classrooms to deep moral dilemmas among lifelong friends and couples on date night, the format cuts through small talk instantly. Whether played casually around a dinner table or as an energizing corporate icebreaker, every question ignites spontaneous debate, surprising defenses, and genuine laughter.
@@ -21,7 +21,7 @@ export function EditorialGuideSection() {
             How to Play Would You Rather
           </h2>
           <p className="mt-2 text-sm text-muted">
-            Four simple steps to turn any quiet gathering into an unforgettable conversation.
+            Use these Would You Rather Questions in four simple steps to turn any quiet gathering into an unforgettable conversation.
           </p>
 
           <ol className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
