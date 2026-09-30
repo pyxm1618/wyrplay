@@ -1,0 +1,1328 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101311" />
+    <meta
+      name="description"
+      content="Independent, interactive wyrplay design preview. Local demo only; no production services are connected."
+    />
+    <title>wyrplay — Choiceboard UI Preview</title>
+    <link rel="stylesheet" href="./prototype.css" />
+    <script defer src="./prototype.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="preview-ribbon">
+      <span class="preview-ribbon__label"><span class="status-dot"></span> Design preview</span>
+      <span class="preview-ribbon__copy"
+        >Source snapshot: 104 question drafts · 0 approved for play</span
+      >
+      <span class="preview-ribbon__local">Local interactions only</span>
+    </div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#/home" aria-label="wyrplay home">
+          <span class="brand-mark" aria-hidden="true"><span>W</span></span>
+          <span class="brand-word">wyrplay<span class="brand-period">.</span></span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a href="#/play">Play</a>
+          <a href="#/home#browse">Browse</a>
+          <a href="#/category/kids">Kids</a>
+          <a href="#/category/friends">Friends</a>
+          <a href="#/home#how-to-play">How to play</a>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            class="icon-button theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch to light theme"
+            title="Switch theme"
+          >
+            <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"
+              ></path>
+            </svg>
+            <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.8 15.5A8.8 8.8 0 0 1 8.5 3.2 8.8 8.8 0 1 0 20.8 15.5Z"></path>
+            </svg>
+          </button>
+          <a class="header-signin" href="#/sign-in">Sign in</a>
+          <a class="button button--small button--bright header-cta" href="#/play"
+            >Play a question <span aria-hidden="true">↗</span></a
+          >
+          <button
+            class="menu-toggle icon-button"
+            id="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            aria-label="Open navigation"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" hidden>
+        <a href="#/play">Play a question</a>
+        <a href="#/home#browse">Browse questions</a>
+        <a href="#/category/kids">Kids</a>
+        <a href="#/category/friends">Friends</a>
+        <a href="#/sign-in">Sign in</a>
+        <a href="#/account">Account preview</a>
+      </nav>
+    </header>
+
+    <div class="source-note" role="note">
+      <span class="source-note__mark" aria-hidden="true">i</span>
+      <span
+        ><strong>Prototype only.</strong> The question examples come from this checkout. Every
+        source question is still unreviewed; no option here sends or stores a vote.</span
+      >
+      <a href="#/design-system">See the design system <span aria-hidden="true">→</span></a>
+    </div>
+
+    <main id="main-content" tabindex="-1">
+      <section class="page page--home" data-page="home">
+        <section class="hero wrap" aria-labelledby="home-title">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="eyebrow-line"></span> The social game of impossible choices
+            </p>
+            <h1 id="home-title">
+              Would You Rather<span class="heading-period">?</span><br /><em>Pick a side.</em>
+            </h1>
+            <p class="hero-lead">
+              Browse funny, hard, weird, and thought-provoking questions for friends, kids, couples,
+              parties, classrooms, and more.
+            </p>
+            <div class="hero-actions">
+              <a class="button button--bright" href="#/play"
+                >Start playing <span aria-hidden="true">↗</span></a
+              >
+              <a class="text-link" href="#/home#browse"
+                >Find your kind of question <span aria-hidden="true">↓</span></a
+              >
+            </div>
+            <div class="hero-footnote">
+              <span class="mini-mark mini-mark--a">A</span>
+              <span class="mini-mark mini-mark--b">B</span>
+              <span>One choice. A hundred ways to defend it.</span>
+            </div>
+          </div>
+
+          <article
+            class="arena-card home-arena"
+            data-arena="home"
+            aria-labelledby="home-arena-title"
+          >
+            <div class="arena-card__top">
+              <div>
+                <p class="arena-label"><span class="status-dot"></span> Question bank preview</p>
+                <p class="source-id">Source row <span>wyr-004</span> · review pending</p>
+              </div>
+              <button
+                class="icon-button share-button"
+                type="button"
+                data-share
+                aria-label="Copy preview link"
+                title="Copy preview link"
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path
+                    d="M8 12.5 16 8m-8 3.5 8 4M6.5 16A2.5 2.5 0 1 1 4 18.5 2.5 2.5 0 0 1 6.5 16Zm13-7A2.5 2.5 0 1 1 17 11.5 2.5 2.5 0 0 1 19.5 9ZM6.5 5A2.5 2.5 0 1 1 4 7.5 2.5 2.5 0 0 1 6.5 5Z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <div class="arena-card__question">
+              <p class="arena-overline">The question</p>
+              <h2 id="home-arena-title">
+                Would you rather have a pet dragon the size of a cat or a pet dinosaur the size of a
+                dog?
+              </h2>
+            </div>
+            <div class="versus-rule"><span></span><b>Choose one</b><span></span></div>
+            <div class="choice-grid choice-grid--home">
+              <button
+                class="choice-card choice-card--a"
+                type="button"
+                data-option="A"
+                aria-pressed="false"
+              >
+                <span class="choice-card__top"
+                  ><span class="choice-key">A</span><span class="choice-hint">Option A</span></span
+                >
+                <span class="choice-card__text">A cat-sized pet dragon</span>
+                <span class="choice-card__bottom"
+                  ><span>Pick this side</span
+                  ><span class="choice-arrow" aria-hidden="true">↗</span></span
+                >
+              </button>
+              <button
+                class="choice-card choice-card--b"
+                type="button"
+                data-option="B"
+                aria-pressed="false"
+              >
+                <span class="choice-card__top"
+                  ><span class="choice-key">B</span><span class="choice-hint">Option B</span></span
+                >
+                <span class="choice-card__text">A dog-sized pet velociraptor</span>
+                <span class="choice-card__bottom"
+                  ><span>Pick this side</span
+                  ><span class="choice-arrow" aria-hidden="true">↗</span></span
+                >
+              </button>
+            </div>
+            <div class="demo-result demo-result--compact" data-result-panel hidden>
+              <div class="demo-result__heading">
+                <span data-your-choice>You chose A</span
+                ><span class="demo-tag">Illustrative only</span>
+              </div>
+              <div class="result-row result-row--a">
+                <span>A</span>
+                <div class="result-track"><i style="--result-width: 57%"></i></div>
+                <strong>57%</strong>
+              </div>
+              <div class="result-row result-row--b">
+                <span>B</span>
+                <div class="result-track"><i style="--result-width: 43%"></i></div>
+                <strong>43%</strong>
+              </div>
+              <p class="demo-result__fine">
+                1,284 sample votes · visual example, not live wyrplay data.
+              </p>
+            </div>
+            <div class="arena-card__footer">
+              <p class="arena-disclaimer" data-arena-message aria-live="polite">
+                Local preview · your click stays in this browser.
+              </p>
+              <a href="#/play?question=wyr-004" class="arena-next-link"
+                >Full play view <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+          <div class="hero-side-note" aria-hidden="true"><span>01</span><i></i><span>02</span></div>
+        </section>
+
+        <section class="proof-strip" aria-label="Product structure">
+          <div class="wrap proof-strip__inner">
+            <p><span class="proof-number">05</span><span>Featured question collections</span></p>
+            <p><span class="proof-number">04</span><span>Relationship groups</span></p>
+            <p><span class="proof-number">08</span><span>Occasion browse categories</span></p>
+            <p class="proof-note">
+              Counts describe configured categories, not published questions.
+            </p>
+          </div>
+        </section>
+
+        <section class="section wrap browse-section" id="browse" aria-labelledby="browse-title">
+          <div class="section-heading section-heading--split">
+            <div>
+              <p class="eyebrow">Start with your group</p>
+              <h2 id="browse-title">Find the right kind<br />of <em>impossible.</em></h2>
+            </div>
+            <p class="section-intro">
+              The question bank is organized by audience, relationship, occasion, and tone. Choose a
+              path to preview that category.
+            </p>
+          </div>
+
+          <div class="browse-columns">
+            <section class="browse-column" aria-labelledby="age-browse-title">
+              <div class="browse-column__heading">
+                <span class="dimension-index">01</span>
+                <h3 id="age-browse-title">Browse by age</h3>
+              </div>
+              <div class="browse-list">
+                <a href="#/category/age-4-6"
+                  ><span>Ages 4–6</span><small>Early choices</small><b aria-hidden="true">↗</b></a
+                >
+                <a href="#/category/age-7-9"
+                  ><span>Ages 7–9</span><small>Growing imaginations</small
+                  ><b aria-hidden="true">↗</b></a
+                >
+                <a href="#/category/age-10-12"
+                  ><span>Ages 10–12</span><small>Big questions</small><b aria-hidden="true">↗</b></a
+                >
+                <a href="#/category/teens"
+                  ><span>Teens</span><small>13–17</small><b aria-hidden="true">↗</b></a
+                >
+                <a href="#/category/adults"
+                  ><span>Adults</span><small>18+</small><b aria-hidden="true">↗</b></a
+                >
+              </div>
+            </section>
+
+            <section class="browse-column" aria-labelledby="relationship-browse-title">
+              <div class="browse-column__heading">
+                <span class="dimension-index">02</span>
+                <h3 id="relationship-browse-title">Browse by relationship</h3>
+              </div>
+              <div class="chip-cloud">
+                <a class="category-chip" href="#/category/friends"
+                  ><span class="chip-mark chip-mark--orange"></span>Friends</a
+                >
+                <a class="category-chip" href="#/category/family"
+                  ><span class="chip-mark chip-mark--cream"></span>Family</a
+                >
+                <a class="category-chip" href="#/category/couples"
+                  ><span class="chip-mark chip-mark--pink"></span>Couples</a
+                >
+                <a class="category-chip" href="#/category/coworkers"
+                  ><span class="chip-mark chip-mark--blue"></span>Coworkers</a
+                >
+              </div>
+              <div class="browse-callout">
+                <span class="callout-mark" aria-hidden="true">↗</span>
+                <p>
+                  From friendly roasts to date night dilemmas, choose the people before the
+                  question.
+                </p>
+              </div>
+            </section>
+
+            <section
+              class="browse-column browse-column--wide"
+              aria-labelledby="occasion-browse-title"
+            >
+              <div class="browse-column__heading">
+                <span class="dimension-index">03</span>
+                <h3 id="occasion-browse-title">Browse by occasion</h3>
+              </div>
+              <div class="occasion-grid">
+                <a href="#/category/classroom">Classroom <span>↗</span></a>
+                <a href="#/category/party">Party <span>↗</span></a>
+                <a href="#/category/road-trip">Road Trip <span>↗</span></a>
+                <a href="#/category/dinner">Dinner <span>↗</span></a>
+                <a href="#/category/date-night">Date Night <span>↗</span></a>
+                <a href="#/category/icebreakers">Icebreakers <span>↗</span></a>
+                <a href="#/category/birthday-party">Birthday Party <span>↗</span></a>
+                <a href="#/category/sleepover">Sleepover <span>↗</span></a>
+              </div>
+            </section>
+          </div>
+
+          <div class="tone-row">
+            <span class="tone-row__label">Choose a tone</span>
+            <a href="#/category/funny">Funny</a>
+            <a href="#/category/hard">Hard</a>
+            <a href="#/category/deep">Deep</a>
+            <a href="#/category/weird">Weird</a>
+            <a href="#/category/easy">Easy</a>
+            <a href="#/category/clean">Clean</a>
+          </div>
+        </section>
+
+        <section class="featured-section" aria-labelledby="featured-title">
+          <div class="wrap">
+            <div class="section-heading section-heading--split">
+              <div>
+                <p class="eyebrow">Five ways in</p>
+                <h2 id="featured-title">Pick a <em>collection.</em></h2>
+              </div>
+              <a class="text-link" href="#/category/kids"
+                >Browse all questions <span aria-hidden="true">→</span></a
+              >
+            </div>
+            <div class="featured-grid">
+              <a class="featured-card featured-card--kids" href="#/category/kids"
+                ><span class="featured-card__index">01 / AUDIENCE</span
+                ><span class="featured-card__symbol" aria-hidden="true">K</span>
+                <h3>Kids</h3>
+                <p>
+                  Clean, imaginative, and school-safe dilemmas for classrooms, family dinners, and
+                  car rides.
+                </p>
+                <span class="featured-card__link"
+                  >Would You Rather Questions for Kids <b aria-hidden="true">↗</b></span
+                ></a
+              >
+              <a class="featured-card featured-card--funny" href="#/category/funny"
+                ><span class="featured-card__index">02 / TONE</span
+                ><span class="featured-card__symbol" aria-hidden="true">!</span>
+                <h3>Funny</h3>
+                <p>Absurd, hilarious choices that make the room pick a side.</p>
+                <span class="featured-card__link"
+                  >Funny Would You Rather Questions <b aria-hidden="true">↗</b></span
+                ></a
+              >
+              <a class="featured-card featured-card--hard" href="#/category/hard"
+                ><span class="featured-card__index">03 / TONE</span
+                ><span class="featured-card__symbol" aria-hidden="true">?</span>
+                <h3>Hard</h3>
+                <p>Tough moral crossroads and impossible trade-offs with no easy answers.</p>
+                <span class="featured-card__link"
+                  >Hard Would You Rather Questions <b aria-hidden="true">↗</b></span
+                ></a
+              >
+              <a class="featured-card featured-card--friends" href="#/category/friends"
+                ><span class="featured-card__index">04 / RELATIONSHIP</span
+                ><span class="featured-card__symbol" aria-hidden="true">F</span>
+                <h3>Friends</h3>
+                <p>Spicy banter, secrets, and friendly roasts for game nights.</p>
+                <span class="featured-card__link"
+                  >Would You Rather Questions for Friends <b aria-hidden="true">↗</b></span
+                ></a
+              >
+              <a class="featured-card featured-card--couples" href="#/category/couples"
+                ><span class="featured-card__index">05 / RELATIONSHIP</span
+                ><span class="featured-card__symbol" aria-hidden="true">C</span>
+                <h3>Couples</h3>
+                <p>Sweet, insightful, and intriguing conversation starters for date night.</p>
+                <span class="featured-card__link"
+                  >Would You Rather Questions for Couples <b aria-hidden="true">↗</b></span
+                ></a
+              >
+            </div>
+            <p class="section-footnote">
+              These are the five featured collections with configured indexable routes. Their
+              current question examples are still awaiting editorial review.
+            </p>
+          </div>
+        </section>
+
+        <section class="section wrap question-picks" aria-labelledby="question-picks-title">
+          <div class="section-heading section-heading--split">
+            <div>
+              <p class="eyebrow">From the question bank</p>
+              <h2 id="question-picks-title">A few choices<br />to <em>argue over.</em></h2>
+            </div>
+            <p class="section-intro">
+              These are real draft rows from the current source. They are shown here to preview the
+              layout, not as approved or playable questions.
+            </p>
+          </div>
+          <div class="question-pick-list">
+            <article class="question-pick">
+              <span class="question-pick__id">wyr-005</span>
+              <div>
+                <p class="question-pick__text">
+                  Would you rather only be able to speak in rhymes or shout everything you say?
+                </p>
+                <p class="question-pick__meta">Draft collection tags: funny · friends</p>
+              </div>
+              <span class="review-label">Review pending</span
+              ><a href="#/play?question=wyr-005" aria-label="Preview question wyr-005">↗</a>
+            </article>
+            <article class="question-pick">
+              <span class="question-pick__id">wyr-008</span>
+              <div>
+                <p class="question-pick__text">
+                  Would you rather be able to talk to all animals or speak every human language
+                  fluently?
+                </p>
+                <p class="question-pick__meta">Draft collection tags: kids · hard</p>
+              </div>
+              <span class="review-label">Review pending</span
+              ><a href="#/play?question=wyr-008" aria-label="Preview question wyr-008">↗</a>
+            </article>
+            <article class="question-pick">
+              <span class="question-pick__id">wyr-009</span>
+              <div>
+                <p class="question-pick__text">
+                  Would you rather have unlimited free flights forever or unlimited free five-star
+                  dining forever?
+                </p>
+                <p class="question-pick__meta">Draft collection tags: couples · friends</p>
+              </div>
+              <span class="review-label">Review pending</span
+              ><a href="#/play?question=wyr-009" aria-label="Preview question wyr-009">↗</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="how-section" id="how-to-play" aria-labelledby="how-title">
+          <div class="wrap how-layout">
+            <div class="how-intro">
+              <p class="eyebrow">The whole point</p>
+              <h2 id="how-title">No right answer.<br /><em>Better conversation.</em></h2>
+              <p>
+                Would You Rather gives everyone two choices and one rule: choose exactly one. The
+                fun is in the reasoning, the surprise, and the friendly argument that follows.
+              </p>
+              <a href="#/play" class="button button--outline"
+                >Try the choice board <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <ol class="steps-list">
+              <li>
+                <span>01</span>
+                <div>
+                  <h3>Pick a dilemma</h3>
+                  <p>Browse by age, relationship, occasion, or tone.</p>
+                </div>
+                <b aria-hidden="true">↘</b>
+              </li>
+              <li>
+                <span>02</span>
+                <div>
+                  <h3>Make your choice</h3>
+                  <p>Choose Option A or Option B. No “both” this time.</p>
+                </div>
+                <b aria-hidden="true">↘</b>
+              </li>
+              <li>
+                <span>03</span>
+                <div>
+                  <h3>Defend your logic</h3>
+                  <p>Explain why. Hear what everyone else would pick.</p>
+                </div>
+                <b aria-hidden="true">↘</b>
+              </li>
+              <li>
+                <span>04</span>
+                <div>
+                  <h3>Keep it going</h3>
+                  <p>Move to the next question or use Presenter Mode for a shared screen.</p>
+                </div>
+                <b aria-hidden="true">↗</b>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="section wrap editorial-section" aria-labelledby="editorial-title">
+          <div class="editorial-aside">
+            <p class="eyebrow">A simple game with room to think</p>
+            <span class="editorial-aside__glyph" aria-hidden="true">A<span>/</span>B</span>
+          </div>
+          <article class="editorial-copy">
+            <h2 id="editorial-title">What is Would You Rather?</h2>
+            <p>
+              <strong>Would You Rather Questions</strong> power a social choice game: players face
+              two alternatives and must choose one. There are no mathematically correct answers. The
+              fun comes from the trade-off—what matters most, what feels funny, and how everyone
+              defends their instinct.
+            </p>
+            <p>
+              From clean questions for kids to tough dilemmas for friends and couples, the format
+              cuts through small talk. It works around a dinner table, in a classroom, on a road
+              trip, or as a quick icebreaker.
+            </p>
+            <details class="faq-item">
+              <summary>Can I use Presenter Mode?</summary>
+              <p>
+                The current interface includes a fullscreen presenter view with keyboard navigation
+                for classrooms, projectors, and shared screens. This preview shows its visual
+                treatment.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I filter questions by audience or occasion?</summary>
+              <p>
+                The product has filters for age group, relationship, occasion, tone, and difficulty.
+                In this source snapshot, all 104 questions are unreviewed and the approved playable
+                set is empty.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I see community voting results?</summary>
+              <p>
+                The voting flow is designed to reveal A/B percentages and totals after a vote. Any
+                numbers in this prototype are marked as illustrative and are not live results.
+              </p>
+            </details>
+          </article>
+        </section>
+
+        <section class="closing-cta" aria-labelledby="closing-title">
+          <div class="wrap closing-cta__inner">
+            <div>
+              <p class="eyebrow">Your turn</p>
+              <h2 id="closing-title">A or B?<br /><em>There is no safe answer.</em></h2>
+            </div>
+            <a class="button button--bright" href="#/play"
+              >Open a question <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </section>
+      </section>
+
+      <section class="page page--category wrap" data-page="category" hidden>
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="#/home">Home</a><span aria-hidden="true">/</span
+          ><a href="#/home#browse">Browse</a><span aria-hidden="true">/</span
+          ><span id="category-breadcrumb" aria-current="page">Kids</span>
+        </nav>
+        <div class="category-hero">
+          <div class="category-hero__copy">
+            <p class="eyebrow" id="category-eyebrow">Featured SEO collection</p>
+            <h1 id="category-title">Would You Rather Questions for Kids</h1>
+            <p id="category-intro" class="category-intro">
+              A wholesome, imaginative collection of Would You Rather questions designed for
+              children, classrooms, and family car trips.
+            </p>
+            <div class="category-actions">
+              <a class="button button--bright" href="#/play?question=wyr-004"
+                >Preview a question <span aria-hidden="true">↗</span></a
+              ><a class="text-link" href="#category-questions"
+                >Browse examples <span aria-hidden="true">↓</span></a
+              >
+            </div>
+          </div>
+          <aside class="category-status" aria-label="Question review status">
+            <span class="category-status__icon" aria-hidden="true">Q</span
+            ><span class="category-status__label">Current source snapshot</span
+            ><strong id="category-draft-count">29 draft tags</strong
+            ><span class="category-status__foot">0 approved for play</span>
+          </aside>
+        </div>
+
+        <div class="category-preview-note" role="note">
+          <strong>Preview content</strong
+          ><span id="category-review-note"
+            >The question examples below are real source rows marked unreviewed. The live play flow
+            excludes them until review is complete.</span
+          >
+        </div>
+
+        <section class="filter-panel" aria-labelledby="filter-title">
+          <div class="filter-panel__top">
+            <div>
+              <p class="eyebrow">Find a dilemma</p>
+              <h2 id="filter-title">Browse the collection</h2>
+            </div>
+            <button class="text-button" id="clear-search" type="button">Clear search</button>
+          </div>
+          <label class="search-field"
+            ><span class="sr-only">Search draft questions</span
+            ><svg aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="10.8" cy="10.8" r="6.8"></circle>
+              <path d="m16 16 5 5"></path></svg
+            ><input
+              id="question-search"
+              type="search"
+              placeholder="Search question text…"
+              autocomplete="off"
+            /><kbd>/</kbd></label
+          >
+          <div class="filter-selects">
+            <label
+              >Age group<select disabled aria-describedby="filter-status">
+                <option>Awaiting reviewed tags</option>
+              </select></label
+            >
+            <label
+              >Relationship<select disabled aria-describedby="filter-status">
+                <option>Awaiting reviewed tags</option>
+              </select></label
+            >
+            <label
+              >Occasion<select disabled aria-describedby="filter-status">
+                <option>Awaiting reviewed tags</option>
+              </select></label
+            >
+            <label
+              >Tone<select disabled aria-describedby="filter-status">
+                <option>Awaiting reviewed tags</option>
+              </select></label
+            >
+            <label
+              >Difficulty<select disabled aria-describedby="filter-status">
+                <option>Awaiting reviewed tags</option>
+              </select></label
+            >
+          </div>
+          <p class="filter-status" id="filter-status">
+            Search works on the examples shown. Structured filters stay unavailable because source
+            metadata has not been reviewed.
+          </p>
+        </section>
+
+        <section
+          class="category-questions"
+          id="category-questions"
+          aria-labelledby="category-list-title"
+        >
+          <div class="list-heading">
+            <div>
+              <p class="eyebrow">Draft examples</p>
+              <h2 id="category-list-title">Questions in this view</h2>
+            </div>
+            <span id="category-result-count" class="result-count">3 examples</span>
+          </div>
+          <div class="draft-question-list" id="draft-question-list"></div>
+          <div class="empty-state" id="category-empty" hidden>
+            <span class="empty-state__icon" aria-hidden="true">?</span>
+            <h3>No matching examples</h3>
+            <p>
+              Try another word, or clear the search. This is a small preview of the current source
+              rows.
+            </p>
+          </div>
+        </section>
+
+        <nav class="related-categories" aria-labelledby="related-title">
+          <div>
+            <p class="eyebrow">Keep exploring</p>
+            <h2 id="related-title">More ways to choose</h2>
+          </div>
+          <div class="related-link-list">
+            <a href="#/category/funny">Funny questions <span>↗</span></a
+            ><a href="#/category/hard">Hard dilemmas <span>↗</span></a
+            ><a href="#/category/friends">For friends <span>↗</span></a
+            ><a href="#/category/couples">For couples <span>↗</span></a
+            ><a href="#/home#browse">All browse dimensions <span>↗</span></a>
+          </div>
+        </nav>
+
+        <section class="category-editorial" aria-labelledby="category-editorial-title">
+          <p class="eyebrow">Why these pages belong in the game</p>
+          <h2 id="category-editorial-title">
+            Search content that leads<br />back to a <em>real choice.</em>
+          </h2>
+          <p>
+            Featured collection pages use the existing SEO routes and descriptions. Related filters
+            connect age, relationship, occasion, and tone without making every browse value look
+            like a separate article.
+          </p>
+          <a href="#/play?question=wyr-004" class="text-link"
+            >See the question experience <span aria-hidden="true">→</span></a
+          >
+        </section>
+      </section>
+
+      <section class="page page--play wrap" data-page="play" hidden>
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="#/home">Home</a><span aria-hidden="true">/</span><span>Play preview</span>
+        </nav>
+        <div class="play-page-heading">
+          <div>
+            <p class="eyebrow">The choice is yours</p>
+            <h1>Would you rather<span class="heading-period">?</span></h1>
+          </div>
+          <span class="play-live-label"
+            ><span class="status-dot"></span> Local demo · no vote submitted</span
+          >
+        </div>
+        <article
+          class="play-arena"
+          id="play-view"
+          data-arena="play"
+          aria-labelledby="play-question-title"
+        >
+          <div class="play-arena__top">
+            <div class="play-meta">
+              <span class="play-meta__number" id="play-progress">Example 01 / 17</span
+              ><span class="review-label">Editorial review pending</span
+              ><span class="play-meta__category" id="play-category">Draft question</span
+              ><span class="play-source-id" id="play-source-id">wyr-004</span>
+            </div>
+            <button class="button button--quiet" id="presenter-open" type="button">
+              <span aria-hidden="true">▣</span> Presenter Mode
+            </button>
+          </div>
+          <div class="play-question">
+            <p class="arena-overline">Question preview</p>
+            <h2 id="play-question-title">
+              Would you rather have a pet dragon the size of a cat or a pet dinosaur the size of a
+              dog?
+            </h2>
+            <p class="play-question__source">
+              This source row is not currently eligible for production voting.
+            </p>
+          </div>
+          <div class="choice-grid choice-grid--play">
+            <button
+              class="choice-card choice-card--a"
+              type="button"
+              data-option="A"
+              aria-pressed="false"
+            >
+              <span class="choice-card__top"
+                ><span class="choice-key">A</span><span class="choice-hint">Option A</span></span
+              ><span class="choice-card__text" id="play-option-a">A cat-sized pet dragon</span
+              ><span class="choice-card__bottom"
+                ><span>Choose A</span><span class="choice-arrow" aria-hidden="true">↗</span></span
+              >
+            </button>
+            <button
+              class="choice-card choice-card--b"
+              type="button"
+              data-option="B"
+              aria-pressed="false"
+            >
+              <span class="choice-card__top"
+                ><span class="choice-key">B</span><span class="choice-hint">Option B</span></span
+              ><span class="choice-card__text" id="play-option-b">A dog-sized pet velociraptor</span
+              ><span class="choice-card__bottom"
+                ><span>Choose B</span><span class="choice-arrow" aria-hidden="true">↗</span></span
+              >
+            </button>
+          </div>
+          <div class="pre-vote-prompt" id="pre-vote-prompt">
+            <span class="prompt-mark" aria-hidden="true">↔</span>
+            <p>Pick a side to reveal the result layout.</p>
+            <span class="keyboard-hint"><kbd>A</kbd> or <kbd>B</kbd></span>
+          </div>
+          <section
+            class="demo-result play-results"
+            id="play-results"
+            aria-labelledby="results-title"
+            hidden
+          >
+            <div class="results-heading">
+              <div>
+                <p class="eyebrow">Result state</p>
+                <h3 id="results-title">The room picked a side.</h3>
+              </div>
+              <span class="demo-tag">Illustrative only</span>
+            </div>
+            <p class="your-pick" id="play-your-choice" aria-live="polite">Your choice: Option A</p>
+            <div class="result-row result-row--a">
+              <span>Option A</span>
+              <div
+                class="result-track"
+                role="progressbar"
+                aria-label="Option A, illustrative preview result"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="57"
+              >
+                <i style="--result-width: 57%"></i>
+              </div>
+              <strong>57%</strong>
+            </div>
+            <div class="result-row result-row--b">
+              <span>Option B</span>
+              <div
+                class="result-track"
+                role="progressbar"
+                aria-label="Option B, illustrative preview result"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="43"
+              >
+                <i style="--result-width: 43%"></i>
+              </div>
+              <strong>43%</strong>
+            </div>
+            <div class="results-footer">
+              <span>1,284 sample votes</span
+              ><span>No live vote data is available in this static preview.</span>
+            </div>
+          </section>
+          <p class="play-status" id="play-status" role="status" aria-live="polite">
+            Choose A or B. This prototype does not call the voting API.
+          </p>
+          <div class="play-controls">
+            <button class="button button--bright" id="next-question" type="button">
+              Next question <span aria-hidden="true">→</span></button
+            ><button class="button button--outline" id="random-question" type="button">
+              Shuffle <span aria-hidden="true">⤨</span></button
+            ><button class="button button--quiet" type="button" data-share>
+              Share preview <span aria-hidden="true">↗</span></button
+            ><a class="play-state-link" href="#/result"
+              >Open result state <span aria-hidden="true">→</span></a
+            >
+          </div>
+        </article>
+        <section class="play-detail-row">
+          <div>
+            <span class="detail-symbol detail-symbol--a">A</span>
+            <h2>One choice</h2>
+            <p>
+              Two options stay equally easy to tap, with amber and cyan carrying through from letter
+              to result.
+            </p>
+          </div>
+          <div>
+            <span class="detail-symbol detail-symbol--b">B</span>
+            <h2>Then a reason</h2>
+            <p>
+              Result feedback keeps the selected answer visible. The point is what the group says
+              next.
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <section class="page page--signin wrap" data-page="sign-in" hidden>
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="#/home">Home</a><span aria-hidden="true">/</span><span>Account access</span>
+        </nav>
+        <div class="auth-layout">
+          <div class="auth-story">
+            <p class="eyebrow">Account access</p>
+            <h1>Good to have<br />you <em>back.</em></h1>
+            <p>Sign in securely with a one-time email link. No password is required.</p>
+            <div class="auth-story__note">
+              <span class="detail-symbol detail-symbol--b">↗</span>
+              <div>
+                <strong>One link, one sign-in</strong
+                ><span
+                  >The current product uses a single-use confirmation link that expires after ten
+                  minutes.</span
+                >
+              </div>
+            </div>
+            <div class="auth-story__note">
+              <span class="detail-symbol detail-symbol--a">A/B</span>
+              <div>
+                <strong>Same game, same account</strong
+                ><span>Sign-in is an account access flow, not a separate dashboard product.</span>
+              </div>
+            </div>
+          </div>
+          <div class="auth-card">
+            <div class="auth-card__top">
+              <span class="auth-icon" aria-hidden="true">✳</span>
+              <div>
+                <p class="eyebrow">Email sign-in</p>
+                <h2>Sign in securely</h2>
+              </div>
+            </div>
+            <p class="auth-card__intro">
+              Enter your email and we’ll send a single-use confirmation link.
+            </p>
+            <form id="signin-form" novalidate>
+              <label for="signin-email">Email address</label>
+              <input
+                id="signin-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              />
+              <div class="verification-preview">
+                <span class="verification-square" aria-hidden="true"></span
+                ><span
+                  ><strong>Human verification</strong
+                  ><small>Turnstile appears in the live sign-in flow.</small></span
+                ><span class="verification-label">Not connected</span>
+              </div>
+              <button class="button button--bright button--full" type="submit">
+                Preview email confirmation <span aria-hidden="true">→</span>
+              </button>
+              <p class="form-feedback" id="signin-feedback" role="status" aria-live="polite">
+                Preview only: submitting will not send email or create a session.
+              </p>
+            </form>
+            <p class="auth-card__fine">
+              The link expires after ten minutes and can be used once. Password sign-in is not part
+              of the current flow.
+            </p>
+            <a class="auth-back" href="#/home">← Back to wyrplay</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="page page--account wrap" data-page="account" hidden>
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="#/home">Home</a><span aria-hidden="true">/</span><span>Account</span>
+        </nav>
+        <div class="account-heading">
+          <div>
+            <p class="eyebrow">Account overview</p>
+            <h1>Your corner<br />of <em>the game.</em></h1>
+          </div>
+          <span class="preview-account-tag">Preview account · not signed in</span>
+        </div>
+        <div class="account-profile">
+          <div class="profile-avatar" aria-hidden="true">Y</div>
+          <div class="profile-info">
+            <span class="profile-label">Current account</span><strong>you@example.com</strong
+            ><span>Example display only · no real session is loaded.</span>
+          </div>
+          <a class="button button--outline" href="#/sign-in"
+            >Sign-in preview <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="account-grid">
+          <section class="account-panel account-panel--wide">
+            <div class="account-panel__head">
+              <div>
+                <p class="eyebrow">Participation</p>
+                <h2>Your game history</h2>
+              </div>
+              <span class="panel-icon" aria-hidden="true">↗</span>
+            </div>
+            <div class="empty-state empty-state--inline">
+              <span class="empty-state__icon" aria-hidden="true">—</span>
+              <div>
+                <h3>No Would You Rather history</h3>
+                <p>
+                  The current account flow does not store question history, saved questions, or
+                  personal participation totals.
+                </p>
+              </div>
+            </div>
+            <a class="text-link" href="#/play"
+              >Preview a question <span aria-hidden="true">→</span></a
+            >
+          </section>
+          <section class="account-panel">
+            <div class="account-panel__head">
+              <div>
+                <p class="eyebrow">Saved questions</p>
+                <h2>Favorites</h2>
+              </div>
+              <span class="panel-icon" aria-hidden="true">☆</span>
+            </div>
+            <div class="empty-state empty-state--compact">
+              <span class="empty-state__icon" aria-hidden="true">☆</span>
+              <h3>Favorites are not available</h3>
+              <p>No saved-question feature exists in the current account routes.</p>
+            </div>
+          </section>
+          <section class="account-panel">
+            <div class="account-panel__head">
+              <div>
+                <p class="eyebrow">Account tools</p>
+                <h2>Settings</h2>
+              </div>
+              <span class="panel-icon" aria-hidden="true">⚙</span>
+            </div>
+            <div class="settings-list">
+              <a id="security" href="#/account#security"
+                ><span
+                  ><strong>Security and sessions</strong
+                  ><small>Review or revoke signed-in sessions.</small></span
+                ><b>↗</b></a
+              ><a id="credits" href="#/account#credits"
+                ><span
+                  ><strong>Credits</strong><small>Balances and recent ledger activity.</small></span
+                ><b>↗</b></a
+              ><a id="billing" href="#/account#billing"
+                ><span
+                  ><strong>Billing history</strong
+                  ><small>Subscriptions, payments, and refunds.</small></span
+                ><b>↗</b></a
+              >
+            </div>
+          </section>
+        </div>
+        <p class="account-note">
+          <strong>Boundary:</strong> these panels preview the existing account routes.
+          Authentication, credits, billing, and security actions are not connected to this page.
+        </p>
+      </section>
+
+      <section class="page page--design wrap" data-page="design-system" hidden>
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="#/home">Home</a><span aria-hidden="true">/</span><span>Design system</span>
+        </nav>
+        <div class="design-heading">
+          <p class="eyebrow">wyrplay · interface foundations</p>
+          <h1>A system built<br />around <em>the choice.</em></h1>
+          <p>
+            Dark editorial surfaces set the tone. Amber and cyan make A/B choices unmistakable
+            across pages, controls, and result states.
+          </p>
+        </div>
+
+        <section class="system-section" aria-labelledby="system-brand-title">
+          <div class="system-section__head">
+            <span>01</span>
+            <div>
+              <h2 id="system-brand-title">Brand and type</h2>
+              <p>
+                One split mark; compact interface type; a restrained editorial italic for contrast.
+              </p>
+            </div>
+          </div>
+          <div class="brand-type-board">
+            <div class="brand-showcase">
+              <a class="brand brand--large" href="#/home"
+                ><span class="brand-mark" aria-hidden="true"><span>W</span></span
+                ><span class="brand-word">wyrplay<span class="brand-period">.</span></span></a
+              ><span class="sample-caption">Wordmark · split choice mark</span>
+            </div>
+            <div class="type-samples">
+              <div>
+                <span class="sample-caption">Display / system sans</span
+                ><strong class="sample-display">Pick a side.</strong>
+              </div>
+              <div>
+                <span class="sample-caption">Editorial accent / Georgia italic</span
+                ><strong class="sample-editorial">Make your case.</strong>
+              </div>
+              <div>
+                <span class="sample-caption">Body / 16px, 1.6 line-height</span>
+                <p>Two choices invite a fast answer and a longer conversation.</p>
+              </div>
+              <div>
+                <span class="sample-caption">Utility / 12px uppercase</span
+                ><span class="sample-mono">QUESTION 04 · REVIEW PENDING</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="system-section" aria-labelledby="system-color-title">
+          <div class="system-section__head">
+            <span>02</span>
+            <div>
+              <h2 id="system-color-title">Color roles</h2>
+              <p>Polarity colors carry meaning. Neutral tones do the reading work.</p>
+            </div>
+          </div>
+          <div class="swatch-grid">
+            <div class="swatch swatch--canvas"><span>Canvas</span><code>#101311</code></div>
+            <div class="swatch swatch--surface">
+              <span>Raised surface</span><code>#1A201E</code>
+            </div>
+            <div class="swatch swatch--paper"><span>Warm paper</span><code>#F2EFE7</code></div>
+            <div class="swatch swatch--muted"><span>Secondary text</span><code>#A6B0AA</code></div>
+            <div class="swatch swatch--a"><span>Option A · amber</span><code>#F08A3C</code></div>
+            <div class="swatch swatch--b"><span>Option B · cyan</span><code>#4EC8D2</code></div>
+          </div>
+        </section>
+
+        <section class="system-section" aria-labelledby="system-controls-title">
+          <div class="system-section__head">
+            <span>03</span>
+            <div>
+              <h2 id="system-controls-title">Controls and navigation</h2>
+              <p>
+                44px minimum for key touch targets; visible focus; selected state uses label, shape, and
+                color.
+              </p>
+            </div>
+          </div>
+          <div class="component-board component-board--controls">
+            <div class="component-cell">
+              <span class="sample-caption">Buttons</span>
+              <div class="component-row">
+                <a class="button button--bright" href="#/play"
+                  >Play a question <span aria-hidden="true">↗</span></a
+                ><button class="button button--outline" type="button">Browse questions</button
+                ><button class="button button--quiet" type="button">
+                  Share <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+            </div>
+            <div class="component-cell">
+              <span class="sample-caption">Category chips</span>
+              <div class="component-row">
+                <a class="category-chip category-chip--small" href="#/category/kids">Kids</a
+                ><a class="category-chip category-chip--small" href="#/category/friends">Friends</a
+                ><a class="category-chip category-chip--small" href="#/category/party">Party</a
+                ><span class="review-label">Review pending</span>
+              </div>
+            </div>
+            <div class="component-cell">
+              <span class="sample-caption">Desktop navigation</span>
+              <nav class="sample-nav" aria-label="Navigation sample">
+                <a class="sample-nav__brand" href="#/home">wyrplay.</a><a href="#/play">Play</a
+                ><a href="#/home#browse">Browse</a><a href="#/sign-in">Sign in</a>
+              </nav>
+            </div>
+            <div class="component-cell">
+              <span class="sample-caption">Mobile navigation</span>
+              <nav class="mobile-nav-sample" aria-label="Mobile navigation sample">
+                <a href="#/home"><span aria-hidden="true">⌂</span>Home</a
+                ><a class="is-active" href="#/play"><span aria-hidden="true">◉</span>Play</a
+                ><a href="#/home#browse"><span aria-hidden="true">⌕</span>Browse</a
+                ><a href="#/account"><span aria-hidden="true">○</span>Account</a>
+              </nav>
+            </div>
+          </div>
+        </section>
+
+        <section class="system-section" aria-labelledby="system-cards-title">
+          <div class="system-section__head">
+            <span>04</span>
+            <div>
+              <h2 id="system-cards-title">Question and result</h2>
+              <p>The game surface makes the prompt and both choices the main event.</p>
+            </div>
+          </div>
+          <div class="component-board component-board--cards">
+            <article class="sample-question-card">
+              <div class="sample-question-card__head">
+                <span class="arena-label"
+                  ><span class="status-dot"></span> Draft question · wyr-004</span
+                ><span class="review-label">Review pending</span>
+              </div>
+              <h3>
+                Would you rather have a pet dragon the size of a cat or a pet dinosaur the size of a
+                dog?
+              </h3>
+              <div class="sample-options">
+                <div class="sample-option sample-option--a">
+                  <b>A</b><span>A cat-sized pet dragon</span>
+                </div>
+                <div class="sample-option sample-option--b">
+                  <b>B</b><span>A dog-sized pet velociraptor</span>
+                </div>
+              </div>
+            </article>
+            <div class="sample-result-card">
+              <div class="sample-result-card__head">
+                <div>
+                  <span class="sample-caption">After a local preview pick</span>
+                  <h3>Your choice: Option A</h3>
+                </div>
+                <span class="demo-tag">Example only</span>
+              </div>
+              <div class="result-row result-row--a">
+                <span>A</span>
+                <div class="result-track"><i style="--result-width: 57%"></i></div>
+                <strong>57%</strong>
+              </div>
+              <div class="result-row result-row--b">
+                <span>B</span>
+                <div class="result-track"><i style="--result-width: 43%"></i></div>
+                <strong>43%</strong>
+              </div>
+              <p class="demo-result__fine">1,284 sample votes · not live data.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="system-section" aria-labelledby="system-form-title">
+          <div class="system-section__head">
+            <span>05</span>
+            <div>
+              <h2 id="system-form-title">Inputs, modal, and empty state</h2>
+              <p>Keep form labels visible and explain unavailable product states directly.</p>
+            </div>
+          </div>
+          <div class="component-board component-board--misc">
+            <div class="component-cell">
+              <span class="sample-caption">Email input</span
+              ><label class="sample-label" for="sample-email">Email address</label
+              ><input
+                class="sample-input"
+                id="sample-email"
+                type="email"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div class="component-cell">
+              <span class="sample-caption">Modal</span>
+              <div class="modal-sample">
+                <span class="modal-sample__icon" aria-hidden="true">▣</span>
+                <div>
+                  <strong>Presenter Mode</strong>
+                  <p>Fullscreen question with keyboard next and previous.</p>
+                </div>
+                <button
+                  id="presenter-open-sample"
+                  class="button button--outline button--small"
+                  type="button"
+                >
+                  Open preview
+                </button>
+              </div>
+            </div>
+            <div class="component-cell component-cell--full">
+              <span class="sample-caption">Empty state</span>
+              <div class="empty-state empty-state--inline">
+                <span class="empty-state__icon" aria-hidden="true">?</span>
+                <div>
+                  <h3>No approved questions yet</h3>
+                  <p>
+                    All 104 source rows are awaiting review. The live game opens when questions are
+                    approved.
+                  </p>
+                </div>
+                <a href="#/category/kids"
+                  >Browse draft examples <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="#/home"
+            ><span class="brand-mark" aria-hidden="true"><span>W</span></span
+            ><span class="brand-word">wyrplay<span class="brand-period">.</span></span></a
+          >
+          <p>One choice. A hundred ways to defend it.</p>
+        </div>
+        <div class="footer-nav-group">
+          <h2>Play</h2>
+          <a href="#/play">Open a question</a><a href="#/home#browse">Browse questions</a
+          ><a href="#/home#how-to-play">How to play</a>
+        </div>
+        <div class="footer-nav-group">
+          <h2>Collections</h2>
+          <a href="#/category/kids">Kids</a><a href="#/category/funny">Funny</a
+          ><a href="#/category/hard">Hard</a><a href="#/category/friends">Friends</a
+          ><a href="#/category/couples">Couples</a>
+        </div>
+        <div class="footer-nav-group">
+          <h2>Your account</h2>
+          <a href="#/sign-in">Sign in</a><a href="#/account">Account preview</a
+          ><a href="#/design-system">Design system</a>
+        </div>
+      </div>
+      <div class="wrap footer-bottom">
+        <span>© 2026 wyrplay · local UI preview</span
+        ><span aria-label="Legal destinations are not included in this UI preview"
+          >Privacy · Terms · Contact</span
+        ><span>Not connected to production</span>
+      </div>
+    </footer>
+
+    <nav class="mobile-dock" aria-label="Mobile primary navigation">
+      <a href="#/home"><span aria-hidden="true">⌂</span>Home</a>
+      <a href="#/play"><span aria-hidden="true">◉</span>Play</a>
+      <a href="#/home#browse"><span aria-hidden="true">⌕</span>Browse</a>
+      <a href="#/account"><span aria-hidden="true">○</span>Account</a>
+    </nav>
+
+    <dialog class="presenter-dialog" id="presenter-dialog" aria-labelledby="presenter-title">
+      <div class="presenter-dialog__top">
+        <a class="brand" href="#/home"
+          ><span class="brand-mark" aria-hidden="true"><span>W</span></span
+          ><span class="brand-word">wyrplay<span class="brand-period">.</span></span></a
+        ><span class="presenter-count">Presenter Mode · preview</span
+        ><button
+          class="icon-button dialog-close"
+          id="presenter-close"
+          type="button"
+          aria-label="Close presenter mode"
+        >
+          ×
+        </button>
+      </div>
+      <div class="presenter-dialog__content">
+        <p class="eyebrow">Question preview · local only</p>
+        <h2 id="presenter-title">
+          Would you rather have a pet dragon the size of a cat or a pet dinosaur the size of a dog?
+        </h2>
+        <div class="presenter-options">
+          <div class="sample-option sample-option--a">
+            <b>A</b><span id="presenter-option-a">A cat-sized pet dragon</span>
+          </div>
+          <div class="sample-option sample-option--b">
+            <b>B</b><span id="presenter-option-b">A dog-sized pet velociraptor</span>
+          </div>
+        </div>
+        <p>
+          Use <kbd>←</kbd> and <kbd>→</kbd> to move through the preview questions. Press
+          <kbd>Esc</kbd> to exit.
+        </p>
+      </div>
+      <div class="presenter-dialog__bottom">
+        <button class="button button--outline" id="presenter-prev" type="button">← Previous</button
+        ><span id="presenter-status" aria-live="polite">Draft question · wyr-004</span
+        ><button class="button button--bright" id="presenter-next" type="button">
+          Next question →
+        </button>
+      </div>
+    </dialog>
+  </body>
+</html>

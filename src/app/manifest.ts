@@ -1,12 +1,10 @@
 import type { MetadataRoute } from "next";
 
-import { siteConfig } from "@/config/site.config";
-
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: siteConfig.name,
-    short_name: siteConfig.name,
-    description: "SEO-first web product starter",
+    name: "WYRPlay",
+    short_name: "WYRPlay",
+    description: "Play Would You Rather dilemmas and compare your choices online.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

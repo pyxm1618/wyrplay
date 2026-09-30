@@ -124,7 +124,7 @@ export function QuestionDirectory({
                   <button
                     type="button"
                     onClick={() => handlePlayQuestion(item.id)}
-                    className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-border bg-surface-muted px-4 py-2 text-xs font-bold text-foreground transition group-hover:border-[#e27d32]/40 group-hover:bg-[#e27d32]/10 group-hover:text-[#e27d32] sm:w-auto"
+                    className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-xs font-bold text-neutral-900 transition group-hover:border-[#e27d32]/40 group-hover:bg-[#e27d32]/10 group-hover:text-[#e27d32] dark:bg-surface-muted dark:text-neutral-100 sm:w-auto"
                   >
                     <span>Play this dilemma</span>
                     <svg className="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

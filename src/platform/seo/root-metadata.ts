@@ -25,9 +25,7 @@ export function rootMetadata(): Metadata {
         { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
         { url: "/brand/logo.svg", type: "image/svg+xml" },
       ],
-      apple: [
-        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-      ],
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
     },
     manifest: "/manifest.webmanifest",
   };

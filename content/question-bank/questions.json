@@ -6,23 +6,12 @@
     "optionB": "Hear a turtle tell jokes",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6",
-      "7-9"
-    ],
+    "ageBands": ["4-6", "7-9"],
     "relationships": [],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "funny",
-      "imaginative"
-    ],
+    "scenarios": ["general"],
+    "moods": ["funny", "imaginative"],
     "difficulty": "hard",
-    "topics": [
-      "animals",
-      "fantasy"
-    ],
+    "topics": ["animals", "fantasy"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -40,26 +29,12 @@
     "optionB": "Crawl through a tunnel of blankets",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6"
-    ],
-    "relationships": [
-      "family",
-      "friends"
-    ],
-    "scenarios": [
-      "party",
-      "general",
-      "sleepover"
-    ],
-    "moods": [
-      "funny",
-      "light"
-    ],
+    "ageBands": ["4-6"],
+    "relationships": ["family", "friends"],
+    "scenarios": ["party", "general", "sleepover"],
+    "moods": ["funny", "light"],
     "difficulty": "easy",
-    "topics": [
-      "games"
-    ],
+    "topics": ["games"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -77,21 +52,12 @@
     "optionB": "Have paper airplanes follow you",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6"
-    ],
+    "ageBands": ["4-6"],
     "relationships": [],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "weird",
-      "imaginative"
-    ],
+    "scenarios": ["general"],
+    "moods": ["weird", "imaginative"],
     "difficulty": "hard",
-    "topics": [
-      "fantasy"
-    ],
+    "topics": ["fantasy"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -109,21 +75,12 @@
     "optionB": "Feed apples to a pony",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6",
-      "7-9"
-    ],
+    "ageBands": ["4-6", "7-9"],
     "relationships": [],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "light"
-    ],
+    "scenarios": ["general"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "animals"
-    ],
+    "topics": ["animals"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -141,23 +98,12 @@
     "optionB": "Have a backpack that blinks",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6"
-    ],
+    "ageBands": ["4-6"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "funny",
-      "weird"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["funny", "weird"],
     "difficulty": "easy",
-    "topics": [
-      "school",
-      "fantasy"
-    ],
+    "topics": ["school", "fantasy"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -175,26 +121,12 @@
     "optionB": "Play tag in a big yard",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6",
-      "7-9"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "party",
-      "general",
-      "sleepover"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["4-6", "7-9"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["party", "general", "sleepover"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "games"
-    ],
+    "topics": ["games"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -212,22 +144,12 @@
     "optionB": "Find a giant shiny feather",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6"
-    ],
+    "ageBands": ["4-6"],
     "relationships": [],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "imaginative",
-      "light"
-    ],
+    "scenarios": ["general"],
+    "moods": ["imaginative", "light"],
     "difficulty": "hard",
-    "topics": [
-      "nature",
-      "fantasy"
-    ],
+    "topics": ["nature", "fantasy"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -245,24 +167,12 @@
     "optionB": "Make a sand animal",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6",
-      "7-9"
-    ],
-    "relationships": [
-      "family",
-      "friends"
-    ],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["4-6", "7-9"],
+    "relationships": ["family", "friends"],
+    "scenarios": ["general"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "nature"
-    ],
+    "topics": ["nature"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -280,22 +190,12 @@
     "optionB": "Meet a frog wearing a tiny hat",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6"
-    ],
+    "ageBands": ["4-6"],
     "relationships": [],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "funny",
-      "imaginative"
-    ],
+    "scenarios": ["general"],
+    "moods": ["funny", "imaginative"],
     "difficulty": "hard",
-    "topics": [
-      "animals",
-      "fantasy"
-    ],
+    "topics": ["animals", "fantasy"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -313,26 +213,12 @@
     "optionB": "March like a penguin",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "party",
-      "general",
-      "sleepover"
-    ],
-    "moods": [
-      "funny"
-    ],
+    "ageBands": ["4-6"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["party", "general", "sleepover"],
+    "moods": ["funny"],
     "difficulty": "easy",
-    "topics": [
-      "music",
-      "animals"
-    ],
+    "topics": ["music", "animals"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -350,24 +236,12 @@
     "optionB": "Hear a bedtime story about talking trains",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6"
-    ],
-    "relationships": [
-      "family"
-    ],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "imaginative",
-      "light"
-    ],
+    "ageBands": ["4-6"],
+    "relationships": ["family"],
+    "scenarios": ["general"],
+    "moods": ["imaginative", "light"],
     "difficulty": "easy",
-    "topics": [
-      "family",
-      "fantasy"
-    ],
+    "topics": ["family", "fantasy"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -385,25 +259,12 @@
     "optionB": "Bring one favorite book on a trip",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6",
-      "7-9"
-    ],
-    "relationships": [
-      "family"
-    ],
-    "scenarios": [
-      "road-trip"
-    ],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "ageBands": ["4-6", "7-9"],
+    "relationships": ["family"],
+    "scenarios": ["road-trip"],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "daily-life",
-      "family"
-    ],
+    "topics": ["daily-life", "family"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -421,24 +282,12 @@
     "optionB": "Crunch through a trail of dry leaves",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6",
-      "7-9"
-    ],
-    "relationships": [
-      "family",
-      "friends"
-    ],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["4-6", "7-9"],
+    "relationships": ["family", "friends"],
+    "scenarios": ["general"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "nature"
-    ],
+    "topics": ["nature"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -456,26 +305,12 @@
     "optionB": "Make music with drums",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6",
-      "7-9"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "classroom",
-      "party",
-      "general"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["4-6", "7-9"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["classroom", "party", "general"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "music"
-    ],
+    "topics": ["music"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -493,21 +328,12 @@
     "optionB": "Be the line leader",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6",
-      "7-9"
-    ],
+    "ageBands": ["4-6", "7-9"],
     "relationships": [],
-    "scenarios": [
-      "classroom"
-    ],
-    "moods": [
-      "light"
-    ],
+    "scenarios": ["classroom"],
+    "moods": ["light"],
     "difficulty": "hard",
-    "topics": [
-      "school"
-    ],
+    "topics": ["school"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -525,24 +351,12 @@
     "optionB": "Invent a silly vehicle",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6",
-      "7-9"
-    ],
+    "ageBands": ["4-6", "7-9"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "funny",
-      "imaginative"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["funny", "imaginative"],
     "difficulty": "easy",
-    "topics": [
-      "art",
-      "fantasy"
-    ],
+    "topics": ["art", "fantasy"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -560,26 +374,12 @@
     "optionB": "Follow a trail of tiny paw prints",
     "primaryCollection": "kids",
     "primaryAgeBand": "4-6",
-    "ageBands": [
-      "4-6",
-      "7-9"
-    ],
-    "relationships": [
-      "family",
-      "friends"
-    ],
-    "scenarios": [
-      "party",
-      "general"
-    ],
-    "moods": [
-      "imaginative"
-    ],
+    "ageBands": ["4-6", "7-9"],
+    "relationships": ["family", "friends"],
+    "scenarios": ["party", "general"],
+    "moods": ["imaginative"],
     "difficulty": "hard",
-    "topics": [
-      "adventure",
-      "fantasy"
-    ],
+    "topics": ["adventure", "fantasy"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -597,23 +397,12 @@
     "optionB": "Spend recess learning a new trick",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "classroom"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["7-9"],
+    "relationships": ["friends"],
+    "scenarios": ["classroom"],
+    "moods": ["light"],
     "difficulty": "hard",
-    "topics": [
-      "school",
-      "games"
-    ],
+    "topics": ["school", "games"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -631,26 +420,12 @@
     "optionB": "Explore a forest where leaves change color when touched",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "imaginative"
-    ],
+    "ageBands": ["7-9", "10-12"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
     "difficulty": "hard",
-    "topics": [
-      "adventure",
-      "nature",
-      "fantasy"
-    ],
+    "topics": ["adventure", "nature", "fantasy"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -668,28 +443,12 @@
     "optionB": "Solve clues as the team detective",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "party",
-      "birthday-party",
-      "general",
-      "sleepover"
-    ],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "ageBands": ["7-9", "10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["party", "birthday-party", "general", "sleepover"],
+    "moods": ["thoughtful", "light"],
     "difficulty": "easy",
-    "topics": [
-      "games",
-      "adventure"
-    ],
+    "topics": ["games", "adventure"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -707,27 +466,12 @@
     "optionB": "Build anything you want from building bricks",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "classroom",
-      "party",
-      "general"
-    ],
-    "moods": [
-      "imaginative",
-      "light"
-    ],
+    "ageBands": ["7-9"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["classroom", "party", "general"],
+    "moods": ["imaginative", "light"],
     "difficulty": "hard",
-    "topics": [
-      "games",
-      "art"
-    ],
+    "topics": ["games", "art"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -745,21 +489,12 @@
     "optionB": "Do three short homework tasks on set days",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
+    "ageBands": ["7-9", "10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "school"
-    ],
+    "topics": ["school"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -777,21 +512,12 @@
     "optionB": "Teach the class how to do part of it",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
+    "ageBands": ["7-9", "10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "school"
-    ],
+    "topics": ["school"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -809,24 +535,12 @@
     "optionB": "Always pack exactly what you need",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
-    "relationships": [
-      "family"
-    ],
-    "scenarios": [
-      "road-trip"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "ageBands": ["7-9", "10-12"],
+    "relationships": ["family"],
+    "scenarios": ["road-trip"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "travel",
-      "daily-life"
-    ],
+    "topics": ["travel", "daily-life"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -844,23 +558,12 @@
     "optionB": "Have a robot that finds lost things",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
+    "ageBands": ["7-9", "10-12"],
     "relationships": [],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "imaginative",
-      "light"
-    ],
+    "scenarios": ["general"],
+    "moods": ["imaginative", "light"],
     "difficulty": "hard",
-    "topics": [
-      "daily-life",
-      "fantasy"
-    ],
+    "topics": ["daily-life", "fantasy"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -878,26 +581,12 @@
     "optionB": "Learn one dance routine perfectly",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "party",
-      "general",
-      "sleepover"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["7-9", "10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["party", "general", "sleepover"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "games",
-      "music"
-    ],
+    "topics": ["games", "music"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -915,24 +604,12 @@
     "optionB": "Discover a new kind of flower",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
+    "ageBands": ["7-9", "10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "nature",
-      "science"
-    ],
+    "topics": ["nature", "science"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -950,26 +627,12 @@
     "optionB": "Play a game where skill matters most",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "party",
-      "general",
-      "sleepover"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "ageBands": ["7-9", "10-12"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["party", "general", "sleepover"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "games"
-    ],
+    "topics": ["games"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -987,25 +650,12 @@
     "optionB": "Choose the games for a party",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "party",
-      "birthday-party"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["7-9", "10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["party", "birthday-party"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "music",
-      "games"
-    ],
+    "topics": ["music", "games"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1023,23 +673,12 @@
     "optionB": "Read one whole book you already love",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
+    "ageBands": ["7-9", "10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "school",
-      "daily-life"
-    ],
+    "topics": ["school", "daily-life"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1057,25 +696,12 @@
     "optionB": "Practice it with a friend",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "ageBands": ["7-9", "10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "friendship",
-      "school"
-    ],
+    "topics": ["friendship", "school"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1093,25 +719,12 @@
     "optionB": "Spend it solving puzzle books",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
-    "relationships": [
-      "family",
-      "friends"
-    ],
-    "scenarios": [
-      "road-trip"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["7-9", "10-12"],
+    "relationships": ["family", "friends"],
+    "scenarios": ["road-trip"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "travel",
-      "games"
-    ],
+    "topics": ["travel", "games"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1129,26 +742,12 @@
     "optionB": "Visit an aquarium before it opens",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
-    "relationships": [
-      "family",
-      "friends"
-    ],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "imaginative",
-      "light"
-    ],
+    "ageBands": ["7-9", "10-12"],
+    "relationships": ["family", "friends"],
+    "scenarios": ["general"],
+    "moods": ["imaginative", "light"],
     "difficulty": "easy",
-    "topics": [
-      "science",
-      "animals"
-    ],
+    "topics": ["science", "animals"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1166,23 +765,12 @@
     "optionB": "Be great at solving riddles",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
+    "ageBands": ["7-9", "10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "games",
-      "school"
-    ],
+    "topics": ["games", "school"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1200,24 +788,12 @@
     "optionB": "Have a birthday mini-tournament",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "birthday-party"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["7-9", "10-12"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["birthday-party"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "games"
-    ],
+    "topics": ["games"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1235,26 +811,12 @@
     "optionB": "Design the equipment for it",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "ageBands": [
-      "7-9",
-      "10-12"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "imaginative",
-      "thoughtful"
-    ],
+    "ageBands": ["7-9", "10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["classroom", "general"],
+    "moods": ["imaginative", "thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "sports",
-      "art"
-    ],
+    "topics": ["sports", "art"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1272,22 +834,12 @@
     "optionB": "Be excellent at finishing them",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "school",
-      "daily-life"
-    ],
+    "topics": ["school", "daily-life"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1305,22 +857,12 @@
     "optionB": "Know exactly when to keep trying alone",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "school",
-      "daily-life"
-    ],
+    "topics": ["school", "daily-life"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1338,20 +880,12 @@
     "optionB": "Do a solo project with clear instructions",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "school"
-    ],
+    "topics": ["school"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1369,22 +903,12 @@
     "optionB": "Be known for being good at many things",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "school",
-      "daily-life"
-    ],
+    "topics": ["school", "daily-life"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1402,21 +926,12 @@
     "optionB": "Have a day to think before hearing it",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "school"
-    ],
+    "topics": ["school"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1434,25 +949,12 @@
     "optionB": "Choose the next stop as you go",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
-    "relationships": [
-      "family",
-      "friends"
-    ],
-    "scenarios": [
-      "road-trip"
-    ],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "ageBands": ["10-12"],
+    "relationships": ["family", "friends"],
+    "scenarios": ["road-trip"],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "travel",
-      "adventure"
-    ],
+    "topics": ["travel", "adventure"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1470,23 +972,12 @@
     "optionB": "Start a club around your favorite interest",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "ageBands": ["10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "friendship",
-      "school"
-    ],
+    "topics": ["friendship", "school"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1504,25 +995,12 @@
     "optionB": "Win because of a last-second skill move",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "party",
-      "general"
-    ],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "ageBands": ["10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["party", "general"],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "games",
-      "sports"
-    ],
+    "topics": ["games", "sports"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1540,22 +1018,12 @@
     "optionB": "Preview one ordinary day next month",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "imaginative",
-      "thoughtful"
-    ],
+    "scenarios": ["general"],
+    "moods": ["imaginative", "thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "fantasy",
-      "daily-life"
-    ],
+    "topics": ["fantasy", "daily-life"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1573,22 +1041,12 @@
     "optionB": "Learn how an animal survives in the wild",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful"],
     "difficulty": "easy",
-    "topics": [
-      "science",
-      "animals"
-    ],
+    "topics": ["science", "animals"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1606,24 +1064,12 @@
     "optionB": "Have one that maps unexplored caves",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "imaginative",
-      "thoughtful"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["imaginative", "thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "science",
-      "adventure",
-      "animals"
-    ],
+    "topics": ["science", "adventure", "animals"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1641,22 +1087,12 @@
     "optionB": "Replay the last sentence you heard once",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "imaginative",
-      "thoughtful"
-    ],
+    "scenarios": ["general"],
+    "moods": ["imaginative", "thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "fantasy",
-      "daily-life"
-    ],
+    "topics": ["fantasy", "daily-life"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1674,21 +1110,12 @@
     "optionB": "Spend it making something purely fun",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "daily-life",
-      "art"
-    ],
+    "topics": ["daily-life", "art"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1706,24 +1133,12 @@
     "optionB": "Explore the ocean with a large research team",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "imaginative",
-      "thoughtful"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["imaginative", "thoughtful"],
     "difficulty": "easy",
-    "topics": [
-      "space",
-      "science",
-      "adventure"
-    ],
+    "topics": ["space", "science", "adventure"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1741,21 +1156,12 @@
     "optionB": "Ask one about the past and get a true answer",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "thoughtful",
-      "imaginative"
-    ],
+    "scenarios": ["general"],
+    "moods": ["thoughtful", "imaginative"],
     "difficulty": "hard",
-    "topics": [
-      "fantasy"
-    ],
+    "topics": ["fantasy"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1773,23 +1179,12 @@
     "optionB": "Design one that takes weeks to master",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "party",
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "ageBands": ["10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["party", "general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "games"
-    ],
+    "topics": ["games"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1807,24 +1202,12 @@
     "optionB": "Have one that only helps you solve problems alone",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "thoughtful",
-      "imaginative"
-    ],
+    "ageBands": ["10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["general"],
+    "moods": ["thoughtful", "imaginative"],
     "difficulty": "hard",
-    "topics": [
-      "superpowers",
-      "friendship"
-    ],
+    "topics": ["superpowers", "friendship"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1842,21 +1225,12 @@
     "optionB": "Choose an easy book on a totally new topic",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "school"
-    ],
+    "topics": ["school"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1874,23 +1248,12 @@
     "optionB": "Spend a weekend without videos",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
-    "relationships": [
-      "family"
-    ],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "ageBands": ["10-12"],
+    "relationships": ["family"],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "games",
-      "daily-life"
-    ],
+    "topics": ["games", "daily-life"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1908,23 +1271,12 @@
     "optionB": "Have a bigger room you must keep tidy yourself",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
-    "relationships": [
-      "family"
-    ],
-    "scenarios": [
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "ageBands": ["10-12"],
+    "relationships": ["family"],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "daily-life",
-      "family"
-    ],
+    "topics": ["daily-life", "family"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1942,25 +1294,12 @@
     "optionB": "Keep a trip journal and record the best moments",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "road-trip"
-    ],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "ageBands": ["10-12"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["road-trip"],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "travel",
-      "adventure"
-    ],
+    "topics": ["travel", "adventure"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -1978,22 +1317,12 @@
     "optionB": "Practice one skill every day for a month",
     "primaryCollection": "kids",
     "primaryAgeBand": "10-12",
-    "ageBands": [
-      "10-12"
-    ],
+    "ageBands": ["10-12"],
     "relationships": [],
-    "scenarios": [
-      "classroom",
-      "general"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "school",
-      "daily-life"
-    ],
+    "topics": ["school", "daily-life"],
     "safety": {
       "kidsSafe": true,
       "classroomSafe": true,
@@ -2011,20 +1340,12 @@
     "optionB": "Have one free weekend each month",
     "primaryCollection": "teens",
     "primaryAgeBand": "teens",
-    "ageBands": [
-      "teens"
-    ],
+    "ageBands": ["teens"],
     "relationships": [],
     "scenarios": [],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "time",
-      "daily-life"
-    ],
+    "topics": ["time", "daily-life"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2044,21 +1365,12 @@
     "optionB": "Get one practice run with a real audience",
     "primaryCollection": "teens",
     "primaryAgeBand": "teens",
-    "ageBands": [
-      "teens"
-    ],
+    "ageBands": ["teens"],
     "relationships": [],
-    "scenarios": [
-      "classroom"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "school",
-      "skills"
-    ],
+    "topics": ["school", "skills"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2078,19 +1390,12 @@
     "optionB": "Have a longer commute and more space",
     "primaryCollection": "adults",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
+    "ageBands": ["adults"],
     "relationships": [],
     "scenarios": [],
-    "moods": [
-      "thoughtful"
-    ],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "lifestyle",
-      "time"
-    ],
+    "topics": ["lifestyle", "time"],
     "safety": {
       "kidsSafe": false,
       "teenSafe": true,
@@ -2110,19 +1415,12 @@
     "optionB": "Keep every evening flexible",
     "primaryCollection": "adults",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
+    "ageBands": ["adults"],
     "relationships": [],
     "scenarios": [],
-    "moods": [
-      "thoughtful"
-    ],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "time",
-      "lifestyle"
-    ],
+    "topics": ["time", "lifestyle"],
     "safety": {
       "kidsSafe": false,
       "teenSafe": true,
@@ -2142,23 +1440,12 @@
     "optionB": "Use only pictures for a week",
     "primaryCollection": "friends",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends"],
     "scenarios": [],
-    "moods": [
-      "funny",
-      "weird"
-    ],
+    "moods": ["funny", "weird"],
     "difficulty": "easy",
-    "topics": [
-      "friendship",
-      "communication"
-    ],
+    "topics": ["friendship", "communication"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2178,26 +1465,12 @@
     "optionB": "Secretly add songs and reveal the playlist later",
     "primaryCollection": "friends",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "party",
-      "road-trip"
-    ],
-    "moods": [
-      "light",
-      "imaginative"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends"],
+    "scenarios": ["party", "road-trip"],
+    "moods": ["light", "imaginative"],
     "difficulty": "hard",
-    "topics": [
-      "friendship",
-      "music"
-    ],
+    "topics": ["friendship", "music"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2217,25 +1490,12 @@
     "optionB": "Take turns surprising each other",
     "primaryCollection": "couples",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
-    "relationships": [
-      "couples"
-    ],
-    "scenarios": [
-      "date-night"
-    ],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "ageBands": ["adults"],
+    "relationships": ["couples"],
+    "scenarios": ["date-night"],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "relationships",
-      "food",
-      "planning"
-    ],
+    "topics": ["relationships", "food", "planning"],
     "safety": {
       "kidsSafe": false,
       "teenSafe": false,
@@ -2255,21 +1515,12 @@
     "optionB": "Keep separate hobbies and swap stories",
     "primaryCollection": "couples",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
-    "relationships": [
-      "couples"
-    ],
+    "ageBands": ["adults"],
+    "relationships": ["couples"],
     "scenarios": [],
-    "moods": [
-      "thoughtful"
-    ],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "relationships",
-      "hobbies"
-    ],
+    "topics": ["relationships", "hobbies"],
     "safety": {
       "kidsSafe": false,
       "teenSafe": false,
@@ -2289,23 +1540,12 @@
     "optionB": "Have a quick planning conversation each evening",
     "primaryCollection": "couples",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
-    "relationships": [
-      "couples"
-    ],
+    "ageBands": ["adults"],
+    "relationships": ["couples"],
     "scenarios": [],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "relationships",
-      "communication",
-      "planning"
-    ],
+    "topics": ["relationships", "communication", "planning"],
     "safety": {
       "kidsSafe": false,
       "teenSafe": false,
@@ -2325,23 +1565,12 @@
     "optionB": "Have fewer meetings that can run longer",
     "primaryCollection": "coworkers",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
-    "relationships": [
-      "coworkers"
-    ],
-    "scenarios": [
-      "icebreakers"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "ageBands": ["adults"],
+    "relationships": ["coworkers"],
+    "scenarios": ["icebreakers"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "work",
-      "time"
-    ],
+    "topics": ["work", "time"],
     "safety": {
       "kidsSafe": false,
       "teenSafe": true,
@@ -2361,23 +1590,12 @@
     "optionB": "Present last",
     "primaryCollection": "coworkers",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
-    "relationships": [
-      "coworkers"
-    ],
-    "scenarios": [
-      "icebreakers"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["adults"],
+    "relationships": ["coworkers"],
+    "scenarios": ["icebreakers"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "work",
-      "communication"
-    ],
+    "topics": ["work", "communication"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2397,23 +1615,12 @@
     "optionB": "Start by talking ideas out together",
     "primaryCollection": "coworkers",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
-    "relationships": [
-      "coworkers"
-    ],
-    "scenarios": [
-      "icebreakers"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "ageBands": ["adults"],
+    "relationships": ["coworkers"],
+    "scenarios": ["icebreakers"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "work",
-      "creativity"
-    ],
+    "topics": ["work", "creativity"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2433,23 +1640,12 @@
     "optionB": "Keep the same facilitator",
     "primaryCollection": "coworkers",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
-    "relationships": [
-      "coworkers"
-    ],
-    "scenarios": [
-      "icebreakers"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "ageBands": ["adults"],
+    "relationships": ["coworkers"],
+    "scenarios": ["icebreakers"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "work",
-      "teamwork"
-    ],
+    "topics": ["work", "teamwork"],
     "safety": {
       "kidsSafe": false,
       "teenSafe": true,
@@ -2469,22 +1665,12 @@
     "optionB": "Start with a five-minute mini-debate",
     "primaryCollection": "classroom",
     "primaryAgeBand": "teens",
-    "ageBands": [
-      "teens"
-    ],
+    "ageBands": ["teens"],
     "relationships": [],
-    "scenarios": [
-      "classroom"
-    ],
-    "moods": [
-      "light",
-      "thoughtful"
-    ],
+    "scenarios": ["classroom"],
+    "moods": ["light", "thoughtful"],
     "difficulty": "easy",
-    "topics": [
-      "school",
-      "games"
-    ],
+    "topics": ["school", "games"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2504,21 +1690,12 @@
     "optionB": "Choose the question",
     "primaryCollection": "classroom",
     "primaryAgeBand": "teens",
-    "ageBands": [
-      "teens"
-    ],
+    "ageBands": ["teens"],
     "relationships": [],
-    "scenarios": [
-      "classroom"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "scenarios": ["classroom"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "school",
-      "learning"
-    ],
+    "topics": ["school", "learning"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2538,22 +1715,12 @@
     "optionB": "Explain it with a short paragraph",
     "primaryCollection": "classroom",
     "primaryAgeBand": "teens",
-    "ageBands": [
-      "teens"
-    ],
+    "ageBands": ["teens"],
     "relationships": [],
-    "scenarios": [
-      "classroom"
-    ],
-    "moods": [
-      "light"
-    ],
+    "scenarios": ["classroom"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "school",
-      "communication",
-      "creativity"
-    ],
+    "topics": ["school", "communication", "creativity"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2573,25 +1740,12 @@
     "optionB": "Do a five-minute improv challenge",
     "primaryCollection": "party",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "party"
-    ],
-    "moods": [
-      "funny",
-      "light"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends"],
+    "scenarios": ["party"],
+    "moods": ["funny", "light"],
     "difficulty": "easy",
-    "topics": [
-      "games",
-      "creativity"
-    ],
+    "topics": ["games", "creativity"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2611,24 +1765,12 @@
     "optionB": "Play a no-gestures guessing game",
     "primaryCollection": "party",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "party"
-    ],
-    "moods": [
-      "funny",
-      "weird"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends"],
+    "scenarios": ["party"],
+    "moods": ["funny", "weird"],
     "difficulty": "hard",
-    "topics": [
-      "games"
-    ],
+    "topics": ["games"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2648,25 +1790,12 @@
     "optionB": "Take one ridiculous themed photo every hour",
     "primaryCollection": "party",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "party"
-    ],
-    "moods": [
-      "funny",
-      "weird"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends"],
+    "scenarios": ["party"],
+    "moods": ["funny", "weird"],
     "difficulty": "easy",
-    "topics": [
-      "party",
-      "creativity"
-    ],
+    "topics": ["party", "creativity"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2686,25 +1815,12 @@
     "optionB": "Rotate through five short games",
     "primaryCollection": "party",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "party"
-    ],
-    "moods": [
-      "light",
-      "thoughtful"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends"],
+    "scenarios": ["party"],
+    "moods": ["light", "thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "games",
-      "party"
-    ],
+    "topics": ["games", "party"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2724,26 +1840,12 @@
     "optionB": "Control the playlist as DJ",
     "primaryCollection": "road-trip",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "road-trip"
-    ],
-    "moods": [
-      "light",
-      "funny"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["road-trip"],
+    "moods": ["light", "funny"],
     "difficulty": "easy",
-    "topics": [
-      "travel",
-      "music"
-    ],
+    "topics": ["travel", "music"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2763,26 +1865,12 @@
     "optionB": "Arrive an hour earlier",
     "primaryCollection": "road-trip",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "road-trip"
-    ],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["road-trip"],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "travel",
-      "time"
-    ],
+    "topics": ["travel", "time"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2802,25 +1890,12 @@
     "optionB": "Try local snack stops",
     "primaryCollection": "road-trip",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "road-trip"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["road-trip"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "travel",
-      "food"
-    ],
+    "topics": ["travel", "food"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2840,26 +1915,12 @@
     "optionB": "Spend an hour doing your own thing",
     "primaryCollection": "road-trip",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "road-trip"
-    ],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["road-trip"],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "travel",
-      "games"
-    ],
+    "topics": ["travel", "games"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2879,26 +1940,12 @@
     "optionB": "Share the most interesting thing learned",
     "primaryCollection": "dinner",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "family",
-      "friends"
-    ],
-    "scenarios": [
-      "dinner"
-    ],
-    "moods": [
-      "light",
-      "thoughtful"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["family", "friends"],
+    "scenarios": ["dinner"],
+    "moods": ["light", "thoughtful"],
     "difficulty": "easy",
-    "topics": [
-      "conversation",
-      "daily-life"
-    ],
+    "topics": ["conversation", "daily-life"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2918,25 +1965,12 @@
     "optionB": "Have a mixed-cuisine table",
     "primaryCollection": "dinner",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "family",
-      "friends"
-    ],
-    "scenarios": [
-      "dinner"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["family", "friends"],
+    "scenarios": ["dinner"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "food",
-      "culture"
-    ],
+    "topics": ["food", "culture"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2956,26 +1990,12 @@
     "optionB": "Order several small dishes to share",
     "primaryCollection": "dinner",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "family",
-      "friends",
-      "couples"
-    ],
-    "scenarios": [
-      "dinner"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["family", "friends", "couples"],
+    "scenarios": ["dinner"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "food",
-      "activities"
-    ],
+    "topics": ["food", "activities"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -2995,26 +2015,12 @@
     "optionB": "Tell one two-minute story each",
     "primaryCollection": "dinner",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "family",
-      "friends"
-    ],
-    "scenarios": [
-      "dinner"
-    ],
-    "moods": [
-      "light",
-      "funny"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["family", "friends"],
+    "scenarios": ["dinner"],
+    "moods": ["light", "funny"],
     "difficulty": "easy",
-    "topics": [
-      "games",
-      "conversation"
-    ],
+    "topics": ["games", "conversation"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3034,24 +2040,12 @@
     "optionB": "Explore a new neighborhood",
     "primaryCollection": "date-night",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
-    "relationships": [
-      "couples"
-    ],
-    "scenarios": [
-      "date-night"
-    ],
-    "moods": [
-      "light",
-      "thoughtful"
-    ],
+    "ageBands": ["adults"],
+    "relationships": ["couples"],
+    "scenarios": ["date-night"],
+    "moods": ["light", "thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "relationships",
-      "travel"
-    ],
+    "topics": ["relationships", "travel"],
     "safety": {
       "kidsSafe": false,
       "teenSafe": false,
@@ -3071,25 +2065,12 @@
     "optionB": "Invent dinner from what you have",
     "primaryCollection": "date-night",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
-    "relationships": [
-      "couples"
-    ],
-    "scenarios": [
-      "date-night"
-    ],
-    "moods": [
-      "imaginative",
-      "light"
-    ],
+    "ageBands": ["adults"],
+    "relationships": ["couples"],
+    "scenarios": ["date-night"],
+    "moods": ["imaginative", "light"],
     "difficulty": "easy",
-    "topics": [
-      "relationships",
-      "food",
-      "creativity"
-    ],
+    "topics": ["relationships", "food", "creativity"],
     "safety": {
       "kidsSafe": false,
       "teenSafe": false,
@@ -3109,24 +2090,12 @@
     "optionB": "See a live performance together",
     "primaryCollection": "date-night",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
-    "relationships": [
-      "couples"
-    ],
-    "scenarios": [
-      "date-night"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["adults"],
+    "relationships": ["couples"],
+    "scenarios": ["date-night"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "relationships",
-      "activities",
-      "skills"
-    ],
+    "topics": ["relationships", "activities", "skills"],
     "safety": {
       "kidsSafe": false,
       "teenSafe": false,
@@ -3146,24 +2115,12 @@
     "optionB": "Use phones only for photos and the next stop",
     "primaryCollection": "date-night",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
-    "relationships": [
-      "couples"
-    ],
-    "scenarios": [
-      "date-night"
-    ],
-    "moods": [
-      "thoughtful"
-    ],
+    "ageBands": ["adults"],
+    "relationships": ["couples"],
+    "scenarios": ["date-night"],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "relationships",
-      "communication",
-      "routines"
-    ],
+    "topics": ["relationships", "communication", "routines"],
     "safety": {
       "kidsSafe": false,
       "teenSafe": false,
@@ -3183,22 +2140,12 @@
     "optionB": "Start with paired conversation",
     "primaryCollection": "icebreakers",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
+    "ageBands": ["teens", "adults"],
     "relationships": [],
-    "scenarios": [
-      "icebreakers"
-    ],
-    "moods": [
-      "light"
-    ],
+    "scenarios": ["icebreakers"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "conversation",
-      "games"
-    ],
+    "topics": ["conversation", "games"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3218,22 +2165,12 @@
     "optionB": "Choose the first question",
     "primaryCollection": "icebreakers",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
+    "ageBands": ["teens", "adults"],
     "relationships": [],
-    "scenarios": [
-      "icebreakers"
-    ],
-    "moods": [
-      "light",
-      "thoughtful"
-    ],
+    "scenarios": ["icebreakers"],
+    "moods": ["light", "thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "conversation"
-    ],
+    "topics": ["conversation"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3253,23 +2190,12 @@
     "optionB": "Start from a mystery object",
     "primaryCollection": "icebreakers",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
+    "ageBands": ["teens", "adults"],
     "relationships": [],
-    "scenarios": [
-      "icebreakers"
-    ],
-    "moods": [
-      "weird",
-      "imaginative"
-    ],
+    "scenarios": ["icebreakers"],
+    "moods": ["weird", "imaginative"],
     "difficulty": "easy",
-    "topics": [
-      "conversation",
-      "creativity"
-    ],
+    "topics": ["conversation", "creativity"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3289,23 +2215,12 @@
     "optionB": "Discover many different skills",
     "primaryCollection": "icebreakers",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
+    "ageBands": ["teens", "adults"],
     "relationships": [],
-    "scenarios": [
-      "icebreakers"
-    ],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "scenarios": ["icebreakers"],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "conversation",
-      "skills"
-    ],
+    "topics": ["conversation", "skills"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3325,23 +2240,12 @@
     "optionB": "Introduce yourself with a three-word slogan",
     "primaryCollection": "icebreakers",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
+    "ageBands": ["teens", "adults"],
     "relationships": [],
-    "scenarios": [
-      "icebreakers"
-    ],
-    "moods": [
-      "funny",
-      "imaginative"
-    ],
+    "scenarios": ["icebreakers"],
+    "moods": ["funny", "imaginative"],
     "difficulty": "easy",
-    "topics": [
-      "conversation",
-      "creativity"
-    ],
+    "topics": ["conversation", "creativity"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3361,26 +2265,12 @@
     "optionB": "Make a guest-decorated backdrop",
     "primaryCollection": "birthday-party",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "birthday-party"
-    ],
-    "moods": [
-      "funny",
-      "light"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["birthday-party"],
+    "moods": ["funny", "light"],
     "difficulty": "easy",
-    "topics": [
-      "celebration",
-      "creativity"
-    ],
+    "topics": ["celebration", "creativity"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3400,26 +2290,12 @@
     "optionB": "Create one big group project",
     "primaryCollection": "birthday-party",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "birthday-party"
-    ],
-    "moods": [
-      "light",
-      "imaginative"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["birthday-party"],
+    "moods": ["light", "imaginative"],
     "difficulty": "hard",
-    "topics": [
-      "celebration",
-      "creativity"
-    ],
+    "topics": ["celebration", "creativity"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3439,25 +2315,12 @@
     "optionB": "Serve five smaller desserts",
     "primaryCollection": "birthday-party",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends",
-      "family"
-    ],
-    "scenarios": [
-      "birthday-party"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["birthday-party"],
+    "moods": ["light"],
     "difficulty": "hard",
-    "topics": [
-      "celebration",
-      "food"
-    ],
+    "topics": ["celebration", "food"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3477,25 +2340,12 @@
     "optionB": "Solve a group mystery puzzle",
     "primaryCollection": "sleepover",
     "primaryAgeBand": "teens",
-    "ageBands": [
-      "teens"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "sleepover"
-    ],
-    "moods": [
-      "funny",
-      "light"
-    ],
+    "ageBands": ["teens"],
+    "relationships": ["friends"],
+    "scenarios": ["sleepover"],
+    "moods": ["funny", "light"],
     "difficulty": "easy",
-    "topics": [
-      "friendship",
-      "games",
-      "conversation"
-    ],
+    "topics": ["friendship", "games", "conversation"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3515,23 +2365,12 @@
     "optionB": "Make a big breakfast the next morning",
     "primaryCollection": "sleepover",
     "primaryAgeBand": "teens",
-    "ageBands": [
-      "teens"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "sleepover"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["teens"],
+    "relationships": ["friends"],
+    "scenarios": ["sleepover"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "friendship",
-      "food"
-    ],
+    "topics": ["friendship", "food"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3551,23 +2390,12 @@
     "optionB": "Play one long strategy game",
     "primaryCollection": "sleepover",
     "primaryAgeBand": "teens",
-    "ageBands": [
-      "teens"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "sleepover"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["teens"],
+    "relationships": ["friends"],
+    "scenarios": ["sleepover"],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "friendship",
-      "games"
-    ],
+    "topics": ["friendship", "games"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3587,21 +2415,12 @@
     "optionB": "Do one long weekly reset",
     "primaryCollection": "teens",
     "primaryAgeBand": "teens",
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
+    "ageBands": ["teens", "adults"],
     "relationships": [],
     "scenarios": [],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "daily-life",
-      "routines"
-    ],
+    "topics": ["daily-life", "routines"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3622,20 +2441,12 @@
     "optionB": "Always know the best local places",
     "primaryCollection": "adults",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
+    "ageBands": ["adults"],
     "relationships": [],
     "scenarios": [],
-    "moods": [
-      "imaginative",
-      "thoughtful"
-    ],
+    "moods": ["imaginative", "thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "travel",
-      "skills"
-    ],
+    "topics": ["travel", "skills"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3656,23 +2467,12 @@
     "optionB": "Have busy mornings and quiet evenings",
     "primaryCollection": "icebreakers",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
+    "ageBands": ["teens", "adults"],
     "relationships": [],
-    "scenarios": [
-      "icebreakers"
-    ],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "scenarios": ["icebreakers"],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "routines",
-      "lifestyle"
-    ],
+    "topics": ["routines", "lifestyle"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3693,23 +2493,12 @@
     "optionB": "Usually bring the snacks",
     "primaryCollection": "friends",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends"],
     "scenarios": [],
-    "moods": [
-      "funny",
-      "light"
-    ],
+    "moods": ["funny", "light"],
     "difficulty": "easy",
-    "topics": [
-      "friendship",
-      "food"
-    ],
+    "topics": ["friendship", "food"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3730,24 +2519,12 @@
     "optionB": "Take a full-day trip somewhere new",
     "primaryCollection": "friends",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends"],
     "scenarios": [],
-    "moods": [
-      "light",
-      "thoughtful"
-    ],
+    "moods": ["light", "thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "friendship",
-      "travel",
-      "adventure"
-    ],
+    "topics": ["friendship", "travel", "adventure"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3768,22 +2545,12 @@
     "optionB": "Pack a picnic everyone helps choose",
     "primaryCollection": "family",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "family"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["family"],
     "scenarios": [],
-    "moods": [
-      "light"
-    ],
+    "moods": ["light"],
     "difficulty": "easy",
-    "topics": [
-      "family",
-      "food"
-    ],
+    "topics": ["family", "food"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3804,24 +2571,12 @@
     "optionB": "Record short audio stories about favorite memories",
     "primaryCollection": "family",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "family"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["family"],
     "scenarios": [],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "family",
-      "memories",
-      "creativity"
-    ],
+    "topics": ["family", "memories", "creativity"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3842,22 +2597,12 @@
     "optionB": "Invent a new tradition every year",
     "primaryCollection": "family",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "family"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["family"],
     "scenarios": [],
-    "moods": [
-      "thoughtful"
-    ],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "family",
-      "traditions"
-    ],
+    "topics": ["family", "traditions"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3878,24 +2623,12 @@
     "optionB": "Take several short stops",
     "primaryCollection": "road-trip",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "family"
-    ],
-    "scenarios": [
-      "road-trip"
-    ],
-    "moods": [
-      "light"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["family"],
+    "scenarios": ["road-trip"],
+    "moods": ["light"],
     "difficulty": "hard",
-    "topics": [
-      "family",
-      "travel"
-    ],
+    "topics": ["family", "travel"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3916,23 +2649,12 @@
     "optionB": "Have everyone play for themselves",
     "primaryCollection": "family",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "family"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["family"],
     "scenarios": [],
-    "moods": [
-      "funny",
-      "light"
-    ],
+    "moods": ["funny", "light"],
     "difficulty": "easy",
-    "topics": [
-      "family",
-      "games"
-    ],
+    "topics": ["family", "games"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3953,21 +2675,12 @@
     "optionB": "Protect the same weekend free-time block",
     "primaryCollection": "couples",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
-    "relationships": [
-      "couples"
-    ],
+    "ageBands": ["adults"],
+    "relationships": ["couples"],
     "scenarios": [],
-    "moods": [
-      "thoughtful"
-    ],
+    "moods": ["thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "relationships",
-      "routines"
-    ],
+    "topics": ["relationships", "routines"],
     "safety": {
       "kidsSafe": false,
       "teenSafe": false,
@@ -3988,24 +2701,12 @@
     "optionB": "Have one optional team lunch each week",
     "primaryCollection": "coworkers",
     "primaryAgeBand": "adults",
-    "ageBands": [
-      "adults"
-    ],
-    "relationships": [
-      "coworkers"
-    ],
-    "scenarios": [
-      "icebreakers"
-    ],
-    "moods": [
-      "thoughtful",
-      "light"
-    ],
+    "ageBands": ["adults"],
+    "relationships": ["coworkers"],
+    "scenarios": ["icebreakers"],
+    "moods": ["thoughtful", "light"],
     "difficulty": "hard",
-    "topics": [
-      "work",
-      "routines"
-    ],
+    "topics": ["work", "routines"],
     "safety": {
       "kidsSafe": false,
       "teenSafe": true,
@@ -4026,25 +2727,12 @@
     "optionB": "Use mostly songs no one has heard before",
     "primaryCollection": "party",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "party"
-    ],
-    "moods": [
-      "funny",
-      "weird"
-    ],
+    "ageBands": ["teens", "adults"],
+    "relationships": ["friends"],
+    "scenarios": ["party"],
+    "moods": ["funny", "weird"],
     "difficulty": "hard",
-    "topics": [
-      "music",
-      "party"
-    ],
+    "topics": ["music", "party"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -4065,24 +2753,12 @@
     "optionB": "Build the party around solving something",
     "primaryCollection": "birthday-party",
     "primaryAgeBand": null,
-    "ageBands": [
-      "teens",
-      "adults"
-    ],
+    "ageBands": ["teens", "adults"],
     "relationships": [],
-    "scenarios": [
-      "birthday-party"
-    ],
-    "moods": [
-      "imaginative",
-      "thoughtful"
-    ],
+    "scenarios": ["birthday-party"],
+    "moods": ["imaginative", "thoughtful"],
     "difficulty": "hard",
-    "topics": [
-      "celebration",
-      "creativity",
-      "games"
-    ],
+    "topics": ["celebration", "creativity", "games"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -4103,25 +2779,12 @@
     "optionB": "Add one question each to a conversation jar",
     "primaryCollection": "sleepover",
     "primaryAgeBand": "teens",
-    "ageBands": [
-      "teens"
-    ],
-    "relationships": [
-      "friends"
-    ],
-    "scenarios": [
-      "sleepover"
-    ],
-    "moods": [
-      "light",
-      "thoughtful"
-    ],
+    "ageBands": ["teens"],
+    "relationships": ["friends"],
+    "scenarios": ["sleepover"],
+    "moods": ["light", "thoughtful"],
     "difficulty": "easy",
-    "topics": [
-      "friendship",
-      "music",
-      "conversation"
-    ],
+    "topics": ["friendship", "music", "conversation"],
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,

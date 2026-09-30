@@ -26,8 +26,8 @@ describe("Would You Rather Question Filtering & Search", () => {
   });
 
   it("performs case-insensitive search", () => {
-    const upper = filterQuestions(QUESTIONS_DATABASE, { searchKeyword: "CHOCOLATE" });
-    const lower = filterQuestions(QUESTIONS_DATABASE, { searchKeyword: "chocolate" });
+    const upper = filterQuestions(QUESTIONS_DATABASE, { searchKeyword: "HEAR" });
+    const lower = filterQuestions(QUESTIONS_DATABASE, { searchKeyword: "hear" });
     expect(upper.length).toBe(lower.length);
     expect(upper.length).toBeGreaterThan(0);
   });
@@ -52,8 +52,18 @@ describe("Would You Rather Question Filtering & Search", () => {
   });
 
   it("P0-2: onlyApproved filters out unreviewed questions from active pools", () => {
-    const playable = filterQuestions(QUESTIONS_DATABASE, { onlyApproved: true });
-    expect(playable).toHaveLength(0);
+    const mockUnreviewed = [
+      {
+        ...QUESTIONS_DATABASE[0]!,
+        id: "mock-unreviewed-filter",
+        reviewStatus: "unreviewed" as const,
+      },
+    ];
+    const unapprovedResult = filterQuestions(mockUnreviewed, { onlyApproved: true });
+    expect(unapprovedResult).toHaveLength(0);
+
+    const formalPlayable = filterQuestions(QUESTIONS_DATABASE, { onlyApproved: true });
+    expect(formalPlayable).toHaveLength(116);
 
     const fixturePlayable = filterQuestions(TEST_FIXTURE_QUESTIONS, { onlyApproved: true });
     expect(fixturePlayable).toHaveLength(3);

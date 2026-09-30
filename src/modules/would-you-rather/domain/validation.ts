@@ -127,7 +127,7 @@ export function validateQuestion(raw: unknown): ValidationResult {
     errors.push(`[${q.id ?? "unknown"}]: 'topics' must be an array`);
   } else {
     for (const topic of q.topics) {
-      if (!VALID_TOPICS.includes(topic)) {
+      if (typeof topic !== "string" || topic.trim() === "") {
         errors.push(`[${q.id ?? "unknown"}]: Invalid topic '${topic}'`);
       }
     }

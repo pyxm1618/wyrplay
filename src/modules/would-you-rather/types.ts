@@ -18,16 +18,8 @@ export type Tone = "funny" | "weird" | "deep";
 /** 抉择难度等级 (仅限有明确审核依据时标定，未审核状态下不设值) */
 export type Difficulty = "easy" | "hard";
 
-/** 8大标准话题标识 */
-export type Topic =
-  | "animals-nature"
-  | "food-everyday"
-  | "fantasy-superpowers"
-  | "school-learning"
-  | "travel-adventure"
-  | "hobbies-entertainment"
-  | "relationships-values"
-  | "work-money";
+/** 话题标识 (支持正式题库标准细分话题及复合话题) */
+export type Topic = string;
 
 /** 适用性审核判定 */
 export type SuitabilityRating = "suitable" | "unsuitable" | "unreviewed";
@@ -66,7 +58,7 @@ export interface Question {
   /** 气氛基调 (允许多选，未审核题为空数组) */
   readonly tones: readonly Tone[];
   /** 抉择难度 (可选，未审核时不强行指定) */
-  readonly difficulty?: Difficulty;
+  readonly difficulty?: Difficulty | undefined;
   /** 所属话题 (通常 1-2 个，未审核题为空数组) */
   readonly topics: readonly Topic[];
 
@@ -75,15 +67,29 @@ export interface Question {
   /** 编辑审核状态 (必须为 approved 方可进入正式可玩题集与接受真实投票) */
   readonly reviewStatus: ReviewStatus;
   /** 审核说明或修订备注 */
-  readonly reviewNotes?: string;
+  readonly reviewNotes?: string | undefined;
+
+  /** 正式题库真源扩展字段 */
+  readonly primaryCollection?: string | undefined;
+  readonly primaryAgeBand?: string | undefined;
+  readonly ageBands?: readonly string[] | undefined;
+  readonly scenarios?: readonly string[] | undefined;
+  readonly moods?: readonly string[] | undefined;
+  readonly safety?:
+    | {
+        readonly kidsSafe?: boolean | undefined;
+        readonly classroomSafe?: boolean | undefined;
+        readonly familySafe?: boolean | undefined;
+      }
+    | undefined;
 
   /** 兼容与向后辅助字段 (可选) */
-  readonly tags?: readonly string[];
-  readonly collections?: readonly FeaturedCollectionKey[];
+  readonly tags?: readonly string[] | undefined;
+  readonly collections?: readonly FeaturedCollectionKey[] | undefined;
   /** 向后兼容旧组件展示字段 (可选) */
-  readonly audience?: string;
-  readonly occasion?: string;
-  readonly style?: string;
+  readonly audience?: string | undefined;
+  readonly occasion?: string | undefined;
+  readonly style?: string | undefined;
 }
 
 export interface CategoryItem {

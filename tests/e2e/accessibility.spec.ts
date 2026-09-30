@@ -33,7 +33,7 @@ test("keyboard reaches primary navigation, CTA and footer", async ({ page }) => 
 
   let reachedTopic = false;
   let reachedFooter = false;
-  for (let index = 0; index < 100; index += 1) {
+  for (let index = 0; index < 350; index += 1) {
     const focused = page.locator(":focus");
     const href = await focused.getAttribute("href").catch(() => null);
     if (href === "/would-you-rather-questions-for-kids") reachedTopic = true;

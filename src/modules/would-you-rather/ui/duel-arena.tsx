@@ -8,6 +8,7 @@ export interface DuelArenaProps {
   readonly currentIndex: number;
   readonly totalQuestions: number;
   readonly categoryBadge?: string;
+  readonly hasActiveFilters?: boolean;
   readonly onNext: () => void;
   readonly onRandom: () => void;
   readonly onOpenPresenter?: (() => void) | undefined;
@@ -18,6 +19,7 @@ export function DuelArena({
   currentIndex,
   totalQuestions,
   categoryBadge = "Live Dilemma Arena",
+  hasActiveFilters = false,
   onNext,
   onRandom,
   onOpenPresenter,
@@ -145,14 +147,14 @@ export function DuelArena({
             </svg>
           </div>
           <p className="text-lg font-semibold text-foreground">
-            {totalQuestions === 0
-              ? "Dilemmas are Currently Under Editorial Review"
-              : "No dilemma matches your active filters"}
+            {hasActiveFilters
+              ? "No dilemma matches your active filters"
+              : "Dilemmas are Currently Under Editorial Review"}
           </p>
           <p className="mx-auto mt-2 max-w-md text-sm text-muted">
-            {totalQuestions === 0
-              ? "Our editorial process is reviewing dilemmas for verified age ratings and suitability. The interactive arena will open once dilemmas are approved."
-              : "Try adjusting your search keywords or resetting category filters below."}
+            {hasActiveFilters
+              ? "Try adjusting your search keywords or resetting category filters below."
+              : "Our editorial process is reviewing dilemmas for verified age ratings and suitability. The interactive arena will open once dilemmas are approved."}
           </p>
         </div>
       </section>
@@ -269,7 +271,7 @@ export function DuelArena({
         >
           <div>
             <div className="flex items-center justify-between">
-              <span className="font-mono text-xs font-black tracking-wider text-[#e27d32] uppercase">
+              <span className="font-mono text-xs font-black tracking-wider text-[#b45309] uppercase dark:text-[#f59e0b]">
                 Option A
               </span>
               <span className="hidden rounded border border-border bg-surface-muted px-1.5 py-0.5 text-[10px] font-mono text-muted group-hover:border-[#e27d32]/40 group-hover:text-foreground sm:inline-block">
@@ -333,7 +335,7 @@ export function DuelArena({
         >
           <div>
             <div className="flex items-center justify-between">
-              <span className="font-mono text-xs font-black tracking-wider text-[#19a4b8] uppercase">
+              <span className="font-mono text-xs font-black tracking-wider text-[#0e7490] uppercase dark:text-[#22d3ee]">
                 Option B
               </span>
               <span className="hidden rounded border border-border bg-surface-muted px-1.5 py-0.5 text-[10px] font-mono text-muted group-hover:border-[#19a4b8]/40 group-hover:text-foreground sm:inline-block">

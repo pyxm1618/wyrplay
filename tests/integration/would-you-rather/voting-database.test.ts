@@ -222,16 +222,42 @@ describe("WYR Real Anonymous Voting Database Integration", () => {
   });
 
   it("strictly rejects voting on unreviewed questions (P0-2 rule)", async () => {
-    // 针对未通过审校的题目 (如生产题库中的 wyr-001)，必须拒绝投票
+    // 针对显式标记为未审校的题目必须拒绝投票
+    const mockUnreviewed = [
+      {
+        ...TEST_FIXTURE_QUESTIONS[0]!,
+        id: "mock-unreviewed-vote-test",
+        reviewStatus: "unreviewed" as const,
+      },
+    ];
     await expect(
       recordVote(
         {
-          questionId: "wyr-001",
+          questionId: "mock-unreviewed-vote-test",
           option: "A",
           anonymousVoterId: voter1,
         },
-        { db: database.db },
+        { db: database.db, questions: mockUnreviewed },
       ),
     ).rejects.toThrow(/not approved for voting/i);
+  });
+
+  it("successfully votes and tracks formal question IDs (e.g. wyr-000001) against default questions", async () => {
+    const formalVoter = `voter-formal-${crypto.randomUUID()}`;
+    const stats = await recordVote(
+      {
+        questionId: "wyr-000001",
+        option: "B",
+        anonymousVoterId: formalVoter,
+      },
+      { db: database.db },
+    );
+    expect(stats.hasVoted).toBe(true);
+    expect(stats.selectedOption).toBe("B");
+    expect(stats.votesB).toBeGreaterThanOrEqual(1);
+
+    const queried = await getQuestionVoteStats("wyr-000001", formalVoter, { db: database.db });
+    expect(queried.hasVoted).toBe(true);
+    expect(queried.selectedOption).toBe("B");
   });
 });

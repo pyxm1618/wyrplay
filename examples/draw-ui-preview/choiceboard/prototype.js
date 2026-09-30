@@ -135,8 +135,8 @@
     {
       id: "wyr-k05",
       text: "Would you rather have hair that changes color with your mood or shoes that light up when you jump?",
-      a: "Mood-changing hair",
-      b: "Light-up shoes when you jump",
+      a: "Mood-changing glowing hair",
+      b: "Super-powered light-up shoes",
       collections: ["kids", "funny"],
       audience: "kids",
       occasion: "birthday-party",
@@ -156,7 +156,7 @@
       id: "wyr-cp01",
       text: "Would you rather have a lavish destination wedding with 10 people or a modest hometown wedding with 300 people?",
       a: "Intimate luxury tropical elopement",
-      b: "A big hometown celebration with everyone",
+      b: "Huge bustling party with everyone you know",
       collections: ["couples"],
       audience: "couples",
       occasion: "date-night",
@@ -394,7 +394,7 @@
       return;
     }
     const titles = {
-      home: "wyrplay — UI Preview",
+      home: "wyrplay — Choiceboard UI Preview",
       play: "Play a Question — wyrplay Preview",
       result: "Vote Result — wyrplay Preview",
       "sign-in": "Sign in — wyrplay Preview",
@@ -493,6 +493,8 @@
 
   function renderPlayQuestion() {
     const question = questions[activeQuestionIndex];
+    byId("play-progress").textContent =
+      "Example " + String(activeQuestionIndex + 1).padStart(2, "0") + " / " + questions.length;
     byId("play-source-id").textContent = question.id;
     byId("play-question-title").textContent = question.text;
     byId("play-option-a").textContent = question.a;

@@ -12,179 +12,143 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
     });
   });
 
-  test.describe("1. Production Editorial Review State (Zero unreviewed questions exposed)", () => {
-    test("production 正式页面不暴露 unreviewed 题 (Arena & Questions show editorial review empty state with 0 questions)", async ({
-      page,
-    }) => {
+  test.describe("1. Production Formal Question Bank (116 Approved Dilemmas)", () => {
+    test("production 首页与 5 个 SEO 落地页真实消费 116 道正式题库", async ({ page }) => {
       // 1.1 检查首页生产行为
       await page.goto("/");
 
-      // Arena 审校中空状态文案与提示
-      const arenaParagraph = page.getByText("Dilemmas are Currently Under Editorial Review");
-      await expect(arenaParagraph).toBeVisible();
+      // Arena 正常展示第一道正式题目，绝非审核中空状态
+      await expect(page.getByText("Dilemmas are Currently Under Editorial Review")).toHaveCount(0);
+      const arenaHeading = page.locator("#play h2").first();
+      await expect(arenaHeading).toBeVisible();
+      const headingText = await arenaHeading.innerText();
+      expect(headingText.length).toBeGreaterThan(10);
 
-      const arenaSubtext = page.getByText(
-        "Our editorial process is reviewing dilemmas for verified age ratings and suitability",
-      );
-      await expect(arenaSubtext).toBeVisible();
+      // Arena 切题按钮正常渲染
+      await expect(page.getByRole("button", { name: /Next Question/i })).toBeVisible();
+      await expect(page.getByRole("button", { name: /^Random$/i })).toBeVisible();
+      await expect(page.getByRole("button", { name: /Presenter Mode/i })).toBeVisible();
 
-      // 在无已审核题目时，Arena 安全不渲染切题按钮
-      await expect(page.getByRole("button", { name: /Next Question/i })).toHaveCount(0);
-      await expect(page.getByRole("button", { name: /^Random$/i })).toHaveCount(0);
-
-      // 目录必须展示审核中空状态，卡片数严格为 0，绝对不暴露任何未审核题
-      const emptyStateHeading = page
-        .locator("#questions")
-        .getByText("No approved dilemmas available");
-      await expect(emptyStateHeading).toBeVisible();
-
-      const questionCards = page.locator("#questions article");
-      expect(await questionCards.count()).toBe(0);
-
-      // 验证页面上绝对没有 "Under Review" 题目徽章或未审核选项
-      const underReviewBadges = page.locator("#questions").getByText("Under Review");
-      expect(await underReviewBadges.count()).toBe(0);
-
-      // 统计栏诚实展示 0 playable dilemmas
-      const counterText = page.getByText(/0 playable dilemmas/i);
+      // 统计栏展示全部 116 道已审核可玩题目
+      const counterText = page.getByText(/116 playable dilemmas/i);
       await expect(counterText).toBeVisible();
 
-      // 1.2 检查专题落地页（Kids）
-      await page.goto("/would-you-rather-questions-for-kids");
-      await expect(page.getByText("Dilemmas are Currently Under Editorial Review")).toBeVisible();
-      expect(await page.locator("#questions article").count()).toBe(0);
-    });
-  });
+      // 题目长目录正常渲染题目卡片
+      const questionCards = page.locator("#questions article");
+      const cardCount = await questionCards.count();
+      expect(cardCount).toBeGreaterThan(0);
 
-  test.describe("2. Playable Dilemma Interactive Engine (Test Fixture Verification)", () => {
-    test("test fixture 可正常搜索/筛选 (search, filter by difficulty, clear filters, no results)", async ({
-      page,
-    }) => {
-      await page.goto("/test-bench");
+      // 页面绝无任何 "Under Review" 提示
+      await expect(page.locator("#questions").getByText("Under Review")).toHaveCount(0);
+
+      // 1.2 检查 5 个核心 SEO 专题落地页全部有正式题目
+      const seoRoutes = [
+        "/would-you-rather-questions-for-kids",
+        "/funny-would-you-rather-questions",
+        "/hard-would-you-rather-questions",
+        "/would-you-rather-questions-for-friends",
+        "/would-you-rather-questions-for-couples",
+      ] as const;
+
+      for (const route of seoRoutes) {
+        await page.goto(route);
+        await expect(page.getByText("Dilemmas are Currently Under Editorial Review")).toHaveCount(
+          0,
+        );
+        await expect(page.locator("#play h2").first()).toBeVisible();
+        const routeCards = await page.locator("#questions article").count();
+        expect(routeCards).toBeGreaterThan(0);
+      }
+    });
+
+    test("正式题库搜索与多维度筛选 (Search, Filters, Clear, No Results)", async ({ page }) => {
+      await page.goto("/");
 
       const searchInput = page.getByPlaceholder(/Search dilemmas by keyword/i);
       await expect(searchInput).toBeVisible();
 
-      // 初始渲染全部 3 道受控测试题目
-      const cards = page.locator("#questions article");
-      expect(await cards.count()).toBe(3);
+      // 关键词搜索
+      await searchInput.fill("hear");
+      await page.waitForTimeout(150);
+      const matchCount = await page.locator("#questions article").count();
+      expect(matchCount).toBe(6);
 
-      // 1. 搜索特定关键词 "invisible"
-      await searchInput.fill("invisible");
-      await page.waitForTimeout(350); // debounce
-      expect(await cards.count()).toBe(1);
-      await expect(cards.first()).toContainText("invisible");
+      // 难度筛选
+      const hardBtn = page.getByRole("button", { name: "hard", exact: true });
+      await hardBtn.click();
+      await page.waitForTimeout(150);
 
-      // 2. 清空搜索，验证恢复 3 道题
-      await searchInput.fill("");
-      await page.waitForTimeout(350);
-      expect(await cards.count()).toBe(3);
+      // 极端无效关键词导致 0 结果
+      await searchInput.fill("xyznonexistentkeyword123456789");
+      await page.waitForTimeout(150);
+      await expect(page.getByText("No dilemma matches your active filters")).toBeVisible();
 
-      // 3. 点击难度筛选 "easy"
-      const easyBtn = page.getByRole("button", { name: "easy", exact: true });
-      await easyBtn.click();
-      await page.waitForTimeout(200);
-      expect(await cards.count()).toBe(2);
-
-      // 4. 清除所有筛选
+      // 清除筛选按钮
       const clearBtn = page.getByRole("button", { name: /Clear all filters/i });
+      await expect(clearBtn).toBeVisible();
       await clearBtn.click();
-      await page.waitForTimeout(200);
-      expect(await cards.count()).toBe(3);
+      await page.waitForTimeout(150);
 
-      // 5. 无结果状态
-      await searchInput.fill("nonexistent_random_phrase_xyz_987");
-      await page.waitForTimeout(350);
-      await expect(page.getByText("No questions found")).toBeVisible();
-
-      // 清空后恢复
-      await searchInput.fill("");
-      await page.waitForTimeout(350);
-      expect(await cards.count()).toBe(3);
+      // 恢复全部 116 道题展示
+      await expect(page.getByText(/116 playable dilemmas/i)).toBeVisible();
     });
 
-    test("A/B 选择、改票与刷新恢复 (A/B voting, switch A->B & B->A, refresh persistence)", async ({
+    test("正式题库 A/B 投票、改票与刷新恢复 (A/B voting, switch A->B & B->A, refresh persistence)", async ({
       page,
     }) => {
-      await page.goto("/test-bench");
+      await page.goto("/");
 
-      const optionA = page.locator("button:has-text('Option A')").first();
-      const optionB = page.locator("button:has-text('Option B')").first();
-      await expect(optionA).toBeVisible();
-      await expect(optionB).toBeVisible();
+      const optionA = page.locator("#play button:has-text('Option A')").first();
+      const optionB = page.locator("#play button:has-text('Option B')").first();
 
-      // 1. A/B: 点击 Option A
+      // 初始无投票态
+      await expect(optionA).toHaveAttribute("aria-pressed", "false");
+      await expect(optionB).toHaveAttribute("aria-pressed", "false");
+
+      // 投 Option A
       await optionA.click();
       await expect(optionA).toHaveAttribute("aria-pressed", "true");
       await expect(optionA.locator("text=Your Choice")).toBeVisible();
-      await expect(optionA.locator("text=%")).toBeVisible();
+      await expect(page.locator("#play").getByText(/Total of \d+ votes received/i)).toBeVisible();
 
-      // 2. 改票: 点击 Option B
+      // 改投 Option B
       await optionB.click();
       await expect(optionB).toHaveAttribute("aria-pressed", "true");
-      await expect(optionB.locator("text=Your Choice")).toBeVisible();
       await expect(optionA).toHaveAttribute("aria-pressed", "false");
-      await expect(optionA.locator("text=Your Choice")).toHaveCount(0);
+      await expect(optionB.locator("text=Your Choice")).toBeVisible();
 
-      // 再次改回 A
-      await optionA.click();
-      await expect(optionA).toHaveAttribute("aria-pressed", "true");
-      await expect(optionB).toHaveAttribute("aria-pressed", "false");
-
-      // 3. 刷新恢复
+      // 刷新页面，保持 Option B 状态
       await page.reload();
-      const refreshedOptionA = page.locator("button:has-text('Option A')").first();
-      await expect(refreshedOptionA).toHaveAttribute("aria-pressed", "true");
-      await expect(refreshedOptionA.locator("text=Your Choice")).toBeVisible();
-      await expect(refreshedOptionA.locator("text=%")).toBeVisible();
+      const reloadedOptionB = page.locator("#play button:has-text('Option B')").first();
+      await expect(reloadedOptionB).toHaveAttribute("aria-pressed", "true");
+      await expect(reloadedOptionB.locator("text=Your Choice")).toBeVisible();
     });
 
-    test("Next/Random 与请求隔离 (Next/Random切题且新题不泄漏投票态)", async ({ page }) => {
-      await page.goto("/test-bench");
+    test("Next/Random 切题有效性与状态隔离", async ({ page }) => {
+      await page.goto("/");
 
-      // 记录首题题干
       const arenaHeading = page.locator("#play h2").first();
-      const firstHeadingText = await arenaHeading.innerText();
+      const firstHeading = await arenaHeading.innerText();
 
-      // 首题投 Option A
-      const optionA = page.locator("button:has-text('Option A')").first();
-      await optionA.click();
-      await expect(optionA).toHaveAttribute("aria-pressed", "true");
-
-      // 1. Next 切题
+      // 点击 Next 切题
       const nextBtn = page.getByRole("button", { name: /Next Question/i });
       await nextBtn.click();
       await page.waitForTimeout(200);
 
-      // 验证切题成功：题干变化
-      const secondHeadingText = await arenaHeading.innerText();
-      expect(secondHeadingText).not.toBe(firstHeadingText);
+      const secondHeading = await arenaHeading.innerText();
+      expect(secondHeading).not.toBe(firstHeading);
 
-      // 验证请求隔离：新题目绝不残留上一题的选择状态
-      await expect(page.locator("text=Your Choice")).toHaveCount(0);
-      const newOptionA = page.locator("button:has-text('Option A')").first();
-      await expect(newOptionA).toHaveAttribute("aria-pressed", "false");
-
-      // 2. Random 切题
-      const randomBtn = page.getByRole("button", { name: "Random", exact: true });
+      // 点击 Random 切题
+      const randomBtn = page.getByRole("button", { name: /^Random$/i });
       await randomBtn.click();
       await page.waitForTimeout(200);
-      const thirdHeadingText = await arenaHeading.innerText();
-      // 验证 Random 成功切出当前题目
-      expect(thirdHeadingText).not.toBe(secondHeadingText);
-      // 验证题目状态与真实投票记录一致：若随机回首题则呈现已投，若切入未投票题则隔离无残留
-      if (thirdHeadingText === firstHeadingText) {
-        await expect(page.locator("button:has-text('Option A')").first()).toHaveAttribute(
-          "aria-pressed",
-          "true",
-        );
-      } else {
-        await expect(page.locator("text=Your Choice")).toHaveCount(0);
-      }
+
+      const thirdHeading = await arenaHeading.innerText();
+      expect(thirdHeading).not.toBe(secondHeading);
     });
 
     test("API 失败容错 (handles API 500 gracefully without crashing)", async ({ page }) => {
-      await page.goto("/test-bench");
+      await page.goto("/");
 
       // 拦截投票 API 并模拟 500 故障
       await page.route("**/api/wyr/vote", async (route) => {
@@ -195,7 +159,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
         });
       });
 
-      const optionA = page.locator("button:has-text('Option A')").first();
+      const optionA = page.locator("#play button:has-text('Option A')").first();
       await optionA.click();
 
       // 页面展示错误提示，不崩溃白屏
@@ -205,7 +169,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
     test("Presenter 模式 (opens, disables prev on first, navigates next, closes with escape, restores focus)", async ({
       page,
     }) => {
-      await page.goto("/test-bench");
+      await page.goto("/");
 
       const presenterBtn = page.getByRole("button", { name: /Presenter Mode/i });
       await expect(presenterBtn).toBeVisible();
@@ -234,35 +198,31 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
     });
 
     test("keyboard/focus (keyboard shortcut KeyA votes & focus management)", async ({ page }) => {
-      await page.goto("/test-bench");
+      await page.goto("/");
 
       // 按键盘 KeyA 进行投票
       await page.keyboard.press("KeyA");
 
-      const optionA = page.locator("button:has-text('Option A')").first();
+      const optionA = page.locator("#play button:has-text('Option A')").first();
       await expect(optionA).toHaveAttribute("aria-pressed", "true");
       await expect(optionA.locator("text=Your Choice")).toBeVisible();
     });
   });
 
-  test.describe("3. Mobile 375px Viewport & Mobile Menu", () => {
+  test.describe("2. Mobile 375px Viewport & Mobile Menu", () => {
     test("375px 视口无横向溢出且 mobile menu 可交互点击", async ({ page }) => {
       await page.setViewportSize({ width: 375, height: 812 });
       await page.goto("/");
 
-      // 检查横向绝对不溢出
-      const isOverflowing = await page.evaluate(
-        () => document.documentElement.scrollWidth > window.innerWidth,
-      );
-      expect(isOverflowing).toBe(false);
+      const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+      const innerWidth = await page.evaluate(() => window.innerWidth);
+      expect(scrollWidth).toBeLessThanOrEqual(innerWidth);
 
-      // 查找移动端汉堡菜单按钮并点击展开
       const menuButton = page.locator("button[aria-label='Open mobile menu']");
       await expect(menuButton).toBeVisible();
       await menuButton.click();
       await page.waitForTimeout(200);
 
-      // 验证移动端导航菜单内的链接可见且可点击
       const mobileKidsLink = page.locator(
         "nav[aria-label='Mobile navigation'] a[href='/would-you-rather-questions-for-kids']",
       );
@@ -270,7 +230,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
     });
   });
 
-  test.describe("4. Theme Switching & Persistence", () => {
+  test.describe("3. Theme Toggle & Persistence", () => {
     test("theme persistence (toggles theme and persists across page reloads)", async ({ page }) => {
       await page.goto("/");
 

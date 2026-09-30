@@ -159,6 +159,15 @@ export function WyrExperience({
     setSelectedDifficulty(undefined);
   }, []);
 
+  const hasActiveFilters = Boolean(
+    searchKeyword.trim() !== "" ||
+    selectedAgeGroup ||
+    selectedRelationship ||
+    selectedOccasion ||
+    selectedTone ||
+    selectedDifficulty,
+  );
+
   return (
     <div className="w-full space-y-12">
       {/* 1. 核心 Live 对决 Arena */}
@@ -167,6 +176,7 @@ export function WyrExperience({
         currentIndex={currentIndex >= 0 ? currentIndex : 0}
         totalQuestions={playableQuestions.length}
         categoryBadge={categoryBadge}
+        hasActiveFilters={hasActiveFilters}
         onNext={handleNext}
         onRandom={handleRandom}
         {...(playableQuestions.length > 0
