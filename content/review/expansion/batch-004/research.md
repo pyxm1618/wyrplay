@@ -190,7 +190,8 @@ Across the production process, **50 draft ideas were actively discarded/replaced
 
 Production-screen classification:
 
-- **21** draft ideas removed because they collided with the formal bank or a historically rejected/saturated semantic pattern.
+- **18** draft ideas removed as direct or near-semantic collisions with the 236-question formal bank.
+- **3** additional draft ideas removed because they matched a historical REJECT / explicitly saturated dilemma pattern even when there was not one single clean formal counterpart.
 - **24** draft ideas removed because they duplicated or over-concentrated a Batch 004 core mechanism.
 - **5** draft ideas removed because they were too thin, confounded, or “cute but not a real dilemma.”
 
