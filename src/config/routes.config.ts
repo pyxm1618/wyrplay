@@ -34,7 +34,8 @@ export const routeDefinitions = [
   {
     route: "/would-you-rather-questions-for-kids",
     class: "public_indexable",
-    searchIntent: "find clean, engaging Would You Rather questions suitable for kids and classrooms",
+    searchIntent:
+      "find clean, engaging Would You Rather questions suitable for kids and classrooms",
     primaryKeyword: "would you rather questions for kids",
     secondaryKeywords: [
       "fun questions for kids",
@@ -46,7 +47,11 @@ export const routeDefinitions = [
       "Discover the best clean and imaginative Would You Rather questions for kids. Perfect for school classrooms, family road trips, and dinner conversations.",
     h1: "Would You Rather Questions for Kids",
     pageType: "Article",
-    relatedRoutes: ["/", "/funny-would-you-rather-questions", "/would-you-rather-questions-for-friends"],
+    relatedRoutes: [
+      "/",
+      "/funny-would-you-rather-questions",
+      "/would-you-rather-questions-for-friends",
+    ],
     lastModified: "2026-09-29",
     reviewStatus: "reviewed",
     reviewFingerprint: "968fc268db1c3fe63893b3a2730386b1301823c695193e3ba67704aab2a24781",
@@ -66,7 +71,11 @@ export const routeDefinitions = [
       "Explore hilarious and absurd Would You Rather questions guaranteed to spark laughter at parties, road trips, and lively weekend get-togethers.",
     h1: "Funny Would You Rather Questions",
     pageType: "Article",
-    relatedRoutes: ["/", "/hard-would-you-rather-questions", "/would-you-rather-questions-for-friends"],
+    relatedRoutes: [
+      "/",
+      "/hard-would-you-rather-questions",
+      "/would-you-rather-questions-for-friends",
+    ],
     lastModified: "2026-09-29",
     reviewStatus: "reviewed",
     reviewFingerprint: "960089f2b523e71bc8ef96ce4467088ac5c5ab34401783fec2156f9f6fb5956d",
@@ -74,7 +83,8 @@ export const routeDefinitions = [
   {
     route: "/hard-would-you-rather-questions",
     class: "public_indexable",
-    searchIntent: "find challenging, thought-provoking Would You Rather questions for deep discussions",
+    searchIntent:
+      "find challenging, thought-provoking Would You Rather questions for deep discussions",
     primaryKeyword: "hard would you rather questions",
     secondaryKeywords: [
       "impossible would you rather",
@@ -86,7 +96,11 @@ export const routeDefinitions = [
       "Tackle the toughest, mind-bending Would You Rather questions designed to spark fierce debates, moral dilemmas, and late-night philosophical discussions.",
     h1: "Hard Would You Rather Questions",
     pageType: "Article",
-    relatedRoutes: ["/", "/funny-would-you-rather-questions", "/would-you-rather-questions-for-couples"],
+    relatedRoutes: [
+      "/",
+      "/funny-would-you-rather-questions",
+      "/would-you-rather-questions-for-couples",
+    ],
     lastModified: "2026-09-29",
     reviewStatus: "reviewed",
     reviewFingerprint: "000fe484e3473c838f082d8e7e061c88f4bac0f6cd78971f303ddacbf3077fcf",
@@ -114,7 +128,8 @@ export const routeDefinitions = [
   {
     route: "/would-you-rather-questions-for-couples",
     class: "public_indexable",
-    searchIntent: "find romantic and thought-provoking Would You Rather questions for partners and couples",
+    searchIntent:
+      "find romantic and thought-provoking Would You Rather questions for partners and couples",
     primaryKeyword: "would you rather questions for couples",
     secondaryKeywords: [
       "date night questions",
@@ -126,7 +141,11 @@ export const routeDefinitions = [
       "Strengthen your bond and discover new sides of your partner with these curated Would You Rather questions for date nights, dinner, and road trips.",
     h1: "Would You Rather Questions for Couples",
     pageType: "Article",
-    relatedRoutes: ["/", "/hard-would-you-rather-questions", "/would-you-rather-questions-for-friends"],
+    relatedRoutes: [
+      "/",
+      "/hard-would-you-rather-questions",
+      "/would-you-rather-questions-for-friends",
+    ],
     lastModified: "2026-09-29",
     reviewStatus: "reviewed",
     reviewFingerprint: "fc11b306cb9487acf532a5c20ec47758ad5cc25b7ee3d6781dca7eabf3f83760",

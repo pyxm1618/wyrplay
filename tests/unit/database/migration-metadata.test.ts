@@ -34,7 +34,13 @@ it("rejects a journal entry whose snapshot is missing", async () => {
 
 it("rejects a coherent snapshot chain that has drifted from the current schema", async () => {
   const migrationsDirectory = await migrationFixture();
-  const snapshotPath = path.join(migrationsDirectory, "meta", "0012_snapshot.json");
+  const journalPath = path.join(migrationsDirectory, "meta", "_journal.json");
+  const journal = JSON.parse(await readFile(journalPath, "utf8")) as {
+    entries: { idx: number }[];
+  };
+  const lastIdx = journal.entries[journal.entries.length - 1]?.idx ?? 0;
+  const snapshotNumber = String(lastIdx).padStart(4, "0");
+  const snapshotPath = path.join(migrationsDirectory, "meta", `${snapshotNumber}_snapshot.json`);
   const snapshot = JSON.parse(await readFile(snapshotPath, "utf8")) as {
     tables: Record<string, { indexes: Record<string, unknown> }>;
   };

@@ -11,7 +11,9 @@ test("homepage has server-rendered purpose, one H1 and meaningful navigation", a
   expect(response?.status()).toBe(200);
   await expect(page.locator("h1")).toHaveCount(1);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(home.h1);
-  await expect(page.locator("a[href='/pricing']").first()).toBeVisible();
+  await expect(
+    page.locator("a[href='/would-you-rather-questions-for-kids']").first(),
+  ).toBeVisible();
   await expect(page.getByText(/best online tool/i)).toHaveCount(0);
 
   const html = await response?.text();

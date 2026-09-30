@@ -1,19 +1,15 @@
 import type { LandingSection } from "@/components/landing/landing-page";
 import {
-  CategoryExplorer,
-  DuelArena,
   EditorialGuideSection,
   FeaturedCollectionsSection,
-  getHomepageQuestions,
-  QuestionDirectory,
+  QUESTIONS_DATABASE,
+  WyrExperience,
 } from "@/modules/would-you-rather";
 
 import { routeRegistry } from "./routes.config";
 
 const homeRoute = routeRegistry.get("/");
 if (homeRoute.class !== "public_indexable") throw new Error("home route must be indexable");
-
-const homepageQuestions = getHomepageQuestions(50);
 
 export const homeConfig = {
   sections: [
@@ -35,13 +31,11 @@ export const homeConfig = {
       body: "Pick Option A or Option B and test your instincts. Use keyboard shortcuts (A / B) or launch Presenter Mode for big-screen projector games.",
       surface: (
         <>
-          <DuelArena questions={homepageQuestions} categoryBadge="Featured Dilemmas" />
-          <QuestionDirectory
-            questions={homepageQuestions}
-            title="Index of 50 Would You Rather Questions"
-            description="Explore our server-rendered dilemma archive below. Click 'Play this dilemma' on any question to load it instantly into the live arena above."
+          <WyrExperience
+            questions={QUESTIONS_DATABASE}
+            categoryBadge="All Curated Dilemmas"
+            showCategoryExplorer={true}
           />
-          <CategoryExplorer />
           <FeaturedCollectionsSection />
           <EditorialGuideSection />
         </>

@@ -1,9 +1,5 @@
 import Link from "next/link";
-import {
-  AUDIENCE_CATEGORIES,
-  OCCASION_CATEGORIES,
-  STYLE_CATEGORIES,
-} from "../data/questions";
+import { AUDIENCE_CATEGORIES, OCCASION_CATEGORIES, STYLE_CATEGORIES } from "../data/questions";
 
 export function CategoryExplorer() {
   return (
@@ -24,12 +20,10 @@ export function CategoryExplorer() {
           {/* Dimension 1: By Audience */}
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
             <div className="mb-4 flex items-center gap-2 border-b border-border pb-3">
-              <span className="flex size-7 items-center justify-center rounded-md bg-[#e27d32]/10 text-xs font-bold text-[#e27d32]">
+              <span className="flex size-7 items-center justify-center rounded-md bg-[#e27d32]/15 text-xs font-bold text-[#9c4307] dark:text-[#f0893f]">
                 01
               </span>
-              <h3 className="font-serif text-lg font-bold text-foreground">
-                By Audience
-              </h3>
+              <h3 className="font-serif text-lg font-bold text-foreground">By Audience</h3>
             </div>
             <p className="mb-4 text-xs text-muted">
               Targeted age-appropriate dilemmas for every group dynamic.
@@ -40,14 +34,12 @@ export function CategoryExplorer() {
                   {item.href ? (
                     <Link
                       href={item.href}
-                      className="text-sm font-semibold text-foreground underline-offset-4 transition hover:text-[#e27d32] hover:underline"
+                      className="text-sm font-semibold text-foreground underline-offset-4 transition hover:text-[#9c4307] dark:hover:text-[#f0893f] hover:underline"
                     >
                       {item.name} →
                     </Link>
                   ) : (
-                    <span className="text-sm font-medium text-foreground">
-                      {item.name}
-                    </span>
+                    <span className="text-sm font-medium text-foreground">{item.name}</span>
                   )}
                   <span className="text-right text-[11px] text-muted">
                     {item.description.slice(0, 32)}...
@@ -60,12 +52,10 @@ export function CategoryExplorer() {
           {/* Dimension 2: By Occasion */}
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
             <div className="mb-4 flex items-center gap-2 border-b border-border pb-3">
-              <span className="flex size-7 items-center justify-center rounded-md bg-[#19a4b8]/10 text-xs font-bold text-[#19a4b8]">
+              <span className="flex size-7 items-center justify-center rounded-md bg-[#19a4b8]/15 text-xs font-bold text-[#0e6d7c] dark:text-[#38c4d8]">
                 02
               </span>
-              <h3 className="font-serif text-lg font-bold text-foreground">
-                By Occasion
-              </h3>
+              <h3 className="font-serif text-lg font-bold text-foreground">By Occasion</h3>
             </div>
             <p className="mb-4 text-xs text-muted">
               Perfect conversation starters tailored for specific settings.
@@ -73,9 +63,7 @@ export function CategoryExplorer() {
             <div className="space-y-2.5">
               {OCCASION_CATEGORIES.map((item) => (
                 <div key={item.id} className="flex items-start justify-between gap-2">
-                  <span className="text-sm font-medium text-foreground">
-                    {item.name}
-                  </span>
+                  <span className="text-sm font-medium text-foreground">{item.name}</span>
                   <span className="text-right text-[11px] text-muted">
                     {item.description.slice(0, 32)}...
                   </span>
@@ -87,12 +75,10 @@ export function CategoryExplorer() {
           {/* Dimension 3: By Style */}
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
             <div className="mb-4 flex items-center gap-2 border-b border-border pb-3">
-              <span className="flex size-7 items-center justify-center rounded-md bg-[#e27d32]/10 text-xs font-bold text-[#e27d32]">
+              <span className="flex size-7 items-center justify-center rounded-md bg-[#e27d32]/15 text-xs font-bold text-[#9c4307] dark:text-[#f0893f]">
                 03
               </span>
-              <h3 className="font-serif text-lg font-bold text-foreground">
-                By Style
-              </h3>
+              <h3 className="font-serif text-lg font-bold text-foreground">By Style</h3>
             </div>
             <p className="mb-4 text-xs text-muted">
               Filter by the energy and intensity level you want.
@@ -103,14 +89,12 @@ export function CategoryExplorer() {
                   {item.href ? (
                     <Link
                       href={item.href}
-                      className="text-sm font-semibold text-foreground underline-offset-4 transition hover:text-[#19a4b8] hover:underline"
+                      className="text-sm font-semibold text-foreground underline-offset-4 transition hover:text-[#0e6d7c] dark:hover:text-[#38c4d8] hover:underline"
                     >
                       {item.name} →
                     </Link>
                   ) : (
-                    <span className="text-sm font-medium text-foreground">
-                      {item.name}
-                    </span>
+                    <span className="text-sm font-medium text-foreground">{item.name}</span>
                   )}
                   <span className="text-right text-[11px] text-muted">
                     {item.description.slice(0, 32)}...

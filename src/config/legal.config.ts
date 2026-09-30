@@ -27,8 +27,7 @@ export const legalConfig = {
   refundPolicy: {
     summary:
       "Would You Rather Questions is a completely free entertainment and educational website. No digital goods or subscriptions are sold.",
-    cancellationSummary:
-      "There are no subscriptions or recurring charges to cancel.",
+    cancellationSummary: "There are no subscriptions or recurring charges to cancel.",
   },
   subscriptionTerms: null,
   retentionRules: [
@@ -63,7 +62,7 @@ export const legalConfig = {
       {
         heading: "Cookies and Local Storage",
         paragraphs: [
-          "We use local storage strictly to remember your preferred visual theme (dark or light mode). No personal identifying cookies are tracked.",
+          "We use a first-party, HttpOnly cookie (wyr_vid) strictly to associate your anonymous choice with each dilemma and prevent duplicate submissions. We also use browser local storage to preserve your dark or light theme preference across visits. No advertising or cross-site tracking cookies are used.",
         ],
       },
     ],

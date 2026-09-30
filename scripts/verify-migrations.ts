@@ -12,7 +12,7 @@ import { verifyMigrationMetadata } from "./verify-migration-metadata";
 const databaseUrl = process.env.TEST_DATABASE_URL ?? process.env.DATABASE_URL;
 if (!databaseUrl) throw new Error("TEST_DATABASE_URL or DATABASE_URL is required");
 
-const MAIN_BASELINE_TAG = "0007_easy_stellaris";
+const MAIN_BASELINE_TAG = "0012_payment_reconciliation_seed_index";
 const database = createDatabaseClient(databaseUrl);
 
 async function resetDatabase(): Promise<void> {
@@ -38,16 +38,35 @@ async function assertLatestSchema(label: string): Promise<void> {
     "commerce_command_jobs",
     "credit_reconciliation_incidents",
     "payment_reconciliation_jobs",
+    "wyr_votes",
   ];
   const tables = await database.db.execute(sql<{ table_name: string }>`
     select table_name
     from information_schema.tables
     where table_schema = 'public'
-      and table_name in ('platform_meta','subscriptions','subscription_periods','refunds','commerce_command_jobs','credit_reconciliation_incidents','payment_reconciliation_jobs')
+      and table_name in ('platform_meta','subscriptions','subscription_periods','refunds','commerce_command_jobs','credit_reconciliation_incidents','payment_reconciliation_jobs','wyr_votes')
   `);
   const actualTables = new Set(tables.map((row) => row.table_name));
   for (const table of requiredTables) {
     if (!actualTables.has(table)) throw new Error(`${label}: missing migrated table ${table}`);
+  }
+
+  const wyrVotesColumns = await database.db.execute(sql<{ column_name: string }>`
+    select column_name
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'wyr_votes'
+  `);
+  const actualWyrColumns = new Set(wyrVotesColumns.map((row) => row.column_name));
+  for (const col of [
+    "id",
+    "question_id",
+    "anonymous_voter_id",
+    "selected_option",
+    "created_at",
+    "updated_at",
+  ]) {
+    if (!actualWyrColumns.has(col)) throw new Error(`${label}: wyr_votes.${col} is missing`);
   }
 
   const billingInterval = await database.db.execute(sql<{ column_name: string }>`

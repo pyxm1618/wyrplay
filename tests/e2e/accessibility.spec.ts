@@ -1,7 +1,17 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-for (const route of ["/", "/pricing", "/privacy"] as const) {
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    try {
+      localStorage.setItem("creat-web:analytics-consent:v1", "denied");
+    } catch {
+      // ignore
+    }
+  });
+});
+
+for (const route of ["/", "/would-you-rather-questions-for-kids", "/privacy"] as const) {
   test(`${route} has no serious or critical automated accessibility violations`, async ({
     page,
   }) => {
@@ -21,18 +31,18 @@ test("keyboard reaches primary navigation, CTA and footer", async ({ page }) => 
   await page.keyboard.press("Tab");
   await expect(page.locator(":focus")).toHaveAttribute("href", "/");
 
-  let reachedPricing = false;
+  let reachedTopic = false;
   let reachedFooter = false;
-  for (let index = 0; index < 30; index += 1) {
+  for (let index = 0; index < 100; index += 1) {
     const focused = page.locator(":focus");
     const href = await focused.getAttribute("href").catch(() => null);
-    if (href === "/pricing") reachedPricing = true;
+    if (href === "/would-you-rather-questions-for-kids") reachedTopic = true;
     if (href === "/privacy") reachedFooter = true;
-    if (reachedPricing && reachedFooter) break;
+    if (reachedTopic && reachedFooter) break;
     await page.keyboard.press("Tab");
   }
 
-  expect(reachedPricing).toBe(true);
+  expect(reachedTopic).toBe(true);
   expect(reachedFooter).toBe(true);
 });
 

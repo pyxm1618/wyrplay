@@ -18,7 +18,7 @@
   --border-active: rgba(255, 255, 255, 0.28);
   --muted: #9da1b0;
   --muted-dark: #5c6070;
-  
+
   --accent: #e27d32;
   --accent-hover: #f0893f;
   --accent-foreground: #ffffff;
@@ -50,11 +50,11 @@
   --surface-muted: #f0efe9;
   --border: rgba(0, 0, 0, 0.08);
   --border-active: rgba(0, 0, 0, 0.24);
-  --muted: #575965;
+  --muted: #4b4e5a;
   --muted-dark: #8e909d;
-  
-  --accent: #e27d32;
-  --accent-hover: #c75c12;
+
+  --accent: #9c4307;
+  --accent-hover: #803504;
   --accent-foreground: #ffffff;
   --inverse: #121316;
   --inverse-foreground: #f7f6f2;
@@ -89,8 +89,8 @@
   --color-polarity-b: var(--polarity-b);
 
   --font-sans:
-    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, sans-serif;
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
   --font-serif: var(--font-serif);
 
   --text-display: 3.5rem;
@@ -105,6 +105,10 @@
 
   body {
     background-color: var(--color-background);
+    background-image:
+      radial-gradient(circle at 35% 0%, rgba(226, 125, 50, 0.035) 0%, transparent 55%),
+      radial-gradient(circle at 80% 90%, rgba(25, 164, 184, 0.035) 0%, transparent 50%);
+    background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -112,18 +116,9 @@
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 35% 0%, rgba(226, 125, 50, 0.035) 0%, transparent 55%),
-      radial-gradient(circle at 80% 90%, rgba(25, 164, 184, 0.035) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 
   :focus-visible {

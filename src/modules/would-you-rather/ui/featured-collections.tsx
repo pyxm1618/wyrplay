@@ -19,7 +19,8 @@ export function FeaturedCollectionsSection() {
           Featured Collections
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-          Explore Would You Rather Questions tailored for specific occasions and audiences. Each collection is fully playable and independently indexed.
+          Explore Would You Rather Questions tailored for specific occasions and audiences. Each
+          collection is fully playable and independently indexed.
         </p>
       </div>
 
@@ -27,7 +28,8 @@ export function FeaturedCollectionsSection() {
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {COLLECTION_KEYS.map((key) => {
           const col = FEATURED_COLLECTIONS[key];
-          const sampleQuestions = getQuestionsByCollection(key).slice(0, 3);
+          const approvedQuestions = getQuestionsByCollection(key);
+          const sampleQuestions = approvedQuestions.slice(0, 3);
 
           return (
             <article
@@ -40,7 +42,9 @@ export function FeaturedCollectionsSection() {
                     {col.badge}
                   </span>
                   <span className="font-mono text-xs text-muted">
-                    {getQuestionsByCollection(key).length}+ questions
+                    {approvedQuestions.length > 0
+                      ? `${approvedQuestions.length}+ questions`
+                      : "Under Review"}
                   </span>
                 </div>
 
@@ -50,22 +54,26 @@ export function FeaturedCollectionsSection() {
                   </Link>
                 </h3>
 
-                <p className="mt-2 text-xs leading-relaxed text-muted sm:text-sm">
-                  {col.subtitle}
-                </p>
+                <p className="mt-2 text-xs leading-relaxed text-muted sm:text-sm">{col.subtitle}</p>
 
                 {/* Sample Previews */}
                 <div className="mt-5 space-y-2 border-t border-border pt-4">
                   <span className="text-[11px] font-bold tracking-wider text-muted uppercase">
                     Sample questions:
                   </span>
-                  <ul className="space-y-1.5 text-xs text-foreground/80">
-                    {sampleQuestions.map((q) => (
-                      <li key={q.id} className="line-clamp-1 list-inside list-disc">
-                        {q.question}
-                      </li>
-                    ))}
-                  </ul>
+                  {sampleQuestions.length > 0 ? (
+                    <ul className="space-y-1.5 text-xs text-foreground/80">
+                      {sampleQuestions.map((q) => (
+                        <li key={q.id} className="line-clamp-1 list-inside list-disc">
+                          {q.question}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-xs text-muted italic">
+                      Dilemmas currently undergoing editorial review.
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -73,7 +81,7 @@ export function FeaturedCollectionsSection() {
               <div className="mt-6 flex items-center justify-between border-t border-border pt-4 text-xs font-bold">
                 <Link
                   href={col.route}
-                  className="inline-flex items-center gap-1 text-[#e27d32] hover:underline"
+                  className="inline-flex items-center gap-1 text-[#b8520e] dark:text-[#f0893f] hover:underline"
                 >
                   <span>Explore full list</span>
                   <span>→</span>

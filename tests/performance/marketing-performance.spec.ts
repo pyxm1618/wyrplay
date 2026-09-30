@@ -7,7 +7,7 @@ declare global {
   }
 }
 
-const routes = ["/", "/seo-starter-checklist"] as const;
+const routes = ["/", "/would-you-rather-questions-for-kids"] as const;
 
 for (const route of routes) {
   test(`${route} stays within marketing release budgets`, async ({ page, request }) => {

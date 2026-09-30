@@ -15,7 +15,7 @@ export const metadata: Metadata = rootMetadata();
 export default async function MarketingLayout({ children }: Readonly<{ children: ReactNode }>) {
   await connection();
   return (
-    <html lang={siteConfig.defaultLocale}>
+    <html lang={siteConfig.defaultLocale} data-theme="dark">
       <body>
         <div className="flex min-h-screen flex-col">
           <SiteHeader />

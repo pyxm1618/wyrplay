@@ -1,12 +1,35 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useEffect, useSyncExternalStore } from "react";
+
+function safeGetStorageTheme(): "dark" | "light" | null {
+  try {
+    if (typeof window === "undefined") return null;
+    return (localStorage.getItem("wyr-theme") as "dark" | "light" | null) ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function safeSetStorageTheme(theme: "dark" | "light"): void {
+  try {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("wyr-theme", theme);
+    }
+  } catch {
+    // 保护由于第三方 Cookie 阻止或隐私模式禁用 localStorage 的情况
+  }
+}
 
 function getThemeSnapshot(): "dark" | "light" {
   if (typeof window === "undefined") return "dark";
-  const saved = localStorage.getItem("wyr-theme") as "dark" | "light" | null;
-  if (saved) return saved;
-  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  const saved = safeGetStorageTheme();
+  if (saved === "dark" || saved === "light") return saved;
+  try {
+    return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  } catch {
+    return "dark";
+  }
 }
 
 function getServerSnapshot(): "dark" | "light" {
@@ -14,23 +37,42 @@ function getServerSnapshot(): "dark" | "light" {
 }
 
 function subscribeTheme(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+
   window.addEventListener("storage", callback);
-  const media = window.matchMedia("(prefers-color-scheme: light)");
-  media.addEventListener("change", callback);
+  let media: MediaQueryList | null = null;
+  try {
+    media = window.matchMedia("(prefers-color-scheme: light)");
+    media.addEventListener("change", callback);
+  } catch {
+    // ignore
+  }
+
   return () => {
     window.removeEventListener("storage", callback);
-    media.removeEventListener("change", callback);
+    media?.removeEventListener("change", callback);
   };
 }
 
 export function ThemeToggle() {
   const theme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerSnapshot);
 
+  // 挂载与主题变更时，确保真实 DOM 根节点的 data-theme 属性与当前状态严格同步
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
+  }, [theme]);
+
   const toggle = () => {
     const next = theme === "dark" ? "light" : "dark";
-    localStorage.setItem("wyr-theme", next);
-    document.documentElement.setAttribute("data-theme", next);
-    window.dispatchEvent(new Event("storage"));
+    safeSetStorageTheme(next);
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-theme", next);
+    }
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event("storage"));
+    }
   };
 
   return (

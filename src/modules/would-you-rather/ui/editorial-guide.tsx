@@ -8,10 +8,18 @@ export function EditorialGuideSection() {
             What Is Would You Rather?
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
-            <strong>Would You Rather Questions</strong> power a timeless social decision game where players are presented with two distinct, often challenging or absurd alternatives, and must choose exactly one. Unlike ordinary trivia or quiz games, there are no mathematically correct answers. The entire magic lies in the forced choice—revealing personal values, eccentric humor, hidden priorities, and instinctive logic.
+            <strong>Would You Rather Questions</strong> power a timeless social decision game where
+            players are presented with two distinct, often challenging or absurd alternatives, and
+            must choose exactly one. Unlike ordinary trivia or quiz games, there are no
+            mathematically correct answers. The entire magic lies in the forced choice—revealing
+            personal values, eccentric humor, hidden priorities, and instinctive logic.
           </p>
           <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
-            From harmless, clean Would You Rather questions for kids in morning classrooms to deep moral dilemmas among lifelong friends and couples on date night, the format cuts through small talk instantly. Whether played casually around a dinner table or as an energizing corporate icebreaker, every question ignites spontaneous debate, surprising defenses, and genuine laughter.
+            From harmless, clean Would You Rather questions for kids in morning classrooms to deep
+            moral dilemmas among lifelong friends and couples on date night, the format cuts through
+            small talk instantly. Whether played casually around a dinner table or as an energizing
+            corporate icebreaker, every question ignites spontaneous debate, surprising defenses,
+            and genuine laughter.
           </p>
         </article>
 
@@ -30,11 +38,10 @@ export function EditorialGuideSection() {
                 <span className="flex size-7 items-center justify-center rounded-full bg-[#e27d32]/10 font-mono text-xs font-bold text-[#e27d32]">
                   1
                 </span>
-                <h3 className="mt-3 text-base font-bold text-foreground">
-                  Pick a Dilemma
-                </h3>
+                <h3 className="mt-3 text-base font-bold text-foreground">Pick a Dilemma</h3>
                 <p className="mt-2 text-xs leading-relaxed text-muted">
-                  Choose a question from our catalog that matches your group&apos;s setting and mood.
+                  Choose a question from our catalog that matches your group&apos;s setting and
+                  mood.
                 </p>
               </div>
             </li>
@@ -44,11 +51,10 @@ export function EditorialGuideSection() {
                 <span className="flex size-7 items-center justify-center rounded-full bg-[#19a4b8]/10 font-mono text-xs font-bold text-[#19a4b8]">
                   2
                 </span>
-                <h3 className="mt-3 text-base font-bold text-foreground">
-                  Make the Choice
-                </h3>
+                <h3 className="mt-3 text-base font-bold text-foreground">Make the Choice</h3>
                 <p className="mt-2 text-xs leading-relaxed text-muted">
-                  Everyone in the room commits to Option A or Option B. No escaping with &quot;neither&quot; or &quot;both&quot;!
+                  Everyone in the room commits to Option A or Option B. No escaping with
+                  &quot;neither&quot; or &quot;both&quot;!
                 </p>
               </div>
             </li>
@@ -58,11 +64,10 @@ export function EditorialGuideSection() {
                 <span className="flex size-7 items-center justify-center rounded-full bg-[#e27d32]/10 font-mono text-xs font-bold text-[#e27d32]">
                   3
                 </span>
-                <h3 className="mt-3 text-base font-bold text-foreground">
-                  Defend Your Logic
-                </h3>
+                <h3 className="mt-3 text-base font-bold text-foreground">Defend Your Logic</h3>
                 <p className="mt-2 text-xs leading-relaxed text-muted">
-                  Explain your reasoning. The hilarious disagreements and unexpected logic are where the fun happens.
+                  Explain your reasoning. The hilarious disagreements and unexpected logic are where
+                  the fun happens.
                 </p>
               </div>
             </li>
@@ -72,9 +77,7 @@ export function EditorialGuideSection() {
                 <span className="flex size-7 items-center justify-center rounded-full bg-[#19a4b8]/10 font-mono text-xs font-bold text-[#19a4b8]">
                   4
                 </span>
-                <h3 className="mt-3 text-base font-bold text-foreground">
-                  Next Question
-                </h3>
+                <h3 className="mt-3 text-base font-bold text-foreground">Next Question</h3>
                 <p className="mt-2 text-xs leading-relaxed text-muted">
                   Hit Next or randomize the deck to keep the conversational momentum flowing.
                 </p>

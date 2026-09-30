@@ -1,9 +1,5 @@
 import type { LandingSection } from "@/components/landing/landing-page";
-import {
-  DuelArena,
-  getQuestionsByCollection,
-  QuestionDirectory,
-} from "@/modules/would-you-rather";
+import { getQuestionsByCollection, WyrExperience } from "@/modules/would-you-rather";
 
 import { routeRegistry } from "./routes.config";
 
@@ -44,7 +40,10 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         eyebrow: "Clean & Classroom Safe",
         h1: kidsRoute.h1,
         lead: "A wholesome, imaginative collection of Would You Rather questions designed specifically for children, elementary students, and family car trips.",
-        primaryCta: { label: "Play kids dilemmas", href: "/would-you-rather-questions-for-kids#play" },
+        primaryCta: {
+          label: "Play kids dilemmas",
+          href: "/would-you-rather-questions-for-kids#play",
+        },
         secondaryCta: { label: "Return to home page", href: "/" },
       },
       {
@@ -54,14 +53,11 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         heading: "Interactive Kids Arena",
         body: "Tap A or B to choose, or use Presenter Mode for morning meetings, smartboard activities, and family game nights.",
         surface: (
-          <>
-            <DuelArena questions={kidsQuestions} categoryBadge="Kids & Classroom Deck" />
-            <QuestionDirectory
-              questions={kidsQuestions}
-              title="Full List of Kids Questions"
-              description="Browse all safe and imaginative dilemmas below. Click 'Play this dilemma' to load any question into the arena."
-            />
-          </>
+          <WyrExperience
+            questions={kidsQuestions}
+            defaultCollection="kids"
+            categoryBadge="Kids & Classroom Deck"
+          />
         ),
       },
       {
@@ -147,7 +143,10 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         eyebrow: "Absurd & Laugh-Out-Loud",
         h1: funnyRoute.h1,
         lead: "A wildly hilarious collection of bizarre superpowers, embarrassing mishaps, and utterly ridiculous trade-offs that guarantee laughter.",
-        primaryCta: { label: "Play funny dilemmas", href: "/funny-would-you-rather-questions#play" },
+        primaryCta: {
+          label: "Play funny dilemmas",
+          href: "/funny-would-you-rather-questions#play",
+        },
         secondaryCta: { label: "Return to home page", href: "/" },
       },
       {
@@ -157,14 +156,11 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         heading: "Interactive Comedy Arena",
         body: "Choose your ridiculous fate below. No right answers, just pure unadulterated comedy.",
         surface: (
-          <>
-            <DuelArena questions={funnyQuestions} categoryBadge="Comedy & Absurd Deck" />
-            <QuestionDirectory
-              questions={funnyQuestions}
-              title="Full List of Funny Questions"
-              description="Browse the complete archive of hilarious trade-offs. Tap 'Play this dilemma' to test any scenario."
-            />
-          </>
+          <WyrExperience
+            questions={funnyQuestions}
+            defaultCollection="funny"
+            categoryBadge="Comedy & Absurd Deck"
+          />
         ),
       },
       {
@@ -260,14 +256,11 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         heading: "Interactive Crucible Arena",
         body: "Two painful trade-offs with zero compromise. Stand your ground and explain your underlying philosophy.",
         surface: (
-          <>
-            <DuelArena questions={hardQuestions} categoryBadge="Hard & Moral Deck" />
-            <QuestionDirectory
-              questions={hardQuestions}
-              title="Full List of Hard Dilemmas"
-              description="Explore all thought-provoking, high-stakes trade-offs. Click 'Play this dilemma' to engage."
-            />
-          </>
+          <WyrExperience
+            questions={hardQuestions}
+            defaultCollection="hard"
+            categoryBadge="Hard & Moral Deck"
+          />
         ),
       },
       {
@@ -353,7 +346,10 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         eyebrow: "Hangouts & Game Nights",
         h1: friendsRoute.h1,
         lead: "Hilarious banter, loyalties, and playful roasts designed to test how well you and your closest crew truly know each other.",
-        primaryCta: { label: "Play friends dilemmas", href: "/would-you-rather-questions-for-friends#play" },
+        primaryCta: {
+          label: "Play friends dilemmas",
+          href: "/would-you-rather-questions-for-friends#play",
+        },
         secondaryCta: { label: "Return to home page", href: "/" },
       },
       {
@@ -363,14 +359,11 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         heading: "Interactive Friends Arena",
         body: "Find out who has your back, who shares your habits, and who has the most chaotic personality in your group.",
         surface: (
-          <>
-            <DuelArena questions={friendsQuestions} categoryBadge="Friends Game Night Deck" />
-            <QuestionDirectory
-              questions={friendsQuestions}
-              title="Full List of Friends Questions"
-              description="Explore all group questions below. Click 'Play this dilemma' to trigger it on screen."
-            />
-          </>
+          <WyrExperience
+            questions={friendsQuestions}
+            defaultCollection="friends"
+            categoryBadge="Friends Game Night Deck"
+          />
         ),
       },
       {
@@ -440,7 +433,10 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         order: 60,
         heading: "Gather Your Crew",
         body: "Start the game and find out which of your friends is secretly the most unhinged.",
-        cta: { label: "Start playing with friends", href: "/would-you-rather-questions-for-friends#play" },
+        cta: {
+          label: "Start playing with friends",
+          href: "/would-you-rather-questions-for-friends#play",
+        },
       },
     ],
   },
@@ -456,7 +452,10 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         eyebrow: "Date Night & Relationship Bonding",
         h1: couplesRoute.h1,
         lead: "Sweet, insightful, and intriguing conversation starters crafted to deepen intimacy, spark shared laughter, and uncover hidden perspectives.",
-        primaryCta: { label: "Play couples dilemmas", href: "/would-you-rather-questions-for-couples#play" },
+        primaryCta: {
+          label: "Play couples dilemmas",
+          href: "/would-you-rather-questions-for-couples#play",
+        },
         secondaryCta: { label: "Return to home page", href: "/" },
       },
       {
@@ -466,14 +465,11 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         heading: "Interactive Couples Arena",
         body: "Unpack relationship habits, travel preferences, and life goals over coffee, wine, or a quiet road trip.",
         surface: (
-          <>
-            <DuelArena questions={couplesQuestions} categoryBadge="Couples & Date Night Deck" />
-            <QuestionDirectory
-              questions={couplesQuestions}
-              title="Full List of Couples Questions"
-              description="Browse through all relationship conversation starters. Tap 'Play this dilemma' to discuss together."
-            />
-          </>
+          <WyrExperience
+            questions={couplesQuestions}
+            defaultCollection="couples"
+            categoryBadge="Couples & Date Night Deck"
+          />
         ),
       },
       {
@@ -543,7 +539,10 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         order: 60,
         heading: "Spark Tonight's Conversation",
         body: "Pour a drink, get comfortable, and discover something new about your partner.",
-        cta: { label: "Play couples questions now", href: "/would-you-rather-questions-for-couples#play" },
+        cta: {
+          label: "Play couples questions now",
+          href: "/would-you-rather-questions-for-couples#play",
+        },
       },
     ],
   },

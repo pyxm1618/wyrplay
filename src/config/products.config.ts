@@ -5,7 +5,7 @@ export const productDefinitions = [
   {
     key: "overlap-pro",
     version: 1,
-    enabled: true,
+    enabled: false,
     commercialModel: "one_time",
     currency: "USD",
     expectedPrice: "1.88",

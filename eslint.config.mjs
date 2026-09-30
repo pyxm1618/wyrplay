@@ -159,7 +159,7 @@ const productModuleBoundaryRule = {
         .slice(1)
         .join("/")
         .replace(/\.(?:ts|tsx)$/, "");
-      if (entry !== "" && entry !== "index") {
+      if (entry !== "" && entry !== "index" && entry !== "server") {
         context.report({ node: sourceNode, messageId: "deepImport" });
       }
     }
@@ -194,7 +194,14 @@ const productModuleBoundaryRule = {
 export default defineConfig([
   ...nextVitals,
   ...nextTypeScript,
-  globalIgnores([".next/**", ".worktrees/**", "coverage/**", "playwright-report/**", "test-results/**"]),
+  globalIgnores([
+    ".next/**",
+    ".worktrees/**",
+    "coverage/**",
+    "examples/**",
+    "playwright-report/**",
+    "test-results/**",
+  ]),
   {
     files: ["src/platform/**/*.ts", "src/platform/**/*.tsx"],
     rules: {

@@ -17,3 +17,4 @@ export * from "./commerce-schema";
 export * from "./commerce-event-schema";
 export * from "./credit-schema";
 export * from "./subscription-schema";
+export * from "./wyr-schema";
