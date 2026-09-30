@@ -600,9 +600,9 @@
     "primaryAgeBand": "7-9",
     "relationships": [],
     "scenarios": [],
-    "question": "Would you rather get a map with no labels or labels with no map?",
-    "optionA": "Get the unlabeled map",
-    "optionB": "Get the labels without the map",
+    "question": "Would you rather solve a picture puzzle where pieces can rotate but cannot slide or can slide but cannot rotate?",
+    "optionA": "Rotate pieces without sliding them",
+    "optionB": "Slide pieces without rotating them",
     "primaryCollection": "kids",
     "ageBands": [
       "7-9",
@@ -614,12 +614,12 @@
     ],
     "difficulty": "hard",
     "topics": [
-      "exploration",
-      "puzzles"
+      "puzzles",
+      "games"
     ],
-    "coreDilemma": "spatial structure vs named information",
-    "dilemmaFamily": "information",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare having spatial relationships without names versus names without spatial relationships.",
+    "coreDilemma": "rotation freedom vs position freedom",
+    "dilemmaFamily": "constraint",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two independent movement freedoms inside the same visual puzzle.",
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -1701,9 +1701,9 @@
     "primaryAgeBand": null,
     "relationships": [],
     "scenarios": [],
-    "question": "Would you rather own basic gear for a hobby anytime or borrow premium gear only when it is available?",
-    "optionA": "Own basic gear anytime",
-    "optionB": "Borrow premium gear when available",
+    "question": "Would you rather repair a hobby project with a borrowed specialized tool or improvise a solution using only tools you already own?",
+    "optionA": "Borrow the specialized tool",
+    "optionB": "Improvise with tools you own",
     "primaryCollection": "adults",
     "ageBands": [
       "adults"
@@ -1715,11 +1715,11 @@
     "difficulty": "hard",
     "topics": [
       "hobbies",
-      "resource"
+      "problem-solving"
     ],
-    "coreDilemma": "reliable ownership vs higher-quality access",
+    "coreDilemma": "specialized borrowed capability vs improvised available capability",
     "dilemmaFamily": "resource",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare always-available basic equipment versus occasional premium equipment.",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare solving a hobby problem with external specialization versus local improvisation.",
     "safety": {
       "kidsSafe": false,
       "teenSafe": true,
@@ -5800,9 +5800,9 @@
     "scenarios": [
       "party"
     ],
-    "question": "Would you rather cross the room with a balloon held between your knees or a beanbag balanced on one shoulder?",
-    "optionA": "Hold the balloon between your knees",
-    "optionB": "Balance the beanbag on your shoulder",
+    "question": "Would you rather carry a long paper streamer across the room without tearing it or carry a stack of cups without dropping any?",
+    "optionA": "Protect the paper streamer",
+    "optionB": "Balance the cup stack",
     "primaryCollection": "party",
     "ageBands": [
       "7-9",
@@ -5812,7 +5812,7 @@
     ],
     "moods": [
       "funny",
-      "weird"
+      "light"
     ],
     "difficulty": "easy",
     "topics": [
@@ -5820,9 +5820,9 @@
       "movement",
       "games"
     ],
-    "coreDilemma": "leg-controlled carrying vs shoulder balance",
+    "coreDilemma": "protect fragile length vs stabilize stacked objects",
     "dilemmaFamily": "movement",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two body-control party challenges that do not repeat the 4-6 elbow-balloon task.",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two party relay challenges demanding different kinds of careful movement.",
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -6152,9 +6152,9 @@
     "scenarios": [
       "party"
     ],
-    "question": "Would you rather have a party room where the floor lights up under every step or where the walls change color when people laugh?",
-    "optionA": "Use the light-up floor",
-    "optionB": "Use the laughter-color walls",
+    "question": "Would you rather play a party game where your team can protect one point from being lost or copy one opponent's point once?",
+    "optionA": "Protect one team point",
+    "optionB": "Copy one opponent point",
     "primaryCollection": "party",
     "ageBands": [
       "7-9",
@@ -6163,18 +6163,18 @@
       "adults"
     ],
     "moods": [
-      "weird",
-      "imaginative"
+      "funny",
+      "thoughtful"
     ],
-    "difficulty": "easy",
+    "difficulty": "hard",
     "topics": [
       "party",
-      "fantasy",
-      "sensory"
+      "games",
+      "strategy"
     ],
-    "coreDilemma": "movement-reactive environment vs laughter-reactive environment",
-    "dilemmaFamily": "imagination",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two playful party environments reacting to different group behaviors.",
+    "coreDilemma": "defensive protection vs opportunistic copying",
+    "dilemmaFamily": "competition",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare a limited defensive game power versus a limited imitation-based scoring power.",
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -7745,16 +7745,16 @@
     "scenarios": [
       "date-night"
     ],
-    "question": "Would you rather cook together when one person can read the recipe but not taste or one person can taste but not read the recipe?",
-    "optionA": "Have the recipe-reader role",
-    "optionB": "Have the taster role",
+    "question": "Would you rather cook together with one person choosing the flavors and the other choosing the presentation, or swap those roles halfway through?",
+    "optionA": "Keep separate flavor and presentation roles",
+    "optionB": "Swap roles halfway through",
     "primaryCollection": "date-night",
     "ageBands": [
       "adults"
     ],
     "moods": [
       "funny",
-      "weird"
+      "thoughtful"
     ],
     "difficulty": "hard",
     "topics": [
@@ -7762,9 +7762,9 @@
       "food",
       "teamwork"
     ],
-    "coreDilemma": "instruction access vs sensory feedback",
-    "dilemmaFamily": "teamwork",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two asymmetric cooking roles where each partner holds a different kind of information.",
+    "coreDilemma": "stable complementary roles vs mid-task role reversal",
+    "dilemmaFamily": "role",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare a date-night cooking task comparing stable complementary roles with deliberate role reversal.",
     "safety": {
       "kidsSafe": false,
       "teenSafe": false,
@@ -8078,16 +8078,16 @@
     "scenarios": [
       "date-night"
     ],
-    "question": "Would you rather visit a gallery where you can touch every replica or a small theater where you can meet the performers afterward?",
-    "optionA": "Explore touchable replicas",
-    "optionB": "Meet performers after the show",
+    "question": "Would you rather visit a live craft demonstration where you can ask one question or an interactive projection exhibit where you can control one visual element?",
+    "optionA": "Ask one question at the craft demo",
+    "optionB": "Control one projection element",
     "primaryCollection": "date-night",
     "ageBands": [
       "adults"
     ],
     "moods": [
-      "light",
-      "thoughtful"
+      "imaginative",
+      "light"
     ],
     "difficulty": "hard",
     "topics": [
@@ -8095,9 +8095,9 @@
       "culture",
       "experiences"
     ],
-    "coreDilemma": "hands-on art access vs human creator access",
+    "coreDilemma": "human expert interaction vs system interaction",
     "dilemmaFamily": "experience",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare physical access to art versus personal access to performers.",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare limited access to a human maker versus limited control over an interactive exhibit.",
     "safety": {
       "kidsSafe": false,
       "teenSafe": false,
@@ -8298,9 +8298,9 @@
     "scenarios": [
       "icebreakers"
     ],
-    "question": "Would you rather always know the exact distance to something you can see or the exact weight of something you can lift?",
-    "optionA": "Know exact distance",
-    "optionB": "Know exact weight",
+    "question": "Would you rather instantly notice when a picture is slightly crooked or when a song is slightly off-beat?",
+    "optionA": "Notice crooked pictures",
+    "optionB": "Notice off-beat songs",
     "primaryCollection": "icebreakers",
     "ageBands": [
       "10-12",
@@ -8309,16 +8309,16 @@
     ],
     "moods": [
       "weird",
-      "imaginative"
+      "funny"
     ],
-    "difficulty": "hard",
+    "difficulty": "easy",
     "topics": [
-      "skills",
+      "sensory",
       "daily-life"
     ],
-    "coreDilemma": "distance intuition vs weight intuition",
+    "coreDilemma": "visual alignment sensitivity vs rhythm sensitivity",
     "dilemmaFamily": "sensory",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two neutral estimation super-skills that reveal preference without personal disclosure.",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two harmless precision sensitivities across vision and rhythm.",
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
