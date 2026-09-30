@@ -1468,25 +1468,25 @@
       "friends"
     ],
     "scenarios": [],
-    "question": "Would you rather play a game where one rule changes every round or one where the score stays hidden until the end?",
-    "optionA": "Change one rule every round",
-    "optionB": "Hide the score until the end",
+    "question": "Would you rather play a strategy game where you can see every move but not the score or see the score but only the last three moves?",
+    "optionA": "See every move but not the score",
+    "optionB": "See the score but only three moves",
     "primaryCollection": "teens",
     "ageBands": [
       "teens"
     ],
     "moods": [
       "weird",
-      "funny"
+      "thoughtful"
     ],
     "difficulty": "hard",
     "topics": [
       "games",
       "strategy"
     ],
-    "coreDilemma": "changing rules vs hidden progress",
-    "dilemmaFamily": "competition",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare uncertainty in the rules versus uncertainty in the score.",
+    "coreDilemma": "full action history vs full performance status",
+    "dilemmaFamily": "information",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare complete knowledge of play history versus complete knowledge of score, without repeating rule-change mechanics.",
     "safety": {
       "kidsSafe": false,
       "teenSafe": true,
@@ -2686,9 +2686,9 @@
       "friends"
     ],
     "scenarios": [],
-    "question": "Would you rather do a friend challenge where everyone has the same materials or one where everyone gets different mystery materials?",
-    "optionA": "Use identical materials",
-    "optionB": "Use different mystery materials",
+    "question": "Would you rather have a friend challenge where everyone knows the goal but only one person knows the time limit or everyone knows the time limit but only one person knows the goal?",
+    "optionA": "One person knows the time limit",
+    "optionB": "One person knows the goal",
     "primaryCollection": "friends",
     "ageBands": [
       "10-12",
@@ -2696,18 +2696,18 @@
       "adults"
     ],
     "moods": [
-      "imaginative",
+      "weird",
       "thoughtful"
     ],
     "difficulty": "hard",
     "topics": [
       "friendship",
-      "creativity",
-      "games"
+      "games",
+      "teamwork"
     ],
-    "coreDilemma": "equal resources vs asymmetric resources",
-    "dilemmaFamily": "resource",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare fair identical inputs versus creative asymmetry in a friend challenge.",
+    "coreDilemma": "centralized timing information vs centralized objective information",
+    "dilemmaFamily": "information",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare different critical information being concentrated in one teammate.",
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3863,26 +3863,26 @@
       "couples"
     ],
     "scenarios": [],
-    "question": "Would you rather try to recreate a regional dish from taste alone or recreate a traditional visual pattern after seeing it once?",
-    "optionA": "Recreate the dish from taste",
-    "optionB": "Recreate the pattern from memory",
+    "question": "Would you rather visit a craft workshop where you can keep one imperfect attempt or watch a master create one perfect piece you cannot take home?",
+    "optionA": "Keep your imperfect attempt",
+    "optionB": "Watch the master's perfect piece",
     "primaryCollection": "couples",
     "ageBands": [
       "adults"
     ],
     "moods": [
-      "imaginative",
-      "weird"
+      "thoughtful",
+      "imaginative"
     ],
     "difficulty": "hard",
     "topics": [
       "relationships",
       "culture",
-      "food"
+      "creativity"
     ],
-    "coreDilemma": "flavor memory reconstruction vs visual memory reconstruction",
-    "dilemmaFamily": "memory",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two cultural reconstruction challenges based on different sensory memories.",
+    "coreDilemma": "personal imperfect artifact vs witnessed expert mastery",
+    "dilemmaFamily": "experience",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare personal participation with an imperfect keepsake versus observing exceptional expertise without ownership.",
     "safety": {
       "kidsSafe": false,
       "teenSafe": false,
@@ -4316,25 +4316,25 @@
       "coworkers"
     ],
     "scenarios": [],
-    "question": "Would you rather start a creative exercise from three random desk objects or from one random photograph?",
-    "optionA": "Use three desk objects",
-    "optionB": "Use one random photograph",
+    "question": "Would you rather start a creative work exercise by removing one feature from an everyday object or adding one impossible feature to it?",
+    "optionA": "Remove one everyday feature",
+    "optionB": "Add one impossible feature",
     "primaryCollection": "coworkers",
     "ageBands": [
       "adults"
     ],
     "moods": [
       "imaginative",
-      "light"
+      "funny"
     ],
-    "difficulty": "easy",
+    "difficulty": "hard",
     "topics": [
       "work",
       "creativity"
     ],
-    "coreDilemma": "multi-object prompt vs single-image prompt",
+    "coreDilemma": "simplify by subtraction vs transform by impossible addition",
     "dilemmaFamily": "creativity",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two different prompt structures for workplace creative thinking.",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare creative ideation through subtracting a familiar function versus adding an impossible one.",
     "safety": {
       "kidsSafe": false,
       "teenSafe": true,
@@ -4761,9 +4761,9 @@
       "coworkers"
     ],
     "scenarios": [],
-    "question": "Would you rather have the team invent a fictional product from a random object or invent a fictional service from a random word?",
-    "optionA": "Invent a product from an object",
-    "optionB": "Invent a service from a word",
+    "question": "Would you rather have the team turn a complaint into a fictional product idea or turn a compliment into a fictional service idea?",
+    "optionA": "Turn a complaint into a product",
+    "optionB": "Turn a compliment into a service",
     "primaryCollection": "coworkers",
     "ageBands": [
       "adults"
@@ -4772,15 +4772,15 @@
       "funny",
       "imaginative"
     ],
-    "difficulty": "easy",
+    "difficulty": "hard",
     "topics": [
       "work",
       "creativity",
-      "games"
+      "communication"
     ],
-    "coreDilemma": "object-triggered invention vs word-triggered invention",
+    "coreDilemma": "solve a frustration vs amplify a delight",
     "dilemmaFamily": "creativity",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two playful workplace invention prompts with different starting media.",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare using negative feedback as an invention trigger versus positive feedback as an expansion trigger.",
     "safety": {
       "kidsSafe": false,
       "teenSafe": true,
@@ -5083,27 +5083,27 @@
     "scenarios": [
       "classroom"
     ],
-    "question": "Would you rather have every team get the same materials but a different goal or the same goal but different materials?",
-    "optionA": "Same materials, different goals",
-    "optionB": "Same goal, different materials",
+    "question": "Would you rather have every classroom team receive the same goal with a secret bonus condition or a different goal with no hidden conditions?",
+    "optionA": "Same goal with a secret bonus condition",
+    "optionB": "Different goals with everything visible",
     "primaryCollection": "classroom",
     "ageBands": [
       "10-12",
       "teens"
     ],
     "moods": [
-      "imaginative",
+      "weird",
       "thoughtful"
     ],
     "difficulty": "hard",
     "topics": [
       "school",
       "teamwork",
-      "creativity"
+      "games"
     ],
-    "coreDilemma": "vary objectives vs vary resources",
-    "dilemmaFamily": "resource",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare classroom challenge asymmetry in goals versus in materials.",
+    "coreDilemma": "shared objective with hidden incentive vs varied objectives with full transparency",
+    "dilemmaFamily": "information",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare class teams differing by hidden incentives versus by visible objectives.",
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -5879,9 +5879,9 @@
     "scenarios": [
       "party"
     ],
-    "question": "Would you rather play a party puzzle where one clue is locked until someone laughs or one where a clue appears only when everyone is silent?",
-    "optionA": "Unlock a clue with laughter",
-    "optionB": "Reveal a clue with silence",
+    "question": "Would you rather play a party puzzle where clues appear after three correct answers or after three creative wrong answers?",
+    "optionA": "Unlock clues with correct answers",
+    "optionB": "Unlock clues with creative wrong answers",
     "primaryCollection": "party",
     "ageBands": [
       "10-12",
@@ -5896,11 +5896,11 @@
     "topics": [
       "party",
       "games",
-      "fantasy"
+      "creativity"
     ],
-    "coreDilemma": "trigger by noise vs trigger by silence",
-    "dilemmaFamily": "sensory",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare opposite group sound states controlling clue access.",
+    "coreDilemma": "reward correctness vs reward inventive failure",
+    "dilemmaFamily": "competition",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare progress triggered by accuracy versus deliberately creative mistakes.",
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -5996,9 +5996,9 @@
     "scenarios": [
       "party"
     ],
-    "question": "Would you rather have to recognize party songs from a one-second sound or party objects from a one-second glimpse?",
-    "optionA": "Recognize the one-second sound",
-    "optionB": "Recognize the one-second glimpse",
+    "question": "Would you rather identify party objects while wearing oversized mittens or stack cups while looking only in a mirror?",
+    "optionA": "Identify objects with oversized mittens",
+    "optionB": "Stack cups using a mirror",
     "primaryCollection": "party",
     "ageBands": [
       "10-12",
@@ -6015,9 +6015,9 @@
       "games",
       "sensory"
     ],
-    "coreDilemma": "brief audio recognition vs brief visual recognition",
+    "coreDilemma": "reduced touch precision vs reversed visual feedback",
     "dilemmaFamily": "sensory",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare rapid recognition through hearing versus sight.",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two playful perception challenges using distorted touch versus distorted vision.",
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -6035,9 +6035,9 @@
     "scenarios": [
       "party"
     ],
-    "question": "Would you rather build a party game from three random household objects or from three random words?",
-    "optionA": "Build it from three objects",
-    "optionB": "Build it from three words",
+    "question": "Would you rather build a party game that gets harder when people succeed or stranger when people fail?",
+    "optionA": "Make success increase difficulty",
+    "optionB": "Make failure increase weirdness",
     "primaryCollection": "party",
     "ageBands": [
       "10-12",
@@ -6045,8 +6045,8 @@
       "adults"
     ],
     "moods": [
-      "imaginative",
-      "funny"
+      "funny",
+      "weird"
     ],
     "difficulty": "hard",
     "topics": [
@@ -6054,9 +6054,9 @@
       "games",
       "creativity"
     ],
-    "coreDilemma": "physical prompt vs verbal prompt",
-    "dilemmaFamily": "creativity",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare inventing a playable party game from object constraints versus word constraints.",
+    "coreDilemma": "success escalates challenge vs failure escalates absurdity",
+    "dilemmaFamily": "competition",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two adaptive party-game feedback systems driven by opposite outcomes.",
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
