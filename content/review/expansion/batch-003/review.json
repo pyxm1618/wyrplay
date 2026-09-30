@@ -1,0 +1,6497 @@
+{
+  "batch": "Broad Coverage Expansion Batch 003",
+  "reviewerRole": "Independent formal question-bank reviewer",
+  "sourceAudit": {
+    "branch": "content/expansion-batch-003-20260930",
+    "protectedFormalBank": {
+      "path": "content/question-bank/questions.json",
+      "count": 116,
+      "blobSha": "6f4f1e4f277cd06d1c068adaf999bde07815795f",
+      "modifiedAgainstBaseline": false,
+      "baselineBranch": "content/question-bank-v1-1-20260930"
+    },
+    "candidates": {
+      "path": "content/review/expansion/batch-003/candidates.json",
+      "count": 146,
+      "blobSha": "81fd9df33a71ccc343707ab3a6cc7a85788202a5",
+      "jsonParse": "PASS",
+      "candidateIdUnique": true
+    },
+    "formalBankModified": false
+  },
+  "reviews": [
+    {
+      "candidateId": "expansion-003-001",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The dilemma is suitable for ages 4–6, but choosing breakfast or a bedtime story is a personal daily-life choice, not inherently a Family relationship question."
+    },
+    {
+      "candidateId": "expansion-003-002",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "funny",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "animals",
+          "fantasy"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-003",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "art",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-004",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "weird",
+          "imaginative"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "fantasy",
+          "nature"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-005",
+      "decision": "REVISE",
+      "review": {
+        "language": "FAIL",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "funny",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "games",
+          "fantasy"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The jumping-shoes side is clear, but 'mittens that help you build faster' is vague about what kind of building the power affects.",
+      "revisionSuggestion": {
+        "question": "Would you rather wear shoes that help you jump higher or gloves that help you build anything faster?",
+        "optionA": "Wear shoes that help you jump higher",
+        "optionB": "Wear gloves that help you build anything faster"
+      }
+    },
+    {
+      "candidateId": "expansion-003-006",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "food",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Surprise-versus-favorite snack is a valid young-kid trade-off, but nothing about the choice depends on a Family relationship."
+    },
+    {
+      "candidateId": "expansion-003-007",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "games",
+          "art"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-008",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "funny",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "fantasy",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-009",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "FAIL",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Puddle-crossing toy boat versus pillow-driving toy car is mostly a cute toy-image preference with little real trade-off or follow-up value."
+    },
+    {
+      "candidateId": "expansion-003-010",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Choosing the next game is materially more valuable than choosing a cleanup song, and the music-versus-game choice is already represented in the formal bank.",
+      "duplicates": {
+        "type": "formal",
+        "questionId": "wyr-000029"
+      }
+    },
+    {
+      "candidateId": "expansion-003-011",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "7-9",
+        "ageBands": [
+          "7-9",
+          "10-12"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-012",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "7-9",
+        "ageBands": [
+          "7-9",
+          "10-12"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "imaginative",
+          "weird"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "art",
+          "fantasy"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-013",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "This repeats the same art-versus-active-play preference already represented more cleanly by expansion-003-007, with an 'endless backpack' wrapper.",
+      "duplicates": {
+        "type": "internal",
+        "candidateId": "expansion-003-007"
+      }
+    },
+    {
+      "candidateId": "expansion-003-014",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "The core learning choice—machines versus animals—is already in the formal bank.",
+      "duplicates": {
+        "type": "formal",
+        "questionId": "wyr-000046"
+      }
+    },
+    {
+      "candidateId": "expansion-003-015",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "7-9",
+        "ageBands": [
+          "7-9",
+          "10-12"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "creativity",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The engineering challenge is strong and classroom-appropriate, but it does not become more meaningful because friends are involved."
+    },
+    {
+      "candidateId": "expansion-003-016",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "7-9",
+        "ageBands": [
+          "7-9",
+          "10-12"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "weird",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "fantasy",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-017",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "FAIL",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "7-9",
+        "ageBands": [
+          "7-9",
+          "10-12"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "games",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "New-game versus familiar-game-with-a-twist is a valid Kids dilemma, but neither Friends nor Classroom is intrinsic to the question; those tags overstate its use context."
+    },
+    {
+      "candidateId": "expansion-003-018",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "7-9",
+        "ageBands": [
+          "7-9",
+          "10-12"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "birthday-party",
+          "party"
+        ],
+        "moods": [
+          "imaginative",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "games",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Creating clues versus building the final surprise works for party/scavenger-hunt planning, but the dilemma itself does not require a Friends relationship."
+    },
+    {
+      "candidateId": "expansion-003-019",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "7-9",
+        "ageBands": [
+          "7-9",
+          "10-12"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "imaginative",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "creativity",
+          "school"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-020",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "7-9",
+        "ageBands": [
+          "7-9",
+          "10-12"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "weird",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "fantasy",
+          "exploration"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-021",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "school",
+          "learning"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-022",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "teamwork",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Captain-with-a-fixed-plan versus adaptable strategist is a useful older-kid teamwork choice, but it is not specifically a Friends relationship question."
+    },
+    {
+      "candidateId": "expansion-003-023",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "weird",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "fantasy",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-024",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "imaginative",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "creativity",
+          "skills"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-025",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "imaginative",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "fantasy",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-026",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "skills",
+          "learning"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-027",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "FAIL",
+        "metadataAccuracy": "FAIL",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "imaginative",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "exploration",
+          "adventure"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The discovery premise is good, but a 'forgotten path' can imply leaving established park routes, and the Friends tag is unnecessary.",
+      "revisionSuggestion": {
+        "question": "Would you rather discover a hidden room in a library or a hidden garden path in a city park?",
+        "optionA": "Discover a hidden library room",
+        "optionB": "Discover a hidden garden path"
+      }
+    },
+    {
+      "candidateId": "expansion-003-028",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "nature",
+          "skills"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Garden plot versus workshop table is a solid interest/ownership choice, but it is not specifically a Family relationship dilemma."
+    },
+    {
+      "candidateId": "expansion-003-029",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "teamwork",
+          "fairness"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Secret vote versus open discussion is a strong fairness dilemma and classroom-appropriate, but the Friends relationship tag is not necessary."
+    },
+    {
+      "candidateId": "expansion-003-030",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "school",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural for the stated Kids age band, with comparable options, clear follow-up value, and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-031",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "deep"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "creativity",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the teens entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-032",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "FAIL",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "FAIL",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "school",
+          "teamwork"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Choosing teammates can create public peer-comparison and exclusion pressure. The Teen dilemma can remain, but it should not be presented as a classroom-use question."
+    },
+    {
+      "candidateId": "expansion-003-033",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "planning",
+          "social-situations"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Knowing the plan versus having an easy exit is a general Teen social preference; it does not depend on a Friends relationship."
+    },
+    {
+      "candidateId": "expansion-003-034",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "FAIL",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "media",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Photo organization versus missed-group-chat summaries has clear Teen value, but it is equally natural for adults; the current age coverage is unnecessarily narrow."
+    },
+    {
+      "candidateId": "expansion-003-035",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "FAIL",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "media",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Notification silencing versus removing feed recommendations is not Teen-exclusive; adults can answer the same digital-attention trade-off naturally."
+    },
+    {
+      "candidateId": "expansion-003-036",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "school",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the teens entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-037",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "memories"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the teens entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-038",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Familiar place versus unfamiliar place is already formalized as the same novelty-versus-familiarity location dilemma.",
+      "duplicates": {
+        "type": "formal",
+        "questionId": "wyr-000087"
+      }
+    },
+    {
+      "candidateId": "expansion-003-039",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "FAIL",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "friendship",
+          "social-situations"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The friend-group dilemma is good for Teens, but asking it in a classroom can expose social-group patterns and create peer pressure. classroomSafe should be false."
+    },
+    {
+      "candidateId": "expansion-003-040",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "school",
+          "teamwork",
+          "social-situations"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the teens entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-041",
+      "decision": "REVISE",
+      "review": {
+        "language": "FAIL",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "lifestyle",
+          "home"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The intended convenience-versus-weekend-lifestyle trade-off is useful, but the current options do not state symmetrical costs: being five minutes from errands is compared with merely being thirty minutes from favorite places.",
+      "revisionSuggestion": {
+        "question": "Would you rather live five minutes from everyday errands but farther from your favorite weekend places, or five minutes from your favorite weekend places but farther from everyday errands?",
+        "optionA": "Live close to everyday errands",
+        "optionB": "Live close to favorite weekend places"
+      }
+    },
+    {
+      "candidateId": "expansion-003-042",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "food",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the adults entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-043",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "home",
+          "lifestyle"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the adults entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-044",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "home",
+          "lifestyle"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the adults entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-045",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "deep"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "time",
+          "values"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the adults entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-046",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "home",
+          "lifestyle"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the adults entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-047",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "social-life",
+          "home"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the adults entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-048",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "FAIL",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "decision-making",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Expert recommendation versus many user reviews is a general decision-style dilemma that also fits Teens; Adults can remain the primary collection."
+    },
+    {
+      "candidateId": "expansion-003-049",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "FAIL",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "routines",
+          "time"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Slow mornings versus getting more done before noon also fits Teens and is not meaningfully adult-only."
+    },
+    {
+      "candidateId": "expansion-003-050",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "work",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Predictable versus flexible work hours is an individual work/lifestyle choice, not a Coworkers relationship dilemma."
+    },
+    {
+      "candidateId": "expansion-003-051",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Everyone choosing part of a group outing versus one person planning a surprise repeats the formal plan-together-versus-surprise-planner relationship dilemma.",
+      "duplicates": {
+        "type": "formal",
+        "questionId": "wyr-000065"
+      }
+    },
+    {
+      "candidateId": "expansion-003-052",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "friendship",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the friends entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-053",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "skills"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the friends entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-054",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "music",
+          "media"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the friends entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-055",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Keeping a plan/list in advance versus deciding as you go repeats the formal planning-versus-spontaneity axis with a Friends hangout wrapper.",
+      "duplicates": {
+        "type": "formal",
+        "questionId": "wyr-000042"
+      }
+    },
+    {
+      "candidateId": "expansion-003-056",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the friends entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-057",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "social-situations"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the friends entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-058",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "deep"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "friendship",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the friends entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-059",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Family meal choice by individual turns versus group voting repeats expansion-003-065's cleaner family decision-rule dilemma, and the 'one meal per person this week' structure depends on family size.",
+      "duplicates": {
+        "type": "internal",
+        "candidateId": "expansion-003-065"
+      }
+    },
+    {
+      "candidateId": "expansion-003-060",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "7-9",
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "family",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the family entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-061",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "7-9",
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "family",
+          "travel"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the family entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-062",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "7-9",
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "family",
+          "memories",
+          "food"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the family entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-063",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "7-9",
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "family",
+          "music",
+          "memories"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the family entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-064",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "7-9",
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "family",
+          "food",
+          "teamwork"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Helping cook is usually more enjoyable and creative than cleaning up, so the current options are not comparable. The family-contribution idea is worth keeping if each option carries a clear responsibility.",
+      "revisionSuggestion": {
+        "question": "Would you rather help cook the family meal and have someone else clean up, or skip cooking and handle the cleanup afterward?",
+        "optionA": "Help cook and let someone else clean up",
+        "optionB": "Skip cooking and handle the cleanup"
+      }
+    },
+    {
+      "candidateId": "expansion-003-065",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "7-9",
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "family",
+          "fairness",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the family entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-066",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "7-9",
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "family",
+          "games",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the family entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-067",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "One shared pursuit versus separate individual pursuits with mutual support is already represented by the formal Couples hobby question.",
+      "duplicates": {
+        "type": "formal",
+        "questionId": "wyr-000066"
+      }
+    },
+    {
+      "candidateId": "expansion-003-068",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "couples",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "relationships",
+          "travel",
+          "teamwork"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the couples entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-069",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "couples",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "relationships",
+          "travel"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the couples entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-070",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "couples",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "deep"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "relationships",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the couples entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-071",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "couples",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "relationships",
+          "celebration"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the couples entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-072",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Separate activities together versus one shared activity is essentially the same shared-versus-separate Couples dilemma already formalized.",
+      "duplicates": {
+        "type": "formal",
+        "questionId": "wyr-000066"
+      }
+    },
+    {
+      "candidateId": "expansion-003-073",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "couples",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "relationships",
+          "routines",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the couples entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-074",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "couples",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "deep"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "relationships",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the couples entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-075",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "work",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the coworkers entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-076",
+      "decision": "REVISE",
+      "review": {
+        "language": "FAIL",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "work",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The wording mixes 'team decision' with a period before everyone has responded, making it unclear whether the decision is already final. Clarify draft-first versus discuss-first documentation.",
+      "revisionSuggestion": {
+        "question": "Would you rather write down a draft decision immediately so everyone can react to it, or discuss the options first and document the final decision afterward?",
+        "optionA": "Write down a draft decision immediately",
+        "optionB": "Discuss first and document the final decision later"
+      }
+    },
+    {
+      "candidateId": "expansion-003-077",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "work",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the coworkers entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-078",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "work",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the coworkers entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-079",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "work",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the coworkers entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-080",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "work",
+          "teamwork"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the coworkers entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-081",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Pairing on a task versus splitting up and comparing/reviewing results duplicates expansion-003-080's stronger together-versus-separate problem-solving dilemma.",
+      "duplicates": {
+        "type": "internal",
+        "candidateId": "expansion-003-080"
+      }
+    },
+    {
+      "candidateId": "expansion-003-082",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "work",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the coworkers entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-083",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Demonstration versus hands-on practice overlaps expansion-003-026's stronger observe-an-expert-versus-get-another-attempt learning dilemma.",
+      "duplicates": {
+        "type": "internal",
+        "candidateId": "expansion-003-026"
+      }
+    },
+    {
+      "candidateId": "expansion-003-084",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "classroom",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "school",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the classroom entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-085",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "classroom",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "school",
+          "learning"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the classroom entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-086",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "classroom",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "light",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "school",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the classroom entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-087",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "classroom",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "school",
+          "learning",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the classroom entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-088",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "classroom",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "school",
+          "games",
+          "teamwork"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the classroom entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-089",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "classroom",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "school",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the classroom entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-090",
+      "decision": "REVISE",
+      "review": {
+        "language": "FAIL",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "classroom",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "school",
+          "fairness"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Option B says the class tests the rule before deciding but never specifies how the final decision is made, so the decision processes are not parallel.",
+      "revisionSuggestion": {
+        "question": "Would you rather vote on a new class rule right away or try it for a week and then vote?",
+        "optionA": "Vote on the rule right away",
+        "optionB": "Try it for a week and then vote"
+      }
+    },
+    {
+      "candidateId": "expansion-003-091",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "funny",
+          "weird"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "party",
+          "food",
+          "music"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the party entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-092",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "light",
+          "funny"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "party",
+          "games",
+          "teamwork"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the party entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-093",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "party",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the party entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-094",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "imaginative",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "party",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the party entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-095",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Group vote versus a single designated chooser repeats expansion-003-065's stronger collective-vote-versus-single-chooser decision-rule dilemma with only the selection rule and party setting changed.",
+      "duplicates": {
+        "type": "internal",
+        "candidateId": "expansion-003-065"
+      }
+    },
+    {
+      "candidateId": "expansion-003-096",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "party",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the party entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-097",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "FAIL",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "light",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "party",
+          "memories"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "One group photo versus an instant-photo wall is a straightforward format preference; it should be Easy rather than Hard."
+    },
+    {
+      "candidateId": "expansion-003-098",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "FAIL",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Continuous snacks versus one snack break is party logistics with too little personal, imaginative, or trade-off value for the formal bank."
+    },
+    {
+      "candidateId": "expansion-003-099",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "road-trip",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "road-trip"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "travel",
+          "exploration"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the road-trip entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-100",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "road-trip",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "road-trip"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "travel",
+          "media"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the road-trip entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-101",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "road-trip",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "road-trip"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "travel",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the road-trip entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-102",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "FAIL",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Predetermining talk/quiet halves versus switching every hour is an artificial scheduling choice that feels generated rather than like a natural road-trip dilemma."
+    },
+    {
+      "candidateId": "expansion-003-103",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "road-trip",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "road-trip"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "travel",
+          "time"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the road-trip entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-104",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "road-trip",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "road-trip"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "travel",
+          "comfort"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the road-trip entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-105",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "One long lunch stop versus a shorter meal plus another stop repeats the formal Road Trip one-big-stop-versus-several-short-stops dilemma.",
+      "duplicates": {
+        "type": "formal",
+        "questionId": "wyr-000110"
+      }
+    },
+    {
+      "candidateId": "expansion-003-106",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "road-trip",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "road-trip"
+        ],
+        "moods": [
+          "funny",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "travel",
+          "games",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the road-trip entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-107",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "dinner",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family",
+          "friends"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "conversation",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the dinner entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-108",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Replaying a good part of the past versus previewing the future repeats the formal redo-the-past-versus-preview-the-future fantasy axis.",
+      "duplicates": {
+        "type": "formal",
+        "questionId": "wyr-000045"
+      }
+    },
+    {
+      "candidateId": "expansion-003-109",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "dinner",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family",
+          "friends"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "funny",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "conversation",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the dinner entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-110",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "dinner",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family",
+          "friends"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "food",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the dinner entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-111",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "dinner",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family",
+          "friends"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "food",
+          "family",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The intended hot-food-versus-eating-together trade-off is present, but the benefit of starting immediately is left implicit, making waiting together look socially superior.",
+      "revisionSuggestion": {
+        "question": "Would you rather start eating while the food is hottest or wait up to ten minutes so everyone can sit down together?",
+        "optionA": "Start eating while the food is hottest",
+        "optionB": "Wait so everyone can sit together"
+      }
+    },
+    {
+      "candidateId": "expansion-003-112",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "dinner",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family",
+          "friends"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "conversation"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the dinner entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-113",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "dinner",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family",
+          "friends"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "conversation",
+          "games",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the dinner entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-114",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "dinner",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family",
+          "friends"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "food",
+          "teamwork"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the dinner entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-115",
+      "decision": "REVISE",
+      "review": {
+        "language": "FAIL",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "date-night",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "relationships",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The playful random-date concept is usable, but six jointly prepared options are compared with only two secret ideas, so the mechanisms are not balanced.",
+      "revisionSuggestion": {
+        "question": "Would you rather choose a date by rolling from six ideas you prepared together or each secretly contribute three ideas and draw one from all six?",
+        "optionA": "Roll from six ideas you prepared together",
+        "optionB": "Draw from six secretly contributed ideas"
+      }
+    },
+    {
+      "candidateId": "expansion-003-116",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "date-night",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "light",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "relationships",
+          "activities",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the date-night entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-117",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "One main experience versus several smaller experiences repeats the existing one-big-versus-many-small structure rather than adding a Date Night-specific dilemma.",
+      "duplicates": {
+        "type": "formal",
+        "questionId": "wyr-000078"
+      }
+    },
+    {
+      "candidateId": "expansion-003-118",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "date-night",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "relationships",
+          "food",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the date-night entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-119",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "date-night",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "relationships",
+          "conversation",
+          "travel"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the date-night entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-120",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "date-night",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "relationships",
+          "music",
+          "conversation"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the date-night entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-121",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "date-night",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "relationships",
+          "conversation",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the date-night entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-122",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Last-minute weather-based choice versus booking ahead is another plan-ahead-versus-decide-later dilemma, with indoor/outdoor also confounding the options.",
+      "duplicates": {
+        "type": "formal",
+        "questionId": "wyr-000042"
+      }
+    },
+    {
+      "candidateId": "expansion-003-123",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "social-situations",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the icebreakers entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-124",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "communication",
+          "social-situations"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the icebreakers entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-125",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "FAIL",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Favorite place versus favorite free-hour activity is mainly a choice of which icebreaker prompt to answer, not a substantive Would You Rather dilemma."
+    },
+    {
+      "candidateId": "expansion-003-126",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "conversation",
+          "social-situations"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the icebreakers entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-127",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Ask the first question versus answer the first question is a near-direct semantic duplicate of the formal Icebreakers item.",
+      "duplicates": {
+        "type": "formal",
+        "questionId": "wyr-000092"
+      }
+    },
+    {
+      "candidateId": "expansion-003-128",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Remembering names is far more useful in a new group than remembering favorite snacks, and the item also crowds expansion-003-124's stronger names-versus-facts memory dilemma.",
+      "duplicates": {
+        "type": "internal",
+        "candidateId": "expansion-003-124"
+      }
+    },
+    {
+      "candidateId": "expansion-003-129",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "conversation",
+          "games",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Natural, balanced, and useful for the icebreakers entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-130",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "FAIL",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Choosing whether to answer about something you enjoy or want to learn is another meta-prompt preference rather than a meaningful Would You Rather trade-off."
+    },
+    {
+      "candidateId": "expansion-003-131",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "FAIL",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Letting the birthday person choose the first versus final game changes only timing and creates too little discussion value."
+    },
+    {
+      "candidateId": "expansion-003-132",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "celebration",
+          "food",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the birthday-party entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-133",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "FAIL",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "One cake versus mini cupcakes is primarily a decorative presentation choice and also overlaps the formal one-large-dessert-versus-many-small-desserts item.",
+      "duplicates": {
+        "type": "formal",
+        "questionId": "wyr-000098"
+      }
+    },
+    {
+      "candidateId": "expansion-003-134",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "celebration",
+          "memories"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the birthday-party entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-135",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "FAIL",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "celebration",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Giving party favors at the start versus the end is a simple timing preference, not a genuinely Hard dilemma."
+    },
+    {
+      "candidateId": "expansion-003-136",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "celebration",
+          "food",
+          "fairness"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the birthday-party entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-137",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "celebration",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the birthday-party entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-138",
+      "decision": "REVISE",
+      "review": {
+        "language": "FAIL",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "FAIL",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "celebration",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The birthday-ending contrast is useful, but 'one big group challenge' is too open-ended and can drift toward unsafe or embarrassing dares. Constrain it to a normal game.",
+      "revisionSuggestion": {
+        "question": "Would you rather end a birthday party with one big active group game or a calm wind-down game?",
+        "optionA": "End with an active group game",
+        "optionB": "End with a calm wind-down game"
+      }
+    },
+    {
+      "candidateId": "expansion-003-139",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "friendship",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the sleepover entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-140",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "light",
+          "funny"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "food",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the sleepover entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-141",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "light",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "creativity",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the sleepover entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-142",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "FAIL",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Doing the loudest activity first versus in the middle is a contrived scheduling detail with little reason to discuss after choosing."
+    },
+    {
+      "candidateId": "expansion-003-143",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the sleepover entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-144",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "friendship",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the sleepover entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    },
+    {
+      "candidateId": "expansion-003-145",
+      "decision": "REVISE",
+      "review": {
+        "language": "FAIL",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "FAIL",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "funny",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "games",
+          "exploration"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Before-dark versus flashlight clue hunting is a good sleepover choice, but 'after dark' can imply outdoor wandering. Make the after-dark option explicitly indoor.",
+      "revisionSuggestion": {
+        "question": "Would you rather do a sleepover scavenger hunt before dark or an indoor flashlight clue hunt after dark?",
+        "optionA": "Do the scavenger hunt before dark",
+        "optionB": "Do an indoor flashlight clue hunt after dark"
+      }
+    },
+    {
+      "candidateId": "expansion-003-146",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "friendship",
+          "routines",
+          "nature"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Natural, balanced, and useful for the sleepover entry, with enough follow-up value and no semantic duplicate found in the protected bank or this batch."
+    }
+  ],
+  "duplicateGroups": {
+    "formalBank": [
+      {
+        "candidateId": "expansion-003-010",
+        "formalQuestionId": "wyr-000029"
+      },
+      {
+        "candidateId": "expansion-003-014",
+        "formalQuestionId": "wyr-000046"
+      },
+      {
+        "candidateId": "expansion-003-038",
+        "formalQuestionId": "wyr-000087"
+      },
+      {
+        "candidateId": "expansion-003-051",
+        "formalQuestionId": "wyr-000065"
+      },
+      {
+        "candidateId": "expansion-003-055",
+        "formalQuestionId": "wyr-000042"
+      },
+      {
+        "candidateId": "expansion-003-067",
+        "formalQuestionId": "wyr-000066"
+      },
+      {
+        "candidateId": "expansion-003-072",
+        "formalQuestionId": "wyr-000066"
+      },
+      {
+        "candidateId": "expansion-003-105",
+        "formalQuestionId": "wyr-000110"
+      },
+      {
+        "candidateId": "expansion-003-108",
+        "formalQuestionId": "wyr-000045"
+      },
+      {
+        "candidateId": "expansion-003-117",
+        "formalQuestionId": "wyr-000078"
+      },
+      {
+        "candidateId": "expansion-003-122",
+        "formalQuestionId": "wyr-000042"
+      },
+      {
+        "candidateId": "expansion-003-127",
+        "formalQuestionId": "wyr-000092"
+      },
+      {
+        "candidateId": "expansion-003-133",
+        "formalQuestionId": "wyr-000098"
+      }
+    ],
+    "internal": [
+      {
+        "group": [
+          "expansion-003-007",
+          "expansion-003-013"
+        ],
+        "keep": "expansion-003-007",
+        "reject": [
+          "expansion-003-013"
+        ],
+        "reason": "Same underlying art-versus-active-play interest choice; 007 is simpler and more concrete."
+      },
+      {
+        "group": [
+          "expansion-003-059",
+          "expansion-003-065",
+          "expansion-003-095"
+        ],
+        "keep": "expansion-003-065",
+        "reject": [
+          "expansion-003-059",
+          "expansion-003-095"
+        ],
+        "reason": "Same collective-vote-versus-single-chooser decision-rule axis; 065 is the cleanest and most broadly family-specific version."
+      },
+      {
+        "group": [
+          "expansion-003-080",
+          "expansion-003-081"
+        ],
+        "keep": "expansion-003-080",
+        "reject": [
+          "expansion-003-081"
+        ],
+        "reason": "Both ask whether to work together immediately or split work and compare later."
+      },
+      {
+        "group": [
+          "expansion-003-026",
+          "expansion-003-083"
+        ],
+        "keep": "expansion-003-026",
+        "reject": [
+          "expansion-003-083"
+        ],
+        "reason": "Both reduce to observe a demonstration versus learn by doing/practice."
+      },
+      {
+        "group": [
+          "expansion-003-124",
+          "expansion-003-128"
+        ],
+        "keep": "expansion-003-124",
+        "reject": [
+          "expansion-003-128"
+        ],
+        "reason": "Both compare what to remember first about new people; 124 is balanced while 128 makes names clearly more useful."
+      }
+    ],
+    "historicalRejectPatternMatches": [
+      {
+        "candidateId": "expansion-003-010",
+        "historicalReference": "foundation-candidate-062 / wyr-000029",
+        "reason": "Music-versus-games control axis had already been rejected as a repackaged duplicate in the previous review cycle."
+      },
+      {
+        "candidateId": "expansion-003-117",
+        "historicalReference": "foundation-candidate-005",
+        "reason": "One-big-versus-many-small depth/variety structure was previously rejected when only the scenario changed."
+      },
+      {
+        "candidateId": "expansion-003-122",
+        "historicalReference": "foundation-candidate-051",
+        "reason": "Plan-ahead versus surprise/spontaneity in Date Night had already failed originality/balance review."
+      }
+    ]
+  },
+  "summary": {
+    "TotalCandidates": 146,
+    "PASS": 92,
+    "REVISE": 28,
+    "REJECT": 26,
+    "byPrimaryCollection": {
+      "kids": {
+        "Candidates": 30,
+        "PASS": 16,
+        "REVISE": 10,
+        "REJECT": 4
+      },
+      "teens": {
+        "Candidates": 10,
+        "PASS": 4,
+        "REVISE": 5,
+        "REJECT": 1
+      },
+      "adults": {
+        "Candidates": 10,
+        "PASS": 6,
+        "REVISE": 4,
+        "REJECT": 0
+      },
+      "friends": {
+        "Candidates": 8,
+        "PASS": 6,
+        "REVISE": 0,
+        "REJECT": 2
+      },
+      "family": {
+        "Candidates": 8,
+        "PASS": 6,
+        "REVISE": 1,
+        "REJECT": 1
+      },
+      "couples": {
+        "Candidates": 8,
+        "PASS": 6,
+        "REVISE": 0,
+        "REJECT": 2
+      },
+      "coworkers": {
+        "Candidates": 8,
+        "PASS": 6,
+        "REVISE": 1,
+        "REJECT": 1
+      },
+      "classroom": {
+        "Candidates": 8,
+        "PASS": 6,
+        "REVISE": 1,
+        "REJECT": 1
+      },
+      "party": {
+        "Candidates": 8,
+        "PASS": 5,
+        "REVISE": 1,
+        "REJECT": 2
+      },
+      "road-trip": {
+        "Candidates": 8,
+        "PASS": 6,
+        "REVISE": 0,
+        "REJECT": 2
+      },
+      "dinner": {
+        "Candidates": 8,
+        "PASS": 6,
+        "REVISE": 1,
+        "REJECT": 1
+      },
+      "date-night": {
+        "Candidates": 8,
+        "PASS": 5,
+        "REVISE": 1,
+        "REJECT": 2
+      },
+      "icebreakers": {
+        "Candidates": 8,
+        "PASS": 4,
+        "REVISE": 0,
+        "REJECT": 4
+      },
+      "birthday-party": {
+        "Candidates": 8,
+        "PASS": 4,
+        "REVISE": 2,
+        "REJECT": 2
+      },
+      "sleepover": {
+        "Candidates": 8,
+        "PASS": 6,
+        "REVISE": 1,
+        "REJECT": 1
+      }
+    },
+    "kidsByPrimaryAgeBand": {
+      "4-6": {
+        "Candidates": 10,
+        "PASS": 5,
+        "REVISE": 3,
+        "REJECT": 2
+      },
+      "7-9": {
+        "Candidates": 10,
+        "PASS": 5,
+        "REVISE": 3,
+        "REJECT": 2
+      },
+      "10-12": {
+        "Candidates": 10,
+        "PASS": 6,
+        "REVISE": 4,
+        "REJECT": 0
+      }
+    },
+    "passAgeBandCoverage": {
+      "4-6": 5,
+      "7-9": 16,
+      "10-12": 44,
+      "teens": 59,
+      "adults": 60
+    },
+    "formalBankSemanticDuplicates": {
+      "candidateCount": 13,
+      "uniqueFormalQuestionIds": 11
+    },
+    "internalDuplicates": {
+      "rejectedCandidateCount": 6,
+      "groupCount": 5
+    },
+    "directPassInventoryView": {
+      "kids": {
+        "formalBefore": 58,
+        "batch003DirectPASS": 16,
+        "possibleAfterDirectPASS": 74
+      },
+      "teens": {
+        "formalBefore": 3,
+        "batch003DirectPASS": 4,
+        "possibleAfterDirectPASS": 7
+      },
+      "adults": {
+        "formalBefore": 3,
+        "batch003DirectPASS": 6,
+        "possibleAfterDirectPASS": 9
+      },
+      "friends": {
+        "formalBefore": 4,
+        "batch003DirectPASS": 6,
+        "possibleAfterDirectPASS": 10
+      },
+      "family": {
+        "formalBefore": 4,
+        "batch003DirectPASS": 6,
+        "possibleAfterDirectPASS": 10
+      },
+      "couples": {
+        "formalBefore": 4,
+        "batch003DirectPASS": 6,
+        "possibleAfterDirectPASS": 10
+      },
+      "coworkers": {
+        "formalBefore": 5,
+        "batch003DirectPASS": 6,
+        "possibleAfterDirectPASS": 11
+      },
+      "classroom": {
+        "formalBefore": 3,
+        "batch003DirectPASS": 6,
+        "possibleAfterDirectPASS": 9
+      },
+      "party": {
+        "formalBefore": 5,
+        "batch003DirectPASS": 5,
+        "possibleAfterDirectPASS": 10
+      },
+      "road-trip": {
+        "formalBefore": 5,
+        "batch003DirectPASS": 6,
+        "possibleAfterDirectPASS": 11
+      },
+      "dinner": {
+        "formalBefore": 4,
+        "batch003DirectPASS": 6,
+        "possibleAfterDirectPASS": 10
+      },
+      "date-night": {
+        "formalBefore": 4,
+        "batch003DirectPASS": 5,
+        "possibleAfterDirectPASS": 9
+      },
+      "icebreakers": {
+        "formalBefore": 6,
+        "batch003DirectPASS": 4,
+        "possibleAfterDirectPASS": 10
+      },
+      "birthday-party": {
+        "formalBefore": 4,
+        "batch003DirectPASS": 4,
+        "possibleAfterDirectPASS": 8
+      },
+      "sleepover": {
+        "formalBefore": 4,
+        "batch003DirectPASS": 6,
+        "possibleAfterDirectPASS": 10
+      }
+    },
+    "qualityAnalysis": {
+      "biggestProblem": "Semantic repetition of already-covered planning, together-vs-separate, one-big-vs-many-small, and group-decision axes, followed by relationship/scenario over-tagging. Exact-string de-duplication materially understated this problem.",
+      "bestAgeQuality": "Kids primary age 10-12: 6 PASS / 4 REVISE / 0 REJECT. The ideas are generally more substantive and less dependent on cute-object novelty.",
+      "weakestAgeQuality": "Kids primary age 4-6: 5 PASS / 3 REVISE / 2 REJECT. The recurring risk remains cute or playful surfaces without enough actual choice value, plus adult-applied relationship metadata.",
+      "duplicateProneCollections": [
+        "friends",
+        "couples",
+        "date-night"
+      ],
+      "overrepresentedQuestionTypes": [
+        "planning/scheduling mechanics",
+        "group decision rules (vote vs chooser)",
+        "together vs separate work/activity",
+        "process and routine trade-offs",
+        "thoughtful/light school and work questions"
+      ],
+      "underrepresentedQuestionTypes": [
+        "genuinely funny or weird Teen/Adult questions",
+        "imaginative social play for Teens",
+        "adult hobbies/culture outside home/work routines",
+        "nature/adventure outside Road Trip",
+        "4-6 dilemmas with concrete consequences rather than cute-object preference"
+      ],
+      "formalDuplicateCandidateCount": 13,
+      "internalDuplicateRejectedCandidateCount": 6,
+      "internalDuplicateGroupCount": 5,
+      "nextBatchExpansionPriorities": [
+        "Kids 4-6: expand only with concrete, consequence-based dilemmas; avoid cute-object substitution templates.",
+        "Teens: add more funny, imaginative, hobby and social-play questions; current Teen candidates still lean school/social-management.",
+        "Adults: expand beyond home/routine/productivity into hobbies, culture, leisure and clean life choices.",
+        "Friends and Couples/Date Night: expand cautiously because existing planning and together-vs-separate axes are already collision-prone.",
+        "Icebreakers: continue only with true choices, not meta-prompts about which question the user would rather answer."
+      ]
+    }
+  }
+}
