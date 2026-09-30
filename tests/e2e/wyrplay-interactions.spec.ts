@@ -41,23 +41,23 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       // 页面绝无任何 "Under Review" 提示
       await expect(page.locator("#questions").getByText("Under Review")).toHaveCount(0);
 
-      // 1.2 检查 5 个核心 SEO 专题落地页全部有正式题目
+      // 1.2 检查 5 个核心 SEO 专题落地页全部有且仅有对应分类的正式题目（精确题数）
       const seoRoutes = [
-        "/would-you-rather-questions-for-kids",
-        "/funny-would-you-rather-questions",
-        "/hard-would-you-rather-questions",
-        "/would-you-rather-questions-for-friends",
-        "/would-you-rather-questions-for-couples",
+        { route: "/would-you-rather-questions-for-kids", expectedCount: 58 },
+        { route: "/funny-would-you-rather-questions", expectedCount: 18 },
+        { route: "/hard-would-you-rather-questions", expectedCount: 73 },
+        { route: "/would-you-rather-questions-for-friends", expectedCount: 49 },
+        { route: "/would-you-rather-questions-for-couples", expectedCount: 9 },
       ] as const;
 
-      for (const route of seoRoutes) {
+      for (const { route, expectedCount } of seoRoutes) {
         await page.goto(route);
         await expect(page.getByText("Dilemmas are Currently Under Editorial Review")).toHaveCount(
           0,
         );
         await expect(page.locator("#play h2").first()).toBeVisible();
         const routeCards = await page.locator("#questions article").count();
-        expect(routeCards).toBeGreaterThan(0);
+        expect(routeCards).toBe(expectedCount);
       }
     });
 

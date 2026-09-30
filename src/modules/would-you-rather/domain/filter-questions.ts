@@ -87,16 +87,19 @@ export function filterQuestions(
     if (criteria.collection) {
       const col = criteria.collection;
       if (col === "kids") {
-        const isKids =
-          q.suitability.kids === "suitable" &&
-          q.ageGroups.some((a) => ["4-6", "7-9", "10-12"].includes(a));
-        if (!isKids) return false;
+        // 核心规则：kidsSafe !== Kids audience fit
+        const hasChildAge =
+          (q.ageBands ?? []).some((a) => ["4-6", "7-9", "10-12"].includes(a)) ||
+          q.ageGroups.some((a) => ["4-6", "7-9", "10-12"].includes(a)) ||
+          q.primaryCollection === "kids";
+        const isSafe = q.safety ? q.safety.kidsSafe !== false : q.suitability.kids !== "unsuitable";
+        if (!hasChildAge || !isSafe) return false;
       } else if (col === "friends") {
-        if (!q.relationships.includes("friends")) return false;
+        if (!q.relationships.includes("friends") && q.primaryCollection !== "friends") return false;
       } else if (col === "couples") {
-        if (!q.relationships.includes("couples")) return false;
+        if (!q.relationships.includes("couples") && q.primaryCollection !== "couples") return false;
       } else if (col === "funny") {
-        if (!q.tones.includes("funny")) return false;
+        if (!q.tones.includes("funny") && !(q.moods?.includes("funny") ?? false)) return false;
       } else if (col === "hard") {
         if (q.difficulty !== "hard") return false;
       }

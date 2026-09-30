@@ -419,11 +419,17 @@ export function getPlayableQuestionsByCollection(
   return questions.filter((q) => {
     if (q.reviewStatus !== "approved") return false;
     switch (collectionKey) {
-      case "kids":
-        return (
-          (q.primaryCollection === "kids" || q.suitability.kids === "suitable") &&
-          q.ageGroups.some((a) => ["4-6", "7-9", "10-12"].includes(a))
-        );
+      case "kids": {
+        // 核心规则：kidsSafe !== Kids audience fit
+        // 准入条件：必须明确属于儿童年龄段 (4-6 / 7-9 / 10-12) 或正式主分类 primaryCollection === "kids"
+        // 排除门槛：safety.kidsSafe 绝对不能为 false
+        const hasChildAge =
+          (q.ageBands ?? []).some((a) => ["4-6", "7-9", "10-12"].includes(a)) ||
+          q.ageGroups.some((a) => ["4-6", "7-9", "10-12"].includes(a)) ||
+          q.primaryCollection === "kids";
+        const isSafe = q.safety ? q.safety.kidsSafe !== false : q.suitability.kids !== "unsuitable";
+        return hasChildAge && isSafe;
+      }
       case "funny":
         return q.tones.includes("funny") || (q.moods?.includes("funny") ?? false);
       case "hard":

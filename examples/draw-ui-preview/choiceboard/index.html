@@ -10,6 +10,7 @@
     />
     <title>wyrplay — Choiceboard UI Preview</title>
     <link rel="stylesheet" href="./prototype.css" />
+    <script defer src="./question-snapshot.js"></script>
     <script defer src="./prototype.js"></script>
   </head>
   <body>
@@ -17,9 +18,7 @@
 
     <div class="preview-ribbon">
       <span class="preview-ribbon__label"><span class="status-dot"></span> Design preview</span>
-      <span class="preview-ribbon__copy"
-        >Source snapshot: 104 question drafts · 0 approved for play</span
-      >
+      <span class="preview-ribbon__copy" id="source-summary">Loading local question snapshot…</span>
       <span class="preview-ribbon__local">Local interactions only</span>
     </div>
 
@@ -87,8 +86,9 @@
     <div class="source-note" role="note">
       <span class="source-note__mark" aria-hidden="true">i</span>
       <span
-        ><strong>Prototype only.</strong> The question examples come from this checkout. Every
-        source question is still unreviewed; no option here sends or stores a vote.</span
+        ><strong>Prototype only.</strong>
+        <span id="source-note-copy">Loading local question snapshot…</span> No option here sends or
+        stores a vote.</span
       >
       <a href="#/design-system">See the design system <span aria-hidden="true">→</span></a>
     </div>
@@ -130,7 +130,9 @@
             <div class="arena-card__top">
               <div>
                 <p class="arena-label"><span class="status-dot"></span> Question bank preview</p>
-                <p class="source-id">Source row <span>wyr-004</span> · review pending</p>
+                <p class="source-id">
+                  Source row <span id="home-source-id">wyr-000001</span> · approved
+                </p>
               </div>
               <button
                 class="icon-button share-button"
@@ -149,14 +151,14 @@
             <div class="arena-card__question">
               <p class="arena-overline">The question</p>
               <h2 id="home-arena-title">
-                Would you rather have a pet dragon the size of a cat or a pet dinosaur the size of a
-                dog?
+                Would you rather hear a squirrel tell stories or hear a turtle tell jokes?
               </h2>
             </div>
             <div class="versus-rule"><span></span><b>Choose one</b><span></span></div>
             <div class="choice-grid choice-grid--home">
               <button
                 class="choice-card choice-card--a"
+                id="home-choice-a"
                 type="button"
                 data-option="A"
                 aria-pressed="false"
@@ -164,7 +166,9 @@
                 <span class="choice-card__top"
                   ><span class="choice-key">A</span><span class="choice-hint">Option A</span></span
                 >
-                <span class="choice-card__text">A cat-sized pet dragon</span>
+                <span class="choice-card__text" id="home-option-a"
+                  >Hear a squirrel tell stories</span
+                >
                 <span class="choice-card__bottom"
                   ><span>Pick this side</span
                   ><span class="choice-arrow" aria-hidden="true">↗</span></span
@@ -172,6 +176,7 @@
               </button>
               <button
                 class="choice-card choice-card--b"
+                id="home-choice-b"
                 type="button"
                 data-option="B"
                 aria-pressed="false"
@@ -179,14 +184,14 @@
                 <span class="choice-card__top"
                   ><span class="choice-key">B</span><span class="choice-hint">Option B</span></span
                 >
-                <span class="choice-card__text">A dog-sized pet velociraptor</span>
+                <span class="choice-card__text" id="home-option-b">Hear a turtle tell jokes</span>
                 <span class="choice-card__bottom"
                   ><span>Pick this side</span
                   ><span class="choice-arrow" aria-hidden="true">↗</span></span
                 >
               </button>
             </div>
-            <div class="demo-result demo-result--compact" data-result-panel hidden>
+            <div class="demo-result demo-result--compact" id="home-result" hidden>
               <div class="demo-result__heading">
                 <span data-your-choice>You chose A</span
                 ><span class="demo-tag">Illustrative only</span>
@@ -206,10 +211,10 @@
               </p>
             </div>
             <div class="arena-card__footer">
-              <p class="arena-disclaimer" data-arena-message aria-live="polite">
+              <p class="arena-disclaimer" id="home-arena-message" data-arena-message aria-live="polite">
                 Local preview · your click stays in this browser.
               </p>
-              <a href="#/play?question=wyr-004" class="arena-next-link"
+              <a href="#/play?question=wyr-000001" class="arena-next-link" id="home-question-link"
                 >Full play view <span aria-hidden="true">→</span></a
               >
             </div>
@@ -338,7 +343,10 @@
               >
             </div>
             <div class="featured-grid">
-              <a class="featured-card featured-card--kids" href="#/category/kids"
+              <a
+                class="featured-card featured-card--kids"
+                data-collection="kids"
+                href="#/category/kids"
                 ><span class="featured-card__index">01 / AUDIENCE</span
                 ><span class="featured-card__symbol" aria-hidden="true">K</span>
                 <h3>Kids</h3>
@@ -350,7 +358,10 @@
                   >Would You Rather Questions for Kids <b aria-hidden="true">↗</b></span
                 ></a
               >
-              <a class="featured-card featured-card--funny" href="#/category/funny"
+              <a
+                class="featured-card featured-card--funny"
+                data-collection="funny"
+                href="#/category/funny"
                 ><span class="featured-card__index">02 / TONE</span
                 ><span class="featured-card__symbol" aria-hidden="true">!</span>
                 <h3>Funny</h3>
@@ -359,7 +370,10 @@
                   >Funny Would You Rather Questions <b aria-hidden="true">↗</b></span
                 ></a
               >
-              <a class="featured-card featured-card--hard" href="#/category/hard"
+              <a
+                class="featured-card featured-card--hard"
+                data-collection="hard"
+                href="#/category/hard"
                 ><span class="featured-card__index">03 / TONE</span
                 ><span class="featured-card__symbol" aria-hidden="true">?</span>
                 <h3>Hard</h3>
@@ -368,7 +382,10 @@
                   >Hard Would You Rather Questions <b aria-hidden="true">↗</b></span
                 ></a
               >
-              <a class="featured-card featured-card--friends" href="#/category/friends"
+              <a
+                class="featured-card featured-card--friends"
+                data-collection="friends"
+                href="#/category/friends"
                 ><span class="featured-card__index">04 / RELATIONSHIP</span
                 ><span class="featured-card__symbol" aria-hidden="true">F</span>
                 <h3>Friends</h3>
@@ -377,7 +394,10 @@
                   >Would You Rather Questions for Friends <b aria-hidden="true">↗</b></span
                 ></a
               >
-              <a class="featured-card featured-card--couples" href="#/category/couples"
+              <a
+                class="featured-card featured-card--couples"
+                data-collection="couples"
+                href="#/category/couples"
                 ><span class="featured-card__index">05 / RELATIONSHIP</span
                 ><span class="featured-card__symbol" aria-hidden="true">C</span>
                 <h3>Couples</h3>
@@ -389,7 +409,7 @@
             </div>
             <p class="section-footnote">
               These are the five featured collections with configured indexable routes. Their
-              current question examples are still awaiting editorial review.
+              current counts come from approved rows in this checkout's question source.
             </p>
           </div>
         </section>
@@ -400,48 +420,12 @@
               <p class="eyebrow">From the question bank</p>
               <h2 id="question-picks-title">A few choices<br />to <em>argue over.</em></h2>
             </div>
-            <p class="section-intro">
-              These are real draft rows from the current source. They are shown here to preview the
-              layout, not as approved or playable questions.
+            <p class="section-intro" id="editorial-filter-note">
+              Question examples and category counts come from the approved source snapshot in this
+              checkout.
             </p>
           </div>
-          <div class="question-pick-list">
-            <article class="question-pick">
-              <span class="question-pick__id">wyr-005</span>
-              <div>
-                <p class="question-pick__text">
-                  Would you rather only be able to speak in rhymes or shout everything you say?
-                </p>
-                <p class="question-pick__meta">Draft collection tags: funny · friends</p>
-              </div>
-              <span class="review-label">Review pending</span
-              ><a href="#/play?question=wyr-005" aria-label="Preview question wyr-005">↗</a>
-            </article>
-            <article class="question-pick">
-              <span class="question-pick__id">wyr-008</span>
-              <div>
-                <p class="question-pick__text">
-                  Would you rather be able to talk to all animals or speak every human language
-                  fluently?
-                </p>
-                <p class="question-pick__meta">Draft collection tags: kids · hard</p>
-              </div>
-              <span class="review-label">Review pending</span
-              ><a href="#/play?question=wyr-008" aria-label="Preview question wyr-008">↗</a>
-            </article>
-            <article class="question-pick">
-              <span class="question-pick__id">wyr-009</span>
-              <div>
-                <p class="question-pick__text">
-                  Would you rather have unlimited free flights forever or unlimited free five-star
-                  dining forever?
-                </p>
-                <p class="question-pick__meta">Draft collection tags: couples · friends</p>
-              </div>
-              <span class="review-label">Review pending</span
-              ><a href="#/play?question=wyr-009" aria-label="Preview question wyr-009">↗</a>
-            </article>
-          </div>
+          <div class="question-pick-list" id="home-question-list"></div>
         </section>
 
         <section class="how-section" id="how-to-play" aria-labelledby="how-title">
@@ -524,8 +508,9 @@
               <summary>Can I filter questions by audience or occasion?</summary>
               <p>
                 The product has filters for age group, relationship, occasion, tone, and difficulty.
-                In this source snapshot, all 104 questions are unreviewed and the approved playable
-                set is empty.
+                <span id="faq-question-status"
+                  >The current source snapshot marks approved questions as playable.</span
+                >
               </p>
             </details>
             <details class="faq-item">
@@ -566,7 +551,10 @@
               children, classrooms, and family car trips.
             </p>
             <div class="category-actions">
-              <a class="button button--bright" href="#/play?question=wyr-004"
+              <a
+                class="button button--bright"
+                id="category-primary-play"
+                href="#/play?question=wyr-000001"
                 >Preview a question <span aria-hidden="true">↗</span></a
               ><a class="text-link" href="#category-questions"
                 >Browse examples <span aria-hidden="true">↓</span></a
@@ -576,16 +564,18 @@
           <aside class="category-status" aria-label="Question review status">
             <span class="category-status__icon" aria-hidden="true">Q</span
             ><span class="category-status__label">Current source snapshot</span
-            ><strong id="category-draft-count">29 draft tags</strong
-            ><span class="category-status__foot">0 approved for play</span>
+            ><strong id="category-draft-count">Approved questions</strong
+            ><span class="category-status__foot" id="category-playable-count"
+              >Approved source questions</span
+            >
           </aside>
         </div>
 
         <div class="category-preview-note" role="note">
           <strong>Preview content</strong
           ><span id="category-review-note"
-            >The question examples below are real source rows marked unreviewed. The live play flow
-            excludes them until review is complete.</span
+            >Question examples below come from the approved source snapshot. Voting stays local in
+            this prototype.</span
           >
         </div>
 
@@ -598,7 +588,7 @@
             <button class="text-button" id="clear-search" type="button">Clear search</button>
           </div>
           <label class="search-field"
-            ><span class="sr-only">Search draft questions</span
+            ><span class="sr-only">Search questions</span
             ><svg aria-hidden="true" viewBox="0 0 24 24">
               <circle cx="10.8" cy="10.8" r="6.8"></circle>
               <path d="m16 16 5 5"></path></svg
@@ -611,34 +601,55 @@
           >
           <div class="filter-selects">
             <label
-              >Age group<select disabled aria-describedby="filter-status">
-                <option>Awaiting reviewed tags</option>
+              >Age group<select data-category-filter="age" aria-describedby="filter-status">
+                <option value="">Any age</option>
+                <option value="4-6">Ages 4–6</option>
+                <option value="7-9">Ages 7–9</option>
+                <option value="10-12">Ages 10–12</option>
+                <option value="13-17">Teens 13–17</option>
+                <option value="18+">Adults 18+</option>
               </select></label
             >
             <label
-              >Relationship<select disabled aria-describedby="filter-status">
-                <option>Awaiting reviewed tags</option>
+              >Relationship<select
+                data-category-filter="relationship"
+                aria-describedby="filter-status"
+              >
+                <option value="">Any group</option>
+                <option value="friends">Friends</option>
+                <option value="family">Family</option>
+                <option value="couples">Couples</option>
+                <option value="coworkers">Coworkers</option>
               </select></label
             >
             <label
-              >Occasion<select disabled aria-describedby="filter-status">
-                <option>Awaiting reviewed tags</option>
+              >Occasion<select data-category-filter="occasion" aria-describedby="filter-status">
+                <option value="">Any occasion</option>
+                <option value="classroom">Classroom</option>
+                <option value="party">Party</option>
+                <option value="road-trip">Road Trip</option>
+                <option value="dinner">Dinner</option>
+                <option value="date-night">Date Night</option>
               </select></label
             >
             <label
-              >Tone<select disabled aria-describedby="filter-status">
-                <option>Awaiting reviewed tags</option>
+              >Tone<select data-category-filter="tone" aria-describedby="filter-status">
+                <option value="">Any tone</option>
+                <option value="funny">Funny</option>
+                <option value="weird">Weird</option>
+                <option value="deep">Deep</option>
               </select></label
             >
             <label
-              >Difficulty<select disabled aria-describedby="filter-status">
-                <option>Awaiting reviewed tags</option>
+              >Difficulty<select data-category-filter="difficulty" aria-describedby="filter-status">
+                <option value="">Any difficulty</option>
+                <option value="easy">Easy</option>
+                <option value="hard">Hard</option>
               </select></label
             >
           </div>
           <p class="filter-status" id="filter-status">
-            Search works on the examples shown. Structured filters stay unavailable because source
-            metadata has not been reviewed.
+            Search and filters use the question metadata in the checked-out source.
           </p>
         </section>
 
@@ -649,19 +660,16 @@
         >
           <div class="list-heading">
             <div>
-              <p class="eyebrow">Draft examples</p>
+              <p class="eyebrow">Approved source questions</p>
               <h2 id="category-list-title">Questions in this view</h2>
             </div>
-            <span id="category-result-count" class="result-count">3 examples</span>
+            <span id="category-result-count" class="result-count">Questions</span>
           </div>
           <div class="draft-question-list" id="draft-question-list"></div>
           <div class="empty-state" id="category-empty" hidden>
             <span class="empty-state__icon" aria-hidden="true">?</span>
             <h3>No matching examples</h3>
-            <p>
-              Try another word, or clear the search. This is a small preview of the current source
-              rows.
-            </p>
+            <p>Try another word or clear a filter to see more approved source questions.</p>
           </div>
         </section>
 
@@ -689,7 +697,7 @@
             connect age, relationship, occasion, and tone without making every browse value look
             like a separate article.
           </p>
-          <a href="#/play?question=wyr-004" class="text-link"
+          <a href="#/play?question=wyr-000001" class="text-link"
             >See the question experience <span aria-hidden="true">→</span></a
           >
         </section>
@@ -716,10 +724,10 @@
         >
           <div class="play-arena__top">
             <div class="play-meta">
-              <span class="play-meta__number" id="play-progress">Example 01 / 17</span
-              ><span class="review-label">Editorial review pending</span
-              ><span class="play-meta__category" id="play-category">Draft question</span
-              ><span class="play-source-id" id="play-source-id">wyr-004</span>
+              <span class="play-meta__number" id="play-progress">Question 01 / 116</span
+              ><span class="review-label" id="play-review-label">Approved source row</span
+              ><span class="play-meta__category" id="play-category">Question categories</span
+              ><span class="play-source-id" id="play-source-id">wyr-000001</span>
             </div>
             <button class="button button--quiet" id="presenter-open" type="button">
               <span aria-hidden="true">▣</span> Presenter Mode
@@ -728,12 +736,9 @@
           <div class="play-question">
             <p class="arena-overline">Question preview</p>
             <h2 id="play-question-title">
-              Would you rather have a pet dragon the size of a cat or a pet dinosaur the size of a
-              dog?
+              Would you rather hear a squirrel tell stories or hear a turtle tell jokes?
             </h2>
-            <p class="play-question__source">
-              This source row is not currently eligible for production voting.
-            </p>
+            <p class="play-question__source">Local preview only. No vote is submitted or stored.</p>
           </div>
           <div class="choice-grid choice-grid--play">
             <button
@@ -744,7 +749,7 @@
             >
               <span class="choice-card__top"
                 ><span class="choice-key">A</span><span class="choice-hint">Option A</span></span
-              ><span class="choice-card__text" id="play-option-a">A cat-sized pet dragon</span
+              ><span class="choice-card__text" id="play-option-a">Hear a squirrel tell stories</span
               ><span class="choice-card__bottom"
                 ><span>Choose A</span><span class="choice-arrow" aria-hidden="true">↗</span></span
               >
@@ -757,7 +762,7 @@
             >
               <span class="choice-card__top"
                 ><span class="choice-key">B</span><span class="choice-hint">Option B</span></span
-              ><span class="choice-card__text" id="play-option-b">A dog-sized pet velociraptor</span
+              ><span class="choice-card__text" id="play-option-b">Hear a turtle tell jokes</span
               ><span class="choice-card__bottom"
                 ><span>Choose B</span><span class="choice-arrow" aria-hidden="true">↗</span></span
               >
@@ -1057,7 +1062,7 @@
               </div>
               <div>
                 <span class="sample-caption">Utility / 12px uppercase</span
-                ><span class="sample-mono">QUESTION 04 · REVIEW PENDING</span>
+                ><span class="sample-mono" id="system-source-label">QUESTION 01 · APPROVED</span>
               </div>
             </div>
           </div>
@@ -1089,8 +1094,8 @@
             <div>
               <h2 id="system-controls-title">Controls and navigation</h2>
               <p>
-                44px minimum for key touch targets; visible focus; selected state uses label, shape, and
-                color.
+                44px minimum for key touch targets; visible focus; selected state uses label, shape,
+                and color.
               </p>
             </div>
           </div>
@@ -1112,7 +1117,7 @@
                 <a class="category-chip category-chip--small" href="#/category/kids">Kids</a
                 ><a class="category-chip category-chip--small" href="#/category/friends">Friends</a
                 ><a class="category-chip category-chip--small" href="#/category/party">Party</a
-                ><span class="review-label">Review pending</span>
+                ><span class="review-label">Approved</span>
               </div>
             </div>
             <div class="component-cell">
@@ -1146,19 +1151,16 @@
             <article class="sample-question-card">
               <div class="sample-question-card__head">
                 <span class="arena-label"
-                  ><span class="status-dot"></span> Draft question · wyr-004</span
-                ><span class="review-label">Review pending</span>
+                  ><span class="status-dot"></span> Approved source question · wyr-000001</span
+                ><span class="review-label">Approved</span>
               </div>
-              <h3>
-                Would you rather have a pet dragon the size of a cat or a pet dinosaur the size of a
-                dog?
-              </h3>
+              <h3 id="system-question-title">Would you rather hear a squirrel tell stories or hear a turtle tell jokes?</h3>
               <div class="sample-options">
                 <div class="sample-option sample-option--a">
-                  <b>A</b><span>A cat-sized pet dragon</span>
+                  <b>A</b><span id="system-option-a">Hear a squirrel tell stories</span>
                 </div>
                 <div class="sample-option sample-option--b">
-                  <b>B</b><span>A dog-sized pet velociraptor</span>
+                  <b>B</b><span id="system-option-b">Hear a turtle tell jokes</span>
                 </div>
               </div>
             </article>
@@ -1226,14 +1228,11 @@
               <div class="empty-state empty-state--inline">
                 <span class="empty-state__icon" aria-hidden="true">?</span>
                 <div>
-                  <h3>No approved questions yet</h3>
-                  <p>
-                    All 104 source rows are awaiting review. The live game opens when questions are
-                    approved.
-                  </p>
+                  <h3>No questions match these filters</h3>
+                  <p id="design-source-count">Clear a filter to browse approved source questions.</p>
                 </div>
                 <a href="#/category/kids"
-                  >Browse draft examples <span aria-hidden="true">↗</span></a
+                  >Browse approved questions <span aria-hidden="true">↗</span></a
                 >
               </div>
             </div>
@@ -1301,14 +1300,14 @@
       <div class="presenter-dialog__content">
         <p class="eyebrow">Question preview · local only</p>
         <h2 id="presenter-title">
-          Would you rather have a pet dragon the size of a cat or a pet dinosaur the size of a dog?
+          Would you rather hear a squirrel tell stories or hear a turtle tell jokes?
         </h2>
         <div class="presenter-options">
           <div class="sample-option sample-option--a">
-            <b>A</b><span id="presenter-option-a">A cat-sized pet dragon</span>
+            <b>A</b><span id="presenter-option-a">Hear a squirrel tell stories</span>
           </div>
           <div class="sample-option sample-option--b">
-            <b>B</b><span id="presenter-option-b">A dog-sized pet velociraptor</span>
+            <b>B</b><span id="presenter-option-b">Hear a turtle tell jokes</span>
           </div>
         </div>
         <p>
@@ -1318,7 +1317,7 @@
       </div>
       <div class="presenter-dialog__bottom">
         <button class="button button--outline" id="presenter-prev" type="button">← Previous</button
-        ><span id="presenter-status" aria-live="polite">Draft question · wyr-004</span
+        ><span id="presenter-status" aria-live="polite">Approved source question · wyr-000001</span
         ><button class="button button--bright" id="presenter-next" type="button">
           Next question →
         </button>

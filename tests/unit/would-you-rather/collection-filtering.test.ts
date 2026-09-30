@@ -39,4 +39,31 @@ describe("Would You Rather SEO collections", () => {
     const couples = getPlayableQuestionsByCollection("couples", TEST_FIXTURE_QUESTIONS);
     expect(couples.every((q) => q.relationships.includes("couples"))).toBe(true);
   });
+
+  it("enforces exact 5 SEO collection counts in the formal 116 question bank without overextending", () => {
+    const kids = getQuestionsByCollection("kids", QUESTIONS_DATABASE);
+    const funny = getQuestionsByCollection("funny", QUESTIONS_DATABASE);
+    const hard = getQuestionsByCollection("hard", QUESTIONS_DATABASE);
+    const friends = getQuestionsByCollection("friends", QUESTIONS_DATABASE);
+    const couples = getQuestionsByCollection("couples", QUESTIONS_DATABASE);
+
+    // 关键业务事实：
+    // Kids 绝非 103（安全不等于受众符合），而是严格属于儿童年龄段的 58 题
+    expect(kids).toHaveLength(58);
+    expect(funny).toHaveLength(18);
+    expect(hard).toHaveLength(73);
+    expect(friends).toHaveLength(49);
+    expect(couples).toHaveLength(9);
+  });
+
+  it("business rule: kidsSafe !== Kids audience fit (adults/coworkers safe questions excluded from Kids)", () => {
+    // 例如 wyr-000069 (coworkers meeting dilemma) 属于 adults，kidsSafe=true，绝不能进入 Kids
+    const meetingQuestion = QUESTIONS_DATABASE.find((q) => q.id === "wyr-000069");
+    expect(meetingQuestion).toBeDefined();
+    expect(meetingQuestion?.safety?.kidsSafe).toBe(true);
+    expect(meetingQuestion?.ageBands).toContain("adults");
+
+    const kidsQuestions = getQuestionsByCollection("kids", QUESTIONS_DATABASE);
+    expect(kidsQuestions.some((q) => q.id === "wyr-000069")).toBe(false);
+  });
 });

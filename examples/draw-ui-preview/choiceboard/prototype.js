@@ -1,372 +1,192 @@
 (() => {
   "use strict";
 
-  const questions = [
-    {
-      id: "wyr-004",
-      text: "Would you rather have a pet dragon the size of a cat or a pet dinosaur the size of a dog?",
-      a: "A cat-sized pet dragon",
-      b: "A dog-sized pet velociraptor",
-      collections: ["kids", "funny"],
-      audience: "kids",
-      occasion: "classroom",
-      style: "funny",
-    },
-    {
-      id: "wyr-k01",
-      text: "Would you rather have a personal slide from your bedroom to the kitchen or a trampoline floor in your room?",
-      a: "A fast slide into the kitchen",
-      b: "A bouncy trampoline floor",
-      collections: ["kids"],
-      audience: "kids",
-      occasion: "classroom",
-      style: "clean",
-    },
-    {
-      id: "wyr-k02",
-      text: "Would you rather attend school on a pirate ship or in a giant treehouse?",
-      a: "A floating pirate ship school",
-      b: "A magical high treehouse school",
-      collections: ["kids"],
-      audience: "kids",
-      occasion: "classroom",
-      style: "clean",
-    },
-    {
-      id: "wyr-k03",
-      text: "Would you rather have super speed like a cheetah or night vision like an owl?",
-      a: "Run as fast as a cheetah",
-      b: "See clearly in pitch darkness",
-      collections: ["kids"],
-      audience: "kids",
-      occasion: "road-trip",
-      style: "easy",
-    },
-    {
-      id: "wyr-001",
-      text: "Would you rather be able to pause time or rewind time?",
-      a: "Pause time whenever you want",
-      b: "Rewind time up to 10 minutes",
-      collections: ["hard", "friends"],
-      audience: "adults",
-      occasion: "party",
-      style: "deep",
-    },
-    {
-      id: "wyr-002",
-      text: "Would you rather explore the deepest ocean or visit outer space?",
-      a: "Explore the uncharted ocean trench",
-      b: "Journey to deep outer space",
-      collections: ["hard", "kids"],
-      audience: "teens",
-      occasion: "road-trip",
-      style: "deep",
-    },
-    {
-      id: "wyr-003",
-      text: "Would you rather always know when someone is lying or never be lied to again?",
-      a: "Always detect any lie instantly",
-      b: "Live in a world where everyone tells you the truth",
-      collections: ["hard"],
-      audience: "adults",
-      occasion: "dinner",
-      style: "hard",
-    },
-    {
-      id: "wyr-005",
-      text: "Would you rather only be able to speak in rhymes or shout everything you say?",
-      a: "Speak strictly in rhymes",
-      b: "Shout at top volume forever",
-      collections: ["funny", "friends"],
-      audience: "friends",
-      occasion: "party",
-      style: "funny",
-    },
-    {
-      id: "wyr-006",
-      text: "Would you rather always arrive 20 minutes early or 15 minutes late?",
-      a: "Always arrive 20 minutes early",
-      b: "Always arrive 15 minutes late",
-      collections: ["friends"],
-      audience: "coworkers",
-      occasion: "icebreaker",
-      style: "easy",
-    },
-    {
-      id: "wyr-007",
-      text: "Would you rather know the date of your death or know the cause of your death?",
-      a: "Know the exact date",
-      b: "Know the exact cause",
-      collections: ["hard"],
-      audience: "adults",
-      occasion: "dinner",
-      style: "hard",
-    },
-    {
-      id: "wyr-008",
-      text: "Would you rather be able to talk to all animals or speak every human language fluently?",
-      a: "Talk to and understand all animals",
-      b: "Speak every human language on Earth",
-      collections: ["kids", "hard"],
-      audience: "kids",
-      occasion: "road-trip",
-      style: "deep",
-    },
-    {
-      id: "wyr-009",
-      text: "Would you rather have unlimited free flights forever or unlimited free five-star dining forever?",
-      a: "Unlimited free international flights",
-      b: "Unlimited free gourmet meals anywhere",
-      collections: ["couples", "friends"],
-      audience: "couples",
-      occasion: "date-night",
-      style: "easy",
-    },
-    {
-      id: "wyr-010",
-      text: "Would you rather sweat maple syrup or cry carbonated soda?",
-      a: "Sweat pure maple syrup",
-      b: "Cry fizzy lemon soda",
-      collections: ["funny"],
-      audience: "friends",
-      occasion: "sleepover",
-      style: "weird",
-    },
-    {
-      id: "wyr-k05",
-      text: "Would you rather have hair that changes color with your mood or shoes that light up when you jump?",
-      a: "Mood-changing glowing hair",
-      b: "Super-powered light-up shoes",
-      collections: ["kids", "funny"],
-      audience: "kids",
-      occasion: "birthday-party",
-      style: "clean",
-    },
-    {
-      id: "wyr-h10",
-      text: "Would you rather sacrifice your career to support your partner's dream or have them sacrifice theirs for yours?",
-      a: "Step back and support their dream",
-      b: "Ask them to step back for your ambition",
-      collections: ["hard", "couples"],
-      audience: "couples",
-      occasion: "date-night",
-      style: "hard",
-    },
-    {
-      id: "wyr-cp01",
-      text: "Would you rather have a lavish destination wedding with 10 people or a modest hometown wedding with 300 people?",
-      a: "Intimate luxury tropical elopement",
-      b: "Huge bustling party with everyone you know",
-      collections: ["couples"],
-      audience: "couples",
-      occasion: "date-night",
-      style: "easy",
-    },
-    {
-      id: "wyr-cp02",
-      text: "Would you rather receive spontaneous romantic surprises every month or have one massive planned vacation each year?",
-      a: "Monthly unexpected sweet surprises",
-      b: "One unforgettable dream annual getaway",
-      collections: ["couples"],
-      audience: "couples",
-      occasion: "date-night",
-      style: "easy",
-    },
-  ];
+  const source = window.WYR_PREVIEW_DATA;
+  if (!source?.questions?.length) {
+    throw new Error("The local wyrplay question snapshot did not load.");
+  }
 
-  const categories = {
-    kids: {
-      title: "Would You Rather Questions for Kids",
-      eyebrow: "Featured SEO collection · /would-you-rather-questions-for-kids",
-      intro:
-        "A wholesome, imaginative collection of Would You Rather questions designed specifically for children, elementary students, and family car trips.",
-      count: "29 collection-tagged drafts",
-      ids: ["wyr-004", "wyr-k01", "wyr-k02"],
-    },
-    funny: {
-      title: "Funny Would You Rather Questions",
-      eyebrow: "Featured SEO collection · /funny-would-you-rather-questions",
-      intro:
-        "A wildly hilarious collection of bizarre superpowers, embarrassing mishaps, and ridiculous trade-offs.",
-      count: "30 collection-tagged drafts",
-      ids: ["wyr-004", "wyr-005", "wyr-010"],
-    },
-    hard: {
-      title: "Hard Would You Rather Questions",
-      eyebrow: "Featured SEO collection · /hard-would-you-rather-questions",
-      intro: "Tough moral crossroads and impossible trade-offs with no easy answers.",
-      count: "28 collection-tagged drafts",
-      ids: ["wyr-001", "wyr-002", "wyr-003"],
-    },
-    friends: {
-      title: "Would You Rather Questions for Friends",
-      eyebrow: "Featured SEO collection · /would-you-rather-questions-for-friends",
-      intro: "Spicy banter, secrets, and friendly roasts for game nights and weekend hangouts.",
-      count: "28 collection-tagged drafts",
-      ids: ["wyr-001", "wyr-005", "wyr-006"],
-    },
-    couples: {
-      title: "Would You Rather Questions for Couples",
-      eyebrow: "Featured SEO collection · /would-you-rather-questions-for-couples",
-      intro: "Sweet, insightful, and intriguing conversation starters for date night.",
-      count: "26 collection-tagged drafts",
-      ids: ["wyr-009", "wyr-cp01", "wyr-cp02"],
-    },
-    "age-4-6": {
-      title: "Questions for ages 4–6",
-      eyebrow: "Age-group browse · filter preview",
-      intro:
-        "Ages 4–6 is a value in the current question contract. No reviewed questions carry this age tag in the source snapshot.",
-      count: "No reviewed age tags",
-      ids: [],
-    },
-    "age-7-9": {
-      title: "Questions for ages 7–9",
-      eyebrow: "Age-group browse · filter preview",
-      intro:
-        "Ages 7–9 is a value in the current question contract. No reviewed questions carry this age tag in the source snapshot.",
-      count: "No reviewed age tags",
-      ids: [],
-    },
-    "age-10-12": {
-      title: "Questions for ages 10–12",
-      eyebrow: "Age-group browse · filter preview",
-      intro:
-        "Ages 10–12 is a value in the current question contract. No reviewed questions carry this age tag in the source snapshot.",
-      count: "No reviewed age tags",
-      ids: [],
-    },
-    teens: {
-      title: "Questions for teens",
-      eyebrow: "Audience browse · filter preview",
-      intro:
-        "Teens is a configured audience. Current draft rows have not been assigned reviewed age groups.",
-      count: "No reviewed age tags",
-      ids: ["wyr-002"],
-    },
-    adults: {
-      title: "Questions for adults",
-      eyebrow: "Audience browse · filter preview",
-      intro:
-        "Adults is a configured audience. Current draft rows have not been assigned reviewed age groups.",
-      count: "No reviewed age tags",
-      ids: ["wyr-001", "wyr-003", "wyr-007"],
-    },
-    family: {
-      title: "Would You Rather questions for family",
-      eyebrow: "Relationship browse · filter preview",
-      intro:
-        "Family is a configured relationship category. Its question suitability and relationship tags are still unreviewed.",
-      count: "No reviewed relationship tags",
-      ids: [],
-    },
-    coworkers: {
-      title: "Would You Rather questions for coworkers",
-      eyebrow: "Relationship browse · filter preview",
-      intro:
-        "Coworkers is a configured relationship category. Its question suitability and relationship tags are still unreviewed.",
-      count: "No reviewed relationship tags",
-      ids: ["wyr-006"],
-    },
-    classroom: {
-      title: "Would You Rather questions for classroom",
-      eyebrow: "Occasion browse · filter preview",
-      intro:
-        "Classroom appears as a configured browse category. The question rows below carry legacy draft labels and have not passed suitability review.",
-      count: "Legacy draft tags only",
-      ids: ["wyr-004", "wyr-k01", "wyr-k02"],
-    },
-    party: {
-      title: "Would You Rather questions for party",
-      eyebrow: "Occasion browse · filter preview",
-      intro:
-        "Party is a configured use occasion. These examples use older source labels; they are not approved for play.",
-      count: "Legacy draft tags only",
-      ids: ["wyr-001", "wyr-005"],
-    },
-    "road-trip": {
-      title: "Would You Rather questions for road trip",
-      eyebrow: "Occasion browse · filter preview",
-      intro:
-        "Road Trip is a configured use occasion. These examples use older source labels; they are not approved for play.",
-      count: "Legacy draft tags only",
-      ids: ["wyr-002", "wyr-008"],
-    },
-    dinner: {
-      title: "Would You Rather questions for dinner",
-      eyebrow: "Occasion browse · filter preview",
-      intro:
-        "Dinner is a configured use occasion. These examples use older source labels; they are not approved for play.",
-      count: "Legacy draft tags only",
-      ids: ["wyr-003", "wyr-007"],
-    },
-    "date-night": {
-      title: "Would You Rather questions for date night",
-      eyebrow: "Occasion browse · filter preview",
-      intro:
-        "Date Night is a configured use occasion. The examples shown remain unreviewed drafts.",
-      count: "Legacy draft tags only",
-      ids: ["wyr-009", "wyr-cp01", "wyr-cp02"],
-    },
-    icebreakers: {
-      title: "Would You Rather questions for icebreakers",
-      eyebrow: "Occasion browse · filter preview",
-      intro:
-        "Icebreakers appears in the browse categories. It is not part of the current canonical Occasion type.",
-      count: "Legacy draft tags only",
-      ids: ["wyr-006"],
-    },
-    "birthday-party": {
-      title: "Would You Rather questions for birthday parties",
-      eyebrow: "Occasion browse · filter preview",
-      intro:
-        "Birthday Party appears in the browse categories. It is not part of the current canonical Occasion type.",
-      count: "Legacy draft tags only",
-      ids: ["wyr-k05"],
-    },
-    sleepover: {
-      title: "Would You Rather questions for sleepovers",
-      eyebrow: "Occasion browse · filter preview",
-      intro:
-        "Sleepover appears in the browse categories. It is not part of the current canonical Occasion type.",
-      count: "Legacy draft tags only",
-      ids: ["wyr-010"],
-    },
-    deep: {
-      title: "Deep Would You Rather questions",
-      eyebrow: "Tone browse · filter preview",
-      intro: "Deep is a configured question tone. Draft rows have not passed editorial review.",
-      count: "Unreviewed draft labels",
-      ids: ["wyr-001", "wyr-002", "wyr-008"],
-    },
-    weird: {
-      title: "Weird Would You Rather questions",
-      eyebrow: "Tone browse · filter preview",
-      intro: "Weird appears in the browse categories. Draft rows have not passed editorial review.",
-      count: "Unreviewed draft labels",
-      ids: ["wyr-010"],
-    },
-    easy: {
-      title: "Easy Would You Rather questions",
-      eyebrow: "Difficulty browse · filter preview",
-      intro: "Easy is a configured difficulty value. Draft rows have not passed editorial review.",
-      count: "Unreviewed draft labels",
-      ids: ["wyr-006", "wyr-009"],
-    },
-    clean: {
-      title: "Clean Would You Rather questions",
-      eyebrow: "Style browse · filter preview",
-      intro:
-        "Clean appears in the browse categories. It is not a canonical Tone value, and suitability is still unreviewed.",
-      count: "Unreviewed draft labels",
-      ids: ["wyr-k01", "wyr-k02"],
-    },
+  const collectionKeys = Object.keys(source.featuredCollections);
+  const questions = source.questions.map((question) => ({
+    id: question.id,
+    text: question.question,
+    a: question.optionA,
+    b: question.optionB,
+    ageGroups: question.ageGroups,
+    relationships: question.relationships,
+    occasions: question.occasions,
+    scenarios: question.scenarios ?? [],
+    tones: question.tones,
+    difficulty: question.difficulty,
+    topics: question.topics,
+    suitability: question.suitability,
+    reviewStatus: question.reviewStatus,
+    primaryCollection: question.primaryCollection,
+    collections: collectionKeys.filter((key) => isInCollection(question, key)),
+  }));
+
+  const canonicalAges = ["4-6", "7-9", "10-12", "13-17", "18+"];
+  const relationships = ["friends", "family", "couples", "coworkers"];
+  const canonicalOccasions = ["classroom", "party", "road-trip", "dinner", "date-night"];
+  const tones = ["funny", "weird", "deep"];
+  const difficulties = ["easy", "hard"];
+  const occasionRoutes = {
+    classroom: "classroom",
+    party: "party",
+    "road-trip": "road-trip",
+    dinner: "dinner",
+    "date-night": "date-night",
+    icebreakers: "icebreakers",
+    "birthday-party": "birthday-party",
+    sleepover: "sleepover",
   };
-
   const byId = (id) => document.getElementById(id);
   const root = document.documentElement;
+  let activeCategoryKey = "kids";
+  let activeQuestionPool = questions;
   let activeQuestionIndex = 0;
-  let lastChoice = null;
+
+  function isInCollection(question, key) {
+    switch (key) {
+      case "kids":
+        return (
+          question.suitability.kids === "suitable" &&
+          question.ageGroups.some((age) => ["4-6", "7-9", "10-12"].includes(age))
+        );
+      case "funny":
+        return question.tones.includes("funny");
+      case "hard":
+        return question.difficulty === "hard";
+      case "friends":
+        return question.relationships.includes("friends");
+      case "couples":
+        return question.relationships.includes("couples");
+      default:
+        return false;
+    }
+  }
+
+  function titleCase(value) {
+    return value.replaceAll("-", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+  }
+
+  function categoryConfig(key) {
+    const featured = source.featuredCollections[key];
+    if (featured) {
+      return {
+        key,
+        title: featured.h1,
+        eyebrow: `Featured SEO collection · ${featured.route}`,
+        intro: featured.subtitle,
+        kind: "collection",
+        value: key,
+      };
+    }
+
+    const ageAliases = { teens: "13-17", adults: "18+" };
+    const ageKey = key.startsWith("age-") ? key.slice(4) : (ageAliases[key] ?? key);
+    if (canonicalAges.includes(ageKey)) {
+      const audienceName =
+        ageKey === "13-17" ? "Teens" : ageKey === "18+" ? "Adults" : `Ages ${ageKey}`;
+      return {
+        key,
+        title: `Would You Rather Questions for ${audienceName}`,
+        eyebrow: "Age group · approved source questions",
+        intro: `Browse approved questions tagged for ages ${ageKey}. The examples and counts come from this checkout's question source.`,
+        kind: "age",
+        value: ageKey,
+      };
+    }
+
+    if (relationships.includes(key)) {
+      const audience = source.audiences.find((item) => item.id === key);
+      return {
+        key,
+        title: `Would You Rather Questions for ${titleCase(key)}`,
+        eyebrow: "Relationship group · question collection",
+        intro: audience?.description ?? `Questions tagged for ${titleCase(key)}.`,
+        kind: "relationship",
+        value: key,
+      };
+    }
+
+    const occasionId = key === "icebreakers" ? "icebreaker" : key;
+    const occasion = source.occasions.find((item) => item.id === occasionId);
+    const scenario = occasionRoutes[key];
+    if (occasion && scenario) {
+      return {
+        key,
+        title: `Would You Rather Questions for ${occasion.name}`,
+        eyebrow: "Occasion · question collection",
+        intro: occasion.description,
+        kind: "scenario",
+        value: scenario,
+      };
+    }
+
+    const style = source.styles.find((item) => item.id === key);
+    if (style) {
+      return {
+        key,
+        title: `${style.name} Would You Rather Questions`,
+        eyebrow: "Style · question collection",
+        intro: style.description,
+        kind: "style",
+        value: key,
+      };
+    }
+
+    return {
+      key,
+      title: "Question collection",
+      eyebrow: "Browse questions",
+      intro: "Choose a question collection.",
+      kind: "unknown",
+      value: key,
+    };
+  }
+
+  function isKnownCategory(key) {
+    const occasionKeys = Object.keys(occasionRoutes);
+    const ageKeys = canonicalAges.map((age) => `age-${age}`);
+    return Boolean(
+      source.featuredCollections[key] ||
+      ageKeys.includes(key) ||
+      ["teens", "adults", "family", "coworkers"].includes(key) ||
+      occasionKeys.includes(key) ||
+      source.styles.some((style) => style.id === key),
+    );
+  }
+
+  function matchesCategory(question, category) {
+    switch (category.kind) {
+      case "collection":
+        return question.collections.includes(category.value);
+      case "age":
+        return question.ageGroups.includes(category.value);
+      case "relationship":
+        return question.relationships.includes(category.value);
+      case "scenario":
+        return question.scenarios.includes(category.value);
+      case "style":
+        if (category.value === "hard" || category.value === "easy") {
+          return question.difficulty === category.value;
+        }
+        if (category.value === "clean") {
+          return question.suitability.classroom === "suitable";
+        }
+        return question.tones.includes(category.value);
+      default:
+        return false;
+    }
+  }
+
+  function categoryQuestions(key) {
+    const category = categoryConfig(key);
+    return questions.filter(
+      (question) => question.reviewStatus === "approved" && matchesCategory(question, category),
+    );
+  }
 
   function readRoute() {
     const raw = window.location.hash.slice(1) || "/home";
@@ -382,14 +202,14 @@
       page: parts[0] || "home",
       key: parts[1] || params.get("group") || "",
       question: params.get("question") || "",
-      state: params.get("state") || "",
+      group: params.get("group") || "",
       anchor,
     };
   }
 
   function updatePageTitle(page, key) {
-    const category = categories[key];
-    if (page === "category" && category) {
+    const category = categoryConfig(key);
+    if (page === "category") {
       document.title = category.title + " — wyrplay Preview";
       return;
     }
@@ -411,104 +231,227 @@
     return element;
   }
 
+  function questionTags(question) {
+    const labels = [
+      ...question.ageGroups.map((age) => `Ages ${age}`),
+      ...question.relationships.map(titleCase),
+      ...question.occasions.map(titleCase),
+      ...question.tones.map(titleCase),
+      question.difficulty ? titleCase(question.difficulty) : "",
+    ];
+    return [...new Set(labels.filter(Boolean))].slice(0, 5).join(" · ") || "Approved question";
+  }
+
+  function playLink(question, group) {
+    const query = new URLSearchParams({ question: question.id });
+    if (group) query.set("group", group);
+    return "#/play?" + query.toString();
+  }
+
   function renderQuestionRow(question, index) {
     const article = make("article", "draft-question");
     const top = make("div", "draft-question__top");
-    const id = make("span", "draft-question__id", question.id);
-    const review = make("span", "review-label", "Editorial review pending");
-    top.append(id, review);
+    top.append(
+      make("span", "draft-question__id", question.id),
+      make("span", "review-label", "Approved source row"),
+    );
     const heading = make("h3", "draft-question__text", question.text);
     const options = make("div", "draft-question__options");
     const optionA = make("p", "draft-option draft-option--a");
-    const keyA = make("b", "", "A");
-    const textA = make("span", "", question.a);
-    optionA.append(keyA, textA);
+    optionA.append(make("b", "", "A"), make("span", "", question.a));
     const optionB = make("p", "draft-option draft-option--b");
-    const keyB = make("b", "", "B");
-    const textB = make("span", "", question.b);
-    optionB.append(keyB, textB);
+    optionB.append(make("b", "", "B"), make("span", "", question.b));
     options.append(optionA, optionB);
-    const tags = make(
-      "p",
-      "draft-question__tags",
-      "Draft collection tags: " + question.collections.join(" · "),
-    );
-    const action = make("a", "text-link draft-question__action", "Preview this question →");
-    action.href = "#/play?question=" + encodeURIComponent(question.id);
-    action.setAttribute(
-      "aria-label",
-      "Preview question " + question.id + " in the local play screen",
-    );
-    article.setAttribute(
-      "data-search",
-      (question.text + " " + question.a + " " + question.b).toLowerCase(),
-    );
-    article.setAttribute("data-order", String(index + 1));
+    const tags = make("p", "draft-question__tags", questionTags(question));
+    const action = make("a", "text-link draft-question__action", "Play this question →");
+    action.href = playLink(question, activeCategoryKey);
+    action.setAttribute("aria-label", `Play approved question ${question.id} in the local preview`);
+    article.dataset.search = (
+      question.text +
+      " " +
+      question.a +
+      " " +
+      question.b +
+      " " +
+      question.topics.join(" ")
+    ).toLowerCase();
+    article.dataset.order = String(index + 1);
     article.append(top, heading, options, tags, action);
     return article;
   }
 
   function renderCategory(key) {
-    const category = categories[key] || categories.kids;
-    const questionsForCategory = category.ids
-      .map((id) => questions.find((question) => question.id === id))
-      .filter(Boolean);
+    if (!isKnownCategory(key)) key = "kids";
+    activeCategoryKey = key;
+    const category = categoryConfig(key);
+    const matches = categoryQuestions(key);
+    const name = key.startsWith("age-") ? key.slice(4) : key;
 
     byId("category-title").textContent = category.title;
     byId("category-eyebrow").textContent = category.eyebrow;
     byId("category-intro").textContent = category.intro;
-    byId("category-breadcrumb").textContent =
-      key === "road-trip"
-        ? "Road Trip"
-        : key.replaceAll("-", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
-    byId("category-draft-count").textContent = category.count;
-    byId("category-result-count").textContent = questionsForCategory.length + " examples shown";
-    byId("category-list-title").textContent = questionsForCategory.length
-      ? "Questions in this view"
-      : "No approved questions yet";
+    byId("category-breadcrumb").textContent = titleCase(name);
+    byId("category-draft-count").textContent = `${matches.length} approved questions`;
+    byId("category-result-count").textContent = `${matches.length} questions`;
+    byId("category-list-title").textContent = matches.length
+      ? `Approved questions for ${titleCase(name)}`
+      : "No approved questions in this category";
     byId("category-review-note").textContent =
-      "Examples are real rows from the current question source. Their reviewStatus is unreviewed; any older collection, audience, or occasion label shown is draft-only. None can be treated as suitable or playable.";
+      "Every row below comes from the checked-out question source and is marked approved. Category labels and filters use the source metadata; votes in this prototype stay local.";
+    byId("category-primary-play").href = matches.length ? playLink(matches[0], key) : "#/play";
+    byId("category-empty").hidden = matches.length > 0;
+    byId("question-search").value = "";
 
     const list = byId("draft-question-list");
-    list.replaceChildren(...questionsForCategory.map(renderQuestionRow));
-    byId("category-empty").hidden = questionsForCategory.length > 0;
-    byId("question-search").value = "";
-    filterDraftRows("");
+    list.replaceChildren(...matches.map(renderQuestionRow));
+    resetCategoryFilters();
+    filterDraftRows();
   }
 
-  function filterDraftRows(searchValue) {
-    const query = searchValue.trim().toLowerCase();
+  function resetCategoryFilters() {
+    byId("question-search").value = "";
+    document.querySelectorAll("[data-category-filter]").forEach((select) => {
+      select.value = "";
+    });
+  }
+
+  function filterDraftRows() {
+    const query = byId("question-search").value.trim().toLowerCase();
+    const selected = Object.fromEntries(
+      Array.from(document.querySelectorAll("[data-category-filter]")).map((select) => [
+        select.dataset.categoryFilter,
+        select.value,
+      ]),
+    );
     const rows = Array.from(document.querySelectorAll(".draft-question"));
     let visible = 0;
-    rows.forEach((row) => {
-      const matches = row.dataset.search.includes(query);
+    for (const row of rows) {
+      const question = questions.find(
+        (item) => item.id === row.querySelector(".draft-question__id").textContent,
+      );
+      const matchesSearch = row.dataset.search.includes(query);
+      const matchesAge = !selected.age || question.ageGroups.includes(selected.age);
+      const matchesRelationship =
+        !selected.relationship || question.relationships.includes(selected.relationship);
+      const matchesOccasion = !selected.occasion || question.occasions.includes(selected.occasion);
+      const matchesTone = !selected.tone || question.tones.includes(selected.tone);
+      const matchesDifficulty = !selected.difficulty || question.difficulty === selected.difficulty;
+      const matches =
+        matchesSearch &&
+        matchesAge &&
+        matchesRelationship &&
+        matchesOccasion &&
+        matchesTone &&
+        matchesDifficulty;
       row.hidden = !matches;
       if (matches) visible += 1;
+    }
+    byId("category-empty").hidden = visible > 0;
+    byId("category-result-count").textContent = `${visible} of ${rows.length} questions`;
+    byId("filter-status").textContent =
+      `${visible} approved source questions match these filters. Occasion filters use the five canonical values in the current question contract.`;
+  }
+
+  function renderHomeQuestion() {
+    const question = questions[0];
+    byId("home-source-id").textContent = question.id;
+    byId("home-arena-title").textContent = question.text;
+    byId("home-option-a").textContent = question.a;
+    byId("home-option-b").textContent = question.b;
+    byId("home-question-link").href = playLink(question);
+    byId("home-choice-a").setAttribute("aria-pressed", "false");
+    byId("home-choice-b").setAttribute("aria-pressed", "false");
+    byId("home-choice-a").classList.remove("is-selected");
+    byId("home-choice-b").classList.remove("is-selected");
+    byId("home-result").hidden = true;
+    byId("home-arena-message").textContent = "Local preview · your click stays in this browser.";
+  }
+
+  function renderHomeContent() {
+    const approvedCount = questions.filter(
+      (question) => question.reviewStatus === "approved",
+    ).length;
+    byId("source-summary").textContent =
+      `Source snapshot: ${approvedCount} approved questions · local interactions only`;
+    byId("source-note-copy").textContent =
+      `The question examples come from this checkout. ${approvedCount} rows are marked approved; this preview never submits a vote.`;
+    byId("editorial-filter-note").textContent =
+      `This checkout contains ${approvedCount} approved question rows. Age, relationship, occasion, tone, and difficulty filters use the current question metadata.`;
+    byId("design-source-count").textContent =
+      `${approvedCount} approved source rows are available to the live question flow. The empty state below represents a filter with no matches.`;
+    const systemQuestion = questions[0];
+    byId("system-source-label").textContent = `${systemQuestion.id.toUpperCase()} · APPROVED`;
+    byId("system-question-title").textContent = systemQuestion.text;
+    byId("system-option-a").textContent = systemQuestion.a;
+    byId("system-option-b").textContent = systemQuestion.b;
+
+    document.querySelectorAll(".featured-card").forEach((card) => {
+      const key = card.dataset.collection;
+      const meta = source.featuredCollections[key];
+      if (!meta) return;
+      const count = questions.filter((question) => question.collections.includes(key)).length;
+      const subtitle = card.querySelector("p");
+      if (subtitle) subtitle.textContent = meta.subtitle;
+      const index = card.querySelector(".featured-card__index");
+      if (index) index.textContent = `${titleCase(key)} · ${count} questions`;
+      const title = card.querySelector("h3");
+      if (title) title.textContent = titleCase(key);
+      const link = card.querySelector(".featured-card__link");
+      if (link) link.childNodes[0].textContent = meta.h1 + " ";
+      card.href = `#/category/${key}`;
     });
-    const empty = byId("category-empty");
-    if (empty) empty.hidden = visible > 0;
-    const count = byId("category-result-count");
-    if (count) count.textContent = visible + (visible === 1 ? " example shown" : " examples shown");
+
+    const picks = [
+      questions.find((question) => question.collections.includes("funny")),
+      questions.find((question) => question.collections.includes("friends")),
+      questions.find((question) => question.collections.includes("couples")),
+    ].filter(
+      (question, index, all) =>
+        question && all.findIndex((item) => item.id === question.id) === index,
+    );
+    const list = byId("home-question-list");
+    list.replaceChildren(
+      ...picks.map((question) => {
+        const row = make("article", "question-pick");
+        row.append(make("span", "question-pick__id", question.id));
+        const content = make("div");
+        content.append(
+          make("p", "question-pick__text", question.text),
+          make("p", "question-pick__meta", questionTags(question)),
+        );
+        const status = make("span", "review-label", "Approved");
+        const link = make("a", "", "↗");
+        link.href = playLink(question);
+        link.setAttribute("aria-label", `Play question ${question.id}`);
+        row.append(content, status, link);
+        return row;
+      }),
+    );
+    renderHomeQuestion();
   }
 
   function renderPlayQuestion() {
-    const question = questions[activeQuestionIndex];
+    const question = activeQuestionPool[activeQuestionIndex];
+    if (!question) return;
     byId("play-progress").textContent =
-      "Example " + String(activeQuestionIndex + 1).padStart(2, "0") + " / " + questions.length;
+      `Question ${String(activeQuestionIndex + 1).padStart(2, "0")} / ${activeQuestionPool.length}`;
     byId("play-source-id").textContent = question.id;
     byId("play-question-title").textContent = question.text;
     byId("play-option-a").textContent = question.a;
     byId("play-option-b").textContent = question.b;
-    byId("play-category").textContent = "Draft tags · " + question.collections.join(" / ");
+    byId("play-category").textContent = questionTags(question);
+    byId("play-review-label").textContent = "Approved source row";
     byId("presenter-title").textContent = question.text;
     byId("presenter-option-a").textContent = question.a;
     byId("presenter-option-b").textContent = question.b;
-    byId("presenter-status").textContent = "Draft question · " + question.id;
-    lastChoice = null;
-    setChoiceState(byId("play-view"), null);
-    byId("play-results").hidden = true;
+    byId("presenter-status").textContent =
+      `${question.id} · Question ${activeQuestionIndex + 1} of ${activeQuestionPool.length}`;
+    byId("play-view").dataset.questionId = question.id;
     byId("pre-vote-prompt").hidden = false;
-    byId("play-status").textContent = "Choose A or B. This prototype does not call the voting API.";
+    byId("play-results").hidden = true;
+    byId("play-status").textContent =
+      "Choose A or B. This local preview does not call the voting API.";
+    setChoiceState(byId("play-view"), null);
   }
 
   function setChoiceState(scope, option) {
@@ -521,44 +464,38 @@
   }
 
   function chooseOption(scope, option) {
-    if (scope.matches('[data-arena="home"]')) {
-      setChoiceState(scope, option);
-      const result = scope.querySelector("[data-result-panel]");
+    setChoiceState(scope, option);
+    if (scope.dataset.arena === "home") {
+      const result = byId("home-result");
       result.hidden = false;
-      const pick = scope.querySelector("[data-your-choice]");
-      pick.textContent = "You chose " + option;
-      const message = scope.querySelector("[data-arena-message]");
-      message.textContent = "Local preview · no vote was sent or stored.";
+      result.querySelector("[data-your-choice]").textContent = `You chose Option ${option}`;
+      byId("home-arena-message").textContent = "Local preview · no vote was sent or stored.";
       return;
     }
-    lastChoice = option;
-    setChoiceState(scope, option);
     byId("pre-vote-prompt").hidden = true;
     byId("play-results").hidden = false;
-    byId("play-your-choice").textContent = "Your choice: Option " + option;
+    byId("play-your-choice").textContent = `Your choice: Option ${option}`;
     byId("play-status").textContent =
-      "You picked Option " +
-      option +
-      ". The displayed percentages and total are illustrative, not live votes.";
+      `You picked Option ${option}. The displayed percentages and total are illustrative, not live votes.`;
   }
 
   function moveQuestion(step) {
-    activeQuestionIndex = (activeQuestionIndex + step + questions.length) % questions.length;
+    activeQuestionIndex =
+      (activeQuestionIndex + step + activeQuestionPool.length) % activeQuestionPool.length;
     renderPlayQuestion();
   }
 
   function chooseRandomQuestion() {
-    if (questions.length < 2) return;
-    const currentIndex = activeQuestionIndex;
-    while (activeQuestionIndex === currentIndex) {
-      activeQuestionIndex = Math.floor(Math.random() * questions.length);
+    if (activeQuestionPool.length < 2) return;
+    const current = activeQuestionIndex;
+    while (activeQuestionIndex === current) {
+      activeQuestionIndex = Math.floor(Math.random() * activeQuestionPool.length);
     }
     renderPlayQuestion();
   }
 
   function showPlayResult(option) {
-    const scope = byId("play-view");
-    chooseOption(scope, option);
+    chooseOption(byId("play-view"), option);
     byId("play-status").textContent = "Illustrative result state · no vote was sent or stored.";
   }
 
@@ -568,11 +505,8 @@
   }
 
   function sharePreview(button) {
-    const localMessage = button.closest("[data-arena]");
-    const status = localMessage
-      ? localMessage.querySelector("[data-arena-message]")
-      : byId("play-status");
-    const message = "Preview link copied.";
+    const arena = button.closest("[data-arena]");
+    const status = arena?.querySelector("[data-arena-message]") ?? byId("play-status");
     if (!navigator.clipboard || !window.isSecureContext) {
       if (status)
         status.textContent =
@@ -581,7 +515,8 @@
     }
     navigator.clipboard.writeText(window.location.href).then(
       () => {
-        if (status) status.textContent = message + " This link opens the local preview only.";
+        if (status)
+          status.textContent = "Preview link copied. This link opens the local preview only.";
       },
       () => {
         if (status)
@@ -601,23 +536,39 @@
 
   function route() {
     const state = readRoute();
-    const page = state.page === "result" ? "play" : state.page;
-    const validPages = ["home", "category", "play", "sign-in", "account", "design-system"];
-    const visiblePage = validPages.includes(page) ? page : "home";
+    const visiblePage = [
+      "home",
+      "category",
+      "play",
+      "result",
+      "sign-in",
+      "account",
+      "design-system",
+    ].includes(state.page)
+      ? state.page === "result"
+        ? "play"
+        : state.page
+      : "home";
     document.querySelectorAll("[data-page]").forEach((section) => {
       section.hidden = section.dataset.page !== visiblePage;
     });
     updatePageTitle(state.page, state.key);
     closeMobileMenu();
 
+    if (visiblePage === "home") renderHomeQuestion();
     if (visiblePage === "category") renderCategory(state.key || "kids");
     if (visiblePage === "play") {
-      if (state.question) {
-        const requestedIndex = questions.findIndex((question) => question.id === state.question);
-        if (requestedIndex >= 0) activeQuestionIndex = requestedIndex;
-      }
+      const group = state.group && isKnownCategory(state.group) ? state.group : "";
+      activeQuestionPool = group
+        ? categoryQuestions(group)
+        : questions.filter((question) => question.reviewStatus === "approved");
+      const requestedIndex = state.question
+        ? activeQuestionPool.findIndex((question) => question.id === state.question)
+        : -1;
+      if (requestedIndex >= 0) activeQuestionIndex = requestedIndex;
+      else if (activeQuestionIndex >= activeQuestionPool.length) activeQuestionIndex = 0;
       renderPlayQuestion();
-      if (state.page === "result" || state.state === "result") showPlayResult("A");
+      if (state.page === "result") showPlayResult("A");
     }
 
     window.requestAnimationFrame(() => {
@@ -633,16 +584,11 @@
     });
   }
 
-  document.addEventListener("click", (event) => {
-    const target = event.target.closest("[data-option]");
-    if (target) {
-      const arena = target.closest("[data-arena]");
-      if (arena) chooseOption(arena, target.dataset.option);
-    }
-    const shareButton = event.target.closest("[data-share]");
-    if (shareButton) sharePreview(shareButton);
-  });
+  function handleCategoryFilterChange() {
+    filterDraftRows();
+  }
 
+  renderHomeContent();
   byId("menu-toggle").addEventListener("click", () => {
     const menu = byId("mobile-menu");
     const toggle = byId("menu-toggle");
@@ -651,30 +597,35 @@
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
   });
-
-  document.querySelectorAll("#mobile-menu a").forEach((link) => {
-    link.addEventListener("click", closeMobileMenu);
-  });
-
+  document
+    .querySelectorAll("#mobile-menu a")
+    .forEach((link) => link.addEventListener("click", closeMobileMenu));
   byId("theme-toggle").addEventListener("click", (event) => {
-    const current = root.dataset.theme || "dark";
-    const next = current === "dark" ? "light" : "dark";
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
     root.dataset.theme = next;
     event.currentTarget.setAttribute(
       "aria-label",
       next === "dark" ? "Switch to light theme" : "Switch to dark theme",
     );
   });
-
-  byId("question-search").addEventListener("input", (event) =>
-    filterDraftRows(event.currentTarget.value),
-  );
+  document.addEventListener("click", (event) => {
+    const option = event.target.closest("[data-option]");
+    if (option) {
+      const arena = option.closest("[data-arena]");
+      if (arena) chooseOption(arena, option.dataset.option);
+    }
+    const shareButton = event.target.closest("[data-share]");
+    if (shareButton) sharePreview(shareButton);
+  });
+  byId("question-search").addEventListener("input", filterDraftRows);
+  document.querySelectorAll("[data-category-filter]").forEach((select) => {
+    select.addEventListener("change", handleCategoryFilterChange);
+  });
   byId("clear-search").addEventListener("click", () => {
-    byId("question-search").value = "";
-    filterDraftRows("");
+    resetCategoryFilters();
+    filterDraftRows();
     byId("question-search").focus();
   });
-
   byId("next-question").addEventListener("click", () => moveQuestion(1));
   byId("random-question").addEventListener("click", chooseRandomQuestion);
   byId("presenter-open").addEventListener("click", openPresenter);
@@ -695,15 +646,12 @@
       moveQuestion(-1);
     }
   });
-
   byId("signin-form").addEventListener("submit", (event) => {
     event.preventDefault();
-    const form = event.currentTarget;
-    if (!form.reportValidity()) return;
+    if (!event.currentTarget.reportValidity()) return;
     byId("signin-feedback").textContent =
       "Preview only: no email was sent and no account session was created. The live flow uses a single-use email link.";
   });
-
   window.addEventListener("keydown", (event) => {
     if (byId("presenter-dialog").open || event.altKey || event.ctrlKey || event.metaKey) return;
     if (event.target.matches("input, textarea, select, button, a")) return;
@@ -714,7 +662,6 @@
       if (event.key === "ArrowLeft") moveQuestion(-1);
     }
   });
-
   window.addEventListener("hashchange", route);
   route();
 })();
