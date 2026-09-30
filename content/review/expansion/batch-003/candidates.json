@@ -496,9 +496,9 @@
     "candidateId": "expansion-003-017",
     "primaryCollection": "kids",
     "primaryAgeBand": "7-9",
-    "question": "Would you rather be first to try a new playground game or go last after watching everyone else?",
-    "optionA": "Try the new game first",
-    "optionB": "Go last after watching everyone",
+    "question": "Would you rather play a brand-new game with no score or a familiar game with one surprising new rule?",
+    "optionA": "Play a new game with no score",
+    "optionB": "Play a familiar game with a new rule",
     "ageBands": [
       "7-9",
       "10-12"
@@ -510,13 +510,13 @@
       "classroom"
     ],
     "moods": [
-      "thoughtful",
+      "funny",
       "light"
     ],
     "difficulty": "hard",
     "topics": [
       "games",
-      "school"
+      "creativity"
     ],
     "safety": {
       "kidsSafe": true,
@@ -1207,22 +1207,25 @@
     "candidateId": "expansion-003-040",
     "primaryCollection": "teens",
     "primaryAgeBand": null,
-    "question": "Would you rather show your creative work before it feels finished or wait until it feels polished and miss early feedback?",
-    "optionA": "Show it before it feels finished",
-    "optionB": "Wait until it feels polished",
+    "question": "Would you rather help organize a school event behind the scenes or be one of the people hosting it in front of everyone?",
+    "optionA": "Organize behind the scenes",
+    "optionB": "Help host the event",
     "ageBands": [
       "teens"
     ],
     "relationships": [],
-    "scenarios": [],
+    "scenarios": [
+      "classroom"
+    ],
     "moods": [
       "thoughtful",
-      "deep"
+      "light"
     ],
     "difficulty": "hard",
     "topics": [
-      "creativity",
-      "communication"
+      "school",
+      "teamwork",
+      "social-situations"
     ],
     "safety": {
       "kidsSafe": false,
@@ -1321,23 +1324,21 @@
     "candidateId": "expansion-003-044",
     "primaryCollection": "adults",
     "primaryAgeBand": null,
-    "question": "Would you rather work four longer days each week or five shorter days?",
-    "optionA": "Work four longer days",
-    "optionB": "Work five shorter days",
+    "question": "Would you rather have more open space at home with fewer possessions or keep useful backups and use more storage space?",
+    "optionA": "Have more open space with fewer possessions",
+    "optionB": "Keep useful backups and use more storage",
     "ageBands": [
       "adults"
     ],
-    "relationships": [
-      "coworkers"
-    ],
+    "relationships": [],
     "scenarios": [],
     "moods": [
       "thoughtful"
     ],
     "difficulty": "hard",
     "topics": [
-      "work",
-      "time"
+      "home",
+      "lifestyle"
     ],
     "safety": {
       "kidsSafe": false,
@@ -1621,9 +1622,9 @@
     "candidateId": "expansion-003-054",
     "primaryCollection": "friends",
     "primaryAgeBand": null,
-    "question": "Would you rather keep one monthly tradition with your friends or make every meetup something different?",
-    "optionA": "Keep one monthly tradition",
-    "optionB": "Make every meetup different",
+    "question": "Would you rather swap favorite books with a friend for a month or swap favorite playlists for a month?",
+    "optionA": "Swap favorite books",
+    "optionB": "Swap favorite playlists",
     "ageBands": [
       "teens",
       "adults"
@@ -1633,13 +1634,13 @@
     ],
     "scenarios": [],
     "moods": [
-      "thoughtful",
       "light"
     ],
-    "difficulty": "hard",
+    "difficulty": "easy",
     "topics": [
       "friendship",
-      "routines"
+      "music",
+      "media"
     ],
     "safety": {
       "kidsSafe": true,
@@ -2093,9 +2094,9 @@
     "candidateId": "expansion-003-068",
     "primaryCollection": "couples",
     "primaryAgeBand": null,
-    "question": "Would you rather take turns choosing weekend plans or choose every weekend plan together?",
-    "optionA": "Take turns choosing plans",
-    "optionB": "Choose every plan together",
+    "question": "Would you rather divide trip research so each of you plans different parts or research every part together?",
+    "optionA": "Divide the trip research",
+    "optionB": "Research every part together",
     "ageBands": [
       "adults"
     ],
@@ -2109,7 +2110,8 @@
     "difficulty": "hard",
     "topics": [
       "relationships",
-      "planning"
+      "travel",
+      "teamwork"
     ],
     "safety": {
       "kidsSafe": false,
@@ -2616,9 +2618,9 @@
     "candidateId": "expansion-003-085",
     "primaryCollection": "classroom",
     "primaryAgeBand": null,
-    "question": "Would you rather get two quiet minutes to think before answering or hear two classmates' ideas first?",
-    "optionA": "Think quietly first",
-    "optionB": "Hear two classmates' ideas first",
+    "question": "Would you rather see a clear example before learning the rule or learn the rule before seeing any examples?",
+    "optionA": "See an example first",
+    "optionB": "Learn the rule first",
     "ageBands": [
       "10-12",
       "teens"
@@ -2979,9 +2981,9 @@
     "candidateId": "expansion-003-096",
     "primaryCollection": "party",
     "primaryAgeBand": null,
-    "question": "Would you rather play a party challenge using only words or one using only pictures?",
-    "optionA": "Use only words",
-    "optionB": "Use only pictures",
+    "question": "Would you rather play a party game where everyone answers at once or one where every player gets a turn?",
+    "optionA": "Have everyone answer at once",
+    "optionB": "Give every player a turn",
     "ageBands": [
       "teens",
       "adults"
@@ -2994,13 +2996,12 @@
     ],
     "moods": [
       "funny",
-      "weird"
+      "light"
     ],
-    "difficulty": "easy",
+    "difficulty": "hard",
     "topics": [
       "party",
-      "games",
-      "communication"
+      "games"
     ],
     "safety": {
       "kidsSafe": true,
@@ -3259,9 +3260,9 @@
     "candidateId": "expansion-003-104",
     "primaryCollection": "road-trip",
     "primaryAgeBand": null,
-    "question": "Would you rather follow a printed route with every stop marked or use an offline map with no stops chosen ahead of time?",
-    "optionA": "Follow the printed planned route",
-    "optionB": "Use the flexible offline map",
+    "question": "Would you rather have more legroom in the car with less luggage space or more luggage space with tighter seats?",
+    "optionA": "Have more legroom and less luggage space",
+    "optionB": "Have more luggage space and tighter seats",
     "ageBands": [
       "10-12",
       "teens",
@@ -3280,7 +3281,7 @@
     "difficulty": "hard",
     "topics": [
       "travel",
-      "planning"
+      "comfort"
     ],
     "safety": {
       "kidsSafe": true,
@@ -3294,9 +3295,9 @@
     "candidateId": "expansion-003-105",
     "primaryCollection": "road-trip",
     "primaryAgeBand": null,
-    "question": "Would you rather eat lunch at a roadside picnic spot or stop at a local place in a small town?",
-    "optionA": "Eat at a roadside picnic spot",
-    "optionB": "Try a small-town local place",
+    "question": "Would you rather take one long lunch stop away from the car or eat quickly and use the saved time for an extra stop later?",
+    "optionA": "Take one long lunch stop",
+    "optionB": "Eat quickly and add another stop",
     "ageBands": [
       "10-12",
       "teens",
@@ -3310,12 +3311,14 @@
       "road-trip"
     ],
     "moods": [
-      "light"
+      "light",
+      "thoughtful"
     ],
     "difficulty": "hard",
     "topics": [
       "travel",
-      "food"
+      "food",
+      "time"
     ],
     "safety": {
       "kidsSafe": true,
@@ -3851,9 +3854,9 @@
     "candidateId": "expansion-003-121",
     "primaryCollection": "date-night",
     "primaryAgeBand": null,
-    "question": "Would you rather recreate one small detail from an early date or invent a brand-new ritual for future dates?",
-    "optionA": "Recreate an early-date detail",
-    "optionB": "Invent a new date ritual",
+    "question": "Would you rather each bring one photo from your week to talk about or each bring one question you have been meaning to ask?",
+    "optionA": "Bring one photo from the week",
+    "optionB": "Bring one question to ask",
     "ageBands": [
       "adults"
     ],
@@ -3865,13 +3868,13 @@
     ],
     "moods": [
       "thoughtful",
-      "deep"
+      "light"
     ],
     "difficulty": "hard",
     "topics": [
       "relationships",
-      "memories",
-      "routines"
+      "conversation",
+      "communication"
     ],
     "safety": {
       "kidsSafe": false,
@@ -4107,9 +4110,9 @@
     "candidateId": "expansion-003-129",
     "primaryCollection": "icebreakers",
     "primaryAgeBand": null,
-    "question": "Would you rather be paired with someone who shares one of your hobbies or someone who can teach you something new?",
-    "optionA": "Pair with someone who shares a hobby",
-    "optionB": "Pair with someone who can teach you something",
+    "question": "Would you rather spend the first two minutes with a new partner spotting three things you both notice or inventing one team name together?",
+    "optionA": "Find three things you both notice",
+    "optionB": "Invent one team name together",
     "ageBands": [
       "teens",
       "adults"
@@ -4119,13 +4122,14 @@
       "icebreakers"
     ],
     "moods": [
-      "thoughtful",
+      "funny",
       "light"
     ],
-    "difficulty": "hard",
+    "difficulty": "easy",
     "topics": [
-      "skills",
-      "social-situations"
+      "conversation",
+      "games",
+      "creativity"
     ],
     "safety": {
       "kidsSafe": true,
@@ -4242,9 +4246,9 @@
     "candidateId": "expansion-003-133",
     "primaryCollection": "birthday-party",
     "primaryAgeBand": null,
-    "question": "Would you rather keep the party theme secret until guests arrive or announce it early so everyone can prepare?",
-    "optionA": "Reveal the theme at the door",
-    "optionB": "Announce the theme early",
+    "question": "Would you rather put all the birthday candles on one cake or spread them across a row of mini cupcakes?",
+    "optionA": "Put all the candles on one cake",
+    "optionB": "Spread the candles across mini cupcakes",
     "ageBands": [
       "10-12",
       "teens",
@@ -4258,13 +4262,13 @@
       "birthday-party"
     ],
     "moods": [
-      "imaginative",
-      "light"
+      "funny",
+      "weird"
     ],
-    "difficulty": "hard",
+    "difficulty": "easy",
     "topics": [
       "celebration",
-      "planning"
+      "food"
     ],
     "safety": {
       "kidsSafe": true,
@@ -4314,9 +4318,9 @@
     "candidateId": "expansion-003-135",
     "primaryCollection": "birthday-party",
     "primaryAgeBand": null,
-    "question": "Would you rather play one cooperative birthday game where everyone wins together or several short games with different winners?",
-    "optionA": "Play one cooperative game",
-    "optionB": "Play several games with different winners",
+    "question": "Would you rather hand out party favors at the start so guests can use them or save them for a surprise at the end?",
+    "optionA": "Hand out favors at the start",
+    "optionB": "Save favors for the end",
     "ageBands": [
       "10-12",
       "teens",
@@ -4330,14 +4334,12 @@
       "birthday-party"
     ],
     "moods": [
-      "light",
-      "thoughtful"
+      "light"
     ],
     "difficulty": "hard",
     "topics": [
       "celebration",
-      "games",
-      "teamwork"
+      "planning"
     ],
     "safety": {
       "kidsSafe": true,
@@ -4597,9 +4599,9 @@
     "candidateId": "expansion-003-143",
     "primaryCollection": "sleepover",
     "primaryAgeBand": null,
-    "question": "Would you rather have one no-phone hour for talking or one shared-screen hour where everyone picks a short video?",
-    "optionA": "Have a no-phone talking hour",
-    "optionB": "Have a shared-screen video hour",
+    "question": "Would you rather keep one lamp on for late-night talking or turn off the lights and use flashlights?",
+    "optionA": "Keep one lamp on",
+    "optionB": "Use flashlights in the dark",
     "ageBands": [
       "10-12",
       "teens"
@@ -4611,14 +4613,13 @@
       "sleepover"
     ],
     "moods": [
-      "thoughtful",
+      "funny",
       "light"
     ],
-    "difficulty": "hard",
+    "difficulty": "easy",
     "topics": [
       "friendship",
-      "media",
-      "conversation"
+      "routines"
     ],
     "safety": {
       "kidsSafe": true,
