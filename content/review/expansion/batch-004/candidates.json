@@ -1498,13 +1498,11 @@
   {
     "candidateId": "expansion-004-046",
     "primaryAgeBand": null,
-    "relationships": [
-      "friends"
-    ],
+    "relationships": [],
     "scenarios": [],
-    "question": "Would you rather let a friend choose one accessory you wear for a day or let a random color wheel choose your whole color scheme?",
-    "optionA": "Let a friend choose one accessory",
-    "optionB": "Let a color wheel choose all your colors",
+    "question": "Would you rather carry everything for a day in one oversized pocket or in five tiny pouches you have to keep track of?",
+    "optionA": "Use one oversized pocket",
+    "optionB": "Use five tiny pouches",
     "primaryCollection": "teens",
     "ageBands": [
       "teens"
@@ -1513,14 +1511,14 @@
       "funny",
       "weird"
     ],
-    "difficulty": "easy",
+    "difficulty": "hard",
     "topics": [
-      "fashion",
-      "friendship"
+      "daily-life",
+      "fashion"
     ],
-    "coreDilemma": "social choice vs random-system choice",
-    "dilemmaFamily": "role",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare a small human-selected style constraint versus a larger random style constraint.",
+    "coreDilemma": "single-container convenience vs distributed organization",
+    "dilemmaFamily": "resource",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare carrying the same belongings in one large container versus several small containers.",
     "safety": {
       "kidsSafe": false,
       "teenSafe": true,
@@ -2830,9 +2828,9 @@
       "friends"
     ],
     "scenarios": [],
-    "question": "Would you rather spend an hour with friends making the funniest possible useful object or the most useful possible funny object?",
-    "optionA": "Make a funny object that still works",
-    "optionB": "Make a useful object that still looks funny",
+    "question": "Would you rather play a friend game where you describe a real object without naming it or invent a fake use convincing enough to fool everyone?",
+    "optionA": "Describe the object truthfully without naming it",
+    "optionB": "Invent a believable fake use",
     "primaryCollection": "friends",
     "ageBands": [
       "10-12",
@@ -2846,11 +2844,12 @@
     "difficulty": "hard",
     "topics": [
       "friendship",
-      "creativity"
+      "games",
+      "communication"
     ],
-    "coreDilemma": "function inside comedy vs comedy inside function",
-    "dilemmaFamily": "creativity",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two opposite priorities within one playful collaborative build.",
+    "coreDilemma": "constrained truthful description vs persuasive invention",
+    "dilemmaFamily": "communication",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare communicating accurately under a naming restriction versus inventing a plausible false explanation.",
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
@@ -3053,9 +3052,9 @@
       "family"
     ],
     "scenarios": [],
-    "question": "Would you rather have a family scavenger hunt indoors using word clues or outdoors using photo clues?",
-    "optionA": "Do indoor word clues",
-    "optionB": "Do outdoor photo clues",
+    "question": "Would you rather have a family scavenger hunt with short word clues or close-up photo clues?",
+    "optionA": "Use short word clues",
+    "optionB": "Use close-up photo clues",
     "primaryCollection": "family",
     "ageBands": [
       "7-9",
@@ -3071,11 +3070,11 @@
     "topics": [
       "family",
       "games",
-      "exploration"
+      "discovery"
     ],
-    "coreDilemma": "verbal indoor search vs visual outdoor search",
+    "coreDilemma": "verbal clue interpretation vs visual-detail interpretation",
     "dilemmaFamily": "discovery",
-    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two search modes tied to different clue channels and spaces.",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare using the same family scavenger-hunt format with verbal clues versus visual-detail clues.",
     "safety": {
       "kidsSafe": true,
       "teenSafe": true,
