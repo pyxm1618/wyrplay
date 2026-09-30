@@ -1,6 +1,6 @@
 # wyrplay Choiceboard UI Preview
 
-An independent HTML/CSS/JS prototype based on the current wyrplay routes, taxonomy, question source, and account flow. It is isolated from the production app and has no runtime dependencies.
+A standalone HTML/CSS/JS prototype for reviewing a complete wyrplay visual direction. It uses a checked-in snapshot generated from the current working-tree question and category sources. It has no build step, runtime dependencies, production imports, API calls, or live account/vote connections.
 
 ## Run locally
 
@@ -10,35 +10,45 @@ From the repository root:
 python3 -m http.server 4173 --directory examples/draw-ui-preview/choiceboard --bind 127.0.0.1
 ```
 
-Open <http://127.0.0.1:4173/>. The prototype uses hash routes, so every screen remains a static-file page.
+Open <http://127.0.0.1:4173/>. Screens use hash routes, so the same static HTML file serves each preview page.
 
-## Preview routes
+## Preview pages
 
-- Home: `http://127.0.0.1:4173/#/home`
-- Kids collection: `http://127.0.0.1:4173/#/category/kids`
-- Friends collection: `http://127.0.0.1:4173/#/category/friends`
-- Play before voting: `http://127.0.0.1:4173/#/play?question=wyr-004`
-- Example result state: `http://127.0.0.1:4173/#/result`
-- Sign in / register entry: `http://127.0.0.1:4173/#/sign-in`
-- Account overview: `http://127.0.0.1:4173/#/account`
-- Design system: `http://127.0.0.1:4173/#/design-system`
+- Home: <http://127.0.0.1:4173/#/home>
+- Kids category: <http://127.0.0.1:4173/#/category/kids>
+- Friends category: <http://127.0.0.1:4173/#/category/friends>
+- Couples category: <http://127.0.0.1:4173/#/category/couples>
+- Play before choice: <http://127.0.0.1:4173/#/play?question=wyr-000001>
+- Illustrative result state: <http://127.0.0.1:4173/#/result?question=wyr-000001>
+- Sign-in / account-access entry: <http://127.0.0.1:4173/#/sign-in>
+- Account overview: <http://127.0.0.1:4173/#/account>
+- Design system: <http://127.0.0.1:4173/#/design-system>
 
-The Home page links to all configured age, relationship, occasion, and tone examples. The category template also includes search and related-category navigation.
+The Home browse section links to the current age groups, relationship groups, all eight configured occasion pages, and six style pages. Category pages have source-backed question lists, metadata filters, search, a play entry, and related-category navigation.
 
-## Product facts represented in this preview
+## Source facts and prototype boundaries
 
-- The checked-out question source has 104 rows, all with `reviewStatus: unreviewed`; the playable approved set is empty. The 17 question examples in this prototype are source rows, not newly authored questions.
-- Existing audience, relationship, occasion, tone, and difficulty labels are shown as draft tags where relevant. Structured filter controls stay disabled because those source tags have not completed review. Search only filters the visible examples.
-- A/B result percentages and `1,284 sample votes` are deliberately illustrative layout data. They are not wyrplay vote results. Choosing A or B changes only local preview state; the page does not call APIs or store a vote.
-- The current sign-in route uses a one-time email link, Turnstile, and no password. The form here validates locally and sends no email.
-- The account flow has an overview plus Credits, Billing, and Security/Deletion routes. The account prototype uses example identity text only; it does not load a session. There is no current Would You Rather history or saved-question feature, so those areas are honest empty/unavailable states.
+- The current working-tree snapshot contains 116 questions; all 116 carry `reviewStatus: approved` and are returned by the current playable-question selector.
+- Featured collection counts from the current source metadata are Kids 58, Funny 18, Hard 73, Friends 49, and Couples 9. These are overlapping filters, so their counts do not sum to 116.
+- The first example is source row `wyr-000001`: “Would you rather hear a squirrel tell stories or hear a turtle tell jokes?”
+- The prototype's 57/43 bars and 1,284 total are explicitly illustrative layout content, not live vote data. Choosing A/B only changes local browser state; it never calls or stores a vote.
+- Sign-in reflects the current one-time email-link flow, including the Turnstile boundary and ten-minute expiry. Form submission is local feedback only; no email or session is created. The current product has a sign-in route rather than a separate register page.
+- Account history and favorites are shown as unavailable because those features are not in the current account routes. The account preview does show current Credits, Billing, and Security destinations, but does not read a real session.
+- This snapshot reflects the current checkout, including working-tree changes that were already present before this preview was created. The parent `examples/draw-ui-preview/` draft was left untouched; this standalone prototype lives under `examples/draw-ui-preview/choiceboard/`.
 
-## Files
+## Taxonomy notes for a later implementation
 
-- `index.html` — all prototype pages and semantic structure
-- `prototype.css` — isolated design tokens, components, responsive styles, and reduced-motion treatment
-- `prototype.js` — local navigation, search, A/B selection, illustrative result state, theme toggle, sign-in feedback, and presenter dialog
+- The Home page exposes all eight configured occasion routes. The current question filter contract has five canonical occasion values; Icebreakers, Birthday Party, and Sleepover are presented as browse routes using scenario metadata, not added to the filter contract.
+- The existing Clean style has no canonical tone value. In this preview its examples are matched through `suitability.classroom === "suitable"`; confirm that mapping before production work.
+- The checked-out runtime question loader reports 116 approved/playable rows, while the current filter-bar UI has a static “0 playable” label. This preview follows the runtime data. Reconcile that UI copy separately before a production rollout.
+
+## Files and browser captures
+
+- `index.html` — all pages, semantic structure, and design-system samples
+- `prototype.css` — isolated tokens, components, responsive styles, and reduced-motion treatment
+- `prototype.js` — local routing, filtering, search, A/B choices, illustrative result, sign-in feedback, and presenter dialog
+- `question-snapshot.js` — local question and category metadata snapshot
 - `DESIGN-NOTES.md` — visual rationale and suggested production component mapping
-- `screenshots/` — browser captures from the desktop and mobile review
+- `screenshots/` — desktop and mobile browser captures
 
-No production app file is imported or modified by this prototype. The other files already present in the parent `examples/draw-ui-preview/` directory were left untouched by this standalone version.
+No formal wyrplay frontend code was modified for this preview.

@@ -189,10 +189,10 @@
   }
 
   function readRoute() {
-    const raw = window.location.hash.slice(1) || "/home";
+    const raw = window.location.hash.slice(1).replace(/%23/gi, "#") || "/home";
     const anchorIndex = raw.indexOf("#");
     const withoutAnchor = anchorIndex >= 0 ? raw.slice(0, anchorIndex) : raw;
-    const anchor = anchorIndex >= 0 ? raw.slice(anchorIndex + 1) : "";
+    const routeAnchor = anchorIndex >= 0 ? raw.slice(anchorIndex + 1) : "";
     const queryIndex = withoutAnchor.indexOf("?");
     const path = queryIndex >= 0 ? withoutAnchor.slice(0, queryIndex) : withoutAnchor;
     const query = queryIndex >= 0 ? withoutAnchor.slice(queryIndex + 1) : "";
@@ -203,7 +203,7 @@
       key: parts[1] || params.get("group") || "",
       question: params.get("question") || "",
       group: params.get("group") || "",
-      anchor,
+      anchor: routeAnchor || params.get("anchor") || "",
     };
   }
 
@@ -535,6 +535,12 @@
   }
 
   function route() {
+    const rawHash = window.location.hash.slice(1);
+    if (rawHash && !rawHash.startsWith("/")) {
+      const target = document.getElementById(decodeURIComponent(rawHash));
+      if (target) target.scrollIntoView({ block: "start" });
+      return;
+    }
     const state = readRoute();
     const visiblePage = [
       "home",
