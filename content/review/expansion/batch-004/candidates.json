@@ -5474,5 +5474,2153 @@
       "familySafe": true,
       "workplaceSafe": true
     }
+  },
+  {
+    "candidateId": "expansion-004-159",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather guess a mystery object from its shadow or from the sound it makes?",
+    "optionA": "Guess from its shadow",
+    "optionB": "Guess from its sound",
+    "primaryCollection": "party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "party",
+      "games",
+      "sensory"
+    ],
+    "coreDilemma": "visual silhouette clue vs sound clue",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two party guessing channels—shadow versus sound.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-160",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather build a party prop that must stand on its own or one that someone must wear?",
+    "optionA": "Build a freestanding prop",
+    "optionB": "Build a wearable prop",
+    "primaryCollection": "party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "funny"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "party",
+      "creativity"
+    ],
+    "coreDilemma": "structural display vs wearable design",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two party-making challenges with different physical requirements.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-161",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather play charades using only facial expressions or only hand gestures?",
+    "optionA": "Use only facial expressions",
+    "optionB": "Use only hand gestures",
+    "primaryCollection": "party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "party",
+      "games",
+      "communication"
+    ],
+    "coreDilemma": "face-only expression vs hand-only expression",
+    "dilemmaFamily": "communication",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two constrained nonverbal channels inside a fast party game.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-162",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather have two minutes to make a paper costume piece or two minutes to make a foil party prop?",
+    "optionA": "Make the paper costume piece",
+    "optionB": "Make the foil prop",
+    "primaryCollection": "party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "party",
+      "creativity"
+    ],
+    "coreDilemma": "wearable paper creation vs handheld foil creation",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two timed party creations with different materials and functions.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-163",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather play a guessing game where the clue can be only a sound or only a shape drawn in the air?",
+    "optionA": "Give only sound clues",
+    "optionB": "Draw shapes in the air",
+    "primaryCollection": "party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "party",
+      "games",
+      "communication"
+    ],
+    "coreDilemma": "audio clue vs motion-drawn clue",
+    "dilemmaFamily": "communication",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare party clues delivered as sound versus invisible gesture drawing.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-164",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather play a cup-stacking challenge where speed matters or one where the tallest stable stack wins?",
+    "optionA": "Race for speed",
+    "optionB": "Build for stable height",
+    "primaryCollection": "party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "party",
+      "games",
+      "competition"
+    ],
+    "coreDilemma": "speed performance vs stability performance",
+    "dilemmaFamily": "competition",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two scoring goals for the same simple party material.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-165",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather search for clues hidden in party decorations or clues hidden inside harmless riddles guests carry?",
+    "optionA": "Search the decorations",
+    "optionB": "Ask guests for riddle clues",
+    "primaryCollection": "party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "funny"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "party",
+      "games",
+      "discovery"
+    ],
+    "coreDilemma": "environment search vs social clue collection",
+    "dilemmaFamily": "discovery",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare finding clues in the physical room versus collecting them through guest interaction.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-166",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather play a dance game where you copy the last move you saw or invent the next move before anyone copies you?",
+    "optionA": "Copy the last move",
+    "optionB": "Invent the next move",
+    "primaryCollection": "party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "party",
+      "music",
+      "movement"
+    ],
+    "coreDilemma": "imitation vs invention",
+    "dilemmaFamily": "movement",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare copying a movement chain versus extending it creatively.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-167",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather keep a balloon up using only elbows or carry a paper plate across the room without touching it with your hands?",
+    "optionA": "Keep the balloon up with elbows",
+    "optionB": "Move the plate without hands",
+    "primaryCollection": "party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "party",
+      "movement",
+      "games"
+    ],
+    "coreDilemma": "continuous control vs careful transport",
+    "dilemmaFamily": "movement",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two physical party challenges with different control demands.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-168",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather invent one ridiculous rule for a fictional sport or one ridiculous feature for a fictional product?",
+    "optionA": "Invent the sport rule",
+    "optionB": "Invent the product feature",
+    "primaryCollection": "party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "party",
+      "creativity",
+      "games"
+    ],
+    "coreDilemma": "change how people play vs change what an object does",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two fast invention prompts with different creative targets.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-169",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather play a party puzzle where one clue is locked until someone laughs or one where a clue appears only when everyone is silent?",
+    "optionA": "Unlock a clue with laughter",
+    "optionB": "Reveal a clue with silence",
+    "primaryCollection": "party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "party",
+      "games",
+      "fantasy"
+    ],
+    "coreDilemma": "trigger by noise vs trigger by silence",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare opposite group sound states controlling clue access.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-170",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather play a game where points can be earned only by accurate guesses or only by creative explanations?",
+    "optionA": "Score for accurate guesses",
+    "optionB": "Score for creative explanations",
+    "primaryCollection": "party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "party",
+      "games",
+      "creativity"
+    ],
+    "coreDilemma": "correctness vs originality",
+    "dilemmaFamily": "competition",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare party scoring based on accuracy versus creativity.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-171",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather get a party-game token that lets you repeat one turn or one that lets you swap one challenge card?",
+    "optionA": "Repeat one turn",
+    "optionB": "Swap one challenge card",
+    "primaryCollection": "party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "party",
+      "games",
+      "strategy"
+    ],
+    "coreDilemma": "retry control vs challenge substitution",
+    "dilemmaFamily": "resource",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two limited-use game powers that change different parts of play.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-172",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather have to recognize party songs from a one-second sound or party objects from a one-second glimpse?",
+    "optionA": "Recognize the one-second sound",
+    "optionB": "Recognize the one-second glimpse",
+    "primaryCollection": "party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "party",
+      "games",
+      "sensory"
+    ],
+    "coreDilemma": "brief audio recognition vs brief visual recognition",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare rapid recognition through hearing versus sight.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-173",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather build a party game from three random household objects or from three random words?",
+    "optionA": "Build it from three objects",
+    "optionB": "Build it from three words",
+    "primaryCollection": "party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "funny"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "party",
+      "games",
+      "creativity"
+    ],
+    "coreDilemma": "physical prompt vs verbal prompt",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare inventing a playable party game from object constraints versus word constraints.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-174",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather play a team challenge where one person can see the target but cannot speak or one person can speak but cannot see it?",
+    "optionA": "See the target but stay silent",
+    "optionB": "Speak but not see the target",
+    "primaryCollection": "party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "party",
+      "games",
+      "teamwork"
+    ],
+    "coreDilemma": "visual knowledge without speech vs speech without visual knowledge",
+    "dilemmaFamily": "teamwork",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare asymmetric information and communication roles in a party challenge.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-175",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather win a party game by collecting three different small achievements or by completing one difficult bonus condition?",
+    "optionA": "Collect three different achievements",
+    "optionB": "Complete one difficult bonus condition",
+    "primaryCollection": "party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "party",
+      "games",
+      "strategy"
+    ],
+    "coreDilemma": "breadth of achievements vs difficult special objective",
+    "dilemmaFamily": "competition",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two victory structures that do not reduce to one long game versus many short games.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-176",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "question": "Would you rather have a party room where the floor lights up under every step or where the walls change color when people laugh?",
+    "optionA": "Use the light-up floor",
+    "optionB": "Use the laughter-color walls",
+    "primaryCollection": "party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "party",
+      "fantasy",
+      "sensory"
+    ],
+    "coreDilemma": "movement-reactive environment vs laughter-reactive environment",
+    "dilemmaFamily": "imagination",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two playful party environments reacting to different group behaviors.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-177",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather keep a cooler within reach but lose some foot space or keep it in the back and wait until stops to open it?",
+    "optionA": "Keep the cooler within reach",
+    "optionB": "Keep full foot space and wait for stops",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "comfort",
+      "food"
+    ],
+    "coreDilemma": "snack access vs passenger space",
+    "dilemmaFamily": "comfort",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare in-car food access versus foot space during the drive.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-178",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather use a paper road atlas that never loses power or a phone map with live traffic that uses battery?",
+    "optionA": "Use the paper atlas",
+    "optionB": "Use the live phone map",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "navigation",
+      "technology"
+    ],
+    "coreDilemma": "offline reliability vs live information",
+    "dilemmaFamily": "information",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare reliable static navigation versus current traffic information with a battery dependency.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-179",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather take road-trip photos through the window whenever you want or only take photos at stops where they will be clearer?",
+    "optionA": "Take convenient window photos",
+    "optionB": "Wait for clearer stop photos",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "memories"
+    ],
+    "coreDilemma": "capture convenience vs image quality",
+    "dilemmaFamily": "memory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare frequent imperfect recording from the moving car versus rarer clearer recording at stops.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-180",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather keep the car slightly cool for the whole drive or slightly warm for the whole drive?",
+    "optionA": "Keep it slightly cool",
+    "optionB": "Keep it slightly warm",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "travel",
+      "comfort"
+    ],
+    "coreDilemma": "cool comfort vs warm comfort",
+    "dilemmaFamily": "comfort",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare a continuous cabin-temperature preference specific to shared car travel.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-181",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather have a car with no cup holders but extra storage pockets or great cup holders but almost no small-item storage?",
+    "optionA": "Get extra storage pockets",
+    "optionB": "Get great cup holders",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "comfort",
+      "resource"
+    ],
+    "coreDilemma": "small-item storage vs drink stability",
+    "dilemmaFamily": "resource",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two practical in-car conveniences not represented by luggage versus legroom.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-182",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather detour fifteen minutes for a comfortable rest stop or use the nearest basic stop and keep moving?",
+    "optionA": "Detour for the comfortable stop",
+    "optionB": "Use the nearest basic stop",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "comfort",
+      "time"
+    ],
+    "coreDilemma": "rest-stop comfort vs travel time",
+    "dilemmaFamily": "comfort",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare roadside amenity quality versus a small time cost, distinct from scenic-detour choices.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-183",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather play a car game simple enough for the driver to join or a more complicated game for passengers only?",
+    "optionA": "Play the driver-inclusive simple game",
+    "optionB": "Play the passenger-only complex game",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "games"
+    ],
+    "coreDilemma": "full-group inclusion vs game complexity",
+    "dilemmaFamily": "teamwork",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare driver-safe inclusion versus richer passenger-only play.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-184",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather invent stories about unusual town names you pass or try to spot every letter of the alphabet on road signs?",
+    "optionA": "Invent stories from town names",
+    "optionB": "Find the alphabet on signs",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "travel",
+      "games",
+      "creativity"
+    ],
+    "coreDilemma": "narrative invention vs visual search",
+    "dilemmaFamily": "experience",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two road-dependent verbal games using different mental skills.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-185",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather have the windshield quietly show one fact about every town you enter or have the speakers translate any local radio station?",
+    "optionA": "See facts on the windshield",
+    "optionB": "Translate local radio",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "fantasy",
+      "culture"
+    ],
+    "coreDilemma": "place facts vs local audio access",
+    "dilemmaFamily": "imagination",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare fantasy access to location context versus local broadcast culture during a drive.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-186",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather have every road-trip snack stay perfectly fresh or every drink become spill-proof inside the car?",
+    "optionA": "Keep every snack fresh",
+    "optionB": "Make every drink spill-proof",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "travel",
+      "food",
+      "fantasy"
+    ],
+    "coreDilemma": "food freshness vs spill prevention",
+    "dilemmaFamily": "imagination",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two car-specific food conveniences rather than generic snack preferences.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-187",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather have a rest stop with an amazing outdoor space but ordinary food or amazing food but nowhere pleasant to sit?",
+    "optionA": "Choose the outdoor space",
+    "optionB": "Choose the better food",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "food",
+      "comfort"
+    ],
+    "coreDilemma": "rest environment vs meal quality",
+    "dilemmaFamily": "experience",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two qualities of an actual road-trip stop rather than familiar-versus-local food.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-188",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather rotate who keeps track of road-trip landmarks or have one passenger create a running travel log?",
+    "optionA": "Rotate landmark tracking",
+    "optionB": "Keep one running travel log",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "memories",
+      "roles"
+    ],
+    "coreDilemma": "distributed noticing vs continuous record keeping",
+    "dilemmaFamily": "role",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare sharing observation duties versus maintaining one continuous trip record.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-189",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather have one passenger read roadside signs aloud or one passenger announce changes in the landscape?",
+    "optionA": "Read interesting signs",
+    "optionB": "Call out landscape changes",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "travel",
+      "observation"
+    ],
+    "coreDilemma": "text noticing vs environment noticing",
+    "dilemmaFamily": "discovery",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two passenger observation roles tied to what passes outside the car.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-190",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather cross a long bridge with an amazing view or drive through a long tunnel with surprising lights inside?",
+    "optionA": "Take the scenic bridge",
+    "optionB": "Take the light-filled tunnel",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "travel",
+      "experiences"
+    ],
+    "coreDilemma": "open visual exposure vs enclosed visual novelty",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two road-specific visual experiences with opposite spatial feelings.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-191",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather have a road-trip seat that is extra comfortable but has a poor window view or an ordinary seat with the best view?",
+    "optionA": "Choose the extra-comfortable seat",
+    "optionB": "Choose the best-view seat",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "comfort"
+    ],
+    "coreDilemma": "seat comfort vs visual access",
+    "dilemmaFamily": "comfort",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare passenger comfort versus scenery from the same vehicle.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-192",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather collect a stamp from each major stop or record one ten-second sound from each stop?",
+    "optionA": "Collect stop stamps",
+    "optionB": "Record stop sounds",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "memories"
+    ],
+    "coreDilemma": "physical trip markers vs audio trip markers",
+    "dilemmaFamily": "memory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare road-trip memory keeping through stamps versus ambient sound.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-193",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather have a car game where every answer must use something visible outside or one where every answer must avoid anything visible outside?",
+    "optionA": "Use things visible outside",
+    "optionB": "Avoid everything visible outside",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "games",
+      "creativity"
+    ],
+    "coreDilemma": "environment-dependent play vs imagination-only play",
+    "dilemmaFamily": "constraint",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare using the passing environment as required game input versus forbidding it.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-194",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "question": "Would you rather have the car quietly point out the nearest interesting landmark or the nearest unusual roadside object?",
+    "optionA": "Find interesting landmarks",
+    "optionB": "Find unusual roadside objects",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "travel",
+      "fantasy",
+      "discovery"
+    ],
+    "coreDilemma": "meaningful place discovery vs quirky object discovery",
+    "dilemmaFamily": "discovery",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two kinds of spontaneous roadside discovery rather than route planning.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-195",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather eat at a round table where you can see everyone easily but shared dishes are farther away or a long table where food is closer but conversation splits more?",
+    "optionA": "Choose the round table",
+    "optionB": "Choose the long table",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "dinner",
+      "conversation",
+      "comfort"
+    ],
+    "coreDilemma": "conversation visibility vs serving convenience",
+    "dilemmaFamily": "comfort",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare table geometry changing conversation access versus food access.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-196",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather have dinner served from covered dishes that stay warmer or open dishes where you can see every choice immediately?",
+    "optionA": "Keep dishes covered and warmer",
+    "optionB": "See every dish right away",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "dinner",
+      "food"
+    ],
+    "coreDilemma": "temperature retention vs immediate visibility",
+    "dilemmaFamily": "information",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare meal temperature versus knowing all serving options at once.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-197",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather have music chosen to match the meal or no music so every flavor gets your full attention?",
+    "optionA": "Play meal-matching music",
+    "optionB": "Eat with no music",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "dinner",
+      "music",
+      "food"
+    ],
+    "coreDilemma": "multisensory atmosphere vs flavor focus",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare adding an audio layer to a meal versus deliberately removing it to focus on taste.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-198",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather taste one ingredient cooked three different ways or one dish finished with three different sauces?",
+    "optionA": "Try one ingredient three ways",
+    "optionB": "Try one dish with three sauces",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "dinner",
+      "food",
+      "experiences"
+    ],
+    "coreDilemma": "change cooking method vs change finishing flavor",
+    "dilemmaFamily": "experience",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare comparing transformations from cooking technique versus finishing sauce at the table.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-199",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather eat a dinner made entirely of finger foods or a dinner where everything must fit in one bowl?",
+    "optionA": "Eat only finger foods",
+    "optionB": "Eat everything from one bowl",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "dinner",
+      "food"
+    ],
+    "coreDilemma": "no-utensil format vs one-container format",
+    "dilemmaFamily": "constraint",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two playful meal-format constraints rather than cuisine preferences.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-200",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather have dessert change flavor with every bite or have the main dish change color while tasting exactly the same?",
+    "optionA": "Eat the changing-flavor dessert",
+    "optionB": "Eat the color-changing main dish",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "dinner",
+      "food",
+      "fantasy"
+    ],
+    "coreDilemma": "taste transformation vs visual transformation",
+    "dilemmaFamily": "imagination",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare a meal changing in flavor versus changing only in appearance.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-201",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather guess one mystery herb by smell before dinner or one mystery spice by taste during dinner?",
+    "optionA": "Guess the herb by smell",
+    "optionB": "Guess the spice by taste",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "dinner",
+      "food",
+      "games"
+    ],
+    "coreDilemma": "smell identification vs taste identification",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two safe food-identification challenges using different senses.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-202",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather cook a familiar dish without a recipe or an unfamiliar dish with exact instructions?",
+    "optionA": "Cook the familiar dish from memory",
+    "optionB": "Cook the unfamiliar dish with instructions",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "dinner",
+      "food",
+      "skills"
+    ],
+    "coreDilemma": "experience-based confidence vs instruction-based certainty",
+    "dilemmaFamily": "skills",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare cooking from personal familiarity versus from complete external guidance.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-203",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather have everyone handle one step of a dinner recipe or have each person repeat the same small step for every dish?",
+    "optionA": "Give each person a different step",
+    "optionB": "Repeat one role across every dish",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "dinner",
+      "food",
+      "teamwork"
+    ],
+    "coreDilemma": "specialized roles by step vs repeated roles across dishes",
+    "dilemmaFamily": "role",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two ways to divide cooking responsibility without together-versus-separate framing.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-204",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather have a dinner where textures are surprising but flavors are familiar or flavors are surprising but textures are familiar?",
+    "optionA": "Choose surprising textures",
+    "optionB": "Choose surprising flavors",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "dinner",
+      "food",
+      "sensory"
+    ],
+    "coreDilemma": "texture novelty vs flavor novelty",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare novelty isolated to texture versus isolated to flavor.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-205",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather play a dinner game about remembering details from the meal or noticing details in the room?",
+    "optionA": "Remember meal details",
+    "optionB": "Notice room details",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "dinner",
+      "games",
+      "observation"
+    ],
+    "coreDilemma": "memory recall vs live observation",
+    "dilemmaFamily": "discovery",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare a table game based on recall versus immediate environmental noticing.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-206",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather eat a meal where every dish includes one hidden crunchy ingredient or one hidden sweet ingredient?",
+    "optionA": "Find hidden crunchy ingredients",
+    "optionB": "Find hidden sweet ingredients",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "dinner",
+      "food",
+      "discovery"
+    ],
+    "coreDilemma": "hidden texture clue vs hidden flavor clue",
+    "dilemmaFamily": "discovery",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare searching through a meal for a recurring texture versus a recurring taste.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-207",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather have one course arrive with no explanation until everyone guesses what it is or arrive with its full story before anyone tastes it?",
+    "optionA": "Guess before the explanation",
+    "optionB": "Hear the story before tasting",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "dinner",
+      "food",
+      "conversation"
+    ],
+    "coreDilemma": "independent interpretation vs guided context",
+    "dilemmaFamily": "information",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare forming a food impression before context versus tasting with narrative context.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-208",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather have a candlelit dinner where colors are harder to see or a brightly lit dinner where the room feels less cozy?",
+    "optionA": "Choose candlelight",
+    "optionB": "Choose bright light",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "dinner",
+      "comfort",
+      "sensory"
+    ],
+    "coreDilemma": "cozy ambience vs visual clarity",
+    "dilemmaFamily": "comfort",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare dinner atmosphere versus visual clarity at the table.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-209",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather have every diner invent a name for one dish or invent a tiny story about where one dish came from?",
+    "optionA": "Invent dish names",
+    "optionB": "Invent dish stories",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "dinner",
+      "food",
+      "creativity"
+    ],
+    "coreDilemma": "compact naming creativity vs narrative creativity",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two table-ready creative responses to the food itself.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-210",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather have dinner plates that keep food at the perfect temperature or cups that always keep drinks at the perfect temperature?",
+    "optionA": "Keep food perfectly warm",
+    "optionB": "Keep drinks perfectly cool or warm",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "dinner",
+      "food",
+      "fantasy"
+    ],
+    "coreDilemma": "food temperature control vs drink temperature control",
+    "dilemmaFamily": "imagination",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two meal-specific temperature conveniences applied to different parts of dinner.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-211",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather pass shared dishes around the table or have a small serving station everyone visits between bites?",
+    "optionA": "Pass dishes around",
+    "optionB": "Use a serving station",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "dinner",
+      "food",
+      "movement"
+    ],
+    "coreDilemma": "seated sharing vs brief movement for serving",
+    "dilemmaFamily": "movement",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two dinner-serving mechanics that change movement and interaction.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-212",
+    "primaryAgeBand": null,
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "question": "Would you rather finish dinner with a two-minute drawing challenge or a two-minute word challenge?",
+    "optionA": "Do the drawing challenge",
+    "optionB": "Do the word challenge",
+    "primaryCollection": "dinner",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "dinner",
+      "games",
+      "creativity"
+    ],
+    "coreDilemma": "visual quick-play vs verbal quick-play",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two compact table activities that require different expressive modes.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
   }
 ]
