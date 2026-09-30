@@ -1,0 +1,3165 @@
+{
+  "batch": "Foundation Coverage Batch 002",
+  "branch": "content/foundation-batch-002-20260930",
+  "sourceAudit": {
+    "candidates": {
+      "path": "content/review/foundation/batch-002/candidates.json",
+      "status": "verified_on_branch",
+      "count": 70,
+      "blobSha": "6f995029b1bc98d63f0e9dcd50058839c2cf93a0"
+    },
+    "protectedKids": {
+      "requestedPath": "content/question-bank/kids.json",
+      "status": "missing_on_branch_and_main",
+      "semanticBaselineUsed": "The 58 protected PASS texts from Batch 001, identified by the recorded PASS candidate IDs and prior Batch 001 review source.",
+      "permanentQuestionIdsVerified": false,
+      "note": "No wyr-kids-xxx identifier is invented. Cross-batch duplicates are linked to the protected Batch 001 candidate ID because the formal kids.json file is not present in the remote repository."
+    }
+  },
+  "reviews": [
+    {
+      "candidateId": "foundation-candidate-001",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "time",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "A clean time-allocation trade-off for teens; both frequency and duration create real appeal."
+    },
+    {
+      "candidateId": "foundation-candidate-002",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Too close to the protected Kids challenge-versus-ease learning dilemma; changing the school format and age does not create a sufficiently new core choice.",
+      "duplicates": {
+        "type": "protected-kids",
+        "formalQuestionId": null,
+        "protectedCandidateId": "kid-candidate-097",
+        "reason": "Same core trade-off: harder/more engaging learning versus easier/less engaging learning."
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-003",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "A noun-swapped version of an existing protected Kids 'learn skill A or skill B' structure, without enough new dilemma value.",
+      "duplicates": {
+        "type": "protected-kids",
+        "formalQuestionId": null,
+        "protectedCandidateId": "kid-candidate-050",
+        "reason": "Same underlying skill-choice template with different activity nouns."
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-004",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "school",
+          "skills"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Presentation preparation versus real-audience practice is specific, balanced, and highly discussable for teens."
+    },
+    {
+      "candidateId": "foundation-candidate-005",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "The depth-versus-variety structure is already covered in the protected Kids bank; the semester framing mainly ages up the same dilemma.",
+      "duplicates": {
+        "type": "protected-kids",
+        "formalQuestionId": null,
+        "protectedCandidateId": "kid-candidate-103",
+        "alsoProtectedCandidateId": "kid-candidate-057",
+        "reason": "Same underlying depth-versus-variety learning/project trade-off."
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-006",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "lifestyle",
+          "time"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "A genuinely adult housing-and-commute trade-off with meaningful costs on both sides."
+    },
+    {
+      "candidateId": "foundation-candidate-007",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "FAIL",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "daily-life",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The dilemma is good, but it is not meaningfully adult-specific; teens can answer it just as naturally."
+    },
+    {
+      "candidateId": "foundation-candidate-008",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "time",
+          "lifestyle"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "An adult lifestyle trade-off between protected personal time and spontaneity; concise and balanced."
+    },
+    {
+      "candidateId": "foundation-candidate-009",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "FAIL",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "imaginative",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "travel",
+          "skills"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "This is general travel preference, not a road-trip usage question. The adult travel angle is otherwise valid."
+    },
+    {
+      "candidateId": "foundation-candidate-010",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "FAIL",
+        "relationshipFit": "PASS",
+        "scenarioFit": "FAIL",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "routines",
+          "lifestyle"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Quiet mornings versus quiet evenings is fully general rather than distinctly adult. It works better as a low-pressure icebreaker across teens and adults."
+    },
+    {
+      "candidateId": "foundation-candidate-011",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Internally duplicates the stronger Couples question about doing one shared activity versus separate activities and swapping stories afterward.",
+      "duplicates": {
+        "type": "internal",
+        "candidateId": "foundation-candidate-022",
+        "reason": "Same underlying together-versus-separate-and-share-later dilemma."
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-012",
+      "decision": "REVISE",
+      "review": {
+        "language": "FAIL",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "FAIL",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "food"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The friend-role idea is usable, but 'brings the plan' is unnatural and Party is not intrinsic to the question.",
+      "revisionSuggestion": {
+        "question": "Would you rather be the friend who usually makes the plan or the friend who usually brings the snacks?",
+        "optionA": "Usually make the plan",
+        "optionB": "Usually bring the snacks"
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-013",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "funny",
+          "weird"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "A current, friend-specific communication constraint with clear playful contrast and low disclosure pressure."
+    },
+    {
+      "candidateId": "foundation-candidate-014",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party",
+          "road-trip"
+        ],
+        "moods": [
+          "light",
+          "imaginative"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "friendship",
+          "music"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The two playlist-building methods create a real group-process choice and both Party and Road Trip are genuinely usable contexts."
+    },
+    {
+      "candidateId": "foundation-candidate-015",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "FAIL",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "friendship",
+          "travel",
+          "adventure"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Weekend-versus-day-trip changes duration as well as novelty, so the options are not comparable; Road Trip is also not guaranteed.",
+      "revisionSuggestion": {
+        "question": "Would you rather spend a full day exploring hidden spots close to home or take a full-day trip somewhere none of you have visited?",
+        "optionA": "Explore hidden spots close to home",
+        "optionB": "Take a full-day trip somewhere new"
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-016",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "FAIL",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "family",
+          "food"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Strong Family question, but a picnic option makes Dinner an inaccurate usage scenario."
+    },
+    {
+      "candidateId": "foundation-candidate-017",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "FAIL",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "family",
+          "memories",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Strong cross-age Family memory question, but nothing about it is specifically Dinner use."
+    },
+    {
+      "candidateId": "foundation-candidate-018",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "FAIL",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "family",
+          "traditions"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The tradition dilemma is good Family content; Dinner is only an incidental place where it could be asked."
+    },
+    {
+      "candidateId": "foundation-candidate-019",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "road-trip",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [
+          "road-trip"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "family",
+          "travel"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The dilemma is fundamentally a Road Trip question; Family is a valid relationship tag but should not be the primary collection."
+    },
+    {
+      "candidateId": "foundation-candidate-020",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "FAIL",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "family",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Family game night is valid Family content, but Dinner is not an inherent use scenario."
+    },
+    {
+      "candidateId": "foundation-candidate-021",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "couples",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "relationships",
+          "food",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "A clean Couples planning-versus-surprise preference that fits Date Night without becoming invasive."
+    },
+    {
+      "candidateId": "foundation-candidate-022",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "couples",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "relationships",
+          "hobbies"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Shared hobby versus separate hobbies is genuinely couple-specific and creates useful discussion about togetherness and independence."
+    },
+    {
+      "candidateId": "foundation-candidate-023",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "FAIL",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "FAIL",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "relationships",
+          "travel"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Meals-versus-activities on vacation is not inherently a Couples question and does not require adult relationship context; it works better as a low-pressure general icebreaker."
+    },
+    {
+      "candidateId": "foundation-candidate-024",
+      "decision": "REVISE",
+      "review": {
+        "language": "FAIL",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "couples",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "relationships",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The Couples idea is useful, but 'keep roughly the same sleep schedule' is ambiguous about whether the partners match each other.",
+      "revisionSuggestion": {
+        "question": "Would you rather keep similar sleep schedules to each other or protect the same block of free time together every weekend?",
+        "optionA": "Keep similar sleep schedules",
+        "optionB": "Protect the same weekend free-time block"
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-025",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "couples",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "relationships",
+          "communication",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "A practical Couples coordination dilemma with two viable communication systems and no sensitive disclosure."
+    },
+    {
+      "candidateId": "foundation-candidate-026",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "work",
+          "time"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Clearly workplace-specific, low-pressure, and balanced; suitable as a coworker discussion or icebreaker."
+    },
+    {
+      "candidateId": "foundation-candidate-027",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "work",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "A simple workplace presentation preference that is safe, quick, and easy to explain."
+    },
+    {
+      "candidateId": "foundation-candidate-028",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "work",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Silent ideation versus talking aloud is a strong workplace collaboration preference and remains low-pressure."
+    },
+    {
+      "candidateId": "foundation-candidate-029",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "work",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Daily focus time and weekly social lunch differ in both purpose and frequency, so the current trade-off is structurally uneven.",
+      "revisionSuggestion": {
+        "question": "Would you rather have one protected no-meeting focus block each week or one optional team lunch each week?",
+        "optionA": "Have one protected focus block each week",
+        "optionB": "Have one optional team lunch each week"
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-030",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "work",
+          "teamwork"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "A workplace-specific facilitation choice that can reveal team preferences without evaluating any individual."
+    },
+    {
+      "candidateId": "foundation-candidate-031",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "classroom",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "school",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Two safe classroom warm-up formats with clear contrast and no personal disclosure."
+    },
+    {
+      "candidateId": "foundation-candidate-032",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "classroom",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "school",
+          "learning"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "A classroom-specific agency choice that is abstract enough for teens but still easy to discuss."
+    },
+    {
+      "candidateId": "foundation-candidate-033",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "classroom",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "school",
+          "communication",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Drawing versus writing is a clear communication-mode preference and classroom-safe."
+    },
+    {
+      "candidateId": "foundation-candidate-034",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "This repackages the protected Kids independent-versus-with-others practice dilemma into a quiz-review scenario.",
+      "duplicates": {
+        "type": "protected-kids",
+        "formalQuestionId": null,
+        "protectedCandidateId": "kid-candidate-058",
+        "reason": "Same underlying solo-versus-social practice/review choice with only scenario changes."
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-035",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Too close to the protected Kids ask-for-help versus keep-trying-alone dilemma; classroom wording does not create a new core choice.",
+      "duplicates": {
+        "type": "protected-kids",
+        "formalQuestionId": null,
+        "protectedCandidateId": "kid-candidate-072",
+        "reason": "Same help-seeking-versus-independent-persistence axis."
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-036",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "games",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Two energetic party formats with different social skills and comparable appeal."
+    },
+    {
+      "candidateId": "foundation-candidate-037",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "funny",
+          "weird"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "A strong constrained-party-game dilemma: both options are playful, weird, and immediately understandable."
+    },
+    {
+      "candidateId": "foundation-candidate-038",
+      "decision": "REVISE",
+      "review": {
+        "language": "FAIL",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "funny",
+          "weird"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "music",
+          "party"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Option B is unclear: 'songs nobody picked themselves' does not cleanly express the intended unfamiliar-music constraint.",
+      "revisionSuggestion": {
+        "question": "Would you rather have a party playlist made only of songs everyone already knows or mostly songs no one in the group has heard before?",
+        "optionA": "Use only songs everyone already knows",
+        "optionB": "Use mostly songs no one has heard before"
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-039",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "funny",
+          "weird"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "party",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "A genuinely party-specific silly trade-off with low stakes and no humiliation requirement."
+    },
+    {
+      "candidateId": "foundation-candidate-040",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "games",
+          "party"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "One long game versus several short games is a useful party-format trade-off with real group implications."
+    },
+    {
+      "candidateId": "foundation-candidate-041",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "road-trip",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "road-trip"
+        ],
+        "moods": [
+          "light",
+          "funny"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "travel",
+          "music"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Navigator versus DJ is intrinsically Road Trip content and creates two appealing group roles."
+    },
+    {
+      "candidateId": "foundation-candidate-042",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "road-trip",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "road-trip"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "travel",
+          "time"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Scenery versus arrival time is a classic but still substantive Road Trip trade-off, stated compactly."
+    },
+    {
+      "candidateId": "foundation-candidate-043",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "road-trip",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "road-trip"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "travel",
+          "food"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Familiar convenience versus local discovery is tied directly to actual road-trip stops and is easy to discuss."
+    },
+    {
+      "candidateId": "foundation-candidate-044",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "road-trip",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "road-trip"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "travel",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Group engagement versus personal quiet time is a realistic in-car choice and remains inclusive."
+    },
+    {
+      "candidateId": "foundation-candidate-045",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "FAIL",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Mountain sunrise versus city lights is mainly an aesthetic preference with little trade-off beyond taste; it is too thin for the formal bank."
+    },
+    {
+      "candidateId": "foundation-candidate-046",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "dinner",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family",
+          "friends"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "conversation",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "A Dinner-specific table-conversation choice that is inclusive, low-pressure, and easy to follow with 'why?'."
+    },
+    {
+      "candidateId": "foundation-candidate-047",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "dinner",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family",
+          "friends"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "food",
+          "culture"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "A dinner-format question with genuine coherence-versus-variety appeal; the table context is intrinsic rather than merely a food tag."
+    },
+    {
+      "candidateId": "foundation-candidate-048",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "The phone-versus-music bundle mixes two variables and is a weaker version of the cleaner Date Night phone-use dilemma in candidate 055.",
+      "duplicates": {
+        "type": "internal",
+        "candidateId": "foundation-candidate-055",
+        "reason": "Same core phone-presence-during-shared-time dilemma; 055 is cleaner and less confounded."
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-049",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "dinner",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family",
+          "friends",
+          "couples"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "food",
+          "activities"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Cooking together versus ordering shared small dishes is a concrete Dinner choice that works across family, friends, and couples."
+    },
+    {
+      "candidateId": "foundation-candidate-050",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "dinner",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family",
+          "friends"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "light",
+          "funny"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "games",
+          "conversation"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Trivia versus short stories gives the table two distinct interaction modes and remains low-pressure."
+    },
+    {
+      "candidateId": "foundation-candidate-051",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Surprise versus planned date is already covered more cleanly by candidate 021, while the two-hour versus whole-evening duration difference also confounds the choice.",
+      "duplicates": {
+        "type": "internal",
+        "candidateId": "foundation-candidate-021",
+        "reason": "Same planning-versus-surprise Couples/Date Night axis; 021 is more precise."
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-052",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "date-night",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "relationships",
+          "travel"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Familiar favorite versus new neighborhood is naturally Date Night-specific and reveals preference without invasive disclosure."
+    },
+    {
+      "candidateId": "foundation-candidate-053",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "date-night",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "imaginative",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "relationships",
+          "food",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Recipe-following versus improvising dinner is an interactive, clean Date Night activity choice."
+    },
+    {
+      "candidateId": "foundation-candidate-054",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "date-night",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "relationships",
+          "activities",
+          "skills"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Learning together versus watching a performance provides two distinct Date Night experiences with similar appeal."
+    },
+    {
+      "candidateId": "foundation-candidate-055",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "date-night",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "relationships",
+          "communication",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "A focused Date Night phone-boundary dilemma with two defensible preferences and useful conversation value."
+    },
+    {
+      "candidateId": "foundation-candidate-056",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "conversation",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Team game versus paired conversation is exactly the kind of low-pressure format choice useful for a new group."
+    },
+    {
+      "candidateId": "foundation-candidate-057",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "conversation"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Answering first versus choosing the first question is low-disclosure, quick, and genuinely icebreaker-specific."
+    },
+    {
+      "candidateId": "foundation-candidate-058",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "weird",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "conversation",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Photo versus mystery object gives two playful external prompts, keeping pressure off personal disclosure."
+    },
+    {
+      "candidateId": "foundation-candidate-059",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "conversation",
+          "skills"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Shared similarity versus complementary differences is a safe group-discovery question with strong follow-up potential."
+    },
+    {
+      "candidateId": "foundation-candidate-060",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "funny",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "conversation",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Doodle versus three-word slogan is playful, low-stakes, and suitable for people who do not know one another."
+    },
+    {
+      "candidateId": "foundation-candidate-061",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "celebration",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Both options are genuinely birthday-party-specific visual activities with similar effort and appeal."
+    },
+    {
+      "candidateId": "foundation-candidate-062",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "FAIL",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "light",
+          "funny"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "celebration",
+          "music",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Letting every guest contribute a 'challenge' can invite embarrassing or unsafe dares. Keep the participatory idea but constrain it to a harmless game contribution.",
+      "revisionSuggestion": {
+        "question": "Would you rather have everyone contribute one song to the birthday playlist or one mini-game idea for the party?",
+        "optionA": "Have everyone contribute a song",
+        "optionB": "Have everyone contribute a mini-game idea"
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-063",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "light",
+          "imaginative"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "celebration",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Take-home individual creation versus one shared gift/project is birthday-specific and meaningfully different."
+    },
+    {
+      "candidateId": "foundation-candidate-064",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "celebration",
+          "food"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Showpiece dessert versus variety table is a real birthday-hosting choice rather than a generic food preference."
+    },
+    {
+      "candidateId": "foundation-candidate-065",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "imaginative",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "celebration",
+          "creativity",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Making-versus-solving is a valid Birthday Party format choice, but it is not inherently a Friends relationship question."
+    },
+    {
+      "candidateId": "foundation-candidate-066",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "games",
+          "conversation"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Funny stories versus a group mystery is highly natural for a teen sleepover and stays clean."
+    },
+    {
+      "candidateId": "foundation-candidate-067",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "food"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Late-night snack versus next-morning breakfast is specific to the sleepover rhythm and easy to discuss."
+    },
+    {
+      "candidateId": "foundation-candidate-068",
+      "decision": "PASS",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Two movies versus one long strategy game is a clear, sleepover-specific long-form activity choice."
+    },
+    {
+      "candidateId": "foundation-candidate-069",
+      "decision": "REVISE",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "FAIL",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "music",
+          "conversation"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Playlist contribution versus conversation-jar contribution is a straightforward activity preference, not genuinely Hard."
+    },
+    {
+      "candidateId": "foundation-candidate-070",
+      "decision": "REJECT",
+      "review": {
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "Internally duplicates candidate 068's movie-versus-game sleepover choice; changing the wording to room setup does not create a new dilemma.",
+      "duplicates": {
+        "type": "internal",
+        "candidateId": "foundation-candidate-068",
+        "reason": "Same underlying sleepover cinema-versus-game-night choice."
+      }
+    }
+  ],
+  "duplicateGroups": {
+    "protectedKids": [
+      {
+        "candidateId": "foundation-candidate-002",
+        "duplicatesFormalQuestionId": null,
+        "protectedCandidateIds": [
+          "kid-candidate-097"
+        ],
+        "decision": "REJECT",
+        "reason": "Same challenge-versus-ease learning trade-off."
+      },
+      {
+        "candidateId": "foundation-candidate-003",
+        "duplicatesFormalQuestionId": null,
+        "protectedCandidateIds": [
+          "kid-candidate-050"
+        ],
+        "decision": "REJECT",
+        "reason": "Same learn-skill-A-versus-skill-B template with nouns replaced."
+      },
+      {
+        "candidateId": "foundation-candidate-005",
+        "duplicatesFormalQuestionId": null,
+        "protectedCandidateIds": [
+          "kid-candidate-103",
+          "kid-candidate-057"
+        ],
+        "decision": "REJECT",
+        "reason": "Same depth-versus-variety learning/project dilemma."
+      },
+      {
+        "candidateId": "foundation-candidate-034",
+        "duplicatesFormalQuestionId": null,
+        "protectedCandidateIds": [
+          "kid-candidate-058"
+        ],
+        "decision": "REJECT",
+        "reason": "Same solo-versus-social practice dilemma."
+      },
+      {
+        "candidateId": "foundation-candidate-035",
+        "duplicatesFormalQuestionId": null,
+        "protectedCandidateIds": [
+          "kid-candidate-072"
+        ],
+        "decision": "REJECT",
+        "reason": "Same ask-for-help-versus-keep-trying-alone axis."
+      }
+    ],
+    "internal": [
+      {
+        "group": [
+          "foundation-candidate-011",
+          "foundation-candidate-022"
+        ],
+        "keep": "foundation-candidate-022",
+        "reject": "foundation-candidate-011",
+        "reason": "Same together-versus-separate-and-share-later relationship dilemma."
+      },
+      {
+        "group": [
+          "foundation-candidate-048",
+          "foundation-candidate-055"
+        ],
+        "keep": "foundation-candidate-055",
+        "reject": "foundation-candidate-048",
+        "reason": "Same phone-presence-during-shared-time dilemma; 055 is cleaner."
+      },
+      {
+        "group": [
+          "foundation-candidate-021",
+          "foundation-candidate-051"
+        ],
+        "keep": "foundation-candidate-021",
+        "reject": "foundation-candidate-051",
+        "reason": "Same planned-versus-surprise couple/date axis; 021 is more precise."
+      },
+      {
+        "group": [
+          "foundation-candidate-068",
+          "foundation-candidate-070"
+        ],
+        "keep": "foundation-candidate-068",
+        "reject": "foundation-candidate-070",
+        "reason": "Same sleepover movie/cinema-versus-game choice."
+      }
+    ]
+  },
+  "summary": {
+    "TotalCandidates": 70,
+    "PASS": 43,
+    "REVISE": 17,
+    "REJECT": 10,
+    "byPrimaryCollection": {
+      "teens": {
+        "Candidates": 5,
+        "PASS": 2,
+        "REVISE": 0,
+        "REJECT": 3
+      },
+      "adults": {
+        "Candidates": 5,
+        "PASS": 2,
+        "REVISE": 3,
+        "REJECT": 0
+      },
+      "friends": {
+        "Candidates": 5,
+        "PASS": 2,
+        "REVISE": 2,
+        "REJECT": 1
+      },
+      "family": {
+        "Candidates": 5,
+        "PASS": 0,
+        "REVISE": 5,
+        "REJECT": 0
+      },
+      "couples": {
+        "Candidates": 5,
+        "PASS": 3,
+        "REVISE": 2,
+        "REJECT": 0
+      },
+      "coworkers": {
+        "Candidates": 5,
+        "PASS": 4,
+        "REVISE": 1,
+        "REJECT": 0
+      },
+      "classroom": {
+        "Candidates": 5,
+        "PASS": 3,
+        "REVISE": 0,
+        "REJECT": 2
+      },
+      "party": {
+        "Candidates": 5,
+        "PASS": 4,
+        "REVISE": 1,
+        "REJECT": 0
+      },
+      "road-trip": {
+        "Candidates": 5,
+        "PASS": 4,
+        "REVISE": 0,
+        "REJECT": 1
+      },
+      "dinner": {
+        "Candidates": 5,
+        "PASS": 4,
+        "REVISE": 0,
+        "REJECT": 1
+      },
+      "date-night": {
+        "Candidates": 5,
+        "PASS": 4,
+        "REVISE": 0,
+        "REJECT": 1
+      },
+      "icebreakers": {
+        "Candidates": 5,
+        "PASS": 5,
+        "REVISE": 0,
+        "REJECT": 0
+      },
+      "birthday-party": {
+        "Candidates": 5,
+        "PASS": 3,
+        "REVISE": 2,
+        "REJECT": 0
+      },
+      "sleepover": {
+        "Candidates": 5,
+        "PASS": 3,
+        "REVISE": 1,
+        "REJECT": 1
+      }
+    },
+    "DuplicateWithExistingKids": 5,
+    "InternalDuplicateGroups": 4,
+    "SafetyRejects": 0,
+    "SafetyRevisions": 1,
+    "BalanceRejects": 2,
+    "MetadataRevisions": 12,
+    "entryCoverage": {
+      "established": [
+        "teens",
+        "adults",
+        "friends",
+        "couples",
+        "coworkers",
+        "classroom",
+        "party",
+        "road-trip",
+        "dinner",
+        "date-night",
+        "icebreakers",
+        "birthday-party",
+        "sleepover"
+      ],
+      "thinButNonEmpty": [
+        "teens",
+        "adults",
+        "friends"
+      ],
+      "nearBlank": [
+        "family"
+      ],
+      "note": "Family has 0 direct PASS in this review. Its five candidates are REVISE rather than REJECT, mostly because Dinner was incorrectly used as a scenario or Road Trip should be primary."
+    }
+  }
+}
