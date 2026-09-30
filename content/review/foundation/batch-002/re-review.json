@@ -1,0 +1,863 @@
+{
+  "batch": "Foundation Coverage Batch 002",
+  "round": 2,
+  "branch": "content/foundation-batch-002-revise-20260930",
+  "sourceAudit": {
+    "formalBank": {
+      "path": "content/question-bank/questions.json",
+      "count": 101,
+      "blobSha": "858911e0b55f37cb24b5e7db228c3964205e48d8",
+      "protected": true
+    },
+    "priorReview": {
+      "path": "content/review/foundation/batch-002/review.json",
+      "blobSha": "77a4751da377f772f01ac38ae5814d1577258d6e"
+    },
+    "revisedCandidates": {
+      "path": "content/review/foundation/batch-002/revised-candidates.json",
+      "count": 17,
+      "blobSha": "b3fc781302f904d8adcc5cda77f6dc7b6975ab57"
+    }
+  },
+  "integrityValidation": {
+    "revisedCandidatesEquals17": true,
+    "candidateIdUnique": true,
+    "allCandidateIdsFromPriorRevise": true,
+    "priorPassIncluded": [],
+    "priorRejectIncluded": [],
+    "newCandidateIds": []
+  },
+  "reviews": [
+    {
+      "candidateId": "foundation-candidate-007",
+      "decision": "PASS",
+      "priorReviewReason": "The dilemma is good, but it is not meaningfully adult-specific; teens can answer it just as naturally.",
+      "changeType": "metadata-only",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "daily-life",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The question text was correctly left unchanged. The adult-only classification was removed by adding teens and making Teens the primary collection, resolving the prior audience-fit issue without unnecessary rewriting."
+    },
+    {
+      "candidateId": "foundation-candidate-009",
+      "decision": "PASS",
+      "priorReviewReason": "This is general travel preference, not a road-trip usage question. The adult travel angle is otherwise valid.",
+      "changeType": "metadata-only",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "imaginative",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "travel",
+          "skills"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The question text was correctly left unchanged. The inaccurate Road Trip scenario was removed, so the item now remains a general adult travel-preference question as intended."
+    },
+    {
+      "candidateId": "foundation-candidate-010",
+      "decision": "PASS",
+      "priorReviewReason": "Quiet mornings versus quiet evenings is fully general rather than distinctly adult. It works better as a low-pressure icebreaker across teens and adults.",
+      "changeType": "metadata-only",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "routines",
+          "lifestyle"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The question text was correctly left unchanged. Reclassifying it from Adults to Icebreakers and adding both teens and adults resolves the prior audience/primary-collection mismatch."
+    },
+    {
+      "candidateId": "foundation-candidate-012",
+      "decision": "PASS",
+      "priorReviewReason": "The friend-role idea is usable, but 'brings the plan' is unnatural and Party is not intrinsic to the question.",
+      "changeType": "wording-balance-safety",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "food"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The wording now uses natural American English ('makes the plan'), and the unjustified Party scenario was removed. The revision follows the prior suggestion without changing the core dilemma."
+    },
+    {
+      "candidateId": "foundation-candidate-015",
+      "decision": "PASS",
+      "priorReviewReason": "Weekend-versus-day-trip changes duration as well as novelty, so the options are not comparable; Road Trip is also not guaranteed.",
+      "changeType": "wording-balance-safety",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "friendship",
+          "travel",
+          "adventure"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The two options now use the same one-day time horizon, removing the prior duration imbalance, and the unsupported Road Trip scenario was removed. The local-versus-new exploration trade-off is now comparable."
+    },
+    {
+      "candidateId": "foundation-candidate-016",
+      "decision": "PASS",
+      "priorReviewReason": "Strong Family question, but a picnic option makes Dinner an inaccurate usage scenario.",
+      "changeType": "metadata-only",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "family",
+          "food"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The original Family question was unchanged and the inaccurate Dinner scenario was removed. It remains low-pressure, cross-age Family content with no sensitive family comparison."
+    },
+    {
+      "candidateId": "foundation-candidate-017",
+      "decision": "PASS",
+      "priorReviewReason": "Strong cross-age Family memory question, but nothing about it is specifically Dinner use.",
+      "changeType": "metadata-only",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "family",
+          "memories",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The original Family question was unchanged and Dinner was removed. Photo-album versus audio-memory creation is family-specific, low-pressure, and safe."
+    },
+    {
+      "candidateId": "foundation-candidate-018",
+      "decision": "PASS",
+      "priorReviewReason": "The tradition dilemma is good Family content; Dinner is only an incidental place where it could be asked.",
+      "changeType": "metadata-only",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "family",
+          "traditions"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The original Family tradition dilemma was unchanged and the incidental Dinner scenario was removed. The remaining Family classification is accurate and the question does not require sensitive disclosure."
+    },
+    {
+      "candidateId": "foundation-candidate-019",
+      "decision": "PASS",
+      "priorReviewReason": "The dilemma is fundamentally a Road Trip question; Family is a valid relationship tag but should not be the primary collection.",
+      "changeType": "metadata-only",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "road-trip",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [
+          "road-trip"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "family",
+          "travel"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The question text was unchanged and Road Trip is now the primary collection, while Family remains an appropriate relationship tag. This resolves the prior primaryCollection error."
+    },
+    {
+      "candidateId": "foundation-candidate-020",
+      "decision": "PASS",
+      "priorReviewReason": "Family game night is valid Family content, but Dinner is not an inherent use scenario.",
+      "changeType": "metadata-only",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "family",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The Family game-night question was correctly left unchanged and the unsupported Dinner scenario was removed. The remaining Family metadata is appropriate."
+    },
+    {
+      "candidateId": "foundation-candidate-023",
+      "decision": "REVISE",
+      "priorReviewReason": "Meals-versus-activities on vacation is not inherently a Couples question and does not require adult relationship context; it works better as a low-pressure general icebreaker.",
+      "changeType": "metadata-only",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "travel",
+          "food",
+          "activities"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior Couples/adult/scenario problem was resolved exactly as requested: the item is now a teens/adults Icebreaker with no relationship tag. However, the topic metadata still contains 'relationships', which no longer describes the revised classification or the actual dilemma. This is a metadata-only defect; the question/options should remain unchanged."
+    },
+    {
+      "candidateId": "foundation-candidate-024",
+      "decision": "PASS",
+      "priorReviewReason": "The Couples idea is useful, but 'keep roughly the same sleep schedule' is ambiguous about whether the partners match each other.",
+      "changeType": "wording-balance-safety",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "couples",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "relationships",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The wording now explicitly means partners keeping similar sleep schedules and sharing a protected weekend free-time block. The prior ambiguity is resolved without changing the underlying Couples dilemma."
+    },
+    {
+      "candidateId": "foundation-candidate-029",
+      "decision": "PASS",
+      "priorReviewReason": "Daily focus time and weekly social lunch differ in both purpose and frequency, so the current trade-off is structurally uneven.",
+      "changeType": "wording-balance-safety",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "work",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "Both options now operate on a weekly cadence, resolving the structural frequency imbalance. Focus time versus optional team social time is a legitimate workplace trade-off and remains workplace-safe."
+    },
+    {
+      "candidateId": "foundation-candidate-038",
+      "decision": "PASS",
+      "priorReviewReason": "Option B is unclear: 'songs nobody picked themselves' does not cleanly express the intended unfamiliar-music constraint.",
+      "changeType": "wording-balance-safety",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "funny",
+          "weird"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "music",
+          "party"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Option B now clearly means unfamiliar music rather than the ambiguous 'songs nobody picked themselves'. The known-versus-discovery party-playlist dilemma is now natural and balanced."
+    },
+    {
+      "candidateId": "foundation-candidate-062",
+      "decision": "REJECT",
+      "priorReviewReason": "Letting every guest contribute a 'challenge' can invite embarrassing or unsafe dares. Keep the participatory idea but constrain it to a harmless game contribution.",
+      "changeType": "wording-balance-safety",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": null,
+      "reason": "The prior safety problem is resolved: 'mini-game idea' removes the open-ended dare/challenge risk. However, formal-bank de-duplication now finds the same underlying party music-versus-games dilemma in wyr-000029 ('choose the music for a party or choose the games for a party'). The birthday/contribution framing is not enough to justify another formal question.",
+      "duplicates": {
+        "formalQuestionId": "wyr-000029",
+        "question": "Would you rather choose the music for a party or choose the games for a party?",
+        "reason": "Same underlying party choice between music and games; the revised candidate mainly adds birthday/contribution framing."
+      }
+    },
+    {
+      "candidateId": "foundation-candidate-065",
+      "decision": "PASS",
+      "priorReviewReason": "Making-versus-solving is a valid Birthday Party format choice, but it is not inherently a Friends relationship question.",
+      "changeType": "metadata-only",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "imaginative",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "celebration",
+          "creativity",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The original question was unchanged and the unnecessary Friends relationship tag was removed. Birthday Party remains the correct primary/scenario classification."
+    },
+    {
+      "candidateId": "foundation-candidate-069",
+      "decision": "PASS",
+      "priorReviewReason": "Playlist contribution versus conversation-jar contribution is a straightforward activity preference, not genuinely Hard.",
+      "changeType": "metadata-only",
+      "unnecessaryContentRewrite": false,
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "audienceFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "music",
+          "conversation"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The original question was unchanged and difficulty was correctly reduced from Hard to Easy. The sleepover-specific playlist-versus-conversation activity choice is straightforward rather than difficult."
+    }
+  ],
+  "summary": {
+    "totalRevised": 17,
+    "PASS": 15,
+    "REVISE": 1,
+    "REJECT": 1,
+    "family": {
+      "reviewed": 5,
+      "PASS": 5,
+      "REVISE": 0,
+      "REJECT": 0,
+      "primaryCollectionPassAfterReview": 4
+    },
+    "newDuplicatesWithFormalBank": [
+      {
+        "candidateId": "foundation-candidate-062",
+        "formalQuestionId": "wyr-000029",
+        "decision": "REJECT"
+      }
+    ],
+    "internalDuplicates": [],
+    "safetyFailures": [],
+    "balanceFailures": [],
+    "metadataFailures": [
+      {
+        "candidateId": "foundation-candidate-023",
+        "issue": "topics still contains 'relationships' after the item was reclassified to a general Icebreaker."
+      }
+    ],
+    "unnecessaryContentRewrites": [],
+    "revisionProcess": {
+      "metadataOnlyReviewed": 11,
+      "wordingBalanceSafetyReviewed": 6,
+      "priorRevisionInstructionResolved": 17
+    }
+  }
+}
