@@ -1,0 +1,1113 @@
+[
+  {
+    "candidateId": "expansion-003-001",
+    "question": "Would you rather choose the bedtime story every night or choose breakfast every morning?",
+    "optionA": "Choose the bedtime story every night",
+    "optionB": "Choose breakfast every morning",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": [
+      "4-6",
+      "7-9"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "daily-life"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated relationships to Reviewer-corrected metadata.",
+        "Updated topics to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "The dilemma is suitable for ages 4–6, but choosing breakfast or a bedtime story is a personal daily-life choice, not inherently a Family relationship question."
+    }
+  },
+  {
+    "candidateId": "expansion-003-005",
+    "question": "Would you rather wear shoes that help you jump higher or gloves that help you build anything faster?",
+    "optionA": "Wear shoes that help you jump higher",
+    "optionB": "Wear gloves that help you build anything faster",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": [
+      "4-6",
+      "7-9"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "games",
+      "fantasy"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question wording per Reviewer revisionSuggestion.",
+        "Updated optionA per Reviewer revisionSuggestion.",
+        "Updated optionB per Reviewer revisionSuggestion."
+      ],
+      "sourceReviewerReason": "The jumping-shoes side is clear, but 'mittens that help you build faster' is vague about what kind of building the power affects."
+    }
+  },
+  {
+    "candidateId": "expansion-003-006",
+    "question": "Would you rather open a snack box with one surprise snack or one favorite snack every time?",
+    "optionA": "Get one surprise snack",
+    "optionB": "Get one favorite snack every time",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": [
+      "4-6",
+      "7-9"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "food",
+      "daily-life"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated relationships to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "Surprise-versus-favorite snack is a valid young-kid trade-off, but nothing about the choice depends on a Family relationship."
+    }
+  },
+  {
+    "candidateId": "expansion-003-015",
+    "question": "Would you rather build the tallest tower or the strongest bridge using the same number of pieces?",
+    "optionA": "Build the tallest tower",
+    "optionB": "Build the strongest bridge",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": [
+      "7-9",
+      "10-12"
+    ],
+    "relationships": [],
+    "scenarios": [
+      "classroom"
+    ],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "creativity",
+      "games"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated relationships to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "The engineering challenge is strong and classroom-appropriate, but it does not become more meaningful because friends are involved."
+    }
+  },
+  {
+    "candidateId": "expansion-003-017",
+    "question": "Would you rather play a brand-new game with no score or a familiar game with one surprising new rule?",
+    "optionA": "Play a new game with no score",
+    "optionB": "Play a familiar game with a new rule",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": [
+      "7-9",
+      "10-12"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "games",
+      "creativity"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated relationships to Reviewer-corrected metadata.",
+        "Updated scenarios to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "New-game versus familiar-game-with-a-twist is a valid Kids dilemma, but neither Friends nor Classroom is intrinsic to the question; those tags overstate its use context."
+    }
+  },
+  {
+    "candidateId": "expansion-003-018",
+    "question": "Would you rather create the clues for a scavenger hunt or build the surprise waiting at the end?",
+    "optionA": "Create the scavenger-hunt clues",
+    "optionB": "Build the final surprise",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": [
+      "7-9",
+      "10-12"
+    ],
+    "relationships": [],
+    "scenarios": [
+      "birthday-party",
+      "party"
+    ],
+    "moods": [
+      "imaginative",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "games",
+      "creativity"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated relationships to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "Creating clues versus building the final surprise works for party/scavenger-hunt planning, but the dilemma itself does not require a Friends relationship."
+    }
+  },
+  {
+    "candidateId": "expansion-003-022",
+    "question": "Would you rather captain a team with a fixed plan or be the strategist who can change the plan halfway through?",
+    "optionA": "Captain the team with a fixed plan",
+    "optionB": "Be the strategist who can change the plan",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "teamwork",
+      "planning"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated relationships to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "Captain-with-a-fixed-plan versus adaptable strategist is a useful older-kid teamwork choice, but it is not specifically a Friends relationship question."
+    }
+  },
+  {
+    "candidateId": "expansion-003-027",
+    "question": "Would you rather discover a hidden room in a library or a hidden garden path in a city park?",
+    "optionA": "Discover a hidden library room",
+    "optionB": "Discover a hidden garden path",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "imaginative",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "exploration",
+      "adventure"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question wording per Reviewer revisionSuggestion.",
+        "Updated optionB per Reviewer revisionSuggestion.",
+        "Updated relationships to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "The discovery premise is good, but a 'forgotten path' can imply leaving established park routes, and the Friends tag is unnecessary."
+    }
+  },
+  {
+    "candidateId": "expansion-003-028",
+    "question": "Would you rather have your own small garden plot or your own small workshop table?",
+    "optionA": "Have your own garden plot",
+    "optionB": "Have your own workshop table",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "nature",
+      "skills"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated relationships to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "Garden plot versus workshop table is a solid interest/ownership choice, but it is not specifically a Family relationship dilemma."
+    }
+  },
+  {
+    "candidateId": "expansion-003-029",
+    "question": "Would you rather make a team decision by secret vote or by open discussion until the group agrees?",
+    "optionA": "Use a secret vote",
+    "optionB": "Use open discussion",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "relationships": [],
+    "scenarios": [
+      "classroom"
+    ],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "teamwork",
+      "fairness"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated relationships to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "Secret vote versus open discussion is a strong fairness dilemma and classroom-appropriate, but the Friends relationship tag is not necessary."
+    }
+  },
+  {
+    "candidateId": "expansion-003-032",
+    "question": "Would you rather choose your teammates but not the project topic or choose the topic but not your teammates?",
+    "optionA": "Choose your teammates",
+    "optionB": "Choose the project topic",
+    "primaryCollection": "teens",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "school",
+      "teamwork"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated scenarios to Reviewer-corrected metadata.",
+        "Updated safety to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "Choosing teammates can create public peer-comparison and exclusion pressure. The Teen dilemma can remain, but it should not be presented as a classroom-use question."
+    }
+  },
+  {
+    "candidateId": "expansion-003-033",
+    "question": "Would you rather know the full plan before every social event or always have an easy way to leave when you want?",
+    "optionA": "Know the full plan beforehand",
+    "optionB": "Always have an easy exit",
+    "primaryCollection": "teens",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "planning",
+      "social-situations"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated relationships to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "Knowing the plan versus having an easy exit is a general Teen social preference; it does not depend on a Friends relationship."
+    }
+  },
+  {
+    "candidateId": "expansion-003-034",
+    "question": "Would you rather have an app organize every photo you take or summarize every long group chat you miss?",
+    "optionA": "Automatically organize every photo",
+    "optionB": "Summarize every long group chat",
+    "primaryCollection": "teens",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [],
+    "moods": [
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "media",
+      "daily-life"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated ageBands to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "Photo organization versus missed-group-chat summaries has clear Teen value, but it is equally natural for adults; the current age coverage is unnecessarily narrow."
+    }
+  },
+  {
+    "candidateId": "expansion-003-035",
+    "question": "Would you rather silence one notification app for a week or remove recommendations from one feed for a week?",
+    "optionA": "Silence one notification app",
+    "optionB": "Remove recommendations from one feed",
+    "primaryCollection": "teens",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "media",
+      "daily-life"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated ageBands to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "Notification silencing versus removing feed recommendations is not Teen-exclusive; adults can answer the same digital-attention trade-off naturally."
+    }
+  },
+  {
+    "candidateId": "expansion-003-039",
+    "question": "Would you rather spend lunch with the same small group most days or mix with different groups during the week?",
+    "optionA": "Stay with the same small group",
+    "optionB": "Mix with different groups",
+    "primaryCollection": "teens",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "friendship",
+      "social-situations"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated safety to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "The friend-group dilemma is good for Teens, but asking it in a classroom can expose social-group patterns and create peer pressure. classroomSafe should be false."
+    }
+  },
+  {
+    "candidateId": "expansion-003-041",
+    "question": "Would you rather live five minutes from everyday errands but farther from your favorite weekend places, or five minutes from your favorite weekend places but farther from everyday errands?",
+    "optionA": "Live close to everyday errands",
+    "optionB": "Live close to favorite weekend places",
+    "primaryCollection": "adults",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "lifestyle",
+      "home"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question wording per Reviewer revisionSuggestion.",
+        "Updated optionB per Reviewer revisionSuggestion."
+      ],
+      "sourceReviewerReason": "The intended convenience-versus-weekend-lifestyle trade-off is useful, but the current options do not state symmetrical costs: being five minutes from errands is compared with merely being thirty minutes from favorite places."
+    }
+  },
+  {
+    "candidateId": "expansion-003-048",
+    "question": "Would you rather follow one trusted expert's recommendation or compare many user reviews before deciding?",
+    "optionA": "Follow one trusted expert",
+    "optionB": "Compare many user reviews",
+    "primaryCollection": "adults",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "decision-making",
+      "daily-life"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated ageBands to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "Expert recommendation versus many user reviews is a general decision-style dilemma that also fits Teens; Adults can remain the primary collection."
+    }
+  },
+  {
+    "candidateId": "expansion-003-049",
+    "question": "Would you rather keep weekday mornings slow and simple or finish more tasks before noon?",
+    "optionA": "Keep mornings slow and simple",
+    "optionB": "Finish more before noon",
+    "primaryCollection": "adults",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "routines",
+      "time"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated ageBands to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "Slow mornings versus getting more done before noon also fits Teens and is not meaningfully adult-only."
+    }
+  },
+  {
+    "candidateId": "expansion-003-050",
+    "question": "Would you rather have predictable work hours every week or flexible hours that change from week to week?",
+    "optionA": "Have predictable work hours",
+    "optionB": "Have flexible changing hours",
+    "primaryCollection": "adults",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "work",
+      "routines"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated relationships to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "Predictable versus flexible work hours is an individual work/lifestyle choice, not a Coworkers relationship dilemma."
+    }
+  },
+  {
+    "candidateId": "expansion-003-064",
+    "question": "Would you rather help cook the family meal and have someone else clean up, or skip cooking and handle the cleanup afterward?",
+    "optionA": "Help cook and let someone else clean up",
+    "optionB": "Skip cooking and handle the cleanup",
+    "primaryCollection": "family",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "moods": [
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "family",
+      "food",
+      "teamwork"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question wording per Reviewer revisionSuggestion.",
+        "Updated optionA per Reviewer revisionSuggestion.",
+        "Updated optionB per Reviewer revisionSuggestion."
+      ],
+      "sourceReviewerReason": "Helping cook is usually more enjoyable and creative than cleaning up, so the current options are not comparable. The family-contribution idea is worth keeping if each option carries a clear responsibility."
+    }
+  },
+  {
+    "candidateId": "expansion-003-076",
+    "question": "Would you rather write down a draft decision immediately so everyone can react to it, or discuss the options first and document the final decision afterward?",
+    "optionA": "Write down a draft decision immediately",
+    "optionB": "Discuss first and document the final decision later",
+    "primaryCollection": "coworkers",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "adults"
+    ],
+    "relationships": [
+      "coworkers"
+    ],
+    "scenarios": [],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "work",
+      "communication"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question wording per Reviewer revisionSuggestion.",
+        "Updated optionA per Reviewer revisionSuggestion.",
+        "Updated optionB per Reviewer revisionSuggestion."
+      ],
+      "sourceReviewerReason": "The wording mixes 'team decision' with a period before everyone has responded, making it unclear whether the decision is already final. Clarify draft-first versus discuss-first documentation."
+    }
+  },
+  {
+    "candidateId": "expansion-003-090",
+    "question": "Would you rather vote on a new class rule right away or try it for a week and then vote?",
+    "optionA": "Vote on the rule right away",
+    "optionB": "Try it for a week and then vote",
+    "primaryCollection": "classroom",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "relationships": [],
+    "scenarios": [
+      "classroom"
+    ],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "school",
+      "fairness"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question wording per Reviewer revisionSuggestion.",
+        "Updated optionA per Reviewer revisionSuggestion.",
+        "Updated optionB per Reviewer revisionSuggestion."
+      ],
+      "sourceReviewerReason": "Option B says the class tests the rule before deciding but never specifies how the final decision is made, so the decision processes are not parallel."
+    }
+  },
+  {
+    "candidateId": "expansion-003-097",
+    "question": "Would you rather take one big group photo at the end or build a wall of instant photos throughout the party?",
+    "optionA": "Take one big group photo",
+    "optionB": "Build an instant-photo wall",
+    "primaryCollection": "party",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "moods": [
+      "light",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "party",
+      "memories"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated difficulty to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "One group photo versus an instant-photo wall is a straightforward format preference; it should be Easy rather than Hard."
+    }
+  },
+  {
+    "candidateId": "expansion-003-111",
+    "question": "Would you rather start eating while the food is hottest or wait up to ten minutes so everyone can sit down together?",
+    "optionA": "Start eating while the food is hottest",
+    "optionB": "Wait so everyone can sit together",
+    "primaryCollection": "dinner",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "food",
+      "family",
+      "routines"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question wording per Reviewer revisionSuggestion.",
+        "Updated optionA per Reviewer revisionSuggestion."
+      ],
+      "sourceReviewerReason": "The intended hot-food-versus-eating-together trade-off is present, but the benefit of starting immediately is left implicit, making waiting together look socially superior."
+    }
+  },
+  {
+    "candidateId": "expansion-003-115",
+    "question": "Would you rather choose a date by rolling from six ideas you prepared together or each secretly contribute three ideas and draw one from all six?",
+    "optionA": "Roll from six ideas you prepared together",
+    "optionB": "Draw from six secretly contributed ideas",
+    "primaryCollection": "date-night",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "adults"
+    ],
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "relationships",
+      "planning"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question wording per Reviewer revisionSuggestion.",
+        "Updated optionA per Reviewer revisionSuggestion.",
+        "Updated optionB per Reviewer revisionSuggestion."
+      ],
+      "sourceReviewerReason": "The playful random-date concept is usable, but six jointly prepared options are compared with only two secret ideas, so the mechanisms are not balanced."
+    }
+  },
+  {
+    "candidateId": "expansion-003-135",
+    "question": "Would you rather hand out party favors at the start so guests can use them or save them for a surprise at the end?",
+    "optionA": "Hand out favors at the start",
+    "optionB": "Save favors for the end",
+    "primaryCollection": "birthday-party",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "moods": [
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "planning"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated difficulty to Reviewer-corrected metadata."
+      ],
+      "sourceReviewerReason": "Giving party favors at the start versus the end is a simple timing preference, not a genuinely Hard dilemma."
+    }
+  },
+  {
+    "candidateId": "expansion-003-138",
+    "question": "Would you rather end a birthday party with one big active group game or a calm wind-down game?",
+    "optionA": "End with an active group game",
+    "optionB": "End with a calm wind-down game",
+    "primaryCollection": "birthday-party",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "moods": [
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "games"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question wording per Reviewer revisionSuggestion.",
+        "Updated optionA per Reviewer revisionSuggestion.",
+        "Updated optionB per Reviewer revisionSuggestion."
+      ],
+      "sourceReviewerReason": "The birthday-ending contrast is useful, but 'one big group challenge' is too open-ended and can drift toward unsafe or embarrassing dares. Constrain it to a normal game."
+    }
+  },
+  {
+    "candidateId": "expansion-003-145",
+    "question": "Would you rather do a sleepover scavenger hunt before dark or an indoor flashlight clue hunt after dark?",
+    "optionA": "Do the scavenger hunt before dark",
+    "optionB": "Do an indoor flashlight clue hunt after dark",
+    "primaryCollection": "sleepover",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "games",
+      "exploration"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question wording per Reviewer revisionSuggestion.",
+        "Updated optionB per Reviewer revisionSuggestion."
+      ],
+      "sourceReviewerReason": "Before-dark versus flashlight clue hunting is a good sleepover choice, but 'after dark' can imply outdoor wandering. Make the after-dark option explicitly indoor."
+    }
+  }
+]
