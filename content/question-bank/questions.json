@@ -3579,5 +3579,560 @@
       "batch": "foundation-batch-002",
       "candidateId": "foundation-candidate-068"
     }
+  },
+  {
+    "id": "wyr-000102",
+    "question": "Would you rather do twenty minutes of chores every day or handle nearly all of them in one long weekly reset?",
+    "optionA": "Do twenty minutes of chores every day",
+    "optionB": "Do one long weekly reset",
+    "primaryCollection": "teens",
+    "primaryAgeBand": "teens",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "daily-life",
+      "routines"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-007",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000103",
+    "question": "Would you rather become conversational in the local language before every trip or always know the best local places when you arrive?",
+    "optionA": "Speak the local language conversationally",
+    "optionB": "Always know the best local places",
+    "primaryCollection": "adults",
+    "primaryAgeBand": "adults",
+    "ageBands": [
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "imaginative",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "skills"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-009",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000104",
+    "question": "Would you rather have quiet mornings but busy evenings or busy mornings but quiet evenings?",
+    "optionA": "Have quiet mornings and busy evenings",
+    "optionB": "Have busy mornings and quiet evenings",
+    "primaryCollection": "icebreakers",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "routines",
+      "lifestyle"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-010",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000105",
+    "question": "Would you rather be the friend who usually makes the plan or the friend who usually brings the snacks?",
+    "optionA": "Usually make the plan",
+    "optionB": "Usually bring the snacks",
+    "primaryCollection": "friends",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "food"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-012",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000106",
+    "question": "Would you rather spend a full day exploring hidden spots close to home or take a full-day trip somewhere none of you have visited?",
+    "optionA": "Explore hidden spots close to home",
+    "optionB": "Take a full-day trip somewhere new",
+    "primaryCollection": "friends",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "friendship",
+      "travel",
+      "adventure"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-015",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000107",
+    "question": "Would you rather cook one family meal together or pack a picnic that everyone helps choose?",
+    "optionA": "Cook one family meal together",
+    "optionB": "Pack a picnic everyone helps choose",
+    "primaryCollection": "family",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family"
+    ],
+    "scenarios": [],
+    "moods": [
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "family",
+      "food"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-016",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000108",
+    "question": "Would you rather make a family photo album together or record short audio stories about favorite memories?",
+    "optionA": "Make a family photo album",
+    "optionB": "Record short audio stories about favorite memories",
+    "primaryCollection": "family",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family"
+    ],
+    "scenarios": [],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "family",
+      "memories",
+      "creativity"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-017",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000109",
+    "question": "Would you rather keep one favorite family tradition exactly the same or invent a new tradition every year?",
+    "optionA": "Keep one favorite tradition the same",
+    "optionB": "Invent a new tradition every year",
+    "primaryCollection": "family",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family"
+    ],
+    "scenarios": [],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "family",
+      "traditions"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-018",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000110",
+    "question": "Would you rather make one big stop on a family drive or take several short stops along the way?",
+    "optionA": "Make one big stop",
+    "optionB": "Take several short stops",
+    "primaryCollection": "road-trip",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "moods": [
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "family",
+      "travel"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-019",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000111",
+    "question": "Would you rather have family game night in teams or have everyone play for themselves?",
+    "optionA": "Play family game night in teams",
+    "optionB": "Have everyone play for themselves",
+    "primaryCollection": "family",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family"
+    ],
+    "scenarios": [],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "family",
+      "games"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-020",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000112",
+    "question": "Would you rather keep similar sleep schedules to each other or protect the same block of free time together every weekend?",
+    "optionA": "Keep similar sleep schedules",
+    "optionB": "Protect the same weekend free-time block",
+    "primaryCollection": "couples",
+    "primaryAgeBand": "adults",
+    "ageBands": [
+      "adults"
+    ],
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "routines"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-024",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000113",
+    "question": "Would you rather have one protected no-meeting focus block each week or one optional team lunch each week?",
+    "optionA": "Have one protected focus block each week",
+    "optionB": "Have one optional team lunch each week",
+    "primaryCollection": "coworkers",
+    "primaryAgeBand": "adults",
+    "ageBands": [
+      "adults"
+    ],
+    "relationships": [
+      "coworkers"
+    ],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "work",
+      "routines"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": true
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-029",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000114",
+    "question": "Would you rather have a party playlist made only of songs everyone already knows or mostly songs no one in the group has heard before?",
+    "optionA": "Use only songs everyone already knows",
+    "optionB": "Use mostly songs no one has heard before",
+    "primaryCollection": "party",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "music",
+      "party"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-038",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000115",
+    "question": "Would you rather have a birthday party built around making something or built around solving something?",
+    "optionA": "Build the party around making something",
+    "optionB": "Build the party around solving something",
+    "primaryCollection": "birthday-party",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "moods": [
+      "imaginative",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "celebration",
+      "creativity",
+      "games"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-065",
+      "reviewRound": 2
+    }
+  },
+  {
+    "id": "wyr-000116",
+    "question": "Would you rather have everyone add one song to a sleepover playlist or one question to a conversation jar?",
+    "optionA": "Add one song each to a playlist",
+    "optionB": "Add one question each to a conversation jar",
+    "primaryCollection": "sleepover",
+    "primaryAgeBand": "teens",
+    "ageBands": [
+      "teens"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "music",
+      "conversation"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "provenance": {
+      "batch": "foundation-batch-002",
+      "candidateId": "foundation-candidate-069",
+      "reviewRound": 2
+    }
   }
 ]
