@@ -1,0 +1,1315 @@
+{
+  "batch": "Broad Coverage Expansion Batch 003",
+  "round": 2,
+  "reviewerRole": "revision verification and formal-bank collision review",
+  "note": "This round verifies targeted revisions against the prior independent Reviewer findings and the updated 208-question formal bank.",
+  "sourceAudit": {
+    "formalBankCount": 208,
+    "revisedCandidateCount": 28,
+    "allFromPriorRevise": true
+  },
+  "reviews": [
+    {
+      "candidateId": "expansion-003-001",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-005",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "funny",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "games",
+          "fantasy"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-006",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "food",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-015",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "7-9",
+        "ageBands": [
+          "7-9",
+          "10-12"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "creativity",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-017",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "7-9",
+        "ageBands": [
+          "7-9",
+          "10-12"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "games",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-018",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "7-9",
+        "ageBands": [
+          "7-9",
+          "10-12"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "birthday-party",
+          "party"
+        ],
+        "moods": [
+          "imaginative",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "games",
+          "creativity"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-022",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "teamwork",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-027",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "imaginative",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "exploration",
+          "adventure"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-028",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "nature",
+          "skills"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-029",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "10-12",
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "teamwork",
+          "fairness"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-032",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "school",
+          "teamwork"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-033",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "planning",
+          "social-situations"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-034",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "media",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-035",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "media",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-039",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "teens",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "friendship",
+          "social-situations"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-041",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "lifestyle",
+          "home"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-048",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "decision-making",
+          "daily-life"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-049",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "routines",
+          "time"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-050",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "adults",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "work",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-064",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "7-9",
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "family",
+          "food",
+          "teamwork"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-076",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "coworkers",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "coworkers"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "work",
+          "communication"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-090",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "classroom",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "school",
+          "fairness"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-097",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "light",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "party",
+          "memories"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-111",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "dinner",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family",
+          "friends"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "food",
+          "family",
+          "routines"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-115",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "date-night",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "funny",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "relationships",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-135",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "celebration",
+          "planning"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-138",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "celebration",
+          "games"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    },
+    {
+      "candidateId": "expansion-003-145",
+      "decision": "PASS",
+      "review": {
+        "revisionResolved": "PASS",
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "funny",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "friendship",
+          "games",
+          "exploration"
+        ],
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The prior REVISE issue was resolved by the targeted round-1 change. Re-review against the current 208-question formal bank found no exact, A/B-swap, or identified semantic collision requiring rejection."
+    }
+  ],
+  "duplicateGroups": {
+    "formalBank": [],
+    "internal": []
+  },
+  "summary": {
+    "TotalRevised": 28,
+    "PASS": 28,
+    "REVISE": 0,
+    "REJECT": 0,
+    "NewFormalBankDuplicatesIdentified": 0,
+    "InternalDuplicateGroupsIdentified": 0,
+    "SafetyFailures": 0,
+    "BalanceFailures": 0,
+    "MetadataFailures": 0
+  }
+}
