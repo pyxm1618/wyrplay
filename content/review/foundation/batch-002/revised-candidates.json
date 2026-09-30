@@ -1,0 +1,660 @@
+[
+  {
+    "candidateId": "foundation-candidate-007",
+    "question": "Would you rather do twenty minutes of chores every day or handle nearly all of them in one long weekly reset?",
+    "optionA": "Do twenty minutes of chores every day",
+    "optionB": "Do one long weekly reset",
+    "primaryCollection": "teens",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "daily-life",
+      "routines"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Changed primaryCollection from adults to teens as instructed by Reviewer.",
+        "Added teens to ageBands while retaining adults."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-009",
+    "question": "Would you rather become conversational in the local language before every trip or always know the best local places when you arrive?",
+    "optionA": "Speak the local language conversationally",
+    "optionB": "Always know the best local places",
+    "primaryCollection": "adults",
+    "ageBands": [
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "imaginative",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "skills"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Removed road-trip scenario as instructed by Reviewer."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-010",
+    "question": "Would you rather have quiet mornings but busy evenings or busy mornings but quiet evenings?",
+    "optionA": "Have quiet mornings and busy evenings",
+    "optionB": "Have busy mornings and quiet evenings",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "routines",
+      "lifestyle"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Changed primaryCollection from adults to icebreakers as instructed by Reviewer.",
+        "Added teens to ageBands while retaining adults.",
+        "Added icebreakers scenario."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-012",
+    "question": "Would you rather be the friend who usually makes the plan or the friend who usually brings the snacks?",
+    "optionA": "Usually make the plan",
+    "optionB": "Usually bring the snacks",
+    "primaryCollection": "friends",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "food"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Replaced \"brings the plan\" with \"makes the plan\" using the Reviewer suggestion.",
+        "Removed party scenario."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-015",
+    "question": "Would you rather spend a full day exploring hidden spots close to home or take a full-day trip somewhere none of you have visited?",
+    "optionA": "Explore hidden spots close to home",
+    "optionB": "Take a full-day trip somewhere new",
+    "primaryCollection": "friends",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "friendship",
+      "travel",
+      "adventure"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Balanced both options as full-day experiences using the Reviewer suggestion.",
+        "Removed road-trip scenario."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-016",
+    "question": "Would you rather cook one family meal together or pack a picnic that everyone helps choose?",
+    "optionA": "Cook one family meal together",
+    "optionB": "Pack a picnic everyone helps choose",
+    "primaryCollection": "family",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family"
+    ],
+    "scenarios": [],
+    "moods": [
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "family",
+      "food"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Removed dinner scenario as instructed by Reviewer."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-017",
+    "question": "Would you rather make a family photo album together or record short audio stories about favorite memories?",
+    "optionA": "Make a family photo album",
+    "optionB": "Record short audio stories about favorite memories",
+    "primaryCollection": "family",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family"
+    ],
+    "scenarios": [],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "family",
+      "memories",
+      "creativity"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Removed dinner scenario as instructed by Reviewer."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-018",
+    "question": "Would you rather keep one favorite family tradition exactly the same or invent a new tradition every year?",
+    "optionA": "Keep one favorite tradition the same",
+    "optionB": "Invent a new tradition every year",
+    "primaryCollection": "family",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family"
+    ],
+    "scenarios": [],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "family",
+      "traditions"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Removed dinner scenario as instructed by Reviewer."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-019",
+    "question": "Would you rather make one big stop on a family drive or take several short stops along the way?",
+    "optionA": "Make one big stop",
+    "optionB": "Take several short stops",
+    "primaryCollection": "road-trip",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family"
+    ],
+    "scenarios": [
+      "road-trip"
+    ],
+    "moods": [
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "family",
+      "travel"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Changed primaryCollection from family to road-trip as instructed by Reviewer."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-020",
+    "question": "Would you rather have family game night in teams or have everyone play for themselves?",
+    "optionA": "Play family game night in teams",
+    "optionB": "Have everyone play for themselves",
+    "primaryCollection": "family",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family"
+    ],
+    "scenarios": [],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "family",
+      "games"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Removed dinner scenario as instructed by Reviewer."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-023",
+    "question": "Would you rather plan a vacation around memorable meals or around memorable activities?",
+    "optionA": "Plan around memorable meals",
+    "optionB": "Plan around memorable activities",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "travel"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Changed primaryCollection from couples to icebreakers as instructed by Reviewer.",
+        "Added teens to ageBands while retaining adults.",
+        "Removed couples relationship.",
+        "Added icebreakers scenario.",
+        "Updated safety flags to the Reviewer-corrected general-use values."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-024",
+    "question": "Would you rather keep similar sleep schedules to each other or protect the same block of free time together every weekend?",
+    "optionA": "Keep similar sleep schedules",
+    "optionB": "Protect the same weekend free-time block",
+    "primaryCollection": "couples",
+    "ageBands": [
+      "adults"
+    ],
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [],
+    "moods": [
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "routines"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Clarified that the couple keeps similar sleep schedules to each other or protects the same weekend free-time block together, using the Reviewer suggestion."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-029",
+    "question": "Would you rather have one protected no-meeting focus block each week or one optional team lunch each week?",
+    "optionA": "Have one protected focus block each week",
+    "optionB": "Have one optional team lunch each week",
+    "primaryCollection": "coworkers",
+    "ageBands": [
+      "adults"
+    ],
+    "relationships": [
+      "coworkers"
+    ],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "work",
+      "routines"
+    ],
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Balanced the frequency by making both options weekly, using the Reviewer suggestion."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-038",
+    "question": "Would you rather have a party playlist made only of songs everyone already knows or mostly songs no one in the group has heard before?",
+    "optionA": "Use only songs everyone already knows",
+    "optionB": "Use mostly songs no one has heard before",
+    "primaryCollection": "party",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "music",
+      "party"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Clarified option B as mostly songs no one in the group has heard before, using the Reviewer suggestion."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-062",
+    "question": "Would you rather have everyone contribute one song to the birthday playlist or one mini-game idea for the party?",
+    "optionA": "Have everyone contribute a song",
+    "optionB": "Have everyone contribute a mini-game idea",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "moods": [
+      "light",
+      "funny"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "music",
+      "games"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Replaced the open-ended game challenge with a mini-game idea to prevent unsafe or embarrassing dares, using the Reviewer suggestion."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-065",
+    "question": "Would you rather have a birthday party built around making something or built around solving something?",
+    "optionA": "Build the party around making something",
+    "optionB": "Build the party around solving something",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "moods": [
+      "imaginative",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "celebration",
+      "creativity",
+      "games"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Removed friends relationship as instructed by Reviewer."
+      ]
+    }
+  },
+  {
+    "candidateId": "foundation-candidate-069",
+    "question": "Would you rather have everyone add one song to a sleepover playlist or one question to a conversation jar?",
+    "optionA": "Add one song each to a playlist",
+    "optionB": "Add one question each to a conversation jar",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "teens"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "music",
+      "conversation"
+    ],
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Changed difficulty from hard to easy as instructed by Reviewer."
+      ]
+    }
+  }
+]
