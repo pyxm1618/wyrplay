@@ -7622,5 +7622,2727 @@
       "familySafe": true,
       "workplaceSafe": true
     }
+  },
+  {
+    "candidateId": "expansion-004-213",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather do a dessert tasting where you choose by aroma only or by texture description only?",
+    "optionA": "Choose by aroma",
+    "optionB": "Choose by texture description",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "food",
+      "sensory"
+    ],
+    "coreDilemma": "smell-based choice vs texture-based choice",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two sensory selection rules for a shared dessert experience.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-214",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather try a two-person cooperative puzzle or a short game where you compete against each other?",
+    "optionA": "Solve the cooperative puzzle",
+    "optionB": "Play the friendly competition",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "funny"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "games"
+    ],
+    "coreDilemma": "shared victory vs friendly rivalry",
+    "dilemmaFamily": "competition",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare cooperative versus competitive play within a date-night activity rather than same-team friend play.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-215",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather see a silent film with live music or a spoken-word performance with almost no visuals?",
+    "optionA": "See the silent film with live music",
+    "optionB": "See the spoken-word performance",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "culture",
+      "entertainment"
+    ],
+    "coreDilemma": "visual story with music vs verbal performance",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two culturally distinct performance modes emphasizing different senses.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-216",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather cook together when one person can read the recipe but not taste or one person can taste but not read the recipe?",
+    "optionA": "Have the recipe-reader role",
+    "optionB": "Have the taster role",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "food",
+      "teamwork"
+    ],
+    "coreDilemma": "instruction access vs sensory feedback",
+    "dilemmaFamily": "teamwork",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two asymmetric cooking roles where each partner holds a different kind of information.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-217",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather pick one artwork and invent its backstory together or find two artworks and invent a connection between them?",
+    "optionA": "Invent one artwork's backstory",
+    "optionB": "Invent a connection between two artworks",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "funny"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "relationships",
+      "culture",
+      "creativity"
+    ],
+    "coreDilemma": "deepen one story vs connect two stories",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two playful ways to interact with art beyond viewing it.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-218",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather visit a bookstore and choose a book from its first sentence or choose one from its cover with no reading?",
+    "optionA": "Choose from the first sentence",
+    "optionB": "Choose from the cover only",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "books",
+      "discovery"
+    ],
+    "coreDilemma": "text clue vs visual clue",
+    "dilemmaFamily": "discovery",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare book discovery by opening text versus cover design during a shared outing.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-219",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather spend twenty minutes making one tiny object from clay or twenty minutes making one tiny scene from paper?",
+    "optionA": "Make the clay object",
+    "optionB": "Make the paper scene",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "relationships",
+      "creativity",
+      "art"
+    ],
+    "coreDilemma": "sculptural creation vs scene construction",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two compact hands-on art experiences with different spatial goals.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-220",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather take a night walk where you look only for interesting light or one where you listen only for interesting sounds?",
+    "optionA": "Look for interesting light",
+    "optionB": "Listen for interesting sounds",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "sensory",
+      "exploration"
+    ],
+    "coreDilemma": "visual night noticing vs audio night noticing",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare a date-night walk focused on one sensory channel versus another.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-221",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather get one behind-the-scenes question answered at a venue or take home one small souvenir from it?",
+    "optionA": "Ask the behind-the-scenes question",
+    "optionB": "Keep the small souvenir",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "experiences",
+      "memories"
+    ],
+    "coreDilemma": "insider knowledge vs physical keepsake",
+    "dilemmaFamily": "memory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare leaving a shared outing with exclusive knowledge versus a tangible memory.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-222",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather have every date include one perfectly timed sunset or one unexpectedly excellent street performance?",
+    "optionA": "Get the perfect sunset",
+    "optionB": "Find the excellent street performance",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "relationships",
+      "fantasy",
+      "experiences"
+    ],
+    "coreDilemma": "guaranteed natural moment vs guaranteed cultural surprise",
+    "dilemmaFamily": "imagination",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two magical date-night bonuses from nature versus live culture.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-223",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather do a photo challenge where every picture must include a reflection or one where every picture must include a shadow?",
+    "optionA": "Photograph reflections",
+    "optionB": "Photograph shadows",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "relationships",
+      "photography",
+      "creativity"
+    ],
+    "coreDilemma": "reflection constraint vs shadow constraint",
+    "dilemmaFamily": "constraint",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two visual photography constraints suitable for a shared evening walk.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-224",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather try a café where you choose from the smell of each drink or one where you choose from a story about each drink?",
+    "optionA": "Choose from the smell",
+    "optionB": "Choose from the story",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "food",
+      "experiences"
+    ],
+    "coreDilemma": "sensory preview vs narrative preview",
+    "dilemmaFamily": "information",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare choosing a shared drink experience from aroma versus storytelling.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-225",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather visit a gallery where you can touch every replica or a small theater where you can meet the performers afterward?",
+    "optionA": "Explore touchable replicas",
+    "optionB": "Meet performers after the show",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "culture",
+      "experiences"
+    ],
+    "coreDilemma": "hands-on art access vs human creator access",
+    "dilemmaFamily": "experience",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare physical access to art versus personal access to performers.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-226",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather make a tiny zine about your evening or record a two-minute audio recap together?",
+    "optionA": "Make the tiny zine",
+    "optionB": "Record the audio recap",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "relationships",
+      "memories",
+      "creativity"
+    ],
+    "coreDilemma": "visual-text memory vs spoken memory",
+    "dilemmaFamily": "memory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare preserving one date as a handmade mini-publication versus a joint audio memory.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-227",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather try a two-person activity where success depends on matching each other's rhythm or one where success depends on spotting different things?",
+    "optionA": "Match each other's rhythm",
+    "optionB": "Spot different things",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "games",
+      "teamwork"
+    ],
+    "coreDilemma": "synchronize behavior vs complement attention",
+    "dilemmaFamily": "teamwork",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two forms of couple coordination—matching versus complementary noticing.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-228",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather order one dish neither of you can identify from the description or one drink neither of you can predict from its color?",
+    "optionA": "Order the mystery-description dish",
+    "optionB": "Order the mystery-color drink",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "relationships",
+      "food",
+      "discovery"
+    ],
+    "coreDilemma": "verbal ambiguity vs visual ambiguity",
+    "dilemmaFamily": "discovery",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two harmless food mysteries based on unclear words versus misleading appearance.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-229",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather spend date night making something designed to be used tomorrow or something designed to be displayed for a year?",
+    "optionA": "Make something useful tomorrow",
+    "optionB": "Make something to display for a year",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "thoughtful",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "creativity",
+      "values"
+    ],
+    "coreDilemma": "immediate utility vs lasting display",
+    "dilemmaFamily": "values",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare creative purpose split between near-term use and long-term display.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-230",
+    "primaryAgeBand": null,
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "question": "Would you rather do a date-night challenge using only things already in your pockets or using only things you can find for free nearby?",
+    "optionA": "Use only pocket items",
+    "optionB": "Use only free nearby finds",
+    "primaryCollection": "date-night",
+    "ageBands": [
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "creativity",
+      "games"
+    ],
+    "coreDilemma": "carried resources vs found resources",
+    "dilemmaFamily": "resource",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two low-stakes resource constraints for an improvised two-person activity.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-231",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather always know the exact distance to something you can see or the exact weight of something you can lift?",
+    "optionA": "Know exact distance",
+    "optionB": "Know exact weight",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "skills",
+      "daily-life"
+    ],
+    "coreDilemma": "distance intuition vs weight intuition",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two neutral estimation super-skills that reveal preference without personal disclosure.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-232",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather instantly recognize any bird sound or any tree you see?",
+    "optionA": "Recognize bird sounds",
+    "optionB": "Recognize trees",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "nature",
+      "skills"
+    ],
+    "coreDilemma": "audio nature knowledge vs visual nature knowledge",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two low-pressure nature-recognition abilities.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-233",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather have an umbrella that folds into your pocket but covers only you or a large umbrella that is awkward to carry but covers two people?",
+    "optionA": "Carry the tiny personal umbrella",
+    "optionB": "Carry the large two-person umbrella",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "daily-life",
+      "weather"
+    ],
+    "coreDilemma": "portability vs coverage",
+    "dilemmaFamily": "resource",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare a practical everyday trade-off between compactness and capacity.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-234",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather have a bag that always has a working pen or one that always has the right charging cable?",
+    "optionA": "Always have a working pen",
+    "optionB": "Always have the right charging cable",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "daily-life",
+      "technology"
+    ],
+    "coreDilemma": "analog utility vs device utility",
+    "dilemmaFamily": "resource",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two everyday preparedness conveniences that are safe for strangers to discuss.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-235",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather spend an unexpected free hour making something with your hands or exploring somewhere within walking distance?",
+    "optionA": "Make something by hand",
+    "optionB": "Explore nearby",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "hobbies",
+      "exploration"
+    ],
+    "coreDilemma": "creation vs discovery",
+    "dilemmaFamily": "experience",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two substantive uses of surprise free time without asking which prompt the person prefers.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-236",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather remember a person's face after one meeting or recognize their voice after hearing one sentence?",
+    "optionA": "Remember the face",
+    "optionB": "Recognize the voice",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "social",
+      "skills"
+    ],
+    "coreDilemma": "face memory vs voice memory",
+    "dilemmaFamily": "memory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two social-recognition abilities rather than names-versus-facts memory.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-237",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather be excellent at estimating time without a clock or distance without a map?",
+    "optionA": "Estimate time accurately",
+    "optionB": "Estimate distance accurately",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "weird",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "skills",
+      "daily-life"
+    ],
+    "coreDilemma": "time estimation vs distance estimation",
+    "dilemmaFamily": "skills",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two neutral intuitive measurement skills.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-238",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather have shoes that never squeak or a jacket that never wrinkles?",
+    "optionA": "Have silent shoes",
+    "optionB": "Have wrinkle-free jackets",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "daily-life",
+      "clothing"
+    ],
+    "coreDilemma": "sound annoyance removed vs appearance annoyance removed",
+    "dilemmaFamily": "comfort",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two harmless clothing conveniences affecting different senses.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-239",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather be able to find the quietest spot in any building or the brightest spot without looking around?",
+    "optionA": "Find the quietest spot",
+    "optionB": "Find the brightest spot",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "daily-life",
+      "sensory"
+    ],
+    "coreDilemma": "sound-space awareness vs light-space awareness",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two environmental sensing conveniences suitable for low-pressure conversation.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-240",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather learn the rules of any board game after watching one turn or learn any simple dance after watching one move?",
+    "optionA": "Learn board-game rules quickly",
+    "optionB": "Learn dances quickly",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "games",
+      "skills"
+    ],
+    "coreDilemma": "rule-pattern learning vs movement-pattern learning",
+    "dilemmaFamily": "skills",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two instantly learnable leisure skills using different kinds of pattern recognition.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-241",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather have a mug that keeps any drink at the right temperature or a bag that never tangles anything inside it?",
+    "optionA": "Use the perfect-temperature mug",
+    "optionB": "Use the no-tangle bag",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "daily-life",
+      "fantasy"
+    ],
+    "coreDilemma": "temperature convenience vs organization convenience",
+    "dilemmaFamily": "imagination",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two small fantasy conveniences with unrelated practical benefits.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-242",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather always choose the fastest checkout line or always find a seat exactly when you need one?",
+    "optionA": "Pick the fastest line",
+    "optionB": "Find a seat when needed",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "daily-life",
+      "comfort"
+    ],
+    "coreDilemma": "reduce waiting vs guarantee rest",
+    "dilemmaFamily": "comfort",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two everyday convenience benefits without private disclosure.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-243",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather have a tiny pocket that can hold one oversized object or a normal pocket that can never lose small objects?",
+    "optionA": "Hold one oversized object",
+    "optionB": "Never lose small objects",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "fantasy",
+      "daily-life"
+    ],
+    "coreDilemma": "capacity anomaly vs perfect retention",
+    "dilemmaFamily": "imagination",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two different magical pocket utilities.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-244",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather have perfect balance on any flat surface or perfect aim when tossing soft objects?",
+    "optionA": "Have perfect balance",
+    "optionB": "Have perfect soft-object aim",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "skills",
+      "movement"
+    ],
+    "coreDilemma": "body stability vs throwing accuracy",
+    "dilemmaFamily": "movement",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two harmless physical abilities that make a substantive but low-stakes choice.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-245",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather always know which drawer an object belongs in or always know which container will fit it?",
+    "optionA": "Know the right drawer",
+    "optionB": "Know the right-sized container",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "daily-life",
+      "skills"
+    ],
+    "coreDilemma": "category placement vs size matching",
+    "dilemmaFamily": "information",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two mundane but distinct organization instincts presented as a playful ability choice.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-246",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather have every handwritten note you make become perfectly neat or every quick sketch become instantly recognizable?",
+    "optionA": "Make every note neat",
+    "optionB": "Make every sketch recognizable",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "creativity",
+      "daily-life"
+    ],
+    "coreDilemma": "writing clarity vs drawing clarity",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two everyday expression improvements across text and images.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-247",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather discover one hidden public garden in every city or one tiny local museum in every town?",
+    "optionA": "Find hidden public gardens",
+    "optionB": "Find tiny local museums",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "travel",
+      "culture",
+      "exploration"
+    ],
+    "coreDilemma": "hidden nature access vs hidden culture access",
+    "dilemmaFamily": "discovery",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two low-pressure travel discoveries without familiar-versus-new framing.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-248",
+    "primaryAgeBand": null,
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "question": "Would you rather be able to turn any boring wait into a tiny puzzle or into a tiny drawing challenge?",
+    "optionA": "Turn waits into puzzles",
+    "optionB": "Turn waits into drawing challenges",
+    "primaryCollection": "icebreakers",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "games",
+      "creativity",
+      "daily-life"
+    ],
+    "coreDilemma": "logic diversion vs creative diversion",
+    "dilemmaFamily": "imagination",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two ways to transform idle time into different kinds of play.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    }
+  },
+  {
+    "candidateId": "expansion-004-249",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather have birthday candles reveal a hidden color when they go out or have the cake reveal a hidden pattern when it is cut?",
+    "optionA": "Reveal candle colors",
+    "optionB": "Reveal a cake pattern",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "food",
+      "fantasy"
+    ],
+    "coreDilemma": "reveal through candles vs reveal through cake",
+    "dilemmaFamily": "discovery",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two birthday-specific reveal moments tied to different rituals.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-250",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather have a birthday crown that makes one silly sound when tapped or one that lights up when people clap?",
+    "optionA": "Wear the sound crown",
+    "optionB": "Wear the applause-light crown",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "fantasy"
+    ],
+    "coreDilemma": "touch-triggered sound vs crowd-triggered light",
+    "dilemmaFamily": "imagination",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two playful birthday-wearable reactions with different triggers.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-251",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather guess who brought a wrapped gift from one clue or guess what is inside from its shape?",
+    "optionA": "Guess the giver from a clue",
+    "optionB": "Guess the gift from its shape",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "celebration",
+      "games",
+      "discovery"
+    ],
+    "coreDilemma": "social deduction vs object deduction",
+    "dilemmaFamily": "discovery",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two birthday-gift guessing tasks using different evidence.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-252",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather seal a funny prediction to open next birthday or a serious prediction to open five birthdays later?",
+    "optionA": "Open the funny prediction next year",
+    "optionB": "Open the serious prediction in five years",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "celebration",
+      "memories"
+    ],
+    "coreDilemma": "near-term playful memory vs long-term meaningful memory",
+    "dilemmaFamily": "memory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two birthday time-capsule horizons with different emotional purposes.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-253",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather have party invitations hide a tiny symbol guests need for a game or hide a color clue about the party setup?",
+    "optionA": "Hide the game symbol",
+    "optionB": "Hide the color clue",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "games",
+      "discovery"
+    ],
+    "coreDilemma": "functional clue vs decorative clue",
+    "dilemmaFamily": "information",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two birthday invitation secrets serving different purposes at the party.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-254",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather give the birthday person one token to double their points in a game or one token to retry a challenge?",
+    "optionA": "Use a double-points token",
+    "optionB": "Use a retry token",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "celebration",
+      "games",
+      "strategy"
+    ],
+    "coreDilemma": "reward multiplier vs second chance",
+    "dilemmaFamily": "resource",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two birthday-person game privileges affecting reward versus recovery.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-255",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather have guests draw one imaginary future adventure for the birthday person or invent one harmless superpower for them?",
+    "optionA": "Draw future adventures",
+    "optionB": "Invent harmless superpowers",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "creativity",
+      "fantasy"
+    ],
+    "coreDilemma": "imagined experience vs imagined ability",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two birthday-specific creative gifts of imagination rather than generic crafts.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-256",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather make a birthday dessert station where guests build textures or one where they build colors?",
+    "optionA": "Build dessert textures",
+    "optionB": "Build dessert colors",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "food",
+      "sensory"
+    ],
+    "coreDilemma": "texture customization vs visual customization",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare birthday dessert customization around texture versus appearance.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-257",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather follow birthday treasure clues hidden in decorations or clues hidden in short riddles on cards?",
+    "optionA": "Search decorations",
+    "optionB": "Solve riddle cards",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "funny"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "celebration",
+      "games",
+      "discovery"
+    ],
+    "coreDilemma": "environment search vs riddle solving",
+    "dilemmaFamily": "discovery",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two birthday treasure-hunt clue mechanisms rather than treasure-hunt versus tournament.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-258",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather unwrap a gift hidden inside several boxes or follow a short clue trail to find one box?",
+    "optionA": "Open nested boxes",
+    "optionB": "Follow the clue trail",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "celebration",
+      "games"
+    ],
+    "coreDilemma": "layered reveal vs spatial search",
+    "dilemmaFamily": "discovery",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two different birthday gift-reveal mechanics.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-259",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather have a birthday game where your score comes from collecting symbols or from completing patterns?",
+    "optionA": "Collect symbols",
+    "optionB": "Complete patterns",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "celebration",
+      "games"
+    ],
+    "coreDilemma": "set collection vs pattern completion",
+    "dilemmaFamily": "competition",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two scoring structures for a birthday party game.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-260",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather give each guest a sticker that changes color during one game or a badge that gains a symbol after each game?",
+    "optionA": "Use color-changing stickers",
+    "optionB": "Use symbol-collecting badges",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "games",
+      "fantasy"
+    ],
+    "coreDilemma": "single-game transformation vs across-game accumulation",
+    "dilemmaFamily": "resource",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two wearable game trackers with different time scales.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-261",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather have the birthday cake smell like one flavor but taste like another or look like one flavor but taste like another?",
+    "optionA": "Use a misleading smell",
+    "optionB": "Use a misleading appearance",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "weird",
+      "funny"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "food",
+      "sensory"
+    ],
+    "coreDilemma": "smell illusion vs visual illusion",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two harmless sensory surprises tied specifically to birthday cake.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-262",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather have guests contribute one word to a birthday poem or one line to a birthday comic?",
+    "optionA": "Build the birthday poem",
+    "optionB": "Build the birthday comic",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "creativity"
+    ],
+    "coreDilemma": "collective word art vs collective visual story",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two birthday-specific collaborative messages in different media.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-263",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather have a party game where the birthday person knows one secret rule or one where everyone else knows one clue the birthday person does not?",
+    "optionA": "Give the birthday person the secret rule",
+    "optionB": "Give everyone else the secret clue",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "celebration",
+      "games",
+      "strategy"
+    ],
+    "coreDilemma": "special rule knowledge vs group clue knowledge",
+    "dilemmaFamily": "information",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare birthday-specific information asymmetry without humiliating the birthday person.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-264",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather have one birthday activity change whenever someone says the birthday person's name or whenever someone laughs?",
+    "optionA": "Trigger changes with the name",
+    "optionB": "Trigger changes with laughter",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "games",
+      "fantasy"
+    ],
+    "coreDilemma": "name-triggered rule change vs laughter-triggered rule change",
+    "dilemmaFamily": "imagination",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two party-rule triggers uniquely connected to birthday-group behavior.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-265",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather have a birthday table centerpiece that slowly reveals messages or one that slowly reveals a picture?",
+    "optionA": "Reveal messages",
+    "optionB": "Reveal a picture",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "imaginative",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "memories",
+      "fantasy"
+    ],
+    "coreDilemma": "verbal reveal vs visual reveal",
+    "dilemmaFamily": "memory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare a birthday centerpiece revealing language versus imagery over time.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-266",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "question": "Would you rather make a birthday memory from everyone's hand-drawn symbol or everyone's recorded laugh?",
+    "optionA": "Collect hand-drawn symbols",
+    "optionB": "Collect recorded laughs",
+    "primaryCollection": "birthday-party",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "celebration",
+      "memories",
+      "creativity"
+    ],
+    "coreDilemma": "visual personal marks vs audio personal marks",
+    "dilemmaFamily": "memory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare a group birthday keepsake built from drawings versus sound.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-267",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather tell a flashlight shadow story or build a glow-stick clue trail?",
+    "optionA": "Tell the shadow story",
+    "optionB": "Build the glow-stick clue trail",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "imaginative",
+      "funny"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "stories",
+      "games"
+    ],
+    "coreDilemma": "shadow storytelling vs glowing exploration",
+    "dilemmaFamily": "experience",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two darkness-friendly sleepover activities using light in different ways.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-268",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather pass a message around the room by whispering or by adding one drawing at a time?",
+    "optionA": "Pass the whispered message",
+    "optionB": "Pass the drawing chain",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "games",
+      "communication"
+    ],
+    "coreDilemma": "audio distortion chain vs visual distortion chain",
+    "dilemmaFamily": "communication",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two sleepover message-chain games using speech versus drawing.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-269",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather use glow sticks to mark a clue trail or use them to create wearable patterns?",
+    "optionA": "Make a glow-stick clue trail",
+    "optionB": "Make glow-stick wearable patterns",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "games",
+      "creativity"
+    ],
+    "coreDilemma": "navigation use vs decoration use",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare the same sleepover material used for discovery versus self-expression.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-270",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather invent a dream hotel room or invent the strangest midnight snack a hotel could serve?",
+    "optionA": "Invent the dream room",
+    "optionB": "Invent the strange midnight snack",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "fantasy",
+      "food"
+    ],
+    "coreDilemma": "imagined space vs imagined food",
+    "dilemmaFamily": "imagination",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two sleepover-friendly imagination prompts with different creative targets.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-271",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather have one quiet creative hour before bed or wake up with one extra hour for a morning game?",
+    "optionA": "Use a quiet creative hour at night",
+    "optionB": "Use an extra game hour in the morning",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "friendship",
+      "creativity",
+      "games"
+    ],
+    "coreDilemma": "late-night calm creation vs morning active play",
+    "dilemmaFamily": "time",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare how to use a finite sleepover hour across two distinct activity moods, not simply sleep earlier versus later.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-272",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather sleep with soft background noise everyone hears or in total silence with earplugs available?",
+    "optionA": "Use soft shared background noise",
+    "optionB": "Use silence with optional earplugs",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "friendship",
+      "comfort",
+      "sensory"
+    ],
+    "coreDilemma": "shared ambient sound vs individualized silence",
+    "dilemmaFamily": "comfort",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two sleep-environment solutions specific to sharing a room.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-273",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather tell a story where nobody can use the word 'and' or one where every sentence must end with a rhyme?",
+    "optionA": "Tell it without 'and'",
+    "optionB": "Make every sentence rhyme",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "friendship",
+      "stories",
+      "creativity"
+    ],
+    "coreDilemma": "word-ban constraint vs rhyme constraint",
+    "dilemmaFamily": "constraint",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two oral storytelling limitations that create different kinds of difficulty.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-274",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather do a snack taste test where you know the food but not the flavor or know the flavor but not the food?",
+    "optionA": "Know the food, guess the flavor",
+    "optionB": "Know the flavor, guess the food",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "friendship",
+      "food",
+      "games"
+    ],
+    "coreDilemma": "unknown flavor vs unknown food identity",
+    "dilemmaFamily": "information",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two safe snack mysteries where different information is hidden.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-275",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather make a sleeping-bag name tag that glows or one that changes color when touched?",
+    "optionA": "Make it glow",
+    "optionB": "Make it change color",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "fantasy",
+      "creativity"
+    ],
+    "coreDilemma": "constant visibility vs interactive color change",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two sleepover-specific visual features with different behavior.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-276",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather play a nighttime guessing game using only flashlight shapes or only tiny sound effects?",
+    "optionA": "Use flashlight shapes",
+    "optionB": "Use tiny sound effects",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "games",
+      "sensory"
+    ],
+    "coreDilemma": "light-shape clues vs quiet audio clues",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two low-light, low-volume clue channels suited to a sleepover.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-277",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather hide three clues inside pillowcases or three clues under safe objects around the room?",
+    "optionA": "Hide clues in pillowcases",
+    "optionB": "Hide clues around the room",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "imaginative",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "games",
+      "discovery"
+    ],
+    "coreDilemma": "container search vs room search",
+    "dilemmaFamily": "discovery",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two sleepover-specific search spaces for the same clue hunt.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-278",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather have a sleepover game where everyone draws with their non-dominant hand or writes with their eyes on the ceiling?",
+    "optionA": "Draw with the other hand",
+    "optionB": "Write while looking up",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "games",
+      "creativity"
+    ],
+    "coreDilemma": "motor awkwardness vs visual-motor awkwardness",
+    "dilemmaFamily": "movement",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two harmless coordination constraints for a seated sleepover game.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-279",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather build a tiny bedside invention that helps you find things in the dark or one that helps you stay quiet?",
+    "optionA": "Build a find-in-the-dark invention",
+    "optionB": "Build a stay-quiet invention",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "imaginative",
+      "funny"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "friendship",
+      "creativity",
+      "fantasy"
+    ],
+    "coreDilemma": "darkness utility vs noise-control utility",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two sleepover-specific invention goals solving different nighttime problems.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-280",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather each friend contribute one clue to a group mystery or one possible explanation for it?",
+    "optionA": "Contribute clues",
+    "optionB": "Contribute explanations",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "thoughtful",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "friendship",
+      "games",
+      "mystery"
+    ],
+    "coreDilemma": "build evidence vs build theories",
+    "dilemmaFamily": "role",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare friend-group mystery play split between evidence creation and hypothesis creation.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-281",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather make a morning snack using only round foods or only foods that can be stacked?",
+    "optionA": "Use only round foods",
+    "optionB": "Use only stackable foods",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "food",
+      "creativity"
+    ],
+    "coreDilemma": "shape constraint vs structure constraint",
+    "dilemmaFamily": "constraint",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two playful food-building constraints for the morning after a sleepover.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-282",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather leave each friend a tiny drawing to find in the morning or a ten-second audio message?",
+    "optionA": "Leave a tiny drawing",
+    "optionB": "Leave a short audio message",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "light",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "memories",
+      "communication"
+    ],
+    "coreDilemma": "visual morning message vs audio morning message",
+    "dilemmaFamily": "communication",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two low-pressure ways to leave a sleepover memory for the next morning.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-283",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather have a pillow fort with one hidden listening tube or one hidden light window?",
+    "optionA": "Build the listening tube",
+    "optionB": "Build the light window",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "friendship",
+      "creativity",
+      "sensory"
+    ],
+    "coreDilemma": "sound connection vs light connection",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two different interactive features for a sleepover fort.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
+  },
+  {
+    "candidateId": "expansion-004-284",
+    "primaryAgeBand": null,
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "question": "Would you rather solve a bedtime code where each symbol means a sound or one where each symbol means a movement?",
+    "optionA": "Decode sounds",
+    "optionB": "Decode movements",
+    "primaryCollection": "sleepover",
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "moods": [
+      "weird",
+      "funny"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "friendship",
+      "games",
+      "communication"
+    ],
+    "coreDilemma": "symbol-to-sound decoding vs symbol-to-movement decoding",
+    "dilemmaFamily": "information",
+    "noveltyReason": "The formal bank has adjacent themes, but it does not currently compare two playful code systems tied to different outputs in a sleepover setting.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    }
   }
 ]
