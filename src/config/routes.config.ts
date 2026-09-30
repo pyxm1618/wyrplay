@@ -42,7 +42,7 @@ export const routeDefinitions = [
       "clean would you rather",
       "classroom icebreakers for students",
     ],
-    title: "Would You Rather Questions for Kids – 25+ Fun & Clean Dilemmas",
+    title: "Would You Rather Questions for Kids – Fun & Clean Dilemmas",
     description:
       "Discover the best clean and imaginative Would You Rather questions for kids. Perfect for school classrooms, family road trips, and dinner conversations.",
     h1: "Would You Rather Questions for Kids",
@@ -54,7 +54,7 @@ export const routeDefinitions = [
     ],
     lastModified: "2026-09-29",
     reviewStatus: "reviewed",
-    reviewFingerprint: "968fc268db1c3fe63893b3a2730386b1301823c695193e3ba67704aab2a24781",
+    reviewFingerprint: "1b3c62995db5f268b77082ce6b4dca5e8346d26e10637f512c1eb025842c78d7",
   },
   {
     route: "/funny-would-you-rather-questions",
@@ -218,6 +218,9 @@ export const routeDefinitions = [
   { route: "/api/health/live", class: "system" },
   { route: "/api/health/ready", class: "system" },
   { route: "/api/test/emails/latest", class: "system" },
+  { route: "/api/wyr/vote", class: "system" },
+  { route: "/api/internal/seo/indexnow", class: "system" },
+  { route: "/indexnow-key.txt", class: "system" },
 ] as const satisfies readonly RouteDefinition[];
 
 export const routeRegistry = createRouteRegistry(seoConfig, routeDefinitions);

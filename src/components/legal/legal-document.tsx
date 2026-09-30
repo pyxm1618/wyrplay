@@ -21,9 +21,7 @@ export function LegalDocument({
       <h1 className="mt-3 text-3xl font-semibold tracking-tight text-balance text-foreground sm:text-4xl">
         {title}
       </h1>
-      <p className="mt-4 text-sm text-muted">
-        Version {document.version} · Effective {document.effectiveDate} · {document.reviewStatus}
-      </p>
+      <p className="mt-4 text-sm text-muted">Effective {document.effectiveDate}</p>
       <div className="mt-4 border-t border-border" />
       {sections.map((section) => (
         <LegalSection key={section.heading} section={section} />

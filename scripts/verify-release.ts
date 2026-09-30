@@ -440,9 +440,11 @@ const vercelConfig = JSON.parse(await readFile("vercel.json", "utf8")) as {
   crons?: Array<{ path?: string }>;
 };
 const scheduledPaths = new Set(vercelConfig.crons?.map((cron) => cron.path) ?? []);
-for (const required of ["/api/internal/jobs/account-deletion", "/api/internal/jobs/reconcile"]) {
-  if (!scheduledPaths.has(required))
-    throw new Error(`required internal schedule is missing: ${required}`);
+if (featuresConfig.auth.enabled && !scheduledPaths.has("/api/internal/jobs/account-deletion")) {
+  throw new Error("required internal schedule is missing: /api/internal/jobs/account-deletion");
+}
+if (featuresConfig.commerce.enabled && !scheduledPaths.has("/api/internal/jobs/reconcile")) {
+  throw new Error("required internal schedule is missing: /api/internal/jobs/reconcile");
 }
 if (featuresConfig.commerce.enabled && !scheduledPaths.has("/api/internal/jobs/commerce")) {
   throw new Error("durable commerce recovery job is missing from vercel.json");

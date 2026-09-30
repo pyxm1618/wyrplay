@@ -20,8 +20,7 @@ export default function ContactPage() {
       <p className={`mt-8 ${eyebrow}`}>Project contact</p>
       <h1 className={`mt-3 ${pageTitle}`}>Contact</h1>
       <p className={`mt-4 ${bodyText}`}>
-        The starter currently uses draft operator facts. Replace the address below with the reviewed
-        production support channel before launch.
+        Have a question, feedback, or suggestion about our dilemmas? Reach out to our team at:
       </p>
       <p className="mt-6">
         <a href={`mailto:${legalConfig.operator.supportEmail}`} className={inlineLink}>

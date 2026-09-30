@@ -93,7 +93,7 @@ export const homeConfig = {
         {
           label: "Explore kids questions",
           href: "/would-you-rather-questions-for-kids",
-          description: "25+ clean and imaginative dilemmas for children and classrooms.",
+          description: "Clean and imaginative dilemmas for children and classrooms.",
         },
         {
           label: "Browse funny dilemmas",

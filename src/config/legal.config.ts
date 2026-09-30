@@ -12,7 +12,7 @@ export const legalConfig = {
     "anonymous gameplay interaction state",
     "technical error and performance diagnostics",
   ],
-  authMethods: ["email magic link"],
+  authMethods: [],
   processors: [
     {
       name: "Resend",

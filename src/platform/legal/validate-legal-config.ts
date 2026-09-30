@@ -29,7 +29,7 @@ const legalSchema = z.object({
   }),
   minimumAge: z.number().int().min(13).max(21),
   dataCategories: z.array(z.string().trim().min(1)).min(1),
-  authMethods: z.array(z.string().trim().min(1)).min(1),
+  authMethods: z.array(z.string().trim().min(1)),
   processors: z.array(processorSchema),
   paymentModel: z.enum(["mor", "psp", "none"]),
   oneTimePurchases: z.boolean(),
