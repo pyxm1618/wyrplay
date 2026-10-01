@@ -49,6 +49,10 @@ jobs:
           diff -u src/platform/database/auth-schema.ts /tmp/auth-schema.ts
       - name: Formatting
         run: bun run format:check
+      - name: Diff whitespace check
+        run: |
+          git fetch origin main --depth=1
+          git diff --check origin/main...HEAD
       - name: Lint
         run: bun run lint
       - name: Typecheck
