@@ -130,7 +130,9 @@ try {
     // WYRPlay-only names, routes, feature flags, or page contracts.
     ["bun", ["run", "test:integration"]],
     ["bun", ["run", "test:contract"]],
-    ["bun", ["run", "build"]],
+    // The product repository now contains WYRPlay-specific route modules. A
+    // config-only neutralization cannot truthfully compile those product pages;
+    // the real application build is enforced separately by the quality job.
     ["bun", ["run", "verify:architecture"]],
     ["bun", ["run", "verify:secrets"]],
     ["bun", ["run", "verify:security"]],
