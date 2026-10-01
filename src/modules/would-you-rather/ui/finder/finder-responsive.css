@@ -518,3 +518,59 @@
     width: 70%;
   }
 }
+
+
+/* Responsive Web Product layer: promote the reference canvas into a full viewport shell. */
+.finder-page {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+@media (min-width: 701px) {
+  .finder-page .site-header,
+  .finder-page .hero,
+  .finder-page .search-area,
+  .finder-page .directory,
+  .finder-page .selection-bar,
+  .finder-page .category-banner,
+  .finder-page .finder-categories,
+  .finder-page .finder-about {
+    width: min(calc(100% - 48px), 1240px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .finder-page .site-header {
+    margin-top: 10px;
+  }
+  .finder-page .directory {
+    grid-template-columns: clamp(221px, 21vw, 280px) minmax(0, 1fr);
+    gap: clamp(15px, 2vw, 28px);
+  }
+  .finder-page .filters,
+  .finder-page .question-panel {
+    min-height: 0;
+  }
+  .finder-page .pagination {
+    margin: 18px auto 0;
+  }
+}
+
+@media (min-width: 1100px) {
+  .finder-page .question-details,
+  .finder-page .question-card:nth-child(10) .question-details {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+    padding-right: 235px;
+  }
+  .finder-page .question-details h3,
+  .finder-page .question-card:nth-child(10) .question-details h3 {
+    max-width: 650px;
+    font-size: clamp(14px, 1vw, 16px);
+  }
+  .finder-page .question-art {
+    right: 118px;
+  }
+}
