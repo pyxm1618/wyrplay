@@ -1,0 +1,933 @@
+[
+  {
+    "candidateId": "expansion-004-004",
+    "question": "Would you rather have a little robot put all your toys in one big basket or point to the right home for each toy while you put them away?",
+    "optionA": "Let the robot put everything in one basket",
+    "optionB": "Have the robot show where each toy belongs",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": [
+      "4-6",
+      "7-9"
+    ],
+    "relationships": [],
+    "scenarios": [],
+    "moods": [
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "toys",
+      "helping"
+    ],
+    "coreDilemma": "fast completion vs learning the system",
+    "dilemmaFamily": "skills",
+    "noveltyReason": "The formal robot questions sort or find objects automatically; this choice is between being finished quickly and learning where things belong yourself.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated relationships to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "The core cleanup dilemma is usable, but it is not inherently a Family relationship question."
+    }
+  },
+  {
+    "candidateId": "expansion-004-008",
+    "question": "Would you rather play a game where you must move like the animal on a card or invent a new animal move every turn?",
+    "optionA": "Copy the animal move on a card",
+    "optionB": "Invent a new animal move each turn",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": [
+      "4-6",
+      "7-9"
+    ],
+    "relationships": [],
+    "scenarios": [
+      "party",
+      "classroom"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "games",
+      "animals"
+    ],
+    "coreDilemma": "copy a prompt vs invent the action",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The bank has dancing and inventing games, but not an embodied imitation-versus-invention rule inside the same group game.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated relationships to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Copying an animal prompt versus inventing a move is usable, but Friends/Family are optional participants rather than intrinsic relationships."
+    }
+  },
+  {
+    "candidateId": "expansion-004-011",
+    "question": "Would you rather hear a mystery sound and guess what made it or feel a mystery object in a bag and guess what it is?",
+    "optionA": "Guess a mystery sound",
+    "optionB": "Guess a mystery object by touch",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": [
+      "4-6",
+      "7-9"
+    ],
+    "relationships": [],
+    "scenarios": [
+      "classroom",
+      "party"
+    ],
+    "moods": [
+      "weird",
+      "light"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "sensory",
+      "games"
+    ],
+    "coreDilemma": "identify by hearing vs identify by touch",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "No formal question makes sensory evidence itself the dilemma; existing sound items are powers or media choices rather than guessing modes.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated relationships to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Hearing-versus-touch identification is a usable sensory game, but Friends/Family are optional participants rather than intrinsic relationships."
+    }
+  },
+  {
+    "candidateId": "expansion-004-076",
+    "question": "Would you rather invent a snack together from three pre-checked ingredients everyone can safely eat or invent a game together from three random objects?",
+    "optionA": "Invent a snack from three pre-checked ingredients",
+    "optionB": "Invent a game from three random objects",
+    "primaryCollection": "friends",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party",
+      "sleepover"
+    ],
+    "moods": [
+      "funny",
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "food",
+      "creativity",
+      "games"
+    ],
+    "coreDilemma": "edible improvisation vs playable improvisation",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "The bank has recipe invention and game creation separately, but not a friends choice between two forms of constrained improvisation.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionA to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback.",
+        "Updated topics to address Reviewer feedback.",
+        "Updated safety to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "The improvisation dilemma is worth keeping, but random snack ingredients need an explicit pre-screened/safe constraint and Food should be represented in topics."
+    }
+  },
+  {
+    "candidateId": "expansion-004-077",
+    "question": "Would you rather spend one hour making each other laugh without speaking or spend one hour communicating only by drawing?",
+    "optionA": "Make each other laugh without speaking for an hour",
+    "optionB": "Communicate only by drawing for an hour",
+    "primaryCollection": "friends",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party",
+      "sleepover"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "friendship",
+      "communication"
+    ],
+    "coreDilemma": "nonverbal humor vs nonverbal practical communication",
+    "dilemmaFamily": "communication",
+    "noveltyReason": "Existing party games restrict speech or gesture, but no formal friend question compares two purposes for nonverbal interaction.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionA to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "The nonverbal-humor versus drawing-communication idea works, but one afternoon versus one hour makes the options uneven."
+    }
+  },
+  {
+    "candidateId": "expansion-004-100",
+    "question": "Would you rather have a family rule that gives everyone one personal quiet hour each week or one shared family hour trying something new each week?",
+    "optionA": "Give everyone one personal quiet hour each week",
+    "optionB": "Have one shared family hour trying something new each week",
+    "primaryCollection": "family",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family"
+    ],
+    "scenarios": [],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "family",
+      "lifestyle"
+    ],
+    "coreDilemma": "guaranteed personal recovery vs guaranteed shared novelty",
+    "dilemmaFamily": "comfort",
+    "noveltyReason": "The bank has weekly protected time for adults and family outings, but not a reciprocal family entitlement trading solitude against shared experience.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionA to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Personal recovery versus shared novelty is a valid Family dilemma, but weekly quiet time versus monthly outing compares unequal frequencies."
+    }
+  },
+  {
+    "candidateId": "expansion-004-107",
+    "question": "Would you rather have a date where you each bring one object with a story or one where you each secretly plan one small surprise activity?",
+    "optionA": "Bring one story-rich object each",
+    "optionB": "Plan one small surprise activity each",
+    "primaryCollection": "couples",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "adults"
+    ],
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [
+      "date-night"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "relationships",
+      "date-night"
+    ],
+    "coreDilemma": "reveal personal history vs create present surprise",
+    "dilemmaFamily": "experience",
+    "noveltyReason": "Existing date questions use photos or questions; none contrasts sharing meaning from an object with inventing a small surprise experience.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Personal-history sharing versus present surprise is useful, but the arbitrary under-ten-dollars condition and 'bring an activity' wording weaken balance and naturalness."
+    }
+  },
+  {
+    "candidateId": "expansion-004-112",
+    "question": "Would you rather have a shared travel rule to always try one local breakfast or always visit one place residents recommend?",
+    "optionA": "Always try one local breakfast",
+    "optionB": "Always visit one resident-recommended place",
+    "primaryCollection": "icebreakers",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
+    ],
+    "moods": [
+      "light",
+      "imaginative"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "relationships",
+      "travel"
+    ],
+    "coreDilemma": "discover a place through food vs through local guidance",
+    "dilemmaFamily": "culture",
+    "noveltyReason": "The bank has local snacks and best-local-place knowledge, but no couple ritual comparing culinary discovery with resident-led exploration.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated primaryCollection to address Reviewer feedback.",
+        "Updated ageBands to address Reviewer feedback.",
+        "Updated relationships to address Reviewer feedback.",
+        "Updated scenarios to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Food-versus-local-guidance travel discovery is valid, but nothing about the dilemma requires a Couple relationship; it works better as a general Icebreaker/travel preference."
+    }
+  },
+  {
+    "candidateId": "expansion-004-117",
+    "question": "Would you rather visit a city where neither of you speaks the language or spend a day exploring a tourist town without using mobile data?",
+    "optionA": "Navigate a city without speaking the language",
+    "optionB": "Explore a tourist town without using mobile data",
+    "primaryCollection": "couples",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "adults"
+    ],
+    "relationships": [
+      "couples"
+    ],
+    "scenarios": [],
+    "moods": [
+      "imaginative",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "relationships",
+      "travel"
+    ],
+    "coreDilemma": "communication challenge vs connectivity challenge",
+    "dilemmaFamily": "risk",
+    "noveltyReason": "No formal travel dilemma compares two different kinds of dependency on a partner: language uncertainty versus digital isolation.",
+    "safety": {
+      "kidsSafe": false,
+      "teenSafe": false,
+      "classroomSafe": false,
+      "familySafe": false,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionA to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Language-barrier versus disconnection is interesting, but an unspecified remote place with no phone service adds unnecessary safety risk."
+    }
+  },
+  {
+    "candidateId": "expansion-004-155",
+    "question": "Would you rather have each audience member name one thing that was especially clear in a class presentation or ask one question that could make the idea better?",
+    "optionA": "Name one thing that was especially clear",
+    "optionB": "Ask one question that could improve the idea",
+    "primaryCollection": "classroom",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "relationships": [],
+    "scenarios": [
+      "classroom"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "school",
+      "presentation"
+    ],
+    "coreDilemma": "affirm clarity vs generate improvement",
+    "dilemmaFamily": "feedback",
+    "noveltyReason": "The formal bank has class-rule voting and presentation preparation, but not an audience-role choice between evaluation and constructive inquiry.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionA to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback.",
+        "Updated coreDilemma to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Feedback-versus-improvement is strong, but asking an audience to vote for the clearest presentation creates avoidable public peer ranking."
+    }
+  },
+  {
+    "candidateId": "expansion-004-163",
+    "question": "Would you rather have a party photo challenge where every picture needs a strangely shaped shadow or one where every picture must hide the same tiny object?",
+    "optionA": "Photograph strange shadows",
+    "optionB": "Hide the same tiny object in every photo",
+    "primaryCollection": "party",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "moods": [
+      "weird",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "party",
+      "photography"
+    ],
+    "coreDilemma": "discover accidental forms vs construct recurring visual secret",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "Party photos in the bank are props and photo walls; none uses a creative visual scavenger constraint.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "The photo-challenge idea is usable, but 'stranger-shaped shadow' is a wording error; it should be 'strangely shaped shadow.'"
+    }
+  },
+  {
+    "candidateId": "expansion-004-169",
+    "question": "Would you rather play a relay where a lightweight object gets more awkward to carry each lap or one where the route gets stranger each lap?",
+    "optionA": "Make a lightweight object more awkward to carry",
+    "optionB": "Make the route stranger",
+    "primaryCollection": "party",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "moods": [
+      "funny",
+      "imaginative"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "party",
+      "movement"
+    ],
+    "coreDilemma": "increase equipment difficulty vs navigation difficulty",
+    "dilemmaFamily": "movement",
+    "noveltyReason": "The bank has scavenger and improv challenges but no escalating relay choice about where difficulty should come from.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionA to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Equipment-difficulty versus route-difficulty is usable, but 'harder to carry' in a relay should be constrained to a lightweight, awkward object rather than increasing physical load."
+    }
+  },
+  {
+    "candidateId": "expansion-004-170",
+    "question": "Would you rather have a party challenge where you earn points for making the group laugh or for adding a harmless surprise twist to the game?",
+    "optionA": "Earn points for making the group laugh",
+    "optionB": "Earn points for a harmless surprise twist",
+    "primaryCollection": "party",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "party",
+      "social"
+    ],
+    "coreDilemma": "produce humor vs produce surprise",
+    "dilemmaFamily": "social",
+    "noveltyReason": "No formal party question distinguishes two low-pressure social effects as the scoring objective.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionA to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Humor versus surprise is playable, but rewarding players for surprising other people can drift into targeting or embarrassment."
+    }
+  },
+  {
+    "candidateId": "expansion-004-171",
+    "question": "Would you rather have a snack-tasting game where everyone sees the food but not its flavor label or one where everyone sees the ingredient list but the food stays out of sight until after tasting?",
+    "optionA": "See the food without its flavor label",
+    "optionB": "See the ingredient list while the food stays out of sight",
+    "primaryCollection": "party",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "party"
+    ],
+    "moods": [
+      "weird",
+      "funny"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "party",
+      "food"
+    ],
+    "coreDilemma": "visual cues without labels vs semantic cues without vision",
+    "dilemmaFamily": "sensory",
+    "noveltyReason": "Dinner and party food items do not compare two different information channels in a tasting game.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionA to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "The information-source contrast is good, but blindfolded tasting is unnecessary; preserve hidden visual information without a blindfold."
+    }
+  },
+  {
+    "candidateId": "expansion-004-198",
+    "question": "Would you rather have everyone choose one bite that best represents the meal to a visitor or one bite that best represents their own taste?",
+    "optionA": "Choose the bite that best represents the meal",
+    "optionB": "Choose the bite that best represents your own taste",
+    "primaryCollection": "dinner",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "family",
+      "friends"
+    ],
+    "scenarios": [
+      "dinner"
+    ],
+    "moods": [
+      "light",
+      "thoughtful"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "food",
+      "conversation"
+    ],
+    "coreDilemma": "represent hospitality vs represent personal value",
+    "dilemmaFamily": "social",
+    "noveltyReason": "Formal dinner food questions concern cuisine and preparation; this turns the meal into a conversation about sharing versus valuing.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": true
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionA to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Hospitality versus personal value is usable, but 'one bite they would never want to waste' is unclear and does not read as a parallel choice."
+    }
+  },
+  {
+    "candidateId": "expansion-004-250",
+    "question": "Would you rather start a birthday game with the birthday person holding one secret advantage or have every guest add one harmless surprise bonus for them to discover during the game?",
+    "optionA": "Give the birthday person one secret advantage",
+    "optionB": "Add surprise bonuses for the birthday person to discover",
+    "primaryCollection": "birthday-party",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "celebration",
+      "games"
+    ],
+    "coreDilemma": "special privilege vs playful attention",
+    "dilemmaFamily": "fairness",
+    "noveltyReason": "Existing birthday games do not ask how to make the birthday person special through either advantage or social challenge.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Special birthday-person privilege is usable, but letting every guest impose a 'harmless challenge' still creates avoidable social-pressure/dare risk."
+    }
+  },
+  {
+    "candidateId": "expansion-004-262",
+    "question": "Would you rather have guests write wishes for the next year on paper airplanes or seal them in small envelopes that are opened later?",
+    "optionA": "Send wishes as paper airplanes",
+    "optionB": "Seal wishes in envelopes to open later",
+    "primaryCollection": "birthday-party",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens",
+      "adults"
+    ],
+    "relationships": [
+      "friends",
+      "family"
+    ],
+    "scenarios": [
+      "birthday-party"
+    ],
+    "moods": [
+      "imaginative",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "celebration",
+      "wishes"
+    ],
+    "coreDilemma": "make wishes part of immediate play vs delay their reveal",
+    "dilemmaFamily": "experience",
+    "noveltyReason": "The bank has funny notes and video messages but no birthday-wish dilemma about immediate playful delivery versus delayed discovery.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": true,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Immediate playful delivery versus delayed reveal is usable, but hiding notes inside balloons adds avoidable latex/choking/pop hazards."
+    }
+  },
+  {
+    "candidateId": "expansion-004-268",
+    "question": "Would you rather do a midnight snack challenge where everyone uses the same three ingredients or where each person gets one different surprise ingredient chosen from an allergy-checked list?",
+    "optionA": "Use the same three ingredients",
+    "optionB": "Give everyone one allergy-checked surprise ingredient",
+    "primaryCollection": "sleepover",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "sleepover",
+      "food"
+    ],
+    "coreDilemma": "compare creativity under equal constraints vs adapt to unequal surprises",
+    "dilemmaFamily": "creativity",
+    "noveltyReason": "Existing sleepover food items concern when or what to share; none uses a late-night cooking constraint game.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Equal constraints versus unequal surprise is a good sleepover dilemma, but mystery food ingredients need explicit allergy/safety screening."
+    }
+  },
+  {
+    "candidateId": "expansion-004-278",
+    "question": "Would you rather have everyone write one silly prediction for the morning or one easy breakfast activity idea the group can choose from?",
+    "optionA": "Write silly morning predictions",
+    "optionB": "Write easy breakfast activity ideas",
+    "primaryCollection": "sleepover",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "7-9",
+      "10-12",
+      "teens"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "moods": [
+      "funny",
+      "weird"
+    ],
+    "difficulty": "easy",
+    "topics": [
+      "sleepover",
+      "morning"
+    ],
+    "coreDilemma": "anticipate what happens vs shape what happens",
+    "dilemmaFamily": "control",
+    "noveltyReason": "No formal sleepover item bridges night and morning through prediction versus a tiny planned action.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionA to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Prediction versus shaping the morning is usable, but open-ended 'breakfast challenges' can create unnecessary pressure; use a harmless activity/idea instead."
+    }
+  },
+  {
+    "candidateId": "expansion-004-284",
+    "question": "Would you rather end a sleepover by swapping one recommendation for the next week or one small activity idea to try before the next sleepover?",
+    "optionA": "Swap recommendations",
+    "optionB": "Swap small activity ideas",
+    "primaryCollection": "sleepover",
+    "primaryAgeBand": null,
+    "ageBands": [
+      "10-12",
+      "teens"
+    ],
+    "relationships": [
+      "friends"
+    ],
+    "scenarios": [
+      "sleepover"
+    ],
+    "moods": [
+      "thoughtful",
+      "light"
+    ],
+    "difficulty": "hard",
+    "topics": [
+      "sleepover",
+      "friendship"
+    ],
+    "coreDilemma": "extend connection through discovery vs extend it through action",
+    "dilemmaFamily": "experience",
+    "noveltyReason": "The formal sleepover endings concern waking and breakfast; none turns departure into a low-pressure continuation ritual.",
+    "safety": {
+      "kidsSafe": true,
+      "teenSafe": true,
+      "classroomSafe": false,
+      "familySafe": true,
+      "workplaceSafe": false
+    },
+    "revision": {
+      "round": 1,
+      "originalDecision": "REVISE",
+      "changes": [
+        "Updated question to address Reviewer feedback.",
+        "Updated optionB to address Reviewer feedback."
+      ],
+      "sourceReviewerReason": "Discovery recommendation versus follow-up action is useful, but 'tiny challenge' is unnecessarily pressure-coded for a sleepover context."
+    }
+  }
+]
