@@ -573,3 +573,10 @@
     right: 118px;
   }
 }
+
+
+/* Keep absolute card actions above flexible question copy on widened desktop cards. */
+.finder-page .bookmark,
+.finder-page .select-button {
+  z-index: 3;
+}
