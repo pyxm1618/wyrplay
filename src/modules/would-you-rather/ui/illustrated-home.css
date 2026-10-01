@@ -1790,7 +1790,8 @@
 .illustrated-home.homepage {
   max-width: none;
   margin-inline: 0;
-  overflow: visible;
+  overflow-x: clip;
+  overflow-y: visible;
   background: #fff9f0;
 }
 .illustrated-home .site-header,
