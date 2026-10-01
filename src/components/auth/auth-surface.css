@@ -1307,6 +1307,9 @@ body:has(> .auth-page) {
     padding-bottom: clamp(42px, 7dvh, 84px);
     overflow: hidden;
   }
+  .auth-page .speech {
+    display: none;
+  }
   :where(.auth-page) .artwork {
     inset: 0;
     width: 100%;
