@@ -1,0 +1,173 @@
+{
+  "batch": "Broad Coverage Expansion Batch 004",
+  "round": "final re-review",
+  "reviewerRole": "Independent Reviewer B",
+  "scope": [
+    "expansion-004-117",
+    "expansion-004-171"
+  ],
+  "sourceAudit": {
+    "repository": "pyxm1618/wyrplay",
+    "branch": "content/question-bank-v1-4-20261001",
+    "formalBankPath": "content/question-bank/questions.json",
+    "formalBankCount": 457,
+    "formalBankSha": "6ea13c8a7ac1f0202b9b3edee356bb9c0dbe4a5f",
+    "formalJsonParse": "PASS",
+    "permanentIdsUnique": true,
+    "provenanceCandidateIdsUnique": true,
+    "revisedCandidatesPath": "content/review/expansion/batch-004/revised-candidates.json",
+    "revisedCandidatesSha": "f4fb06a5d01a366a855f8b9ba7371c0b91873eee",
+    "note": "The latest formal bank is 457 questions, but the two candidate records in revised-candidates.json still contain their prior versions. This review judges the actual repository content, not an assumed uncommitted revision."
+  },
+  "summary": {
+    "Total": 2,
+    "PASS": 0,
+    "REVISE": 2,
+    "REJECT": 0
+  },
+  "reviews": [
+    {
+      "candidateId": "expansion-004-117",
+      "decision": "REVISE",
+      "actualCandidateSnapshot": {
+        "question": "Would you rather visit a city where neither of you speaks the language or spend a day exploring a tourist town without using mobile data?",
+        "optionA": "Navigate a city without speaking the language",
+        "optionB": "Explore a tourist town without using mobile data",
+        "primaryCollection": "couples",
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [],
+        "topics": [
+          "relationships",
+          "travel"
+        ],
+        "coreDilemma": "communication challenge vs connectivity challenge"
+      },
+      "checks": {
+        "removedWrongCouplesPrimary": "FAIL",
+        "relationshipsCleared": "FAIL",
+        "icebreakersFit": "NOT_IMPLEMENTED",
+        "teensAndAdultsReasonable": "FAIL_AS_METADATA",
+        "relationshipTopicResidueRemoved": "FAIL",
+        "coreDilemmaNatural": "PASS",
+        "semanticDuplicateAgainstLatestFormalBank": "PASS"
+      },
+      "semanticReview": {
+        "reviewerCoreDilemma": "communication constraint vs connectivity constraint while traveling",
+        "nearestFormalQuestions": [
+          {
+            "id": "wyr-000103",
+            "question": "Would you rather become conversational in the local language before every trip or always know the best local places when you arrive?",
+            "relation": "travel/language adjacency, but different underlying dilemma"
+          },
+          {
+            "id": "wyr-000090",
+            "question": "Would you rather keep your phones away for the whole date or use them only to take photos and choose the next stop?",
+            "relation": "phone-use adjacency, but different underlying dilemma"
+          },
+          {
+            "id": "wyr-000271",
+            "question": "Would you rather spend a travel day following one local expert's handwritten map or wandering only by landmarks you can see from where you are?",
+            "relation": "travel constraint adjacency, but different underlying dilemma"
+          }
+        ],
+        "conclusion": "No substantive semantic duplicate found in the 457-question formal bank."
+      },
+      "fullReview": {
+        "language": "PASS",
+        "ageFit": "FAIL",
+        "primaryAgeBandAccuracy": "N/A",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "FAIL",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "FAIL",
+        "safety": "REVISE",
+        "metadataAccuracy": "FAIL"
+      },
+      "reason": "The core dilemma remains usable and distinct from the latest formal bank, so this is not a REJECT. However, the repository still contains the old Couples classification: primaryCollection is still couples, relationships still contains couples, ageBands still contains adults only, scenarios is empty, and topics still contains relationships. The intended Icebreakers / Teens+Adults reclassification has not actually been applied. Because the core is sound and the remaining defects are metadata/scope corrections, decision is REVISE."
+    },
+    {
+      "candidateId": "expansion-004-171",
+      "decision": "REVISE",
+      "actualCandidateSnapshot": {
+        "question": "Would you rather have a snack-tasting game where everyone sees the food but not its flavor label or one where everyone sees the ingredient list but the food stays out of sight until after tasting?",
+        "optionA": "See the food without its flavor label",
+        "optionB": "See the ingredient list while the food stays out of sight",
+        "primaryCollection": "party",
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "topics": [
+          "party",
+          "food"
+        ],
+        "coreDilemma": "visual cues without labels vs semantic cues without vision"
+      },
+      "checks": {
+        "naturalEnglish": "FAIL",
+        "informationConditionsSymmetric": "FAIL",
+        "flavorLabelRemoved": "FAIL",
+        "allergyDietaryScreeningExplicit": "FAIL",
+        "noBlindfoldOrUnsafeTastingMechanic": "PASS",
+        "visualVsIngredientInformationIsRealDilemma": "PASS",
+        "semanticDuplicateAgainstLatestFormalBank": "PASS"
+      },
+      "semanticReview": {
+        "reviewerCoreDilemma": "visual information about a food vs textual ingredient information before tasting",
+        "nearestFormalQuestions": [
+          {
+            "id": "wyr-000283",
+            "question": "Would you rather taste every ingredient in a dish separately before eating it or only discover the ingredients after you finish?",
+            "relation": "ingredient-information adjacency, but timing/knowledge dilemma differs"
+          },
+          {
+            "id": "wyr-000316",
+            "question": "Would you rather choose a restaurant by reading only the menu or by seeing only photos of the room and dishes?",
+            "relation": "text-vs-visual information adjacency, but restaurant-choice context and decision mechanism differ"
+          },
+          {
+            "id": "wyr-000405",
+            "question": "Would you rather spend a date trying to recreate a dish from memory or trying to identify a dish's ingredients without knowing the recipe?",
+            "relation": "ingredient-identification adjacency, but different task and trade-off"
+          }
+        ],
+        "conclusion": "No substantive semantic duplicate found in the 457-question formal bank."
+      },
+      "fullReview": {
+        "language": "FAIL",
+        "ageFit": "PASS",
+        "primaryAgeBandAccuracy": "N/A",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "FAIL",
+        "metadataAccuracy": "FAIL"
+      },
+      "reason": "The blindfold risk has been removed and the underlying visual-information versus ingredient-information dilemma is still worthwhile and distinct from the latest formal bank. However, the actual repository version still uses the unnatural phrase 'flavor label', does not explicitly state that all foods have been pre-screened for allergies/dietary restrictions, and the two information conditions are not yet cleanly parallel. These are local wording/safety fixes rather than a broken core dilemma, so decision is REVISE."
+    }
+  ],
+  "stopCondition": "Do not formalize either candidate yet. Do not start Batch 005 from these two candidates until their revisions are actually committed and independently re-reviewed."
+}
