@@ -1,0 +1,1372 @@
+{
+  "batch": "Broad Coverage Expansion Batch 004",
+  "round": "re-review of 20 revised candidates before Batch 005",
+  "reviewerRole": "Independent Reviewer B",
+  "sourceAudit": {
+    "repository": "pyxm1618/wyrplay",
+    "branch": "content/question-bank-v1-3-20261001",
+    "formalBankPath": "content/question-bank/questions.json",
+    "formalBankSha": "89ab0a1028d5ae911efb7e905cdb4f698866a283",
+    "formalBankCount": 443,
+    "formalJsonParse": "PASS",
+    "permanentIdsUnique": true,
+    "provenanceCandidateIdsUnique": true,
+    "revisedCandidatePath": "content/review/expansion/batch-004/revised-candidates.json",
+    "revisedCandidateCount": 20,
+    "revisedCandidateIdsUnique": true,
+    "historyRead": [
+      "content/review/foundation/batch-002/review.json",
+      "content/review/foundation/batch-002/re-review.json",
+      "content/review/expansion/batch-003/review.json",
+      "content/review/expansion/batch-003/re-review.json",
+      "content/review/expansion/batch-004/review.json"
+    ],
+    "note": "revised-candidates.json predates the Batch 005 nearestSemanticClusters schema; nearestClusterAccuracy is therefore N/A and nearest formal clusters were independently checked."
+  },
+  "integrityValidation": {
+    "batch004DirectPassFormalizedCount": 207,
+    "noRevisedCandidatePrematurelyFormalized": true,
+    "exactDuplicateAgainstFormal": 0,
+    "abSwapDuplicateAgainstFormal": 0
+  },
+  "summary": {
+    "TotalCandidates": 20,
+    "PASS": 14,
+    "REVISE": 2,
+    "REJECT": 4
+  },
+  "semanticSummary": {
+    "formalBankSemanticDuplicates": 0,
+    "directHistoricalRejectRecurrences": 0,
+    "archetypeSaturationRejects": 3,
+    "weakCoreRejects": 1,
+    "notes": [
+      "004-100 rejected for saturated together/separate + familiar/new family structure.",
+      "004-112 rejected after Icebreakers reclassification exposes a thin travel A-vs-B preference.",
+      "004-250 rejected for birthday-person privilege saturation plus A/B quantity imbalance.",
+      "004-284 rejected because the core remains an underspecified recommendation-vs-activity category preference."
+    ]
+  },
+  "primaryCollectionImpact": {
+    "kids": {
+      "formalBefore": 101,
+      "revisedCandidates": 3,
+      "PASS": 3,
+      "REVISE": 0,
+      "REJECT": 0,
+      "projectedAfterDirectPASS": 104,
+      "gapTo100": 0
+    },
+    "teens": {
+      "formalBefore": 29,
+      "revisedCandidates": 0,
+      "PASS": 0,
+      "REVISE": 0,
+      "REJECT": 0,
+      "projectedAfterDirectPASS": 29,
+      "gapTo100": 71
+    },
+    "adults": {
+      "formalBefore": 29,
+      "revisedCandidates": 0,
+      "PASS": 0,
+      "REVISE": 0,
+      "REJECT": 0,
+      "projectedAfterDirectPASS": 29,
+      "gapTo100": 71
+    },
+    "friends": {
+      "formalBefore": 20,
+      "revisedCandidates": 2,
+      "PASS": 2,
+      "REVISE": 0,
+      "REJECT": 0,
+      "projectedAfterDirectPASS": 22,
+      "gapTo100": 78
+    },
+    "couples": {
+      "formalBefore": 20,
+      "revisedCandidates": 2,
+      "PASS": 1,
+      "REVISE": 1,
+      "REJECT": 0,
+      "projectedAfterDirectPASS": 21,
+      "gapTo100": 79
+    },
+    "coworkers": {
+      "formalBefore": 29,
+      "revisedCandidates": 0,
+      "PASS": 0,
+      "REVISE": 0,
+      "REJECT": 0,
+      "projectedAfterDirectPASS": 29,
+      "gapTo100": 71
+    },
+    "classroom": {
+      "formalBefore": 27,
+      "revisedCandidates": 1,
+      "PASS": 1,
+      "REVISE": 0,
+      "REJECT": 0,
+      "projectedAfterDirectPASS": 28,
+      "gapTo100": 72
+    },
+    "party": {
+      "formalBefore": 25,
+      "revisedCandidates": 4,
+      "PASS": 3,
+      "REVISE": 1,
+      "REJECT": 0,
+      "projectedAfterDirectPASS": 28,
+      "gapTo100": 72
+    },
+    "road-trip": {
+      "formalBefore": 25,
+      "revisedCandidates": 0,
+      "PASS": 0,
+      "REVISE": 0,
+      "REJECT": 0,
+      "projectedAfterDirectPASS": 25,
+      "gapTo100": 75
+    },
+    "dinner": {
+      "formalBefore": 26,
+      "revisedCandidates": 1,
+      "PASS": 1,
+      "REVISE": 0,
+      "REJECT": 0,
+      "projectedAfterDirectPASS": 27,
+      "gapTo100": 73
+    },
+    "date-night": {
+      "formalBefore": 23,
+      "revisedCandidates": 0,
+      "PASS": 0,
+      "REVISE": 0,
+      "REJECT": 0,
+      "projectedAfterDirectPASS": 23,
+      "gapTo100": 77
+    },
+    "icebreakers": {
+      "formalBefore": 23,
+      "revisedCandidates": 1,
+      "PASS": 0,
+      "REVISE": 0,
+      "REJECT": 1,
+      "projectedAfterDirectPASS": 23,
+      "gapTo100": 77
+    },
+    "birthday-party": {
+      "formalBefore": 22,
+      "revisedCandidates": 2,
+      "PASS": 1,
+      "REVISE": 0,
+      "REJECT": 1,
+      "projectedAfterDirectPASS": 23,
+      "gapTo100": 77
+    },
+    "sleepover": {
+      "formalBefore": 22,
+      "revisedCandidates": 3,
+      "PASS": 2,
+      "REVISE": 0,
+      "REJECT": 1,
+      "projectedAfterDirectPASS": 24,
+      "gapTo100": 76
+    },
+    "family": {
+      "formalBefore": 22,
+      "revisedCandidates": 1,
+      "PASS": 0,
+      "REVISE": 0,
+      "REJECT": 1,
+      "projectedAfterDirectPASS": 22,
+      "gapTo100": 78
+    }
+  },
+  "gateStatus": {
+    "batch005Ready": false,
+    "reason": "Four revised candidates are permanently rejected and two still require targeted revision/re-review. The 14 PASS candidates may be formalized first; Batch 005 should use the resulting final baseline rather than the current 443 count."
+  },
+  "reviews": [
+    {
+      "candidateId": "expansion-004-004",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [],
+        "moods": [
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "toys",
+          "helping"
+        ],
+        "coreDilemma": "fast completion vs learning the system",
+        "dilemmaFamily": "skills",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-008",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "party",
+          "classroom"
+        ],
+        "moods": [
+          "funny",
+          "imaginative"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "games",
+          "animals"
+        ],
+        "coreDilemma": "copy a prompt vs invent the action",
+        "dilemmaFamily": "creativity",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-011",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "PASS"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "kids",
+        "primaryAgeBand": "4-6",
+        "ageBands": [
+          "4-6",
+          "7-9"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom",
+          "party"
+        ],
+        "moods": [
+          "weird",
+          "light"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "sensory",
+          "games"
+        ],
+        "coreDilemma": "identify by hearing vs identify by touch",
+        "dilemmaFamily": "sensory",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-076",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party",
+          "sleepover"
+        ],
+        "moods": [
+          "funny",
+          "weird",
+          "imaginative"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "food",
+          "creativity",
+          "games"
+        ],
+        "coreDilemma": "edible improvisation vs playable improvisation",
+        "dilemmaFamily": "creativity",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-077",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "friends",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party",
+          "sleepover"
+        ],
+        "moods": [
+          "funny",
+          "weird"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "friendship",
+          "communication"
+        ],
+        "coreDilemma": "nonverbal humor vs nonverbal practical communication",
+        "dilemmaFamily": "communication",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-100",
+      "decision": "REJECT",
+      "priorDecision": "REVISE",
+      "revisionResolved": "FAIL",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "FAIL",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "family",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family"
+        ],
+        "scenarios": [],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "family",
+          "lifestyle"
+        ],
+        "coreDilemma": "guaranteed personal recovery vs guaranteed shared novelty",
+        "dilemmaFamily": "comfort",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The revision fixes the frequency mismatch, but the real axis remains personal/alone time versus shared family time, with 'trying something new' layered on top. The current bank already has substantial together-vs-separate and familiar/new coverage. The family wrapper does not add a sufficiently new interaction mechanism.",
+      "issueType": "archetype saturation",
+      "independentNearestFormal": [
+        "wyr-000062",
+        "wyr-000066",
+        "wyr-000082",
+        "wyr-000111"
+      ]
+    },
+    {
+      "candidateId": "expansion-004-107",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "couples",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "adults"
+        ],
+        "relationships": [
+          "couples"
+        ],
+        "scenarios": [
+          "date-night"
+        ],
+        "moods": [
+          "funny",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "relationships",
+          "date-night"
+        ],
+        "coreDilemma": "reveal personal history vs create present surprise",
+        "dilemmaFamily": "experience",
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": false,
+          "classroomSafe": false,
+          "familySafe": false,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-112",
+      "decision": "REJECT",
+      "priorDecision": "REVISE",
+      "revisionResolved": "FAIL",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "FAIL",
+        "originality": "FAIL",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "FAIL",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "light",
+          "imaginative"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "relationships",
+          "travel"
+        ],
+        "coreDilemma": "discover a place through food vs through local guidance",
+        "dilemmaFamily": "culture",
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "After moving this item from Couples to Icebreakers, the underlying choice is essentially travel experience A versus travel experience B (local breakfast vs resident-recommended place). That is too preference-led for the stricter Icebreakers standard. The retained topic 'relationships' and the old noveltyReason also no longer match the revised classification.",
+      "issueType": "thin icebreaker / archetype saturation",
+      "independentNearestFormal": [
+        "wyr-000081",
+        "wyr-000103",
+        "wyr-000418"
+      ]
+    },
+    {
+      "candidateId": "expansion-004-117",
+      "decision": "REVISE",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PARTIAL",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "FAIL",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "icebreakers",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "icebreakers"
+        ],
+        "moods": [
+          "imaginative",
+          "weird"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "travel",
+          "communication"
+        ],
+        "coreDilemma": "communication challenge vs connectivity challenge",
+        "dilemmaFamily": "risk",
+        "safety": {
+          "kidsSafe": false,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The safety repair is successful: a tourist town without mobile data removes the remote/no-service risk. The core communication-vs-connectivity constraint remains usable, but it is not meaningfully Couples-specific; 'neither of you' could describe any two travelers. Reclassify as a general Icebreaker/travel dilemma rather than a relationship item.",
+      "issueType": "metadata reclassification",
+      "independentNearestFormal": [
+        "wyr-000103",
+        "wyr-000418"
+      ]
+    },
+    {
+      "candidateId": "expansion-004-155",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "classroom",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [],
+        "scenarios": [
+          "classroom"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "school",
+          "presentation"
+        ],
+        "coreDilemma": "affirm clarity vs generate improvement",
+        "dilemmaFamily": "feedback",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-163",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "weird",
+          "imaginative"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "party",
+          "photography"
+        ],
+        "coreDilemma": "discover accidental forms vs construct recurring visual secret",
+        "dilemmaFamily": "creativity",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-169",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "7-9",
+          "10-12",
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "funny",
+          "imaginative"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "party",
+          "movement"
+        ],
+        "coreDilemma": "increase equipment difficulty vs navigation difficulty",
+        "dilemmaFamily": "movement",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-170",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "funny",
+          "weird"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "party",
+          "social"
+        ],
+        "coreDilemma": "produce humor vs produce surprise",
+        "dilemmaFamily": "social",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-171",
+      "decision": "REVISE",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PARTIAL",
+      "review": {
+        "language": "FAIL",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "FAIL",
+        "metadataAccuracy": "FAIL",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "party",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "party"
+        ],
+        "moods": [
+          "weird",
+          "funny"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "party",
+          "food"
+        ],
+        "coreDilemma": "visual cues without labels vs semantic cues without vision",
+        "dilemmaFamily": "sensory",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Removing the blindfold fixes the original safety concern, but the first branch still uses the unnatural/underspecified phrase 'flavor label', and the tasting game does not explicitly establish that all foods are safe for participants. The information-channel dilemma is worth keeping if the food is pre-screened and the two information conditions are made parallel.",
+      "issueType": "wording + food-safety constraint",
+      "independentNearestFormal": [
+        "wyr-000244",
+        "wyr-000383",
+        "wyr-000405"
+      ],
+      "suggestedRevision": {
+        "question": "With all snacks pre-checked for allergies, would you rather see the snack but not its ingredient list or see the ingredient list but not the snack until after you taste it?"
+      }
+    },
+    {
+      "candidateId": "expansion-004-198",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "dinner",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "7-9",
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "family",
+          "friends"
+        ],
+        "scenarios": [
+          "dinner"
+        ],
+        "moods": [
+          "light",
+          "thoughtful"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "food",
+          "conversation"
+        ],
+        "coreDilemma": "represent hospitality vs represent personal value",
+        "dilemmaFamily": "social",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": true
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-250",
+      "decision": "REJECT",
+      "priorDecision": "REVISE",
+      "revisionResolved": "FAIL",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "FAIL",
+        "conversationValue": "FAIL",
+        "originality": "FAIL",
+        "coreDilemmaAccuracy": "FAIL",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "FAIL",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "funny",
+          "weird"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "celebration",
+          "games"
+        ],
+        "coreDilemma": "special privilege vs playful attention",
+        "dilemmaFamily": "fairness",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The dangerous-challenge issue is gone, but the revised item is still weak: one secret advantage is compared with multiple bonuses contributed by every guest, so the sides are not comparable. More importantly, both sides are simply different ways of giving the birthday person game privileges, an archetype already represented in the formal birthday bank. The current noveltyReason is stale because it still refers to a 'social challenge'.",
+      "issueType": "archetype saturation + imbalance",
+      "independentNearestFormal": [
+        "wyr-000201",
+        "wyr-000429"
+      ]
+    },
+    {
+      "candidateId": "expansion-004-262",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "birthday-party",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "7-9",
+          "10-12",
+          "teens",
+          "adults"
+        ],
+        "relationships": [
+          "friends",
+          "family"
+        ],
+        "scenarios": [
+          "birthday-party"
+        ],
+        "moods": [
+          "imaginative",
+          "weird"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "celebration",
+          "wishes"
+        ],
+        "coreDilemma": "make wishes part of immediate play vs delay their reveal",
+        "dilemmaFamily": "experience",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": true,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-268",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "funny",
+          "weird"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "sleepover",
+          "food"
+        ],
+        "coreDilemma": "compare creativity under equal constraints vs adapt to unequal surprises",
+        "dilemmaFamily": "creativity",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-278",
+      "decision": "PASS",
+      "priorDecision": "REVISE",
+      "revisionResolved": "PASS",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "PASS",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "PASS",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "PASS",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "7-9",
+          "10-12",
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "funny",
+          "weird"
+        ],
+        "difficulty": "easy",
+        "topics": [
+          "sleepover",
+          "morning"
+        ],
+        "coreDilemma": "anticipate what happens vs shape what happens",
+        "dilemmaFamily": "control",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "The targeted revision resolves the prior issue. Independent re-review against the current 443-question formal bank and historical review record found no substantive formal-bank collision, historical-REJECT recurrence, internal duplicate, or saturation reason requiring exclusion."
+    },
+    {
+      "candidateId": "expansion-004-284",
+      "decision": "REJECT",
+      "priorDecision": "REVISE",
+      "revisionResolved": "FAIL",
+      "review": {
+        "language": "PASS",
+        "ageFit": "PASS",
+        "relationshipFit": "PASS",
+        "scenarioFit": "PASS",
+        "choiceBalance": "PASS",
+        "conversationValue": "FAIL",
+        "originality": "PASS",
+        "coreDilemmaAccuracy": "FAIL",
+        "dilemmaFamilyAccuracy": "PASS",
+        "nearestClusterAccuracy": "N/A",
+        "noveltyReasonValidity": "FAIL",
+        "difficultyAccuracy": "PASS",
+        "topicAccuracy": "PASS",
+        "safety": "PASS",
+        "metadataAccuracy": "PASS",
+        "primaryAgeBandAccuracy": "N/A"
+      },
+      "correctedMetadata": {
+        "primaryCollection": "sleepover",
+        "primaryAgeBand": null,
+        "ageBands": [
+          "10-12",
+          "teens"
+        ],
+        "relationships": [
+          "friends"
+        ],
+        "scenarios": [
+          "sleepover"
+        ],
+        "moods": [
+          "thoughtful",
+          "light"
+        ],
+        "difficulty": "hard",
+        "topics": [
+          "sleepover",
+          "friendship"
+        ],
+        "coreDilemma": "extend connection through discovery vs extend it through action",
+        "dilemmaFamily": "experience",
+        "safety": {
+          "kidsSafe": true,
+          "teenSafe": true,
+          "classroomSafe": false,
+          "familySafe": true,
+          "workplaceSafe": false
+        }
+      },
+      "reason": "Replacing 'challenge' with 'activity' fixes the pressure issue, but exposes the underlying weakness: 'swap a recommendation' versus 'swap a small activity idea' is still an underspecified category preference rather than a strong Would You Rather trade-off. It would require a new core mechanism, not another wording pass.",
+      "issueType": "weak core dilemma",
+      "independentNearestFormal": [
+        "wyr-000156",
+        "wyr-000440"
+      ]
+    }
+  ]
+}
