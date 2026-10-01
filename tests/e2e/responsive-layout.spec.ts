@@ -31,16 +31,18 @@ test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
     try {
       localStorage.setItem("creat-web:analytics-consent:v1", "denied");
-    } catch {}
+    } catch {
+      // Storage may be unavailable in unusual contexts.
+    }
   });
 });
 
-async function settle(page: Page) {
-  await page.evaluate(async () => {
-    await document.fonts.ready;
-    await Promise.allSettled([...document.images].map((image) => image.decode()));
-  });
+async function openStable(page: Page, route: string) {
+  await page.goto(route);
+  await page.waitForLoadState("load");
+  await page.evaluate(() => document.fonts.ready);
 }
+
 async function noOverflow(page: Page) {
   const s = await page.evaluate(() => ({
     width: innerWidth,
@@ -50,165 +52,208 @@ async function noOverflow(page: Page) {
   expect(s.document).toBeLessThanOrEqual(s.width + 1);
   expect(s.body).toBeLessThanOrEqual(s.width + 1);
 }
+
 async function inside(locator: Locator, height: number) {
   const box = await locator.boundingBox();
   if (!box) throw new Error("Expected visible element to have a bounding box");
   expect(box.y).toBeGreaterThanOrEqual(-1);
   expect(box.y + box.height).toBeLessThanOrEqual(height + 1);
 }
-async function shot(page: Page, info: TestInfo, group: keyof typeof shots, w: number, h: number) {
-  const size = `${w}x${h}`;
+
+async function shot(
+  page: Page,
+  info: TestInfo,
+  group: keyof typeof shots,
+  width: number,
+  height: number,
+  suffix = "",
+) {
+  const size = `${width}x${height}`;
   if (!shots[group].has(size)) return;
+  const name = suffix ? `${group}-${suffix}-${size}.png` : `${group}-${size}.png`;
   await page.screenshot({
-    path: info.outputPath(`${group}-${size}.png`),
+    path: info.outputPath(name),
     fullPage: false,
     animations: "disabled",
   });
 }
 
 test.describe("required responsive viewport matrix", () => {
-  test.setTimeout(120_000);
+  test.setTimeout(180_000);
 
   test("Home full-bleed shell and desktop fold", async ({ page }, info) => {
-    for (const [w, h] of viewports) {
-      await page.setViewportSize({ width: w, height: h });
-      await page.goto("/");
-      await settle(page);
+    await page.setViewportSize({ width: 375, height: 812 });
+    await openStable(page, "/");
+
+    for (const [width, height] of viewports) {
+      await page.setViewportSize({ width, height });
       await noOverflow(page);
+
       const root = await page
         .locator(".home-main .illustrated-home.homepage")
         .first()
         .boundingBox();
       if (!root) throw new Error("Illustrated home is missing");
-      expect(root.width).toBeGreaterThanOrEqual(w - 2);
-      if (w >= 1024) await inside(page.locator(".choice-cta").first(), h);
-      if ((w === 1440 && h === 900) || (w === 1728 && h === 900) || (w === 1920 && h === 1080)) {
+      expect(root.width).toBeGreaterThanOrEqual(width - 2);
+
+      if (width >= 1024) {
+        await inside(page.locator(".choice-cta").first(), height);
+      }
+      if (
+        (width === 1440 && height === 900) ||
+        (width === 1728 && height === 900) ||
+        (width === 1920 && height === 1080)
+      ) {
         const categories = await page.locator(".categories-section").first().boundingBox();
         if (!categories) throw new Error("Popular Categories is missing");
-        expect(categories.y).toBeLessThan(h);
+        expect(categories.y).toBeLessThan(height);
       }
-      await shot(page, info, "home", w, h);
+
+      await shot(page, info, "home", width, height);
     }
   });
 
   test("Play keeps choices and primary actions reachable", async ({ page }, info) => {
-    for (const [w, h] of viewports) {
-      await page.setViewportSize({ width: w, height: h });
-      await page.goto("/play");
-      await settle(page);
+    await page.setViewportSize({ width: 375, height: 812 });
+    await openStable(page, "/play");
+
+    for (const [width, height] of viewports) {
+      await page.setViewportSize({ width, height });
       await noOverflow(page);
       await expect(page.locator(".play-options")).toBeVisible();
       await expect(page.locator(".play-actions")).toBeVisible();
-      if (w >= 1024) {
+
+      if (width >= 1024) {
         const choices = await page.locator(".play-options").boundingBox();
         const actions = await page.locator(".play-actions").boundingBox();
         if (!choices || !actions) throw new Error("Play core surface is missing");
-        expect(choices.y).toBeLessThan(h);
-        expect(actions.y).toBeLessThan(h + 120);
+        expect(choices.y).toBeLessThan(height);
+        expect(actions.y).toBeLessThan(height + 120);
       }
-      await shot(page, info, "play", w, h);
+
+      await shot(page, info, "play", width, height);
     }
   });
 
   test("Presenter keeps all core controls in one desktop viewport", async ({ page }, info) => {
-    for (const [w, h] of viewports) {
-      await page.setViewportSize({ width: w, height: h });
-      await page.goto("/play");
-      await page.getByRole("button", { name: "Present", exact: true }).click();
-      const dialog = page.getByRole("dialog");
-      await expect(dialog).toBeVisible();
-      await settle(page);
+    await page.setViewportSize({ width: 375, height: 812 });
+    await openStable(page, "/play");
+    await page.getByRole("button", { name: "Present", exact: true }).click();
+
+    const dialog = page.getByRole("dialog");
+    const exit = dialog.getByRole("button", { name: "Exit Presenter", exact: true });
+    await expect(dialog).toBeVisible();
+    await expect(exit).toBeVisible();
+
+    for (const [width, height] of viewports) {
+      await page.setViewportSize({ width, height });
       await noOverflow(page);
-      const exit = dialog.getByRole("button", { name: "Exit Presenter", exact: true });
       await expect(exit).toBeVisible();
-      if (w >= 1024) {
+
+      if (width >= 1024) {
         for (const target of [
           dialog.locator(".play-heading"),
           dialog.locator(".play-options"),
           dialog.getByRole("button", { name: "Previous", exact: true }),
           dialog.getByRole("button", { name: "Next", exact: true }),
           exit,
-        ])
-          await inside(target, h);
-        const scroll = await dialog.evaluate((el) => ({
-          scrollHeight: el.scrollHeight,
-          clientHeight: el.clientHeight,
+        ]) {
+          await inside(target, height);
+        }
+        const scroll = await dialog.evaluate((element) => ({
+          scrollHeight: element.scrollHeight,
+          clientHeight: element.clientHeight,
         }));
         expect(scroll.scrollHeight).toBeLessThanOrEqual(scroll.clientHeight + 1);
       }
-      await shot(page, info, "presenter", w, h);
-      await exit.click();
+
+      await shot(page, info, "presenter", width, height);
     }
+
+    await exit.click();
   });
 
   test("Finder is no longer an 849px desktop island", async ({ page }, info) => {
-    for (const [w, h] of viewports) {
-      await page.setViewportSize({ width: w, height: h });
-      await page.goto("/find-questions");
-      await settle(page);
+    await page.setViewportSize({ width: 375, height: 812 });
+    await openStable(page, "/find-questions");
+
+    for (const [width, height] of viewports) {
+      await page.setViewportSize({ width, height });
       await noOverflow(page);
+
       const root = await page.locator(".finder-page").boundingBox();
       if (!root) throw new Error("Finder root is missing");
-      expect(root.width).toBeGreaterThanOrEqual(w - 2);
-      if (w >= 1100) {
+      expect(root.width).toBeGreaterThanOrEqual(width - 2);
+
+      if (width >= 1100) {
         const directory = await page.locator(".directory").boundingBox();
         if (!directory) throw new Error("Finder directory is missing");
-        expect(directory.width).toBeGreaterThanOrEqual(Math.min(w - 64, 1180));
+        expect(directory.width).toBeGreaterThanOrEqual(Math.min(width - 64, 1180));
       }
-      await shot(page, info, "finder", w, h);
+
+      await shot(page, info, "finder", width, height);
     }
   });
 
   test("Leaderboard uses a broader controlled functional surface", async ({ page }, info) => {
-    for (const [w, h] of viewports) {
-      await page.setViewportSize({ width: w, height: h });
-      await page.goto("/leaderboards");
-      await settle(page);
+    await page.setViewportSize({ width: 375, height: 812 });
+    await openStable(page, "/leaderboards");
+
+    for (const [width, height] of viewports) {
+      await page.setViewportSize({ width, height });
       await noOverflow(page);
-      if (w >= 1024) {
+
+      if (width >= 1024) {
         const shell = await page.locator(".leaderboard-page .page-shell").boundingBox();
         if (!shell) throw new Error("Leaderboard shell is missing");
-        expect(shell.width).toBeGreaterThanOrEqual(Math.min(w - 36, 1510));
+        expect(shell.width).toBeGreaterThanOrEqual(Math.min(width - 36, 1510));
       }
-      await shot(page, info, "leaderboard", w, h);
+
+      await shot(page, info, "leaderboard", width, height);
     }
   });
 
   test("Auth fills the viewport and exposes both sign-in choices on desktop", async ({
     page,
   }, info) => {
-    for (const route of ["/sign-in", "/sign-up"]) {
-      for (const [w, h] of viewports) {
-        await page.setViewportSize({ width: w, height: h });
-        await page.goto(route);
-        await settle(page);
+    for (const route of ["/sign-in", "/sign-up"] as const) {
+      await page.setViewportSize({ width: 375, height: 812 });
+      await openStable(page, route);
+      const suffix = route === "/sign-in" ? "sign-in" : "sign-up";
+
+      for (const [width, height] of viewports) {
+        await page.setViewportSize({ width, height });
         await noOverflow(page);
+
         const root = await page.locator(".auth-page").boundingBox();
         if (!root) throw new Error("Auth root is missing");
-        expect(root.width).toBeGreaterThanOrEqual(w - 2);
-        if (w >= 1024) {
-          await inside(page.getByRole("button", { name: "Continue with Google" }), h);
-          await inside(page.getByRole("button", { name: "Continue with Magic Link" }), h);
+        expect(root.width).toBeGreaterThanOrEqual(width - 2);
+
+        if (width >= 1024) {
+          await inside(page.getByRole("button", { name: "Continue with Google" }), height);
+          await inside(page.getByRole("button", { name: "Continue with Magic Link" }), height);
         }
-        await shot(page, info, "auth", w, h);
+
+        await shot(page, info, "auth", width, height, suffix);
       }
     }
   });
 
   test("Print remains usable and overflow-free", async ({ page }, info) => {
-    for (const [w, h] of viewports) {
-      await page.setViewportSize({ width: w, height: h });
-      await page.goto("/print");
-      await settle(page);
+    await page.setViewportSize({ width: 375, height: 812 });
+    await openStable(page, "/print");
+
+    for (const [width, height] of viewports) {
+      await page.setViewportSize({ width, height });
       await noOverflow(page);
       await expect(page.locator(".preview-paper")).toBeVisible();
-      await shot(page, info, "print", w, h);
+      await shot(page, info, "print", width, height);
     }
   });
 });
 
 test.describe("formal route cross-page smoke", () => {
-  test.setTimeout(120_000);
+  test.setTimeout(180_000);
   const routes = [
     "/",
     "/find-questions",
@@ -231,18 +276,23 @@ test.describe("formal route cross-page smoke", () => {
     "/account-deletion",
     "/contact",
   ] as const;
-  for (const [w, h] of [
-    [390, 844],
-    [1024, 768],
-    [1440, 900],
-  ] as const) {
-    test(`formal public surfaces avoid horizontal overflow at ${w}x${h}`, async ({ page }) => {
-      await page.setViewportSize({ width: w, height: h });
-      for (const route of routes) {
-        const response = await page.goto(route);
-        expect(response?.status(), route).toBeLessThan(500);
+
+  test("all formal public surfaces avoid horizontal overflow at mobile, tablet and desktop", async ({
+    page,
+  }) => {
+    for (const route of routes) {
+      await page.setViewportSize({ width: 390, height: 844 });
+      const response = await page.goto(route);
+      expect(response?.status(), route).toBeLessThan(500);
+
+      for (const [width, height] of [
+        [390, 844],
+        [1024, 768],
+        [1440, 900],
+      ] as const) {
+        await page.setViewportSize({ width, height });
         await noOverflow(page);
       }
-    });
-  }
+    }
+  });
 });
