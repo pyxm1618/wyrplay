@@ -1,4 +1,14 @@
 import { expect, test } from "@playwright/test";
+
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    try {
+      localStorage.setItem("creat-web:analytics-consent:v1", "denied");
+    } catch {
+      // ignore storage restrictions in unusual browser contexts
+    }
+  });
+});
 test("selected set survives play, voting, presentation and return", async ({ page }) => {
   await page.goto("/find-questions");
   await page.getByRole("searchbox").fill("hear");
