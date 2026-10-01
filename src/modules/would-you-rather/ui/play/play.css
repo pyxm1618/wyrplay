@@ -343,12 +343,12 @@
   overflow: hidden;
   pointer-events: none;
 }
-.blob {
+.play-art .blob {
   position: absolute;
   border-radius: 48% 52% 65% 35%;
   opacity: 0.65;
 }
-.yellow {
+.play-art .yellow {
   background: #ffe6a0;
   width: 280px;
   height: 350px;
@@ -356,7 +356,7 @@
   top: 140px;
   transform: rotate(25deg);
 }
-.blue {
+.play-art .blue {
   background: #b4e7ff;
   width: 350px;
   height: 230px;
@@ -364,7 +364,7 @@
   top: 115px;
   transform: rotate(-30deg);
 }
-.pink {
+.play-art .pink {
   background: #ffdaea;
   width: 350px;
   height: 280px;
@@ -372,21 +372,21 @@
   top: 520px;
   transform: rotate(-35deg);
 }
-.blue-bottom {
+.play-art .blue-bottom {
   background: #a6e1ff;
   width: 280px;
   height: 240px;
   left: -160px;
   bottom: 80px;
 }
-.yellow-bottom {
+.play-art .yellow-bottom {
   background: #ffe9af;
   width: 400px;
   height: 250px;
   right: -90px;
   bottom: -60px;
 }
-.art-star {
+.play-art .art-star {
   position: absolute;
   top: 42%;
   left: 5%;
@@ -394,7 +394,7 @@
   color: #ffca08;
   transform: rotate(-14deg);
 }
-.art-question {
+.play-art .art-question {
   position: absolute;
   right: 5%;
   top: 36%;
