@@ -52,7 +52,7 @@ jobs:
       - name: Diff whitespace check
         run: |
           git fetch origin main --depth=1
-          git diff --check origin/main...HEAD
+          git diff --check origin/main HEAD
       - name: Lint
         run: bun run lint
       - name: Typecheck
