@@ -3,20 +3,35 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { siteConfig } from "@/config/site.config";
-import { ThemeToggle } from "@/modules/would-you-rather";
+import { featuresConfig } from "@/config/features.config";
+import { IllustratedHomeHeader, ThemeToggle } from "@/modules/would-you-rather";
 import { localePath } from "@/platform/i18n/routing";
 
 const navLink = "text-sm font-medium text-muted transition-colors hover:text-foreground";
 const mobileNavLink =
   "block py-2 text-base font-medium text-foreground transition-colors hover:text-[#e27d32]";
 
-export function SiteHeader({ locale = siteConfig.defaultLocale }: Readonly<{ locale?: string }>) {
+export function SiteHeader({
+  locale = siteConfig.defaultLocale,
+  appearance = "default",
+}: Readonly<{ locale?: string; appearance?: "default" | "illustrated-home" }>) {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const homeHref = localePath(siteConfig, locale, "/");
 
   const closeMenu = () => setMobileMenuOpen(false);
+
+  if (["/find-questions", "/play", "/print"].includes(pathname)) return null;
+  if (appearance === "illustrated-home" && pathname === "/") {
+    return (
+      <div className="illustrated-home homepage">
+        <IllustratedHomeHeader authEnabled={featuresConfig.auth.enabled} />
+      </div>
+    );
+  }
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md transition-colors">
@@ -40,6 +55,9 @@ export function SiteHeader({ locale = siteConfig.defaultLocale }: Readonly<{ loc
 
         {/* 桌面端主导航 */}
         <nav aria-label="Primary navigation" className="hidden items-center gap-5 lg:gap-6 md:flex">
+          <Link className={navLink} href="/find-questions">
+            Find Questions
+          </Link>
           <Link className={navLink} href="/#play">
             Play
           </Link>
@@ -60,6 +78,9 @@ export function SiteHeader({ locale = siteConfig.defaultLocale }: Readonly<{ loc
           </Link>
           <Link className={navLink} href="/would-you-rather-questions-for-couples">
             Couples
+          </Link>
+          <Link className={navLink} href="/leaderboards">
+            Leaderboards
           </Link>
         </nav>
 
@@ -107,11 +128,17 @@ export function SiteHeader({ locale = siteConfig.defaultLocale }: Readonly<{ loc
       {mobileMenuOpen && (
         <div className="border-t border-border bg-background px-5 py-4 md:hidden">
           <nav aria-label="Mobile navigation" className="flex flex-col space-y-2">
+            <Link className={mobileNavLink} href="/find-questions" onClick={closeMenu}>
+              Find Questions
+            </Link>
             <Link className={mobileNavLink} href="/#play" onClick={closeMenu}>
               🎮 Play Live Dilemmas
             </Link>
             <Link className={mobileNavLink} href="/#questions" onClick={closeMenu}>
               📋 All Questions Directory
+            </Link>
+            <Link className={mobileNavLink} href="/leaderboards" onClick={closeMenu}>
+              Leaderboards
             </Link>
             <div className="my-1 border-t border-border/60" />
             <Link

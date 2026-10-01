@@ -1,9 +1,9 @@
 import type { LandingSection } from "@/components/landing/landing-page";
 import {
   EditorialGuideSection,
-  FeaturedCollectionsSection,
   QUESTIONS_DATABASE,
   WyrExperience,
+  type LeaderboardResult,
 } from "@/modules/would-you-rather";
 
 import { routeRegistry } from "./routes.config";
@@ -15,31 +15,13 @@ export const homeConfig = {
   sections: [
     {
       type: "hero",
+      presentation: "full-bleed",
       enabled: true,
       order: 10,
-      eyebrow: "The Definitive Two-Choice Dilemma Engine",
       h1: homeRoute.h1,
-      lead: "Browse funny, hard, weird, and thought-provoking Would You Rather questions for friends, kids, couples, parties, classrooms, and more.",
-      primaryCta: { label: "Start playing questions", href: "/#play" },
-      secondaryCta: { label: "Browse kids dilemmas", href: "/would-you-rather-questions-for-kids" },
-    },
-    {
-      type: "tool-demo",
-      enabled: true,
-      order: 20,
-      heading: "Play Would You Rather Questions Online",
-      body: "Pick Option A or Option B and test your instincts. Use keyboard shortcuts (A / B) or launch Presenter Mode for big-screen projector games.",
-      surface: (
-        <>
-          <WyrExperience
-            questions={QUESTIONS_DATABASE}
-            categoryBadge="All Curated Dilemmas"
-            showCategoryExplorer={true}
-          />
-          <FeaturedCollectionsSection />
-          <EditorialGuideSection />
-        </>
-      ),
+      lead: "Play fun and thought-provoking would you rather questions with people around the world.",
+      primaryCta: { label: "Make Your Choice", href: "/#play" },
+      surface: homeSurface({ status: "unavailable" }),
     },
     {
       type: "features",
@@ -127,3 +109,30 @@ export const homeConfig = {
     },
   ] as const satisfies readonly LandingSection[],
 };
+
+function homeSurface(leaderboard: LeaderboardResult) {
+  return (
+    <>
+      <WyrExperience
+        appearance="illustrated-home"
+        questions={QUESTIONS_DATABASE}
+        categoryBadge="All Curated Dilemmas"
+        showCategoryExplorer={true}
+        leaderboard={leaderboard}
+      />
+      <details className="home-reading">
+        <summary>Learn about Would You Rather</summary>
+        <EditorialGuideSection />
+      </details>
+    </>
+  );
+}
+
+export function homeConfigWithLeaderboard(leaderboard: LeaderboardResult) {
+  return {
+    ...homeConfig,
+    sections: homeConfig.sections.map((section) =>
+      section.type === "hero" ? { ...section, surface: homeSurface(leaderboard) } : section,
+    ),
+  };
+}

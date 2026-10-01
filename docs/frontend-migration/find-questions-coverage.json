@@ -1,0 +1,51 @@
+{
+  "scope": "Find Questions at /find-questions",
+  "original_total": 8,
+  "approved_pass": [
+    {
+      "item": "route",
+      "evidence": "src/app/(marketing)/find-questions/page.tsx",
+      "decision": "Implemented and verified; existing backend retained"
+    },
+    {
+      "item": "bank-and-filters",
+      "evidence": "src/modules/would-you-rather/domain/finder.ts",
+      "decision": "Implemented and verified; existing backend retained"
+    },
+    {
+      "item": "search-and-pagination",
+      "evidence": "src/modules/would-you-rather/ui/finder/finder-experience.tsx",
+      "decision": "Implemented and verified; existing backend retained"
+    },
+    {
+      "item": "votes",
+      "evidence": "src/modules/would-you-rather/ui/finder/question-card.tsx",
+      "decision": "Implemented and verified; existing backend retained"
+    },
+    {
+      "item": "selection-and-presentation",
+      "evidence": "tests/e2e/finder.spec.ts",
+      "decision": "Implemented and verified; existing backend retained"
+    },
+    {
+      "item": "local-bookmarks",
+      "evidence": "tests/e2e/finder.spec.ts",
+      "decision": "Implemented and verified; existing backend retained"
+    },
+    {
+      "item": "navigation-and-categories",
+      "evidence": "src/modules/would-you-rather/ui/finder/chrome.tsx",
+      "decision": "Implemented and verified; existing backend retained"
+    },
+    {
+      "item": "visual-assets-and-responsive-layout",
+      "evidence": ".artifacts/finder-integration/round-final/report/geometry.md",
+      "decision": "Implemented and verified; existing backend retained"
+    }
+  ],
+  "deferred_waiting": [],
+  "confirmed_reject_delete": [],
+  "unreviewed_unknown": [],
+  "reconciled_total": 8,
+  "notes": "Separate preservation ledger is coverage.json. No database or existing page deletion performed by finder migration."
+}

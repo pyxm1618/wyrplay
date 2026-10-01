@@ -1,0 +1,17 @@
+{
+  "original_total": 1,
+  "states": {
+    "approved": 1,
+    "deferred": 0,
+    "rejected": 0,
+    "unreviewed": 0
+  },
+  "items": [
+    {
+      "source": "src/app/(account)/sign-in/sign-in-form.tsx",
+      "target": "src/components/auth/auth-form.tsx",
+      "state": "approved",
+      "evidence": "Original tracked sign-in form inspected; request endpoint, same-origin credentials, email/returnTo/token payload, response status branches, Turnstile resets retained in shared form. Both entry routes import AuthEntry, which imports shared SignInForm."
+    }
+  ]
+}

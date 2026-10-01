@@ -1,0 +1,214 @@
+{
+  "original_total": 29,
+  "states": {
+    "approved": 29,
+    "deferred": 0,
+    "rejected": 0,
+    "unreviewed": 0
+  },
+  "items": [
+    {
+      "source": "auth-reconstruction/public/assets/login-bottom-clouds-v3.png",
+      "target": "public/brand/auth/login-bottom-clouds-v3.png",
+      "sha256": "2f905e04bf0de4d7c30ac6dd6748e3cba6bd427a043ede7b2e91a0cd9ea78ab5",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/login-discussion.png",
+      "target": "public/brand/auth/login-discussion.png",
+      "sha256": "2f17a4f7b89e92efa0112e7ca204b0c486b6ee306ee0efd0b6957c56fd5e3c0f",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/login-favorite.png",
+      "target": "public/brand/auth/login-favorite.png",
+      "sha256": "f38a1e7750c6cd1c746c7f93ec03b1f9ae21cbcf0fd6b78242042d881cf80674",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/login-hero-art-v4.png",
+      "target": "public/brand/auth/login-hero-art-v4.png",
+      "sha256": "77ade824010496e1a389b893f1650186b9f1b1cd1078628a018c2537eb78ee08",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/login-left-clouds-v3.png",
+      "target": "public/brand/auth/login-left-clouds-v3.png",
+      "sha256": "f77b7bca74e66b153a5b0334bdc348dafc2c856fb0248af6c82b46da992c576c",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/login-logo-v4.png",
+      "target": "public/brand/auth/login-logo-v4.png",
+      "sha256": "4863e4e98a296e131185f0c0ca8d8d98e0710cafd03c4e46fa3f12a87b99228c",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/login-mid-left-cloud-v2.png",
+      "target": "public/brand/auth/login-mid-left-cloud-v2.png",
+      "sha256": "dfaa1eff414ee35b81b9b75976808b82a437edfb717492517281b9659ae50ef0",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/login-pre-card-clouds.png",
+      "target": "public/brand/auth/login-pre-card-clouds.png",
+      "sha256": "405dc463a0232b1424715d44692743f461e6aa1f5594c2c4b206e9e234179b25",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/login-right-clouds-v3.png",
+      "target": "public/brand/auth/login-right-clouds-v3.png",
+      "sha256": "c013c67e3436edd2e11950a2010d1efa9b20028aaf0f7af7bfdcb9ddea22e222",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/login-top-left-cloud-v2.png",
+      "target": "public/brand/auth/login-top-left-cloud-v2.png",
+      "sha256": "f8b138c309e710e3de3979a8e0440948daa6c4544c24a5e5e3dcd86c28c5287e",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/login-world.png",
+      "target": "public/brand/auth/login-world.png",
+      "sha256": "39efd1e1f104837dda3324b5770cb1dd4af87f65da21acc768dfb981323e956e",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/signup-bottom-clouds-v3.png",
+      "target": "public/brand/auth/signup-bottom-clouds-v3.png",
+      "sha256": "dec62387a667b7eda501dd17e3951d266bb17fe2f46a240350e35c7a8aa23c11",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/signup-discussion.png",
+      "target": "public/brand/auth/signup-discussion.png",
+      "sha256": "3faeb895b491bea698620b816a7d7dca19831af9688b2ee347974e950e17cd9e",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/signup-favorite.png",
+      "target": "public/brand/auth/signup-favorite.png",
+      "sha256": "3140a7c5c24d900e91fd1a1ccfc5aa61baea81bfb640136752577aa94fb8b1dc",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/signup-hero-art-v4.png",
+      "target": "public/brand/auth/signup-hero-art-v4.png",
+      "sha256": "e056a98b036e5f7b30dfde6419a1c7db087613d617d3a40ad0eb1c012622d7df",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/signup-left-clouds-v3.png",
+      "target": "public/brand/auth/signup-left-clouds-v3.png",
+      "sha256": "6b5af7f5b6631d3740c505756d628d8318c90cadcad391e3f76ed41a87dac54b",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/signup-logo-v4.png",
+      "target": "public/brand/auth/signup-logo-v4.png",
+      "sha256": "9bb8c87f0d44e3421168b51364c9ab14d5feb4021c52f2c7c66f512272c9fc44",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/signup-mid-left-cloud-v2.png",
+      "target": "public/brand/auth/signup-mid-left-cloud-v2.png",
+      "sha256": "633db19a727f336994304121e8c4ab010d8c5bbd87662961084ac4b3fe8bb316",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/signup-pre-card-clouds.png",
+      "target": "public/brand/auth/signup-pre-card-clouds.png",
+      "sha256": "20120597ecd96675c1d828132cde2b858d5bdc397905566b4774258dfd76938d",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/signup-right-clouds-v3.png",
+      "target": "public/brand/auth/signup-right-clouds-v3.png",
+      "sha256": "b5e3b0b0633f6ec2013dafadff93f8ba885f7050d91c5e28444156e6c7559113",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/signup-top-left-cloud-v4.png",
+      "target": "public/brand/auth/signup-top-left-cloud-v4.png",
+      "sha256": "568ae7cded077d4849b2592d1035dc1f1af6d49cf54027cb1e5ced1060576fdc",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/assets/signup-world.png",
+      "target": "public/brand/auth/signup-world.png",
+      "sha256": "aa25d40899b45abe1126c525a0f644e95fb274e3b48bbee2c90b297f078bcb1f",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/fonts/Chewy-LICENSE.txt",
+      "target": "public/brand/auth/fonts/Chewy-LICENSE.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/fonts/PatrickHand-OFL.txt",
+      "target": "public/brand/auth/fonts/PatrickHand-OFL.txt",
+      "sha256": "377f4f9c19e935228552478eb68cc2ed82910988a60ba60e2ac73b09f32d02d1",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/fonts/chewy-regular.ttf",
+      "target": "public/brand/auth/fonts/chewy-regular.ttf",
+      "sha256": "7cf75ea288f82fd20badea8ab4da7a656a96a7277c170811e813b3d3d6294147",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/fonts/patrick-hand.ttf",
+      "target": "public/brand/auth/fonts/patrick-hand.ttf",
+      "sha256": "0f173b3e6cb6d1af25babf7f0057c5ac4ee11f9992b0469bb817e967ef4ad0fc",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/fonts/roboto-condensed-bold.ttf",
+      "target": "public/brand/auth/fonts/roboto-condensed-bold.ttf",
+      "sha256": "35140bfdde80295fbcd04dad086f51688abca96cb8c87529daf781c4462b6e33",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/fonts/roboto-condensed-regular.ttf",
+      "target": "public/brand/auth/fonts/roboto-condensed-regular.ttf",
+      "sha256": "ef9d48725ff2bd72cd569ca50555fb781f99cf8f3a88a3bb3c8a4c85fd574458",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    },
+    {
+      "source": "auth-reconstruction/public/fonts/roboto-condensed-semibold.ttf",
+      "target": "public/brand/auth/fonts/roboto-condensed-semibold.ttf",
+      "sha256": "72a060cf1aa155f2a91b967545ca800e0fe7e2ddc0d50e23f141cb096e18c9d5",
+      "state": "approved",
+      "evidence": "Final approved prototype asset; byte-identical copy"
+    }
+  ]
+}

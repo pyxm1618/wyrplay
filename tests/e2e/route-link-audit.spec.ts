@@ -161,6 +161,9 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
       const signInRes = await page.goto("/sign-in");
       expect(signInRes?.status()).toBe(404);
 
+      const signUpRes = await page.goto("/sign-up");
+      expect(signUpRes?.status()).toBe(404);
+
       const accountRes = await page.goto("/account");
       expect(accountRes?.status()).toBe(404);
 

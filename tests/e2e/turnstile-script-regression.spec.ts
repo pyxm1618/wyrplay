@@ -36,6 +36,7 @@ test("Turnstile script remains compatible with ready()", async ({ page }) => {
   });
 
   await page.goto("/sign-in");
+  await page.getByRole("button", { name: "Continue with Magic Link" }).click();
 
   const script = page.locator("#creat-web-turnstile-script");
   await expect(script).toHaveCount(1);

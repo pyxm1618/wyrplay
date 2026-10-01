@@ -17,9 +17,14 @@ import { DuelArena } from "./duel-arena";
 import { PresenterModal } from "./presenter-modal";
 import { QuestionDirectory } from "./question-directory";
 import { QuestionFilterBar } from "./question-filter-bar";
+import type { LeaderboardResult } from "../domain/leaderboard";
+import { useHydrated } from "./use-hydrated";
+import { IllustratedHome } from "./illustrated-home";
 import { CategoryExplorer } from "./category-explorer";
 
 export interface WyrExperienceProps {
+  readonly leaderboard?: LeaderboardResult;
+  readonly appearance?: "default" | "illustrated-home";
   readonly questions?: readonly Question[];
   readonly categoryBadge?: string;
   readonly defaultCollection?: FeaturedCollectionKey;
@@ -28,12 +33,15 @@ export interface WyrExperienceProps {
 }
 
 export function WyrExperience({
+  appearance = "default",
+  leaderboard = { status: "unavailable" },
   questions = QUESTIONS_DATABASE,
   categoryBadge = "Live Dilemma Arena",
   defaultCollection,
   showCategoryExplorer = false,
   allowUnreviewed = false,
 }: WyrExperienceProps) {
+  const hydrated = useHydrated();
   // 1. 搜索与筛选状态
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedAgeGroup, setSelectedAgeGroup] = useState<AgeGroup | undefined>(undefined);
@@ -168,8 +176,35 @@ export function WyrExperience({
     selectedDifficulty,
   );
 
-  return (
-    <div className="w-full space-y-12">
+  const directory = (
+    <QuestionDirectory
+      questions={directoryQuestions}
+      title={
+        directoryQuestions.length > 0
+          ? defaultCollection
+            ? `Browse ${directoryQuestions.length} Questions in this Collection`
+            : `Browse ${directoryQuestions.length} Curated Dilemmas`
+          : "Browse Dilemmas Directory"
+      }
+      description={
+        directoryQuestions.length > 0
+          ? "Browse verified dilemmas below. Select any question to play it directly in the arena."
+          : "All dilemmas are currently undergoing editorial review. Check back soon for the verified collection."
+      }
+      hasActiveFilters={Boolean(
+        searchKeyword.trim() !== "" ||
+        selectedAgeGroup ||
+        selectedRelationship ||
+        selectedOccasion ||
+        selectedTone ||
+        selectedDifficulty,
+      )}
+      onPlayQuestion={handleSelectQuestion}
+    />
+  );
+
+  const experience = (
+    <fieldset className="w-full min-w-0 space-y-12" disabled={!hydrated} data-home-ready={hydrated}>
       {/* 1. 核心 Live 对决 Arena */}
       <DuelArena
         question={resolvedActiveQuestion}
@@ -185,56 +220,42 @@ export function WyrExperience({
       />
 
       {/* 2. 搜索与筛选控制栏 (放置于长目录前面) */}
-      <QuestionFilterBar
-        searchKeyword={searchKeyword}
-        onSearchChange={setSearchKeyword}
-        selectedAgeGroup={selectedAgeGroup}
-        onAgeGroupChange={setSelectedAgeGroup}
-        selectedRelationship={selectedRelationship}
-        onRelationshipChange={setSelectedRelationship}
-        selectedOccasion={selectedOccasion}
-        onOccasionChange={setSelectedOccasion}
-        selectedTone={selectedTone}
-        onToneChange={setSelectedTone}
-        selectedDifficulty={selectedDifficulty}
-        onDifficultyChange={setSelectedDifficulty}
-        matchedCount={directoryQuestions.length}
-        totalCount={
-          allowUnreviewed
-            ? questions.length
-            : questions.filter((q) => q.reviewStatus === "approved").length
-        }
-        onClearFilters={handleClearFilters}
-      />
+      <div id="question-search">
+        <QuestionFilterBar
+          searchKeyword={searchKeyword}
+          onSearchChange={setSearchKeyword}
+          selectedAgeGroup={selectedAgeGroup}
+          onAgeGroupChange={setSelectedAgeGroup}
+          selectedRelationship={selectedRelationship}
+          onRelationshipChange={setSelectedRelationship}
+          selectedOccasion={selectedOccasion}
+          onOccasionChange={setSelectedOccasion}
+          selectedTone={selectedTone}
+          onToneChange={setSelectedTone}
+          selectedDifficulty={selectedDifficulty}
+          onDifficultyChange={setSelectedDifficulty}
+          matchedCount={directoryQuestions.length}
+          totalCount={
+            allowUnreviewed
+              ? questions.length
+              : questions.filter((q) => q.reviewStatus === "approved").length
+          }
+          onClearFilters={handleClearFilters}
+        />
+      </div>
 
       {/* 3. 分类概览 (可选) */}
-      {showCategoryExplorer && <CategoryExplorer />}
+      {showCategoryExplorer && appearance !== "illustrated-home" && <CategoryExplorer />}
 
       {/* 4. 目录展示 (仅展示 approved 题目；未审核题严格杜绝暴露在生产界面) */}
-      <QuestionDirectory
-        questions={directoryQuestions}
-        title={
-          directoryQuestions.length > 0
-            ? defaultCollection
-              ? `Browse ${directoryQuestions.length} Questions in this Collection`
-              : `Browse ${directoryQuestions.length} Curated Dilemmas`
-            : "Browse Dilemmas Directory"
-        }
-        description={
-          directoryQuestions.length > 0
-            ? "Browse verified dilemmas below. Select any question to play it directly in the arena."
-            : "All dilemmas are currently undergoing editorial review. Check back soon for the verified collection."
-        }
-        hasActiveFilters={Boolean(
-          searchKeyword.trim() !== "" ||
-          selectedAgeGroup ||
-          selectedRelationship ||
-          selectedOccasion ||
-          selectedTone ||
-          selectedDifficulty,
-        )}
-        onPlayQuestion={handleSelectQuestion}
-      />
+      {appearance === "illustrated-home" ? (
+        <details className="home-directory" open={hasActiveFilters ? true : undefined}>
+          <summary>Browse all {directoryQuestions.length} questions</summary>
+          {directory}
+        </details>
+      ) : (
+        directory
+      )}
 
       {/* 5. 共享有效题集的全屏 Presenter 模式 (仅限 approved 题) */}
       <PresenterModal
@@ -246,6 +267,23 @@ export function WyrExperience({
         currentIndex={currentIndex >= 0 ? currentIndex : 0}
         totalCount={playableQuestions.length}
       />
-    </div>
+    </fieldset>
+  );
+  return appearance === "illustrated-home" ? (
+    <IllustratedHome
+      leaderboard={leaderboard}
+      onPlayQuestion={(id) => {
+        if (
+          questions.some((question) => question.id === id && question.reviewStatus === "approved")
+        ) {
+          handleClearFilters();
+          setActiveQuestionId(id);
+        }
+      }}
+    >
+      {experience}
+    </IllustratedHome>
+  ) : (
+    experience
   );
 }

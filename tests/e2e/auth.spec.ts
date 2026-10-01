@@ -215,6 +215,7 @@ test("magic link confirmation is scanner-safe and single-use", async ({ page, re
 
   await installBrowserTurnstileMock(page);
   await page.goto("/sign-in");
+  await page.getByRole("button", { name: "Continue with Magic Link" }).click();
   await page.getByLabel("Email address").fill(email);
   const sendButton = page.getByRole("button", { name: "Send secure sign-in link" });
   await expect(sendButton).toBeEnabled({ timeout: 15_000 });

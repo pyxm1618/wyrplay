@@ -19,6 +19,8 @@ import {
 export type LandingSection =
   | {
       readonly type: "hero";
+      readonly presentation?: "default" | "full-bleed";
+      readonly surface?: ReactNode;
       readonly enabled?: boolean;
       readonly order?: number;
       readonly eyebrow?: string;
@@ -114,6 +116,8 @@ export type LandingSection =
 const grid = "mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3";
 
 function HeroSection(props: Extract<LandingSection, { type: "hero" }>) {
+  if (props.presentation === "full-bleed" && props.surface)
+    return <div className="illustrated-home homepage">{props.surface}</div>;
   return (
     <section className="border-b border-border bg-surface-muted" aria-labelledby="page-title">
       <div className={`${container} py-20 sm:py-28`}>
@@ -141,6 +145,11 @@ function HeroSection(props: Extract<LandingSection, { type: "hero" }>) {
 }
 
 function ToolDemoSection(props: Extract<LandingSection, { type: "tool-demo" }>) {
+  return (
+    <section className="illustrated-home homepage" aria-labelledby="tool-demo-title">
+      {props.surface}
+    </section>
+  );
   return (
     <section className={sectionSpacing} aria-labelledby="tool-demo-title">
       <div className={container}>

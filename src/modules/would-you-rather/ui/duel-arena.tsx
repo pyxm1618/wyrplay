@@ -1,9 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { PlayHeading, OptionPanels } from "./play/art";
+import "./play/play.css";
 import type { Question, VoteStats } from "../types";
 
 export interface DuelArenaProps {
+  readonly appearance?: "default" | "illustrated-play";
   readonly question: Question | undefined;
   readonly currentIndex: number;
   readonly totalQuestions: number;
@@ -15,6 +18,7 @@ export interface DuelArenaProps {
 }
 
 export function DuelArena({
+  appearance = "default",
   question,
   currentIndex,
   totalQuestions,
@@ -108,6 +112,7 @@ export function DuelArena({
   // 3. 键盘快捷键监听 (A / B / 左右箭头选择与改选)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (document.querySelector(".presenter-page")) return;
       if (
         e.target instanceof HTMLInputElement ||
         e.target instanceof HTMLTextAreaElement ||
@@ -164,6 +169,44 @@ export function DuelArena({
   const currentStats = loadedQuestionId === currentQuestionId ? voteStats : null;
   const hasVoted = Boolean(currentStats?.hasVoted);
   const userPick = currentStats?.selectedOption ?? null;
+
+  if (appearance === "illustrated-play") {
+    const choice = (option: "A" | "B") => (
+      <>
+        <button
+          className={`choose-option choose-${option.toLowerCase()}`}
+          disabled={isSubmitting}
+          aria-label={`Choose option ${option}`}
+          aria-pressed={userPick === option}
+          onClick={() => void handleVote(option)}
+        >
+          {isSubmitting ? "Recording…" : userPick === option ? "Your choice ✓" : "Choose This"}
+        </button>
+        {hasVoted && currentStats && (
+          <p className="play-vote-result">
+            {option === "A" ? currentStats.percentageA : currentStats.percentageB}% ·{" "}
+            {option === "A" ? currentStats.votesA : currentStats.votesB} votes
+          </p>
+        )}
+      </>
+    );
+    return (
+      <section id="play" className="illustrated-arena">
+        <PlayHeading question={question.question} />
+        {errorMessage && (
+          <p className="play-error" role="alert">
+            {errorMessage} <button onClick={() => setRefreshCount((c) => c + 1)}>Retry</button>
+          </p>
+        )}
+        <OptionPanels
+          a={question.optionA}
+          b={question.optionB}
+          childrenA={choice("A")}
+          childrenB={choice("B")}
+        />
+      </section>
+    );
+  }
 
   return (
     <section

@@ -1,0 +1,187 @@
+{
+  "measurement_sha256": "6bd4f14532b6f3e72001cbc1d7700e1fb7ad87560ad179871347771a86d3e71e",
+  "url": "http://127.0.0.1:4195/sign-in",
+  "title": "Sign in · Would You Rather",
+  "viewport": {
+    "width": 1024,
+    "height": 900
+  },
+  "dpr": 1,
+  "scroll": {
+    "x": 0,
+    "y": 0
+  },
+  "document_height": 1536,
+  "fonts_ready": true,
+  "images_ready": true,
+  "document_overflow_x": false,
+  "captured_at": "2026-10-01T05:54:33.583Z",
+  "elements": [
+    {
+      "name": "header",
+      "selector": ".site-header",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        0,
+        0,
+        1024,
+        90
+      ],
+      "text": "HomeQuestionsCategoriesLeaderboardsCreateLog inSign up",
+      "computed": {
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrBody, Arial, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "16px",
+        "fontWeight": "400",
+        "color": "rgb(6, 11, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "auth-card",
+      "selector": ".auth-card",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        198,
+        658,
+        654,
+        730
+      ],
+      "text": "Sign InChoose how you’d like to continue.Continue with GoogleGoogle sign-in is not enabled for this site.Continue with Magic LinkorSave yourfavorite questionsJoin fundiscussionsPlay with friendsanywhereDon’t have an account? Sign up",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrBody, Arial, sans-serif",
+        "fontSize": "24px",
+        "lineHeight": "32.4px",
+        "fontWeight": "400",
+        "color": "rgb(6, 11, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "google-button",
+      "selector": ".google-button",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        246,
+        854.1875,
+        564,
+        92
+      ],
+      "text": "Continue with Google",
+      "computed": {
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrBody, Arial, sans-serif",
+        "fontSize": "27px",
+        "lineHeight": "36.45px",
+        "fontWeight": "600",
+        "color": "rgb(6, 11, 23)",
+        "backgroundColor": "rgb(255, 255, 255)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "magic-button",
+      "selector": ".magic-button",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        246,
+        970.1875,
+        564,
+        95
+      ],
+      "text": "Continue with Magic Link",
+      "computed": {
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrBody, Arial, sans-serif",
+        "fontSize": "27px",
+        "lineHeight": "36.45px",
+        "fontWeight": "600",
+        "color": "rgb(6, 11, 23)",
+        "backgroundColor": "rgb(245, 246, 251)"
+      },
+      "viewport_intersects": false
+    },
+    {
+      "name": "title-ink",
+      "selector": ".auth-card h2",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        246,
+        695,
+        564,
+        78.1875
+      ],
+      "text": "Sign In",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrDisplay, Arial, sans-serif",
+        "fontSize": "68px",
+        "lineHeight": "78.2px",
+        "fontWeight": "400",
+        "color": "rgb(5, 10, 27)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "hero-art",
+      "selector": ".hero-art",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        510,
+        100,
+        514,
+        660
+      ],
+      "text": "",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrBody, Arial, sans-serif",
+        "fontSize": "24px",
+        "lineHeight": "32.4px",
+        "fontWeight": "400",
+        "color": "rgb(6, 11, 23)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true,
+      "asset": {
+        "src": "http://127.0.0.1:4195/brand/auth/login-hero-art-v4.png",
+        "natural_width": 514,
+        "natural_height": 660,
+        "version": null
+      }
+    }
+  ],
+  "assets": {
+    "hero-art": {
+      "src": "http://127.0.0.1:4195/brand/auth/login-hero-art-v4.png",
+      "natural_width": 514,
+      "natural_height": 660,
+      "version": null
+    }
+  },
+  "full_page": true,
+  "screenshot_scale": "css"
+}

@@ -1,44 +1,51 @@
 import { headers } from "next/headers";
-import Link from "next/link";
 import { redirect } from "next/navigation";
-
-import { AccountShell } from "@/components/account/account-shell";
-import { bodyText, card, cardTitle } from "@/components/ui/styles";
+import { AccountOverview } from "@/components/account/account-overview";
+import { featuresConfig } from "@/config/features.config";
+import { getLeaderboardSnapshot } from "@/modules/would-you-rather/server";
+import type { LeaderboardResult } from "@/modules/would-you-rather";
+import { QUESTIONS_DATABASE } from "@/modules/would-you-rather";
 import { getAccountContext } from "@/platform/auth/account-context";
 
-const destinations = [
-  { href: "/account/credits", label: "Credits", body: "Balances and recent ledger activity." },
-  {
-    href: "/account/billing",
-    label: "Billing history",
-    body: "Subscriptions, payments and refunds.",
-  },
-  {
-    href: "/account/security",
-    label: "Security and account deletion",
-    body: "Active sessions and account deletion.",
-  },
-] as const;
-
-export default async function AccountPage() {
+export default async function AccountPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ view?: string }>;
+}) {
+  const view = (await searchParams).view;
   const context = await getAccountContext(await headers());
   if (!context) redirect("/sign-in");
-
+  const joined = new Intl.DateTimeFormat("en", {
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(context.user.createdAt));
+  let votes: LeaderboardResult;
+  try {
+    votes = { status: "ready", snapshot: await getLeaderboardSnapshot() };
+  } catch {
+    votes = { status: "unavailable" };
+  }
   return (
-    <AccountShell
-      eyebrow="Account"
-      title={`Welcome, ${context.user.name}`}
-      titleId="account-title"
-      intro={context.user.email}
-    >
-      <nav aria-label="Account navigation" className="grid gap-4 sm:grid-cols-2">
-        {destinations.map((item) => (
-          <Link key={item.href} href={item.href} className={`${card} block hover:border-accent`}>
-            <span className={cardTitle}>{item.label}</span>
-            <span className={`mt-2 block ${bodyText}`}>{item.body}</span>
-          </Link>
-        ))}
-      </nav>
-    </AccountShell>
+    <AccountOverview
+      profile={{
+        name: context.user.name,
+        email: context.user.email,
+        image: context.user.image ?? null,
+        joined,
+      }}
+      questions={QUESTIONS_DATABASE.filter((question) => question.reviewStatus === "approved")}
+      votes={votes}
+      initialTab={
+        view === "saved"
+          ? "Saved Questions"
+          : view === "my"
+            ? "My Questions"
+            : view === "activity"
+              ? "Recent Activity"
+              : "Overview"
+      }
+      commerceEnabled={featuresConfig.commerce.enabled}
+    />
   );
 }

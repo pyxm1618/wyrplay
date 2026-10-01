@@ -1,0 +1,1251 @@
+@font-face {
+  font-family: FinderBody;
+  src: url("/finder/fonts/roboto-condensed-regular.ttf");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: FinderBody;
+  src: url("/finder/fonts/roboto-condensed-semibold.ttf");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: FinderBody;
+  src: url("/finder/fonts/roboto-condensed-bold.ttf");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: FinderFallback;
+  src: url("/finder/fonts/lilita-one.ttf");
+  font-weight: 400;
+  font-display: swap;
+}
+.finder-page * {
+  box-sizing: border-box;
+}
+.finder-page button,
+.finder-page input {
+  font: inherit;
+}
+.finder-page button {
+  cursor: pointer;
+  color: inherit;
+  border: 0;
+  background: transparent;
+}
+.finder-page button:disabled {
+  cursor: default;
+}
+.finder-page button:focus-visible,
+.finder-page a:focus-visible,
+.finder-page input:focus-visible {
+  outline: 3px solid #00a7ef;
+  outline-offset: 4px;
+}
+.finder-page a {
+  color: inherit;
+  text-decoration: none;
+}
+.finder-page h1,
+.finder-page h2,
+.finder-page h3,
+.finder-page p {
+  margin: 0;
+}
+.finder-page svg {
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.finder-page h1,
+.finder-page h2,
+.finder-page .filter-group h3 {
+  font-family: FinderFallback, Arial, sans-serif;
+  font-weight: 400;
+}
+.finder-page .black {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: linear-gradient(110deg, #080e12, #11191d 65%, #080d10);
+  color: white;
+  border: 1px solid #252b2e;
+  box-shadow: inset 0 0 0 2px #ffffff05;
+  font-weight: 700;
+}
+.finder-page .black:hover {
+  background: #202b32;
+}
+.finder-page {
+  margin: auto;
+  background: radial-gradient(ellipse at 52% 36%, #fffaf3 0%, #fff7e9 54%, #fff2d8 100%);
+  color: #080e13;
+  font:
+    400 14px/1.3 FinderBody,
+    Arial,
+    sans-serif;
+  position: relative;
+  isolation: isolate;
+  max-width: 849px;
+  min-height: 1852px;
+  overflow: hidden;
+}
+.finder-page .page-art {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.finder-page .page-art img {
+  position: absolute;
+}
+.finder-page .left-top-art {
+  top: 49px;
+  left: 0;
+  width: 60px;
+  height: 214px;
+}
+.finder-page .left-edge-art {
+  top: 366px;
+  left: 0;
+  width: 21px;
+  height: 879px;
+}
+.finder-page .right-edge-art {
+  top: 328px;
+  right: 0;
+  width: 21px;
+  height: 1406px;
+}
+.finder-page .left-bottom-art {
+  top: 1245px;
+  left: 0;
+  width: 261px;
+  height: 382px;
+}
+.finder-page .bottom-left-art {
+  bottom: 0;
+  left: 0;
+  width: 46px;
+  height: 139px;
+}
+.finder-page .bottom-right-art {
+  bottom: 0;
+  right: 0;
+  width: 43px;
+  height: 139px;
+}
+.finder-page .site-header {
+  height: 42px;
+  margin: 9px 30px 0 42px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  position: relative;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 700;
+}
+.finder-page .logo {
+  width: 120px;
+  height: 43px;
+  object-fit: contain;
+}
+.finder-page .site-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  margin-left: 16px;
+  flex: 1;
+}
+.finder-page .site-header nav a,
+.finder-page .site-header nav button {
+  white-space: nowrap;
+  padding: 7px 6px;
+}
+.finder-page .site-header nav .active {
+  color: #ff6522;
+  background: #ffe7ad;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-weight: 400;
+}
+.finder-page .icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.finder-page .nav-search {
+  margin: 0 12px 0 42px;
+}
+.finder-page .login,
+.finder-page .signup {
+  border-radius: 22px;
+  height: 30px;
+  white-space: nowrap;
+  padding: 0 17px;
+}
+.finder-page .login {
+  border: 1px solid #92969a;
+  background: #fff;
+}
+.finder-page .signup {
+  padding: 0 18px;
+}
+.finder-page .hero {
+  height: 212px;
+  position: relative;
+}
+.finder-page .hero-copy {
+  position: absolute;
+  left: 62px;
+  top: 19px;
+  z-index: 1;
+}
+.finder-page .hero h1 {
+  position: relative;
+  height: 145px;
+  width: 449px;
+  font-size: 53px;
+  line-height: 1.03;
+  letter-spacing: -1.1px;
+  transform: rotate(-2deg);
+}
+.finder-page .find-word {
+  position: absolute;
+  left: 18px;
+  top: 0;
+  font-size: 51px;
+  transform: rotate(-7deg);
+}
+.finder-page .rather-line {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  white-space: nowrap;
+}
+.finder-page .rather {
+  color: #04aef0;
+}
+.finder-page .rather i {
+  font-style: normal;
+  color: #ff6435;
+}
+.finder-page .questions-word {
+  position: absolute;
+  left: 129px;
+  top: 92px;
+  font-size: 49px;
+}
+.finder-page .rather-line::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 65px;
+  width: 105px;
+  height: 9px;
+  background: #ffd237;
+  border-radius: 100% 70% 70% 30%;
+  transform: rotate(-8deg);
+}
+.finder-page .hero p {
+  margin: 0 0 0 42px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.finder-page .hero-character {
+  position: absolute;
+  right: 0;
+  top: -2px;
+  width: 332px;
+  height: 214px;
+  object-fit: contain;
+}
+.finder-page .spark {
+  position: absolute;
+  line-height: 1;
+  color: #ffbc05;
+  font-size: 40px;
+}
+.finder-page .spark-one {
+  left: 442px;
+  top: 15px;
+  transform: rotate(12deg);
+}
+.finder-page .spark-two {
+  left: 398px;
+  top: 112px;
+  font-size: 25px;
+}
+.finder-page .spark-three {
+  left: 45px;
+  top: 21px;
+  color: #00a7ed;
+  font-size: 29px;
+}
+.finder-page .search-area {
+  position: relative;
+  margin: 0 43px;
+}
+.finder-page .search-form {
+  height: 61px;
+  padding: 10px 16px 10px 27px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border-radius: 21px;
+  box-shadow: 0 5px 15px #7a581313;
+}
+.finder-page .search-form input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  color: #111820;
+  background: transparent;
+  font-size: 13px;
+}
+.finder-page .search-form input::placeholder {
+  color: #1a2028;
+  opacity: 1;
+}
+.finder-page .search-form button {
+  height: 40px;
+  width: 106px;
+  border-radius: 17px;
+  font-size: 14px;
+}
+.finder-page .popular-searches {
+  height: 42px;
+  background: #fffaf3e8;
+  border-radius: 0 0 23px 23px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 11px;
+  box-shadow: 0 6px 12px #8a602010;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.finder-page .popular-searches strong {
+  font-size: 10px;
+  flex-shrink: 0;
+}
+.finder-page .popular-searches button {
+  padding: 4px 12px;
+  background: #fff;
+  border: 1px solid #f1eeea;
+  border-radius: 11px;
+  line-height: 1.1;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.finder-page .popular-searches button:hover {
+  background: #ffe6b0;
+}
+.finder-page .tiny-blue {
+  color: #469dc0;
+  font-size: 12px;
+}
+.finder-page .directory {
+  margin: 30px 21px 0;
+  display: grid;
+  grid-template-columns: 221px minmax(0, 1fr);
+  gap: 15px;
+  align-items: start;
+}
+.finder-page .filters {
+  position: relative;
+  min-height: 845px;
+  background: #fffdf9ed;
+  border-radius: 26px;
+  padding: 21px 21px 22px;
+  box-shadow: 0 8px 20px #745a1910;
+}
+.finder-page .filter-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.finder-page .filter-heading h2 {
+  font-size: 32px;
+  letter-spacing: -0.6px;
+}
+.finder-page .clear-link {
+  font-size: 13px;
+  color: #0098ee;
+  text-decoration: underline;
+  padding: 0;
+  font-weight: 600;
+}
+.finder-page .filter-group {
+  padding: 0 0 22px;
+  margin: 0 0 21px;
+  border-bottom: 1px solid #e8e4df;
+}
+.finder-page .filter-group h3 {
+  font-size: 19px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.finder-page .filter-group h3 span {
+  font: 22px Arial;
+  width: 25px;
+}
+.finder-page .filter-options {
+  display: flex;
+  gap: 8px 7px;
+  flex-wrap: wrap;
+}
+.finder-page .filter-options button {
+  font-weight: 600;
+  background: #fff;
+  border: 1px solid #d9d8d6;
+  border-radius: 11px;
+  padding: 6px 12px;
+  font-size: 13px;
+  line-height: 1.1;
+  box-shadow: 0 1px 0 #00000005;
+}
+.finder-page .filter-options .chosen,
+.finder-page .answer-options .chosen {
+  border-color: #00a7ef;
+  background: #dff4ff;
+  box-shadow: 0 0 0 1px #00a7ef;
+}
+.finder-page .filter-group:nth-of-type(1) {
+  min-height: 126px;
+}
+.finder-page .filter-group:nth-of-type(2) {
+  min-height: 125px;
+}
+.finder-page .filter-group:nth-of-type(3) {
+  min-height: 164px;
+}
+.finder-page .filter-group:nth-of-type(4) {
+  min-height: 88px;
+}
+.finder-page .filter-group:nth-of-type(5) {
+  border: 0;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+}
+.finder-page .apply-button {
+  width: 100%;
+  height: 58px;
+  border-radius: 17px;
+  font-size: 15px;
+  gap: 7px;
+}
+.finder-page .apply-rays {
+  position: absolute;
+  right: -1px;
+  bottom: 66px;
+  color: #ffc51a;
+  font-size: 55px;
+  font-weight: bold;
+  transform: rotate(-25deg);
+  pointer-events: none;
+}
+.finder-page .question-panel {
+  border-radius: 26px;
+  background: #fffdf9bb;
+  padding: 17px 7px 0;
+  min-height: 1170px;
+}
+.finder-page .panel-heading {
+  height: 72px;
+  padding: 0 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+.finder-page .panel-heading h2 {
+  font-size: 29px;
+  letter-spacing: -0.7px;
+  white-space: nowrap;
+  line-height: 1.25;
+}
+.finder-page .panel-heading h2 span {
+  font: 36px Arial;
+  display: inline-block;
+  transform: rotate(10deg);
+  margin-left: 8px;
+  vertical-align: baseline;
+}
+.finder-page .panel-heading p {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 6px;
+  white-space: nowrap;
+}
+.finder-page .view-actions {
+  display: flex;
+  gap: 9px;
+  position: absolute;
+  right: 11px;
+  top: 9px;
+}
+.finder-page .view-actions button {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border: 1px solid #eeedeb;
+  border-radius: 13px;
+  padding: 9px 11px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #fff;
+  box-shadow: 0 3px 8px #00000008;
+}
+.finder-page .view-actions .black {
+  background: #090f13;
+  color: white;
+  border-color: #30373a;
+}
+.finder-page .question-list {
+  display: grid;
+  gap: 9px;
+}
+.finder-page .question-card {
+  position: relative;
+  min-height: 101px;
+  padding: 12px;
+  display: flex;
+  gap: 18px;
+  background: #fffdfbf5;
+  border-radius: 16px;
+  box-shadow: 0 5px 12px #70582b0a;
+  border: 1px solid #fff;
+}
+.finder-page .question-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  margin-top: 2px;
+  width: 43px;
+  height: 44px;
+  flex-shrink: 0;
+  background: #daf2ff;
+  border-radius: 13px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #073477;
+}
+.finder-page .number-1,
+.finder-page .number-5,
+.finder-page .number-7 {
+  background: #ffede5;
+  color: #b6200c;
+}
+.finder-page .number-3,
+.finder-page .number-8 {
+  background: #ebe6ff;
+  color: #0b1430;
+}
+.finder-page .number-10 {
+  background: #e7f6f6;
+  color: #101a20;
+}
+.finder-page .number-6 {
+  color: #005fdd;
+}
+.finder-page .question-details {
+  position: relative;
+  z-index: 1;
+  width: 290px;
+}
+.finder-page .question-details h3 {
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 700;
+  max-width: 290px;
+}
+.finder-page .tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+.finder-page .tags span {
+  font-size: 11px;
+  padding: 2px 9px;
+  border-radius: 10px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+.finder-page .tags .neutral {
+  background: #f0f1f2;
+  color: #343c45;
+}
+.finder-page .tags .green {
+  background: #d7f7d9;
+  color: #17612c;
+}
+.finder-page .tags .blue {
+  background: #e0f1ff;
+  color: #234765;
+}
+.finder-page .tags .red {
+  background: #ffe9e6;
+  color: #9a342a;
+}
+.finder-page .tags .purple {
+  background: #ece6ff;
+  color: #403969;
+}
+.finder-page .question-stats {
+  font-size: 12px;
+  white-space: nowrap;
+  color: #515b69;
+  margin-top: 7px;
+  line-height: 1.15;
+}
+.finder-page .question-stats span {
+  font-size: 12px;
+}
+.finder-page .question-art {
+  position: absolute;
+  right: 108px;
+  bottom: 8px;
+  width: 111px;
+  height: 83px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.finder-page .bookmark {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  width: 18px;
+  height: 20px;
+}
+.finder-page .bookmark.saved {
+  color: #009bef;
+}
+.finder-page .bookmark.saved svg {
+  fill: #c1edff;
+}
+.finder-page .select-button {
+  position: absolute;
+  right: 12px;
+  bottom: 15px;
+  height: 36px;
+  width: 89px;
+  border-radius: 12px;
+  font-size: 13px;
+  gap: 5px;
+}
+.finder-page .is-selected {
+  border-color: #17adeb;
+  box-shadow: 0 0 0 1px #17adeb;
+}
+.finder-page .is-selected .select-button {
+  background: #08658b;
+}
+.finder-page .empty-state {
+  text-align: center;
+  padding: 55px 20px;
+  background: white;
+  border-radius: 16px;
+}
+.finder-page .empty-state h3 {
+  font-size: 24px;
+}
+.finder-page .empty-state p {
+  margin: 12px 0;
+}
+.finder-page .empty-state button {
+  border: 1px solid #00a7ef;
+  padding: 10px;
+  border-radius: 10px;
+}
+.finder-page .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 18px 21px 0 257px;
+  height: 29px;
+  font-size: 11px;
+}
+.finder-page .pagination button {
+  background: #fffaf4;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  min-width: 25px;
+  height: 28px;
+  font-weight: 600;
+}
+.finder-page .pagination button:first-child,
+.finder-page .pagination button:last-child {
+  padding: 0 11px;
+}
+.finder-page .pagination button:disabled {
+  color: #69717a;
+}
+.finder-page .pagination .current {
+  background: #0a1117;
+  color: white;
+  border-color: #31383d;
+}
+.finder-page .pagination span {
+  color: #b0a79a;
+}
+.finder-page .selection-bar {
+  height: 86px;
+  margin: 18px 21px 0;
+  background: #fff;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 26px;
+  box-shadow: 0 7px 17px #61759b10;
+}
+.finder-page .selection-bar h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+.finder-page .selection-bar p {
+  font-size: 12px;
+  color: #323b45;
+}
+.finder-page .selection-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.finder-page .selection-actions button {
+  height: 38px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  padding: 0 13px;
+  border: 1px solid #94979b;
+  border-radius: 13px;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.finder-page .selection-actions .black {
+  color: white;
+  background: #0a1013;
+  border-color: #34383b;
+  padding: 0 16px;
+}
+.finder-page .category-banner {
+  height: 94px;
+  margin: 21px 43px 24px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 22px;
+  background: linear-gradient(100deg, #fffdfc, #fff0ca 62%, #ffe6a3);
+  padding: 0 5px;
+  position: relative;
+}
+.finder-page .category-banner img {
+  width: 100px;
+  height: 87px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.finder-page .category-banner h2 {
+  font-size: 25px;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+.finder-page .category-banner p {
+  font-size: 14px;
+  margin-top: 5px;
+  white-space: nowrap;
+}
+.finder-page .category-banner .black {
+  position: absolute;
+  right: 5px;
+  top: 25px;
+  width: 178px;
+  height: 42px;
+  border-radius: 14px;
+  font-size: 13px;
+}
+.finder-page .notice {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90vw;
+  width: 440px;
+  background: #0b1a22;
+  color: white;
+  padding: 15px 40px 15px 18px;
+  z-index: 20;
+  border-radius: 14px;
+  box-shadow: 0 7px 35px #0004;
+  font-size: 15px;
+}
+.finder-page .notice button {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  color: white;
+  font-size: 25px;
+}
+.finder-page .play-dialog {
+  padding: 38px;
+  width: min(620px, 90vw);
+  border: 0;
+  border-radius: 25px;
+  background: #fff9ee;
+  color: #10151b;
+  text-align: center;
+  box-shadow: 0 10px 70px #0003;
+}
+.finder-page .play-dialog::backdrop {
+  background: #0b172bcc;
+  backdrop-filter: blur(5px);
+}
+.finder-page .close-dialog {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 28px;
+}
+.finder-page .demo-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #6d747c;
+}
+.finder-page .play-dialog h2 {
+  margin: 20px 0;
+  font-size: 32px;
+}
+.finder-page .answer-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.finder-page .answer-options button {
+  border: 2px solid #dad7d2;
+  padding: 22px 10px;
+  border-radius: 16px;
+  background: white;
+  font-size: 21px;
+  font-weight: 700;
+}
+.finder-page .demo-result {
+  margin-top: 20px;
+}
+.finder-page .next-question {
+  margin-top: 24px;
+  padding: 12px 20px;
+  border-radius: 13px;
+}
+.finder-page .presenter {
+  width: min(1000px, 95vw);
+  padding: 70px;
+}
+.finder-page .presenter h2 {
+  font-size: 48px;
+}
+@font-face {
+  font-family: FinderRoboto;
+  src: url("/finder/fonts/roboto-400.ttf");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: FinderRoboto;
+  src: url("/finder/fonts/roboto-500.ttf");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: FinderRoboto;
+  src: url("/finder/fonts/roboto-600.ttf");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: FinderRoboto;
+  src: url("/finder/fonts/roboto-700.ttf");
+  font-weight: 700;
+  font-display: swap;
+}
+.finder-page .question-details h3 {
+  font-family: FinderRoboto, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+.finder-page .question-card {
+  padding-top: 10px;
+  padding-bottom: 9px;
+  min-height: 101px;
+}
+.finder-page .tags {
+  margin-top: 4px;
+}
+.finder-page .question-stats {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.finder-page .question-stats img {
+  width: 18px;
+  height: 14px;
+  object-fit: contain;
+}
+.finder-page .filter-options button {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+.finder-page .filter-group h3 img {
+  width: 25px;
+  height: 26px;
+  object-fit: contain;
+}
+.finder-page .filter-group:nth-of-type(1) {
+  min-height: 126px;
+}
+.finder-page .filter-group:nth-of-type(2) {
+  min-height: 125px;
+}
+.finder-page .filter-group:nth-of-type(3) {
+  min-height: 164px;
+}
+.finder-page .filter-group:nth-of-type(4) {
+  min-height: 88px;
+}
+.finder-page .panel-heading .crown-art {
+  width: 47px;
+  height: 40px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-left: 6px;
+  margin-top: -8px;
+}
+.finder-page .panel-heading h2 {
+  font-size: 28px;
+}
+.finder-page .question-art {
+  mix-blend-mode: normal;
+}
+.finder-page .category-banner img {
+  mix-blend-mode: normal;
+}
+.finder-page .question-panel {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.finder-page .question-list .question-card:nth-child(8),
+.finder-page .question-list .question-card:nth-child(10) {
+  min-height: 96px;
+}
+.finder-page .selection-bar {
+  margin-top: 14px;
+}
+.finder-page .hero h1 {
+  font-size: 57px;
+}
+.finder-page .rather-line {
+  top: 42px;
+}
+.finder-page .find-word {
+  font-size: 52px;
+}
+.finder-page .questions-word {
+  top: 96px;
+  font-size: 48px;
+}
+.finder-page .hero p {
+  font-family: FinderRoboto, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+}
+.finder-page .category-banner {
+  gap: 4px;
+}
+.finder-page .category-banner h2 {
+  font-size: 24px;
+}
+.finder-page .filter-heading h2,
+.finder-page .panel-heading h2,
+.finder-page .category-banner h2 {
+  font-family: FinderFallback, Arial, sans-serif;
+}
+.finder-page .question-number {
+  margin-top: 3px;
+}
+@font-face {
+  font-family: FinderHand;
+  src: url("/finder/fonts/chewy.ttf");
+  font-weight: 400;
+  font-display: swap;
+}
+.finder-page h1,
+.finder-page h2,
+.finder-page .filter-group h3,
+.finder-page .filter-heading h2,
+.finder-page .panel-heading h2,
+.finder-page .category-banner h2 {
+  font-family: FinderHand, Arial, sans-serif;
+}
+.finder-page .filters {
+  padding-right: 16px;
+}
+.finder-page .filter-heading {
+  padding-right: 5px;
+}
+.finder-page .filter-options button {
+  padding-left: 9px;
+  padding-right: 9px;
+  font-size: 13px;
+}
+.finder-page .filter-group h3 {
+  font-size: 20px;
+}
+.finder-page .panel-heading h2 {
+  font-size: 30px;
+}
+.finder-page .hero h1 {
+  font-size: 61px;
+  letter-spacing: -1.1px;
+}
+.finder-page .find-word {
+  font-size: 53px;
+  top: 0;
+}
+.finder-page .questions-word {
+  font-size: 51px;
+  top: 96px;
+}
+.finder-page .rather-line {
+  top: 42px;
+}
+.finder-page .hero p {
+  font-size: 14px;
+  letter-spacing: -0.2px;
+}
+.finder-page .search-left-art {
+  left: 0;
+  top: 263px;
+  width: 43px;
+  height: 103px;
+}
+.finder-page .search-right-art {
+  right: 0;
+  top: 263px;
+  width: 43px;
+  height: 103px;
+}
+.finder-page .selection-left-art {
+  left: 0;
+  top: 1627px;
+  width: 21px;
+  height: 107px;
+}
+.finder-page .bottom-band-art {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 24px;
+}
+.finder-page .category-banner h2 {
+  font-size: 25px;
+}
+.finder-page .question-details h3 {
+  font-weight: 700;
+}
+.finder-page .question-card:nth-child(10) .question-details {
+  width: 305px;
+}
+.finder-page .question-card:nth-child(10) .question-details h3 {
+  max-width: 305px;
+  font-size: 12.5px;
+}
+.finder-page {
+  color-scheme: light;
+  --background: #fff9f0;
+  --foreground: #0a1015;
+  --surface: #fff;
+  --surface-muted: #f5eee4;
+  --border: #ded7ca;
+  --muted: #58616e;
+  --inverse: #111820;
+  --inverse-foreground: #fff;
+  --accent: #ad4811;
+  --accent-hover: #823809;
+  --accent-foreground: #fff;
+  font:
+    400 14px/1.3 FinderBody,
+    Arial,
+    sans-serif;
+}
+.finder-page img {
+  display: inline-block;
+}
+.finder-page .site-header .login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.finder-page .hero-character {
+  display: block;
+}
+.finder-page .view-actions a {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 13px;
+  padding: 9px 11px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.finder-page .popular-searches a {
+  padding: 4px 12px;
+  border: 1px solid #f1eeea;
+  background: white;
+  border-radius: 11px;
+}
+.finder-page .tags {
+  text-transform: capitalize;
+}
+.finder-page .stats-retry {
+  padding: 0;
+  color: #6f5143;
+  font-size: 11px;
+  text-decoration: underline;
+}
+.finder-page .question-details {
+  width: 270px;
+}
+.finder-page .question-card:nth-child(10) .question-details {
+  width: 270px;
+}
+.finder-page .question-card:nth-child(10) .question-details h3 {
+  font-size: 13px;
+  max-width: 270px;
+}
+.finder-page .question-card {
+  min-height: 101px;
+}
+.finder-page .question-list .question-card:nth-child(8),
+.finder-page .question-list .question-card:nth-child(10) {
+  min-height: 101px;
+}
+.finder-page button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.finder-page .pagination-entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.finder-page .pagination .pagination-entry button {
+  padding: 0 6px;
+}
+.finder-page .pagination {
+  scroll-margin-top: 20px;
+}
+.finder-page #questions {
+  scroll-margin-top: 20px;
+}
+.finder-page .finder-player {
+  padding: 24px 10px 10px;
+  width: min(840px, 95vw);
+  max-height: 90vh;
+  overflow: auto;
+  border: 0;
+  border-radius: 25px;
+  background: #fff9f0;
+  color: #111820;
+  box-shadow: 0 15px 70px #0003;
+}
+.finder-page .finder-player::backdrop {
+  background: #0b172bbb;
+  backdrop-filter: blur(4px);
+}
+.finder-page .finder-player h2 {
+  font-family: FinderHand, Arial, sans-serif;
+}
+.finder-page .finder-categories {
+  margin: 20px 43px;
+  padding: 18px 22px;
+  border-radius: 20px;
+  background: #fffdf7;
+  position: relative;
+}
+.finder-page .finder-categories h2 {
+  font-size: 26px;
+}
+.finder-page .finder-categories > div {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.finder-page .finder-categories a {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid #ddd3c4;
+  border-radius: 12px;
+  background: white;
+  font-size: 13px;
+  font-weight: 600;
+}
+.finder-page .finder-about {
+  position: relative;
+  margin: 18px 43px 30px;
+  padding: 14px 22px;
+  background: #fffaf2;
+  border-radius: 15px;
+  font-size: 13px;
+}
+.finder-page .finder-about summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.finder-page .finder-about p {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+.finder-page .finder-player .close-dialog {
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff8e5;
+  border: 1px solid #dccbad;
+}
+.finder-page .finder-player button {
+  border: 1px solid var(--border);
+}
+.finder-page .finder-player button[aria-pressed="true"] {
+  background: #ffe9ad;
+  border-color: #ab661a;
+}
+.finder-page .finder-player .close-dialog:hover {
+  background: #ffe4a0;
+}

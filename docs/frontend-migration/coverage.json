@@ -1,0 +1,75 @@
+{
+  "original_total": 13,
+  "approved_pass": [
+    {
+      "item": "hero",
+      "decision": "Preserve existing homepage implementation; no migration or deletion",
+      "evidence": "User corrected scope to Find Questions; source remains at original location"
+    },
+    {
+      "item": "tool-demo/arena",
+      "decision": "Preserve existing homepage implementation; no migration or deletion",
+      "evidence": "User corrected scope to Find Questions; source remains at original location"
+    },
+    {
+      "item": "filters",
+      "decision": "Preserve existing homepage implementation; no migration or deletion",
+      "evidence": "User corrected scope to Find Questions; source remains at original location"
+    },
+    {
+      "item": "question-directory",
+      "decision": "Preserve existing homepage implementation; no migration or deletion",
+      "evidence": "User corrected scope to Find Questions; source remains at original location"
+    },
+    {
+      "item": "category-explorer",
+      "decision": "Preserve existing homepage implementation; no migration or deletion",
+      "evidence": "User corrected scope to Find Questions; source remains at original location"
+    },
+    {
+      "item": "featured-collections",
+      "decision": "Preserve existing homepage implementation; no migration or deletion",
+      "evidence": "User corrected scope to Find Questions; source remains at original location"
+    },
+    {
+      "item": "editorial-guide",
+      "decision": "Preserve existing homepage implementation; no migration or deletion",
+      "evidence": "User corrected scope to Find Questions; source remains at original location"
+    },
+    {
+      "item": "features",
+      "decision": "Preserve existing homepage implementation; no migration or deletion",
+      "evidence": "User corrected scope to Find Questions; source remains at original location"
+    },
+    {
+      "item": "faq",
+      "decision": "Preserve existing homepage implementation; no migration or deletion",
+      "evidence": "User corrected scope to Find Questions; source remains at original location"
+    },
+    {
+      "item": "related-resources",
+      "decision": "Preserve existing homepage implementation; no migration or deletion",
+      "evidence": "User corrected scope to Find Questions; source remains at original location"
+    },
+    {
+      "item": "final-cta",
+      "decision": "Preserve existing homepage implementation; no migration or deletion",
+      "evidence": "User corrected scope to Find Questions; source remains at original location"
+    },
+    {
+      "item": "shared-header",
+      "decision": "Preserve existing homepage implementation; no migration or deletion",
+      "evidence": "User corrected scope to Find Questions; source remains at original location"
+    },
+    {
+      "item": "shared-footer",
+      "decision": "Preserve existing homepage implementation; no migration or deletion",
+      "evidence": "User corrected scope to Find Questions; source remains at original location"
+    }
+  ],
+  "deferred_waiting": [],
+  "confirmed_reject_delete": [],
+  "unreviewed_unknown": [],
+  "reconciled_total": 13,
+  "scope": "Find Questions at /find-questions only; / preserved after explicit user correction"
+}
