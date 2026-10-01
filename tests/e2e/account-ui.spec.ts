@@ -117,6 +117,11 @@ test("authenticated account route family stays responsive and preserves viewport
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1),
       ).toBe(true);
+      if (width >= 1440) {
+        const shell = await page.locator(".account-page").boundingBox();
+        if (!shell) throw new Error("Account page shell is not rendered");
+        expect(shell.width).toBeGreaterThanOrEqual(Math.min(width - 100, 1400));
+      }
       await page.screenshot({
         path: testInfo.outputPath(`account-${width}x${height}.png`),
         fullPage: false,
