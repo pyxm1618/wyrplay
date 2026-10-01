@@ -288,7 +288,7 @@ test("magic link confirmation is scanner-safe and single-use", async ({ page, re
   expect(verificationResponse.status()).toBeLessThan(400);
   expect((await verificationResponse.headerValue("set-cookie")) ?? "").toContain("session_token");
   await expect(page).toHaveURL(/\/account$/);
-  await expect(page.getByRole("heading", { name: /Welcome/ })).toBeVisible();
+  await expect(page.locator("#account-title")).toBeVisible();
 
   const replay = await request.post("/api/auth/magic-link/confirm", {
     headers: {
