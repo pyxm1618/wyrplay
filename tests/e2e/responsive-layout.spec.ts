@@ -133,6 +133,7 @@ test.describe("required responsive viewport matrix", () => {
             page.locator(".play-menu-panel").getByRole("link", { name: "Home" }),
           ).toBeVisible();
           await menu.click();
+          await expect(page.locator(".play-menu-panel")).toBeHidden();
         }
       }
 
@@ -204,6 +205,7 @@ test.describe("required responsive viewport matrix", () => {
             page.locator(".finder-menu nav").getByRole("link", { name: "Browse questions" }),
           ).toBeVisible();
           await menu.click();
+          await expect(page.locator(".finder-menu nav")).toBeHidden();
         }
       }
 
