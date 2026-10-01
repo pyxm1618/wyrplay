@@ -129,7 +129,9 @@ test.describe("required responsive viewport matrix", () => {
         await expect(menu).toBeVisible();
         if (width === 390 && height === 844) {
           await menu.click();
-          await expect(page.locator(".play-menu-panel").getByRole("link", { name: "Home" })).toBeVisible();
+          await expect(
+            page.locator(".play-menu-panel").getByRole("link", { name: "Home" }),
+          ).toBeVisible();
           await menu.click();
         }
       }
