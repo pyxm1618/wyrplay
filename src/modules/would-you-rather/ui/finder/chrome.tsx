@@ -27,6 +27,16 @@ export function FinderHeader({
       <button className="nav-search icon-button" aria-label="Focus search" onClick={onSearch}>
         <FinderIcon name="search" />
       </button>
+      <details className="finder-menu">
+        <summary aria-label="Open Find Questions menu">Menu</summary>
+        <nav aria-label="Mobile Find Questions navigation">
+          <Link href="/">Home</Link>
+          <a href="#questions">Browse questions</a>
+          <a href="#category-links">Categories</a>
+          <a href="#finder-about">About</a>
+          {authEnabled ? <Link href="/sign-in">Log in</Link> : null}
+        </nav>
+      </details>
       {authEnabled ? (
         <>
           <Link className="login" href="/sign-in">
