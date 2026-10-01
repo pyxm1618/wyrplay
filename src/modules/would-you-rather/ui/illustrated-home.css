@@ -1785,3 +1785,45 @@
 .illustrated-home .home-live-experience #play button[aria-pressed] span.font-mono {
   color: var(--foreground);
 }
+
+
+/* Responsive Web Product layer: separate full-bleed viewport from the illustrated design surface. */
+.illustrated-home.homepage {
+  max-width: none;
+  margin-inline: 0;
+  overflow: visible;
+  background: #fff9f0;
+}
+.illustrated-home .site-header,
+.illustrated-home .hero,
+.illustrated-home .section-shell,
+.illustrated-home .statistics,
+.illustrated-home .together-section,
+.illustrated-home .home-live-experience,
+.illustrated-home .home-reading {
+  width: min(100%, 1244.8px);
+  margin-inline: auto;
+}
+.illustrated-home .highlights-section {
+  box-shadow: 0 0 0 100vmax #071018;
+  clip-path: inset(0 -100vmax);
+}
+.home-main > :is(section, nav):not(.illustrated-home) {
+  max-width: none;
+  margin-inline: 0;
+}
+@media (min-width: 601px) {
+  .illustrated-home {
+    --home-hero-unit: clamp(1px, min(calc(100vw / 778), 0.14dvh), 1.6px);
+  }
+  .illustrated-home .hero {
+    --home-unit: var(--home-hero-unit);
+  }
+}
+@media (min-width: 601px) and (max-height: 900px) {
+  .illustrated-home .site-header {
+    height: clamp(60px, 9dvh, calc(var(--home-unit) * 60));
+    padding-top: clamp(7px, 1.2dvh, calc(var(--home-unit) * 7));
+    padding-bottom: clamp(8px, 1.4dvh, calc(var(--home-unit) * 10));
+  }
+}
