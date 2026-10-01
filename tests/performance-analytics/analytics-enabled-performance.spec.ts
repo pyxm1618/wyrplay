@@ -14,6 +14,24 @@ test("analytics-enabled homepage stays within release budgets", async ({ page })
     if (message.type() === "error") consoleErrors.push(message.text());
   });
 
+  // Vote persistence is validated in integration/E2E. Keep analytics performance
+  // focused on analytics overhead and the rendered homepage.
+  await page.route("**/api/wyr/vote?*", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        hasVoted: false,
+        selectedOption: null,
+        votesA: 0,
+        votesB: 0,
+        total: 0,
+        percentageA: 50,
+        percentageB: 50,
+      }),
+    });
+  });
+
   await page.route("https://www.googletagmanager.com/**", async (route) => {
     await route.fulfill({
       status: 200,
