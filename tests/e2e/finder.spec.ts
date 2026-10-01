@@ -1,5 +1,15 @@
 import { expect, test } from "@playwright/test";
 
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    try {
+      localStorage.setItem("creat-web:analytics-consent:v1", "denied");
+    } catch {
+      // ignore storage restrictions in unusual browser contexts
+    }
+  });
+});
+
 test("finder uses the source bank, draft filters, real pagination and persistent local saves", async ({
   page,
 }) => {
