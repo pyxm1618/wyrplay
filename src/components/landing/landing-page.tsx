@@ -150,19 +150,6 @@ function ToolDemoSection(props: Extract<LandingSection, { type: "tool-demo" }>) 
       {props.surface}
     </section>
   );
-  return (
-    <section className={sectionSpacing} aria-labelledby="tool-demo-title">
-      <div className={container}>
-        <h2 id="tool-demo-title" className={sectionTitle}>
-          {props.heading}
-        </h2>
-        <p className={leadText}>{props.body}</p>
-        <div className="mt-8 rounded-xl border border-border bg-surface p-6 shadow-sm sm:p-8">
-          {props.surface}
-        </div>
-      </div>
-    </section>
-  );
 }
 
 function UseCasesSection(props: Extract<LandingSection, { type: "use-cases" }>) {
