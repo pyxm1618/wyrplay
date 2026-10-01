@@ -574,13 +574,6 @@
   }
 }
 
-/* Keep absolute card actions above flexible question copy on widened desktop cards. */
-.finder-page .bookmark,
-.finder-page .select-button {
-  z-index: 3;
-}
-
-
 /* Keep interactive card controls above flexible question copy and decorative artwork. */
 .finder-page .question-art {
   z-index: 0;
