@@ -5,6 +5,7 @@ import { createDatabaseClient } from "@/platform/database/client";
 import { session } from "@/platform/database/schema";
 
 const TURNSTILE_TEST_TOKEN = "XXXX.DUMMY.TOKEN.XXXX";
+let nextMagicLinkConfirmIpOctet = 210;
 
 function extractConfirmationUrl(html: string): string {
   const match = html.match(/href="([^"]+)"/);
@@ -53,7 +54,10 @@ async function signInWithMagicLink(input: {
     `/api/test/emails/latest?to=${encodeURIComponent(input.email)}`,
   );
   const message = (await mailbox.json()) as { html: string };
-  const context = await input.browser.newContext();
+  const confirmIp = `203.0.113.${nextMagicLinkConfirmIpOctet++}`;
+  const context = await input.browser.newContext({
+    extraHTTPHeaders: { "x-real-ip": confirmIp },
+  });
   const page = await context.newPage();
   await page.goto(extractConfirmationUrl(message.html));
   await page.getByRole("button", { name: "Confirm sign in" }).click();
@@ -202,6 +206,7 @@ test("billing mutations require a fresh session", async ({ browser, request }) =
 });
 
 test("magic link confirmation is scanner-safe and single-use", async ({ page, request }) => {
+  await page.setExtraHTTPHeaders({ "x-real-ip": "203.0.113.250" });
   const email = `browser-${Date.now()}@example.com`;
   const externalRequests: string[] = [];
   const getRequests: string[] = [];
