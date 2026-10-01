@@ -12,8 +12,32 @@ const routes = ["/", "/would-you-rather-questions-for-kids"] as const;
 for (const route of routes) {
   test(`${route} stays within marketing release budgets`, async ({ page, request }) => {
     const consoleErrors: string[] = [];
+    const serverErrors: string[] = [];
     page.on("console", (message) => {
       if (message.type() === "error") consoleErrors.push(message.text());
+    });
+    page.on("response", (response) => {
+      if (response.status() >= 500) {
+        serverErrors.push(`${response.status()} ${response.url()}`);
+      }
+    });
+
+    // Live vote persistence is covered by integration/E2E suites. Keep this
+    // performance gate deterministic so it measures the redesigned page itself.
+    await page.route("**/api/wyr/vote?*", async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          hasVoted: false,
+          selectedOption: null,
+          votesA: 0,
+          votesB: 0,
+          total: 0,
+          percentageA: 50,
+          percentageB: 50,
+        }),
+      });
     });
 
     await page.addInitScript(() => {
@@ -127,6 +151,7 @@ for (const route of routes) {
       };
     });
 
+    expect(serverErrors).toEqual([]);
     expect(consoleErrors).toEqual([]);
     expect(metrics.cls).toBeLessThanOrEqual(0.1);
     expect(metrics.lcp).toBeGreaterThan(0);
