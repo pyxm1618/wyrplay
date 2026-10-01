@@ -7,6 +7,6 @@ export type SeoLandingConfig = {
 
 export const seoLandingPages: readonly SeoLandingConfig[] = [];
 
-export function seoLandingForRoute(_route: string): SeoLandingConfig | undefined {
-  return undefined;
+export function seoLandingForRoute(route: string): SeoLandingConfig | undefined {
+  return seoLandingPages.find((page) => page.route === route);
 }
