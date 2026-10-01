@@ -1,0 +1,251 @@
+{
+  "reference": "home-reconstruction/evidence/round-05/../reference.png",
+  "candidate": "home-reconstruction/evidence/round-05/candidate.png",
+  "reference_size": [
+    778,
+    2021
+  ],
+  "candidate_size_original": [
+    778,
+    2021
+  ],
+  "candidate_size_compared": [
+    778,
+    2021
+  ],
+  "resized": false,
+  "geometry_match": true,
+  "height_delta": 0,
+  "unmatched_tails": {},
+  "regions": [
+    {
+      "name": "full",
+      "size": [
+        778,
+        2021
+      ],
+      "rms_diff": 49.963,
+      "mean_abs_diff": 17.577,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-full-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-full-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-full-heatmap.png"
+    },
+    {
+      "name": "region-000",
+      "size": [
+        778,
+        60
+      ],
+      "rms_diff": 40.867,
+      "mean_abs_diff": 12.99,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-000-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-000-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-000-heatmap.png"
+    },
+    {
+      "name": "region-001",
+      "size": [
+        778,
+        572
+      ],
+      "rms_diff": 44.505,
+      "mean_abs_diff": 15.515,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-001-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-001-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-001-heatmap.png"
+    },
+    {
+      "name": "region-002",
+      "size": [
+        359,
+        190
+      ],
+      "rms_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-002-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-002-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-002-heatmap.png"
+    },
+    {
+      "name": "region-003",
+      "size": [
+        525,
+        180
+      ],
+      "rms_diff": 54.597,
+      "mean_abs_diff": 27.036,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-003-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-003-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-003-heatmap.png"
+    },
+    {
+      "name": "region-004",
+      "size": [
+        254,
+        51
+      ],
+      "rms_diff": 57.944,
+      "mean_abs_diff": 23.866,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-004-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-004-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-004-heatmap.png"
+    },
+    {
+      "name": "region-005",
+      "size": [
+        778,
+        218
+      ],
+      "rms_diff": 37.286,
+      "mean_abs_diff": 11.342,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-005-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-005-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-005-heatmap.png"
+    },
+    {
+      "name": "region-006",
+      "size": [
+        106,
+        135
+      ],
+      "rms_diff": 35.06,
+      "mean_abs_diff": 13.34,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-006-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-006-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-006-heatmap.png"
+    },
+    {
+      "name": "region-007",
+      "size": [
+        112,
+        135
+      ],
+      "rms_diff": 22.906,
+      "mean_abs_diff": 7.895,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-007-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-007-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-007-heatmap.png"
+    },
+    {
+      "name": "region-008",
+      "size": [
+        778,
+        240
+      ],
+      "rms_diff": 56.044,
+      "mean_abs_diff": 22.062,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-008-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-008-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-008-heatmap.png"
+    },
+    {
+      "name": "region-009",
+      "size": [
+        219,
+        157
+      ],
+      "rms_diff": 48.859,
+      "mean_abs_diff": 19.795,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-009-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-009-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-009-heatmap.png"
+    },
+    {
+      "name": "region-010",
+      "size": [
+        226,
+        157
+      ],
+      "rms_diff": 55.606,
+      "mean_abs_diff": 28.214,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-010-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-010-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-010-heatmap.png"
+    },
+    {
+      "name": "region-011",
+      "size": [
+        778,
+        140
+      ],
+      "rms_diff": 43.96,
+      "mean_abs_diff": 14.936,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-011-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-011-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-011-heatmap.png"
+    },
+    {
+      "name": "region-012",
+      "size": [
+        778,
+        290
+      ],
+      "rms_diff": 48.194,
+      "mean_abs_diff": 18.212,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-012-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-012-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-012-heatmap.png"
+    },
+    {
+      "name": "region-013",
+      "size": [
+        314,
+        237
+      ],
+      "rms_diff": 56.583,
+      "mean_abs_diff": 26.918,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-013-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-013-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-013-heatmap.png"
+    },
+    {
+      "name": "region-014",
+      "size": [
+        778,
+        73
+      ],
+      "rms_diff": 71.442,
+      "mean_abs_diff": 28.549,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-014-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-014-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-014-heatmap.png"
+    },
+    {
+      "name": "region-015",
+      "size": [
+        778,
+        273
+      ],
+      "rms_diff": 62.817,
+      "mean_abs_diff": 21.474,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-015-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-015-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-015-heatmap.png"
+    },
+    {
+      "name": "region-016",
+      "size": [
+        778,
+        155
+      ],
+      "rms_diff": 48.258,
+      "mean_abs_diff": 17.954,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-016-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-016-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-016-heatmap.png"
+    },
+    {
+      "name": "region-017",
+      "size": [
+        20,
+        8
+      ],
+      "rms_diff": 3.922,
+      "mean_abs_diff": 3.633,
+      "candidate": "home-reconstruction/evidence/round-05/report/verify-region-017-candidate.png",
+      "diff": "home-reconstruction/evidence/round-05/report/verify-region-017-diff.png",
+      "heatmap": "home-reconstruction/evidence/round-05/report/verify-region-017-heatmap.png"
+    }
+  ],
+  "note": "误差不等于还原度；字体、摄影和位置分别判断。尺寸一致也不代表视觉通过。"
+}

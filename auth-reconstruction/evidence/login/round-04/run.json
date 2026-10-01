@@ -1,0 +1,28 @@
+{
+  "reference": "../reference.png",
+  "candidate": "candidate.png",
+  "capture_metadata": "capture.json",
+  "expected": {
+    "url": "http://127.0.0.1:4189/",
+    "title": "WYRPLAY — Sign In",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "measurement_baseline": "../measurement-01/measurements.json",
+  "measurement_sha256": "1707b8f10815e6f1805aa550568fa9cea61f522f8d0844c5af85632ec21f140c",
+  "allow_height_difference": true,
+  "expected_assets": {},
+  "clips": [
+    "region-000:0,0,1024,90",
+    "region-001:198,658,654,730",
+    "region-002:246,854,564,92",
+    "region-003:246,970,564,95",
+    "region-004:434,710,184,63",
+    "region-005:510,100,514,660"
+  ]
+}

@@ -1,0 +1,1 @@
+Initial geometry baseline: first six cards grew about 4.36px each, pushing the selection bar down 48.875px. Sidebar chips wrapped into extra rows. The first interaction attempt failed because it read React state before the DOM update; assertions now wait for visible state. Original capture preserved; no successful interaction claim for this round.

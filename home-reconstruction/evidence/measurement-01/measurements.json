@@ -1,0 +1,564 @@
+{
+  "source": "/Users/milushangdi/Projects/wyrplay/home-reconstruction/evidence/reference.png",
+  "source_sha256": "c9fc6d2586cbd62a8ab47f337e731b5367f2d732aed918087b954d5b1f41e96e",
+  "source_size": [
+    778,
+    2021
+  ],
+  "css_mapping": {
+    "assumed_viewport_width": 778,
+    "css_per_image_pixel": 1.0,
+    "meaning": "实现约定，不证明参考图原始 DPR 或 CSS 视口"
+  },
+  "regions": [
+    {
+      "name": "header",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        0,
+        778,
+        60
+      ],
+      "normalized_box": [
+        0.0,
+        0.0,
+        1.0,
+        0.029688
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        0.0,
+        778.0,
+        60.0
+      ],
+      "selector": ".site-header",
+      "dom_comparable": true
+    },
+    {
+      "name": "hero",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        60,
+        778,
+        572
+      ],
+      "normalized_box": [
+        0.0,
+        0.029688,
+        1.0,
+        0.283028
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        60.0,
+        778.0,
+        572.0
+      ],
+      "selector": ".hero",
+      "dom_comparable": true
+    },
+    {
+      "name": "hero-lettering",
+      "kind": "box",
+      "box_type": "ink",
+      "box": [
+        210,
+        43,
+        359,
+        190
+      ],
+      "normalized_box": [
+        0.269923,
+        0.021277,
+        0.46144,
+        0.094013
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        210.0,
+        43.0,
+        359.0,
+        190.0
+      ],
+      "selector": ".hero-lettering",
+      "dom_comparable": false
+    },
+    {
+      "name": "choice-grid",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        125,
+        285,
+        525,
+        180
+      ],
+      "normalized_box": [
+        0.160668,
+        0.141019,
+        0.674807,
+        0.089065
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        125.0,
+        285.0,
+        525.0,
+        180.0
+      ],
+      "selector": ".choice-grid",
+      "dom_comparable": true
+    },
+    {
+      "name": "choice-cta",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        262,
+        511,
+        254,
+        51
+      ],
+      "normalized_box": [
+        0.336761,
+        0.252845,
+        0.326478,
+        0.025235
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        262.0,
+        511.0,
+        254.0,
+        51.0
+      ],
+      "selector": ".choice-cta",
+      "dom_comparable": true
+    },
+    {
+      "name": "categories",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        632,
+        778,
+        218
+      ],
+      "normalized_box": [
+        0.0,
+        0.312716,
+        1.0,
+        0.107867
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        632.0,
+        778.0,
+        218.0
+      ],
+      "selector": "#categories",
+      "dom_comparable": true
+    },
+    {
+      "name": "category-popular",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        33,
+        686,
+        106,
+        135
+      ],
+      "normalized_box": [
+        0.042416,
+        0.339436,
+        0.136247,
+        0.066799
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        33.0,
+        686.0,
+        106.0,
+        135.0
+      ],
+      "selector": ".category-card:nth-child(1)",
+      "dom_comparable": true,
+      "group": "categories"
+    },
+    {
+      "name": "category-funny",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        144,
+        686,
+        112,
+        135
+      ],
+      "normalized_box": [
+        0.18509,
+        0.339436,
+        0.143959,
+        0.066799
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        144.0,
+        686.0,
+        112.0,
+        135.0
+      ],
+      "selector": ".category-card:nth-child(2)",
+      "dom_comparable": true,
+      "group": "categories"
+    },
+    {
+      "name": "highlights",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        850,
+        778,
+        240
+      ],
+      "normalized_box": [
+        0.0,
+        0.420584,
+        1.0,
+        0.118753
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        850.0,
+        778.0,
+        240.0
+      ],
+      "selector": "#highlights",
+      "dom_comparable": true
+    },
+    {
+      "name": "highlight-first",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        41,
+        905,
+        219,
+        157
+      ],
+      "normalized_box": [
+        0.052699,
+        0.447798,
+        0.281491,
+        0.077684
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        41.0,
+        905.0,
+        219.0,
+        157.0
+      ],
+      "selector": ".highlight-card:nth-child(1)",
+      "dom_comparable": true,
+      "group": "highlights"
+    },
+    {
+      "name": "highlight-second",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        274,
+        905,
+        226,
+        157
+      ],
+      "normalized_box": [
+        0.352185,
+        0.447798,
+        0.290488,
+        0.077684
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        274.0,
+        905.0,
+        226.0,
+        157.0
+      ],
+      "selector": ".highlight-card:nth-child(2)",
+      "dom_comparable": true,
+      "group": "highlights"
+    },
+    {
+      "name": "how-it-works",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        1090,
+        778,
+        140
+      ],
+      "normalized_box": [
+        0.0,
+        0.539337,
+        1.0,
+        0.069273
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        1090.0,
+        778.0,
+        140.0
+      ],
+      "selector": "#how-it-works",
+      "dom_comparable": true
+    },
+    {
+      "name": "trending",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        1230,
+        778,
+        290
+      ],
+      "normalized_box": [
+        0.0,
+        0.60861,
+        1.0,
+        0.143493
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        1230.0,
+        778.0,
+        290.0
+      ],
+      "selector": "#trending",
+      "dom_comparable": true
+    },
+    {
+      "name": "create-panel",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        432,
+        1274,
+        314,
+        237
+      ],
+      "normalized_box": [
+        0.55527,
+        0.630381,
+        0.403599,
+        0.117269
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        432.0,
+        1274.0,
+        314.0,
+        237.0
+      ],
+      "selector": ".create-panel",
+      "dom_comparable": true
+    },
+    {
+      "name": "statistics",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        1520,
+        778,
+        73
+      ],
+      "normalized_box": [
+        0.0,
+        0.752103,
+        1.0,
+        0.036121
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        1520.0,
+        778.0,
+        73.0
+      ],
+      "selector": ".statistics",
+      "dom_comparable": true
+    },
+    {
+      "name": "community",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        1593,
+        778,
+        273
+      ],
+      "normalized_box": [
+        0.0,
+        0.788224,
+        1.0,
+        0.135082
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        1593.0,
+        778.0,
+        273.0
+      ],
+      "selector": "#community",
+      "dom_comparable": true
+    },
+    {
+      "name": "play-together",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        1866,
+        778,
+        155
+      ],
+      "normalized_box": [
+        0.0,
+        0.923305,
+        1.0,
+        0.076695
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        1866.0,
+        778.0,
+        155.0
+      ],
+      "selector": "#play-together",
+      "dom_comparable": true
+    },
+    {
+      "name": "cream",
+      "kind": "color",
+      "box_type": "sample",
+      "box": [
+        380,
+        620,
+        20,
+        8
+      ],
+      "normalized_box": [
+        0.488432,
+        0.306779,
+        0.025707,
+        0.003958
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        380.0,
+        620.0,
+        20.0,
+        8.0
+      ],
+      "dom_comparable": false,
+      "color": {
+        "median_hex": "#F9F0E6",
+        "rgb_channels": [
+          {
+            "median": 249.0,
+            "p10": 248.0,
+            "p90": 250.0
+          },
+          {
+            "median": 240.0,
+            "p10": 240.0,
+            "p90": 241.0
+          },
+          {
+            "median": 230.0,
+            "p10": 229.0,
+            "p90": 231.0
+          }
+        ],
+        "opaque_samples": 108,
+        "excluded_nonopaque": 0,
+        "sample_box": [
+          381,
+          621,
+          18,
+          6
+        ],
+        "max_channel_p90_minus_p10": 2.0,
+        "meaning": "局部像素统计，不证明原始色值、纯色或渐变模型"
+      }
+    }
+  ],
+  "groups": [
+    {
+      "name": "categories",
+      "members": [
+        "category-popular",
+        "category-funny"
+      ],
+      "x_gaps": [
+        5
+      ],
+      "median_width": 109.0,
+      "median_height": 135.0,
+      "median_gap": 5,
+      "y_spread": 0,
+      "width_spread": 6,
+      "meaning": "横向重复结构的描述统计，不自动把不等宽设计改成等宽"
+    },
+    {
+      "name": "highlights",
+      "members": [
+        "highlight-first",
+        "highlight-second"
+      ],
+      "x_gaps": [
+        14
+      ],
+      "median_width": 222.5,
+      "median_height": 157.0,
+      "median_gap": 14,
+      "y_spread": 0,
+      "width_spread": 7,
+      "meaning": "横向重复结构的描述统计，不自动把不等宽设计改成等宽"
+    }
+  ],
+  "vertical_scans": [],
+  "expected": {
+    "url": "http://127.0.0.1:4187/",
+    "title": "WYRPLAY — Would You Rather?",
+    "viewport": {
+      "width": 778,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "expected_assets": {},
+  "input_manifest_sha256": "b76e7a40844f626b56f8f0c3b5b954cf9d0042d1e45b4acacf16d99b1edba902"
+}

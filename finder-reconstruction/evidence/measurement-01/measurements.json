@@ -1,0 +1,515 @@
+{
+  "source": "/Users/milushangdi/Projects/wyrplay/finder-reconstruction/evidence/reference.png",
+  "source_sha256": "f4a16c734fabbd7a7ce75a7a1f9795f9786d8caa5530ce46912b2f4d070f38fb",
+  "source_size": [
+    849,
+    1852
+  ],
+  "css_mapping": {
+    "assumed_viewport_width": 849,
+    "css_per_image_pixel": 1.0,
+    "meaning": "实现约定，不证明参考图原始 DPR 或 CSS 视口"
+  },
+  "regions": [
+    {
+      "name": "header",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        42,
+        9,
+        777,
+        42
+      ],
+      "normalized_box": [
+        0.04947,
+        0.00486,
+        0.915194,
+        0.022678
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        42.0,
+        9.0,
+        777.0,
+        42.0
+      ],
+      "selector": ".site-header",
+      "dom_comparable": true
+    },
+    {
+      "name": "search",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        43,
+        263,
+        762,
+        61
+      ],
+      "normalized_box": [
+        0.050648,
+        0.142009,
+        0.897527,
+        0.032937
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        43.0,
+        263.0,
+        762.0,
+        61.0
+      ],
+      "selector": ".search-form",
+      "dom_comparable": true
+    },
+    {
+      "name": "popular-searches",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        43,
+        325,
+        762,
+        41
+      ],
+      "normalized_box": [
+        0.050648,
+        0.175486,
+        0.897527,
+        0.022138
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        43.0,
+        325.0,
+        762.0,
+        41.0
+      ],
+      "selector": ".popular-searches",
+      "dom_comparable": true
+    },
+    {
+      "name": "filters",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        21,
+        396,
+        221,
+        845
+      ],
+      "normalized_box": [
+        0.024735,
+        0.213823,
+        0.260306,
+        0.456263
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        21.0,
+        396.0,
+        221.0,
+        845.0
+      ],
+      "selector": ".filters",
+      "dom_comparable": true
+    },
+    {
+      "name": "question-panel",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        257,
+        396,
+        570,
+        1170
+      ],
+      "normalized_box": [
+        0.302709,
+        0.213823,
+        0.671378,
+        0.631749
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        257.0,
+        396.0,
+        570.0,
+        1170.0
+      ],
+      "selector": ".question-panel",
+      "dom_comparable": true
+    },
+    {
+      "name": "selection-bar",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        21,
+        1627,
+        807,
+        86
+      ],
+      "normalized_box": [
+        0.024735,
+        0.87851,
+        0.95053,
+        0.046436
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        21.0,
+        1627.0,
+        807.0,
+        86.0
+      ],
+      "selector": ".selection-bar",
+      "dom_comparable": true
+    },
+    {
+      "name": "category-banner",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        43,
+        1734,
+        763,
+        94
+      ],
+      "normalized_box": [
+        0.050648,
+        0.936285,
+        0.898704,
+        0.050756
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        43.0,
+        1734.0,
+        763.0,
+        94.0
+      ],
+      "selector": ".category-banner",
+      "dom_comparable": true
+    },
+    {
+      "name": "card-1",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        265,
+        485,
+        555,
+        101
+      ],
+      "normalized_box": [
+        0.312132,
+        0.261879,
+        0.65371,
+        0.054536
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        265.0,
+        485.0,
+        555.0,
+        101.0
+      ],
+      "selector": ".question-card:nth-child(1)",
+      "dom_comparable": true,
+      "group": "cards"
+    },
+    {
+      "name": "card-2",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        265,
+        595,
+        555,
+        101
+      ],
+      "normalized_box": [
+        0.312132,
+        0.321274,
+        0.65371,
+        0.054536
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        265.0,
+        595.0,
+        555.0,
+        101.0
+      ],
+      "selector": ".question-card:nth-child(2)",
+      "dom_comparable": true,
+      "group": "cards"
+    },
+    {
+      "name": "card-3",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        265,
+        705,
+        555,
+        101
+      ],
+      "normalized_box": [
+        0.312132,
+        0.38067,
+        0.65371,
+        0.054536
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        265.0,
+        705.0,
+        555.0,
+        101.0
+      ],
+      "selector": ".question-card:nth-child(3)",
+      "dom_comparable": true,
+      "group": "cards"
+    },
+    {
+      "name": "card-4",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        265,
+        815,
+        555,
+        101
+      ],
+      "normalized_box": [
+        0.312132,
+        0.440065,
+        0.65371,
+        0.054536
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        265.0,
+        815.0,
+        555.0,
+        101.0
+      ],
+      "selector": ".question-card:nth-child(4)",
+      "dom_comparable": true,
+      "group": "cards"
+    },
+    {
+      "name": "card-5",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        265,
+        925,
+        555,
+        101
+      ],
+      "normalized_box": [
+        0.312132,
+        0.49946,
+        0.65371,
+        0.054536
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        265.0,
+        925.0,
+        555.0,
+        101.0
+      ],
+      "selector": ".question-card:nth-child(5)",
+      "dom_comparable": true,
+      "group": "cards"
+    },
+    {
+      "name": "card-6",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        265,
+        1035,
+        555,
+        101
+      ],
+      "normalized_box": [
+        0.312132,
+        0.558855,
+        0.65371,
+        0.054536
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        265.0,
+        1035.0,
+        555.0,
+        101.0
+      ],
+      "selector": ".question-card:nth-child(6)",
+      "dom_comparable": true,
+      "group": "cards"
+    },
+    {
+      "name": "card-7",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        265,
+        1147,
+        555,
+        101
+      ],
+      "normalized_box": [
+        0.312132,
+        0.61933,
+        0.65371,
+        0.054536
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        265.0,
+        1147.0,
+        555.0,
+        101.0
+      ],
+      "selector": ".question-card:nth-child(7)",
+      "dom_comparable": true,
+      "group": "cards"
+    },
+    {
+      "name": "card-8",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        265,
+        1258,
+        555,
+        96
+      ],
+      "normalized_box": [
+        0.312132,
+        0.679266,
+        0.65371,
+        0.051836
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        265.0,
+        1258.0,
+        555.0,
+        96.0
+      ],
+      "selector": ".question-card:nth-child(8)",
+      "dom_comparable": true,
+      "group": "cards"
+    },
+    {
+      "name": "card-9",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        265,
+        1368,
+        555,
+        96
+      ],
+      "normalized_box": [
+        0.312132,
+        0.738661,
+        0.65371,
+        0.051836
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        265.0,
+        1368.0,
+        555.0,
+        96.0
+      ],
+      "selector": ".question-card:nth-child(9)",
+      "dom_comparable": true,
+      "group": "cards"
+    },
+    {
+      "name": "card-10",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        265,
+        1478,
+        555,
+        96
+      ],
+      "normalized_box": [
+        0.312132,
+        0.798056,
+        0.65371,
+        0.051836
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        265.0,
+        1478.0,
+        555.0,
+        96.0
+      ],
+      "selector": ".question-card:nth-child(10)",
+      "dom_comparable": true,
+      "group": "cards"
+    }
+  ],
+  "groups": [
+    {
+      "name": "cards",
+      "members": [
+        "card-1",
+        "card-2",
+        "card-3",
+        "card-4",
+        "card-5",
+        "card-6",
+        "card-7",
+        "card-8",
+        "card-9",
+        "card-10"
+      ],
+      "x_gaps": [
+        -555,
+        -555,
+        -555,
+        -555,
+        -555,
+        -555,
+        -555,
+        -555,
+        -555
+      ],
+      "median_width": 555.0,
+      "median_height": 101.0,
+      "median_gap": -555,
+      "y_spread": 993,
+      "width_spread": 0,
+      "meaning": "横向重复结构的描述统计，不自动把不等宽设计改成等宽"
+    }
+  ],
+  "vertical_scans": [],
+  "expected": {
+    "url": "http://127.0.0.1:4188/",
+    "title": "WYRPLAY — Find Questions",
+    "viewport": {
+      "width": 849,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "expected_assets": {},
+  "input_manifest_sha256": "b693ff5f4ed81ac72ad423ffebb21ed5f33223f90104e31709509f655b77d1c0"
+}

@@ -1,0 +1,1196 @@
+{
+  "status": "截图身份与渲染前提通过；视觉仍需复核",
+  "manifest": "/Users/milushangdi/Projects/wyrplay/finder-reconstruction/evidence/round-05/run.json",
+  "capture": {
+    "measurement_sha256": "ee1c015bf250ef8a2f85faaef6669aa1efc37062135f7bb6f5b264c58a854efa",
+    "url": "http://127.0.0.1:4191/",
+    "title": "WYRPLAY — Find Questions",
+    "viewport": {
+      "width": 849,
+      "height": 900
+    },
+    "dpr": 1,
+    "scroll": {
+      "x": 0,
+      "y": 0
+    },
+    "document_height": 1852,
+    "fonts_ready": true,
+    "images_ready": true,
+    "document_overflow_x": false,
+    "captured_at": "2026-10-01T01:55:21.340Z",
+    "elements": [
+      {
+        "name": "header",
+        "selector": ".site-header",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          42,
+          9,
+          777,
+          42
+        ],
+        "text": "HomeFind QuestionsPopularCategoriesLeaderboardsAboutLog inSign up",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "11px",
+          "lineHeight": "14.3px",
+          "fontWeight": "700",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "search",
+        "selector": ".search-form",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          43,
+          263,
+          763,
+          61
+        ],
+        "text": "Search",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgb(255, 255, 255)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "popular-searches",
+        "selector": ".popular-searches",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          43,
+          324,
+          763,
+          42
+        ],
+        "text": "🔥 Popular searches:for kidsfunnyrelationshipsdeepschoolpartywould you rather foodtravel...↔",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "11px",
+          "lineHeight": "14.3px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 250, 243, 0.91)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "filters",
+        "selector": ".filters",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          21,
+          396,
+          221,
+          845
+        ],
+        "text": "FiltersClear allBy AgeKidsTeensAdults7–910–12By GroupFriendsCouplesFamilyCoworkersBy OccasionClassroomPartyRoad TripDate NightDinnerBy StyleFunnyDeepWeirdDifficultyEasyMediumHardApply Filters 〟",
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 249, 0.93)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "question-panel",
+        "selector": ".question-panel",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          257,
+          396,
+          571,
+          1170
+        ],
+        "text": "Popular QuestionsShowing a useful default pool before any filter is selected.Browse listPlay one-by-one01Would you rather be able to pause time or rewind ten minutes?PopularFriendsHard 12.4k people · 62% choose ASelect02Would you rather have a pet dragon or a pet dinosaur?KidsFunnyFamily-safe 8.7k p",
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 249, 0.733)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "selection-bar",
+        "selector": ".selection-bar",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          21,
+          1627,
+          807,
+          86
+        ],
+        "text": "0 selected questionsSelection is optional; the filtered pool itself can be used.Play these questions PresentPrint / Customize",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgb(255, 255, 255)"
+        },
+        "viewport_intersects": false
+      },
+      {
+        "name": "category-banner",
+        "selector": ".category-banner",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          43,
+          1734,
+          763,
+          94
+        ],
+        "text": "Still can’t find the right questions?Try our category browsing and discover more fun Would You Rather questions.Browse all categories",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "viewport_intersects": false
+      },
+      {
+        "name": "card-1",
+        "selector": ".question-card:nth-child(1)",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          265,
+          485,
+          555,
+          101
+        ],
+        "text": "01Would you rather be able to pause time or rewind ten minutes?PopularFriendsHard 12.4k people · 62% choose ASelect",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "card-2",
+        "selector": ".question-card:nth-child(2)",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          265,
+          595,
+          555,
+          101
+        ],
+        "text": "02Would you rather have a pet dragon or a pet dinosaur?KidsFunnyFamily-safe 8.7k people · 55% choose ASelect",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "card-3",
+        "selector": ".question-card:nth-child(3)",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          265,
+          705,
+          555,
+          101
+        ],
+        "text": "03Would you rather give up music for a year or movies for a year?TeensFriends 15.2k people · 48% choose ASelect",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "card-4",
+        "selector": ".question-card:nth-child(4)",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          265,
+          815,
+          555,
+          101
+        ],
+        "text": "04Would you rather speak every language or play every instrument?ClassroomThoughtful 6.1k people · 67% choose ASelect",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "card-5",
+        "selector": ".question-card:nth-child(5)",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          265,
+          925,
+          555,
+          101
+        ],
+        "text": "05Would you rather always arrive 20 minutes early or 10 minutes late?AdultsCoworkers 9.3k people · 58% choose ASelect",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "viewport_intersects": false
+      },
+      {
+        "name": "card-6",
+        "selector": ".question-card:nth-child(6)",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          265,
+          1035,
+          555,
+          101
+        ],
+        "text": "06Would you rather live by the beach or in the mountains?TravelLifestyle 11.6k people · 52% choose ASelect",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "viewport_intersects": false
+      },
+      {
+        "name": "card-7",
+        "selector": ".question-card:nth-child(7)",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          265,
+          1145,
+          555,
+          101
+        ],
+        "text": "07Would you rather have summer forever or winter forever?KidsFunny 10.9k people · 49% choose ASelect",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "viewport_intersects": false
+      },
+      {
+        "name": "card-8",
+        "selector": ".question-card:nth-child(8)",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          265,
+          1255,
+          555,
+          96
+        ],
+        "text": "08Would you rather read minds or see the future?DeepThoughtful 7.4k people · 61% choose ASelect",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "viewport_intersects": false
+      },
+      {
+        "name": "card-9",
+        "selector": ".question-card:nth-child(9)",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          265,
+          1360,
+          555,
+          101
+        ],
+        "text": "09Would you rather never get tired or never be hungry?AdultsWeird 13.1k people · 54% choose ASelect",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "viewport_intersects": false
+      },
+      {
+        "name": "card-10",
+        "selector": ".question-card:nth-child(10)",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          265,
+          1470,
+          555,
+          96
+        ],
+        "text": "10Would you rather explore space or the deep ocean?TravelAdventure 9.8k people · 56% choose ASelect",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "viewport_intersects": false
+      }
+    ],
+    "assets": {},
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "section_positions": [],
+  "comparison": "finder-reconstruction/evidence/round-05/report/verify-metrics.json",
+  "geometry": {
+    "measurement_sha256": "ee1c015bf250ef8a2f85faaef6669aa1efc37062135f7bb6f5b264c58a854efa",
+    "complete": true,
+    "unavailable_regions": [],
+    "regions": [
+      {
+        "name": "header",
+        "selector": ".site-header",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          42,
+          9,
+          777,
+          42
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "11px",
+          "lineHeight": "14.3px",
+          "fontWeight": "700",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "reference_css_box": [
+          42.0,
+          9.0,
+          777.0,
+          42.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "search",
+        "selector": ".search-form",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          43,
+          263,
+          763,
+          61
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgb(255, 255, 255)"
+        },
+        "reference_css_box": [
+          43.0,
+          263.0,
+          762.0,
+          61.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "max_abs_delta_css": 1.0
+      },
+      {
+        "name": "popular-searches",
+        "selector": ".popular-searches",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          43,
+          324,
+          763,
+          42
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "11px",
+          "lineHeight": "14.3px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 250, 243, 0.91)"
+        },
+        "reference_css_box": [
+          43.0,
+          325.0,
+          762.0,
+          41.0
+        ],
+        "delta_css": [
+          0.0,
+          -1.0,
+          1.0,
+          1.0
+        ],
+        "max_abs_delta_css": 1.0
+      },
+      {
+        "name": "filters",
+        "selector": ".filters",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          21,
+          396,
+          221,
+          845
+        ],
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 249, 0.93)"
+        },
+        "reference_css_box": [
+          21.0,
+          396.0,
+          221.0,
+          845.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "question-panel",
+        "selector": ".question-panel",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          257,
+          396,
+          571,
+          1170
+        ],
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 249, 0.733)"
+        },
+        "reference_css_box": [
+          257.0,
+          396.0,
+          570.0,
+          1170.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "max_abs_delta_css": 1.0
+      },
+      {
+        "name": "selection-bar",
+        "selector": ".selection-bar",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          21,
+          1627,
+          807,
+          86
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgb(255, 255, 255)"
+        },
+        "reference_css_box": [
+          21.0,
+          1627.0,
+          807.0,
+          86.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "category-banner",
+        "selector": ".category-banner",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          43,
+          1734,
+          763,
+          94
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "reference_css_box": [
+          43.0,
+          1734.0,
+          763.0,
+          94.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "card-1",
+        "selector": ".question-card:nth-child(1)",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          265,
+          485,
+          555,
+          101
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "reference_css_box": [
+          265.0,
+          485.0,
+          555.0,
+          101.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "card-2",
+        "selector": ".question-card:nth-child(2)",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          265,
+          595,
+          555,
+          101
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "reference_css_box": [
+          265.0,
+          595.0,
+          555.0,
+          101.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "card-3",
+        "selector": ".question-card:nth-child(3)",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          265,
+          705,
+          555,
+          101
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "reference_css_box": [
+          265.0,
+          705.0,
+          555.0,
+          101.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "card-4",
+        "selector": ".question-card:nth-child(4)",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          265,
+          815,
+          555,
+          101
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "reference_css_box": [
+          265.0,
+          815.0,
+          555.0,
+          101.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "card-5",
+        "selector": ".question-card:nth-child(5)",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          265,
+          925,
+          555,
+          101
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "reference_css_box": [
+          265.0,
+          925.0,
+          555.0,
+          101.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "card-6",
+        "selector": ".question-card:nth-child(6)",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          265,
+          1035,
+          555,
+          101
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "reference_css_box": [
+          265.0,
+          1035.0,
+          555.0,
+          101.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "card-7",
+        "selector": ".question-card:nth-child(7)",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          265,
+          1145,
+          555,
+          101
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "reference_css_box": [
+          265.0,
+          1147.0,
+          555.0,
+          101.0
+        ],
+        "delta_css": [
+          0.0,
+          -2.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 2.0
+      },
+      {
+        "name": "card-8",
+        "selector": ".question-card:nth-child(8)",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          265,
+          1255,
+          555,
+          96
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "reference_css_box": [
+          265.0,
+          1258.0,
+          555.0,
+          96.0
+        ],
+        "delta_css": [
+          0.0,
+          -3.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 3.0
+      },
+      {
+        "name": "card-9",
+        "selector": ".question-card:nth-child(9)",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          265,
+          1360,
+          555,
+          101
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "reference_css_box": [
+          265.0,
+          1368.0,
+          555.0,
+          96.0
+        ],
+        "delta_css": [
+          0.0,
+          -8.0,
+          0.0,
+          5.0
+        ],
+        "max_abs_delta_css": 8.0
+      },
+      {
+        "name": "card-10",
+        "selector": ".question-card:nth-child(10)",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          265,
+          1470,
+          555,
+          96
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "Condensed, Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "18.2px",
+          "fontWeight": "400",
+          "color": "rgb(8, 14, 19)",
+          "backgroundColor": "rgba(255, 253, 251, 0.96)"
+        },
+        "reference_css_box": [
+          265.0,
+          1478.0,
+          555.0,
+          96.0
+        ],
+        "delta_css": [
+          0.0,
+          -8.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 8.0
+      }
+    ],
+    "note": "偏差是 CSS 像素，不是还原率；布局可测量不证明未遮挡、字体正确或交互可用。",
+    "changes": [
+      {
+        "name": "header",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "search",
+        "before": 1.0,
+        "after": 1.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "popular-searches",
+        "before": 1.0,
+        "after": 1.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "filters",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "question-panel",
+        "before": 1.0,
+        "after": 1.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "selection-bar",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "category-banner",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "card-1",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "card-2",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "card-3",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "card-4",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "card-5",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "card-6",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "card-7",
+        "before": 2.0,
+        "after": 2.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "card-8",
+        "before": 3.0,
+        "after": 3.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "card-9",
+        "before": 8.0,
+        "after": 8.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "card-10",
+        "before": 8.0,
+        "after": 8.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      }
+    ]
+  }
+}

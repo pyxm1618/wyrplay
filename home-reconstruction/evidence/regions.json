@@ -1,0 +1,25 @@
+{
+  "reference": "reference.png",
+  "css_viewport_width": 778,
+  "expected": {"url": "http://127.0.0.1:4187/", "title": "WYRPLAY — Would You Rather?", "viewport": {"width": 778, "height": 900}, "dpr": 1, "full_page": true, "screenshot_scale": "css"},
+  "regions": [
+    {"name": "header", "box": [0, 0, 778, 60], "selector": ".site-header"},
+    {"name": "hero", "box": [0, 60, 778, 572], "selector": ".hero"},
+    {"name": "hero-lettering", "box": [210, 43, 359, 190], "box_type": "ink", "selector": ".hero-lettering"},
+    {"name": "choice-grid", "box": [125, 285, 525, 180], "selector": ".choice-grid"},
+    {"name": "choice-cta", "box": [262, 511, 254, 51], "selector": ".choice-cta"},
+    {"name": "categories", "box": [0, 632, 778, 218], "selector": "#categories"},
+    {"name": "category-popular", "box": [33, 686, 106, 135], "group": "categories", "selector": ".category-card:nth-child(1)"},
+    {"name": "category-funny", "box": [144, 686, 112, 135], "group": "categories", "selector": ".category-card:nth-child(2)"},
+    {"name": "highlights", "box": [0, 850, 778, 240], "selector": "#highlights"},
+    {"name": "highlight-first", "box": [41, 905, 219, 157], "group": "highlights", "selector": ".highlight-card:nth-child(1)"},
+    {"name": "highlight-second", "box": [274, 905, 226, 157], "group": "highlights", "selector": ".highlight-card:nth-child(2)"},
+    {"name": "how-it-works", "box": [0, 1090, 778, 140], "selector": "#how-it-works"},
+    {"name": "trending", "box": [0, 1230, 778, 290], "selector": "#trending"},
+    {"name": "create-panel", "box": [432, 1274, 314, 237], "selector": ".create-panel"},
+    {"name": "statistics", "box": [0, 1520, 778, 73], "selector": ".statistics"},
+    {"name": "community", "box": [0, 1593, 778, 273], "selector": "#community"},
+    {"name": "play-together", "box": [0, 1866, 778, 155], "selector": "#play-together"},
+    {"name": "cream", "kind": "color", "box": [380, 620, 20, 8], "inset": 1}
+  ]
+}

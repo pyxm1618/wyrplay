@@ -1,0 +1,75 @@
+{
+  "status": "pass",
+  "round": "round-04",
+  "results": [
+    {
+      "mode": "login",
+      "url": "http://127.0.0.1:4189/",
+      "actualFonts": [
+        {
+          "familyName": "Chewy",
+          "postScriptName": "Chewy-Regular",
+          "isCustomFont": true,
+          "glyphCount": 7
+        }
+      ],
+      "responsive": [
+        {
+          "width": 390,
+          "scrollWidth": 390
+        },
+        {
+          "width": 700,
+          "scrollWidth": 700
+        },
+        {
+          "width": 1280,
+          "scrollWidth": 1280
+        }
+      ]
+    },
+    {
+      "mode": "signup",
+      "url": "http://127.0.0.1:4189/sign-up/",
+      "actualFonts": [
+        {
+          "familyName": "Chewy",
+          "postScriptName": "Chewy-Regular",
+          "isCustomFont": true,
+          "glyphCount": 19
+        }
+      ],
+      "responsive": [
+        {
+          "width": 390,
+          "scrollWidth": 390
+        },
+        {
+          "width": 700,
+          "scrollWidth": 700
+        },
+        {
+          "width": 1280,
+          "scrollWidth": 1280
+        }
+      ]
+    }
+  ],
+  "checks": [
+    "static export routes",
+    "images decoded",
+    "actual custom heading font",
+    "Google demo boundary",
+    "Magic Link local email form",
+    "search and empty result",
+    "navigation demo boundary",
+    "Escape and close",
+    "route switching",
+    "three responsive widths per page",
+    "zero API requests",
+    "zero runtime errors"
+  ],
+  "errors": [],
+  "failures": [],
+  "apiRequests": []
+}

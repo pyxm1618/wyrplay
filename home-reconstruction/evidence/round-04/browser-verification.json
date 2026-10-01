@@ -1,0 +1,55 @@
+{
+  "status": "pass",
+  "captureRound": "round-04",
+  "viewport": {
+    "width": 778,
+    "height": 900
+  },
+  "documentHeight": 2021,
+  "actualFonts": [
+    {
+      "familyName": "Roboto Condensed",
+      "postScriptName": "RobotoCondensed-Bold",
+      "isCustomFont": true,
+      "glyphCount": 31
+    }
+  ],
+  "responsive": [
+    {
+      "width": 778,
+      "scrollWidth": 778,
+      "height": 2021,
+      "sections": 8
+    },
+    {
+      "width": 1280,
+      "scrollWidth": 1280,
+      "height": 3234,
+      "sections": 8
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "height": 3405,
+      "sections": 8
+    }
+  ],
+  "checks": [
+    "real production static export",
+    "local images decoded",
+    "actual custom font rendering",
+    "choice dialog and local selection",
+    "dialog Escape and close",
+    "question preview",
+    "local search including empty result",
+    "six categories",
+    "three viewport sizes without horizontal overflow",
+    "eight main sections",
+    "no runtime errors",
+    "no failed resources",
+    "zero API/XHR/fetch requests"
+  ],
+  "apiRequests": [],
+  "errors": [],
+  "failures": []
+}

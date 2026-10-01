@@ -1,0 +1,73 @@
+{
+  "measurement_sha256": "9b84b6bed034be064ceeb5222f22f557ed1e70281d33a7b4e0d1c9515a194273",
+  "targets": [
+    {
+      "name": "header",
+      "selector": ".site-header"
+    },
+    {
+      "name": "hero",
+      "selector": ".hero"
+    },
+    {
+      "name": "hero-lettering",
+      "selector": ".hero-lettering"
+    },
+    {
+      "name": "choice-grid",
+      "selector": ".choice-grid"
+    },
+    {
+      "name": "choice-cta",
+      "selector": ".choice-cta"
+    },
+    {
+      "name": "categories",
+      "selector": "#categories"
+    },
+    {
+      "name": "category-popular",
+      "selector": ".category-card:nth-child(1)"
+    },
+    {
+      "name": "category-funny",
+      "selector": ".category-card:nth-child(2)"
+    },
+    {
+      "name": "highlights",
+      "selector": "#highlights"
+    },
+    {
+      "name": "highlight-first",
+      "selector": ".highlight-card:nth-child(1)"
+    },
+    {
+      "name": "highlight-second",
+      "selector": ".highlight-card:nth-child(2)"
+    },
+    {
+      "name": "how-it-works",
+      "selector": "#how-it-works"
+    },
+    {
+      "name": "trending",
+      "selector": "#trending"
+    },
+    {
+      "name": "create-panel",
+      "selector": ".create-panel"
+    },
+    {
+      "name": "statistics",
+      "selector": ".statistics"
+    },
+    {
+      "name": "community",
+      "selector": "#community"
+    },
+    {
+      "name": "play-together",
+      "selector": "#play-together"
+    }
+  ]
+}

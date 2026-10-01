@@ -7,3 +7,12 @@ docs
 README.md
 drizzle/meta
 素材
+
+# Standalone prototypes own their formatting and build configuration.
+auth-reconstruction
+home-reconstruction
+finder-reconstruction
+leaderboard-reconstruction
+
+# Independent design prototypes have their own verification scripts.
+.artifacts

@@ -1,0 +1,924 @@
+{
+  "status": "截图身份与渲染前提通过；视觉仍需复核",
+  "manifest": "/Users/milushangdi/Projects/wyrplay/leaderboard-reconstruction/evidence/round-03/run.json",
+  "capture": {
+    "measurement_sha256": "cb2c61fb2d858049adbd8a07e470146e14b456cdf75cea16c7a7c089b3e8c18d",
+    "url": "http://127.0.0.1:4188/",
+    "title": "WYRPLAY — Leaderboards",
+    "viewport": {
+      "width": 868,
+      "height": 900
+    },
+    "dpr": 1,
+    "scroll": {
+      "x": 0,
+      "y": 0
+    },
+    "document_height": 1812,
+    "fonts_ready": true,
+    "images_ready": true,
+    "document_overflow_x": false,
+    "captured_at": "2026-10-01T01:54:45.848Z",
+    "elements": [
+      {
+        "name": "header",
+        "selector": ".site-header",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          28,
+          0,
+          812,
+          61
+        ],
+        "text": "HomeQuestionsCategoriesLeaderboardsCreateLog inSign up",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "hero",
+        "selector": ".hero",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          28,
+          61,
+          812,
+          280
+        ],
+        "text": "Best Would You RatherQuestionsDiscover the most popular, thought-provoking and fun Would You Rather questions, based on real votes and community feedback.✦✦∿",
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "category-tabs",
+        "selector": ".category-tabs",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          28,
+          341,
+          812,
+          68
+        ],
+        "text": "Most PopularMost votes overallTrendingRising fastMost DiscussedMost commentsEditor's PicksOur favoritesAll TimeTop of all time",
+        "computed": {
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(255, 255, 255, 0.863)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "sidebar",
+        "selector": ".sidebar",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          28,
+          429,
+          197,
+          833
+        ],
+        "text": "LeaderboardsSee the best questionsin different waysMost PopularTrendingMost DiscussedEditor's PicksAll TimeThis MonthThis WeekCreate a QuestionGot a great idea?Share it with the world!＋Create Now",
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(255, 255, 255, 0.95)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "top-three",
+        "selector": ".podium",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          247,
+          531,
+          590,
+          296
+        ],
+        "text": "Always have a dogas a pet or alwayshave a cat as a pet?AnimalsFun412K☷2.3KTravel to the pastor travel to thefuture?TravelDeep521K☷3.1KEat only pizza foreveror never eat pizzaagain?FoodFunny398K☷1.8K",
+        "computed": {
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "dog-card",
+        "selector": ".question-card.dog",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          247,
+          554,
+          183.359375,
+          273
+        ],
+        "text": "Always have a dogas a pet or alwayshave a cat as a pet?AnimalsFun412K☷2.3K",
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "travel-card",
+        "selector": ".question-card.travel",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          444.359375,
+          531,
+          193.4375,
+          296
+        ],
+        "text": "Travel to the pastor travel to thefuture?TravelDeep521K☷3.1K",
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "pizza-card",
+        "selector": ".question-card.pizza",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          651.796875,
+          554,
+          185.203125,
+          273
+        ],
+        "text": "Eat only pizza foreveror never eat pizzaagain?FoodFunny398K☷1.8K",
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "top-ten",
+        "selector": ".ranking-list",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          242,
+          890,
+          602,
+          459
+        ],
+        "text": "4Be rich but unknown or famous but not rich?LifeDeep321K☷1.6K5Live in a big city or a small town?LifestyleTravel287K☷1.4K6Give up music for a year or movies for a year?EntertainmentThoughtful256K☷1.2K7Always arrive 20 minutes early or 10 minutes late?Daily LifeFunny243K☷1.1K8Speak every language or ",
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(255, 255, 255, 0.96)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "pagination",
+        "selector": ".pagination",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          343.953125,
+          1367,
+          431.078125,
+          31
+        ],
+        "text": "← Previous12345…24Next",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "13px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "viewport_intersects": false
+      },
+      {
+        "name": "stats",
+        "selector": ".stats-panel",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          28,
+          1421,
+          403.875,
+          181
+        ],
+        "text": "Leaderboard Stats2.3M+Total votes190K+Comments100K+Players?50K+Questions",
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(255, 255, 255, 0.93)"
+        },
+        "viewport_intersects": false
+      },
+      {
+        "name": "hall",
+        "selector": ".hall-panel",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          447.875,
+          1421,
+          392.125,
+          165
+        ],
+        "text": "Hall of FameLegendary questions that never get old.•••",
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(255, 255, 255, 0.93)"
+        },
+        "viewport_intersects": false
+      },
+      {
+        "name": "footer-cta",
+        "selector": ".footer-cta",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          28,
+          1628,
+          812,
+          119
+        ],
+        "text": "Think yours can make the list?Create and share your own would you rather question.Get votes, spark discussions, and maybe see it on the leaderboard!Create a Question ★",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "viewport_intersects": false
+      }
+    ],
+    "assets": {},
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "section_positions": [],
+  "comparison": "leaderboard-reconstruction/evidence/round-03/report/verify-metrics.json",
+  "geometry": {
+    "measurement_sha256": "cb2c61fb2d858049adbd8a07e470146e14b456cdf75cea16c7a7c089b3e8c18d",
+    "complete": true,
+    "unavailable_regions": [],
+    "regions": [
+      {
+        "name": "header",
+        "selector": ".site-header",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          28,
+          0,
+          812,
+          61
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "reference_css_box": [
+          28.0,
+          0.0,
+          812.0,
+          61.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "hero",
+        "selector": ".hero",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          28,
+          61,
+          812,
+          280
+        ],
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "reference_css_box": [
+          28.0,
+          61.0,
+          812.0,
+          280.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "category-tabs",
+        "selector": ".category-tabs",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          28,
+          341,
+          812,
+          68
+        ],
+        "computed": {
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(255, 255, 255, 0.863)"
+        },
+        "reference_css_box": [
+          28.0,
+          341.0,
+          812.0,
+          68.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "sidebar",
+        "selector": ".sidebar",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          28,
+          429,
+          197,
+          833
+        ],
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(255, 255, 255, 0.95)"
+        },
+        "reference_css_box": [
+          27.0,
+          429.0,
+          197.0,
+          833.0
+        ],
+        "delta_css": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 1.0
+      },
+      {
+        "name": "top-three",
+        "selector": ".podium",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          247,
+          531,
+          590,
+          296
+        ],
+        "computed": {
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "reference_css_box": [
+          247.0,
+          531.0,
+          590.0,
+          296.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "dog-card",
+        "selector": ".question-card.dog",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          247,
+          554,
+          183.359375,
+          273
+        ],
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "reference_css_box": [
+          247.0,
+          554.0,
+          183.0,
+          273.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.359,
+          0.0
+        ],
+        "max_abs_delta_css": 0.359
+      },
+      {
+        "name": "travel-card",
+        "selector": ".question-card.travel",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          444.359375,
+          531,
+          193.4375,
+          296
+        ],
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "reference_css_box": [
+          444.0,
+          531.0,
+          193.0,
+          296.0
+        ],
+        "delta_css": [
+          0.359,
+          0.0,
+          0.438,
+          0.0
+        ],
+        "max_abs_delta_css": 0.438
+      },
+      {
+        "name": "pizza-card",
+        "selector": ".question-card.pizza",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          651.796875,
+          554,
+          185.203125,
+          273
+        ],
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "reference_css_box": [
+          651.0,
+          554.0,
+          185.0,
+          273.0
+        ],
+        "delta_css": [
+          0.797,
+          0.0,
+          0.203,
+          0.0
+        ],
+        "max_abs_delta_css": 0.797
+      },
+      {
+        "name": "top-ten",
+        "selector": ".ranking-list",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          242,
+          890,
+          602,
+          459
+        ],
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(255, 255, 255, 0.96)"
+        },
+        "reference_css_box": [
+          242.0,
+          890.0,
+          602.0,
+          459.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max_abs_delta_css": 0.0
+      },
+      {
+        "name": "pagination",
+        "selector": ".pagination",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          343.953125,
+          1367,
+          431.078125,
+          31
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "13px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "reference_css_box": [
+          344.0,
+          1367.0,
+          428.0,
+          31.0
+        ],
+        "delta_css": [
+          -0.047,
+          0.0,
+          3.078,
+          0.0
+        ],
+        "max_abs_delta_css": 3.078
+      },
+      {
+        "name": "stats",
+        "selector": ".stats-panel",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          28,
+          1421,
+          403.875,
+          181
+        ],
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(255, 255, 255, 0.93)"
+        },
+        "reference_css_box": [
+          28.0,
+          1421.0,
+          404.0,
+          181.0
+        ],
+        "delta_css": [
+          0.0,
+          0.0,
+          -0.125,
+          0.0
+        ],
+        "max_abs_delta_css": 0.125
+      },
+      {
+        "name": "hall",
+        "selector": ".hall-panel",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          447.875,
+          1421,
+          392.125,
+          165
+        ],
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(255, 255, 255, 0.93)"
+        },
+        "reference_css_box": [
+          448.0,
+          1421.0,
+          392.0,
+          165.0
+        ],
+        "delta_css": [
+          -0.125,
+          0.0,
+          0.125,
+          0.0
+        ],
+        "max_abs_delta_css": 0.125
+      },
+      {
+        "name": "footer-cta",
+        "selector": ".footer-cta",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          28,
+          1628,
+          812,
+          119
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+          "fontSize": "14px",
+          "lineHeight": "normal",
+          "fontWeight": "400",
+          "color": "rgb(6, 19, 36)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "reference_css_box": [
+          29.0,
+          1628.0,
+          811.0,
+          119.0
+        ],
+        "delta_css": [
+          -1.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "max_abs_delta_css": 1.0
+      }
+    ],
+    "note": "偏差是 CSS 像素，不是还原率；布局可测量不证明未遮挡、字体正确或交互可用。",
+    "changes": [
+      {
+        "name": "header",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "hero",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "category-tabs",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "sidebar",
+        "before": 1.0,
+        "after": 1.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "top-three",
+        "before": 3.0,
+        "after": 0.0,
+        "delta": -3.0,
+        "change": "reduced"
+      },
+      {
+        "name": "dog-card",
+        "before": 1.328,
+        "after": 0.359,
+        "delta": -0.969,
+        "change": "reduced"
+      },
+      {
+        "name": "travel-card",
+        "before": 1.484,
+        "after": 0.438,
+        "delta": -1.046,
+        "change": "reduced"
+      },
+      {
+        "name": "pizza-card",
+        "before": 2.812,
+        "after": 0.797,
+        "delta": -2.015,
+        "change": "reduced"
+      },
+      {
+        "name": "top-ten",
+        "before": 0.0,
+        "after": 0.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "pagination",
+        "before": 16.047,
+        "after": 3.078,
+        "delta": -12.969,
+        "change": "reduced"
+      },
+      {
+        "name": "stats",
+        "before": 0.125,
+        "after": 0.125,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "hall",
+        "before": 0.125,
+        "after": 0.125,
+        "delta": 0.0,
+        "change": "unchanged"
+      },
+      {
+        "name": "footer-cta",
+        "before": 1.0,
+        "after": 1.0,
+        "delta": 0.0,
+        "change": "unchanged"
+      }
+    ]
+  }
+}

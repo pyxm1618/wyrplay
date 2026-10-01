@@ -1,0 +1,147 @@
+{
+  "reference": "reference.png",
+  "css_viewport_width": 868,
+  "expected": {
+    "url": "http://127.0.0.1:4188/",
+    "title": "WYRPLAY \u2014 Leaderboards",
+    "viewport": {
+      "width": 868,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "regions": [
+    {
+      "name": "header",
+      "box": [
+        28,
+        0,
+        812,
+        61
+      ],
+      "selector": ".site-header"
+    },
+    {
+      "name": "hero",
+      "box": [
+        28,
+        61,
+        812,
+        280
+      ],
+      "selector": ".hero"
+    },
+    {
+      "name": "category-tabs",
+      "box": [
+        28,
+        341,
+        812,
+        68
+      ],
+      "selector": ".category-tabs"
+    },
+    {
+      "name": "sidebar",
+      "box": [
+        27,
+        429,
+        197,
+        833
+      ],
+      "selector": ".sidebar"
+    },
+    {
+      "name": "top-three",
+      "box": [
+        247,
+        531,
+        590,
+        296
+      ],
+      "selector": ".podium"
+    },
+    {
+      "name": "dog-card",
+      "box": [
+        247,
+        554,
+        183,
+        273
+      ],
+      "selector": ".question-card.dog"
+    },
+    {
+      "name": "travel-card",
+      "box": [
+        444,
+        531,
+        193,
+        296
+      ],
+      "selector": ".question-card.travel"
+    },
+    {
+      "name": "pizza-card",
+      "box": [
+        651,
+        554,
+        185,
+        273
+      ],
+      "selector": ".question-card.pizza"
+    },
+    {
+      "name": "top-ten",
+      "box": [
+        242,
+        890,
+        602,
+        459
+      ],
+      "selector": ".ranking-list"
+    },
+    {
+      "name": "pagination",
+      "box": [
+        344,
+        1367,
+        428,
+        31
+      ],
+      "selector": ".pagination"
+    },
+    {
+      "name": "stats",
+      "box": [
+        28,
+        1421,
+        404,
+        181
+      ],
+      "selector": ".stats-panel"
+    },
+    {
+      "name": "hall",
+      "box": [
+        448,
+        1421,
+        392,
+        165
+      ],
+      "selector": ".hall-panel"
+    },
+    {
+      "name": "footer-cta",
+      "box": [
+        29,
+        1628,
+        811,
+        119
+      ],
+      "selector": ".footer-cta"
+    }
+  ]
+}

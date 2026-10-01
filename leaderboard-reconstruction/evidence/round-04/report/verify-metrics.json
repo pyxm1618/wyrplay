@@ -1,0 +1,191 @@
+{
+  "reference": "leaderboard-reconstruction/evidence/round-04/../reference.png",
+  "candidate": "leaderboard-reconstruction/evidence/round-04/candidate.png",
+  "reference_size": [
+    868,
+    1812
+  ],
+  "candidate_size_original": [
+    868,
+    1812
+  ],
+  "candidate_size_compared": [
+    868,
+    1812
+  ],
+  "resized": false,
+  "geometry_match": true,
+  "height_delta": 0,
+  "unmatched_tails": {},
+  "regions": [
+    {
+      "name": "full",
+      "size": [
+        868,
+        1812
+      ],
+      "rms_diff": 47.258,
+      "mean_abs_diff": 16.475,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-full-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-full-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-full-heatmap.png"
+    },
+    {
+      "name": "region-000",
+      "size": [
+        812,
+        61
+      ],
+      "rms_diff": 56.192,
+      "mean_abs_diff": 20.421,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-region-000-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-region-000-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-region-000-heatmap.png"
+    },
+    {
+      "name": "region-001",
+      "size": [
+        812,
+        280
+      ],
+      "rms_diff": 69.095,
+      "mean_abs_diff": 27.053,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-region-001-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-region-001-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-region-001-heatmap.png"
+    },
+    {
+      "name": "region-002",
+      "size": [
+        812,
+        68
+      ],
+      "rms_diff": 50.293,
+      "mean_abs_diff": 18.426,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-region-002-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-region-002-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-region-002-heatmap.png"
+    },
+    {
+      "name": "region-003",
+      "size": [
+        197,
+        833
+      ],
+      "rms_diff": 44.594,
+      "mean_abs_diff": 15.904,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-region-003-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-region-003-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-region-003-heatmap.png"
+    },
+    {
+      "name": "region-004",
+      "size": [
+        590,
+        296
+      ],
+      "rms_diff": 46.359,
+      "mean_abs_diff": 18.589,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-region-004-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-region-004-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-region-004-heatmap.png"
+    },
+    {
+      "name": "region-005",
+      "size": [
+        183,
+        273
+      ],
+      "rms_diff": 50.047,
+      "mean_abs_diff": 20.573,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-region-005-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-region-005-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-region-005-heatmap.png"
+    },
+    {
+      "name": "region-006",
+      "size": [
+        193,
+        296
+      ],
+      "rms_diff": 48.125,
+      "mean_abs_diff": 19.764,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-region-006-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-region-006-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-region-006-heatmap.png"
+    },
+    {
+      "name": "region-007",
+      "size": [
+        185,
+        273
+      ],
+      "rms_diff": 46.552,
+      "mean_abs_diff": 19.182,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-region-007-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-region-007-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-region-007-heatmap.png"
+    },
+    {
+      "name": "region-008",
+      "size": [
+        602,
+        459
+      ],
+      "rms_diff": 40.191,
+      "mean_abs_diff": 14.094,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-region-008-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-region-008-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-region-008-heatmap.png"
+    },
+    {
+      "name": "region-009",
+      "size": [
+        428,
+        31
+      ],
+      "rms_diff": 50.579,
+      "mean_abs_diff": 18.171,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-region-009-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-region-009-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-region-009-heatmap.png"
+    },
+    {
+      "name": "region-010",
+      "size": [
+        404,
+        181
+      ],
+      "rms_diff": 35.502,
+      "mean_abs_diff": 9.818,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-region-010-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-region-010-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-region-010-heatmap.png"
+    },
+    {
+      "name": "region-011",
+      "size": [
+        392,
+        165
+      ],
+      "rms_diff": 51.747,
+      "mean_abs_diff": 20.229,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-region-011-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-region-011-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-region-011-heatmap.png"
+    },
+    {
+      "name": "region-012",
+      "size": [
+        811,
+        119
+      ],
+      "rms_diff": 62.679,
+      "mean_abs_diff": 29.193,
+      "candidate": "leaderboard-reconstruction/evidence/round-04/report/verify-region-012-candidate.png",
+      "diff": "leaderboard-reconstruction/evidence/round-04/report/verify-region-012-diff.png",
+      "heatmap": "leaderboard-reconstruction/evidence/round-04/report/verify-region-012-heatmap.png"
+    }
+  ],
+  "note": "误差不等于还原度；字体、摄影和位置分别判断。尺寸一致也不代表视觉通过。"
+}

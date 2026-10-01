@@ -1,0 +1,197 @@
+{
+  "reference": "reference.png",
+  "css_viewport_width": 849,
+  "expected": {
+    "url": "http://127.0.0.1:4191/",
+    "title": "WYRPLAY \u2014 Find Questions",
+    "viewport": {
+      "width": 849,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "regions": [
+    {
+      "name": "header",
+      "box": [
+        42,
+        9,
+        777,
+        42
+      ],
+      "selector": ".site-header"
+    },
+    {
+      "name": "search",
+      "box": [
+        43,
+        263,
+        762,
+        61
+      ],
+      "selector": ".search-form"
+    },
+    {
+      "name": "popular-searches",
+      "box": [
+        43,
+        325,
+        762,
+        41
+      ],
+      "selector": ".popular-searches"
+    },
+    {
+      "name": "filters",
+      "box": [
+        21,
+        396,
+        221,
+        845
+      ],
+      "selector": ".filters"
+    },
+    {
+      "name": "question-panel",
+      "box": [
+        257,
+        396,
+        570,
+        1170
+      ],
+      "selector": ".question-panel"
+    },
+    {
+      "name": "selection-bar",
+      "box": [
+        21,
+        1627,
+        807,
+        86
+      ],
+      "selector": ".selection-bar"
+    },
+    {
+      "name": "category-banner",
+      "box": [
+        43,
+        1734,
+        763,
+        94
+      ],
+      "selector": ".category-banner"
+    },
+    {
+      "name": "card-1",
+      "box": [
+        265,
+        485,
+        555,
+        101
+      ],
+      "selector": ".question-card:nth-child(1)",
+      "group": "cards"
+    },
+    {
+      "name": "card-2",
+      "box": [
+        265,
+        595,
+        555,
+        101
+      ],
+      "selector": ".question-card:nth-child(2)",
+      "group": "cards"
+    },
+    {
+      "name": "card-3",
+      "box": [
+        265,
+        705,
+        555,
+        101
+      ],
+      "selector": ".question-card:nth-child(3)",
+      "group": "cards"
+    },
+    {
+      "name": "card-4",
+      "box": [
+        265,
+        815,
+        555,
+        101
+      ],
+      "selector": ".question-card:nth-child(4)",
+      "group": "cards"
+    },
+    {
+      "name": "card-5",
+      "box": [
+        265,
+        925,
+        555,
+        101
+      ],
+      "selector": ".question-card:nth-child(5)",
+      "group": "cards"
+    },
+    {
+      "name": "card-6",
+      "box": [
+        265,
+        1035,
+        555,
+        101
+      ],
+      "selector": ".question-card:nth-child(6)",
+      "group": "cards"
+    },
+    {
+      "name": "card-7",
+      "box": [
+        265,
+        1147,
+        555,
+        101
+      ],
+      "selector": ".question-card:nth-child(7)",
+      "group": "cards"
+    },
+    {
+      "name": "card-8",
+      "box": [
+        265,
+        1258,
+        555,
+        96
+      ],
+      "selector": ".question-card:nth-child(8)",
+      "group": "cards"
+    },
+    {
+      "name": "card-9",
+      "box": [
+        265,
+        1368,
+        555,
+        96
+      ],
+      "selector": ".question-card:nth-child(9)",
+      "group": "cards"
+    },
+    {
+      "name": "card-10",
+      "box": [
+        265,
+        1478,
+        555,
+        96
+      ],
+      "selector": ".question-card:nth-child(10)",
+      "group": "cards"
+    }
+  ]
+}

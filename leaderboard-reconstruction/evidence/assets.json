@@ -1,0 +1,250 @@
+{
+  "original_total": 19,
+  "approved": 19,
+  "deferred": 0,
+  "confirmed_reject": 0,
+  "unreviewed": 0,
+  "assets": [
+    {
+      "name": "logo",
+      "source": "evidence/reference.png",
+      "box": [
+        41,
+        7,
+        170,
+        53
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": false
+    },
+    {
+      "name": "hero-art",
+      "source": "evidence/reference.png",
+      "box": [
+        511,
+        50,
+        841,
+        343
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": true
+    },
+    {
+      "name": "dog-cat",
+      "source": "evidence/reference.png",
+      "box": [
+        257,
+        555,
+        422,
+        668
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": false
+    },
+    {
+      "name": "travel",
+      "source": "evidence/reference.png",
+      "box": [
+        456,
+        554,
+        626,
+        667
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": false
+    },
+    {
+      "name": "pizza",
+      "source": "evidence/reference.png",
+      "box": [
+        661,
+        555,
+        825,
+        668
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": false
+    },
+    {
+      "name": "wealth",
+      "source": "evidence/reference.png",
+      "box": [
+        299,
+        899,
+        362,
+        949
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": false
+    },
+    {
+      "name": "city",
+      "source": "evidence/reference.png",
+      "box": [
+        299,
+        963,
+        362,
+        1014
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": false
+    },
+    {
+      "name": "music",
+      "source": "evidence/reference.png",
+      "box": [
+        299,
+        1028,
+        362,
+        1078
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": false
+    },
+    {
+      "name": "clock",
+      "source": "evidence/reference.png",
+      "box": [
+        299,
+        1093,
+        362,
+        1144
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": false
+    },
+    {
+      "name": "languages",
+      "source": "evidence/reference.png",
+      "box": [
+        299,
+        1158,
+        362,
+        1209
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": false
+    },
+    {
+      "name": "seasons",
+      "source": "evidence/reference.png",
+      "box": [
+        299,
+        1223,
+        362,
+        1274
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": false
+    },
+    {
+      "name": "space",
+      "source": "evidence/reference.png",
+      "box": [
+        299,
+        1288,
+        362,
+        1339
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": false
+    },
+    {
+      "name": "bulb",
+      "source": "evidence/reference.png",
+      "box": [
+        42,
+        1029,
+        210,
+        1195
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": false
+    },
+    {
+      "name": "footer-trophy",
+      "source": "evidence/reference.png",
+      "box": [
+        55,
+        1639,
+        164,
+        1735
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": true
+    },
+    {
+      "name": "sidebar-trophy",
+      "source": "evidence/reference.png",
+      "box": [
+        48,
+        446,
+        105,
+        497
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": false
+    },
+    {
+      "name": "medal-1",
+      "source": "evidence/reference.png",
+      "box": [
+        510,
+        500,
+        572,
+        570
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": true
+    },
+    {
+      "name": "medal-2",
+      "source": "evidence/reference.png",
+      "box": [
+        307,
+        516,
+        371,
+        576
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": true
+    },
+    {
+      "name": "medal-3",
+      "source": "evidence/reference.png",
+      "box": [
+        711,
+        516,
+        776,
+        578
+      ],
+      "state": "approved",
+      "method": "screenshot crop",
+      "transparent": true
+    },
+    {
+      "name": "edge-decoration",
+      "source": "evidence/reference.png",
+      "state": "approved",
+      "method": "decorative edge extraction",
+      "transparent": true
+    }
+  ]
+}

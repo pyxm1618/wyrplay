@@ -1,0 +1,1 @@
+Removed all source card UI from character crops, removed cloud/logo contamination, retained ordinary static page navigation. Final browser verification passed. Card geometry matches; button deviations are subpixel. Fonts and some decorative contours remain approximate.

@@ -1,0 +1,1 @@
+New identity/port baseline on 4191 after port 4188 returned a different prototype. Removed neighboring text from illustration crops, extracted original category icons, refined card height and sidebar chips. Interaction suite passed. Some card positions differ by 2–8px.

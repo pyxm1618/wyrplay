@@ -1,0 +1,57 @@
+{
+  "measurement_sha256": "cb2c61fb2d858049adbd8a07e470146e14b456cdf75cea16c7a7c089b3e8c18d",
+  "targets": [
+    {
+      "name": "header",
+      "selector": ".site-header"
+    },
+    {
+      "name": "hero",
+      "selector": ".hero"
+    },
+    {
+      "name": "category-tabs",
+      "selector": ".category-tabs"
+    },
+    {
+      "name": "sidebar",
+      "selector": ".sidebar"
+    },
+    {
+      "name": "top-three",
+      "selector": ".podium"
+    },
+    {
+      "name": "dog-card",
+      "selector": ".question-card.dog"
+    },
+    {
+      "name": "travel-card",
+      "selector": ".question-card.travel"
+    },
+    {
+      "name": "pizza-card",
+      "selector": ".question-card.pizza"
+    },
+    {
+      "name": "top-ten",
+      "selector": ".ranking-list"
+    },
+    {
+      "name": "pagination",
+      "selector": ".pagination"
+    },
+    {
+      "name": "stats",
+      "selector": ".stats-panel"
+    },
+    {
+      "name": "hall",
+      "selector": ".hall-panel"
+    },
+    {
+      "name": "footer-cta",
+      "selector": ".footer-cta"
+    }
+  ]
+}

@@ -14,3 +14,9 @@ test-results
 .gstack/
 .vercel
 .env*
+
+# Local UI validation runtime may contain test sessions and database configuration.
+.artifacts/
+# Reproducible calibration rasters; keep references, candidates and JSON/SVG reports.
+**/report/verify-*.png
+**/measurement*/annotations.png

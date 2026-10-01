@@ -1,0 +1,299 @@
+{
+  "original_total": 18,
+  "states": {
+    "approved": 18,
+    "deferred": 0,
+    "rejected": 0,
+    "unreviewed": 0
+  },
+  "assets": [
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u767b\u5f55\u9875.png",
+      "asset": "public/assets/login-logo.png",
+      "crop": [
+        60,
+        12,
+        240,
+        81
+      ],
+      "size": [
+        180,
+        69
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u767b\u5f55\u9875.png",
+      "asset": "public/assets/login-hero-art.png",
+      "crop": [
+        510,
+        100,
+        1024,
+        760
+      ],
+      "size": [
+        514,
+        660
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u767b\u5f55\u9875.png",
+      "asset": "public/assets/login-top-left-cloud.png",
+      "crop": [
+        0,
+        81,
+        160,
+        237
+      ],
+      "size": [
+        160,
+        156
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u767b\u5f55\u9875.png",
+      "asset": "public/assets/login-left-clouds.png",
+      "crop": [
+        0,
+        600,
+        198,
+        1536
+      ],
+      "size": [
+        198,
+        936
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u767b\u5f55\u9875.png",
+      "asset": "public/assets/login-right-clouds.png",
+      "crop": [
+        852,
+        760,
+        1024,
+        1536
+      ],
+      "size": [
+        172,
+        776
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u767b\u5f55\u9875.png",
+      "asset": "public/assets/login-bottom-clouds.png",
+      "crop": [
+        198,
+        1388,
+        852,
+        1536
+      ],
+      "size": [
+        654,
+        148
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u767b\u5f55\u9875.png",
+      "asset": "public/assets/login-favorite.png",
+      "crop": [
+        254,
+        1144,
+        386,
+        1224
+      ],
+      "size": [
+        132,
+        80
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u767b\u5f55\u9875.png",
+      "asset": "public/assets/login-discussion.png",
+      "crop": [
+        452,
+        1145,
+        595,
+        1226
+      ],
+      "size": [
+        143,
+        81
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u767b\u5f55\u9875.png",
+      "asset": "public/assets/login-world.png",
+      "crop": [
+        650,
+        1142,
+        795,
+        1223
+      ],
+      "size": [
+        145,
+        81
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u6ce8\u518c\u9875.png",
+      "asset": "public/assets/signup-logo.png",
+      "crop": [
+        54,
+        12,
+        247,
+        85
+      ],
+      "size": [
+        193,
+        73
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u6ce8\u518c\u9875.png",
+      "asset": "public/assets/signup-hero-art.png",
+      "crop": [
+        465,
+        100,
+        1024,
+        815
+      ],
+      "size": [
+        559,
+        715
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u6ce8\u518c\u9875.png",
+      "asset": "public/assets/signup-top-left-cloud.png",
+      "crop": [
+        0,
+        85,
+        125,
+        220
+      ],
+      "size": [
+        125,
+        135
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u6ce8\u518c\u9875.png",
+      "asset": "public/assets/signup-left-clouds.png",
+      "crop": [
+        0,
+        595,
+        177,
+        1536
+      ],
+      "size": [
+        177,
+        941
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u6ce8\u518c\u9875.png",
+      "asset": "public/assets/signup-right-clouds.png",
+      "crop": [
+        854,
+        815,
+        1024,
+        1536
+      ],
+      "size": [
+        170,
+        721
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u6ce8\u518c\u9875.png",
+      "asset": "public/assets/signup-bottom-clouds.png",
+      "crop": [
+        177,
+        1386,
+        854,
+        1536
+      ],
+      "size": [
+        677,
+        150
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u6ce8\u518c\u9875.png",
+      "asset": "public/assets/signup-favorite.png",
+      "crop": [
+        223,
+        1150,
+        388,
+        1266
+      ],
+      "size": [
+        165,
+        116
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u6ce8\u518c\u9875.png",
+      "asset": "public/assets/signup-discussion.png",
+      "crop": [
+        427,
+        1147,
+        602,
+        1265
+      ],
+      "size": [
+        175,
+        118
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    },
+    {
+      "source": "/Users/milushangdi/Desktop/wyr\u8bbe\u8ba1\u7a3f/\u6ce8\u518c\u9875.png",
+      "asset": "public/assets/signup-world.png",
+      "crop": [
+        650,
+        1144,
+        807,
+        1265
+      ],
+      "size": [
+        157,
+        121
+      ],
+      "state": "approved",
+      "evidence": "Reference crop; no regeneration or interpolation"
+    }
+  ]
+}
