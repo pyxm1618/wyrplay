@@ -1,0 +1,45 @@
+{
+  "reference": {
+    "source": "/Users/milushangdi/Desktop/wyr设计稿/home.png",
+    "width": 778,
+    "height": 2021,
+    "method": "unmodified copy; CSS/SVG viewports and explicit path clips select artwork only",
+    "original_layers_available": false
+  },
+  "hero_background": {
+    "file": "public/assets/hero-background.png",
+    "width": 1462,
+    "height": 1076,
+    "method": "built-in image generation edit with reference PNG supplied",
+    "model": "not exposed by the built-in tool; not asserted as image 2.5",
+    "original_output": "/Users/milushangdi/.codex/generated_images/01a0f236-70a5-7692-9903-05c4508db148/exec-645fd3c1-f7cb-45e2-a9be-08dbeff4ff7d.png",
+    "prompt": "Extract only the upper hero decorative artwork, aspect 778:572, preserve the two original 3D cartoon characters, cream clouds and colorful edge doodles. Remove navigation, all text, title, question cards, dog, cat, OR badge, progress bar, CTA, avatars and speech bubble. Restore clean cream negative space. No redesign, text, buttons or cards.",
+    "difference": "Generated background geometry and fine details differ from the original; original reference silhouettes are overlaid to retain actual faces and poses.",
+    "use": "Used only on the inferred mobile layout; desktop uses original clipped decorative artwork and CSS cream backdrop to preserve reference character identity and avoid reconstructed seams."
+  },
+  "bulb_hand": {
+    "file": "public/assets/bulb-hand.png",
+    "width": 1122,
+    "height": 1402,
+    "method": "built-in image generation background-extraction with reference PNG supplied",
+    "model": "not exposed by the built-in tool; not asserted as image 2.5",
+    "original_output": "/Users/milushangdi/.codex/generated_images/01a0f236-70a5-7692-9903-05c4508db148/exec-77581d5d-7ec8-47d8-a9a4-edc8751eb6a9.png",
+    "prompt": "Extract only the smiling yellow bulb with two black eyes and curved smile, blue screw base, and peach hand from the create card. Clean high-resolution genuine RGBA transparency; preserve reference pose and 3D shading, complete only necessary hidden hand continuation. Portrait 4:5, bulb upper two-thirds and hand lower-right, no typography, backdrop, card or doodles. 5 percent clear margin above. No checkerboard.",
+    "alpha_check": "passed check_asset_alpha.py; visual inspection separately at actual page scale and on light/dark backgrounds",
+    "difference": "AI reconstruction, not recovered original: face, bulb tilt, fingers and shading are approximate."
+  },
+  "fonts": [
+    {
+      "family": "Roboto Condensed",
+      "source": "Google Fonts https://fonts.google.com/specimen/Roboto+Condensed",
+      "use": "locally served regular, semibold, bold and extra-bold",
+      "status": "approximate font; original unidentified"
+    },
+    {
+      "family": "Kalam",
+      "source": "Google Fonts https://fonts.google.com/specimen/Kalam",
+      "use": "locally served handwritten annotation",
+      "status": "approximate font; original unidentified"
+    }
+  ]
+}

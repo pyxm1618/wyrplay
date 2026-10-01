@@ -1,0 +1,31 @@
+{
+  "name": "wyrplay-leaderboard-reconstruction",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "bun@1.3.14",
+  "scripts": {
+    "dev": "next dev --webpack -p 4188",
+    "build": "next build --webpack",
+    "start": "node scripts/serve.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint app",
+    "format:check": "prettier --check app scripts/*.mjs *.json *.mjs README.md",
+    "verify": "bun run typecheck && bun run lint && bun run build",
+    "verify:browser": "node scripts/verify-browser.mjs"
+  },
+  "dependencies": {
+    "next": "16.3.7",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.9.3",
+    "eslint": "9.39.1",
+    "eslint-config-next": "16.3.7",
+    "prettier": "3.7.4",
+    "@playwright/test": "1.57.0"
+  }
+}

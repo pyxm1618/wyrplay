@@ -1,0 +1,1 @@
+This planned round was not captured: port 4188 was occupied by a different page. Page identity guard rejected the browser run before interaction. New port 4191 and measurement-02 are used for the next round.

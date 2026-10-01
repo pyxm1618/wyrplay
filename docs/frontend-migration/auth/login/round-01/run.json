@@ -1,0 +1,28 @@
+{
+  "reference": "../reference.png",
+  "candidate": "candidate.png",
+  "capture_metadata": "capture.json",
+  "expected": {
+    "url": "http://127.0.0.1:3000/sign-in",
+    "title": "Sign in · Would You Rather",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "measurement_baseline": "../measurement-01/measurements.json",
+  "measurement_sha256": "c5e7b3b1fd0ec7a62caa47e248b26fff65a2d4960bb149de843aa12b88b81948",
+  "allow_height_difference": true,
+  "expected_assets": {},
+  "clips": [
+    "region-000:0,0,1024,90",
+    "region-001:198,658,654,730",
+    "region-002:246,854,564,92",
+    "region-003:246,970,564,95",
+    "region-004:434,710,184,63",
+    "region-005:510,100,514,660"
+  ]
+}

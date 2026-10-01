@@ -1,0 +1,449 @@
+{
+  "measurement_sha256": "9b84b6bed034be064ceeb5222f22f557ed1e70281d33a7b4e0d1c9515a194273",
+  "url": "http://127.0.0.1:4187/",
+  "title": "WYRPLAY — Would You Rather?",
+  "viewport": {
+    "width": 778,
+    "height": 900
+  },
+  "dpr": 1,
+  "scroll": {
+    "x": 0,
+    "y": 0
+  },
+  "document_height": 2021,
+  "fonts_ready": true,
+  "images_ready": true,
+  "document_overflow_x": false,
+  "captured_at": "2026-10-01T01:40:11.153Z",
+  "elements": [
+    {
+      "name": "header",
+      "selector": ".site-header",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        0,
+        0,
+        778,
+        60
+      ],
+      "text": "HomeQuestionsCategoriesLeaderboardCreateLog inSign up",
+      "computed": {
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(7, 13, 18)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "hero",
+      "selector": ".hero",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        0,
+        60,
+        778,
+        572
+      ],
+      "text": "Would You Rather?Same question. Different minds.Play fun and thought-provoking would you rather questionswith people around the world.What wouldyou pick?Always havea dog as a petORAlways havea cat as a pet68%324,521 votes32%Make Your ChoiceJoin 2.3M+ playersfrom around the worldReal peopleReal answe",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(7, 13, 18)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "hero-lettering",
+      "selector": ".hero-lettering",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        209.5,
+        43,
+        359,
+        190
+      ],
+      "text": "",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "28px",
+        "lineHeight": "36.4px",
+        "fontWeight": "700",
+        "color": "rgb(7, 13, 18)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "choice-grid",
+      "selector": ".choice-grid",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        126.5,
+        285,
+        525,
+        180
+      ],
+      "text": "Always havea dog as a petORAlways havea cat as a pet",
+      "computed": {
+        "display": "grid",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(7, 13, 18)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "choice-cta",
+      "selector": ".choice-cta",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        262,
+        511,
+        254,
+        51
+      ],
+      "text": "Make Your Choice",
+      "computed": {
+        "display": "inline-flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "18px",
+        "lineHeight": "23px",
+        "fontWeight": "600",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "categories",
+      "selector": "#categories",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        0,
+        632,
+        778,
+        218
+      ],
+      "text": "Popular CategoriesSee all categoriesPopularMost votedFunnyLighten the moodFor FriendsPerfect for groupsFor CouplesBetter conversationsClassroomGreat for discussionHard QuestionsChallenge your mind",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(7, 13, 18)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "category-popular",
+      "selector": ".category-card:nth-child(1)",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        33,
+        686,
+        106,
+        135
+      ],
+      "text": "PopularMost voted",
+      "computed": {
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "category-funny",
+      "selector": ".category-card:nth-child(2)",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        144,
+        686,
+        112,
+        135
+      ],
+      "text": "FunnyLighten the mood",
+      "computed": {
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "highlights",
+      "selector": "#highlights",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        0,
+        850,
+        778,
+        240
+      ],
+      "text": "Today’s HighlightsSee allLive in a big city\nor a small town?125K votes54% / 46%Be rich but unknown\nor famous but not rich?96K votes61% / 39%Travel the world forever\nor never leave home?84K votes48% / 52%",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgb(7, 16, 24)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "highlight-first",
+      "selector": ".highlight-card:nth-child(1)",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        41,
+        905,
+        219,
+        157
+      ],
+      "text": "Live in a big city\nor a small town?125K votes54% / 46%",
+      "computed": {
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": false
+    },
+    {
+      "name": "highlight-second",
+      "selector": ".highlight-card:nth-child(2)",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        274,
+        905,
+        226,
+        157
+      ],
+      "text": "Be rich but unknown\nor famous but not rich?96K votes61% / 39%",
+      "computed": {
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": false
+    },
+    {
+      "name": "how-it-works",
+      "selector": "#how-it-works",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        0,
+        1090,
+        778,
+        140
+      ],
+      "text": "How It Works1ExploreBrowse or get a\nrandom question2ChoosePick the option\nyou prefer3See ResultsInstantly see\nwhat others chose4DiscussShare and\ndebate with friends",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(7, 13, 18)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": false
+    },
+    {
+      "name": "trending",
+      "selector": "#trending",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        0,
+        1230,
+        778,
+        290
+      ],
+      "text": "Trending QuestionsSee allEat only pizza forever\nor never eat pizza again?412K votes · 68% / 32%Would you rather travel\nto the past or to the future?398K votes · 54% / 46%Be rich but unknown\nor famous but not rich?321K votes · 49% / 51%Create Your Own QuestionGot a wild idea?Share it with the world!＋",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(7, 13, 18)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": false
+    },
+    {
+      "name": "create-panel",
+      "selector": ".create-panel",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        432,
+        1274,
+        314,
+        237
+      ],
+      "text": "Create Your Own QuestionGot a wild idea?Share it with the world!＋Create✚♡",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(7, 13, 18)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": false
+    },
+    {
+      "name": "statistics",
+      "selector": ".statistics",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        0,
+        1520,
+        778,
+        73
+      ],
+      "text": "2.3M+Players50K+Questions100+Categories190+Countries",
+      "computed": {
+        "display": "grid",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(7, 13, 18)",
+        "backgroundColor": "rgb(255, 248, 238)"
+      },
+      "viewport_intersects": false
+    },
+    {
+      "name": "community",
+      "selector": "#community",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        0,
+        1593,
+        778,
+        273
+      ],
+      "text": "See What Others ThinkReal votes from real people around the world.I never expected this to\nbe so close!I can’t believe 68% chose\nthis option!This question sparked an\namazing discussion! ❤️Totally changed\nmy perspectives.",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": false
+    },
+    {
+      "name": "play-together",
+      "selector": "#play-together",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        0,
+        1866,
+        778,
+        155
+      ],
+      "text": "Play Together, AnywherePerfect for friends, families, classrooms or just curious minds.FriendsGame nightsPartiesBreak the iceClassroomsGroup discussionsRoad tripsLonger journeysDatesBetter conversations",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "WyrCondensed, Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "18.2px",
+        "fontWeight": "400",
+        "color": "rgb(7, 13, 18)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": false
+    }
+  ],
+  "assets": {},
+  "full_page": true,
+  "screenshot_scale": "css"
+}

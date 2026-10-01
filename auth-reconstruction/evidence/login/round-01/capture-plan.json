@@ -1,0 +1,29 @@
+{
+  "measurement_sha256": "1707b8f10815e6f1805aa550568fa9cea61f522f8d0844c5af85632ec21f140c",
+  "targets": [
+    {
+      "name": "header",
+      "selector": ".site-header"
+    },
+    {
+      "name": "auth-card",
+      "selector": ".auth-card"
+    },
+    {
+      "name": "google-button",
+      "selector": ".google-button"
+    },
+    {
+      "name": "magic-button",
+      "selector": ".magic-button"
+    },
+    {
+      "name": "title-ink",
+      "selector": ".auth-card h2"
+    },
+    {
+      "name": "hero-art",
+      "selector": ".hero-art"
+    }
+  ]
+}

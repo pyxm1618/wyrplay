@@ -1,0 +1,471 @@
+{
+  "original_total": 46,
+  "states": {
+    "approved": 22,
+    "deferred": 24,
+    "rejected": 0,
+    "unreviewed": 0
+  },
+  "assets": [
+    {
+      "asset": "public/assets/login-bottom-clouds-v2.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        654,
+        148
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-bottom-clouds-v3.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        654,
+        148
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-bottom-clouds.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        654,
+        148
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-discussion.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        143,
+        81
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-favorite.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        132,
+        80
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-hero-art-v2.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        514,
+        660
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-hero-art-v4.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        514,
+        660
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-hero-art.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        514,
+        660
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-left-clouds-v2.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        198,
+        936
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-left-clouds-v3.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        198,
+        936
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-left-clouds.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        198,
+        936
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-logo-v2.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        180,
+        69
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-logo-v4.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        180,
+        69
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-logo.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        180,
+        69
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-mid-left-cloud-v2.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        132,
+        192
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-pre-card-clouds.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        312,
+        58
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-right-clouds-v2.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        172,
+        776
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-right-clouds-v3.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        172,
+        776
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-right-clouds.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        172,
+        776
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-top-left-cloud-v2.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        160,
+        187
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-top-left-cloud.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        160,
+        156
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/login-world.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        145,
+        81
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-bottom-clouds-v2.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        677,
+        150
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-bottom-clouds-v3.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        677,
+        150
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-bottom-clouds.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        677,
+        150
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-discussion.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        175,
+        118
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-favorite.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        165,
+        116
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-hero-art-v2.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        559,
+        715
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-hero-art-v3.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        559,
+        715
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-hero-art-v4.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        559,
+        715
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-hero-art.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        559,
+        715
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-left-clouds-v2.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        177,
+        941
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-left-clouds-v3.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        177,
+        941
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-left-clouds.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        177,
+        941
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-logo-v2.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        193,
+        73
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-logo-v4.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        193,
+        73
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-logo.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        193,
+        73
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-mid-left-cloud-v2.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        177,
+        179
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-pre-card-clouds.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        328,
+        54
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-right-clouds-v2.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        170,
+        721
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-right-clouds-v3.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        170,
+        721
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-right-clouds.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        170,
+        721
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-top-left-cloud-v2.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        125,
+        155
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-top-left-cloud-v4.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        125,
+        155
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-top-left-cloud.png",
+      "state": "deferred",
+      "usage": "retained intermediate; not used by final page",
+      "size": [
+        125,
+        135
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    },
+    {
+      "asset": "public/assets/signup-world.png",
+      "state": "approved",
+      "usage": "active page asset",
+      "size": [
+        157,
+        121
+      ],
+      "provenance": "Original reference crop; local masks or crop seam experiments only"
+    }
+  ]
+}

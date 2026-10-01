@@ -5,6 +5,25 @@ import { seoConfig } from "./seo.config";
 
 export const routeDefinitions = [
   {
+    route: "/play",
+    class: "public_noindex",
+    title: "Play Would You Rather",
+    description: "Play and present your reviewed question set.",
+  },
+  {
+    route: "/print",
+    class: "public_noindex",
+    title: "Print Your Questions",
+    description: "Create printable cards and question sheets from your reviewed questions.",
+  },
+  {
+    route: "/find-questions",
+    class: "public_noindex",
+    title: "Find Would You Rather Questions",
+    description:
+      "Search, filter, select and play reviewed Would You Rather questions from the WYRPLAY question bank.",
+  },
+  {
     route: "/",
     class: "public_indexable",
     searchIntent:
@@ -192,9 +211,19 @@ export const routeDefinitions = [
     title: "Account Deletion",
     description: "Account deletion instructions and lifecycle summary.",
   },
+  { route: "/create", class: "public_noindex" },
+  {
+    route: "/leaderboards",
+    class: "public_noindex",
+    title: "Would You Rather Leaderboards",
+    description:
+      "Discover approved Would You Rather questions ranked by real anonymous votes, with all-time, monthly and weekly leaderboards.",
+  },
   { route: "/sign-in", class: "public_noindex" },
+  { route: "/sign-up", class: "public_noindex" },
   { route: "/auth/magic-link/confirm", class: "public_noindex" },
   { route: "/account", class: "private" },
+  { route: "/account/settings", class: "private" },
   { route: "/account/security", class: "private" },
   { route: "/account/billing", class: "private" },
   { route: "/account/credits", class: "private" },

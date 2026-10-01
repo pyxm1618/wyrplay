@@ -1,0 +1,186 @@
+{
+  "source": "/Users/milushangdi/Projects/wyrplay/auth-reconstruction/evidence/signup/reference.png",
+  "source_sha256": "1d649c55d0d04175303eb5cbea4390f3cac3ae090c8958a922178c7673c2aaa0",
+  "source_size": [
+    1024,
+    1536
+  ],
+  "css_mapping": {
+    "assumed_viewport_width": 1024,
+    "css_per_image_pixel": 1.0,
+    "meaning": "实现约定，不证明参考图原始 DPR 或 CSS 视口"
+  },
+  "regions": [
+    {
+      "name": "header",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        0,
+        0,
+        1024,
+        90
+      ],
+      "normalized_box": [
+        0.0,
+        0.0,
+        1.0,
+        0.058594
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        0.0,
+        0.0,
+        1024.0,
+        90.0
+      ],
+      "selector": ".site-header",
+      "dom_comparable": true
+    },
+    {
+      "name": "auth-card",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        177,
+        649,
+        677,
+        737
+      ],
+      "normalized_box": [
+        0.172852,
+        0.422526,
+        0.661133,
+        0.479818
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        177.0,
+        649.0,
+        677.0,
+        737.0
+      ],
+      "selector": ".auth-card",
+      "dom_comparable": true
+    },
+    {
+      "name": "google-button",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        237,
+        849,
+        558,
+        94
+      ],
+      "normalized_box": [
+        0.231445,
+        0.552734,
+        0.544922,
+        0.061198
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        237.0,
+        849.0,
+        558.0,
+        94.0
+      ],
+      "selector": ".google-button",
+      "dom_comparable": true
+    },
+    {
+      "name": "magic-button",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        237,
+        966,
+        558,
+        95
+      ],
+      "normalized_box": [
+        0.231445,
+        0.628906,
+        0.544922,
+        0.061849
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        237.0,
+        966.0,
+        558.0,
+        95.0
+      ],
+      "selector": ".magic-button",
+      "dom_comparable": true
+    },
+    {
+      "name": "title-ink",
+      "kind": "box",
+      "box_type": "ink",
+      "box": [
+        274,
+        714,
+        487,
+        56
+      ],
+      "normalized_box": [
+        0.267578,
+        0.464844,
+        0.475586,
+        0.036458
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        274.0,
+        714.0,
+        487.0,
+        56.0
+      ],
+      "selector": ".auth-card h2",
+      "dom_comparable": false
+    },
+    {
+      "name": "hero-art",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        465,
+        100,
+        559,
+        715
+      ],
+      "normalized_box": [
+        0.454102,
+        0.065104,
+        0.545898,
+        0.465495
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        465.0,
+        100.0,
+        559.0,
+        715.0
+      ],
+      "selector": ".hero-art",
+      "dom_comparable": true
+    }
+  ],
+  "groups": [],
+  "vertical_scans": [],
+  "expected": {
+    "url": "http://127.0.0.1:4189/sign-up/",
+    "title": "WYRPLAY — Create Your Account",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "expected_assets": {},
+  "input_manifest_sha256": "7714d2dcd9d31b03af576f4cdd0718173fd3c2a0e715dc3449547356b9f4c5a2"
+}

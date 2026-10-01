@@ -1,0 +1,107 @@
+{
+  "reference": "evidence/login/round-01/../reference.png",
+  "candidate": "evidence/login/round-01/candidate.png",
+  "reference_size": [
+    1024,
+    1536
+  ],
+  "candidate_size_original": [
+    1024,
+    1536
+  ],
+  "candidate_size_compared": [
+    1024,
+    1536
+  ],
+  "resized": false,
+  "geometry_match": true,
+  "height_delta": 0,
+  "unmatched_tails": {},
+  "regions": [
+    {
+      "name": "full",
+      "size": [
+        1024,
+        1536
+      ],
+      "rms_diff": 45.092,
+      "mean_abs_diff": 11.7,
+      "candidate": "evidence/login/round-01/report/verify-full-candidate.png",
+      "diff": "evidence/login/round-01/report/verify-full-diff.png",
+      "heatmap": "evidence/login/round-01/report/verify-full-heatmap.png"
+    },
+    {
+      "name": "region-000",
+      "size": [
+        1024,
+        90
+      ],
+      "rms_diff": 28.211,
+      "mean_abs_diff": 6.769,
+      "candidate": "evidence/login/round-01/report/verify-region-000-candidate.png",
+      "diff": "evidence/login/round-01/report/verify-region-000-diff.png",
+      "heatmap": "evidence/login/round-01/report/verify-region-000-heatmap.png"
+    },
+    {
+      "name": "region-001",
+      "size": [
+        654,
+        730
+      ],
+      "rms_diff": 49.507,
+      "mean_abs_diff": 14.528,
+      "candidate": "evidence/login/round-01/report/verify-region-001-candidate.png",
+      "diff": "evidence/login/round-01/report/verify-region-001-diff.png",
+      "heatmap": "evidence/login/round-01/report/verify-region-001-heatmap.png"
+    },
+    {
+      "name": "region-002",
+      "size": [
+        564,
+        92
+      ],
+      "rms_diff": 51.96,
+      "mean_abs_diff": 15.957,
+      "candidate": "evidence/login/round-01/report/verify-region-002-candidate.png",
+      "diff": "evidence/login/round-01/report/verify-region-002-diff.png",
+      "heatmap": "evidence/login/round-01/report/verify-region-002-heatmap.png"
+    },
+    {
+      "name": "region-003",
+      "size": [
+        564,
+        95
+      ],
+      "rms_diff": 63.749,
+      "mean_abs_diff": 21.337,
+      "candidate": "evidence/login/round-01/report/verify-region-003-candidate.png",
+      "diff": "evidence/login/round-01/report/verify-region-003-diff.png",
+      "heatmap": "evidence/login/round-01/report/verify-region-003-heatmap.png"
+    },
+    {
+      "name": "region-004",
+      "size": [
+        184,
+        63
+      ],
+      "rms_diff": 106.444,
+      "mean_abs_diff": 55.496,
+      "candidate": "evidence/login/round-01/report/verify-region-004-candidate.png",
+      "diff": "evidence/login/round-01/report/verify-region-004-diff.png",
+      "heatmap": "evidence/login/round-01/report/verify-region-004-heatmap.png"
+    },
+    {
+      "name": "region-005",
+      "size": [
+        514,
+        660
+      ],
+      "rms_diff": 29.338,
+      "mean_abs_diff": 4.4,
+      "candidate": "evidence/login/round-01/report/verify-region-005-candidate.png",
+      "diff": "evidence/login/round-01/report/verify-region-005-diff.png",
+      "heatmap": "evidence/login/round-01/report/verify-region-005-heatmap.png"
+    }
+  ],
+  "note": "误差不等于还原度；字体、摄影和位置分别判断。尺寸一致也不代表视觉通过。"
+}

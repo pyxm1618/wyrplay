@@ -1,24 +1,19 @@
 import type { Metadata } from "next";
-
-import { AccountShell } from "@/components/account/account-shell";
-import { env } from "@/platform/config/env";
-
-import { SignInForm } from "./sign-in-form";
+import { AuthEntry } from "@/components/auth/auth-entry";
 
 export const metadata: Metadata = {
   title: "Sign in",
   robots: { index: false, follow: true },
 };
 
-export default function SignInPage() {
+export default async function SignInPage({
+  searchParams,
+}: Readonly<{ searchParams: Promise<{ error?: string }> }>) {
+  const { error } = await searchParams;
   return (
-    <AccountShell
-      eyebrow="Account access"
-      title="Sign in securely"
-      titleId="sign-in-title"
-      intro="No password is required. We will send a single-use confirmation link."
-    >
-      <SignInForm turnstileSiteKey={env.turnstileSiteKey} />
-    </AccountShell>
+    <AuthEntry
+      mode="login"
+      error={error === "google" || error === "magic-link" ? error : undefined}
+    />
   );
 }

@@ -1,0 +1,349 @@
+{
+  "measurement_sha256": "cb2c61fb2d858049adbd8a07e470146e14b456cdf75cea16c7a7c089b3e8c18d",
+  "url": "http://127.0.0.1:4188/",
+  "title": "WYRPLAY — Leaderboards",
+  "viewport": {
+    "width": 868,
+    "height": 900
+  },
+  "dpr": 1,
+  "scroll": {
+    "x": 0,
+    "y": 0
+  },
+  "document_height": 1812,
+  "fonts_ready": true,
+  "images_ready": true,
+  "document_overflow_x": false,
+  "captured_at": "2026-10-01T01:52:30.288Z",
+  "elements": [
+    {
+      "name": "header",
+      "selector": ".site-header",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        28,
+        0,
+        812,
+        61
+      ],
+      "text": "HomeQuestionsCategoriesLeaderboardsCreateLog inSign up",
+      "computed": {
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "fontWeight": "400",
+        "color": "rgb(6, 19, 36)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "hero",
+      "selector": ".hero",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        28,
+        61,
+        812,
+        280
+      ],
+      "text": "Best Would You RatherQuestionsDiscover the most popular, thought-provoking and fun Would You Rather questions, based on real votes and community feedback.✦✦∿",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "fontWeight": "400",
+        "color": "rgb(6, 19, 36)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "category-tabs",
+      "selector": ".category-tabs",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        28,
+        341,
+        812,
+        68
+      ],
+      "text": "Most PopularMost votes overallTrendingRising fastMost DiscussedMost commentsEditor's PicksOur favoritesAll TimeTop of all time",
+      "computed": {
+        "display": "grid",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "fontWeight": "400",
+        "color": "rgb(6, 19, 36)",
+        "backgroundColor": "rgba(255, 255, 255, 0.863)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "sidebar",
+      "selector": ".sidebar",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        28,
+        429,
+        197,
+        833
+      ],
+      "text": "LeaderboardsSee the best questionsin different waysMost PopularTrendingMost DiscussedEditor's PicksAll TimeThis MonthThis WeekCreate a QuestionGot a great idea?Share it with the world!＋Create Now",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "fontWeight": "400",
+        "color": "rgb(6, 19, 36)",
+        "backgroundColor": "rgba(255, 255, 255, 0.95)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "top-three",
+      "selector": ".podium",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        247,
+        531,
+        593,
+        296
+      ],
+      "text": "Always have a dogas a pet or alwayshave a cat as a pet?AnimalsFun412K☷2.3KTravel to the pastor travel to thefuture?TravelDeep521K☷3.1KEat only pizza foreveror never eat pizzaagain?FoodFunny398K☷1.8K",
+      "computed": {
+        "display": "grid",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "fontWeight": "400",
+        "color": "rgb(6, 19, 36)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "dog-card",
+      "selector": ".question-card.dog",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        247,
+        554,
+        184.328125,
+        273
+      ],
+      "text": "Always have a dogas a pet or alwayshave a cat as a pet?AnimalsFun412K☷2.3K",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "fontWeight": "400",
+        "color": "rgb(6, 19, 36)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "travel-card",
+      "selector": ".question-card.travel",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        445.328125,
+        531,
+        194.484375,
+        296
+      ],
+      "text": "Travel to the pastor travel to thefuture?TravelDeep521K☷3.1K",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "fontWeight": "400",
+        "color": "rgb(6, 19, 36)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "pizza-card",
+      "selector": ".question-card.pizza",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        653.8125,
+        554,
+        186.1875,
+        273
+      ],
+      "text": "Eat only pizza foreveror never eat pizzaagain?FoodFunny398K☷1.8K",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "fontWeight": "400",
+        "color": "rgb(6, 19, 36)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "top-ten",
+      "selector": ".ranking-list",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        242,
+        890,
+        602,
+        459
+      ],
+      "text": "4Be rich but unknown or famous but not rich?LifeDeep321K☷1.6K5Live in a big city or a small town?LifestyleTravel287K☷1.4K6Give up music for a year or movies for a year?EntertainmentThoughtful256K☷1.2K7Always arrive 20 minutes early or 10 minutes late?Daily LifeFunny243K☷1.1K8Speak every language or ",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "fontWeight": "400",
+        "color": "rgb(6, 19, 36)",
+        "backgroundColor": "rgba(255, 255, 255, 0.96)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "pagination",
+      "selector": ".pagination",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        327.953125,
+        1367,
+        431.078125,
+        31
+      ],
+      "text": "← Previous12345…24Next",
+      "computed": {
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+        "fontSize": "13px",
+        "lineHeight": "normal",
+        "fontWeight": "400",
+        "color": "rgb(6, 19, 36)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": false
+    },
+    {
+      "name": "stats",
+      "selector": ".stats-panel",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        28,
+        1421,
+        403.875,
+        181
+      ],
+      "text": "Leaderboard Stats2.3M+Total votes190K+Comments100K+Players?50K+Questions",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "fontWeight": "400",
+        "color": "rgb(6, 19, 36)",
+        "backgroundColor": "rgba(255, 255, 255, 0.93)"
+      },
+      "viewport_intersects": false
+    },
+    {
+      "name": "hall",
+      "selector": ".hall-panel",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        447.875,
+        1421,
+        392.125,
+        165
+      ],
+      "text": "Hall of FameLegendary questions that never get old.•••",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "fontWeight": "400",
+        "color": "rgb(6, 19, 36)",
+        "backgroundColor": "rgba(255, 255, 255, 0.93)"
+      },
+      "viewport_intersects": false
+    },
+    {
+      "name": "footer-cta",
+      "selector": ".footer-cta",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        28,
+        1628,
+        812,
+        119
+      ],
+      "text": "Think yours can make the list?Create and share your own would you rather question.Get votes, spark discussions, and maybe see it on the leaderboard!Create a Question ★",
+      "computed": {
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "\"Roboto Condensed\", Arial, sans-serif",
+        "fontSize": "14px",
+        "lineHeight": "normal",
+        "fontWeight": "400",
+        "color": "rgb(6, 19, 36)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": false
+    }
+  ],
+  "assets": {},
+  "full_page": true,
+  "screenshot_scale": "css"
+}

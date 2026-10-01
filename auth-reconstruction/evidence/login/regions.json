@@ -1,0 +1,78 @@
+{
+  "reference": "reference.png",
+  "css_viewport_width": 1024,
+  "expected": {
+    "url": "http://127.0.0.1:4189/",
+    "title": "WYRPLAY \u2014 Sign In",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "regions": [
+    {
+      "name": "header",
+      "box": [
+        0,
+        0,
+        1024,
+        90
+      ],
+      "selector": ".site-header"
+    },
+    {
+      "name": "auth-card",
+      "box": [
+        198,
+        658,
+        654,
+        730
+      ],
+      "selector": ".auth-card"
+    },
+    {
+      "name": "google-button",
+      "box": [
+        246,
+        854,
+        564,
+        92
+      ],
+      "selector": ".google-button"
+    },
+    {
+      "name": "magic-button",
+      "box": [
+        246,
+        970,
+        564,
+        95
+      ],
+      "selector": ".magic-button"
+    },
+    {
+      "name": "title-ink",
+      "box": [
+        434,
+        710,
+        184,
+        63
+      ],
+      "box_type": "ink",
+      "selector": ".auth-card h2"
+    },
+    {
+      "name": "hero-art",
+      "box": [
+        510,
+        100,
+        514,
+        660
+      ],
+      "selector": ".hero-art"
+    }
+  ]
+}

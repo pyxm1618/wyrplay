@@ -197,6 +197,11 @@ export default defineConfig([
   globalIgnores([
     ".next/**",
     ".worktrees/**",
+    "finder-reconstruction/**",
+    "home-reconstruction/**",
+    "leaderboard-reconstruction/**",
+    "auth-reconstruction/**",
+    ".artifacts/**",
     "coverage/**",
     "examples/**",
     "playwright-report/**",

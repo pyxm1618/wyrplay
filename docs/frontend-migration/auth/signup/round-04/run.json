@@ -1,0 +1,28 @@
+{
+  "reference": "../reference.png",
+  "candidate": "candidate.png",
+  "capture_metadata": "capture.json",
+  "expected": {
+    "url": "http://127.0.0.1:4195/sign-up",
+    "title": "Create your account · Would You Rather",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "measurement_baseline": "../measurement-03/measurements.json",
+  "measurement_sha256": "b70af206236084a7218692e14869d6c6b6c187db048c5999e702299c3fd50fde",
+  "allow_height_difference": true,
+  "expected_assets": {},
+  "clips": [
+    "region-000:0,0,1024,90",
+    "region-001:177,649,677,737",
+    "region-002:237,849,558,94",
+    "region-003:237,966,558,95",
+    "region-004:274,714,487,56",
+    "region-005:465,100,559,715"
+  ]
+}

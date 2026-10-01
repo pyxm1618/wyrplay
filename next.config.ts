@@ -53,6 +53,7 @@ const nextConfig: NextConfig = {
       ...[
         "/account/:path*",
         "/sign-in",
+        "/sign-up",
         "/auth/:path*",
         "/checkout/:path*",
         "/api/account/:path*",

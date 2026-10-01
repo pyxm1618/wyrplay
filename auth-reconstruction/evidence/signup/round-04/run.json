@@ -1,0 +1,28 @@
+{
+  "reference": "../reference.png",
+  "candidate": "candidate.png",
+  "capture_metadata": "capture.json",
+  "expected": {
+    "url": "http://127.0.0.1:4189/sign-up/",
+    "title": "WYRPLAY — Create Your Account",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "measurement_baseline": "../measurement-01/measurements.json",
+  "measurement_sha256": "c175e8d887aad7941604fa9ae8bb36474900936977fb8364f6f5d28571ddb8cc",
+  "allow_height_difference": true,
+  "expected_assets": {},
+  "clips": [
+    "region-000:0,0,1024,90",
+    "region-001:177,649,677,737",
+    "region-002:237,849,558,94",
+    "region-003:237,966,558,95",
+    "region-004:274,714,487,56",
+    "region-005:465,100,559,715"
+  ]
+}

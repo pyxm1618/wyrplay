@@ -1,0 +1,189 @@
+{
+  "source": "reference.png",
+  "method": "original screenshot crops; no generative redraw or interpolation",
+  "crops": {
+    "logo": [
+      40,
+      8,
+      160,
+      51
+    ],
+    "hero-character": [
+      517,
+      49,
+      849,
+      262
+    ],
+    "left-top": [
+      0,
+      49,
+      60,
+      263
+    ],
+    "left-edge": [
+      0,
+      366,
+      21,
+      1245
+    ],
+    "right-edge": [
+      828,
+      328,
+      849,
+      1734
+    ],
+    "left-bottom": [
+      0,
+      1245,
+      261,
+      1627
+    ],
+    "bottom-left": [
+      0,
+      1713,
+      46,
+      1852
+    ],
+    "bottom-right": [
+      806,
+      1713,
+      849,
+      1852
+    ],
+    "bulb": [
+      41,
+      1734,
+      141,
+      1821
+    ],
+    "question-01": [
+      600,
+      496,
+      711,
+      579
+    ],
+    "question-02": [
+      600,
+      604,
+      711,
+      687
+    ],
+    "question-03": [
+      600,
+      719,
+      711,
+      802
+    ],
+    "question-04": [
+      600,
+      827,
+      711,
+      910
+    ],
+    "question-05": [
+      600,
+      940,
+      711,
+      1023
+    ],
+    "question-06": [
+      600,
+      1045,
+      711,
+      1128
+    ],
+    "question-07": [
+      600,
+      1158,
+      711,
+      1241
+    ],
+    "question-08": [
+      600,
+      1269,
+      711,
+      1352
+    ],
+    "question-09": [
+      600,
+      1372,
+      711,
+      1455
+    ],
+    "question-10": [
+      600,
+      1483,
+      711,
+      1566
+    ]
+  },
+  "extra_crops": {
+    "filter-age": [
+      42,
+      474,
+      68,
+      500
+    ],
+    "filter-group": [
+      42,
+      617,
+      69,
+      644
+    ],
+    "filter-occasion": [
+      42,
+      763,
+      69,
+      791
+    ],
+    "filter-style": [
+      42,
+      946,
+      69,
+      976
+    ],
+    "filter-difficulty": [
+      42,
+      1058,
+      69,
+      1085
+    ],
+    "crown": [
+      485,
+      401,
+      532,
+      441
+    ],
+    "people": [
+      337,
+      562,
+      356,
+      578
+    ],
+    "search-left": [
+      0,
+      263,
+      43,
+      366
+    ],
+    "search-right": [
+      806,
+      263,
+      849,
+      366
+    ],
+    "selection-left": [
+      0,
+      1627,
+      21,
+      1734
+    ],
+    "bottom-band": [
+      0,
+      1828,
+      849,
+      1852
+    ]
+  },
+  "postprocessing": "Explicit neighboring-text masks for question artwork; edge-connected cream backdrop removal; no resize, invented image detail or generative model used."
+}

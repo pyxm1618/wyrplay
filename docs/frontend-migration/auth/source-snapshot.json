@@ -1,0 +1,45 @@
+{
+  "review_directory": "/tmp/wyrplay-auth-review-20261001",
+  "items": [
+    {
+      "path": "src/components/auth/auth-form.tsx",
+      "sha256": "aaf214cc35b311551ed4cd5bced4b44676afa357ed17291e829e64ad74819c9f",
+      "matches_review_snapshot": true
+    },
+    {
+      "path": "src/components/auth/auth-surface.css",
+      "sha256": "966b584de048b0758d5272a78665695029c3c5a429960b7d581c3f5741a6a6d4",
+      "matches_review_snapshot": true
+    },
+    {
+      "path": "src/components/auth/auth-surface.tsx",
+      "sha256": "b98c21b494b0ca6afce7e6888be89d062e9362aebe8e73feef819c5ce4b50c11",
+      "matches_review_snapshot": true
+    },
+    {
+      "path": "src/components/auth/auth-icons.tsx",
+      "sha256": "b310f86ff76e1914da404023ad8698b233115d0ca29b13b5a0952d1b0139ac8d",
+      "matches_review_snapshot": true
+    },
+    {
+      "path": "src/components/auth/auth-entry.tsx",
+      "sha256": "f0d05e1758af340be3bab6444a6e1e829ed00c6764ab3382ae4df741b33e6a15",
+      "matches_review_snapshot": true
+    },
+    {
+      "path": "src/app/(account)/sign-in/page.tsx",
+      "sha256": "4099a9810c9e30d4bc9fe7d87ef946ba319d52f939d6219ff1a976d95a0bb7bc",
+      "matches_review_snapshot": true
+    },
+    {
+      "path": "src/app/(account)/sign-up/page.tsx",
+      "sha256": "9bd6b59a8bf605e25505604f642875ff12dbb668967913ca480c3c9e8bbf1c74",
+      "matches_review_snapshot": true
+    },
+    {
+      "path": "next.config.ts",
+      "sha256": "f62bbf2d4ecb2b0e9247010478d6596a75f46197547483c505b1cb3a140a338e",
+      "matches_review_snapshot": true
+    }
+  ]
+}

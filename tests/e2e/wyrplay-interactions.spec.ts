@@ -16,6 +16,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
     test("production 首页与 5 个 SEO 落地页真实消费 116 道正式题库", async ({ page }) => {
       // 1.1 检查首页生产行为
       await page.goto("/");
+      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       // Arena 正常展示第一道正式题目，绝非审核中空状态
       await expect(page.getByText("Dilemmas are Currently Under Editorial Review")).toHaveCount(0);
@@ -63,6 +64,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
 
     test("正式题库搜索与多维度筛选 (Search, Filters, Clear, No Results)", async ({ page }) => {
       await page.goto("/");
+      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       const searchInput = page.getByPlaceholder(/Search dilemmas by keyword/i);
       await expect(searchInput).toBeVisible();
@@ -97,6 +99,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       page,
     }) => {
       await page.goto("/");
+      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       const optionA = page.locator("#play button:has-text('Option A')").first();
       const optionB = page.locator("#play button:has-text('Option B')").first();
@@ -126,6 +129,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
 
     test("Next/Random 切题有效性与状态隔离", async ({ page }) => {
       await page.goto("/");
+      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       const arenaHeading = page.locator("#play h2").first();
       const firstHeading = await arenaHeading.innerText();
@@ -149,6 +153,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
 
     test("API 失败容错 (handles API 500 gracefully without crashing)", async ({ page }) => {
       await page.goto("/");
+      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       // 拦截投票 API 并模拟 500 故障
       await page.route("**/api/wyr/vote", async (route) => {
@@ -170,6 +175,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       page,
     }) => {
       await page.goto("/");
+      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       const presenterBtn = page.getByRole("button", { name: /Presenter Mode/i });
       await expect(presenterBtn).toBeVisible();
@@ -199,6 +205,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
 
     test("keyboard/focus (keyboard shortcut KeyA votes & focus management)", async ({ page }) => {
       await page.goto("/");
+      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       // 按键盘 KeyA 进行投票
       await page.keyboard.press("KeyA");
@@ -213,6 +220,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
     test("375px 视口无横向溢出且 mobile menu 可交互点击", async ({ page }) => {
       await page.setViewportSize({ width: 375, height: 812 });
       await page.goto("/");
+      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
       const innerWidth = await page.evaluate(() => window.innerWidth);
@@ -233,10 +241,12 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
   test.describe("3. Theme Toggle & Persistence", () => {
     test("theme persistence (toggles theme and persists across page reloads)", async ({ page }) => {
       await page.goto("/");
+      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       const themeToggle = page.locator("button[aria-label*='theme' i]").first();
       await expect(themeToggle).toBeVisible();
 
+      await expect(themeToggle).toBeEnabled();
       const initialTheme = await page.evaluate(
         () => document.documentElement.getAttribute("data-theme") ?? "dark",
       );
@@ -252,6 +262,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
 
       // 刷新持久化
       await page.reload();
+      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
       const persistedTheme = await page.evaluate(() =>
         document.documentElement.getAttribute("data-theme"),
       );

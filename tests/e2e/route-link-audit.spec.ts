@@ -27,18 +27,28 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     await expect(page.locator("#play")).toBeAttached();
     await expect(page.locator("#questions")).toBeAttached();
 
-    // 8.2 点击 Play 导航链接
-    const playNavLink = page.locator("header nav a[href='/#play']").first();
-    await expect(playNavLink).toBeVisible();
-    await playNavLink.click();
+    // 8.2 当前首页主导航的 Categories 锚点
+    const categoriesNavLink = page
+      .getByRole("navigation", { name: "Primary navigation" })
+      .getByRole("link", { name: "Categories" });
+    await expect(categoriesNavLink).toBeVisible();
+    await categoriesNavLink.click();
+
+    await expect.poll(() => new URL(page.url()).hash).toBe("#categories");
+    await expect(page.locator("#categories")).toBeInViewport();
+
+    // 8.3 Hero CTA 进入 Play
+    const playLink = page.getByRole("link", { name: "Make Your Choice" });
+    await expect(playLink).toBeVisible();
+    await playLink.click();
 
     await expect.poll(() => new URL(page.url()).hash).toBe("#play");
     await expect(page.locator("#play")).toBeInViewport();
 
-    // 8.3 点击 Questions 导航链接
-    const questionsNavLink = page.locator("header nav a[href='/#questions']").first();
-    await expect(questionsNavLink).toBeVisible();
-    await questionsNavLink.click();
+    // 8.4 Questions 入口仍应写入对应 hash
+    const questionsLink = page.locator('a[href="#questions"]').first();
+    await expect(questionsLink).toBeVisible();
+    await questionsLink.click();
 
     await expect.poll(() => new URL(page.url()).hash).toBe("#questions");
     await expect(page.locator("#questions")).toBeInViewport();
@@ -160,6 +170,9 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     if (isProductionTarget) {
       const signInRes = await page.goto("/sign-in");
       expect(signInRes?.status()).toBe(404);
+
+      const signUpRes = await page.goto("/sign-up");
+      expect(signUpRes?.status()).toBe(404);
 
       const accountRes = await page.goto("/account");
       expect(accountRes?.status()).toBe(404);

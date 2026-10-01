@@ -1,0 +1,92 @@
+[
+  {
+    "path": "/Users/milushangdi/Projects/wyrplay/leaderboard-reconstruction/public/assets/edge-decoration.png",
+    "mode": "RGBA",
+    "size": [
+      868,
+      1812
+    ],
+    "has_alpha_or_transparency_metadata": true,
+    "transparent_pixels": 1393443,
+    "partial_alpha_pixels": 0,
+    "opaque_pixels": 179373,
+    "nonopaque_fraction": 0.8859542374950408,
+    "has_visible_content": true,
+    "transparency_check_passed": true
+  },
+  {
+    "path": "/Users/milushangdi/Projects/wyrplay/leaderboard-reconstruction/public/assets/footer-trophy.png",
+    "mode": "RGBA",
+    "size": [
+      109,
+      96
+    ],
+    "has_alpha_or_transparency_metadata": true,
+    "transparent_pixels": 3689,
+    "partial_alpha_pixels": 0,
+    "opaque_pixels": 6775,
+    "nonopaque_fraction": 0.3525420489296636,
+    "has_visible_content": true,
+    "transparency_check_passed": true
+  },
+  {
+    "path": "/Users/milushangdi/Projects/wyrplay/leaderboard-reconstruction/public/assets/hero-art.png",
+    "mode": "RGBA",
+    "size": [
+      330,
+      293
+    ],
+    "has_alpha_or_transparency_metadata": true,
+    "transparent_pixels": 350,
+    "partial_alpha_pixels": 0,
+    "opaque_pixels": 96340,
+    "nonopaque_fraction": 0.0036198159065053263,
+    "has_visible_content": true,
+    "transparency_check_passed": true
+  },
+  {
+    "path": "/Users/milushangdi/Projects/wyrplay/leaderboard-reconstruction/public/assets/medal-1.png",
+    "mode": "RGBA",
+    "size": [
+      62,
+      70
+    ],
+    "has_alpha_or_transparency_metadata": true,
+    "transparent_pixels": 738,
+    "partial_alpha_pixels": 0,
+    "opaque_pixels": 3602,
+    "nonopaque_fraction": 0.17004608294930876,
+    "has_visible_content": true,
+    "transparency_check_passed": true
+  },
+  {
+    "path": "/Users/milushangdi/Projects/wyrplay/leaderboard-reconstruction/public/assets/medal-2.png",
+    "mode": "RGBA",
+    "size": [
+      64,
+      60
+    ],
+    "has_alpha_or_transparency_metadata": true,
+    "transparent_pixels": 856,
+    "partial_alpha_pixels": 0,
+    "opaque_pixels": 2984,
+    "nonopaque_fraction": 0.22291666666666668,
+    "has_visible_content": true,
+    "transparency_check_passed": true
+  },
+  {
+    "path": "/Users/milushangdi/Projects/wyrplay/leaderboard-reconstruction/public/assets/medal-3.png",
+    "mode": "RGBA",
+    "size": [
+      65,
+      62
+    ],
+    "has_alpha_or_transparency_metadata": true,
+    "transparent_pixels": 1064,
+    "partial_alpha_pixels": 0,
+    "opaque_pixels": 2966,
+    "nonopaque_fraction": 0.2640198511166253,
+    "has_visible_content": true,
+    "transparency_check_passed": true
+  }
+]

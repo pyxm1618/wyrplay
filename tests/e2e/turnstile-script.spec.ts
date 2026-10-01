@@ -47,6 +47,7 @@ test("the real Turnstile script path renders the widget and enables sign-in", as
   );
 
   await page.goto("/sign-in");
+  await page.getByRole("button", { name: "Continue with Magic Link" }).click();
   await page.getByLabel("Email address").fill("turnstile-script@example.com");
 
   const widget = page.locator('[aria-label="Human verification"]');

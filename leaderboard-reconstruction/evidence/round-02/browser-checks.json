@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "viewports": [
+    {
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "failures": [],
+  "apiRequests": [],
+  "fonts": [
+    {
+      "familyName": "Lilita One",
+      "postScriptName": "LilitaOne",
+      "isCustomFont": true,
+      "glyphCount": 9
+    }
+  ],
+  "operations": [
+    "save",
+    "like",
+    "category sorting",
+    "time-period demo sorting",
+    "search results",
+    "search empty state",
+    "create local preview",
+    "question choice",
+    "pagination scope feedback",
+    "account scope feedback",
+    "Escape dismissal"
+  ]
+}

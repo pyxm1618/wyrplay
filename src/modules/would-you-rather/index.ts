@@ -12,3 +12,16 @@ export { EditorialGuideSection } from "./ui/editorial-guide";
 export { QuestionFilterBar } from "./ui/question-filter-bar";
 export { WyrExperience } from "./ui/wyr-experience";
 export { TEST_FIXTURE_QUESTIONS } from "./testing/test-fixtures";
+
+export { IllustratedHomeHeader } from "./ui/illustrated-home";
+export { FinderExperience } from "./ui/finder/finder-experience";
+
+export type {
+  LeaderboardResult,
+  LeaderboardPeriod,
+  LeaderboardSnapshot,
+} from "./domain/leaderboard";
+export { LeaderboardPage } from "./ui/leaderboard/leaderboard-page";
+
+export { PlayPage } from "./ui/play/play-page";
+export { PrintPage } from "./ui/play/print-page";

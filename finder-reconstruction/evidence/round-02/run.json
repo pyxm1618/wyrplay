@@ -1,0 +1,39 @@
+{
+  "reference": "../reference.png",
+  "candidate": "candidate.png",
+  "capture_metadata": "capture.json",
+  "expected": {
+    "url": "http://127.0.0.1:4188/",
+    "title": "WYRPLAY — Find Questions",
+    "viewport": {
+      "width": 849,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "measurement_baseline": "../measurement-01/measurements.json",
+  "measurement_sha256": "7ce1ddb5176817f0e3b69c995f31068f101c80d0454495913cc8466f4ec20b9a",
+  "allow_height_difference": true,
+  "expected_assets": {},
+  "clips": [
+    "region-000:42,9,777,42",
+    "region-001:43,263,762,61",
+    "region-002:43,325,762,41",
+    "region-003:21,396,221,845",
+    "region-004:257,396,570,1170",
+    "region-005:21,1627,807,86",
+    "region-006:43,1734,763,94",
+    "region-007:265,485,555,101",
+    "region-008:265,595,555,101",
+    "region-009:265,705,555,101",
+    "region-010:265,815,555,101",
+    "region-011:265,925,555,101",
+    "region-012:265,1035,555,101",
+    "region-013:265,1147,555,101",
+    "region-014:265,1258,555,96",
+    "region-015:265,1368,555,96",
+    "region-016:265,1478,555,96"
+  ]
+}

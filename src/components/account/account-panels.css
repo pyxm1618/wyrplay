@@ -1,0 +1,710 @@
+.account-overview .account-page .saved-library {
+  padding: 20px 18px 18px;
+  min-height: 930px;
+}
+.account-overview .library-heading {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.account-overview .library-heading > .account-icon {
+  width: 42px;
+  height: 42px;
+  color: #008aff;
+}
+.account-overview .library-heading > .icon-heart {
+  color: #ff2948;
+  fill: #ff2948;
+}
+.account-overview .library-heading h2 {
+  font-size: 32px;
+}
+.account-overview .library-heading p {
+  color: #526487;
+}
+.account-overview .library-search {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e3e8f0;
+  background: #fff;
+  border-radius: 24px;
+  padding: 10px 14px;
+  width: 295px;
+}
+.account-overview .library-search input {
+  border: 0;
+  outline: none;
+  min-width: 0;
+  width: 100%;
+  background: transparent;
+  font-size: 12px;
+}
+.account-overview .library-search:focus-within {
+  outline: 2px solid #008aff;
+}
+.account-overview .library-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 14px 3px 18px;
+}
+.account-overview .account-page .library-categories button {
+  background: #fff;
+  border: 1px solid #edf0f4;
+  border-radius: 24px;
+  padding: 9px 13px;
+  box-shadow: 0 2px 5px #07245208;
+  font-size: 11px;
+}
+.account-overview .account-page .library-categories button.active,
+.account-overview .account-page .library-pagination button.active {
+  background: #071425;
+  color: #fff;
+}
+.account-overview .library-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 18px;
+  background: linear-gradient(120deg, #fff9e9, #fff6da);
+  padding: 14px;
+  margin-bottom: 12px;
+}
+.account-overview .library-toolbar > div {
+  margin-right: auto;
+}
+.account-overview .library-toolbar strong {
+  font-weight: 700;
+}
+.account-overview .library-toolbar p {
+  color: #526487;
+  font-size: 13px;
+}
+.account-overview .library-bulb {
+  font-size: 35px;
+}
+.account-overview .account-page .library-action {
+  border-radius: 22px;
+  background: #e4f5ff;
+  color: #008aff;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.account-overview .library-row {
+  display: grid;
+  grid-template-columns: 35px minmax(140px, 1fr) 200px 135px 95px 35px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #edf0f6;
+  border-radius: 22px;
+  min-height: 72px;
+  padding: 10px 12px;
+  margin-bottom: 1px;
+  background: #fff;
+}
+.account-overview .library-row input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #008aff;
+  cursor: pointer;
+}
+.account-overview .account-page .library-title {
+  text-align: left;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.35;
+}
+.account-overview .library-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.account-overview .library-tags span {
+  border-radius: 14px;
+  padding: 5px 11px;
+  background: #fff2dd;
+  color: #de7100;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+.account-overview .library-tags span + span {
+  background: #ffeaf2;
+  color: #ff2268;
+}
+.account-overview .library-votes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #536a90;
+  white-space: nowrap;
+}
+.account-overview .library-votes > .account-icon {
+  width: 22px;
+  height: 22px;
+  fill: #ff3257;
+  color: #ff3257;
+}
+.account-overview .library-row details {
+  position: relative;
+}
+.account-overview .library-row summary {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  line-height: 35px;
+  background: #fff;
+  box-shadow: 0 1px 5px #0d284418;
+}
+.account-overview .account-page .library-row details button {
+  position: absolute;
+  right: 0;
+  top: 38px;
+  z-index: 5;
+  padding: 10px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 12px #1f436525;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.account-overview .library-pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 20px 0 0;
+  flex-wrap: wrap;
+}
+.account-overview .account-page .library-pagination button {
+  border: 1px solid #e5eaf0;
+  border-radius: 10px;
+  background: #fff;
+  width: 35px;
+  height: 35px;
+  font-weight: 700;
+}
+.account-overview .my-question-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 680fr) minmax(0, 272fr);
+  gap: 16px;
+}
+.account-overview .my-question-main {
+  min-height: 950px;
+}
+.account-overview .my-question-main .library-heading h2 {
+  font-size: 26px;
+}
+.account-overview .my-question-main .library-heading .account-blue-button {
+  width: auto;
+  margin-left: auto;
+  font-size: 12px !important;
+}
+.account-overview .my-question-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #edf0f6;
+}
+.account-overview .account-page .my-question-filters button {
+  background: #f2f5f8;
+  border-radius: 24px;
+  font-size: 11px;
+  padding: 9px 12px;
+}
+.account-overview .account-page .my-question-filters button.active {
+  background: #071425;
+  color: #fff;
+}
+.account-overview .my-question-filters input,
+.account-overview .my-question-filters select {
+  border: 1px solid #e4eaf2;
+  border-radius: 20px;
+  padding: 8px;
+  font-size: 11px;
+  max-width: 100%;
+  background: #fafafa;
+  color: #607195;
+}
+.account-overview .my-question-main .account-empty {
+  min-height: 620px;
+}
+.account-overview .my-question-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.account-overview .my-question-sidebar h2 {
+  font-size: 24px;
+}
+.account-overview .creator-stat {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 13px;
+  border-bottom: 1px solid #edf0f6;
+}
+.account-overview .creator-stat strong {
+  font-size: 23px;
+  color: #607195;
+}
+.account-overview .creator-stat span {
+  color: #526487;
+  font-size: 12px;
+}
+.account-overview .creator-tips p {
+  padding: 12px 0;
+  color: #536a90;
+  font-size: 13px;
+}
+.account-overview .creator-tips a {
+  color: #008aff !important;
+  font-weight: 700;
+}
+.account-overview .unavailable-note {
+  padding: 12px 0;
+  color: #607195;
+  font-size: 12px;
+}
+.account-overview .account-page .account-tabs a {
+  font-weight: 700;
+  padding: 10px 24px;
+  border-radius: 24px;
+  background: #f8f3ea;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.account-overview .account-page .account-tabs a.active {
+  background: #071425;
+  color: white;
+}
+.account-overview .account-settings-layout {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 14px;
+}
+.account-overview .settings-sidebar {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.account-overview .settings-sidebar a {
+  padding: 12px 8px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+.account-overview .settings-sidebar a:first-child {
+  background: #e5f5ff;
+  color: #008aff;
+}
+.account-overview .settings-sidebar a:last-child {
+  color: #ff2849;
+}
+.account-overview .settings-content {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+.account-overview .settings-content .account-panel {
+  padding: 18px;
+}
+.account-overview .settings-profile-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 510fr) minmax(0, 235fr);
+  gap: 14px;
+}
+.account-overview .settings-content h2 {
+  font-size: 26px;
+}
+.account-overview .settings-content h3 {
+  font-size: 21px;
+}
+.account-overview .settings-content p {
+  color: #566b92;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.account-overview .settings-profile-columns aside {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.account-overview .settings-profile-columns aside h2 {
+  font-size: 25px;
+}
+.account-overview .settings-inspiration {
+  background: #e8f7ff;
+  min-height: 220px;
+}
+.account-overview .settings-tips {
+  background: #fff0f5;
+  min-height: 245px;
+}
+.account-overview .settings-profile-columns aside p {
+  margin-top: 15px;
+}
+.account-overview .settings-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  margin: 18px 0;
+  flex-wrap: wrap;
+}
+.account-overview .settings-field > span:first-child {
+  width: 115px;
+  flex-shrink: 0;
+}
+.account-overview .settings-field > input,
+.account-overview .settings-field > textarea,
+.account-overview .settings-field > div {
+  flex: 1;
+  min-width: 0;
+}
+.account-overview .settings-field input,
+.account-overview .settings-field textarea {
+  padding: 8px;
+  border: 1px solid #e0e7ef;
+  border-radius: 9px;
+  background: #fafcff;
+  max-width: 100%;
+  font: inherit;
+  color: #526487;
+}
+.account-overview .settings-field textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+.account-overview .settings-photo {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+.account-overview .settings-photo small {
+  width: 100%;
+  color: #607195;
+}
+.account-overview .account-page .settings-field button {
+  background: #edf8ff;
+  border-radius: 19px;
+  padding: 8px 12px;
+  font-size: 11px;
+}
+.account-overview .account-page .settings-save {
+  width: auto;
+  margin-left: auto;
+  padding: 10px 30px;
+}
+.account-overview .verified-badge,
+.account-overview .unverified-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 16px;
+  margin: 5px;
+  background: #eafaea;
+  color: #05a333;
+  font-size: 12px;
+}
+.account-overview .unverified-badge {
+  background: #fff1d9;
+  color: #a26700;
+}
+.account-overview .settings-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 16px 0 0;
+  margin-top: 16px;
+  border-top: 1px solid #e6edf3;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.account-overview .settings-action-row a {
+  border: 1px solid #e2e8ef;
+  border-radius: 18px;
+  padding: 9px 16px;
+}
+.account-overview .account-page .settings-danger {
+  background: #ffedf1;
+  color: #ee2448;
+  border-radius: 19px;
+  padding: 10px 23px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.account-overview .settings-delete-warning {
+  background: #fff0f2;
+  border-radius: 14px;
+  padding: 14px;
+  margin-top: 15px;
+  color: #ca1b37;
+  font-size: 12px;
+}
+.account-overview .settings-delete-warning form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+.account-overview .settings-delete-warning input {
+  background: white;
+  border: 1px solid #efcbd2;
+  border-radius: 7px;
+  padding: 7px;
+  width: 105px;
+}
+.account-overview .account-page .settings-delete-warning .settings-danger {
+  background: #ff3151;
+  color: #fff;
+}
+@media (max-width: 850px) {
+  .account-overview .library-heading {
+    flex-wrap: wrap;
+  }
+  .account-overview .library-search {
+    width: 100%;
+    margin-left: 0;
+  }
+  .account-overview .library-row {
+    grid-template-columns: 28px minmax(100px, 1fr) 95px 30px;
+    gap: 8px;
+  }
+  .account-overview .library-tags {
+    grid-column: 2;
+  }
+  .account-overview .library-votes {
+    grid-column: 3;
+  }
+  .account-overview .library-row > .library-action {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .account-overview .library-row > details {
+    grid-column: 4;
+    grid-row: 1;
+  }
+  .account-overview .library-toolbar {
+    flex-wrap: wrap;
+  }
+  .account-overview .my-question-layout {
+    grid-template-columns: 1fr;
+  }
+  .account-overview .my-question-main {
+    min-height: 450px;
+  }
+  .account-overview .my-question-main .account-empty {
+    min-height: 300px;
+  }
+  .account-overview .my-question-sidebar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  }
+  .account-overview .account-settings-layout {
+    grid-template-columns: 1fr;
+  }
+  .account-overview .settings-sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+  .account-overview .settings-profile-columns {
+    grid-template-columns: 1fr;
+  }
+  .account-overview .settings-profile-columns aside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 550px) {
+  .account-overview .library-heading h2 {
+    font-size: 28px;
+  }
+  .account-overview .library-categories {
+    gap: 5px;
+  }
+  .account-overview .account-page .library-categories button {
+    font-size: 10px;
+    padding: 7px 9px;
+  }
+  .account-overview .library-row {
+    padding: 10px 8px;
+  }
+  .account-overview .account-page .library-title {
+    font-size: 12px;
+  }
+  .account-overview .library-tags {
+    grid-column: 2/5;
+  }
+  .account-overview .library-votes {
+    grid-column: 2;
+    font-size: 11px;
+  }
+  .account-overview .account-page .library-row > .library-action {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+  .account-overview .saved-library {
+    min-height: 650px;
+  }
+  .account-overview .my-question-main .library-heading .account-blue-button {
+    margin: 0;
+  }
+  .account-overview .settings-field > span:first-child {
+    width: 100%;
+  }
+  .account-overview .settings-field {
+    align-items: flex-start;
+  }
+  .account-overview .settings-profile-columns aside {
+    grid-template-columns: 1fr;
+  }
+  .account-overview .settings-content .account-panel {
+    padding: 14px;
+  }
+  .account-overview .account-tabs {
+    gap: 6px;
+  }
+  .account-overview .account-page .account-tabs a {
+    padding: 8px 11px;
+    font-size: 11px;
+  }
+}
+
+/* Reference calibration: keep the shared account chrome, tune new panels only. */
+.account-overview .library-heading h2,
+.account-overview .my-question-sidebar h2,
+.account-overview .settings-content h2,
+.account-overview .settings-content h3 {
+  font-family: AccountCondensed, Arial, sans-serif;
+  font-weight: 700;
+}
+.account-overview .account-page .library-title {
+  font-family: AccountCondensed, Arial, sans-serif;
+  font-size: 19px;
+}
+.account-overview .library-toolbar {
+  padding-block: 9px;
+}
+.account-overview .library-categories button {
+  flex: 1;
+}
+.account-overview .settings-field > span:first-child {
+  width: 115px;
+}
+.account-overview .settings-photo {
+  align-items: center;
+}
+.account-overview .settings-avatar {
+  border-radius: 50%;
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+}
+.account-overview .settings-photo small {
+  margin-left: 0;
+}
+.account-overview .settings-sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.account-overview .settings-sidebar .account-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.account-overview .settings-inspiration {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.account-overview .settings-inspiration img {
+  object-fit: contain;
+  width: 65px;
+  height: 105px;
+}
+.account-overview .settings-profile-columns .settings-inspiration h2 {
+  font-family: AccountChewy, cursive;
+  font-size: 22px;
+  flex: 1;
+}
+.account-overview .settings-inspiration p {
+  width: 100%;
+}
+.account-overview .account-page .my-question-filters button:nth-child(2) {
+  background: #ebfbee;
+  color: #008e2c;
+}
+.account-overview .account-page .my-question-filters button:nth-child(3) {
+  background: #fff5dd;
+  color: #c57b00;
+}
+.account-overview .account-page .my-question-filters button:nth-child(4) {
+  background: #f0f3f8;
+  color: #526487;
+}
+.account-overview .account-page .my-question-filters button:nth-child(5) {
+  background: #ffebf0;
+  color: #e0244c;
+}
+.account-overview .creator-stat strong {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #e8f7ff;
+}
+.account-overview .creator-stat:nth-child(3) strong {
+  background: #eafbea;
+  color: #00b83a;
+}
+.account-overview .creator-stat:nth-child(4) strong {
+  background: #fff6e1;
+  color: #ef9700;
+}
+.account-overview .creator-stat:nth-child(5) strong {
+  background: #f0f3fb;
+}
+.account-overview .creator-stat:nth-child(6) strong {
+  background: #ffedf3;
+  color: #ff2948;
+}
+@media (max-width: 550px) {
+  .account-overview .settings-field > span:first-child {
+    width: 100%;
+  }
+  .account-overview .library-categories button {
+    flex: none;
+  }
+}
+
+.account-overview .library-categories button {
+  flex: 1 0 auto;
+  white-space: nowrap;
+}
+.account-overview .account-page .library-title {
+  font-size: 18px;
+  line-height: 1.25;
+}
+.account-overview #profile .unavailable-note {
+  padding: 5px 0;
+}
+.account-overview #sign-in .settings-field input {
+  width: min(100%, 300px);
+}
+@media (min-width: 851px) {
+  .account-settings-page .account-profile {
+    height: 180px;
+  }
+}

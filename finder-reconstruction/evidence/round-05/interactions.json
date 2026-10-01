@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "viewports": [
+    849,
+    390,
+    700,
+    1024
+  ],
+  "checks": [
+    "10 original questions",
+    "selection counter",
+    "save toggle",
+    "play and choose",
+    "Escape closes dialog",
+    "presentation mode",
+    "keyword search",
+    "empty state",
+    "filters apply on request",
+    "clear filters",
+    "no horizontal overflow",
+    "print selected only",
+    "no JS errors",
+    "no API requests"
+  ],
+  "errors": [],
+  "requests": []
+}

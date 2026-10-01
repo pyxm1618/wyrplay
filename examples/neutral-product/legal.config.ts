@@ -20,25 +20,19 @@ export const legalConfig = {
     "test transaction and entitlement records",
     "security and abuse-prevention events",
   ],
-  authMethods: ["Google", "email magic link"],
-  processors: [
-    { name: "Google", purpose: "Test-only OAuth authentication" },
-    { name: "Resend", purpose: "Test-only transactional email" },
-    { name: "Waffo", purpose: "Test-only payment and subscription processing" },
-    { name: "Cloudflare Turnstile", purpose: "Test-only abuse prevention" },
-  ],
-  paymentModel: "mor",
-  oneTimePurchases: true,
-  subscriptions: true,
-  credits: true,
+  authMethods: [],
+  processors: [],
+  paymentModel: "none",
+  oneTimePurchases: false,
+  subscriptions: false,
+  credits: false,
   refundPolicy: {
     summary:
       "Synthetic test-only refund language. Replace with reviewed product terms before launch.",
     cancellationSummary:
       "Synthetic test-only subscription cancellation language. Replace before launch.",
   },
-  subscriptionTerms:
-    "Synthetic monthly subscription terms used only for clean-setup verification. Not production legal text.",
+  subscriptionTerms: null,
   retentionRules: [
     {
       category: "test authentication records",
@@ -52,7 +46,7 @@ export const legalConfig = {
     },
   ],
   accountDeletion: {
-    enabled: true,
+    enabled: false,
     summary: "Test-only account deletion workflow used to validate the starter lifecycle.",
   },
   internationalTransfers:

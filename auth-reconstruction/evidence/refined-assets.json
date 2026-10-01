@@ -1,0 +1,151 @@
+{
+  "original_total": 14,
+  "states": {
+    "approved": 14,
+    "deferred": 0,
+    "rejected": 0,
+    "unreviewed": 0
+  },
+  "assets": [
+    {
+      "asset": "public/assets/login-logo-v2.png",
+      "source": "evidence/login/reference.png",
+      "state": "approved",
+      "method": "Exterior cream flood removal; enclosed logo whites preserved",
+      "size": [
+        180,
+        69
+      ]
+    },
+    {
+      "asset": "public/assets/login-hero-art-v2.png",
+      "source": "evidence/login/reference.png",
+      "state": "approved",
+      "method": "Manual silhouette mask excludes screenshot text and UI",
+      "size": [
+        514,
+        660
+      ]
+    },
+    {
+      "asset": "public/assets/login-left-clouds-v2.png",
+      "source": "evidence/login/reference.png",
+      "state": "approved",
+      "method": "Feather inner crop seams; original colors retained",
+      "size": [
+        198,
+        936
+      ]
+    },
+    {
+      "asset": "public/assets/login-right-clouds-v2.png",
+      "source": "evidence/login/reference.png",
+      "state": "approved",
+      "method": "Feather inner crop seams; original colors retained",
+      "size": [
+        172,
+        776
+      ]
+    },
+    {
+      "asset": "public/assets/login-bottom-clouds-v2.png",
+      "source": "evidence/login/reference.png",
+      "state": "approved",
+      "method": "Feather inner crop seams; original colors retained",
+      "size": [
+        654,
+        148
+      ]
+    },
+    {
+      "asset": "public/assets/login-top-left-cloud-v2.png",
+      "source": "evidence/login/reference.png",
+      "state": "approved",
+      "method": "Original cloud crop; logo overlap excluded",
+      "size": [
+        160,
+        187
+      ]
+    },
+    {
+      "asset": "public/assets/login-mid-left-cloud-v2.png",
+      "source": "evidence/login/reference.png",
+      "state": "approved",
+      "method": "Additional decor crop; copy region excluded",
+      "size": [
+        132,
+        192
+      ]
+    },
+    {
+      "asset": "public/assets/signup-logo-v2.png",
+      "source": "evidence/signup/reference.png",
+      "state": "approved",
+      "method": "Exterior cream flood removal; enclosed logo whites preserved",
+      "size": [
+        193,
+        73
+      ]
+    },
+    {
+      "asset": "public/assets/signup-hero-art-v2.png",
+      "source": "evidence/signup/reference.png",
+      "state": "approved",
+      "method": "Manual silhouette mask excludes screenshot text and UI",
+      "size": [
+        559,
+        715
+      ]
+    },
+    {
+      "asset": "public/assets/signup-left-clouds-v2.png",
+      "source": "evidence/signup/reference.png",
+      "state": "approved",
+      "method": "Feather inner crop seams; original colors retained",
+      "size": [
+        177,
+        941
+      ]
+    },
+    {
+      "asset": "public/assets/signup-right-clouds-v2.png",
+      "source": "evidence/signup/reference.png",
+      "state": "approved",
+      "method": "Feather inner crop seams; original colors retained",
+      "size": [
+        170,
+        721
+      ]
+    },
+    {
+      "asset": "public/assets/signup-bottom-clouds-v2.png",
+      "source": "evidence/signup/reference.png",
+      "state": "approved",
+      "method": "Feather inner crop seams; original colors retained",
+      "size": [
+        677,
+        150
+      ]
+    },
+    {
+      "asset": "public/assets/signup-top-left-cloud-v2.png",
+      "source": "evidence/signup/reference.png",
+      "state": "approved",
+      "method": "Original cloud crop; logo overlap excluded",
+      "size": [
+        125,
+        155
+      ]
+    },
+    {
+      "asset": "public/assets/signup-mid-left-cloud-v2.png",
+      "source": "evidence/signup/reference.png",
+      "state": "approved",
+      "method": "Additional decor crop; copy region excluded",
+      "size": [
+        177,
+        179
+      ]
+    }
+  ]
+}

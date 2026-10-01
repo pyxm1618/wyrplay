@@ -1,0 +1,35 @@
+{
+  "reference": "../reference.png",
+  "candidate": "candidate.png",
+  "capture_metadata": "capture.json",
+  "expected": {
+    "url": "http://127.0.0.1:4188/",
+    "title": "WYRPLAY — Leaderboards",
+    "viewport": {
+      "width": 868,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "measurement_baseline": "../measurement-01/measurements.json",
+  "measurement_sha256": "cb2c61fb2d858049adbd8a07e470146e14b456cdf75cea16c7a7c089b3e8c18d",
+  "allow_height_difference": true,
+  "expected_assets": {},
+  "clips": [
+    "region-000:28,0,812,61",
+    "region-001:28,61,812,280",
+    "region-002:28,341,812,68",
+    "region-003:27,429,197,833",
+    "region-004:247,531,590,296",
+    "region-005:247,554,183,273",
+    "region-006:444,531,193,296",
+    "region-007:651,554,185,273",
+    "region-008:242,890,602,459",
+    "region-009:344,1367,428,31",
+    "region-010:28,1421,404,181",
+    "region-011:448,1421,392,165",
+    "region-012:29,1628,811,119"
+  ]
+}

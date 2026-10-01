@@ -1,0 +1,40 @@
+{
+  "reference": "../reference.png",
+  "candidate": "candidate.png",
+  "capture_metadata": "capture.json",
+  "expected": {
+    "url": "http://127.0.0.1:4187/",
+    "title": "WYRPLAY — Would You Rather?",
+    "viewport": {
+      "width": 778,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "measurement_baseline": "../measurement-01/measurements.json",
+  "measurement_sha256": "9b84b6bed034be064ceeb5222f22f557ed1e70281d33a7b4e0d1c9515a194273",
+  "allow_height_difference": true,
+  "expected_assets": {},
+  "clips": [
+    "region-000:0,0,778,60",
+    "region-001:0,60,778,572",
+    "region-002:210,43,359,190",
+    "region-003:125,285,525,180",
+    "region-004:262,511,254,51",
+    "region-005:0,632,778,218",
+    "region-006:33,686,106,135",
+    "region-007:144,686,112,135",
+    "region-008:0,850,778,240",
+    "region-009:41,905,219,157",
+    "region-010:274,905,226,157",
+    "region-011:0,1090,778,140",
+    "region-012:0,1230,778,290",
+    "region-013:432,1274,314,237",
+    "region-014:0,1520,778,73",
+    "region-015:0,1593,778,273",
+    "region-016:0,1866,778,155",
+    "region-017:380,620,20,8"
+  ]
+}

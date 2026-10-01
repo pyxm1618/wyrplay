@@ -1,0 +1,1 @@
+Replaced Lilita One with Chewy after checking visible glyphs against reference. Restored independent edge decoration strips. Main selection/footer vertical geometry now aligns. Interaction suite passed. This does not establish original-font identity.

@@ -1,0 +1,368 @@
+{
+  "source": "/Users/milushangdi/Projects/wyrplay/leaderboard-reconstruction/evidence/reference.png",
+  "source_sha256": "e064f9d70f30ff01f576de117b85249349be2adce4c8c713fa96775e39a0d087",
+  "source_size": [
+    868,
+    1812
+  ],
+  "css_mapping": {
+    "assumed_viewport_width": 868,
+    "css_per_image_pixel": 1.0,
+    "meaning": "实现约定，不证明参考图原始 DPR 或 CSS 视口"
+  },
+  "regions": [
+    {
+      "name": "header",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        28,
+        0,
+        812,
+        61
+      ],
+      "normalized_box": [
+        0.032258,
+        0.0,
+        0.935484,
+        0.033664
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        28.0,
+        0.0,
+        812.0,
+        61.0
+      ],
+      "selector": ".site-header",
+      "dom_comparable": true
+    },
+    {
+      "name": "hero",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        28,
+        61,
+        812,
+        280
+      ],
+      "normalized_box": [
+        0.032258,
+        0.033664,
+        0.935484,
+        0.154525
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        28.0,
+        61.0,
+        812.0,
+        280.0
+      ],
+      "selector": ".hero",
+      "dom_comparable": true
+    },
+    {
+      "name": "category-tabs",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        28,
+        341,
+        812,
+        68
+      ],
+      "normalized_box": [
+        0.032258,
+        0.18819,
+        0.935484,
+        0.037528
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        28.0,
+        341.0,
+        812.0,
+        68.0
+      ],
+      "selector": ".category-tabs",
+      "dom_comparable": true
+    },
+    {
+      "name": "sidebar",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        27,
+        429,
+        197,
+        833
+      ],
+      "normalized_box": [
+        0.031106,
+        0.236755,
+        0.226959,
+        0.459713
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        27.0,
+        429.0,
+        197.0,
+        833.0
+      ],
+      "selector": ".sidebar",
+      "dom_comparable": true
+    },
+    {
+      "name": "top-three",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        247,
+        531,
+        590,
+        296
+      ],
+      "normalized_box": [
+        0.284562,
+        0.293046,
+        0.679724,
+        0.163355
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        247.0,
+        531.0,
+        590.0,
+        296.0
+      ],
+      "selector": ".podium",
+      "dom_comparable": true
+    },
+    {
+      "name": "dog-card",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        247,
+        554,
+        183,
+        273
+      ],
+      "normalized_box": [
+        0.284562,
+        0.30574,
+        0.210829,
+        0.150662
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        247.0,
+        554.0,
+        183.0,
+        273.0
+      ],
+      "selector": ".question-card.dog",
+      "dom_comparable": true
+    },
+    {
+      "name": "travel-card",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        444,
+        531,
+        193,
+        296
+      ],
+      "normalized_box": [
+        0.511521,
+        0.293046,
+        0.22235,
+        0.163355
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        444.0,
+        531.0,
+        193.0,
+        296.0
+      ],
+      "selector": ".question-card.travel",
+      "dom_comparable": true
+    },
+    {
+      "name": "pizza-card",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        651,
+        554,
+        185,
+        273
+      ],
+      "normalized_box": [
+        0.75,
+        0.30574,
+        0.213134,
+        0.150662
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        651.0,
+        554.0,
+        185.0,
+        273.0
+      ],
+      "selector": ".question-card.pizza",
+      "dom_comparable": true
+    },
+    {
+      "name": "top-ten",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        242,
+        890,
+        602,
+        459
+      ],
+      "normalized_box": [
+        0.278802,
+        0.49117,
+        0.693548,
+        0.253311
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        242.0,
+        890.0,
+        602.0,
+        459.0
+      ],
+      "selector": ".ranking-list",
+      "dom_comparable": true
+    },
+    {
+      "name": "pagination",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        344,
+        1367,
+        428,
+        31
+      ],
+      "normalized_box": [
+        0.396313,
+        0.754415,
+        0.493088,
+        0.017108
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        344.0,
+        1367.0,
+        428.0,
+        31.0
+      ],
+      "selector": ".pagination",
+      "dom_comparable": true
+    },
+    {
+      "name": "stats",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        28,
+        1421,
+        404,
+        181
+      ],
+      "normalized_box": [
+        0.032258,
+        0.784216,
+        0.465438,
+        0.09989
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        28.0,
+        1421.0,
+        404.0,
+        181.0
+      ],
+      "selector": ".stats-panel",
+      "dom_comparable": true
+    },
+    {
+      "name": "hall",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        448,
+        1421,
+        392,
+        165
+      ],
+      "normalized_box": [
+        0.516129,
+        0.784216,
+        0.451613,
+        0.09106
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        448.0,
+        1421.0,
+        392.0,
+        165.0
+      ],
+      "selector": ".hall-panel",
+      "dom_comparable": true
+    },
+    {
+      "name": "footer-cta",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        29,
+        1628,
+        811,
+        119
+      ],
+      "normalized_box": [
+        0.03341,
+        0.898455,
+        0.934332,
+        0.065673
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        29.0,
+        1628.0,
+        811.0,
+        119.0
+      ],
+      "selector": ".footer-cta",
+      "dom_comparable": true
+    }
+  ],
+  "groups": [],
+  "vertical_scans": [],
+  "expected": {
+    "url": "http://127.0.0.1:4188/",
+    "title": "WYRPLAY — Leaderboards",
+    "viewport": {
+      "width": 868,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "expected_assets": {},
+  "input_manifest_sha256": "ef6ce570c450c5b5f1158d8d14be8c534c27ddb8817f79abddcae57dd565247c"
+}

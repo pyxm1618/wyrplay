@@ -5,6 +5,7 @@ import { createDatabaseClient } from "@/platform/database/client";
 import { session } from "@/platform/database/schema";
 
 const TURNSTILE_TEST_TOKEN = "XXXX.DUMMY.TOKEN.XXXX";
+let nextMagicLinkConfirmIpOctet = 210;
 
 function extractConfirmationUrl(html: string): string {
   const match = html.match(/href="([^"]+)"/);
@@ -53,7 +54,10 @@ async function signInWithMagicLink(input: {
     `/api/test/emails/latest?to=${encodeURIComponent(input.email)}`,
   );
   const message = (await mailbox.json()) as { html: string };
-  const context = await input.browser.newContext();
+  const confirmIp = `203.0.113.${nextMagicLinkConfirmIpOctet++}`;
+  const context = await input.browser.newContext({
+    extraHTTPHeaders: { "x-real-ip": confirmIp },
+  });
   const page = await context.newPage();
   await page.goto(extractConfirmationUrl(message.html));
   await page.getByRole("button", { name: "Confirm sign in" }).click();
@@ -202,6 +206,7 @@ test("billing mutations require a fresh session", async ({ browser, request }) =
 });
 
 test("magic link confirmation is scanner-safe and single-use", async ({ page, request }) => {
+  await page.setExtraHTTPHeaders({ "x-real-ip": "203.0.113.250" });
   const email = `browser-${Date.now()}@example.com`;
   const externalRequests: string[] = [];
   const getRequests: string[] = [];
@@ -215,6 +220,7 @@ test("magic link confirmation is scanner-safe and single-use", async ({ page, re
 
   await installBrowserTurnstileMock(page);
   await page.goto("/sign-in");
+  await page.getByRole("button", { name: "Continue with Magic Link" }).click();
   await page.getByLabel("Email address").fill(email);
   const sendButton = page.getByRole("button", { name: "Send secure sign-in link" });
   await expect(sendButton).toBeEnabled({ timeout: 15_000 });
@@ -282,7 +288,7 @@ test("magic link confirmation is scanner-safe and single-use", async ({ page, re
   expect(verificationResponse.status()).toBeLessThan(400);
   expect((await verificationResponse.headerValue("set-cookie")) ?? "").toContain("session_token");
   await expect(page).toHaveURL(/\/account$/);
-  await expect(page.getByRole("heading", { name: /Welcome/ })).toBeVisible();
+  await expect(page.locator("#account-title")).toBeVisible();
 
   const replay = await request.post("/api/auth/magic-link/confirm", {
     headers: {

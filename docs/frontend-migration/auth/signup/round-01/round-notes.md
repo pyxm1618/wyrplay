@@ -1,0 +1,1 @@
+Initial capture plan targeted the managed E2E server on port 3000. Tests completed before capture. No screenshot or successful verification is claimed for this round. Port changed to a dedicated preview and measurements re-established for round 02.

@@ -9,6 +9,7 @@ import { siteConfig } from "@/config/site.config";
 import { rootMetadata } from "@/platform/seo/root-metadata";
 
 import "../globals.css";
+import "./home.css";
 
 export const metadata: Metadata = rootMetadata();
 
@@ -18,7 +19,7 @@ export default async function MarketingLayout({ children }: Readonly<{ children:
     <html lang={siteConfig.defaultLocale} data-theme="dark">
       <body>
         <div className="flex min-h-screen flex-col">
-          <SiteHeader />
+          <SiteHeader appearance="illustrated-home" />
           {children}
           <SiteFooter />
         </div>

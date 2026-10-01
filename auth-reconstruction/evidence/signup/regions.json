@@ -1,0 +1,78 @@
+{
+  "reference": "reference.png",
+  "css_viewport_width": 1024,
+  "expected": {
+    "url": "http://127.0.0.1:4189/sign-up/",
+    "title": "WYRPLAY \u2014 Create Your Account",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "regions": [
+    {
+      "name": "header",
+      "box": [
+        0,
+        0,
+        1024,
+        90
+      ],
+      "selector": ".site-header"
+    },
+    {
+      "name": "auth-card",
+      "box": [
+        177,
+        649,
+        677,
+        737
+      ],
+      "selector": ".auth-card"
+    },
+    {
+      "name": "google-button",
+      "box": [
+        237,
+        849,
+        558,
+        94
+      ],
+      "selector": ".google-button"
+    },
+    {
+      "name": "magic-button",
+      "box": [
+        237,
+        966,
+        558,
+        95
+      ],
+      "selector": ".magic-button"
+    },
+    {
+      "name": "title-ink",
+      "box": [
+        274,
+        714,
+        487,
+        56
+      ],
+      "box_type": "ink",
+      "selector": ".auth-card h2"
+    },
+    {
+      "name": "hero-art",
+      "box": [
+        465,
+        100,
+        559,
+        715
+      ],
+      "selector": ".hero-art"
+    }
+  ]
+}

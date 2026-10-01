@@ -1,0 +1,11 @@
+{
+  "typecheck": "passed",
+  "lint": "passed",
+  "build": "passed",
+  "browser_checks": 14,
+  "browser_checks_status": "passed",
+  "full_page": "round-05/candidate.png",
+  "geometry": "round-05/report/geometry.md",
+  "production_deployment": "not requested",
+  "image_generation": "not used; native-size screenshot crops sufficient for chosen viewport"
+}

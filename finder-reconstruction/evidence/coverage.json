@@ -1,0 +1,50 @@
+{
+  "original_total": 8,
+  "approved_pass": [
+    {
+      "item": "navigation",
+      "evidence": "round-05/candidate.png, capture.json and interactions.json",
+      "decision": "implemented and reviewed; visual differences retained in README"
+    },
+    {
+      "item": "hero",
+      "evidence": "round-05/candidate.png, capture.json and interactions.json",
+      "decision": "implemented and reviewed; visual differences retained in README"
+    },
+    {
+      "item": "search-and-popular-searches",
+      "evidence": "round-05/candidate.png, capture.json and interactions.json",
+      "decision": "implemented and reviewed; visual differences retained in README"
+    },
+    {
+      "item": "five-filter-groups",
+      "evidence": "round-05/candidate.png, capture.json and interactions.json",
+      "decision": "implemented and reviewed; visual differences retained in README"
+    },
+    {
+      "item": "ten-question-cards",
+      "evidence": "round-05/candidate.png, capture.json and interactions.json",
+      "decision": "implemented and reviewed; visual differences retained in README"
+    },
+    {
+      "item": "pagination",
+      "evidence": "round-05/candidate.png, capture.json and interactions.json",
+      "decision": "implemented and reviewed; visual differences retained in README"
+    },
+    {
+      "item": "selection-bar",
+      "evidence": "round-05/candidate.png, capture.json and interactions.json",
+      "decision": "implemented and reviewed; visual differences retained in README"
+    },
+    {
+      "item": "category-banner",
+      "evidence": "round-05/candidate.png, capture.json and interactions.json",
+      "decision": "implemented and reviewed; visual differences retained in README"
+    }
+  ],
+  "deferred_waiting": [],
+  "confirmed_reject_delete": [],
+  "unreviewed_unknown": [],
+  "reconciled_total": 8,
+  "no_deletion": true
+}

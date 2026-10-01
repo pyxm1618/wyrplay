@@ -1,0 +1,1250 @@
+@font-face {
+  font-family: WyrBody;
+  src: url("/fonts/roboto-condensed-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: WyrBody;
+  src: url("/fonts/roboto-condensed-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: WyrDisplay;
+  src: url("/fonts/lilita-one.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: WyrHand;
+  src: url("/fonts/kalam-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: clamp(0.7px, calc(100vw / 1024), 1.25px);
+}
+body {
+  margin: 0;
+  background: #fffbf5;
+  color: #060b17;
+  font:
+    400 24rem/1.35 WyrBody,
+    Arial,
+    sans-serif;
+}
+button,
+input {
+  font: inherit;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+  color: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid #0075ff;
+  outline-offset: 5px;
+}
+button {
+  border: 0;
+  background: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+.auth-page {
+  width: 1024rem;
+  min-height: 1536rem;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 45% 90%, #fff0da, transparent 44%), #fffbf5;
+}
+.artwork {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.artwork > img {
+  position: absolute;
+}
+.top-left-cloud {
+  left: 0;
+  top: 81rem;
+  width: 160rem;
+  height: 156rem;
+}
+.hero-art {
+  left: 510rem;
+  top: 100rem;
+  width: 514rem;
+  height: 660rem;
+}
+.left-clouds {
+  left: 0;
+  top: 600rem;
+  width: 198rem;
+  height: 936rem;
+}
+.right-clouds {
+  right: 0;
+  top: 760rem;
+  width: 172rem;
+  height: 776rem;
+}
+.bottom-clouds {
+  left: 198rem;
+  bottom: 0;
+  width: 654rem;
+  height: 148rem;
+}
+.speech {
+  position: absolute;
+  left: 859rem;
+  top: 164rem;
+  width: 166rem;
+  height: 177rem;
+  border-radius: 45% 50% 50% 42%;
+  background: #fff;
+  transform: rotate(-17deg);
+  display: grid;
+  place-items: center;
+}
+.speech span {
+  font:
+    700 28rem/1.14 WyrHand,
+    cursive;
+  text-align: center;
+  letter-spacing: -1rem;
+}
+.speech b {
+  color: #ff3049;
+  font: 400 39rem/1 WyrDisplay;
+  display: inline-block;
+  margin-left: 5rem;
+  vertical-align: middle;
+}
+.crown {
+  position: absolute;
+  left: 329rem;
+  top: 107rem;
+  width: 89rem;
+  height: 105rem;
+  transform: rotate(-4deg);
+}
+.confetti {
+  position: absolute;
+  display: block;
+}
+.plus {
+  left: 480rem;
+  top: 143rem;
+  width: 47rem;
+  height: 40rem;
+  transform: rotate(-18deg);
+}
+.plus:before,
+.plus:after {
+  content: "";
+  position: absolute;
+  background: #00bdf4;
+  border-radius: 12rem;
+  inset: 13rem 0;
+}
+.plus:after {
+  inset: 0 16rem;
+}
+.dash {
+  width: 18rem;
+  height: 45rem;
+  border-radius: 14rem;
+  background: #ffc400;
+}
+.one {
+  left: 235rem;
+  top: 130rem;
+  transform: rotate(-28deg);
+}
+.two {
+  left: 198rem;
+  top: 173rem;
+  transform: rotate(-65deg);
+}
+.three {
+  left: 58rem;
+  top: 345rem;
+  transform: rotate(-50deg);
+}
+.site-header {
+  position: relative;
+  z-index: 2;
+  height: 90rem;
+  display: flex;
+  align-items: flex-start;
+  padding: 16rem 41rem 0 60rem;
+  gap: 13rem;
+  font-size: 16rem;
+  line-height: 1;
+}
+.logo {
+  width: 180rem;
+  height: 69rem;
+  flex: none;
+  margin-top: -4rem;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.site-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26rem;
+  height: 41rem;
+  flex: 1;
+  margin-left: 34rem;
+  margin-right: 28rem;
+}
+.site-header nav button {
+  padding: 0;
+  white-space: nowrap;
+  font-size: 15rem;
+}
+.site-header nav .active {
+  text-decoration: underline;
+  text-underline-offset: 5rem;
+}
+.search-button {
+  width: 36rem;
+  height: 41rem;
+  padding: 8rem 5rem;
+  flex: none;
+  margin-right: 11rem;
+}
+.search-button svg {
+  width: 24rem;
+  height: 24rem;
+}
+.nav-login,
+.nav-signup {
+  height: 42rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border-radius: 30rem;
+  font-weight: 700;
+}
+.nav-login {
+  width: 90rem;
+  border: 1.5rem solid #acb4c2;
+}
+.nav-signup {
+  width: 96rem;
+  background: #030f17;
+  color: white;
+}
+.hero {
+  position: relative;
+  height: 568rem;
+}
+.hero-copy {
+  position: relative;
+  width: 510rem;
+  padding-top: 127rem;
+  margin-left: 42rem;
+  text-align: center;
+}
+.hero h1 {
+  margin: 0;
+  font:
+    400 132rem/0.88 WyrDisplay,
+    Arial,
+    sans-serif;
+  letter-spacing: -5rem;
+}
+.hero h1 > span {
+  display: block;
+}
+.welcome-word {
+  transform: rotate(-6deg);
+  font-size: 123rem;
+  letter-spacing: -5rem;
+}
+.back-word {
+  color: #ff5129;
+  transform: rotate(-9deg);
+  font-size: 168rem;
+  line-height: 1;
+  margin-top: 2rem;
+  letter-spacing: -6rem;
+}
+.back-word span {
+  color: #00b9f2;
+}
+.hero h3 {
+  font: 700 30rem/1.2 WyrBody;
+  margin: 19rem 0 8rem;
+}
+.hero p {
+  font-size: 22rem;
+  line-height: 28rem;
+  color: #263c58;
+  margin: 0;
+}
+.auth-card {
+  position: relative;
+  z-index: 1;
+  margin: 0 172rem 0 198rem;
+  width: 654rem;
+  height: 730rem;
+  border-radius: 40rem;
+  background: linear-gradient(120deg, #fff 0%, #fffefd 100%);
+  padding: 37rem 48rem 27rem;
+  text-align: center;
+}
+.auth-card h2 {
+  font:
+    400 68rem/1.15 WyrDisplay,
+    Arial,
+    sans-serif;
+  letter-spacing: -1.5rem;
+  margin: 0;
+  color: #050a1b;
+}
+.card-subtitle {
+  margin: 15rem 0 36rem;
+  color: #4d5f82;
+  font-size: 25rem;
+  line-height: 33rem;
+}
+.auth-actions {
+  display: grid;
+  gap: 24rem;
+}
+.auth-button {
+  height: 94rem;
+  display: flex;
+  align-items: center;
+  gap: 32rem;
+  border: 1.5rem solid #e5e6ed;
+  border-radius: 23rem;
+  padding: 0 32rem;
+  font-size: 27rem;
+  font-weight: 700;
+  text-align: left;
+  white-space: nowrap;
+}
+.auth-button > svg:first-child {
+  width: 50rem;
+  height: 50rem;
+  flex: none;
+}
+.auth-button > svg:last-child {
+  width: 28rem;
+  height: 28rem;
+  margin-left: auto;
+  flex: none;
+}
+.google-button {
+  background: #fff;
+  box-shadow: 0 5rem 8rem #1515250b;
+}
+.magic-button {
+  background: #f5f6fb;
+}
+.auth-button:hover {
+  border-color: #9ecfff;
+  box-shadow: 0 5rem 16rem #0f548315;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25rem;
+  margin: 29rem auto 24rem;
+  width: 335rem;
+  color: #7584a0;
+  font-size: 22rem;
+  line-height: 26rem;
+}
+.divider span {
+  height: 1.5rem;
+  background: #eceef3;
+  flex: 1;
+}
+.benefits {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17rem;
+  padding: 0;
+  margin: 0 -8rem;
+}
+.benefits li {
+  min-width: 0;
+}
+.benefits img {
+  height: 85rem;
+  width: 150rem;
+  margin: 0 auto;
+  object-fit: contain;
+}
+.benefits p {
+  font: 700 24rem/1.16 WyrBody;
+  margin: 10rem -12rem 0;
+  letter-spacing: -0.5rem;
+}
+.signup-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rem;
+  font-size: 23rem;
+  color: #7584a0;
+  margin: 43rem 0 0;
+}
+.signup-prompt a {
+  display: flex;
+  align-items: center;
+  gap: 8rem;
+  color: #006eff;
+  font-weight: 700;
+}
+.signup-prompt svg {
+  width: 25rem;
+  height: 25rem;
+}
+.signup .site-header {
+  padding-left: 54rem;
+  padding-top: 20rem;
+}
+.signup .logo {
+  width: 193rem;
+  height: 73rem;
+  margin-top: -8rem;
+}
+.signup .site-header nav {
+  margin-left: 40rem;
+  margin-right: 18rem;
+  gap: 24rem;
+}
+.signup .nav-login {
+  width: 98rem;
+  height: 45rem;
+}
+.signup .nav-signup {
+  width: 104rem;
+  height: 45rem;
+}
+.signup .hero {
+  height: 559rem;
+}
+.signup .hero-copy {
+  width: 500rem;
+  margin-left: 41rem;
+  padding-top: 126rem;
+}
+.signup .join-word {
+  font-size: 155rem;
+  transform: rotate(-8deg);
+  line-height: 0.9;
+}
+.signup .wyr-word {
+  display: flex;
+  justify-content: center;
+  letter-spacing: -7rem;
+  font-size: 139rem;
+  line-height: 1;
+  margin-top: 12rem;
+  transform: rotate(-9deg);
+}
+.wyr-word i {
+  font-style: normal;
+  display: inline-block;
+}
+.wyr-word i:nth-child(1) {
+  transform: rotate(-10deg);
+}
+.wyr-word i:nth-child(3) {
+  color: #ff502b;
+}
+.wyr-word i:nth-child(4) {
+  color: #00baf1;
+}
+.wyr-word i:nth-child(5) {
+  color: #00c8b8;
+}
+.wyr-word i:nth-child(6) {
+  color: #ffbe30;
+}
+.wyr-word i:nth-child(7) {
+  color: #ff6a2c;
+}
+.wyr-word i:nth-child(8) {
+  color: #00baf1;
+}
+.signup .hero p {
+  font-size: 25rem;
+  line-height: 31rem;
+  margin-top: 30rem;
+  color: #07132c;
+}
+.signup .hero-art {
+  left: 465rem;
+  top: 100rem;
+  width: 559rem;
+  height: 715rem;
+}
+.signup .top-left-cloud {
+  top: 85rem;
+  width: 125rem;
+  height: 135rem;
+}
+.signup .left-clouds {
+  top: 595rem;
+  width: 177rem;
+  height: 941rem;
+}
+.signup .right-clouds {
+  top: 815rem;
+  width: 170rem;
+  height: 721rem;
+}
+.signup .bottom-clouds {
+  left: 177rem;
+  width: 677rem;
+  height: 150rem;
+}
+.signup .speech {
+  left: 817rem;
+  top: 146rem;
+  width: 185rem;
+  height: 195rem;
+  transform: rotate(-13deg);
+}
+.signup .speech span {
+  font-size: 27rem;
+  line-height: 1.1;
+}
+.signup .speech b {
+  display: block;
+  font-size: 39rem;
+}
+.signup .crown {
+  left: 345rem;
+  top: 103rem;
+  width: 103rem;
+  height: 111rem;
+  transform: rotate(-8deg);
+}
+.signup .plus {
+  left: 250rem;
+  top: 133rem;
+  width: 38rem;
+  height: 38rem;
+}
+.signup .plus:before {
+  inset: 13rem 0;
+}
+.signup .plus:after {
+  inset: 0 13rem;
+}
+.signup .one {
+  left: 188rem;
+  top: 185rem;
+  height: 34rem;
+  transform: rotate(-15deg);
+}
+.signup .two {
+  left: 153rem;
+  top: 193rem;
+  transform: rotate(-46deg);
+}
+.signup .three {
+  left: 140rem;
+  top: 230rem;
+  height: 39rem;
+  transform: rotate(-83deg);
+}
+.signup .four {
+  left: 455rem;
+  top: 178rem;
+  height: 73rem;
+  background: #ff5345;
+  transform: rotate(39deg);
+}
+.signup .five {
+  left: 475rem;
+  top: 236rem;
+  height: 49rem;
+  background: #ff5345;
+  transform: rotate(69deg);
+}
+.signup .auth-card {
+  margin-left: 177rem;
+  width: 677rem;
+  height: 737rem;
+  padding: 54rem 60rem 35rem;
+  border-radius: 36rem;
+}
+.signup .auth-card h2 {
+  font-size: 60rem;
+  line-height: 1.15;
+  white-space: nowrap;
+  letter-spacing: -1.9rem;
+}
+.signup .card-subtitle {
+  margin: 13rem 0 35rem;
+  font-size: 25rem;
+}
+.signup .auth-button {
+  gap: 37rem;
+  padding: 0 30rem;
+}
+.signup .divider {
+  margin: 33rem auto 25rem;
+  width: 358rem;
+}
+.signup .benefits {
+  margin: 0 -22rem;
+  gap: 23rem;
+}
+.signup .benefits img {
+  height: 120rem;
+  width: 175rem;
+}
+.signup .benefits p {
+  font-size: 25rem;
+  line-height: 1.2;
+  margin-top: 7rem;
+}
+dialog {
+  border: 0;
+  border-radius: 24px;
+  padding: 34px;
+  width: min(480px, calc(100vw - 32px));
+  background: #fffaf2;
+  color: #07132c;
+  font:
+    400 18px/1.5 WyrBody,
+    Arial,
+    sans-serif;
+  box-shadow: 0 24px 100px #09162644;
+}
+dialog::backdrop {
+  background: #07132c77;
+  backdrop-filter: blur(5px);
+}
+dialog h2 {
+  font: 400 32px/1.15 WyrDisplay;
+  margin: 16px 0;
+}
+.close-dialog {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  font-size: 32px;
+}
+.demo-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #61718b;
+}
+dialog label {
+  display: block;
+  font-weight: 700;
+  margin: 18px 0 8px;
+}
+dialog input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #acb4c2;
+  border-radius: 10px;
+  background: white;
+  font-size: 18px;
+}
+.demo-submit {
+  width: 100%;
+  margin-top: 16px;
+  border-radius: 12px;
+  padding: 12px;
+  background: #061521;
+  color: white;
+}
+.search-results {
+  padding-left: 22px;
+}
+.search-results li {
+  padding: 8px 0;
+}
+@media (min-width: 1280px) {
+  .auth-page {
+    box-shadow: 0 0 90px #d7bfb31c;
+  }
+}
+@media (max-width: 700px) {
+  html {
+    font-size: 1px;
+  }
+  .auth-page {
+    width: 100%;
+    min-height: 1150px;
+    padding-bottom: 160px;
+  }
+  .site-header,
+  .signup .site-header {
+    height: 88px;
+    padding: 12px 18px;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo,
+  .signup .logo {
+    width: 132px;
+    height: 54px;
+    margin: 0;
+  }
+  .site-header nav {
+    display: none;
+  }
+  .search-button {
+    width: 32px;
+    height: 36px;
+    margin: 0 0 0 auto;
+    padding: 5px;
+  }
+  .nav-login,
+  .signup .nav-login {
+    width: 66px;
+    height: 36px;
+    font-size: 15px;
+  }
+  .nav-signup,
+  .signup .nav-signup {
+    width: 72px;
+    height: 36px;
+    font-size: 15px;
+  }
+  .hero,
+  .signup .hero {
+    height: 405px;
+  }
+  .hero-copy,
+  .signup .hero-copy {
+    width: 100%;
+    padding: 25px 20px 0;
+    margin: 0;
+    z-index: 1;
+  }
+  .hero h1 {
+    letter-spacing: -3px;
+  }
+  .welcome-word {
+    font-size: 76px !important;
+  }
+  .back-word {
+    font-size: 100px;
+    letter-spacing: -4px;
+  }
+  .hero h3 {
+    font-size: 24px;
+    margin-top: 18px;
+  }
+  .hero p {
+    font-size: 18px;
+    line-height: 25px;
+  }
+  .hero-art,
+  .signup .hero-art {
+    top: 90px;
+    left: auto;
+    right: -80px;
+    width: 320px;
+    height: auto;
+    opacity: 0.2;
+  }
+  .speech {
+    display: none;
+  }
+  .crown,
+  .signup .crown {
+    top: 98px;
+    left: 22px;
+    width: 40px;
+    height: 48px;
+    opacity: 0.65;
+  }
+  .confetti {
+    display: none;
+  }
+  .top-left-cloud,
+  .signup .top-left-cloud {
+    top: 125px;
+    width: 60px;
+    height: auto;
+  }
+  .left-clouds,
+  .signup .left-clouds {
+    top: 400px;
+    width: 95px;
+    height: 750px;
+    object-fit: cover;
+    object-position: left;
+  }
+  .right-clouds,
+  .signup .right-clouds {
+    top: 480px;
+    width: 85px;
+    height: 670px;
+    object-fit: cover;
+    object-position: right;
+  }
+  .bottom-clouds,
+  .signup .bottom-clouds {
+    left: 0;
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  .auth-card,
+  .signup .auth-card {
+    margin: 0 16px;
+    width: calc(100% - 32px);
+    height: auto;
+    min-height: 570px;
+    border-radius: 28px;
+    padding: 30px 20px;
+    box-shadow: 0 8px 35px #b4a09514;
+  }
+  .auth-card h2 {
+    font-size: 48px;
+  }
+  .signup .auth-card h2 {
+    font-size: 35px;
+    white-space: normal;
+    letter-spacing: -1px;
+  }
+  .card-subtitle,
+  .signup .card-subtitle {
+    font-size: 19px;
+    line-height: 26px;
+    margin: 12px 0 26px;
+  }
+  .auth-actions {
+    gap: 16px;
+  }
+  .auth-button,
+  .signup .auth-button {
+    height: 74px;
+    font-size: 20px;
+    gap: 16px;
+    padding: 0 16px;
+    border-radius: 18px;
+  }
+  .auth-button > svg:first-child {
+    width: 35px;
+    height: 35px;
+  }
+  .auth-button > svg:last-child {
+    width: 23px;
+    height: 23px;
+  }
+  .divider,
+  .signup .divider {
+    width: 80%;
+    margin: 26px auto 20px;
+    font-size: 18px;
+    gap: 18px;
+  }
+  .benefits,
+  .signup .benefits {
+    margin: 0 -8px;
+    gap: 10px;
+  }
+  .benefits img,
+  .signup .benefits img {
+    height: 72px;
+    width: 95px;
+  }
+  .benefits p,
+  .signup .benefits p {
+    font-size: 18px;
+    line-height: 1.2;
+    margin: 9px -4px 0;
+    letter-spacing: -0.4px;
+  }
+  .signup-prompt {
+    font-size: 18px;
+    margin-top: 32px;
+    gap: 5px;
+  }
+  .signup-prompt svg {
+    width: 20px;
+    height: 20px;
+  }
+  .signup .join-word {
+    font-size: 90px;
+  }
+  .signup .wyr-word {
+    font-size: 82px;
+    letter-spacing: -4px;
+    margin-top: 10px;
+  }
+  .signup .hero p {
+    font-size: 19px;
+    line-height: 26px;
+    margin-top: 28px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
+/* Second measurement round: softer reference typography and corrected button bounds. */
+@font-face {
+  font-family: WyrDisplay;
+  src: url("/fonts/chewy-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: WyrBody;
+  src: url("/fonts/roboto-condensed-semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+.auth-page {
+  background:
+    radial-gradient(ellipse at 50% 94%, #f9eedd, transparent 45%),
+    linear-gradient(#fefcfa, #fdfaf1 50%, #fff7eb);
+}
+.mid-left-cloud {
+  left: 0;
+  top: 458rem;
+  width: 132rem;
+  height: 192rem;
+}
+.signup .mid-left-cloud {
+  top: 470rem;
+  width: 177rem;
+  height: 179rem;
+}
+.top-left-cloud {
+  top: 50rem;
+  height: 187rem;
+}
+.signup .top-left-cloud {
+  top: 65rem;
+  height: 155rem;
+}
+.hero-copy {
+  padding-top: 124rem;
+  margin-left: 55rem;
+}
+.welcome-word {
+  font-size: 128rem !important;
+  letter-spacing: -6rem;
+}
+.back-word {
+  font-size: 171rem;
+  line-height: 0.92;
+}
+.hero h3 {
+  margin-top: 17rem;
+  font-weight: 600;
+}
+.hero p {
+  font-size: 22rem;
+}
+.auth-card {
+  padding-right: 42rem;
+}
+.auth-card h2 {
+  font-size: 68rem;
+  letter-spacing: -1rem;
+}
+.card-subtitle {
+  font-size: 24rem;
+  margin-bottom: 33rem;
+}
+.google-button {
+  height: 92rem;
+}
+.magic-button {
+  height: 95rem;
+}
+.auth-button {
+  font-weight: 600;
+}
+.divider {
+  margin-top: 29rem;
+  margin-bottom: 23rem;
+}
+.benefits p {
+  font-family: WyrDisplay;
+  font-weight: 400;
+  font-size: 24rem;
+  line-height: 1.18;
+}
+.signup-prompt {
+  margin-top: 43rem;
+}
+.signup .hero-copy {
+  width: 520rem;
+  margin-left: 35rem;
+  padding-top: 129rem;
+}
+.signup .join-word {
+  font-size: 155rem;
+  line-height: 0.86;
+}
+.signup .wyr-word {
+  font-size: 130rem;
+  letter-spacing: -6rem;
+  line-height: 1;
+  transform: rotate(-9deg) scaleX(0.86);
+  transform-origin: center;
+}
+.signup .hero p {
+  margin-top: 21rem;
+  font-size: 24rem;
+  line-height: 31rem;
+}
+.signup .auth-card h2 {
+  font-size: 61rem;
+  letter-spacing: -1.3rem;
+}
+.signup .card-subtitle {
+  margin-bottom: 31rem;
+}
+.signup .google-button {
+  height: 94rem;
+}
+.signup .magic-button {
+  height: 95rem;
+}
+.signup .benefits p {
+  font-family: WyrDisplay;
+  font-weight: 400;
+}
+@media (max-width: 700px) {
+  .mid-left-cloud,
+  .signup .mid-left-cloud {
+    display: none;
+  }
+  .top-left-cloud,
+  .signup .top-left-cloud {
+    top: 125px;
+    height: auto;
+  }
+  .hero-copy,
+  .signup .hero-copy {
+    width: 100%;
+    padding: 25px 20px 0;
+    margin: 0;
+  }
+  .welcome-word {
+    font-size: 76px !important;
+    letter-spacing: -3px;
+  }
+  .back-word {
+    font-size: 100px;
+    line-height: 1;
+  }
+  .auth-card {
+    padding-right: 20px;
+  }
+  .auth-card h2 {
+    font-size: 48px;
+  }
+  .card-subtitle,
+  .signup .card-subtitle {
+    font-size: 19px;
+    margin-bottom: 26px;
+  }
+  .google-button,
+  .magic-button,
+  .signup .google-button,
+  .signup .magic-button {
+    height: 74px;
+  }
+  .benefits p,
+  .signup .benefits p {
+    font-size: 18px;
+  }
+  .signup-prompt {
+    margin-top: 32px;
+  }
+  .signup .join-word {
+    font-size: 90px;
+    line-height: 0.9;
+  }
+  .signup .wyr-word {
+    font-size: 82px;
+    letter-spacing: -4px;
+    transform: rotate(-9deg) scaleX(0.92);
+  }
+  .signup .hero p {
+    font-size: 19px;
+    line-height: 26px;
+    margin-top: 28px;
+  }
+  .signup .auth-card h2 {
+    font-size: 35px;
+    letter-spacing: -1px;
+  }
+}
+/* Third round: restore shared cloud boundaries and match the lettering proportions. */
+@font-face {
+  font-family: WyrNote;
+  src: url("/fonts/patrick-hand.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+.pre-card-clouds {
+  left: 198rem;
+  top: 600rem;
+  width: 312rem;
+  height: 58rem;
+}
+.signup .pre-card-clouds {
+  left: 177rem;
+  top: 595rem;
+  width: 328rem;
+  height: 54rem;
+}
+.login .hero-copy {
+  width: 540rem;
+  margin-left: 67rem;
+  padding-top: 114rem;
+}
+.login .hero h1 {
+  width: 500rem;
+  margin-left: -32rem;
+}
+.login .welcome-word {
+  font-size: 146rem !important;
+  line-height: 0.85;
+}
+.login .back-word {
+  font-size: 185rem;
+  line-height: 0.82;
+  transform: translateX(21rem) rotate(-9deg);
+}
+.hero h3 {
+  font-family: WyrNote;
+  font-weight: 400;
+  font-size: 32rem;
+}
+.benefits p,
+.signup .benefits p {
+  font-family: WyrNote;
+  font-size: 27rem;
+  line-height: 1.08;
+}
+.speech span {
+  font-family: WyrNote;
+  font-weight: 400;
+  font-size: 31rem;
+  line-height: 1.03;
+}
+.signup .speech span {
+  font-family: WyrNote;
+  font-size: 29rem;
+  line-height: 1.05;
+}
+.signup .wyr-word {
+  font-size: 145rem;
+  transform: rotate(-9deg) scaleX(0.95);
+  letter-spacing: -7rem;
+  line-height: 0.92;
+}
+.signup .hero p {
+  margin-top: 16rem;
+}
+@media (max-width: 700px) {
+  .pre-card-clouds,
+  .signup .pre-card-clouds {
+    display: none;
+  }
+  .login .hero-copy {
+    width: 100%;
+    margin: 0;
+    padding: 25px 20px 0;
+  }
+  .login .hero h1 {
+    width: auto;
+    margin: 0;
+  }
+  .login .welcome-word {
+    font-size: 76px !important;
+    line-height: 0.88;
+  }
+  .login .back-word {
+    font-size: 100px;
+    line-height: 1;
+    transform: rotate(-9deg);
+  }
+  .hero h3 {
+    font-size: 27px;
+  }
+  .benefits p,
+  .signup .benefits p {
+    font-size: 20px;
+    line-height: 1.1;
+  }
+  .signup .wyr-word {
+    font-size: 82px;
+    letter-spacing: -4px;
+    transform: rotate(-9deg) scaleX(0.92);
+    line-height: 1;
+  }
+  .signup .hero p {
+    margin-top: 28px;
+  }
+}
+@media (max-width: 700px) {
+  .hero-art,
+  .signup .hero-art {
+    clip-path: polygon(0 0, 58% 0, 68% 20%, 72% 37%, 100% 40%, 100% 100%, 0 100%);
+  }
+  .left-clouds,
+  .signup .left-clouds {
+    mask-image: linear-gradient(transparent, #000 70px);
+  }
+  .right-clouds,
+  .signup .right-clouds {
+    mask-image: linear-gradient(transparent, #000 60px);
+  }
+}
+@media (min-width: 701px) {
+  .signup .auth-card {
+    padding-right: 59rem;
+  }
+  .signup .card-subtitle {
+    margin-bottom: 30rem;
+  }
+  .signup .auth-actions {
+    gap: 23rem;
+  }
+}
