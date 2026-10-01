@@ -1029,7 +1029,6 @@
   max-width: 100%;
 }
 
-
 /* Wide desktop account surfaces use the available viewport instead of the 1024px reference canvas. */
 @media (min-width: 1200px) {
   .account-overview .account-page {
