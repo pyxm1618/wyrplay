@@ -372,23 +372,24 @@
     "question": "Would you rather visit a city where neither of you speaks the language or spend a day exploring a tourist town without using mobile data?",
     "optionA": "Navigate a city without speaking the language",
     "optionB": "Explore a tourist town without using mobile data",
-    "primaryCollection": "couples",
+    "primaryCollection": "icebreakers",
     "primaryAgeBand": null,
     "ageBands": [
+      "teens",
       "adults"
     ],
-    "relationships": [
-      "couples"
+    "relationships": [],
+    "scenarios": [
+      "icebreakers"
     ],
-    "scenarios": [],
     "moods": [
       "imaginative",
       "weird"
     ],
     "difficulty": "hard",
     "topics": [
-      "relationships",
-      "travel"
+      "travel",
+      "communication"
     ],
     "coreDilemma": "communication challenge vs connectivity challenge",
     "dilemmaFamily": "risk",
@@ -401,14 +402,30 @@
       "workplaceSafe": false
     },
     "revision": {
-      "round": 1,
-      "originalDecision": "REVISE",
+      "round": 2,
+      "previousReviewerDecision": "REVISE",
+      "previousReviewerReason": "The core dilemma remains usable and distinct from the latest formal bank, so this is not a REJECT. However, the repository still contains the old Couples classification: primaryCollection is still couples, relationships still contains couples, ageBands still contains adults only, scenarios is empty, and topics still contains relationships. The intended Icebreakers / Teens+Adults reclassification has not actually been applied. Because the core is sound and the remaining defects are metadata/scope corrections, decision is REVISE.",
+      "revisionType": "metadata-only revision",
       "changes": [
-        "Updated question to address Reviewer feedback.",
-        "Updated optionA to address Reviewer feedback.",
-        "Updated optionB to address Reviewer feedback."
+        "Changed primaryCollection from couples to icebreakers.",
+        "Changed ageBands from adults-only to teens + adults.",
+        "Cleared relationships from [couples] to [].",
+        "Changed scenarios from [] to [icebreakers].",
+        "Changed topics from [relationships, travel] to [travel, communication].",
+        "Question unchanged.",
+        "optionA unchanged.",
+        "optionB unchanged."
       ],
-      "sourceReviewerReason": "Language-barrier versus disconnection is interesting, but an unspecified remote place with no phone service adds unnecessary safety risk."
+      "previousRevision": {
+        "round": 1,
+        "originalDecision": "REVISE",
+        "changes": [
+          "Updated question to address Reviewer feedback.",
+          "Updated optionA to address Reviewer feedback.",
+          "Updated optionB to address Reviewer feedback."
+        ],
+        "sourceReviewerReason": "Language-barrier versus disconnection is interesting, but an unspecified remote place with no phone service adds unnecessary safety risk."
+      }
     }
   },
   {
@@ -599,9 +616,9 @@
   },
   {
     "candidateId": "expansion-004-171",
-    "question": "Would you rather have a snack-tasting game where everyone sees the food but not its flavor label or one where everyone sees the ingredient list but the food stays out of sight until after tasting?",
-    "optionA": "See the food without its flavor label",
-    "optionB": "See the ingredient list while the food stays out of sight",
+    "question": "Would you rather play a snack-tasting game where all foods have already been checked for allergies and dietary restrictions, and before choosing you can either see the food but not its ingredient list, or see the ingredient list but not the food?",
+    "optionA": "See the food, but not the ingredient list",
+    "optionB": "See the ingredient list, but not the food",
     "primaryCollection": "party",
     "primaryAgeBand": null,
     "ageBands": [
@@ -635,14 +652,26 @@
       "workplaceSafe": false
     },
     "revision": {
-      "round": 1,
-      "originalDecision": "REVISE",
+      "round": 2,
+      "previousReviewerDecision": "REVISE",
+      "previousReviewerReason": "The blindfold risk has been removed and the underlying visual-information versus ingredient-information dilemma is still worthwhile and distinct from the latest formal bank. However, the actual repository version still uses the unnatural phrase 'flavor label', does not explicitly state that all foods have been pre-screened for allergies/dietary restrictions, and the two information conditions are not yet cleanly parallel. These are local wording/safety fixes rather than a broken core dilemma, so decision is REVISE.",
+      "revisionType": "wording + safety framing revision",
       "changes": [
-        "Updated question to address Reviewer feedback.",
-        "Updated optionA to address Reviewer feedback.",
-        "Updated optionB to address Reviewer feedback."
+        "Removed the unnatural phrase 'flavor label'.",
+        "Rewrote A/B information conditions to be parallel: see food without ingredient list vs see ingredient list without food.",
+        "Added explicit framing that all foods have already been checked for allergies and dietary restrictions.",
+        "Kept blindfolding absent."
       ],
-      "sourceReviewerReason": "The information-source contrast is good, but blindfolded tasting is unnecessary; preserve hidden visual information without a blindfold."
+      "previousRevision": {
+        "round": 1,
+        "originalDecision": "REVISE",
+        "changes": [
+          "Updated question to address Reviewer feedback.",
+          "Updated optionA to address Reviewer feedback.",
+          "Updated optionB to address Reviewer feedback."
+        ],
+        "sourceReviewerReason": "The information-source contrast is good, but blindfolded tasting is unnecessary; preserve hidden visual information without a blindfold."
+      }
     }
   },
   {
