@@ -10,9 +10,47 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
+  format-fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/full-ui-responsive-audit
+      - uses: oven-sh/setup-bun@v2
+        with: { bun-version: 1.3.14 }
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Apply repository formatter
+        run: |
+          bunx prettier --write \
+            src/components/auth/auth-surface.css \
+            src/modules/would-you-rather/ui/finder/finder-responsive.css \
+            src/modules/would-you-rather/ui/illustrated-home.css \
+            src/modules/would-you-rather/ui/leaderboard/leaderboard.css \
+            src/modules/would-you-rather/ui/play/play.css \
+            tests/e2e/account-ui.spec.ts \
+            tests/e2e/responsive-layout.spec.ts
+      - name: Commit formatter output
+        run: |
+          if git diff --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            src/components/auth/auth-surface.css \
+            src/modules/would-you-rather/ui/finder/finder-responsive.css \
+            src/modules/would-you-rather/ui/illustrated-home.css \
+            src/modules/would-you-rather/ui/leaderboard/leaderboard.css \
+            src/modules/would-you-rather/ui/play/play.css \
+            tests/e2e/account-ui.spec.ts \
+            tests/e2e/responsive-layout.spec.ts
+          git commit -m "style(ui): format responsive audit changes"
+          git push origin HEAD:codex/full-ui-responsive-audit
+
   quality:
     runs-on: ubuntu-latest
     timeout-minutes: 55
