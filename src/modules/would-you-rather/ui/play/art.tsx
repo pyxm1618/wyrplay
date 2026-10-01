@@ -43,8 +43,27 @@ export function PlayHeader({
       )}
       <details className="play-menu">
         <summary aria-label="More actions">•••</summary>
-        <Link href="/find-questions">Browse questions</Link>
-        <Link href="/print">Print questions</Link>
+        <nav className="play-menu-panel" aria-label="More play navigation">
+          <Link className="mobile-menu-link" href="/">
+            Home
+          </Link>
+          <Link href="/find-questions">Browse questions</Link>
+          <Link className="mobile-menu-link" href="/find-questions#category-links">
+            Categories
+          </Link>
+          <Link className="mobile-menu-link" href="/leaderboards">
+            Leaderboards
+          </Link>
+          <Link className="mobile-menu-link" href="/create">
+            Create
+          </Link>
+          <Link href="/print">Print questions</Link>
+          {authEnabled && (
+            <Link className="mobile-menu-link" href="/sign-in">
+              Sign in
+            </Link>
+          )}
+        </nav>
       </details>
       {authEnabled && (
         <Link className="dark-pill" href="/sign-in">
