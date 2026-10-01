@@ -29,7 +29,7 @@ for (const route of ["/", "/would-you-rather-questions-for-kids", "/privacy"] as
 test("keyboard reaches primary navigation, CTA and footer", async ({ page }) => {
   await page.goto("/");
   await page.keyboard.press("Tab");
-  await expect(page.locator(":focus")).toHaveAttribute("href", "/");
+  await expect(page.locator(":focus")).toHaveAttribute("href", "#play");
 
   let reachedTopic = false;
   let reachedFooter = false;
