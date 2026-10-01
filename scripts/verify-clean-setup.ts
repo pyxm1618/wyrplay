@@ -18,6 +18,7 @@ const expectedConfig = new Set([
   "src/config/products.config.ts",
   "src/config/routes.config.ts",
   "src/config/seo.config.ts",
+  "src/config/seo-landings.config.tsx",
   "src/config/site.config.ts",
 ]);
 
