@@ -11,6 +11,7 @@ const FILES = [
   "features.config.ts",
   "products.config.ts",
   "seo.config.ts",
+  "seo-landings.config.tsx",
   "routes.config.ts",
   "legal.config.ts",
 ] as const;
