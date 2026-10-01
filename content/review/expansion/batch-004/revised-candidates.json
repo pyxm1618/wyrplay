@@ -393,10 +393,10 @@
     ],
     "coreDilemma": "communication challenge vs connectivity challenge",
     "dilemmaFamily": "risk",
-    "noveltyReason": "No formal travel dilemma compares two different kinds of dependency on a partner: language uncertainty versus digital isolation.",
+    "noveltyReason": "No formal travel dilemma compares language uncertainty with digital connectivity constraints.",
     "safety": {
       "kidsSafe": false,
-      "teenSafe": false,
+      "teenSafe": true,
       "classroomSafe": false,
       "familySafe": false,
       "workplaceSafe": false
@@ -412,6 +412,8 @@
         "Cleared relationships from [couples] to [].",
         "Changed scenarios from [] to [icebreakers].",
         "Changed topics from [relationships, travel] to [travel, communication].",
+        "Removed partner/couple framing from noveltyReason.",
+        "Changed safety.teenSafe from false to true to match the Teens + Adults age scope.",
         "Question unchanged.",
         "optionA unchanged.",
         "optionB unchanged."
