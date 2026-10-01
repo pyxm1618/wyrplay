@@ -98,3 +98,47 @@ test("account does not turn corrupted favorites into a successful empty collecti
     await context.close();
   }
 });
+
+
+test("authenticated account route family stays responsive and preserves viewport evidence", async ({ browser, request, baseURL }, testInfo) => {
+  if (!baseURL) throw new Error("Account test base URL is required");
+  const { context, page } = await openAccount(browser, request, baseURL);
+  try {
+    for (const [width, height] of [
+      [1440, 900],
+      [1920, 1080],
+      [390, 844],
+    ] as const) {
+      await page.setViewportSize({ width, height });
+      await page.goto("/account");
+      expect(
+        await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1),
+      ).toBe(true);
+      await page.screenshot({
+        path: testInfo.outputPath(`account-${width}x${height}.png`),
+        fullPage: false,
+        animations: "disabled",
+      });
+    }
+
+    for (const route of [
+      "/account",
+      "/account/settings",
+      "/account/security",
+      "/account/billing",
+      "/account/credits",
+      "/account/deleted",
+      "/checkout/return",
+    ]) {
+      await page.setViewportSize({ width: 1024, height: 768 });
+      const response = await page.goto(route);
+      expect(response?.status(), route).toBeLessThan(500);
+      expect(
+        await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1),
+        route,
+      ).toBe(true);
+    }
+  } finally {
+    await context.close();
+  }
+});
