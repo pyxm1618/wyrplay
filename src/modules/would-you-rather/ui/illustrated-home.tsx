@@ -177,12 +177,18 @@ function Heading({
   return (
     <div className="section-heading">
       <h2>{title}</h2>
-      {href && (
-        <Link className="section-link" href={href}>
-          {label}
-          <Arrow />
-        </Link>
-      )}
+      {href &&
+        (href.startsWith("#") ? (
+          <a className="section-link" href={href}>
+            {label}
+            <Arrow />
+          </a>
+        ) : (
+          <Link className="section-link" href={href}>
+            {label}
+            <Arrow />
+          </Link>
+        ))}
     </div>
   );
 }
