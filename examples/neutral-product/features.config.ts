@@ -20,10 +20,10 @@ const analyticsEnabledPerformanceFeaturesConfig = {
 } as const satisfies ProductConfig["features"];
 
 const neutralFeaturesConfig = {
-  auth: { enabled: true, google: true, magicLink: true, password: false },
-  email: { enabled: true },
-  commerce: { enabled: true, oneTime: true, subscriptions: true, credits: true },
-  analytics: { enabled: false, ga4: false, clarity: false, consentRequired: true },
+  auth: { enabled: false, google: false, magicLink: false, password: false },
+  email: { enabled: false },
+  commerce: { enabled: false, oneTime: false, subscriptions: false, credits: false },
+  analytics: { enabled: false, ga4: false, clarity: false, consentRequired: false },
 } as const satisfies ProductConfig["features"];
 
 const useEnabledTestProfile =
