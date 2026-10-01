@@ -1500,3 +1500,61 @@ body:has(> .auth-page) {
     font-size: 18px;
   }
 }
+
+
+/* Short desktop viewports keep the hero narrative clear of the authentication card. */
+@media (min-width: 701px) and (max-height: 950px) {
+  :where(.auth-page) .hero,
+  .auth-page.signup .hero {
+    height: 306px;
+  }
+  :where(.auth-page) .hero-copy,
+  .auth-page.signup .hero-copy {
+    padding-top: 28px;
+  }
+  :where(.auth-page) .welcome-word {
+    font-size: clamp(68px, 6.2vw, 88px);
+  }
+  :where(.auth-page) .back-word {
+    font-size: clamp(88px, 8vw, 112px);
+  }
+  :where(.auth-page) .hero h3 {
+    margin-top: 6px;
+    font-size: 21px;
+  }
+  :where(.auth-page) .hero p,
+  .auth-page.signup .hero p {
+    margin-top: 6px;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+  .auth-page.signup .join-word {
+    font-size: clamp(82px, 7vw, 96px);
+  }
+  .auth-page.signup .wyr-word {
+    margin-top: 2px;
+    font-size: clamp(78px, 6.7vw, 92px);
+    letter-spacing: -4px;
+  }
+  :where(.auth-page) .auth-card,
+  .auth-page.signup .auth-card {
+    padding-top: 28px;
+    padding-bottom: 26px;
+  }
+  :where(.auth-page) .auth-card h2,
+  .auth-page.signup .auth-card h2 {
+    font-size: clamp(42px, 3.7vw, 52px);
+  }
+  :where(.auth-page) .card-subtitle,
+  .auth-page.signup .card-subtitle {
+    margin-bottom: 18px;
+  }
+  :where(.auth-page) .auth-button,
+  .auth-page.signup .auth-button {
+    height: 64px;
+  }
+  :where(.auth-page) .benefits img,
+  .auth-page.signup .benefits img {
+    height: 66px;
+  }
+}
