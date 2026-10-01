@@ -123,6 +123,11 @@ test.describe("required responsive viewport matrix", () => {
       await expect(page.locator(".play-options")).toBeVisible();
       await expect(page.locator(".play-actions")).toBeVisible();
 
+      if (width <= 430) {
+        await expect(page.locator(".play-header > nav")).toBeHidden();
+        await expect(page.locator(".play-menu > summary")).toBeVisible();
+      }
+
       if (width >= 1024) {
         const choices = await page.locator(".play-options").boundingBox();
         const actions = await page.locator(".play-actions").boundingBox();
@@ -180,6 +185,11 @@ test.describe("required responsive viewport matrix", () => {
     for (const [width, height] of viewports) {
       await page.setViewportSize({ width, height });
       await noOverflow(page);
+
+      if (width <= 430) {
+        await expect(page.locator(".finder-page .site-header > nav")).toBeHidden();
+        await expect(page.locator(".finder-menu > summary")).toBeVisible();
+      }
 
       const root = await page.locator(".finder-page").boundingBox();
       if (!root) throw new Error("Finder root is missing");
