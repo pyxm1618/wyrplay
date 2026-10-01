@@ -125,7 +125,13 @@ test.describe("required responsive viewport matrix", () => {
 
       if (width <= 430) {
         await expect(page.locator(".play-header > nav")).toBeHidden();
-        await expect(page.locator(".play-menu > summary")).toBeVisible();
+        const menu = page.locator(".play-menu > summary");
+        await expect(menu).toBeVisible();
+        if (width === 390 && height === 844) {
+          await menu.click();
+          await expect(page.locator(".play-menu-panel").getByRole("link", { name: "Home" })).toBeVisible();
+          await menu.click();
+        }
       }
 
       if (width >= 1024) {
@@ -188,7 +194,15 @@ test.describe("required responsive viewport matrix", () => {
 
       if (width <= 430) {
         await expect(page.locator(".finder-page .site-header > nav")).toBeHidden();
-        await expect(page.locator(".finder-menu > summary")).toBeVisible();
+        const menu = page.locator(".finder-menu > summary");
+        await expect(menu).toBeVisible();
+        if (width === 390 && height === 844) {
+          await menu.click();
+          await expect(
+            page.locator(".finder-menu nav").getByRole("link", { name: "Browse questions" }),
+          ).toBeVisible();
+          await menu.click();
+        }
       }
 
       const root = await page.locator(".finder-page").boundingBox();
