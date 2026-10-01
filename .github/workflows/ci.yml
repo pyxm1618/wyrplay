@@ -166,6 +166,14 @@ jobs:
           bun run db:migrate
       - name: Browser end-to-end tests
         run: bun run test:e2e
+      - name: Upload responsive browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-responsive-evidence
+          path: test-results/**/*.png
+          if-no-files-found: ignore
+          retention-days: 14
       - name: Production-mode canonical and security output
         run: bun run verify:seo:production
 
