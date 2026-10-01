@@ -811,3 +811,199 @@ main:has(> .print-page) + footer {
       220px 70px;
   }
 }
+
+
+/* Responsive Web Product layer: height-aware play and true single-viewport presenter. */
+.presenter-exit {
+  position: static;
+  opacity: 1;
+  min-height: 44px;
+  border: 2px solid #dfe3e7;
+  background: #fffdf8;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 9px 18px;
+  box-shadow: 0 3px 10px #18203312;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.presenter-exit:hover,
+.presenter-exit:focus-visible {
+  opacity: 1;
+  background: #fff4df;
+}
+
+@media (min-width: 701px) {
+  .presenter-page {
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    padding: clamp(12px, 2dvh, 26px) clamp(24px, 3vw, 58px)
+      clamp(10px, 1.6dvh, 24px);
+  }
+  .presenter-header {
+    gap: clamp(12px, 2vw, 34px);
+    min-width: 0;
+  }
+  .presenter-header img {
+    width: clamp(170px, 14vw, 230px);
+    height: auto;
+    max-height: clamp(54px, 8dvh, 76px);
+  }
+  .presenter-topic {
+    padding: clamp(7px, 1.2dvh, 10px) clamp(14px, 2vw, 26px);
+    font-size: clamp(14px, 1.25vw, 20px);
+  }
+  .presenter-header > b {
+    padding: clamp(7px, 1.2dvh, 11px) clamp(18px, 2.3vw, 34px);
+    font-size: clamp(18px, 2vw, 28px);
+  }
+  .presenter-page .play-heading {
+    margin: clamp(8px, 1.7dvh, 18px) auto clamp(9px, 1.8dvh, 20px);
+  }
+  .presenter-page .play-heading h1 {
+    font-size: clamp(44px, min(6vw, 8dvh), 96px);
+    line-height: 1;
+  }
+  .presenter-page .play-heading p {
+    margin-top: clamp(2px, 0.7dvh, 7px);
+    font-size: clamp(20px, min(2.1vw, 3.6dvh), 30px);
+  }
+  .presenter-page .play-options {
+    align-self: center;
+    width: min(100%, 1385px);
+    max-width: 1385px;
+    gap: clamp(48px, 7vw, 100px);
+  }
+  .presenter-page .option-panel {
+    min-height: 0;
+    height: clamp(210px, 38dvh, 360px);
+    padding: clamp(18px, 3dvh, 36px);
+  }
+  .presenter-page .option-panel h2 {
+    max-width: 95%;
+    font-size: clamp(34px, min(4vw, 6.5dvh), 62px);
+    line-height: 1.02;
+  }
+  .presenter-page .or-disc {
+    width: clamp(64px, 10dvh, 112px);
+    height: clamp(64px, 10dvh, 112px);
+    font-size: clamp(36px, 6dvh, 64px);
+    line-height: clamp(64px, 10dvh, 112px);
+  }
+  .presenter-controls {
+    align-self: end;
+    gap: clamp(72px, 14vw, 190px);
+    margin: clamp(8px, 1.5dvh, 18px) auto 0;
+  }
+  .presenter-controls button {
+    flex-direction: row;
+    gap: 10px;
+    font-size: clamp(15px, 1.2vw, 19px);
+  }
+  .presenter-controls span {
+    width: clamp(44px, 6dvh, 60px);
+    height: clamp(44px, 6dvh, 60px);
+    font-size: clamp(25px, 4dvh, 34px);
+  }
+}
+
+@media (min-width: 701px) and (max-height: 850px) {
+  .play-page .play-header {
+    height: 72px;
+  }
+  .play-page .play-header img {
+    width: 170px;
+    height: 60px;
+  }
+  .play-page .play-toolbar {
+    height: 50px;
+    font-size: 16px;
+  }
+  .play-page .topic-pills span {
+    padding: 7px 18px;
+  }
+  .play-page .question-navigation {
+    gap: 18px;
+  }
+  .play-page .question-navigation button {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+  .play-page .play-heading {
+    margin: 12px auto 14px;
+  }
+  .play-page .play-heading h1 {
+    font-size: clamp(46px, 5.8vw, 76px);
+  }
+  .play-page .play-heading p {
+    font-size: 22px;
+  }
+  .play-page .heading-crown {
+    width: 66px;
+    height: 55px;
+    top: -32px;
+  }
+  .play-page .play-options {
+    width: min(calc(100% - 48px), 1000px);
+    gap: 52px;
+  }
+  .play-page .option-panel {
+    min-height: clamp(250px, 38dvh, 320px);
+    padding: 20px 32px;
+  }
+  .play-page .option-panel h2 {
+    font-size: 38px;
+    margin: 10px 0 15px;
+  }
+  .play-page .option-symbol {
+    width: 64px;
+    height: 64px;
+    font-size: 42px;
+  }
+  .play-page .or-disc {
+    width: 76px;
+    height: 76px;
+    font-size: 40px;
+    line-height: 76px;
+  }
+  .play-page .choose-option {
+    padding: 11px;
+    font-size: 20px !important;
+  }
+  .play-page .play-actions {
+    margin: 12px auto 10px;
+  }
+  .play-page .play-actions > * {
+    min-width: 132px;
+    padding: 9px 18px;
+    font-size: 16px;
+  }
+  .play-page .play-discover {
+    margin-top: 8px;
+    padding: 10px 24px 18px;
+  }
+  .play-page .play-discover img {
+    width: 76px;
+    height: 78px;
+  }
+  .play-page .play-discover a {
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+}
+@media (max-width: 700px) {
+  .presenter-header {
+    flex-wrap: wrap;
+    gap: 8px 12px;
+  }
+  .presenter-exit {
+    margin-left: auto;
+    min-height: 40px;
+    padding: 7px 13px;
+    font-size: 14px;
+  }
+}
