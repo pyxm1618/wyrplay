@@ -812,7 +812,6 @@ main:has(> .print-page) + footer {
   }
 }
 
-
 /* Responsive Web Product layer: height-aware play and true single-viewport presenter. */
 .presenter-exit {
   position: static;
@@ -840,8 +839,7 @@ main:has(> .print-page) + footer {
     overflow: hidden;
     display: grid;
     grid-template-rows: auto auto minmax(0, 1fr) auto;
-    padding: clamp(12px, 2dvh, 26px) clamp(24px, 3vw, 58px)
-      clamp(10px, 1.6dvh, 24px);
+    padding: clamp(12px, 2dvh, 26px) clamp(24px, 3vw, 58px) clamp(10px, 1.6dvh, 24px);
   }
   .presenter-header {
     gap: clamp(12px, 2vw, 34px);

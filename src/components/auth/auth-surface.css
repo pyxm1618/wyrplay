@@ -1297,7 +1297,6 @@ body:has(> .auth-page) {
   }
 }
 
-
 /* Responsive Web Product layer: desktop auth is a viewport composition, not a scaled 1024px poster. */
 @media (min-width: 701px) {
   .auth-page {

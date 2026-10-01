@@ -1,9 +1,20 @@
 import { expect, test, type Locator, type Page, type TestInfo } from "@playwright/test";
 
 const viewports = [
-  [375, 812], [390, 844], [430, 932], [768, 1024], [1024, 768],
-  [1280, 720], [1280, 800], [1366, 768], [1440, 900], [1536, 864],
-  [1728, 900], [1792, 850], [1920, 1080], [2560, 1440],
+  [375, 812],
+  [390, 844],
+  [430, 932],
+  [768, 1024],
+  [1024, 768],
+  [1280, 720],
+  [1280, 800],
+  [1366, 768],
+  [1440, 900],
+  [1536, 864],
+  [1728, 900],
+  [1792, 850],
+  [1920, 1080],
+  [2560, 1440],
 ] as const;
 
 const shots = {
@@ -18,7 +29,9 @@ const shots = {
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
-    try { localStorage.setItem("creat-web:analytics-consent:v1", "denied"); } catch {}
+    try {
+      localStorage.setItem("creat-web:analytics-consent:v1", "denied");
+    } catch {}
   });
 });
 
@@ -46,7 +59,11 @@ async function inside(locator: Locator, height: number) {
 async function shot(page: Page, info: TestInfo, group: keyof typeof shots, w: number, h: number) {
   const size = `${w}x${h}`;
   if (!shots[group].has(size)) return;
-  await page.screenshot({ path: info.outputPath(`${group}-${size}.png`), fullPage: false, animations: "disabled" });
+  await page.screenshot({
+    path: info.outputPath(`${group}-${size}.png`),
+    fullPage: false,
+    animations: "disabled",
+  });
 }
 
 test.describe("required responsive viewport matrix", () => {
@@ -58,7 +75,10 @@ test.describe("required responsive viewport matrix", () => {
       await page.goto("/");
       await settle(page);
       await noOverflow(page);
-      const root = await page.locator(".home-main .illustrated-home.homepage").first().boundingBox();
+      const root = await page
+        .locator(".home-main .illustrated-home.homepage")
+        .first()
+        .boundingBox();
       if (!root) throw new Error("Illustrated home is missing");
       expect(root.width).toBeGreaterThanOrEqual(w - 2);
       if (w >= 1024) await inside(page.locator(".choice-cta").first(), h);
@@ -108,8 +128,12 @@ test.describe("required responsive viewport matrix", () => {
           dialog.getByRole("button", { name: "Previous", exact: true }),
           dialog.getByRole("button", { name: "Next", exact: true }),
           exit,
-        ]) await inside(target, h);
-        const scroll = await dialog.evaluate((el) => ({ scrollHeight: el.scrollHeight, clientHeight: el.clientHeight }));
+        ])
+          await inside(target, h);
+        const scroll = await dialog.evaluate((el) => ({
+          scrollHeight: el.scrollHeight,
+          clientHeight: el.clientHeight,
+        }));
         expect(scroll.scrollHeight).toBeLessThanOrEqual(scroll.clientHeight + 1);
       }
       await shot(page, info, "presenter", w, h);
@@ -150,7 +174,9 @@ test.describe("required responsive viewport matrix", () => {
     }
   });
 
-  test("Auth fills the viewport and exposes both sign-in choices on desktop", async ({ page }, info) => {
+  test("Auth fills the viewport and exposes both sign-in choices on desktop", async ({
+    page,
+  }, info) => {
     for (const route of ["/sign-in", "/sign-up"]) {
       for (const [w, h] of viewports) {
         await page.setViewportSize({ width: w, height: h });
@@ -184,14 +210,32 @@ test.describe("required responsive viewport matrix", () => {
 test.describe("formal route cross-page smoke", () => {
   test.setTimeout(120_000);
   const routes = [
-    "/", "/find-questions", "/create", "/play", "/print", "/leaderboards",
-    "/would-you-rather-questions-for-kids", "/funny-would-you-rather-questions",
-    "/hard-would-you-rather-questions", "/would-you-rather-questions-for-friends",
-    "/would-you-rather-questions-for-couples", "/sign-in", "/sign-up",
-    "/auth/magic-link/confirm", "/privacy", "/terms", "/acceptable-use",
-    "/refund-policy", "/account-deletion", "/contact",
+    "/",
+    "/find-questions",
+    "/create",
+    "/play",
+    "/print",
+    "/leaderboards",
+    "/would-you-rather-questions-for-kids",
+    "/funny-would-you-rather-questions",
+    "/hard-would-you-rather-questions",
+    "/would-you-rather-questions-for-friends",
+    "/would-you-rather-questions-for-couples",
+    "/sign-in",
+    "/sign-up",
+    "/auth/magic-link/confirm",
+    "/privacy",
+    "/terms",
+    "/acceptable-use",
+    "/refund-policy",
+    "/account-deletion",
+    "/contact",
   ] as const;
-  for (const [w, h] of [[390, 844], [1024, 768], [1440, 900]] as const) {
+  for (const [w, h] of [
+    [390, 844],
+    [1024, 768],
+    [1440, 900],
+  ] as const) {
     test(`formal public surfaces avoid horizontal overflow at ${w}x${h}`, async ({ page }) => {
       await page.setViewportSize({ width: w, height: h });
       for (const route of routes) {

@@ -1786,7 +1786,6 @@
   color: var(--foreground);
 }
 
-
 /* Responsive Web Product layer: separate full-bleed viewport from the illustrated design surface. */
 .illustrated-home.homepage {
   max-width: none;

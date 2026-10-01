@@ -99,8 +99,11 @@ test("account does not turn corrupted favorites into a successful empty collecti
   }
 });
 
-
-test("authenticated account route family stays responsive and preserves viewport evidence", async ({ browser, request, baseURL }, testInfo) => {
+test("authenticated account route family stays responsive and preserves viewport evidence", async ({
+  browser,
+  request,
+  baseURL,
+}, testInfo) => {
   if (!baseURL) throw new Error("Account test base URL is required");
   const { context, page } = await openAccount(browser, request, baseURL);
   try {
