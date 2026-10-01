@@ -124,11 +124,12 @@ try {
     ["bun", ["run", "format:check"]],
     ["bun", ["run", "lint"]],
     ["bun", ["run", "typecheck"]],
-    ["bun", ["run", "test:unit"]],
+    // Product-specific WYRPlay unit/E2E suites run in the quality and e2e jobs.
+    // A neutralized checkout must validate the reusable platform without asserting
+    // WYRPlay-only names, routes, feature flags, or page contracts.
     ["bun", ["run", "test:integration"]],
     ["bun", ["run", "test:contract"]],
     ["bun", ["run", "build"]],
-    ["bun", ["run", "test:e2e"]],
     ["bun", ["run", "verify:architecture"]],
     ["bun", ["run", "verify:secrets"]],
     ["bun", ["run", "verify:security"]],
