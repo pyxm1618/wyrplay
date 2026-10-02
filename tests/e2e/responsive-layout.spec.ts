@@ -260,6 +260,10 @@ test.describe("required responsive viewport matrix", () => {
         if (width >= 1024) {
           await inside(page.getByRole("button", { name: "Continue with Google" }), height);
           await inside(page.getByRole("button", { name: "Continue with Magic Link" }), height);
+          const heroCopy = await page.locator(".hero-copy").boundingBox();
+          const authCard = await page.locator(".auth-card").boundingBox();
+          if (!heroCopy || !authCard) throw new Error("Auth composition is incomplete");
+          expect(heroCopy.y + heroCopy.height).toBeLessThanOrEqual(authCard.y - 4);
         }
 
         await shot(page, info, "auth", width, height, suffix);
