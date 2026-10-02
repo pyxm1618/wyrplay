@@ -127,19 +127,32 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await expect(reloadedOptionB.locator("text=Your Choice")).toBeVisible();
     });
 
-    test("Kids voting does not create or reuse the persistent voter cookie", async ({
+    test("Kids voting clears legacy identity and does not persist a voter cookie", async ({
       page,
       context,
     }) => {
       await context.clearCookies();
+      await context.addCookies([
+        {
+          name: "wyr_vid",
+          value: "legacy-root-voter",
+          url: "http://127.0.0.1:3000",
+        },
+      ]);
+
       await page.goto("/would-you-rather-questions-for-kids");
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
-      expect((await context.cookies()).some((cookie) => cookie.name === "wyr_vid")).toBe(false);
+      // The Kids stats request deletes the old root-scoped identity cookie.
+      await expect
+        .poll(async () => (await context.cookies()).some((cookie) => cookie.name === "wyr_vid"))
+        .toBe(false);
 
       const optionA = page.locator("#play button:has-text('Option A')").first();
+      const optionB = page.locator("#play button:has-text('Option B')").first();
       await optionA.click();
       await expect(optionA).toHaveAttribute("aria-pressed", "true");
+      await expect(optionB).toBeDisabled();
 
       expect((await context.cookies()).some((cookie) => cookie.name === "wyr_vid")).toBe(false);
 
