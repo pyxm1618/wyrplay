@@ -240,3 +240,78 @@ test("a first vote before the initial read finishes keeps its anonymous identity
   await page.reload();
   await expect(choice).toHaveAttribute("aria-pressed", "true");
 });
+
+test("question selection moves and keeps keyboard focus on the mounted hero arena", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.waitForLoadState("networkidle");
+
+  const heading = page.locator("#play h2");
+
+  // 1. Highlight 点击测试
+  const highlight = page.locator(".highlight-card").first();
+  const highlightTitle = await highlight.locator(".highlight-title").textContent();
+  await highlight.click();
+  await expect(heading).toHaveText(highlightTitle!);
+  await expect
+    .poll(async () => {
+      return page.evaluate(() => {
+        const active = document.activeElement;
+        const play = document.getElementById("play");
+        return active !== null && (active === play || play?.contains(active));
+      });
+    })
+    .toBe(true);
+
+  // 2. Directory 点击测试
+  await page.locator(".home-directory summary").click();
+  const directoryCard = page.locator("#questions article").first();
+  const directoryTitle = await directoryCard.locator("h3").textContent();
+  await directoryCard.getByRole("button").click();
+  await expect(heading).toHaveText(directoryTitle!);
+  await expect
+    .poll(async () => {
+      return page.evaluate(() => {
+        const active = document.activeElement;
+        const play = document.getElementById("play");
+        return active !== null && (active === play || play?.contains(active));
+      });
+    })
+    .toBe(true);
+});
+
+test("presenter modal retains return focus to live trigger after cycling questions", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.waitForLoadState("networkidle");
+
+  const presenterTrigger = page.getByRole("button", { name: "Presenter Mode" });
+  await expect(presenterTrigger).toBeVisible();
+  await presenterTrigger.click();
+
+  const modal = page.locator(".presenter-page");
+  await expect(modal).toBeVisible();
+
+  const nextBtn = page.locator(".presenter-page button", { hasText: "Next" }).first();
+  if (await nextBtn.isVisible()) {
+    await nextBtn.click();
+  }
+
+  await page.keyboard.press("Escape");
+  await expect(modal).toBeHidden();
+
+  await expect
+    .poll(async () => {
+      return page.evaluate(() => {
+        const active = document.activeElement;
+        return (
+          active !== null &&
+          active.tagName === "BUTTON" &&
+          active.textContent?.includes("Presenter Mode")
+        );
+      });
+    })
+    .toBe(true);
+});

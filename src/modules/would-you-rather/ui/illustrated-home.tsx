@@ -210,8 +210,15 @@ export function IllustratedHome({
       : [];
   const play = (id: string) => {
     onPlayQuestion(id);
-    document.getElementById("play")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    document.getElementById("play")?.focus({ preventScroll: true });
+    const focusArena = () => {
+      const arenaEl = document.getElementById("play");
+      if (arenaEl) {
+        arenaEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        arenaEl.focus({ preventScroll: true });
+      }
+    };
+    focusArena();
+    requestAnimationFrame(focusArena);
   };
   return (
     <>

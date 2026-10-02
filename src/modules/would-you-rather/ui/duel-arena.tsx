@@ -182,6 +182,7 @@ export function DuelArena({
   }
 
   const currentStats = loadedQuestionId === currentQuestionId ? voteStats : null;
+  const currentErrorMessage = loadedQuestionId === currentQuestionId ? errorMessage : null;
   const hasVoted = Boolean(currentStats?.hasVoted);
   const userPick = currentStats?.selectedOption ?? null;
 
@@ -228,9 +229,9 @@ export function DuelArena({
             ? `Total of ${currentStats.total.toLocaleString()} votes received. Choose the other side to change your vote.`
             : "Pick A or B to play. Real votes. Real results."}
         </p>
-        {errorMessage && (
+        {currentErrorMessage && (
           <p className="home-vote-error" role="alert">
-            {errorMessage}{" "}
+            {currentErrorMessage}{" "}
             <button type="button" onClick={() => setRefreshCount((c) => c + 1)}>
               Retry
             </button>
@@ -281,9 +282,10 @@ export function DuelArena({
     return (
       <section id="play" className="illustrated-arena">
         <PlayHeading question={question.question} />
-        {errorMessage && (
+        {currentErrorMessage && (
           <p className="play-error" role="alert">
-            {errorMessage} <button onClick={() => setRefreshCount((c) => c + 1)}>Retry</button>
+            {currentErrorMessage}{" "}
+            <button onClick={() => setRefreshCount((c) => c + 1)}>Retry</button>
           </p>
         )}
         <OptionPanels
@@ -367,9 +369,9 @@ export function DuelArena({
       </div>
 
       {/* 错误反馈提示区 */}
-      {errorMessage && (
+      {currentErrorMessage && (
         <div className="mb-6 flex items-center justify-between rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-xs text-red-800 dark:text-red-300">
-          <span>{errorMessage}</span>
+          <span>{currentErrorMessage}</span>
           <button
             type="button"
             onClick={() => setRefreshCount((c) => c + 1)}

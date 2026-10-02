@@ -2,7 +2,7 @@ export type MarketingChromeConfig = {
   ownHeader: boolean;
   headerAppearance: "default" | "illustrated-home";
   footerAppearance: "default" | "illustrated" | "finder";
-  themeClass?: string;
+  themeClass?: string | undefined;
 };
 
 /** Unified route chrome decision for marketing layout, header, footer and theme. */

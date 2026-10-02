@@ -207,7 +207,6 @@ export function WyrExperience({
   const arena = (
     <fieldset disabled={!hydrated} className="home-arena-controls">
       <DuelArena
-        key={resolvedActiveQuestion?.id ?? "empty"}
         appearance={appearance === "illustrated-home" ? "illustrated-home" : "default"}
         presenterButtonRef={presenterTriggerRef}
         question={resolvedActiveQuestion}
