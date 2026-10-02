@@ -1,6 +1,8 @@
 import type { LegalConfig } from "@/platform/legal/types";
 
 export const legalConfig = {
+  // Keep this draft until the owner confirms the final legal operator identity/contact facts
+  // and the production feature set is rechecked against this policy before release.
   releaseStatus: "draft",
   operator: {
     legalName: "WYRPlay",
