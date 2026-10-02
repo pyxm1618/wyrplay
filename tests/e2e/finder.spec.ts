@@ -130,7 +130,7 @@ test("finder is an independent noindex utility route and retains a real home nav
   await page.getByRole("link", { name: "Home", exact: true }).click();
   await expect(page).toHaveURL(/\/$/);
   await expect(page.locator(".finder-page")).toHaveCount(0);
-  await expect(page.locator("h1")).toHaveText("Would You Rather Questions");
+  await expect(page.locator("h1")).toHaveAccessibleName("Would You Rather Questions");
   await page.getByRole("link", { name: "Find Questions", exact: true }).first().click();
   await expect(page).toHaveURL(/\/find-questions$/);
 });

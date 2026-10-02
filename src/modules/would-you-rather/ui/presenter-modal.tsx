@@ -1,12 +1,13 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- Local reference brand crop. */
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type RefObject } from "react";
 import { PlayHeading, OptionPanels, PlayArtwork } from "./play/art";
 import "./play/play.css";
 import type { Question } from "../types";
 
 export interface PresenterModalProps {
+  readonly returnFocusRef?: RefObject<HTMLButtonElement | null>;
   readonly isOpen: boolean;
   readonly question: Question | undefined;
   readonly onNext: () => void;
@@ -18,6 +19,7 @@ export interface PresenterModalProps {
 
 export function PresenterModal({
   isOpen,
+  returnFocusRef,
   question,
   onNext,
   onPrev,
@@ -47,9 +49,11 @@ export function PresenterModal({
       // 转移焦点至 modal
       modalRef.current?.focus();
     } else if (previouslyFocusedElementRef.current) {
-      previouslyFocusedElementRef.current.focus();
+      const trigger = returnFocusRef?.current ?? previouslyFocusedElementRef.current;
+      trigger?.focus();
+      previouslyFocusedElementRef.current = null;
     }
-  }, [isOpen]);
+  }, [isOpen, returnFocusRef]);
 
   // 键盘快捷键监听：严格对齐按钮与键盘边界
   useEffect(() => {

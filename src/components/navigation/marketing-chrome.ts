@@ -1,7 +1,21 @@
-/** Route-owned illustrated chrome stays separate from the shared marketing header. */
-export function marketingChrome(pathname: string) {
+export type MarketingChromeConfig = {
+  ownHeader: boolean;
+  headerAppearance: "default" | "illustrated-home";
+  footerAppearance: "default" | "illustrated" | "finder";
+  themeClass?: string | undefined;
+};
+
+/** Unified route chrome decision for marketing layout, header, footer and theme. */
+export function marketingChrome(pathname: string): MarketingChromeConfig {
+  const isHome = pathname === "/";
+  const isFinder = pathname === "/find-questions";
+  const isPlay = pathname === "/play";
+  const isPrint = pathname === "/print";
+
   return {
-    ownHeader: ["/find-questions", "/play", "/print"].includes(pathname),
-    footerAppearance: pathname === "/find-questions" ? "finder" : "default",
-  } as const;
+    ownHeader: isFinder || isPlay || isPrint,
+    headerAppearance: isHome ? "illustrated-home" : "default",
+    footerAppearance: isHome ? "illustrated" : isFinder ? "finder" : "default",
+    themeClass: isHome ? "homepage-brand-theme" : undefined,
+  };
 }
