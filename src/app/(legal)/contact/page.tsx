@@ -53,10 +53,10 @@ export default function ContactPage() {
           Privacy requests
         </h2>
         <p className={`mt-3 ${bodyText}`}>
-          Use the same email address for access, correction, deletion, or other privacy requests.
-          If the request concerns an account, contact us from the account email address when
-          possible. We may ask for reasonable verification before disclosing or deleting
-          account-linked information.
+          Use the same email address for access, correction, deletion, or other privacy requests. If
+          the request concerns an account, contact us from the account email address when possible.
+          We may ask for reasonable verification before disclosing or deleting account-linked
+          information.
         </p>
       </section>
 
@@ -88,9 +88,9 @@ export default function ContactPage() {
           Safety, abuse, and security
         </h2>
         <p className={`mt-3 ${bodyText}`}>
-          Report child-safety concerns, abusive or illegal content, account abuse, vote manipulation,
-          or suspected security problems with enough detail for us to investigate. Do not include
-          unnecessary personal information in the report.
+          Report child-safety concerns, abusive or illegal content, account abuse, vote
+          manipulation, or suspected security problems with enough detail for us to investigate. Do
+          not include unnecessary personal information in the report.
         </p>
       </section>
 
