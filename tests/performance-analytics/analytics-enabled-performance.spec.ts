@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Route } from "@playwright/test";
 
 declare global {
   interface Window {
@@ -16,7 +16,7 @@ test("analytics-enabled homepage stays within release budgets", async ({ page })
 
   // Vote persistence is validated in integration/E2E. Keep analytics performance
   // focused on analytics overhead and the rendered homepage.
-  const fulfillEmptyVoteStats = async (route: Parameters<typeof page.route>[1] extends (route: infer R) => unknown ? R : never) => {
+  const fulfillEmptyVoteStats = async (route: Route) => {
     await route.fulfill({
       status: 200,
       contentType: "application/json",
