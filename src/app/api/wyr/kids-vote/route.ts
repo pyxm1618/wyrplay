@@ -37,7 +37,10 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Missing 'questionId' query parameter" }, { status: 400 });
     }
     if (!usesAggregateOnlyVoting(questionId)) {
-      return NextResponse.json({ error: "Question does not use aggregate-only voting" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Question does not use aggregate-only voting" },
+        { status: 400 },
+      );
     }
 
     return noStore(NextResponse.json(await getQuestionVoteStats(questionId)));
