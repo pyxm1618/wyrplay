@@ -1391,7 +1391,8 @@ body:has(> .auth-page) {
     transform: rotate(-9deg);
   }
   .auth-page.login .hero h3,
-  .auth-page.login .hero p {
+  .auth-page.login .hero p,
+  .auth-page.signup .hero p {
     display: none;
   }
   :where(.auth-page) .hero h3 {
