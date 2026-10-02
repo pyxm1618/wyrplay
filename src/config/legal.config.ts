@@ -228,7 +228,7 @@ export const legalConfig = {
       {
         heading: "Contact Us",
         paragraphs: [
-          "Questions about this Privacy Notice or privacy requests can be sent to support@wyrplay.com. Before this document is marked reviewed for production release, the operator's final legal identity and any legally required postal contact information must be confirmed.",
+          "Questions about this Privacy Notice or privacy requests can be sent to support@wyrplay.com.",
         ],
       },
     ],
@@ -338,7 +338,7 @@ export const legalConfig = {
         heading: "Applicable Law and Disputes",
         paragraphs: [
           "These Terms are subject to applicable United States federal and state law. Nothing in these Terms waives mandatory consumer protections or other rights that cannot legally be waived.",
-          "WYRPlay does not include a mandatory arbitration or class-action waiver in this draft. Any future dispute-resolution clause must be reviewed with the operator's final legal identity and state of organization before it is added.",
+          "These Terms do not require mandatory arbitration or a class-action waiver. If WYRPlay later proposes a material dispute-resolution change, the Terms will be updated and any notice or consent required by law will be provided.",
         ],
       },
       {
