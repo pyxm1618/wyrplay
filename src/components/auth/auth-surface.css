@@ -1538,8 +1538,9 @@ body:has(> .auth-page) {
     line-height: 0.9;
     transform: rotate(-9deg);
   }
-  .auth-page.login .hero h3,
-  .auth-page.login .hero p {
+  :where(.auth-page) .hero h3,
+  :where(.auth-page) .hero p,
+  .auth-page.signup .hero p {
     display: none;
   }
   :where(.auth-page) .hero h3 {
