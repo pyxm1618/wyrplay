@@ -139,7 +139,7 @@ export const legalConfig = {
         heading: "Gameplay, Voting, and Anonymous Identifiers",
         paragraphs: [
           "WYRPlay may record question interactions, A-or-B votes, timestamps, aggregate vote counts, and similar gameplay information needed to operate the service.",
-          "Anonymous voting may use a first-party HttpOnly cookie or another first-party identifier to associate a browser with a vote, preserve vote integrity, and reduce duplicate or abusive submissions. This identifier is used for service operation rather than cross-site advertising.",
+          "On general-audience portions of WYRPlay, anonymous voting may use a first-party HttpOnly cookie to associate a browser with a vote, preserve vote integrity, and reduce duplicate or abusive submissions. Questions that can appear in the Kids collection use a different privacy mode: WYRPlay does not create or read the persistent voter cookie for those votes, and the server stores each vote with a one-time record token that is not reused to recognize a person or browser over time.",
         ],
       },
       {
@@ -181,9 +181,9 @@ export const legalConfig = {
       {
         heading: "Children's Privacy",
         paragraphs: [
-          "Some WYRPlay content, including the Kids collection, is designed to be useful to families and educators and may appeal to children. We therefore treat children's privacy as a separate product requirement rather than relying only on a general age statement.",
+          "The WYRPlay Kids collection is specifically designed for children, families, and educators. WYRPlay treats that area as a child-directed portion of the service for privacy-design purposes rather than relying only on a general age statement.",
           "WYRPlay does not knowingly permit children under 13 to create accounts, submit personal information through account features, or purchase paid features without a legally sufficient parental process. We do not use personal information from children under 13 for targeted advertising or behavioral profiling.",
-          "If WYRPlay enables data collection on a child-directed portion of the service, persistent identifiers will be limited to uses that are permitted without parental consent, such as functions reasonably necessary for internal operations, security, fraud prevention, basic preferences, or qualifying service analytics. If WYRPlay later introduces a feature that requires collecting personal information from a child under 13 outside an applicable exception, parental notice and verifiable parental consent must be implemented before that collection begins.",
+          "For voting on questions that can appear in the Kids collection, WYRPlay does not retain a persistent voter identifier together with the user's A/B choice. Existing legacy Kids vote rows are converted so that any former reusable voter identifier is replaced by a one-time record token, preserving aggregate counts without preserving a user-to-choice link. If WYRPlay later introduces a child-directed feature that collects personal information outside an applicable COPPA exception, parental notice and verifiable parental consent must be implemented before that collection begins.",
         ],
       },
       {
@@ -205,7 +205,7 @@ export const legalConfig = {
         heading: "California Privacy Disclosures",
         paragraphs: [
           "California's Online Privacy Protection Act requires covered commercial websites that collect personally identifiable information from California consumers to publish privacy disclosures, including the categories of information collected, categories of third parties involved, how users may request review or changes, and the policy's effective date. This notice is structured to provide those disclosures.",
-          "WYRPlay does not currently respond to legacy browser Do Not Track signals as a separate technical control. Optional analytics providers may process identifiers and usage information as described in this notice, but WYRPlay's current analytics configuration is not intended to enable cross-site advertising or Google Signals. Because WYRPlay does not currently sell personal information or use it for cross-context behavioral advertising, a Do Not Track signal does not change the service's current data practices. If WYRPlay becomes subject to a law that requires honoring a recognized opt-out preference signal, such as Global Privacy Control for covered processing, WYRPlay will implement the required response before engaging in that covered processing.",
+          "WYRPlay does not currently respond to legacy browser Do Not Track signals as a separate technical control. In the current production configuration, Google Analytics and Microsoft Clarity are disabled, so those analytics integrations do not collect information through WYRPlay. WYRPlay does not currently authorize third parties to collect personal information through the service for cross-site behavioral advertising. If analytics or other tracking technologies are enabled in production later, this notice will be updated to state the actual third-party collection and choices before that change takes effect. If applicable law requires honoring a recognized opt-out preference signal, such as Global Privacy Control for covered processing, WYRPlay will implement the required response before engaging in that covered processing.",
           "The California Consumer Privacy Act applies only when its statutory coverage requirements are met. Nothing in this notice is intended to represent that WYRPlay is currently a covered CCPA business if those thresholds or other requirements are not satisfied.",
         ],
       },
