@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export function MagicLinkConfirmation() {
   const [token, setToken] = useState<string | null>(null);
@@ -42,10 +43,10 @@ export function MagicLinkConfirmation() {
       credentials: "same-origin",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ token, returnTo }),
-    });
+    }).catch(() => null);
 
     setToken(null);
-    if (!response.ok) {
+    if (!response?.ok) {
       setStatus("error");
       return;
     }
@@ -54,19 +55,34 @@ export function MagicLinkConfirmation() {
   }
 
   return (
-    <div>
-      <p>
+    <div className="confirmation-content">
+      <p className="confirmation-warning">
         This page has not signed you in yet. Confirm only if you requested this link on this device.
       </p>
-      <button type="button" onClick={confirm} disabled={status !== "ready"}>
+      <button
+        type="button"
+        className="send-link"
+        onClick={confirm}
+        disabled={status !== "ready"}
+        aria-busy={status === "submitting"}
+      >
         {status === "submitting" ? "Confirming…" : "Confirm sign in"}
       </button>
-      <p aria-live="polite">
+      <p
+        aria-live="polite"
+        role={status === "error" ? "alert" : "status"}
+        className="auth-status"
+        data-error={status === "error"}
+      >
         {status === "error"
           ? "This sign-in link is invalid, expired, or already used. Request a new link."
           : status === "loading"
             ? "Preparing secure confirmation…"
             : ""}
+      </p>
+      <p className="confirmation-actions">
+        Didn’t request this link? Close this page.{" "}
+        <Link href="/sign-in">Request a new sign-in link</Link>.
       </p>
     </div>
   );

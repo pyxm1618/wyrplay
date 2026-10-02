@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-03",
+  "base_sha": "6b3434cb63522311849f86a1d3058ba5449e9075",
+  "lint": {
+    "command": "bun run lint",
+    "exit_code": 0
+  },
+  "typecheck": {
+    "command": "bun run typecheck",
+    "exit_code": 0,
+    "ordering": "after completed final build"
+  },
+  "unit": {
+    "command": "bun run test:unit",
+    "exit_code": 0,
+    "test_files_passed": 58,
+    "tests_passed": 305
+  },
+  "e2e": {
+    "exit_code": 0,
+    "tests_passed": 28,
+    "browser": "Google Chrome via Playwright",
+    "specs": [
+      "auth-responsive.spec.ts",
+      "auth-ui.spec.ts",
+      "auth.spec.ts",
+      "turnstile-script.spec.ts",
+      "turnstile-script-regression.spec.ts"
+    ],
+    "database": "dedicated new PostgreSQL cluster on 127.0.0.1:55416",
+    "migration_rows": 14
+  },
+  "build": {
+    "command": "bun run build",
+    "exit_code": 0,
+    "profile": "APP_ENV=production with existing neutral feature flags"
+  },
+  "auth_enabled_build": {
+    "command": "bun run build:test",
+    "exit_code": 0,
+    "profile": "APP_ENV=test / CREAT_WEB_E2E_ENABLED_FEATURES=1"
+  },
+  "axe": {
+    "tags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21aa"
+    ],
+    "routes_checked": 3,
+    "expanded_email_form": true,
+    "violations": 0
+  },
+  "scope": {
+    "auth_platform_changes": 0,
+    "configuration_changes": 0,
+    "dependency_changes": 0,
+    "production_mutations": 0
+  },
+  "previous_runs": [
+    {
+      "result": "26/26 passed before final typography change"
+    },
+    {
+      "result": "20 passed / 6 failed when old DB rate limits were retained; final fresh fixture run 28/28 passed"
+    },
+    {
+      "result": "missing APP_ENV build rejected by existing validation; configured build passed"
+    }
+  ]
+}
