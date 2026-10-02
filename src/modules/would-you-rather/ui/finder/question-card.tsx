@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- Small native screenshot artwork is reused without image regeneration. */
 import { useEffect, useState } from "react";
-import { parseVoteStats, questionArtwork } from "../../domain/finder";
+import { parseVoteStats } from "../../domain/finder";
 import { isKidsCollectionQuestion } from "../../domain/filter-questions";
 import type { Question, VoteStats } from "../../types";
 import { FinderIcon } from "./icon";
@@ -19,10 +19,12 @@ function QuestionVoteSummary({
     readonly error?: string;
   } | null>(null);
   const [retry, setRetry] = useState(0);
+  const id = question.id;
+  const endpoint = isKidsCollectionQuestion(question) ? "/api/wyr/kids-vote" : "/api/wyr/vote";
+
   useEffect(() => {
     const controller = new AbortController();
-    const endpoint = isKidsCollectionQuestion(question) ? "/api/wyr/kids-vote" : "/api/wyr/vote";
-    void fetch(`${endpoint}?questionId=${encodeURIComponent(question.id)}`, {
+    void fetch(`${endpoint}?questionId=${encodeURIComponent(id)}`, {
       cache: "no-store",
       signal: controller.signal,
     })
@@ -31,18 +33,19 @@ function QuestionVoteSummary({
         return parseVoteStats(await response.json());
       })
       .then((stats) => {
-        if (!controller.signal.aborted) setResult({ id: question.id, stats });
+        if (!controller.signal.aborted) setResult({ id, stats });
       })
       .catch((error: unknown) => {
         if (!controller.signal.aborted)
           setResult({
-            id: question.id,
+            id,
             error: error instanceof Error ? error.message : "Could not load vote statistics",
           });
       });
     return () => controller.abort();
-  }, [question, revision, retry]);
-  const current = result?.id === question.id ? result : null;
+  }, [endpoint, id, revision, retry]);
+
+  const current = result?.id === id ? result : null;
   return (
     <p className="question-stats">
       <img src="/finder/assets/people.png" alt="" />
@@ -66,8 +69,10 @@ function QuestionVoteSummary({
     </p>
   );
 }
+
 export function FinderQuestionCard({
   question,
+  artwork,
   number,
   selected,
   saved,
@@ -76,6 +81,7 @@ export function FinderQuestionCard({
   revision,
 }: {
   readonly question: Question;
+  readonly artwork: string;
   readonly number: number;
   readonly selected: boolean;
   readonly saved: boolean;
@@ -110,7 +116,7 @@ export function FinderQuestionCard({
         </div>
         <QuestionVoteSummary question={question} revision={revision} />
       </div>
-      <img className="question-art" src={questionArtwork(question)} alt="" />
+      <img className="question-art" src={artwork} alt="" />
       <button
         className={`bookmark icon-button ${saved ? "saved" : ""}`}
         aria-label={`${saved ? "Unsave" : "Save"} question ${number}`}
