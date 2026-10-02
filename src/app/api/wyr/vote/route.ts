@@ -1,6 +1,10 @@
 import { cookies } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
-import { getQuestionVoteStats, recordVote } from "@/modules/would-you-rather/server";
+import {
+  getQuestionVoteStats,
+  recordVote,
+  usesAggregateOnlyVoting,
+} from "@/modules/would-you-rather/server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -19,6 +23,11 @@ function resolveVoterId(cookieStore: Awaited<ReturnType<typeof cookies>>): {
   return { voterId: crypto.randomUUID(), isNew: true };
 }
 
+function applyNoStore(response: NextResponse): NextResponse {
+  response.headers.set("Cache-Control", "private, no-store, no-cache, max-age=0");
+  return response;
+}
+
 function applyVoterCookie(response: NextResponse, voterId: string, isNew: boolean): NextResponse {
   if (isNew) {
     response.cookies.set({
@@ -27,13 +36,12 @@ function applyVoterCookie(response: NextResponse, voterId: string, isNew: boolea
       httpOnly: true,
       secure: process.env.APP_ENV === "production",
       sameSite: "lax",
-      path: "/",
+      path: "/api/wyr/vote",
       maxAge: ONE_YEAR_SECONDS,
     });
   }
   // 个人投票状态严禁共享缓存
-  response.headers.set("Cache-Control", "private, no-store, no-cache, max-age=0");
-  return response;
+  return applyNoStore(response);
 }
 
 export async function GET(request: NextRequest) {
@@ -43,6 +51,13 @@ export async function GET(request: NextRequest) {
 
     if (!questionId || questionId.trim() === "") {
       return NextResponse.json({ error: "Missing 'questionId' query parameter" }, { status: 400 });
+    }
+
+    if (usesAggregateOnlyVoting(questionId)) {
+      return NextResponse.json(
+        { error: "Kids questions use the aggregate-only voting endpoint" },
+        { status: 400 },
+      );
     }
 
     const cookieStore = await cookies();
@@ -73,6 +88,13 @@ export async function POST(request: NextRequest) {
 
     if (option !== "A" && option !== "B") {
       return NextResponse.json({ error: "Invalid 'option', must be 'A' or 'B'" }, { status: 400 });
+    }
+
+    if (usesAggregateOnlyVoting(questionId)) {
+      return NextResponse.json(
+        { error: "Kids questions use the aggregate-only voting endpoint" },
+        { status: 400 },
+      );
     }
 
     const cookieStore = await cookies();
