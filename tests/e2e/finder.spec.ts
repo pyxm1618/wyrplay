@@ -56,6 +56,9 @@ test("finder retains actual A/B voting, changing choices, keyboard shortcuts and
   page,
 }) => {
   await page.goto("/find-questions");
+  await page.getByRole("searchbox").fill("one afternoon each week");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await expect(page.locator(".question-card")).toHaveCount(1);
   await page.getByRole("button", { name: "Play these questions" }).click();
   await expect(page).toHaveURL(/\/play\?/);
   const dialog = page.locator("#play");
