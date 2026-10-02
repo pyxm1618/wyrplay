@@ -178,7 +178,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       // 拦截投票 API 并模拟 500 故障
-      await page.route("**/api/wyr/vote", async (route) => {
+      await page.route("**/api/wyr/kids-vote", async (route) => {
         await route.fulfill({
           status: 500,
           contentType: "application/json",
