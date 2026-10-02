@@ -2,17 +2,19 @@
 
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
+import { marketingChrome } from "./marketing-chrome";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
-/** One route-level decision keeps the homepage header, controls and footer in one theme. */
+/** One route-level decision keeps marketing header, controls and footer in one unified chrome. */
 export function MarketingShell({ children }: { children: ReactNode }) {
-  const illustrated = usePathname() === "/";
+  const pathname = usePathname();
+  const chrome = marketingChrome(pathname);
   return (
-    <div className={`flex min-h-screen flex-col ${illustrated ? "homepage-brand-theme" : ""}`}>
-      <SiteHeader appearance={illustrated ? "illustrated-home" : "default"} />
+    <div className={`flex min-h-screen flex-col ${chrome.themeClass ?? ""}`}>
+      <SiteHeader appearance={chrome.headerAppearance} ownHeader={chrome.ownHeader} />
       {children}
-      <SiteFooter appearance={illustrated ? "illustrated" : "default"} />
+      <SiteFooter appearance={chrome.footerAppearance} />
     </div>
   );
 }

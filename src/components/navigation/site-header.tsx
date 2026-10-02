@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { marketingChrome } from "./marketing-chrome";
+
 import { siteConfig } from "@/config/site.config";
 import { featuresConfig } from "@/config/features.config";
 import { IllustratedHomeHeader, ThemeToggle } from "@/modules/would-you-rather";
@@ -16,16 +18,25 @@ const mobileNavLink =
 
 export function SiteHeader({
   locale = siteConfig.defaultLocale,
-  appearance = "default",
-}: Readonly<{ locale?: string; appearance?: "default" | "illustrated-home" }>) {
+  appearance,
+  ownHeader,
+}: Readonly<{
+  locale?: string;
+  appearance?: "default" | "illustrated-home";
+  ownHeader?: boolean;
+}> = {}) {
   const pathname = usePathname();
+  const chrome = marketingChrome(pathname);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const homeHref = localePath(siteConfig, locale, "/");
 
   const closeMenu = () => setMobileMenuOpen(false);
 
-  if (["/find-questions", "/play", "/print"].includes(pathname)) return null;
-  if (appearance === "illustrated-home") {
+  const isOwnHeader = ownHeader ?? chrome.ownHeader;
+  const currentAppearance = appearance ?? chrome.headerAppearance;
+
+  if (isOwnHeader) return null;
+  if (currentAppearance === "illustrated-home") {
     return (
       <div className="illustrated-home homepage">
         <IllustratedHomeHeader authEnabled={featuresConfig.auth.enabled} />

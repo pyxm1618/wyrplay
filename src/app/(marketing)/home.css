@@ -1,2 +1,10 @@
 @import "../../modules/would-you-rather/ui/illustrated-home.css";
 @import "../../modules/would-you-rather/ui/home-product.css";
+
+/* Shared legal footer follows Finder's warm illustrated surface. */
+.finder-footer {
+  --surface-muted: #fff2d8;
+  --border: #e8dcc7;
+  --muted: #515b69;
+}
+
