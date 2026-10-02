@@ -1,0 +1,34 @@
+name: Temporary legal COPPA formatter
+
+on:
+  push:
+    branches:
+      - legal-coppa-closeout
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: legal-coppa-closeout
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - run: bun install --frozen-lockfile
+      - name: Format changed files
+        run: |
+          bunx prettier --write             "src/modules/would-you-rather/server/voting-service.ts"             "tests/e2e/wyrplay-interactions.spec.ts"             "tests/integration/would-you-rather/voting-database.test.ts"             "tests/unit/legal/validate-legal-config.test.ts"
+      - name: Commit formatting
+        run: |
+          if git diff --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add             "src/modules/would-you-rather/server/voting-service.ts"             "tests/e2e/wyrplay-interactions.spec.ts"             "tests/integration/would-you-rather/voting-database.test.ts"             "tests/unit/legal/validate-legal-config.test.ts"
+          git commit -m "chore: format COPPA closeout"
+          git push origin HEAD:legal-coppa-closeout
