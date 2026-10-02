@@ -94,7 +94,7 @@ test("finder retains actual A/B voting, changing choices, keyboard shortcuts and
 test("finder presents only selected questions, handles unavailable stats honestly and fits narrow screens", async ({
   page,
 }) => {
-  await page.route("**/api/wyr/vote?*", (route) =>
+  await page.route(/\/api\/wyr\/(?:kids-)?vote\?/, (route) =>
     route.fulfill({
       status: 503,
       contentType: "application/json",
