@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
+import { expect, test, type Route } from "@playwright/test";
 
 declare global {
   interface Window {
@@ -24,12 +24,7 @@ for (const route of routes) {
 
     // Live vote persistence is covered by integration/E2E suites. Keep this
     // performance gate deterministic so it measures the redesigned page itself.
-    const fulfillEmptyVoteStats = async (route: Parameters<typeof page.route>[1] extends (
-      route: infer R,
-      ...args: never[]
-    ) => unknown
-      ? R
-      : never) => {
+    const fulfillEmptyVoteStats = async (route: Route) => {
       await route.fulfill({
         status: 200,
         contentType: "application/json",
