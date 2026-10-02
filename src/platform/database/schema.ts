@@ -18,3 +18,4 @@ export * from "./commerce-event-schema";
 export * from "./credit-schema";
 export * from "./subscription-schema";
 export * from "./wyr-schema";
+export * from "./saved-question-schema";

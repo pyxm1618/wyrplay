@@ -3,6 +3,8 @@ import { headers } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import { accountProfile } from "@/components/account/account-profile";
+import { featuresConfig } from "@/config/features.config";
 import { AccountShell } from "@/components/account/account-shell";
 import { RefundAction, SubscriptionAction } from "@/components/account/billing-actions";
 import {
@@ -13,7 +15,6 @@ import {
   panel,
   subTitle,
 } from "@/components/ui/styles";
-import { featuresConfig } from "@/config/features.config";
 import { getAccountContext } from "@/platform/auth/account-context";
 import { formatDisplayAmount, type SupportedCurrency } from "@/platform/commerce/domain/money";
 import { db } from "@/platform/database/application-database";
@@ -75,7 +76,13 @@ export default async function BillingPage() {
           .limit(100);
 
   return (
-    <AccountShell eyebrow="Account" title="Billing" titleId="billing-title">
+    <AccountShell
+      profile={accountProfile(context.user)}
+      commerceEnabled={featuresConfig.commerce.enabled}
+      eyebrow="Account"
+      title="Billing"
+      titleId="billing-title"
+    >
       {featuresConfig.commerce.subscriptions ? (
         <section aria-labelledby="subscriptions-title">
           <h2 id="subscriptions-title" className={subTitle}>
@@ -94,6 +101,11 @@ export default async function BillingPage() {
                     </span>
                     {billingInterval ? <span className={metaText}>{billingInterval}ly</span> : null}
                   </div>
+                  {subscription.currentPeriodStart ? (
+                    <p className={`mt-1 ${metaText}`}>
+                      Current period starts {subscription.currentPeriodStart.toISOString()}
+                    </p>
+                  ) : null}
                   {subscription.currentPeriodEnd ? (
                     <p className={`mt-1 ${metaText}`}>
                       Current period ends {subscription.currentPeriodEnd.toISOString()}

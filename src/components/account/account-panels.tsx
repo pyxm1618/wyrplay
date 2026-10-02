@@ -56,7 +56,7 @@ export function SavedLibrary({
         <AccountIcon name="heart" />
         <div>
           <h2>Saved Questions</h2>
-          <p>Your favorites, saved on this browser.</p>
+          <p>Your favorites, synced across devices.</p>
         </div>
         <label className="library-search">
           <AccountIcon name="search" />
@@ -208,67 +208,16 @@ export function SavedLibrary({
 }
 export function MyQuestionsPanel() {
   return (
-    <div className="my-question-layout">
-      <section className="account-panel my-question-main">
-        <div className="library-heading">
-          <AccountIcon name="edit" />
-          <div>
-            <h2>My Questions</h2>
-            <p>Questions you&apos;ve created or submitted.</p>
-          </div>
-          <button className="account-blue-button" disabled>
-            ＋ Create a New Question
-          </button>
-        </div>
-        <div className="my-question-filters">
-          {["All", "Published", "Pending", "Draft", "Rejected"].map((s, i) => (
-            <button key={s} disabled={i !== 0} className={i === 0 ? "active" : ""}>
-              {s}
-            </button>
-          ))}
-          <input aria-label="Search your questions" placeholder="Search your questions…" disabled />
-          <select disabled aria-label="Sort your questions">
-            <option>Newest First</option>
-          </select>
-          <select disabled aria-label="Your question categories">
-            <option>All Categories</option>
-          </select>
-        </div>
-        <div className="account-empty">
-          <AccountIcon name="game" />
-          <h3>A place for your curious questions</h3>
-          <p>
-            Creating and submitting questions is not available yet. Published, pending and draft
-            records will appear when submissions are supported.
-          </p>
-          <Link href="/find-questions">Explore questions →</Link>
-        </div>
-      </section>
-      <aside className="my-question-sidebar">
-        <section className="account-panel">
-          <h2>🏆 Your Stats</h2>
-          {["Total Questions", "Published", "Pending Review", "Drafts", "Rejected"].map((label) => (
-            <div className="creator-stat" key={label}>
-              <strong>—</strong>
-              <span>{label}</span>
-            </div>
-          ))}
-          <p className="unavailable-note">Submission statistics are not available yet.</p>
-        </section>
-        <section className="account-panel">
-          <h2>🔥 Top Performing</h2>
-          <div className="account-empty">
-            <p>No account question performance data is available.</p>
-          </div>
-        </section>
-        <section className="account-panel creator-tips">
-          <h2>💡 Tips for Creators</h2>
-          <p>✓ Keep your questions balanced and fair.</p>
-          <p>✓ Be creative and positive.</p>
-          <p>✓ Avoid harmful topics.</p>
-          <Link href="/acceptable-use">View Guidelines →</Link>
-        </section>
-      </aside>
-    </div>
+    <section className="account-panel my-question-main">
+      <h2>My Questions</h2>
+      <div className="account-empty">
+        <AccountIcon name="game" />
+        <p>
+          Question submissions are not available yet. Browse our curated questions to find your next
+          dilemma.
+        </p>
+        <Link href="/find-questions">Explore questions →</Link>
+      </div>
+    </section>
   );
 }

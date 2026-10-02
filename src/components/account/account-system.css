@@ -1,0 +1,243 @@
+/* Shared account chrome and dense account management surfaces. */
+.account-overview {
+  --surface-muted: #f1f6fa;
+  --accent: #087ab8;
+  --accent-hover: #066696;
+}
+.account-overview .account-page .account-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+  font:
+    700 24px/1 AccountBody,
+    Arial,
+    sans-serif;
+  letter-spacing: -1px;
+}
+.account-overview .account-header > .account-brand > img {
+  width: 40px;
+  height: 40px;
+}
+.account-overview .account-header {
+  padding-left: 0;
+  gap: 20px;
+}
+.account-overview .account-header > nav {
+  gap: clamp(12px, 2vw, 30px);
+}
+.account-overview .account-menu > summary {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: auto;
+  min-height: 44px;
+  height: auto;
+  line-height: 1.2;
+  border-radius: 24px;
+  padding: 3px 10px 3px 3px;
+}
+.account-overview .account-menu > summary span {
+  font-size: 12px;
+}
+.account-overview .account-menu > nav {
+  right: 0;
+}
+.account-overview .account-page .account-tabs {
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 6px;
+  height: auto;
+  border-radius: 24px;
+  margin: 0 0 12px;
+  padding: 5px;
+  scrollbar-width: thin;
+}
+.account-overview .account-page .account-tabs > a {
+  flex: 0 0 auto;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 10px 18px;
+}
+.account-overview .account-services {
+  display: flex;
+  gap: 8px 20px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.account-overview .account-services a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.account-overview .account-services a[aria-current="page"] {
+  color: #087ab8;
+  font-weight: 700;
+}
+.account-overview .account-page button,
+.account-overview .account-page summary,
+.account-overview .account-footer a {
+  min-height: 44px;
+}
+.account-overview .account-identity {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.account-overview .account-page .account-identity h1 {
+  overflow: visible;
+  max-height: none;
+}
+.account-overview .account-identity p > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.account-system .account-detail {
+  padding: 20px 0 48px;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+.account-system .account-page .account-detail h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  margin: 8px 0 12px;
+}
+.account-system .account-eyebrow {
+  color: #087ab8;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.account-system .account-intro {
+  max-width: 680px;
+  color: #4d6287;
+}
+.account-system .account-detail-content {
+  margin-top: 28px;
+}
+.account-system .account-detail-content section {
+  border: 1px solid #e5e9f1;
+  background: #ffffffed;
+  border-radius: 22px;
+  padding: clamp(16px, 3vw, 28px);
+  margin-top: 24px;
+}
+.account-system .account-detail-content section:first-child {
+  margin-top: 0;
+}
+.account-system .account-detail-content h2 {
+  font-size: 25px;
+  margin-bottom: 12px;
+}
+.account-system .account-detail-content .rounded-xl {
+  border-radius: 18px;
+}
+.account-system .account-detail-content :is(li, p, span, dd) {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.account-system .account-detail-content li > div {
+  flex: 1 1 260px;
+}
+.account-system .account-detail-content li form {
+  flex-shrink: 0;
+}
+.account-system .account-detail-content button {
+  border: 1px solid #cbd9e5;
+  background: #fff;
+  border-radius: 24px;
+  padding: 10px 18px;
+}
+.account-system .account-detail-content a {
+  color: #087ab8;
+}
+.account-overview .settings-field input {
+  max-width: 100%;
+  min-width: 0;
+}
+.account-overview .settings-email {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.account-system .account-detail-content dl {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.account-system .account-detail-content dl > div {
+  border-bottom: 1px solid #edf1f5;
+  padding-block: 6px;
+}
+.account-overview .account-saved-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.account-overview .account-question-title {
+  overflow-wrap: anywhere;
+}
+.account-overview .account-card-bottom > button {
+  min-width: 44px;
+}
+.account-overview .account-page .library-row {
+  min-width: 0;
+}
+.account-overview .account-page .library-title {
+  overflow-wrap: anywhere;
+}
+.account-overview .account-page .library-pagination {
+  flex-wrap: wrap;
+}
+@media (max-width: 700px) {
+  .account-overview .account-header {
+    min-height: 110px;
+  }
+  .account-overview .account-header > nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .account-overview .account-page .account-tabs > a {
+    font-size: 13px;
+    padding-inline: 14px;
+  }
+  .account-overview .account-header-actions {
+    gap: 8px;
+  }
+  .account-overview .account-profile {
+    grid-template-columns: 85px minmax(0, 1fr);
+  }
+  .account-overview .account-avatar {
+    width: 85px;
+    height: 85px;
+  }
+  .account-overview .account-identity h1 {
+    font-size: 32px;
+  }
+  .account-overview .account-page .account-brand {
+    font-size: 21px;
+    gap: 5px;
+  }
+  .account-overview .account-header > .account-brand > img {
+    width: 32px;
+    height: 32px;
+  }
+  .account-overview .account-saved-grid {
+    grid-template-columns: 1fr;
+  }
+  .account-overview .account-question-title {
+    -webkit-line-clamp: unset;
+    display: block;
+  }
+  .account-overview .account-page .library-row {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 374px) {
+  .account-overview .account-menu > summary span {
+    display: none;
+  }
+  .account-overview .account-header > nav {
+    font-size: 11px;
+  }
+}

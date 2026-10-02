@@ -23,7 +23,7 @@ test("finder uses the source bank, draft filters, real pagination and persistent
   );
   await expect(page.locator(".question-stats").first()).not.toContainText("Loading");
   await page.getByRole("button", { name: "Save question 1", exact: true }).click();
-  await page.getByRole("button", { name: "Unsave question 1", exact: true }).isVisible();
+  await expect(page.getByRole("button", { name: "Unsave question 1", exact: true })).toBeVisible();
   await page.reload();
   await expect(
     page.getByRole("button", { name: "Unsave question 1", exact: true }),

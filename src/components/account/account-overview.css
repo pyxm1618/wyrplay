@@ -361,7 +361,6 @@
   width: 206px;
   height: 146px;
   object-fit: cover;
-  mix-blend-mode: multiply;
 }
 .account-overview .account-continue-card {
   position: relative;
@@ -635,7 +634,6 @@
 }
 .account-overview .account-explore > img {
   object-fit: contain;
-  mix-blend-mode: multiply;
   flex-shrink: 0;
 }
 .account-overview .account-explore h2 {
@@ -1016,9 +1014,6 @@
 }
 .account-overview .account-card-bottom {
   margin-top: auto;
-}
-.account-overview .account-explore > img {
-  mask-image: radial-gradient(ellipse 65% 70% at 50% 50%, #000 65%, transparent 96%);
 }
 
 .account-overview .account-question-title {
