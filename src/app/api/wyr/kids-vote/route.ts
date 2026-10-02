@@ -9,8 +9,24 @@ import {
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const LEGACY_VOTER_COOKIE_NAME = "wyr_vid";
+
 function noStore(response: NextResponse): NextResponse {
   response.headers.set("Cache-Control", "private, no-store, no-cache, max-age=0");
+
+  // Remove the pre-privacy-hardening root-scoped voter cookie if an existing
+  // browser still has one. New general-audience voter cookies are scoped to
+  // /api/wyr/vote and therefore are never sent to this Kids endpoint.
+  response.cookies.set({
+    name: LEGACY_VOTER_COOKIE_NAME,
+    value: "",
+    httpOnly: true,
+    secure: process.env.APP_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 0,
+  });
+
   return response;
 }
 
