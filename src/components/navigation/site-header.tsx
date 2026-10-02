@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { marketingChrome } from "./marketing-chrome";
+
 import { siteConfig } from "@/config/site.config";
 import { featuresConfig } from "@/config/features.config";
 import { IllustratedHomeHeader, ThemeToggle } from "@/modules/would-you-rather";
@@ -24,7 +26,7 @@ export function SiteHeader({
 
   const closeMenu = () => setMobileMenuOpen(false);
 
-  if (["/find-questions", "/play", "/print"].includes(pathname)) return null;
+  if (marketingChrome(pathname).ownHeader) return null;
   if (appearance === "illustrated-home" && pathname === "/") {
     return (
       <div className="illustrated-home homepage">
