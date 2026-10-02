@@ -1538,6 +1538,10 @@ body:has(> .auth-page) {
     line-height: 0.9;
     transform: rotate(-9deg);
   }
+  .auth-page.login .hero h3,
+  .auth-page.login .hero p {
+    display: none;
+  }
   :where(.auth-page) .hero h3 {
     margin-top: 4px;
     font-size: 18px;
