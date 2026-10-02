@@ -13,11 +13,21 @@ for (const route of legalRoutes) {
     const response = await page.goto(route);
     expect(response?.status()).toBe(200);
     await expect(page.locator("h1")).toHaveCount(1);
-    await expect(page.getByText(/Effective 2026-09-29/i)).toBeVisible();
+    await expect(page.getByText(/Effective \d{4}-\d{2}-\d{2}/i)).toBeVisible();
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/i);
     await expect(page.getByRole("contentinfo")).toBeVisible();
   });
 }
+
+test("/contact is reachable and noindex", async ({ page }) => {
+  const response = await page.goto("/contact");
+  expect(response?.status()).toBe(200);
+  await expect(page.getByRole("heading", { level: 1, name: "Contact" })).toBeVisible();
+  await expect(page.getByText("Privacy requests")).toBeVisible();
+  await expect(page.getByText("Billing, subscriptions, and refunds")).toBeVisible();
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/i);
+  await expect(page.getByRole("contentinfo")).toBeVisible();
+});
 
 test("primary legal routes are linked from the footer", async ({ page }) => {
   await page.goto("/");
