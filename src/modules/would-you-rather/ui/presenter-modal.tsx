@@ -120,7 +120,7 @@ export function PresenterModal({
           {currentIndex + 1} / {totalCount}
         </b>
         <button className="presenter-exit" onClick={onClose}>
-          Exit (Esc)
+          Exit Presenter
         </button>
       </header>
       <PlayHeading question={question.question} />

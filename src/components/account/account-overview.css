@@ -1028,3 +1028,26 @@
   width: fit-content;
   max-width: 100%;
 }
+
+/* Wide desktop account surfaces use the available viewport instead of the 1024px reference canvas. */
+@media (min-width: 1200px) {
+  .account-overview .account-page {
+    width: min(calc(100vw - 80px), 1440px);
+    max-width: none;
+    padding-left: clamp(30px, 3vw, 48px);
+    padding-right: clamp(30px, 3vw, 48px);
+  }
+  .account-overview .account-cloud {
+    width: min(calc(100vw - 80px), 1440px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .account-overview .account-profile {
+    grid-template-columns: 224px minmax(260px, 1fr) minmax(252px, 330px) 166px;
+    gap: clamp(18px, 2vw, 30px);
+  }
+  .account-overview .account-columns {
+    grid-template-columns: minmax(0, 1.65fr) minmax(330px, 0.9fr);
+    gap: clamp(18px, 2vw, 28px);
+  }
+}

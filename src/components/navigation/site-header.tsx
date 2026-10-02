@@ -54,7 +54,7 @@ export function SiteHeader({
         </Link>
 
         {/* 桌面端主导航 */}
-        <nav aria-label="Primary navigation" className="hidden items-center gap-5 lg:gap-6 md:flex">
+        <nav aria-label="Primary navigation" className="hidden items-center gap-5 lg:gap-6 xl:flex">
           <Link className={navLink} href="/find-questions">
             Find Questions
           </Link>
@@ -99,7 +99,7 @@ export function SiteHeader({
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
-            className="flex size-9 items-center justify-center rounded-full border border-border text-foreground transition hover:bg-surface md:hidden"
+            className="flex size-9 items-center justify-center rounded-full border border-border text-foreground transition hover:bg-surface xl:hidden"
           >
             {mobileMenuOpen ? (
               <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -126,7 +126,7 @@ export function SiteHeader({
 
       {/* 移动端展开菜单 */}
       {mobileMenuOpen && (
-        <div className="border-t border-border bg-background px-5 py-4 md:hidden">
+        <div className="border-t border-border bg-background px-5 py-4 xl:hidden">
           <nav aria-label="Mobile navigation" className="flex flex-col space-y-2">
             <Link className={mobileNavLink} href="/find-questions" onClick={closeMenu}>
               Find Questions

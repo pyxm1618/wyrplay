@@ -122,7 +122,7 @@ function ConsentPanel({
 }>) {
   return (
     <aside
-      className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-2xl rounded-xl border border-border bg-surface p-5 shadow-lg sm:inset-x-auto sm:right-4 sm:left-auto sm:w-96"
+      className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-2xl rounded-xl border border-border bg-surface p-5 shadow-lg sm:inset-x-auto sm:right-auto sm:left-4 sm:w-96"
       aria-label={settings ? "Analytics settings panel" : "Analytics consent"}
     >
       <p className="text-sm leading-relaxed text-muted">

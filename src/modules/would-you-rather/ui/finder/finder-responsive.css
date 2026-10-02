@@ -1,3 +1,7 @@
+.finder-page .finder-menu {
+  display: none;
+}
+
 @media (max-width: 700px) {
   .finder-page {
     min-height: 100vh;
@@ -13,24 +17,56 @@
     width: 110px;
     height: 40px;
   }
-  .finder-page .site-header nav {
-    order: 4;
-    flex-basis: 100%;
-    margin: 0;
-    overflow: auto;
-    gap: 12px;
-    justify-content: flex-start;
-    padding-bottom: 7px;
+  .finder-page .site-header > nav {
+    display: none;
   }
-  .finder-page .site-header nav button,
-  .finder-page .site-header nav a {
-    padding: 7px 3px;
+  .finder-page .finder-menu {
+    display: block;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .finder-page .finder-menu summary {
+    cursor: pointer;
+    list-style: none;
+    min-height: 32px;
+    padding: 7px 10px;
+    border: 1px solid #d9d8d6;
+    border-radius: 14px;
+    background: #fff;
+    font-weight: 700;
+  }
+  .finder-page .finder-menu nav {
+    position: absolute;
+    top: calc(100% + 7px);
+    right: 0;
+    z-index: 30;
+    display: grid;
+    min-width: 190px;
+    margin: 0;
+    gap: 2px;
+    padding: 8px;
+    overflow: visible;
+    border: 1px solid #e4e0da;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 10px 28px #18203320;
+  }
+  .finder-page .finder-menu nav a {
+    padding: 9px 11px;
+    border-radius: 9px;
+    white-space: nowrap;
+  }
+  .finder-page .finder-menu nav a:hover,
+  .finder-page .finder-menu nav a:focus-visible {
+    background: #fff1cf;
   }
   .finder-page .nav-search {
     margin-left: auto;
     margin-right: 0;
   }
-  .finder-page .login,
+  .finder-page .login {
+    display: none;
+  }
   .finder-page .signup {
     padding: 0 12px;
   }
@@ -517,4 +553,69 @@
   .finder-page .question-card .question-details {
     width: 70%;
   }
+}
+
+/* Responsive Web Product layer: promote the reference canvas into a full viewport shell. */
+.finder-page {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+@media (min-width: 701px) {
+  .finder-page .site-header,
+  .finder-page .hero,
+  .finder-page .search-area,
+  .finder-page .directory,
+  .finder-page .selection-bar,
+  .finder-page .category-banner,
+  .finder-page .finder-categories,
+  .finder-page .finder-about {
+    width: min(calc(100% - 48px), 1240px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .finder-page .site-header {
+    margin-top: 10px;
+  }
+  .finder-page .directory {
+    grid-template-columns: clamp(221px, 21vw, 280px) minmax(0, 1fr);
+    gap: clamp(15px, 2vw, 28px);
+  }
+  .finder-page .filters,
+  .finder-page .question-panel {
+    min-height: 0;
+  }
+  .finder-page .pagination {
+    margin: 18px auto 0;
+  }
+}
+
+@media (min-width: 1100px) {
+  .finder-page .question-details,
+  .finder-page .question-card:nth-child(10) .question-details {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+    padding-right: 235px;
+  }
+  .finder-page .question-details h3,
+  .finder-page .question-card:nth-child(10) .question-details h3 {
+    max-width: 650px;
+    font-size: clamp(14px, 1vw, 16px);
+  }
+  .finder-page .question-art {
+    right: 118px;
+  }
+}
+
+/* Keep interactive card controls above flexible question copy and decorative artwork. */
+.finder-page .question-art {
+  z-index: 0;
+  pointer-events: none;
+}
+.finder-page .bookmark,
+.finder-page .select-button {
+  z-index: 3;
 }

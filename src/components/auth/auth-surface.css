@@ -1296,3 +1296,295 @@ body:has(> .auth-page) {
     clip-path: polygon(0 0, 58% 0, 68% 20%, 72% 37%, 100% 40%, 100% 75%, 0 75%);
   }
 }
+
+/* Responsive Web Product layer: desktop auth is a viewport composition, not a scaled 1024px poster. */
+@media (min-width: 701px) {
+  .auth-page {
+    --auth-unit: 1px;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: clamp(42px, 7dvh, 84px);
+    overflow: hidden;
+  }
+  .auth-page .speech {
+    display: none;
+  }
+  :where(.auth-page) .artwork {
+    inset: 0;
+    width: 100%;
+    transform: none;
+  }
+  :where(.auth-page) .site-header,
+  .auth-page.signup .site-header {
+    width: min(calc(100% - 48px), 1280px);
+    height: clamp(68px, 9dvh, 84px);
+    margin-inline: auto;
+    padding: 12px 0 0;
+    gap: clamp(10px, 1.4vw, 18px);
+    align-items: flex-start;
+    font-size: 15px;
+  }
+  :where(.auth-page) .logo,
+  .auth-page.signup .logo {
+    width: clamp(145px, 12vw, 180px);
+    height: auto;
+    margin-top: -3px;
+  }
+  :where(.auth-page) .site-header nav,
+  .auth-page.signup .site-header nav {
+    height: 42px;
+    margin-left: clamp(12px, 2.5vw, 34px);
+    margin-right: clamp(8px, 2vw, 28px);
+    gap: clamp(12px, 2vw, 26px);
+  }
+  .auth-page .site-header nav a,
+  :where(.auth-page) .site-header nav button,
+  .auth-page.signup .site-header nav a {
+    font-size: clamp(13px, 1.05vw, 15px);
+  }
+  :where(.auth-page) .search-button {
+    width: 38px;
+    height: 42px;
+    margin-right: 6px;
+    padding: 8px 6px;
+  }
+  :where(.auth-page) .nav-login,
+  :where(.auth-page) .nav-signup,
+  .auth-page.signup .nav-login,
+  .auth-page.signup .nav-signup {
+    width: auto;
+    min-width: 86px;
+    height: 42px;
+    padding-inline: 18px;
+    border-radius: 999px;
+  }
+  :where(.auth-page) .hero,
+  .auth-page.signup .hero {
+    width: min(calc(100% - 48px), 1200px);
+    height: clamp(245px, 34dvh, 390px);
+    margin-inline: auto;
+  }
+  :where(.auth-page) .hero-copy,
+  .auth-page.signup .hero-copy {
+    width: min(48%, 520px);
+    margin-left: clamp(0px, 1vw, 20px);
+    padding-top: clamp(42px, 7dvh, 78px);
+  }
+  :where(.auth-page) .hero h1 {
+    font-size: clamp(78px, 7.6vw, 118px);
+    letter-spacing: -4px;
+  }
+  :where(.auth-page) .welcome-word {
+    font-size: clamp(72px, 7vw, 108px);
+  }
+  :where(.auth-page) .back-word {
+    font-size: clamp(96px, 9.2vw, 142px);
+  }
+  .auth-page.login .welcome-word {
+    font-size: clamp(68px, 6vw, 96px) !important;
+    line-height: 0.9;
+  }
+  .auth-page.login .back-word {
+    font-size: clamp(84px, 7.5vw, 112px);
+    line-height: 0.88;
+    transform: rotate(-9deg);
+  }
+  .auth-page.login .hero h3,
+  .auth-page.login .hero p,
+  .auth-page.signup .hero p {
+    display: none;
+  }
+  :where(.auth-page) .hero h3 {
+    margin: 10px 0 5px;
+    font-size: clamp(20px, 2vw, 27px);
+  }
+  :where(.auth-page) .hero p,
+  .auth-page.signup .hero p {
+    margin-top: 8px;
+    font-size: clamp(16px, 1.55vw, 21px);
+    line-height: 1.28;
+  }
+  .auth-page.signup .join-word {
+    font-size: clamp(90px, 8.5vw, 132px);
+  }
+  .auth-page.signup .wyr-word {
+    margin-top: 4px;
+    font-size: clamp(82px, 8vw, 124px);
+    letter-spacing: -6px;
+  }
+  :where(.auth-page) .hero-art,
+  .auth-page.signup .hero-art {
+    left: 52%;
+    top: clamp(74px, 9dvh, 105px);
+    width: min(43vw, 520px);
+    height: min(42dvh, 430px);
+    object-fit: contain;
+  }
+  .auth-page.signup .hero-art {
+    width: min(46vw, 555px);
+  }
+  :where(.auth-page) .speech,
+  .auth-page.signup .speech {
+    left: auto;
+    right: clamp(14px, 4vw, 72px);
+    top: clamp(105px, 14dvh, 160px);
+    width: clamp(118px, 10vw, 158px);
+    height: clamp(126px, 11vw, 168px);
+  }
+  :where(.auth-page) .auth-card,
+  .auth-page.signup .auth-card {
+    width: min(calc(100% - 40px), 680px);
+    height: auto;
+    min-height: 0;
+    margin: 0 auto;
+    border-radius: clamp(28px, 3vw, 38px);
+    padding: clamp(30px, 4vh, 46px) clamp(30px, 4vw, 56px);
+  }
+  :where(.auth-page) .auth-card h2,
+  .auth-page.signup .auth-card h2 {
+    font-size: clamp(44px, 4vw, 58px);
+    line-height: 1.12;
+    white-space: normal;
+    letter-spacing: -1px;
+  }
+  :where(.auth-page) .card-subtitle,
+  .auth-page.signup .card-subtitle {
+    margin: 10px 0 clamp(20px, 3vh, 30px);
+    font-size: clamp(18px, 1.7vw, 23px);
+    line-height: 1.3;
+  }
+  :where(.auth-page) .auth-actions,
+  .auth-page.signup .auth-actions {
+    gap: 16px;
+  }
+  :where(.auth-page) .auth-button,
+  .auth-page.signup .auth-button {
+    height: clamp(68px, 8dvh, 82px);
+    gap: clamp(18px, 2.5vw, 30px);
+    padding: 0 clamp(22px, 2.8vw, 30px);
+    border-radius: 20px;
+    font-size: clamp(19px, 1.8vw, 24px);
+  }
+  :where(.auth-page) .auth-button > svg:first-child {
+    width: 42px;
+    height: 42px;
+  }
+  :where(.auth-page) .auth-button > svg:last-child {
+    width: 24px;
+    height: 24px;
+  }
+  :where(.auth-page) .divider,
+  .auth-page.signup .divider {
+    width: min(70%, 360px);
+    margin: 22px auto 18px;
+    gap: 20px;
+    font-size: 18px;
+  }
+  :where(.auth-page) .benefits,
+  .auth-page.signup .benefits {
+    margin: 0;
+    gap: 14px;
+  }
+  :where(.auth-page) .benefits img,
+  .auth-page.signup .benefits img {
+    width: min(100%, 140px);
+    height: 82px;
+  }
+  :where(.auth-page) .benefits p,
+  .auth-page.signup .benefits p {
+    margin: 7px 0 0;
+    font-size: clamp(17px, 1.5vw, 21px);
+    line-height: 1.2;
+  }
+  .auth-page .signup-prompt {
+    margin-top: 26px;
+    font-size: 19px;
+  }
+  .auth-page .auth-card:has(.magic-link-fields),
+  .auth-page.signup .auth-card:has(.magic-link-fields),
+  .auth-page .auth-card:has(.auth-feedback),
+  .auth-page.signup .auth-card:has(.auth-feedback) {
+    min-height: 0;
+  }
+  .auth-page .magic-link-fields {
+    padding: 18px;
+    border-radius: 16px;
+  }
+  .auth-page .magic-link-fields label,
+  .auth-page .magic-link-fields input,
+  .auth-page .send-link {
+    font-size: 18px;
+  }
+}
+
+/* Short desktop viewports keep the hero narrative clear of the authentication card. */
+@media (min-width: 701px) and (max-height: 950px) {
+  :where(.auth-page) .hero,
+  .auth-page.signup .hero {
+    height: clamp(330px, 46dvh, 410px);
+  }
+  :where(.auth-page) .hero-copy,
+  .auth-page.signup .hero-copy {
+    padding-top: 28px;
+  }
+  :where(.auth-page) .welcome-word {
+    font-size: clamp(58px, 5.2vw, 74px);
+  }
+  :where(.auth-page) .back-word {
+    font-size: clamp(78px, 6.5vw, 94px);
+  }
+  .auth-page.login .welcome-word {
+    font-size: clamp(56px, 5vw, 72px) !important;
+    line-height: 0.9;
+  }
+  .auth-page.login .back-word {
+    font-size: clamp(72px, 6vw, 88px);
+    line-height: 0.9;
+    transform: rotate(-9deg);
+  }
+  :where(.auth-page) .hero h3,
+  :where(.auth-page) .hero p,
+  .auth-page.signup .hero p {
+    display: none;
+  }
+  :where(.auth-page) .hero h3 {
+    margin-top: 4px;
+    font-size: 18px;
+  }
+  :where(.auth-page) .hero p,
+  .auth-page.signup .hero p {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.15;
+  }
+  .auth-page.signup .join-word {
+    font-size: clamp(68px, 5.8vw, 84px);
+  }
+  .auth-page.signup .wyr-word {
+    margin-top: 2px;
+    font-size: clamp(68px, 5.7vw, 82px);
+    letter-spacing: -3px;
+  }
+  :where(.auth-page) .auth-card,
+  .auth-page.signup .auth-card {
+    padding-top: 28px;
+    padding-bottom: 26px;
+  }
+  :where(.auth-page) .auth-card h2,
+  .auth-page.signup .auth-card h2 {
+    font-size: clamp(42px, 3.7vw, 52px);
+  }
+  :where(.auth-page) .card-subtitle,
+  .auth-page.signup .card-subtitle {
+    margin-bottom: 18px;
+  }
+  :where(.auth-page) .auth-button,
+  .auth-page.signup .auth-button {
+    height: 64px;
+  }
+  :where(.auth-page) .benefits img,
+  .auth-page.signup .benefits img {
+    height: 66px;
+  }
+}

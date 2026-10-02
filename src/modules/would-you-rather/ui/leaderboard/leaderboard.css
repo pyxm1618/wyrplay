@@ -2036,3 +2036,31 @@
     overflow: hidden;
   }
 }
+
+/* Responsive Web Product layer: broaden the functional surface without stretching the artwork system. */
+@media (min-width: 761px) {
+  .leaderboard-page .page-shell {
+    box-sizing: border-box;
+    width: min(calc(100% - 32px), 1520px);
+    max-width: none;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-left: clamp(28px, 3vw, 52px);
+    padding-right: clamp(28px, 3vw, 52px);
+    background-size: 100% auto;
+  }
+  .leaderboard-page .page-shell .leaderboard-layout {
+    grid-template-columns: clamp(210px, 18vw, 260px) minmax(0, 1fr);
+    gap: clamp(20px, 2.2vw, 34px);
+  }
+  .leaderboard-page .page-shell .sidebar {
+    height: auto;
+    min-height: 0;
+  }
+  .leaderboard-page .page-shell .rankings {
+    min-width: 0;
+  }
+  .leaderboard-page .page-shell .section-intro {
+    white-space: normal;
+  }
+}
