@@ -78,9 +78,7 @@ export function DuelArena({
   const handleVote = useCallback(
     async (option: "A" | "B") => {
       const aggregateVoteAlreadySubmitted =
-        aggregateOnly &&
-        loadedQuestionId === currentQuestionId &&
-        Boolean(voteStats?.hasVoted);
+        aggregateOnly && loadedQuestionId === currentQuestionId && Boolean(voteStats?.hasVoted);
       if (!currentQuestionId || isSubmitting || aggregateVoteAlreadySubmitted) return;
 
       setIsSubmitting(true);
