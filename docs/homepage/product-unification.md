@@ -43,11 +43,11 @@ Artifacts are local, ignored files under `.artifacts/home-review/` in the delive
 - Unit: 303 tests / 58 files PASS, serial workers after an earlier resource-contention timeout.
 - Integration: 245 tests / 37 files PASS in task-isolated local database `wyr_home_20261002_3200`.
 - Contract: 31 tests / 1 file PASS.
-- Related browser suite: 49 tests PASS (18 homepage plus interactions, accessibility, SEO, analytics consent, play/print and legal), using installed Chrome and a temporary ignored config on isolated port 3200. Runner exited 0; browser shutdown was slow under concurrent machine load.
+- Related browser suite: 49 tests PASS (18 homepage plus interactions, accessibility, SEO, analytics consent, play/print and legal), using installed Chrome and a temporary ignored config on isolated port 3200. Final rerun used the existing Codex bundled Node 24 runtime, completed in 46.9 seconds and exited 0 without interruption. No project runtime configuration changed.
 - Existing responsive regression: 4 tests PASS, including the complete home matrix, Play/Presenter desktop controls and formal-public-route overflow smoke.
 - Changed-code formatting and `git diff --check`: PASS.
 
-A neutral-build run had 22/23 passing tests and one Kids accessibility contrast failure; the same unchanged test passed in the final enabled-feature suite. Earlier blank screenshots from invalid environment, incomplete browser downloads, resource-contention unit timeouts, and overlapping fixture resets were not counted as acceptance. No production database or provider was mutated.
+A neutral-build run had 22/23 passing tests and one Kids accessibility contrast failure; the same unchanged test passed in the final enabled-feature suite. An additional system-Node-26 diagnostic run completed all assertions but hung during Chrome shutdown and was interrupted; the final bundled-Node-24 run exited normally. Earlier blank screenshots from invalid environment, incomplete browser downloads, resource-contention unit timeouts, and overlapping fixture resets were not counted as acceptance. No production database or provider was mutated.
 
 ## Limits
 
