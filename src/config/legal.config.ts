@@ -28,13 +28,13 @@ export const legalConfig = {
     },
     {
       name: "Google Analytics",
-      purpose: "Optional first-party site analytics when analytics is enabled and consent is granted",
+      purpose:
+        "Optional first-party site analytics when analytics is enabled and consent is granted",
       privacyUrl: "https://policies.google.com/privacy",
     },
     {
       name: "Microsoft Clarity",
-      purpose:
-        "Optional site experience analytics when Clarity is enabled and consent is granted",
+      purpose: "Optional site experience analytics when Clarity is enabled and consent is granted",
       privacyUrl: "https://privacy.microsoft.com/en-us/privacystatement",
     },
     {
@@ -351,9 +351,7 @@ export const legalConfig = {
       },
       {
         heading: "Contact",
-        paragraphs: [
-          "Questions about these Terms can be sent to support@wyrplay.com.",
-        ],
+        paragraphs: ["Questions about these Terms can be sent to support@wyrplay.com."],
       },
     ],
     acceptable_use: [
