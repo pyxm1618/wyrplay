@@ -1381,6 +1381,15 @@ body:has(> .auth-page) {
   :where(.auth-page) .back-word {
     font-size: clamp(96px, 9.2vw, 142px);
   }
+  .auth-page.login .welcome-word {
+    font-size: clamp(68px, 6vw, 96px) !important;
+    line-height: 0.9;
+  }
+  .auth-page.login .back-word {
+    font-size: clamp(84px, 7.5vw, 112px);
+    line-height: 0.88;
+    transform: rotate(-9deg);
+  }
   :where(.auth-page) .hero h3 {
     margin: 10px 0 5px;
     font-size: clamp(20px, 2vw, 27px);
@@ -1519,6 +1528,15 @@ body:has(> .auth-page) {
   }
   :where(.auth-page) .back-word {
     font-size: clamp(78px, 6.5vw, 94px);
+  }
+  .auth-page.login .welcome-word {
+    font-size: clamp(56px, 5vw, 72px) !important;
+    line-height: 0.9;
+  }
+  .auth-page.login .back-word {
+    font-size: clamp(72px, 6vw, 88px);
+    line-height: 0.9;
+    transform: rotate(-9deg);
   }
   :where(.auth-page) .hero h3 {
     margin-top: 4px;
