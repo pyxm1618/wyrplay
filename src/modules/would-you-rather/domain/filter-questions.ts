@@ -28,6 +28,22 @@ export function isPlayableQuestion(q: Question): boolean {
   return q.reviewStatus === "approved";
 }
 
+/**
+ * Privacy boundary for the Kids collection.
+ *
+ * Questions that can appear in the child-directed Kids experience use
+ * aggregate-only voting: the service must not need a persistent voter identity
+ * to retain an A/B choice for these questions.
+ */
+export function isKidsCollectionQuestion(q: Question): boolean {
+  const hasChildAge =
+    (q.ageBands ?? []).some((age) => ["4-6", "7-9", "10-12"].includes(age)) ||
+    q.ageGroups.some((age) => ["4-6", "7-9", "10-12"].includes(age)) ||
+    q.primaryCollection === "kids";
+  const isSafe = q.safety ? q.safety.kidsSafe !== false : q.suitability.kids !== "unsuitable";
+  return hasChildAge && isSafe;
+}
+
 export function filterQuestions(
   questions: readonly Question[],
   criteria: QuestionFilterCriteria,
@@ -88,12 +104,7 @@ export function filterQuestions(
       const col = criteria.collection;
       if (col === "kids") {
         // 核心规则：kidsSafe !== Kids audience fit
-        const hasChildAge =
-          (q.ageBands ?? []).some((a) => ["4-6", "7-9", "10-12"].includes(a)) ||
-          q.ageGroups.some((a) => ["4-6", "7-9", "10-12"].includes(a)) ||
-          q.primaryCollection === "kids";
-        const isSafe = q.safety ? q.safety.kidsSafe !== false : q.suitability.kids !== "unsuitable";
-        if (!hasChildAge || !isSafe) return false;
+        if (!isKidsCollectionQuestion(q)) return false;
       } else if (col === "friends") {
         if (!q.relationships.includes("friends") && q.primaryCollection !== "friends") return false;
       } else if (col === "couples") {
