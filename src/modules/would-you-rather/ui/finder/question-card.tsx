@@ -1,11 +1,18 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- Small native screenshot artwork is reused without image regeneration. */
 import { useEffect, useState } from "react";
-import type { Question, VoteStats } from "../../types";
 import { parseVoteStats, questionArtwork } from "../../domain/finder";
+import { isKidsCollectionQuestion } from "../../domain/filter-questions";
+import type { Question, VoteStats } from "../../types";
 import { FinderIcon } from "./icon";
 
-function QuestionVoteSummary({ id, revision }: { readonly id: string; readonly revision: number }) {
+function QuestionVoteSummary({
+  question,
+  revision,
+}: {
+  readonly question: Question;
+  readonly revision: number;
+}) {
   const [result, setResult] = useState<{
     readonly id: string;
     readonly stats?: VoteStats;
@@ -14,7 +21,8 @@ function QuestionVoteSummary({ id, revision }: { readonly id: string; readonly r
   const [retry, setRetry] = useState(0);
   useEffect(() => {
     const controller = new AbortController();
-    void fetch(`/api/wyr/vote?questionId=${encodeURIComponent(id)}`, {
+    const endpoint = isKidsCollectionQuestion(question) ? "/api/wyr/kids-vote" : "/api/wyr/vote";
+    void fetch(`${endpoint}?questionId=${encodeURIComponent(question.id)}`, {
       cache: "no-store",
       signal: controller.signal,
     })
@@ -23,18 +31,18 @@ function QuestionVoteSummary({ id, revision }: { readonly id: string; readonly r
         return parseVoteStats(await response.json());
       })
       .then((stats) => {
-        if (!controller.signal.aborted) setResult({ id, stats });
+        if (!controller.signal.aborted) setResult({ id: question.id, stats });
       })
       .catch((error: unknown) => {
         if (!controller.signal.aborted)
           setResult({
-            id,
+            id: question.id,
             error: error instanceof Error ? error.message : "Could not load vote statistics",
           });
       });
     return () => controller.abort();
-  }, [id, revision, retry]);
-  const current = result?.id === id ? result : null;
+  }, [question, revision, retry]);
+  const current = result?.id === question.id ? result : null;
   return (
     <p className="question-stats">
       <img src="/finder/assets/people.png" alt="" />
@@ -100,7 +108,7 @@ export function FinderQuestionCard({
             </span>
           ))}
         </div>
-        <QuestionVoteSummary id={question.id} revision={revision} />
+        <QuestionVoteSummary question={question} revision={revision} />
       </div>
       <img className="question-art" src={questionArtwork(question)} alt="" />
       <button
