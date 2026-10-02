@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 
 import { filterQuestions } from "../domain/filter-questions";
 import { QUESTIONS_DATABASE } from "../data/questions";
@@ -54,6 +54,7 @@ export function WyrExperience({
 
   // 2. Presenter Modal 状态
   const [isPresenterOpen, setIsPresenterOpen] = useState(false);
+  const presenterTriggerRef = useRef<HTMLButtonElement>(null);
 
   // 3. 计算当前有效题集
   // 3.1 可玩题集 (严格限定 reviewStatus === 'approved'，用于 Arena、Random、Presenter)
@@ -203,10 +204,12 @@ export function WyrExperience({
     />
   );
 
-  const experience = (
-    <fieldset className="w-full min-w-0 space-y-12" disabled={!hydrated} data-home-ready={hydrated}>
-      {/* 1. 核心 Live 对决 Arena */}
+  const arena = (
+    <fieldset disabled={!hydrated} className="home-arena-controls">
       <DuelArena
+        key={resolvedActiveQuestion?.id ?? "empty"}
+        appearance={appearance === "illustrated-home" ? "illustrated-home" : "default"}
+        presenterButtonRef={presenterTriggerRef}
         question={resolvedActiveQuestion}
         currentIndex={currentIndex >= 0 ? currentIndex : 0}
         totalQuestions={playableQuestions.length}
@@ -218,6 +221,17 @@ export function WyrExperience({
           ? { onOpenPresenter: () => setIsPresenterOpen(true) }
           : {})}
       />
+    </fieldset>
+  );
+
+  const experience = (
+    <fieldset
+      className="w-full min-w-0 space-y-12"
+      disabled={!hydrated}
+      data-home-ready={appearance === "default" ? hydrated : undefined}
+    >
+      {/* 1. 核心 Live 对决 Arena */}
+      {appearance !== "illustrated-home" && arena}
 
       {/* 2. 搜索与筛选控制栏 (放置于长目录前面) */}
       <div id="question-search">
@@ -259,6 +273,7 @@ export function WyrExperience({
 
       {/* 5. 共享有效题集的全屏 Presenter 模式 (仅限 approved 题) */}
       <PresenterModal
+        returnFocusRef={presenterTriggerRef}
         isOpen={isPresenterOpen && playableQuestions.length > 0}
         question={resolvedActiveQuestion}
         onNext={handleNext}
@@ -270,19 +285,22 @@ export function WyrExperience({
     </fieldset>
   );
   return appearance === "illustrated-home" ? (
-    <IllustratedHome
-      leaderboard={leaderboard}
-      onPlayQuestion={(id) => {
-        if (
-          questions.some((question) => question.id === id && question.reviewStatus === "approved")
-        ) {
-          handleClearFilters();
-          setActiveQuestionId(id);
-        }
-      }}
-    >
-      {experience}
-    </IllustratedHome>
+    <div data-home-ready={hydrated}>
+      <IllustratedHome
+        arena={arena}
+        leaderboard={leaderboard}
+        onPlayQuestion={(id) => {
+          if (
+            questions.some((question) => question.id === id && question.reviewStatus === "approved")
+          ) {
+            handleClearFilters();
+            setActiveQuestionId(id);
+          }
+        }}
+      >
+        {experience}
+      </IllustratedHome>
+    </div>
   ) : (
     experience
   );

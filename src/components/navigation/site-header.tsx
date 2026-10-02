@@ -25,7 +25,7 @@ export function SiteHeader({
   const closeMenu = () => setMobileMenuOpen(false);
 
   if (["/find-questions", "/play", "/print"].includes(pathname)) return null;
-  if (appearance === "illustrated-home" && pathname === "/") {
+  if (appearance === "illustrated-home") {
     return (
       <div className="illustrated-home homepage">
         <IllustratedHomeHeader authEnabled={featuresConfig.auth.enabled} />
