@@ -98,7 +98,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
     test("正式题库 A/B 投票、改票与刷新恢复 (A/B voting, switch A->B & B->A, refresh persistence)", async ({
       page,
     }) => {
-      await page.goto("/");
+      await page.goto("/would-you-rather-questions-for-couples");
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       const optionA = page.locator("#play button:has-text('Option A')").first();
@@ -125,6 +125,41 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       const reloadedOptionB = page.locator("#play button:has-text('Option B')").first();
       await expect(reloadedOptionB).toHaveAttribute("aria-pressed", "true");
       await expect(reloadedOptionB.locator("text=Your Choice")).toBeVisible();
+    });
+
+    test("Kids voting clears legacy identity and does not persist a voter cookie", async ({
+      page,
+      context,
+    }) => {
+      await context.clearCookies();
+      await context.addCookies([
+        {
+          name: "wyr_vid",
+          value: "legacy-root-voter",
+          url: "http://127.0.0.1:3000",
+        },
+      ]);
+
+      await page.goto("/would-you-rather-questions-for-kids");
+      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
+
+      // The Kids stats request deletes the old root-scoped identity cookie.
+      await expect
+        .poll(async () => (await context.cookies()).some((cookie) => cookie.name === "wyr_vid"))
+        .toBe(false);
+
+      const optionA = page.locator("#play button:has-text('Option A')").first();
+      const optionB = page.locator("#play button:has-text('Option B')").first();
+      await optionA.click();
+      await expect(optionA).toHaveAttribute("aria-pressed", "true");
+      await expect(optionB).toBeDisabled();
+
+      expect((await context.cookies()).some((cookie) => cookie.name === "wyr_vid")).toBe(false);
+
+      await page.reload();
+      const reloadedOptionA = page.locator("#play button:has-text('Option A')").first();
+      await expect(reloadedOptionA).toHaveAttribute("aria-pressed", "false");
+      expect((await context.cookies()).some((cookie) => cookie.name === "wyr_vid")).toBe(false);
     });
 
     test("Next/Random 切题有效性与状态隔离", async ({ page }) => {
@@ -156,7 +191,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       // 拦截投票 API 并模拟 500 故障
-      await page.route("**/api/wyr/vote", async (route) => {
+      await page.route("**/api/wyr/kids-vote", async (route) => {
         await route.fulfill({
           status: 500,
           contentType: "application/json",

@@ -14,7 +14,12 @@ import { migrate } from "drizzle-orm/postgres-js/migrator";
 
 import { createDatabaseClient } from "@/platform/database/client";
 import { wyrVotes } from "@/platform/database/schema";
-import { getQuestionVoteStats, recordVote } from "@/modules/would-you-rather/server/voting-service";
+import {
+  getQuestionVoteStats,
+  recordAggregateOnlyVote,
+  recordVote,
+  usesAggregateOnlyVoting,
+} from "@/modules/would-you-rather/server/voting-service";
 import { TEST_FIXTURE_QUESTIONS } from "../../../tests/fixtures/test-questions";
 
 const databaseUrl = process.env.TEST_DATABASE_URL;
@@ -38,7 +43,7 @@ afterAll(async () => {
 });
 
 describe("WYR Real Anonymous Voting Database Integration", () => {
-  const testQuestionId = "test-001";
+  const testQuestionId = "test-002";
   const votingOptions = { db: database.db, questions: TEST_FIXTURE_QUESTIONS };
   const voter1 = `voter-${crypto.randomUUID()}`;
   const voter2 = `voter-${crypto.randomUUID()}`;
@@ -242,11 +247,14 @@ describe("WYR Real Anonymous Voting Database Integration", () => {
     ).rejects.toThrow(/not approved for voting/i);
   });
 
-  it("successfully votes and tracks formal question IDs (e.g. wyr-000001) against default questions", async () => {
+  it("successfully votes and tracks a general-audience formal question against default questions", async () => {
     const formalVoter = `voter-formal-${crypto.randomUUID()}`;
+    const questionId = "wyr-000059";
+    expect(usesAggregateOnlyVoting(questionId)).toBe(false);
+
     const stats = await recordVote(
       {
-        questionId: "wyr-000001",
+        questionId,
         option: "B",
         anonymousVoterId: formalVoter,
       },
@@ -256,8 +264,54 @@ describe("WYR Real Anonymous Voting Database Integration", () => {
     expect(stats.selectedOption).toBe("B");
     expect(stats.votesB).toBeGreaterThanOrEqual(1);
 
-    const queried = await getQuestionVoteStats("wyr-000001", formalVoter, { db: database.db });
+    const queried = await getQuestionVoteStats(questionId, formalVoter, { db: database.db });
     expect(queried.hasVoted).toBe(true);
     expect(queried.selectedOption).toBe("B");
+  });
+
+  it("uses aggregate-only voting for Kids questions without a reusable voter identifier", async () => {
+    const questionId = "test-001";
+    expect(usesAggregateOnlyVoting(questionId, TEST_FIXTURE_QUESTIONS)).toBe(true);
+
+    await expect(
+      recordVote(
+        {
+          questionId,
+          option: "A",
+          anonymousVoterId: "persistent-kids-voter",
+        },
+        votingOptions,
+      ),
+    ).rejects.toThrow(/requires aggregate-only voting/i);
+
+    const before = await database.db
+      .select()
+      .from(wyrVotes)
+      .where(eq(wyrVotes.questionId, questionId));
+
+    const stats = await recordAggregateOnlyVote(
+      {
+        questionId,
+        option: "A",
+      },
+      votingOptions,
+    );
+
+    expect(stats.hasVoted).toBe(true);
+    expect(stats.selectedOption).toBe("A");
+
+    const rows = await database.db
+      .select()
+      .from(wyrVotes)
+      .where(eq(wyrVotes.questionId, questionId));
+
+    expect(rows).toHaveLength(before.length + 1);
+    const inserted = rows.find((row) => !before.some((oldRow) => oldRow.id === row.id));
+    expect(inserted?.anonymousVoterId).toMatch(/^aggregate:/);
+    expect(inserted?.anonymousVoterId).not.toContain("persistent-kids-voter");
+
+    const reloaded = await getQuestionVoteStats(questionId, "persistent-kids-voter", votingOptions);
+    expect(reloaded.hasVoted).toBe(false);
+    expect(reloaded.selectedOption).toBeNull();
   });
 });
