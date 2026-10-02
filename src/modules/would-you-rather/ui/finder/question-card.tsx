@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- Small native screenshot artwork is reused without image regeneration. */
 import { useEffect, useState } from "react";
 import type { Question, VoteStats } from "../../types";
-import { parseVoteStats, questionArtwork } from "../../domain/finder";
+import { parseVoteStats } from "../../domain/finder";
 import { FinderIcon } from "./icon";
 
 function QuestionVoteSummary({ id, revision }: { readonly id: string; readonly revision: number }) {
@@ -60,6 +60,7 @@ function QuestionVoteSummary({ id, revision }: { readonly id: string; readonly r
 }
 export function FinderQuestionCard({
   question,
+  artwork,
   number,
   selected,
   saved,
@@ -68,6 +69,7 @@ export function FinderQuestionCard({
   revision,
 }: {
   readonly question: Question;
+  readonly artwork: string;
   readonly number: number;
   readonly selected: boolean;
   readonly saved: boolean;
@@ -102,7 +104,7 @@ export function FinderQuestionCard({
         </div>
         <QuestionVoteSummary id={question.id} revision={revision} />
       </div>
-      <img className="question-art" src={questionArtwork(question)} alt="" />
+      <img className="question-art" src={artwork} alt="" />
       <button
         className={`bookmark icon-button ${saved ? "saved" : ""}`}
         aria-label={`${saved ? "Unsave" : "Save"} question ${number}`}

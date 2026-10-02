@@ -6,6 +6,7 @@ import {
   filterFinderQuestions,
   parseSavedQuestionIds,
   questionPage,
+  questionArtworks,
   type FinderCriteria,
 } from "../../domain/finder";
 import { useRouter } from "next/navigation";
@@ -37,6 +38,7 @@ export function FinderExperience({
   readonly authEnabled?: boolean;
 }) {
   const approved = useMemo(() => filterFinderQuestions(questions, {}), [questions]);
+  const artworks = useMemo(() => questionArtworks(approved), [approved]);
   const [query, setQuery] = useState("");
   const [keyword, setKeyword] = useState("");
   const [draft, setDraft] = useState<FinderCriteria>({});
@@ -241,6 +243,7 @@ export function FinderExperience({
               <FinderQuestionCard
                 key={question.id}
                 question={question}
+                artwork={artworks.get(question.id)!}
                 number={(currentPage.page - 1) * 10 + i + 1}
                 selected={selected.includes(question.id)}
                 saved={saved.includes(question.id)}

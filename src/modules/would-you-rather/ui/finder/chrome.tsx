@@ -20,19 +20,38 @@ export function FinderHeader({
         <Link className="active" href="/find-questions" aria-current="page">
           Find Questions
         </Link>
-        <a href="#questions">Browse</a>
         <a href="#category-links">Categories</a>
-        <a href="#finder-about">About</a>
+        <Link href="/leaderboards">Leaderboard</Link>
+        <Link href="/create">Create</Link>
       </nav>
       <button className="nav-search icon-button" aria-label="Focus search" onClick={onSearch}>
         <FinderIcon name="search" />
       </button>
-      <details className="finder-menu">
+      <details
+        className="finder-menu"
+        onKeyDown={(event) => {
+          if (event.key === "Escape") {
+            event.currentTarget.open = false;
+            event.currentTarget.querySelector("summary")?.focus();
+          }
+        }}
+      >
         <summary aria-label="Open Find Questions menu">Menu</summary>
-        <nav aria-label="Mobile Find Questions navigation">
+        <nav
+          aria-label="Mobile Find Questions navigation"
+          onClick={(event) => {
+            if ((event.target as HTMLElement).closest("a"))
+              event.currentTarget.closest("details")!.open = false;
+          }}
+        >
           <Link href="/">Home</Link>
+          <Link href="/find-questions" aria-current="page">
+            Find Questions
+          </Link>
           <a href="#questions">Browse questions</a>
           <a href="#category-links">Categories</a>
+          <Link href="/leaderboards">Leaderboard</Link>
+          <Link href="/create">Create</Link>
           <a href="#finder-about">About</a>
           {authEnabled ? <Link href="/sign-in">Log in</Link> : null}
         </nav>

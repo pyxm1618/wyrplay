@@ -61,17 +61,34 @@ export function parseVoteStats(value: unknown): VoteStats {
   }
   return stats;
 }
-export function questionArtwork(question: Question): string {
-  const content = [...question.topics, question.question].join(" ").toLowerCase();
-  const matches: readonly [RegExp, string][] = [
-    [/space|ocean|astronaut|rocket/, "10"],
-    [/music|movie|instrument/, "03"],
-    [/food|hungry|burger|pizza/, "09"],
-    [/beach|mountain|travel|island/, "06"],
-    [/summer|winter|weather/, "07"],
-    [/language|world/, "04"],
-    [/time|early|late/, "01"],
-    [/dragon|dinosaur|animal|fantasy/, "02"],
-  ];
-  return `/finder/assets/question-${matches.find(([pattern]) => pattern.test(content))?.[1] ?? "08"}.png`;
+/** Assign against the complete approved bank so search, pagination and restore keep each ID stable.
+ * Generic illustrations are preferences, not question metadata. A ten-question allocation window
+ * caps each illustration at two uses and avoids consecutive repeats.
+ */
+export function questionArtworks(questions: readonly Question[]): ReadonlyMap<string, string> {
+  const artworks = new Map<string, string>();
+  let counts = Array<number>(10).fill(0);
+  let previous = -1;
+  questions.forEach((question, index) => {
+    if (index % 10 === 0) counts = Array<number>(10).fill(0);
+    let hash = 2166136261;
+    for (const char of question.id) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619);
+    const content = question.question.toLowerCase();
+    const preference = /\b(rocket|astronaut|space)\b/.test(content)
+      ? 9
+      : /\b(pizza|burger|food)\b/.test(content)
+        ? 8
+        : /\b(dragon|dinosaur)\b/.test(content)
+          ? 1
+          : (hash >>> 0) % 10;
+    let artwork = preference;
+    while (counts[artwork]! >= 2 || artwork === previous) artwork = (artwork + 1) % 10;
+    counts[artwork]! += 1;
+    previous = artwork;
+    artworks.set(
+      question.id,
+      `/finder/assets/question-${String(artwork + 1).padStart(2, "0")}.png`,
+    );
+  });
+  return artworks;
 }

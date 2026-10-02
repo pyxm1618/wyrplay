@@ -3,6 +3,7 @@ import { QUESTIONS_DATABASE } from "@/modules/would-you-rather/data/questions";
 import {
   filterFinderQuestions,
   questionPage,
+  questionArtworks,
   parseSavedQuestionIds,
   parseVoteStats,
 } from "@/modules/would-you-rather/domain/finder";
@@ -62,4 +63,55 @@ describe("finder integration contracts", () => {
     expect(() => parseVoteStats({ ...stats, hasVoted: true })).toThrow();
     expect(() => parseVoteStats({ ...stats, percentageA: 80 })).toThrow();
   });
+});
+
+describe("Finder artwork distribution", () => {
+  it("keeps IDs stable across refresh and filtering and bounds every source-bank page", () => {
+    const bank = filterFinderQuestions(QUESTIONS_DATABASE, {});
+    const mapping = questionArtworks(bank);
+    expect([...questionArtworks(bank)]).toEqual([...mapping]);
+    for (let offset = 0; offset < bank.length; offset += 10) {
+      const counts = new Map<string, number>();
+      for (const question of bank.slice(offset, offset + 10)) {
+        const artwork = mapping.get(question.id)!;
+        expect(artwork).toMatch(/question-\d{2}\.png$/);
+        counts.set(artwork, (counts.get(artwork) ?? 0) + 1);
+      }
+      expect(Math.max(...counts.values())).toBeLessThanOrEqual(2);
+    }
+    const filtered = filterFinderQuestions(bank, { age: "kids", tone: "funny" });
+    expect(filtered.every((q) => mapping.has(q.id))).toBe(true);
+  });
+});
+
+it("avoids extreme repeats across all 2160 supported filter combinations", () => {
+  const bank = filterFinderQuestions(QUESTIONS_DATABASE, {});
+  const mapping = questionArtworks(bank);
+  for (const age of [undefined, "kids", "teens", "adults", "7-9", "10-12"] as const)
+    for (const tone of [undefined, "funny", "weird", "deep"] as const)
+      for (const relationship of [undefined, "friends", "couples", "family", "coworkers"] as const)
+        for (const occasion of [
+          undefined,
+          "classroom",
+          "party",
+          "road-trip",
+          "date-night",
+          "dinner",
+        ] as const)
+          for (const difficulty of [undefined, "easy", "hard"] as const) {
+            const filtered = filterFinderQuestions(bank, {
+              ...(age ? { age } : {}),
+              ...(tone ? { tone } : {}),
+              ...(relationship ? { relationship } : {}),
+              ...(occasion ? { occasion } : {}),
+              ...(difficulty ? { difficulty } : {}),
+            });
+            for (let offset = 0; offset < filtered.length; offset += 10) {
+              const sources = filtered.slice(offset, offset + 10).map((q) => mapping.get(q.id));
+              const maxRepeat = Math.max(
+                ...sources.map((src) => sources.filter((value) => value === src).length),
+              );
+              expect(maxRepeat).toBeLessThan(6);
+            }
+          }
 });
