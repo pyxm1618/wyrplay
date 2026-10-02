@@ -2,7 +2,6 @@ import { cookies } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
 import {
   getQuestionVoteStats,
-  recordAggregateOnlyVote,
   recordVote,
   usesAggregateOnlyVoting,
 } from "@/modules/would-you-rather/server";
@@ -37,7 +36,7 @@ function applyVoterCookie(response: NextResponse, voterId: string, isNew: boolea
       httpOnly: true,
       secure: process.env.APP_ENV === "production",
       sameSite: "lax",
-      path: "/",
+      path: "/api/wyr/vote",
       maxAge: ONE_YEAR_SECONDS,
     });
   }
@@ -55,9 +54,10 @@ export async function GET(request: NextRequest) {
     }
 
     if (usesAggregateOnlyVoting(questionId)) {
-      // Kids-collection questions never create/read the persistent voter cookie.
-      const stats = await getQuestionVoteStats(questionId);
-      return applyNoStore(NextResponse.json(stats));
+      return NextResponse.json(
+        { error: "Kids questions use the aggregate-only voting endpoint" },
+        { status: 400 },
+      );
     }
 
     const cookieStore = await cookies();
@@ -91,10 +91,10 @@ export async function POST(request: NextRequest) {
     }
 
     if (usesAggregateOnlyVoting(questionId)) {
-      // Store only an anonymous aggregate contribution; no reusable voter identifier
-      // is created, read, or persisted for Kids-collection voting.
-      const stats = await recordAggregateOnlyVote({ questionId, option });
-      return applyNoStore(NextResponse.json(stats));
+      return NextResponse.json(
+        { error: "Kids questions use the aggregate-only voting endpoint" },
+        { status: 400 },
+      );
     }
 
     const cookieStore = await cookies();
