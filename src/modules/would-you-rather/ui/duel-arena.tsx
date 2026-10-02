@@ -1,9 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { isKidsCollectionQuestion } from "../domain/filter-questions";
+import type { Question, VoteStats } from "../types";
 import { PlayHeading, OptionPanels } from "./play/art";
 import "./play/play.css";
-import type { Question, VoteStats } from "../types";
 
 export interface DuelArenaProps {
   readonly appearance?: "default" | "illustrated-play";
@@ -36,6 +37,7 @@ export function DuelArena({
   const activeRequestIdRef = useRef(0);
 
   const currentQuestionId = question?.id;
+  const voteEndpoint = question && isKidsCollectionQuestion(question) ? "/api/wyr/kids-vote" : "/api/wyr/vote";
   // 1. 读取当前题目的投票状态 (标准异步 fetch，带 AbortController 与 ignore 清理函数)
   useEffect(() => {
     if (!currentQuestionId) return;
@@ -43,7 +45,7 @@ export function DuelArena({
     let ignore = false;
     const controller = new AbortController();
 
-    fetch(`/api/wyr/vote?questionId=${encodeURIComponent(currentQuestionId)}`, {
+    fetch(`${voteEndpoint}?questionId=${encodeURIComponent(currentQuestionId)}`, {
       cache: "no-store",
       signal: controller.signal,
     })
@@ -69,7 +71,7 @@ export function DuelArena({
       ignore = true;
       controller.abort();
     };
-  }, [currentQuestionId, refreshCount]);
+  }, [currentQuestionId, refreshCount, voteEndpoint]);
 
   // 2. 提交投票或改选 (鼠标与键盘走完全一致的逻辑)
   const handleVote = useCallback(
@@ -81,7 +83,7 @@ export function DuelArena({
       const requestId = ++activeRequestIdRef.current;
 
       try {
-        const res = await fetch("/api/wyr/vote", {
+        const res = await fetch(voteEndpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           cache: "no-store",
@@ -106,7 +108,7 @@ export function DuelArena({
         }
       }
     },
-    [currentQuestionId, isSubmitting],
+    [currentQuestionId, isSubmitting, voteEndpoint],
   );
 
   // 3. 键盘快捷键监听 (A / B / 左右箭头选择与改选)
