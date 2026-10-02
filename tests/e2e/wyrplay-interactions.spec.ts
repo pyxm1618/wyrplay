@@ -127,7 +127,6 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await expect(reloadedOptionB.locator("text=Your Choice")).toBeVisible();
     });
 
-    
     test("Kids voting does not create or reuse the persistent voter cookie", async ({
       page,
       context,

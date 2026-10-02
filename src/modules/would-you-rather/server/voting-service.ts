@@ -188,7 +188,6 @@ export async function recordVote(
   return getQuestionVoteStats(questionId, anonymousVoterId, options);
 }
 
-
 /**
  * Records a Kids-collection vote without retaining a persistent voter identity.
  *

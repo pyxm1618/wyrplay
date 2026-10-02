@@ -48,7 +48,6 @@ it("rejects draft and placeholder facts in production release mode", () => {
   ).toThrow(/not reviewed|placeholder/i);
 });
 
-
 it("rejects the WYRPlay brand name as a reviewed production legal operator", () => {
   const reviewedDocuments = {
     privacy: { ...legalConfig.documents.privacy, reviewStatus: "reviewed" as const },

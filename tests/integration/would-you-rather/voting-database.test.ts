@@ -310,11 +310,7 @@ describe("WYR Real Anonymous Voting Database Integration", () => {
     expect(inserted?.anonymousVoterId).toMatch(/^aggregate:/);
     expect(inserted?.anonymousVoterId).not.toContain("persistent-kids-voter");
 
-    const reloaded = await getQuestionVoteStats(
-      questionId,
-      "persistent-kids-voter",
-      votingOptions,
-    );
+    const reloaded = await getQuestionVoteStats(questionId, "persistent-kids-voter", votingOptions);
     expect(reloaded.hasVoted).toBe(false);
     expect(reloaded.selectedOption).toBeNull();
   });
