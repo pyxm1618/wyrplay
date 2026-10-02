@@ -47,3 +47,33 @@ it("rejects draft and placeholder facts in production release mode", () => {
     }),
   ).toThrow(/not reviewed|placeholder/i);
 });
+
+
+it("rejects the WYRPlay brand name as a reviewed production legal operator", () => {
+  const reviewedDocuments = Object.fromEntries(
+    Object.entries(legalConfig.documents).map(([key, value]) => [
+      key,
+      { ...value, reviewStatus: "reviewed" as const },
+    ]),
+  ) as typeof legalConfig.documents;
+
+  expect(() =>
+    validateLegalConfig({
+      legal: {
+        ...legalConfig,
+        releaseStatus: "reviewed",
+        documents: reviewedDocuments,
+        operator: {
+          ...legalConfig.operator,
+          legalName: "WYRPlay",
+        },
+      },
+      features: {
+        oneTime: legalConfig.oneTimePurchases,
+        subscriptions: legalConfig.subscriptions,
+        credits: legalConfig.credits,
+      },
+      releaseMode: true,
+    }),
+  ).toThrow(/legal operator identity is unresolved/i);
+});
