@@ -1,22 +1,8 @@
+/* Responsive layers: shared menu, desktop shell, tablet composition, mobile, print. */
 .finder-page .finder-menu {
   display: none;
 }
-
-@media (max-width: 700px) {
-  .finder-page {
-    min-height: 100vh;
-  }
-  .finder-page .site-header {
-    margin: 12px 18px 0;
-    height: auto;
-    min-height: 42px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .finder-page .logo {
-    width: 110px;
-    height: 40px;
-  }
+@media (max-width: 1099px) {
   .finder-page .site-header > nav {
     display: none;
   }
@@ -60,39 +46,192 @@
   .finder-page .finder-menu nav a:focus-visible {
     background: #fff1cf;
   }
+  .finder-page .site-header .login {
+    display: none;
+  }
+  .finder-page .site-header {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 42px;
+  }
+  .finder-page .nav-search {
+    margin-left: auto;
+  }
+}
+@media (min-width: 701px) {
+  .finder-page .hero h1 {
+    font-size: 66px;
+  }
+  .finder-page .find-word {
+    top: -6px;
+  }
+  .finder-page .rather-line {
+    top: 35px;
+  }
+  .finder-page .questions-word {
+    top: 88px;
+    font-size: 54px;
+  }
+  .finder-page .filters {
+    padding-top: 17px;
+  }
+  .finder-page .filter-options button {
+    font-size: 12.5px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .finder-page .site-header {
+    width: min(calc(100% - 48px), 1240px);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+  .finder-page .hero,
+  .finder-page .search-area {
+    width: min(calc(100% - 48px), 1240px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .finder-page .directory {
+    width: min(calc(100% - 48px), 1240px);
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: clamp(221px, 21vw, 280px) minmax(0, 1fr);
+    gap: clamp(15px, 2vw, 28px);
+  }
+  .finder-page .selection-bar,
+  .finder-page .category-banner,
+  .finder-page .finder-categories,
+  .finder-page .finder-about {
+    width: min(calc(100% - 48px), 1240px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .finder-page .pagination {
+    margin: 18px auto 0;
+  }
+}
+@media (min-width: 701px) and (max-width: 1099px) {
+  .finder-page .question-card {
+    grid-template-columns: 43px minmax(0, 1fr) 89px;
+    grid-template-rows: auto auto;
+    gap: 8px 12px;
+  }
+  .finder-page .question-number {
+    grid-row: 1;
+  }
+  .finder-page .question-details {
+    grid-column: 2 / 4;
+    grid-row: 1;
+    padding-right: 28px;
+  }
+  .finder-page .bookmark {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .finder-page .question-art {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    width: 90px;
+    height: 68px;
+  }
+  .finder-page .select-button {
+    grid-column: 3;
+    grid-row: 2;
+  }
+  .finder-page .panel-heading {
+    height: auto;
+    min-height: 116px;
+    display: block;
+  }
+  .finder-page .panel-heading p {
+    white-space: normal;
+  }
+  .finder-page .view-actions {
+    position: static;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .finder-page .hero-copy {
+    left: 20px;
+  }
+  .finder-page .hero-character {
+    width: 240px;
+    height: 155px;
+    top: 56px;
+  }
+  .finder-page .hero h1 {
+    font-size: 54px;
+    width: 410px;
+  }
+  .finder-page .hero p {
+    max-width: 400px;
+    margin-left: 0;
+  }
+  .finder-page .selection-bar {
+    height: auto;
+    min-height: 86px;
+    padding: 20px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .finder-page .category-banner {
+    height: auto;
+    min-height: 120px;
+    padding-right: 190px;
+  }
+  .finder-page .category-banner p,
+  .finder-page .category-banner h2 {
+    white-space: normal;
+  }
+}
+@media (max-width: 700px) {
+  .finder-page {
+    min-height: 100vh;
+  }
+  .finder-page .site-header {
+    margin: 12px 18px 0;
+    height: auto;
+    min-height: 42px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .finder-page .logo {
+    width: 110px;
+    height: 40px;
+  }
   .finder-page .nav-search {
     margin-left: auto;
     margin-right: 0;
-  }
-  .finder-page .login {
-    display: none;
   }
   .finder-page .signup {
     padding: 0 12px;
   }
   .finder-page .hero {
-    height: 222px;
+    height: 260px;
   }
   .finder-page .hero-copy {
-    left: 20px;
-    top: 24px;
+    left: 16px;
+    top: 20px;
+    right: 16px;
   }
   .finder-page .hero h1 {
-    font-size: 38px;
-    width: 310px;
+    font-size: clamp(32px, 8.7vw, 38px);
+    width: min(100%, 310px);
     height: 125px;
   }
   .finder-page .find-word {
-    font-size: 36px;
     left: 8px;
+    font-size: clamp(32px, 8.4vw, 36px);
   }
   .finder-page .rather-line {
     top: 39px;
   }
   .finder-page .questions-word {
-    left: 85px;
+    font-size: clamp(32px, 8.6vw, 37px);
+    left: 70px;
     top: 77px;
-    font-size: 37px;
   }
   .finder-page .rather-line::after {
     width: 70px;
@@ -101,15 +240,15 @@
   }
   .finder-page .hero p {
     margin-left: 0;
-    max-width: 250px;
-    font-size: 14px;
+    font-size: 13px;
+    max-width: calc(100% - 166px);
   }
   .finder-page .hero-character {
-    width: 220px;
-    height: 142px;
-    top: 40px;
-    right: -65px;
-    opacity: 0.85;
+    width: 160px;
+    height: 104px;
+    right: 8px;
+    top: 145px;
+    opacity: 1;
   }
   .finder-page .spark-one {
     left: 55%;
@@ -118,6 +257,7 @@
   .finder-page .spark-two {
     left: 43%;
     top: 125px;
+    display: none;
   }
   .finder-page .spark-three {
     left: 6px;
@@ -150,11 +290,11 @@
   }
   .finder-page .filters {
     width: 100%;
-    min-height: 0;
     padding: 18px;
   }
   .finder-page .filter-heading {
     margin-bottom: 14px;
+    padding-right: 0;
   }
   .finder-page .filter-heading h2 {
     font-size: 28px;
@@ -163,15 +303,12 @@
     padding: 0 0 12px;
     margin: 0 0 12px;
   }
-  .finder-page .filter-group:nth-of-type(n) {
-    min-height: 0;
-  }
   .finder-page .filter-options button {
     padding: 7px 12px;
   }
   .finder-page .filter-group h3 {
-    font-size: 18px;
     margin-bottom: 9px;
+    font-size: 20px;
   }
   .finder-page .apply-button {
     height: 45px;
@@ -181,7 +318,6 @@
   }
   .finder-page .question-panel {
     width: 100%;
-    min-height: 0;
     padding: 15px 6px 8px;
   }
   .finder-page .panel-heading {
@@ -190,9 +326,6 @@
   }
   .finder-page .panel-heading h2 {
     font-size: 28px;
-  }
-  .finder-page .panel-heading h2 span {
-    font-size: 30px;
   }
   .finder-page .panel-heading p {
     font-size: 12px;
@@ -203,57 +336,22 @@
     right: auto;
     top: 68px;
   }
-  .finder-page .question-card {
-    min-height: 144px;
-    gap: 10px;
-    padding: 11px 9px;
-  }
   .finder-page .question-number {
+    grid-column: 1;
+    grid-row: 1;
     width: 34px;
     height: 39px;
     font-size: 16px;
   }
-  .finder-page .question-details {
-    width: calc(100% - 47px);
-    padding-right: 15px;
-  }
-  .finder-page .question-details h3 {
-    font-size: 15px;
-    max-width: none;
-  }
   .finder-page .tags {
     margin-top: 8px;
-  }
-  .finder-page .question-art {
-    width: 74px;
-    height: 55px;
-    right: 95px;
-    bottom: 4px;
-  }
-  .finder-page .question-stats {
-    font-size: 11px;
-    position: absolute;
-    left: 0;
-    bottom: 8px;
-  }
-  .finder-page .select-button {
-    right: 8px;
-    bottom: 12px;
-    width: 79px;
-    height: 32px;
-    font-size: 12px;
-  }
-  .finder-page .bookmark {
-    right: 5px;
-    top: 6px;
-    width: 15px;
   }
   .finder-page .pagination {
     margin: 16px 14px;
     gap: 5px;
-  }
-  .finder-page .pagination button:nth-last-of-type(3) {
-    display: none;
+    height: auto;
+    min-height: 29px;
+    flex-wrap: wrap;
   }
   .finder-page .selection-bar {
     margin: 18px 14px 0;
@@ -288,8 +386,8 @@
     height: 60px;
   }
   .finder-page .category-banner h2 {
-    font-size: 23px;
     white-space: normal;
+    font-size: 23px;
   }
   .finder-page .category-banner p {
     font-size: 12px;
@@ -311,24 +409,60 @@
     height: 100%;
     object-fit: cover;
   }
-  .finder-page .presenter {
-    padding: 40px 20px;
+  .finder-page .question-stats img {
+    width: 16px;
+    height: 12px;
   }
-  .finder-page .presenter h2 {
-    font-size: 32px;
+  .finder-page .search-left-art,
+  .finder-page .search-right-art,
+  .finder-page .selection-left-art {
+    display: none;
   }
-  .finder-page .play-dialog {
-    padding: 32px 20px;
+  .finder-page .finder-categories,
+  .finder-page .finder-about {
+    margin-left: 14px;
+    margin-right: 14px;
   }
-  .finder-page .answer-options {
-    grid-template-columns: 1fr;
+  .finder-page .finder-categories h2 {
+    font-size: 24px;
   }
-  .finder-page .answer-options button {
-    font-size: 18px;
-    padding: 16px;
+  .finder-page .question-card {
+    grid-template-columns: 34px minmax(0, 1fr) 79px;
+    grid-template-rows: auto auto;
+    gap: 8px 10px;
+    padding: 12px 9px;
   }
-}
-@media (prefers-reduced-motion: reduce) {
+  .finder-page .question-details {
+    grid-column: 2 / 4;
+    grid-row: 1;
+    padding-right: 26px;
+  }
+  .finder-page .question-details h3 {
+    font-size: 14px;
+  }
+  .finder-page .bookmark {
+    grid-column: 3;
+    grid-row: 1;
+    margin-top: -5px;
+    margin-right: -5px;
+  }
+  .finder-page .question-art {
+    grid-column: 2;
+    grid-row: 2;
+    width: 74px;
+    height: 55px;
+    justify-self: end;
+  }
+  .finder-page .select-button {
+    grid-column: 3;
+    grid-row: 2;
+    width: 79px;
+    height: 34px;
+    font-size: 12px;
+  }
+  .finder-page .question-stats {
+    font-size: 11px;
+  }
 }
 @media print {
   .finder-page .site-header,
@@ -339,10 +473,7 @@
   .finder-page .category-banner,
   .finder-page .page-art,
   .finder-page .selection-actions,
-  .finder-page .bookmark,
-  .finder-page .select-button,
-  .finder-page .notice,
-  .finder-page dialog {
+  .finder-page .notice {
     display: none !important;
   }
   .finder-page {
@@ -355,267 +486,46 @@
     margin: 0;
   }
   .finder-page .question-panel {
-    min-height: 0;
     background: white;
   }
   .finder-page .view-actions {
     display: none;
-  }
-  .finder-page .question-card {
-    break-inside: avoid;
-    border: 1px solid #ddd;
-    box-shadow: none;
   }
   .finder-page .selection-bar {
     box-shadow: none;
     margin: 12px 0;
     height: auto;
     padding: 0;
-  }
-  .finder-page .question-panel:has(.is-selected) .question-card:not(.is-selected) {
-    display: none;
-  }
-}
-@media (max-width: 700px) {
-  .finder-page .question-details h3 {
-    font-size: 14px;
-    line-height: 18px;
-  }
-  .finder-page .question-card {
-    min-height: 144px;
-    padding: 11px 9px;
-  }
-  .finder-page .question-list .question-card:nth-child(8),
-  .finder-page .question-list .question-card:nth-child(10) {
-    min-height: 144px;
-  }
-  .finder-page .filter-group:nth-of-type(n) {
-    min-height: 0;
-  }
-  .finder-page .hero h1 {
-    font-size: 38px;
-  }
-  .finder-page .find-word {
-    font-size: 36px;
-  }
-  .finder-page .rather-line {
-    top: 39px;
-  }
-  .finder-page .questions-word {
-    font-size: 37px;
-    top: 77px;
-  }
-  .finder-page .selection-bar {
-    margin-top: 18px;
-  }
-  .finder-page .category-banner h2 {
-    font-size: 23px;
-  }
-  .finder-page .question-stats img {
-    width: 16px;
-    height: 12px;
-  }
-}
-@media (max-width: 700px) {
-  .finder-page .hero h1 {
-    font-size: 38px;
-    width: 310px;
-  }
-  .finder-page .find-word {
-    font-size: 36px;
-  }
-  .finder-page .questions-word {
-    font-size: 37px;
-    top: 77px;
-  }
-  .finder-page .rather-line {
-    top: 39px;
-  }
-  .finder-page .hero p {
-    font-size: 13px;
-    max-width: 240px;
-  }
-  .finder-page .hero-character {
-    width: 160px;
-    height: 104px;
-    right: -65px;
-    top: 75px;
-    opacity: 1;
-  }
-  .finder-page .filter-group h3 {
-    font-size: 20px;
-  }
-  .finder-page .filters {
-    padding: 18px;
-  }
-  .finder-page .filter-heading {
-    padding-right: 0;
-  }
-  .finder-page .question-card:nth-child(10) .question-details {
-    width: calc(100% - 47px);
-  }
-  .finder-page .question-card:nth-child(10) .question-details h3 {
-    max-width: none;
-    font-size: 14px;
-  }
-  .finder-page .search-left-art,
-  .finder-page .search-right-art,
-  .finder-page .selection-left-art {
-    display: none;
-  }
-  .finder-page .category-banner h2 {
-    font-size: 23px;
-  }
-}
-@media (min-width: 701px) {
-  .finder-page .hero h1 {
-    font-size: 66px;
-  }
-  .finder-page .find-word {
-    top: -6px;
-  }
-  .finder-page .rather-line {
-    top: 35px;
-  }
-  .finder-page .questions-word {
-    top: 88px;
-    font-size: 54px;
-  }
-  .finder-page .filters {
-    padding-top: 17px;
-  }
-  .finder-page .filter-options button {
-    font-size: 12.5px;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-  .finder-page .filter-group:nth-of-type(5) {
-    margin-bottom: 23px;
-  }
-}
-@media (max-width: 700px) {
-  .finder-page .question-details,
-  .finder-page .question-card:nth-child(10) .question-details {
-    width: calc(100% - 47px);
-  }
-  .finder-page .question-details h3,
-  .finder-page .question-card:nth-child(10) .question-details h3 {
-    font-size: 14px;
-    max-width: none;
-  }
-  .finder-page .question-card,
-  .finder-page .question-list .question-card:nth-child(8),
-  .finder-page .question-list .question-card:nth-child(10) {
-    min-height: 144px;
-  }
-  .finder-page .pagination {
-    height: auto;
-    min-height: 29px;
-    flex-wrap: wrap;
-  }
-  .finder-page .pagination button:nth-last-of-type(3) {
-    display: initial;
-  }
-  .finder-page .finder-categories,
-  .finder-page .finder-about {
-    margin-left: 14px;
-    margin-right: 14px;
-  }
-  .finder-page .finder-player {
-    padding: 30px 4px 8px;
-  }
-  .finder-page .question-stats {
-    bottom: 6px;
-  }
-  .finder-page .finder-categories h2 {
-    font-size: 24px;
-  }
-}
-@media print {
-  .finder-page .finder-categories,
-  .finder-page .finder-about {
-    display: none;
-  }
-  .finder-page .question-panel {
-    min-height: 0;
-  }
-  .finder-page .selection-bar {
     display: block;
   }
-  .finder-page .question-art {
-    width: 75px;
-    height: 56px;
-    right: 20px;
-  }
-  .finder-page .question-card {
-    min-height: 101px;
-  }
-  .finder-page .question-card .question-details {
-    width: 70%;
-  }
-}
-
-/* Responsive Web Product layer: promote the reference canvas into a full viewport shell. */
-.finder-page {
-  width: 100%;
-  max-width: none;
-  min-height: 100vh;
-  min-height: 100dvh;
-}
-
-@media (min-width: 701px) {
-  .finder-page .site-header,
-  .finder-page .hero,
-  .finder-page .search-area,
-  .finder-page .directory,
-  .finder-page .selection-bar,
-  .finder-page .category-banner,
+  .finder-page .question-panel:has(.is-selected) .question-card:not(.is-selected),
   .finder-page .finder-categories,
   .finder-page .finder-about {
-    width: min(calc(100% - 48px), 1240px);
-    margin-left: auto;
-    margin-right: auto;
+    display: none;
   }
-  .finder-page .site-header {
-    margin-top: 10px;
+  .finder-page .question-card {
+    grid-template-columns: 43px minmax(0, 1fr) 75px;
+    grid-template-rows: auto;
+    break-inside: avoid;
+    border: 1px solid #ddd;
+    box-shadow: none;
   }
-  .finder-page .directory {
-    grid-template-columns: clamp(221px, 21vw, 280px) minmax(0, 1fr);
-    gap: clamp(15px, 2vw, 28px);
-  }
-  .finder-page .filters,
-  .finder-page .question-panel {
-    min-height: 0;
-  }
-  .finder-page .pagination {
-    margin: 18px auto 0;
-  }
-}
-
-@media (min-width: 1100px) {
-  .finder-page .question-details,
-  .finder-page .question-card:nth-child(10) .question-details {
-    width: auto;
-    flex: 1;
-    min-width: 0;
-    padding-right: 235px;
-  }
-  .finder-page .question-details h3,
-  .finder-page .question-card:nth-child(10) .question-details h3 {
-    max-width: 650px;
-    font-size: clamp(14px, 1vw, 16px);
+  .finder-page .question-details {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 0;
   }
   .finder-page .question-art {
-    right: 118px;
+    grid-column: 3;
+    grid-row: 1;
+    width: 75px;
+    height: 56px;
   }
-}
-
-/* Keep interactive card controls above flexible question copy and decorative artwork. */
-.finder-page .question-art {
-  z-index: 0;
-  pointer-events: none;
-}
-.finder-page .bookmark,
-.finder-page .select-button {
-  z-index: 3;
+  .finder-page .bookmark,
+  .finder-page .select-button {
+    display: none !important;
+  }
+  .finder-page .question-number {
+    grid-row: 1;
+  }
 }
