@@ -66,7 +66,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid 'option', must be 'A' or 'B'" }, { status: 400 });
     }
     if (!usesAggregateOnlyVoting(questionId)) {
-      return NextResponse.json({ error: "Question does not use aggregate-only voting" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Question does not use aggregate-only voting" },
+        { status: 400 },
+      );
     }
 
     return noStore(
