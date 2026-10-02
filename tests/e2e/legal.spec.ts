@@ -23,8 +23,10 @@ test("/contact is reachable and noindex", async ({ page }) => {
   const response = await page.goto("/contact");
   expect(response?.status()).toBe(200);
   await expect(page.getByRole("heading", { level: 1, name: "Contact" })).toBeVisible();
-  await expect(page.getByText("Privacy requests")).toBeVisible();
-  await expect(page.getByText("Billing, subscriptions, and refunds")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Privacy requests" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { level: 2, name: "Billing, subscriptions, and refunds" }),
+  ).toBeVisible();
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/i);
   await expect(page.getByRole("contentinfo")).toBeVisible();
 });
