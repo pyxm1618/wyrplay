@@ -50,18 +50,28 @@ it("rejects draft and placeholder facts in production release mode", () => {
 
 
 it("rejects the WYRPlay brand name as a reviewed production legal operator", () => {
-  const reviewedDocuments = Object.fromEntries(
-    Object.entries(legalConfig.documents).map(([key, value]) => [
-      key,
-      { ...value, reviewStatus: "reviewed" as const },
-    ]),
-  ) as typeof legalConfig.documents;
+  const reviewedDocuments = {
+    privacy: { ...legalConfig.documents.privacy, reviewStatus: "reviewed" as const },
+    terms: { ...legalConfig.documents.terms, reviewStatus: "reviewed" as const },
+    acceptable_use: {
+      ...legalConfig.documents.acceptable_use,
+      reviewStatus: "reviewed" as const,
+    },
+    refund_policy: {
+      ...legalConfig.documents.refund_policy,
+      reviewStatus: "reviewed" as const,
+    },
+    account_deletion: {
+      ...legalConfig.documents.account_deletion,
+      reviewStatus: "reviewed" as const,
+    },
+  };
 
   expect(() =>
     validateLegalConfig({
       legal: {
         ...legalConfig,
-        releaseStatus: "reviewed",
+        releaseStatus: "reviewed" as const,
         documents: reviewedDocuments,
         operator: {
           ...legalConfig.operator,
