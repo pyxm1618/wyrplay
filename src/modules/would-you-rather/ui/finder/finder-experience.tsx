@@ -92,6 +92,7 @@ export function FinderExperience({
   const [selected, setSelected] = useState<string[]>([]);
   const [saved, setSaved] = useState<string[]>([]);
   const [reviewSelectedOnly, setReviewSelectedOnly] = useState(false);
+  const browsePageBeforeReview = useRef(1);
   const [notice, setNotice] = useState("");
   const router = useRouter();
   const input = useRef<HTMLInputElement>(null);
@@ -191,6 +192,23 @@ export function FinderExperience({
   const currentPage = questionPage(displayedPool, pageNumber);
   const pool = selected.length ? approved.filter((q) => selected.includes(q.id)) : filtered;
   const activeFilters = Boolean(keyword || Object.keys(criteria).length);
+  const browseTotalPages = Math.max(1, Math.ceil(filtered.length / 10));
+
+  function restoreBrowsePage() {
+    const restoredPage = Math.min(
+      Math.max(browsePageBeforeReview.current, 1),
+      browseTotalPages,
+    );
+    setReviewSelectedOnly(false);
+    setPageNumber(restoredPage);
+    syncUrl(keyword, criteria, restoredPage);
+  }
+
+  function enterReview() {
+    browsePageBeforeReview.current = currentPage.page;
+    setReviewSelectedOnly(true);
+    setPageNumber(1);
+  }
 
   function clear() {
     setQuery("");
@@ -203,13 +221,11 @@ export function FinderExperience({
   }
 
   function toggleSelected(id: string) {
-    setSelected((ids) => {
-      const next = ids.includes(id) ? ids.filter((savedId) => savedId !== id) : [...ids, id];
-      if (next.length === 0 && reviewSelectedOnly) {
-        setReviewSelectedOnly(false);
-      }
-      return next;
-    });
+    const exitsReview = reviewSelectedOnly && selected.length === 1 && selected[0] === id;
+    setSelected((ids) =>
+      ids.includes(id) ? ids.filter((savedId) => savedId !== id) : [...ids, id],
+    );
+    if (exitsReview) restoreBrowsePage();
   }
 
   function toggleSaved(id: string) {
@@ -380,7 +396,7 @@ export function FinderExperience({
                 <button
                   type="button"
                   className="black"
-                  onClick={() => setReviewSelectedOnly(false)}
+                  onClick={restoreBrowsePage}
                 >
                   <FinderIcon name="list" size={15} />
                   Exit review
@@ -461,8 +477,8 @@ export function FinderExperience({
                 type="button"
                 className="review-selected-btn"
                 onClick={() => {
-                  setReviewSelectedOnly((prev) => !prev);
-                  setPageNumber(1);
+                  if (reviewSelectedOnly) restoreBrowsePage();
+                  else enterReview();
                 }}
               >
                 <FinderIcon name={reviewSelectedOnly ? "list" : "bookmark"} size={15} />
@@ -473,7 +489,7 @@ export function FinderExperience({
                 className="clear-selected-btn"
                 onClick={() => {
                   setSelected([]);
-                  setReviewSelectedOnly(false);
+                  if (reviewSelectedOnly) restoreBrowsePage();
                 }}
               >
                 Clear selected
