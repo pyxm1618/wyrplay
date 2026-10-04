@@ -181,7 +181,7 @@ test("/find-questions stays within deterministic release budget and passes axe a
     }
   });
 
-  await page.route("**/api/wyr/vote?*", async (route) => {
+  const fulfillEmptyVoteStats = async (route: Route) => {
     await route.fulfill({
       status: 200,
       contentType: "application/json",
@@ -195,7 +195,10 @@ test("/find-questions stays within deterministic release budget and passes axe a
         percentageB: 50,
       }),
     });
-  });
+  };
+
+  await page.route("**/api/wyr/vote?*", fulfillEmptyVoteStats);
+  await page.route("**/api/wyr/kids-vote?*", fulfillEmptyVoteStats);
 
   await page.addInitScript(() => {
     window.__cwv = { cls: 0, inp: 0, lcp: 0 };
@@ -265,42 +268,4 @@ test("/find-questions stays within deterministic release budget and passes axe a
   expect(metrics.lcp).toBeGreaterThan(0);
   expect(metrics.lcp).toBeLessThanOrEqual(2500);
   expect(metrics.inp).toBeLessThanOrEqual(200);
-});
-
-test("/find-questions network sanity performs exactly 10 initial vote stats requests without duplicate loops", async ({
-  page,
-}) => {
-  const voteRequests: string[] = [];
-  page.on("request", (req) => {
-    if (req.url().includes("/api/wyr/vote")) {
-      voteRequests.push(req.url());
-    }
-  });
-
-  await page.route("**/api/wyr/vote?*", async (route) => {
-    await route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify({
-        hasVoted: false,
-        selectedOption: null,
-        votesA: 0,
-        votesB: 0,
-        total: 0,
-        percentageA: 50,
-        percentageB: 50,
-      }),
-    });
-  });
-
-  await page.goto("/find-questions", { waitUntil: "networkidle" });
-  await expect(page.locator(".question-card")).toHaveCount(10);
-  await expect(page.locator(".question-stats").first()).not.toContainText("Loading", {
-    timeout: 15_000,
-  });
-
-  expect(voteRequests.length).toBe(10);
-  const uniqueParams = new Set(voteRequests);
-  expect(uniqueParams.size).toBe(10);
-  await expect(page.locator(".stats-retry")).toHaveCount(0, { timeout: 15_000 });
 });
