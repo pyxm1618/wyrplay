@@ -53,7 +53,19 @@ export const legalConfig = {
     "WYRPlay subscriptions renew automatically at the end of each billing cycle unless cancelled online prior to renewal. There is no free trial. Online cancellation stops future renewal charges, while access remains available through the end of the current already-paid period. Subscription charges are not automatically prorated upon cancellation. Refunds are provided for duplicate charges, unauthorized transactions, material service failures, billing errors, or as required by applicable law. Because public subscription checkout is not yet open in production, no subscription charges are currently incurred.",
   retentionRules: [
     {
-      category: "anonymous voting and gameplay records",
+      category: "Kids aggregate-only voting records",
+      period:
+        "database vote contributions may be retained indefinitely for aggregate results after request-level metadata is no longer retained; each row uses a one-time record token that is not reused to recognize a child or browser over time",
+      basis: "aggregate product results and service integrity",
+    },
+    {
+      category: "Kids request and runtime log metadata",
+      period:
+        "the current Vercel Hobby plan provides a one-hour Runtime Logs window; the Kids voting route does not write separate application logs containing the vote request",
+      basis: "temporary service operation, security, reliability, and abuse investigation",
+    },
+    {
+      category: "general-audience anonymous voting and gameplay records",
       period:
         "for as long as reasonably necessary to operate aggregate results, maintain service integrity, and prevent duplicate or abusive submissions",
       basis: "product operation, fraud prevention, and service integrity",
@@ -92,16 +104,16 @@ export const legalConfig = {
   accountDeletion: {
     enabled: false,
     summary:
-      "Authenticated users can request account deletion from account settings or by contacting support. The deletion workflow revokes account access, coordinates any active subscription cancellation, and deletes account-scoped personal data, retaining only limited transaction, fraud-prevention, security, or legal compliance records where required by applicable law.",
+      "Public account registration is not currently open in the production service. When account functionality is opened, users can request account deletion from Account Settings or by contacting support. The deletion workflow revokes account access, coordinates any active subscription cancellation, and deletes account-scoped personal data, retaining only limited transaction, fraud-prevention, security, or legal compliance records where required by applicable law.",
   },
   internationalTransfers:
     "WYRPlay is operated by Wang Yufei, an individual operator in China, and is available globally. Service providers such as hosting, database, and infrastructure vendors may process data in the United States or other locations where they operate. When applicable law requires safeguards for international data transfers, WYRPlay implements appropriate legal mechanisms.",
   documents: {
-    privacy: { version: "1.0", effectiveDate: "2026-10-02", reviewStatus: "reviewed" },
-    terms: { version: "1.0", effectiveDate: "2026-10-02", reviewStatus: "reviewed" },
-    acceptable_use: { version: "1.0", effectiveDate: "2026-10-02", reviewStatus: "reviewed" },
-    refund_policy: { version: "1.0", effectiveDate: "2026-10-02", reviewStatus: "reviewed" },
-    account_deletion: { version: "1.0", effectiveDate: "2026-10-02", reviewStatus: "reviewed" },
+    privacy: { version: "1.0", effectiveDate: "2026-10-04", reviewStatus: "reviewed" },
+    terms: { version: "1.0", effectiveDate: "2026-10-04", reviewStatus: "reviewed" },
+    acceptable_use: { version: "1.0", effectiveDate: "2026-10-04", reviewStatus: "reviewed" },
+    refund_policy: { version: "1.0", effectiveDate: "2026-10-04", reviewStatus: "reviewed" },
+    account_deletion: { version: "1.0", effectiveDate: "2026-10-04", reviewStatus: "reviewed" },
   },
   content: {
     privacy: [
@@ -124,7 +136,7 @@ export const legalConfig = {
       {
         heading: "Information You Provide",
         paragraphs: [
-          "When you interact with WYRPlay, you may provide an email address for authentication, account preferences, support communications, or other information submitted directly to support@wyrplay.com.",
+          "You may provide information directly when you contact support@wyrplay.com. Public account registration is not currently open in the production service. When account functionality is opened, account features may process an email address and account preferences as described in this notice.",
           "WYRPlay operates on a subscription commerce model. Subscription transactions, payments, and refunds are processed by our payment provider, Waffo. When subscription checkout is opened, WYRPlay receives transaction metadata such as subscription status, payment reference, currency, and amount. WYRPlay is not designed to and does not store complete payment-card numbers.",
           "At the effective date of this notice, public subscription checkout is not yet open on the production service, and no recurring consumer charges are currently processed.",
         ],
@@ -177,20 +189,22 @@ export const legalConfig = {
         paragraphs: [
           "The WYRPlay Kids collection is specifically designed for children, families, and educators. WYRPlay treats that area as a child-directed portion of the service for privacy-design purposes.",
           "WYRPlay strictly prohibits children under 13 from creating accounts, submitting personal information, or purchasing subscriptions. We do not use personal information from children under 13 for behavioral advertising or profiling.",
-          "For voting on questions in the Kids collection, WYRPlay does not retain a persistent voter identifier together with the user's choice. Legacy Kids vote records have been sanitized so that any former reusable voter identifier is replaced by a one-time record token, preserving aggregate counts without linking a user or browser to an A/B choice. Because voting is aggregate-only and persistent identifiers are not used to recognize users across time, this child-directed interaction operates within internal operations exceptions and does not collect personal information requiring parental consent.",
+          "For voting on questions in the Kids collection, WYRPlay does not create or read the persistent voter cookie. Each stored Kids vote receives a server-generated one-time record token that is not returned to the browser and is not reused to recognize the same child or browser over time. Legacy Kids vote records were sanitized by replacing former reusable voter identifiers with one-time record tokens while preserving aggregate A/B counts.",
+          "WYRPlay does not use Kids voting data for behavioral advertising or profiling. Kids voting data is used only for aggregate results, service operation, security, and abuse prevention.",
         ],
       },
       {
         heading: "Data Retention",
         paragraphs: [
-          "We retain information only for as long as reasonably necessary to fulfill the purpose for which it was collected, operate aggregate results, maintain security and vote integrity, resolve support requests, administer transactions, and satisfy legal, accounting, and dispute obligations.",
-          "Account data is maintained while the account is active and during the account-deletion workflow. Operational, security, and diagnostic records are kept for limited periods. Commerce records are retained as necessary for accounting, chargebacks, and legal obligations. De-identified or aggregate statistics that cannot reasonably identify an individual may be retained indefinitely.",
+          "For Kids voting, the application database stores the question identifier, A/B choice, timestamps, and a server-generated one-time record token. The token is not returned to the browser, is not reused to recognize a child or browser, and is not stored with a persistent Kids voter identifier. These vote contributions may be retained indefinitely for aggregate results after request-level metadata is no longer retained.",
+          "The Kids voting route does not write separate application logs containing the vote request. Vercel may temporarily process request and runtime metadata needed to deliver and secure the request; WYRPlay's current Vercel Hobby plan provides a one-hour Runtime Logs window. After that provider log window, WYRPlay does not retain a reusable child/browser identifier with the Kids A/B choice. Aggregate or de-identified statistics that cannot reasonably identify an individual may be retained indefinitely.",
+          "Account data is maintained while an account is active and during the account-deletion workflow once account functionality is opened. Other operational, security, commerce, support, and diagnostic records are retained only as described by the applicable operational or legal purpose.",
         ],
       },
       {
         heading: "Your Choices and Privacy Rights",
         paragraphs: [
-          "You can decline or withdraw analytics consent where analytics is configured. Registered users can manage preferences or request account deletion through Account Settings.",
+          "You can decline or withdraw analytics consent where analytics is configured. Public account registration is not currently open in the production service. When account functionality is opened, registered users can manage preferences or request account deletion through Account Settings.",
           "Depending on your location and applicable privacy laws, you may have statutory rights to request access to personal information, request deletion, request correction, obtain a portable copy, or opt out of covered processing. We will not discriminate against you for exercising rights granted by law.",
           "To submit a privacy inquiry or rights request, email support@wyrplay.com with sufficient detail for us to verify and respond to your request.",
         ],
@@ -246,6 +260,7 @@ export const legalConfig = {
       {
         heading: "Accounts and Authentication",
         paragraphs: [
+          "Public account registration is not currently open in the production service. When account functionality is opened, the account and authentication rules described below apply.",
           "When you create an account, you are responsible for maintaining the security of your authentication credentials and for all activities that occur under your account.",
           "WYRPlay may require re-authentication for sensitive account actions such as deleting an account or managing subscriptions. We may suspend or restrict account access when reasonably necessary for security, fraud prevention, legal compliance, or enforcement of these Terms.",
         ],
@@ -275,8 +290,8 @@ export const legalConfig = {
         heading: "Subscriptions and Billing",
         paragraphs: [
           "WYRPlay's commercial offering is based on recurring paid subscriptions with automatic renewal. There is no free trial.",
-          "Subscription pricing, billing intervals (such as monthly or annual), and included benefits are presented clearly on the subscription checkout page prior to purchase authorization.",
-          "Subscriptions renew automatically at the end of each billing period unless cancelled by the user prior to renewal. You may cancel your subscription online at any time through Account Settings or Billing. Online cancellation stops future renewal charges; your subscription benefits remain active through the end of the current already-paid billing period.",
+          "The billing interval and price shown at checkout, together with the included benefits, are presented clearly before purchase authorization.",
+          "Subscriptions renew automatically at the end of each billing period unless cancelled by the user prior to renewal. When subscription checkout is opened, you may cancel your subscription online at any time through Account Settings or Billing. Online cancellation stops future renewal charges; your subscription benefits remain active through the end of the current already-paid billing period.",
           "Payment processing, subscription management, and refund disbursements are handled securely by our payment provider, Waffo. WYRPlay does not store complete payment-card numbers.",
           "At the effective date of these Terms, subscription checkout is not yet open on the public production service, and no recurring consumer charges are currently incurred. Once subscription checkout is opened, these subscription terms govern all purchase transactions.",
         ],
@@ -310,7 +325,7 @@ export const legalConfig = {
       {
         heading: "Suspension, Termination, and Deletion",
         paragraphs: [
-          "You may discontinue using WYRPlay at any time and may request account deletion through Account Settings or by emailing support@wyrplay.com.",
+          "You may discontinue using WYRPlay at any time. Public account registration is not currently open in the production service; when account functionality is opened, you may request account deletion through Account Settings or by emailing support@wyrplay.com.",
           "We may suspend or terminate your access to the service or your account if you materially violate these Terms or the Acceptable Use Policy, engage in fraud or abuse, or where necessary to comply with legal obligations.",
         ],
       },
@@ -438,8 +453,8 @@ export const legalConfig = {
       {
         heading: "Automatic Renewal and Online Cancellation",
         paragraphs: [
-          "Subscriptions automatically renew at the end of each billing cycle (such as monthly or annually, as selected at checkout) unless cancelled prior to renewal.",
-          "Subscribers can cancel online at any time through Account Settings or the Billing section. Online cancellation stops future renewal charges. Cancelling does not immediately terminate access; your paid subscription benefits remain available through the end of the current already-paid billing period.",
+          "Subscriptions automatically renew at the end of the billing interval shown at checkout unless cancelled prior to renewal.",
+          "When subscription checkout is opened, subscribers can cancel online at any time through Account Settings or the Billing section. Online cancellation stops future renewal charges. Cancelling does not immediately terminate access; your paid subscription benefits remain available through the end of the current already-paid billing period.",
         ],
       },
       {
@@ -457,7 +472,7 @@ export const legalConfig = {
       {
         heading: "How to Cancel a Subscription",
         paragraphs: [
-          "To cancel your subscription, sign in to your WYRPlay account, open Account Settings or Billing, and select Cancel Subscription. Confirmation of cancellation will be displayed, and no further renewal charges will occur. Deleting your entire account is not necessary to cancel recurring billing.",
+          "Public subscription checkout is not currently open in production. When subscription functionality is opened, sign in to your WYRPlay account, open Account Settings or Billing, and select Cancel Subscription. Confirmation of cancellation will be displayed, and no further renewal charges will occur. Deleting your entire account is not necessary to cancel recurring billing.",
         ],
       },
       {
@@ -489,13 +504,14 @@ export const legalConfig = {
       {
         heading: "When This Page Applies",
         paragraphs: [
+          "Public account registration is not currently open in the production service. When account functionality is opened, the account deletion procedures described below apply.",
           "This page explains how users with a registered WYRPlay account can request deletion of their account and associated personal information. If you only enjoy public question gameplay without creating an account, no account profile or authentication identity exists to delete.",
         ],
       },
       {
         heading: "How to Request Account Deletion",
         paragraphs: [
-          "To delete your account, sign in, open Account Settings, and select Delete Account. For security, recent re-authentication and explicit confirmation may be required.",
+          "When account functionality is opened, to delete your account, sign in, open Account Settings, and select Delete Account. For security, recent re-authentication and explicit confirmation may be required.",
           "If you cannot access your account, you may email support@wyrplay.com from your registered account email address requesting deletion. We may perform reasonable verification before processing the request.",
         ],
       },
@@ -509,7 +525,7 @@ export const legalConfig = {
       {
         heading: "Subscriptions and Billing Coordination",
         paragraphs: [
-          "If an account has an active paid subscription, the deletion workflow coordinates cancellation with our payment provider (Waffo) to stop future renewals before completing identity deletion. If you only wish to stop future subscription charges while keeping your account, use the subscription cancellation option in Billing instead of deleting your account.",
+          "When account and subscription functionality are opened, if an account has an active paid subscription, the deletion workflow coordinates cancellation with our payment provider (Waffo) to stop future renewals before completing identity deletion. If you only wish to stop future subscription charges while keeping your account, use the subscription cancellation option in Billing instead of deleting your account.",
           "Deleting an account does not erase records that must be retained for legitimate business, dispute resolution, tax, or legal compliance purposes.",
         ],
       },
