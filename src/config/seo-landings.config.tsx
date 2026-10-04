@@ -120,7 +120,7 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
               "Yes. One passenger can read the options aloud while everyone else chooses and explains an answer, so no extra setup is needed.",
           },
           {
-            question: "Do I need anything to play would you rather questions for kids?",
+            question: "Do I need any equipment for would you rather questions for kids?",
             answer:
               "No special equipment is required. You can browse and vote on the questions from a phone, tablet, computer, or classroom display.",
           },
@@ -136,7 +136,7 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
             label: "Browse funny dilemmas",
             href: "/funny-would-you-rather-questions",
             description:
-              "After would you rather questions for kids, switch to sillier prompts when your group wants bigger laughs.",
+              "After a round of would you rather questions for kids, switch to sillier prompts when your group wants bigger laughs.",
           },
           {
             label: "See friends questions",
@@ -147,7 +147,7 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
             label: "Return to home page",
             href: "/",
             description:
-              "Return to the main directory to mix would you rather questions for kids with other playable categories.",
+              "Return to the main directory to browse would you rather questions for kids alongside other playable categories.",
           },
         ],
       },

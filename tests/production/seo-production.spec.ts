@@ -80,9 +80,9 @@ test("production rendered SEO matches the route registry", async ({ page }) => {
       ((exactOccurrences / Math.max(visibleWords.length, 1)) * 100).toFixed(3),
     );
     const keywordWordCount = tokenize(route.primaryKeyword).length;
-    const weightedDensityPct = Number(
-      (((exactOccurrences * keywordWordCount) / Math.max(visibleWords.length, 1)) * 100).toFixed(3),
-    );
+    const weightedDensityPct =
+      ((exactOccurrences * keywordWordCount) / Math.max(visibleWords.length, 1)) * 100;
+    const weightedDensityPctForLog = Number(weightedDensityPct.toFixed(3));
 
     console.log(
       JSON.stringify({
@@ -93,7 +93,8 @@ test("production rendered SEO matches the route registry", async ({ page }) => {
         exactOccurrences,
         keywordWordCount,
         densityPct,
-        weightedDensityPct,
+        weightedDensityPctRaw: weightedDensityPct,
+        weightedDensityPct: weightedDensityPctForLog,
         tokenCoverage: coverage,
       }),
     );
