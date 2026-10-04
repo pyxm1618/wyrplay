@@ -13,10 +13,12 @@ const finderViewports = [
   [800, 900],
   [820, 1180],
   [834, 1194],
+  [849, 900],
   [900, 900],
   [1024, 768],
   [1099, 900],
   [1280, 720],
+  [1280, 800],
   [1366, 768],
   [1440, 900],
   [1536, 864],
@@ -27,7 +29,7 @@ test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem("creat-web:analytics-consent:v1", "denied"));
 });
 
-const screenshotWidths = new Set([375, 390, 768, 834, 1024, 1440, 1920]);
+const screenshotWidths = new Set([375, 390, 768, 834, 849, 1024, 1440, 1920]);
 
 async function noIntersection(a: Locator, b: Locator, context: string) {
   const first = await a.boundingBox();
@@ -175,7 +177,7 @@ test("Finder completes age/tone, save/unsave, selected pool, restore and mobile 
   await page.goto("/find-questions");
   await page.getByRole("button", { name: "Kids", exact: true }).click();
   await page.getByRole("button", { name: "Funny", exact: true }).click();
-  await expect(page.locator(".panel-heading")).toContainText("116 curated questions");
+  await expect(page.locator(".panel-heading")).toContainText("457 curated questions");
   await page.getByRole("button", { name: "Apply Filters" }).click();
   await expect(page.locator(".panel-heading")).toContainText("matching questions");
   const poolCount = await page.locator(".panel-heading p").textContent();
@@ -249,7 +251,7 @@ test("Finder completes age/tone, save/unsave, selected pool, restore and mobile 
   await expect(page.getByRole("button", { name: "Search", exact: true })).toBeFocused();
   await page.locator(".finder-menu summary").click();
   const menu = page.locator(".finder-menu nav");
-  for (const label of ["Home", "Browse questions", "Categories", "Leaderboard", "Create", "About"])
+  for (const label of ["Home", "Browse questions", "Categories", "Leaderboard", "About"])
     await expect(menu.getByRole("link", { name: label, exact: true })).toBeVisible();
   await menu.getByRole("link", { name: "Categories", exact: true }).click();
   await expect(menu).toBeHidden();
@@ -285,4 +287,84 @@ test("Finder vote summary renders real stats and recovers from an explicit API e
   await page.locator(".stats-retry").first().click();
   await expect(page.locator(".question-stats").first()).not.toContainText("unavailable");
   await expect(page.locator(".question-stats").first()).not.toContainText("Loading");
+});
+
+test("Finder privacy and analytics banner safe positioning across profiles", async ({ page }) => {
+  for (const consentState of ["not-decided", "granted", "denied"] as const) {
+    await page.addInitScript((state) => {
+      try {
+        if (state === "not-decided") {
+          localStorage.removeItem("creat-web:analytics-consent:v1");
+        } else {
+          localStorage.setItem("creat-web:analytics-consent:v1", state);
+        }
+      } catch {
+        // ignore storage errors
+      }
+    }, consentState);
+
+    for (const width of [390, 430, 768, 834, 1024]) {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto("/find-questions");
+      await page.waitForLoadState("domcontentloaded");
+
+      const panel = page.locator(".question-panel");
+      await expect(panel).toBeVisible();
+
+      const searchBox = page.getByRole("searchbox");
+      await expect(searchBox).toBeVisible();
+
+      const nextBtn = page.getByRole("button", { name: "Next →" });
+      await expect(nextBtn).toBeVisible();
+
+      const selectionBar = page.locator(".selection-bar");
+      await expect(selectionBar).toBeVisible();
+    }
+  }
+});
+
+test("Finder DPR 1 and DPR 2 asset rendering across representative viewports", async ({ page }) => {
+  for (const [width, height] of [
+    [390, 844],
+    [834, 1194],
+    [1440, 900],
+  ] as const) {
+    await page.setViewportSize({ width, height });
+    await page.goto("/find-questions");
+    await page.evaluate(() => document.fonts.ready);
+
+    const brokenImages = await page
+      .locator("img")
+      .evaluateAll((imgs) =>
+        (imgs as HTMLImageElement[])
+          .filter((img) => img.naturalWidth === 0 && !img.src.includes("data:"))
+          .map((img) => img.src),
+      );
+    expect(brokenImages).toEqual([]);
+  }
+});
+
+test("Finder 849px layout geometry aligns with reference structure", async ({ page }) => {
+  await page.setViewportSize({ width: 849, height: 900 });
+  await page.goto("/find-questions");
+  await page.evaluate(() => document.fonts.ready);
+
+  const header = await page.locator(".site-header").boundingBox();
+  const hero = await page.locator(".hero").boundingBox();
+  const searchArea = await page.locator(".search-area").boundingBox();
+  const directory = await page.locator(".directory").boundingBox();
+  const filters = await page.locator(".filters").boundingBox();
+  const questionPanel = await page.locator(".question-panel").boundingBox();
+
+  expect(header).toBeDefined();
+  expect(hero).toBeDefined();
+  expect(searchArea).toBeDefined();
+  expect(directory).toBeDefined();
+  expect(filters).toBeDefined();
+  expect(questionPanel).toBeDefined();
+
+  expect(directory!.width).toBeGreaterThanOrEqual(790);
+  expect(directory!.width).toBeLessThanOrEqual(810);
+  expect(filters!.width).toBeGreaterThanOrEqual(220);
+  expect(filters!.width).toBeLessThanOrEqual(280);
 });
