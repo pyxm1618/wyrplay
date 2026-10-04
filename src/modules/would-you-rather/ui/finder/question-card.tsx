@@ -113,7 +113,12 @@ export function FinderQuestionCard({
       >
         <FinderIcon name="bookmark" size={16} />
       </button>
-      <button className="select-button black" aria-pressed={selected} onClick={onSelect}>
+      <button
+        className="select-button black"
+        aria-pressed={selected}
+        aria-label={`${selected ? "Unselect" : "Select"} question ${number}`}
+        onClick={onSelect}
+      >
         {selected ? "Selected" : "Select"}
         <FinderIcon name="arrow" size={15} />
       </button>

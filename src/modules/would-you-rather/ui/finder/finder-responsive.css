@@ -291,6 +291,38 @@
   .finder-page .filters {
     width: 100%;
     padding: 18px;
+    transition: padding 0.15s ease;
+  }
+  .finder-page .filters.is-collapsed {
+    padding: 12px 16px;
+    border-radius: 18px;
+    margin-bottom: 0;
+  }
+  .finder-page .filters.is-collapsed .filter-heading {
+    margin-bottom: 0;
+  }
+  .finder-page .filters.is-collapsed .filter-body {
+    display: none;
+  }
+  .finder-page .filters.is-expanded .filter-body {
+    display: block;
+    margin-top: 14px;
+  }
+  .finder-page .filter-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid #d9d8d6;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 13px;
+    color: #080e13;
+    cursor: pointer;
+  }
+  .finder-page .filter-toggle:hover {
+    background: #f8f6f0;
   }
   .finder-page .filter-heading {
     margin-bottom: 14px;

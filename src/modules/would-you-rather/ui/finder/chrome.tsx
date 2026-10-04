@@ -22,7 +22,6 @@ export function FinderHeader({
         </Link>
         <a href="#category-links">Categories</a>
         <Link href="/leaderboards">Leaderboard</Link>
-        <Link href="/create">Create</Link>
       </nav>
       <button className="nav-search icon-button" aria-label="Focus search" onClick={onSearch}>
         <FinderIcon name="search" />
@@ -51,7 +50,6 @@ export function FinderHeader({
           <a href="#questions">Browse questions</a>
           <a href="#category-links">Categories</a>
           <Link href="/leaderboards">Leaderboard</Link>
-          <Link href="/create">Create</Link>
           <a href="#finder-about">About</a>
           {authEnabled ? <Link href="/sign-in">Log in</Link> : null}
         </nav>

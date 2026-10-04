@@ -20,16 +20,61 @@ import "./finder.css";
 import "./finder-responsive.css";
 
 const savedKey = "wyrplay:saved-questions:v1";
+
 const popularSearches = [
   ["for kids", "kids"],
   ["funny", "funny"],
-  ["relationships", "friends"],
+  ["friends", "friends"],
   ["deep", "deep"],
   ["school", "classroom"],
   ["party", "party"],
   ["would you rather food", "food"],
   ["travel", "travel"],
 ] as const;
+
+const VALID_AGES = new Set(["kids", "teens", "adults", "7-9", "10-12"]);
+const VALID_RELATIONSHIPS = new Set(["friends", "couples", "family", "coworkers"]);
+const VALID_OCCASIONS = new Set(["classroom", "party", "road-trip", "dinner", "date-night"]);
+const VALID_TONES = new Set(["funny", "weird", "deep"]);
+const VALID_DIFFICULTIES = new Set(["easy", "hard"]);
+
+function parseUrlParams(search: string): {
+  keyword: string;
+  criteria: FinderCriteria;
+  page: number;
+} {
+  const params = new URLSearchParams(search);
+  const q = params.get("q")?.trim() ?? "";
+  const age = params.get("age");
+  const relationship = params.get("relationship");
+  const occasion = params.get("occasion");
+  const tone = params.get("tone");
+  const difficulty = params.get("difficulty");
+  const partial: Record<string, unknown> = {};
+  if (age && VALID_AGES.has(age)) partial.age = age;
+  if (relationship && VALID_RELATIONSHIPS.has(relationship)) partial.relationship = relationship;
+  if (occasion && VALID_OCCASIONS.has(occasion)) partial.occasion = occasion;
+  if (tone && VALID_TONES.has(tone)) partial.tone = tone;
+  if (difficulty && VALID_DIFFICULTIES.has(difficulty)) partial.difficulty = difficulty;
+  const criteria = partial as FinderCriteria;
+  const rawPage = Number.parseInt(params.get("page") ?? "1", 10);
+  const page = Number.isInteger(rawPage) && rawPage > 0 ? rawPage : 1;
+  return { keyword: q, criteria, page };
+}
+
+function buildFinderUrl(keyword: string, criteria: FinderCriteria, page: number): string {
+  const params = new URLSearchParams();
+  if (keyword.trim()) params.set("q", keyword.trim());
+  if (criteria.age) params.set("age", criteria.age);
+  if (criteria.relationship) params.set("relationship", criteria.relationship);
+  if (criteria.occasion) params.set("occasion", criteria.occasion);
+  if (criteria.tone) params.set("tone", criteria.tone);
+  if (criteria.difficulty) params.set("difficulty", criteria.difficulty);
+  if (page > 1) params.set("page", String(page));
+  const queryString = params.toString();
+  return queryString ? `/find-questions?${queryString}` : "/find-questions";
+}
+
 export function FinderExperience({
   questions,
   authEnabled = false,
@@ -46,14 +91,41 @@ export function FinderExperience({
   const [pageNumber, setPageNumber] = useState(1);
   const [selected, setSelected] = useState<string[]>([]);
   const [saved, setSaved] = useState<string[]>([]);
+  const [reviewSelectedOnly, setReviewSelectedOnly] = useState(false);
   const [notice, setNotice] = useState("");
   const router = useRouter();
   const input = useRef<HTMLInputElement>(null);
+
+  function syncUrl(nextKeyword: string, nextCriteria: FinderCriteria, nextPage: number) {
+    if (typeof window !== "undefined") {
+      const nextUrl = buildFinderUrl(nextKeyword, nextCriteria, nextPage);
+      window.history.pushState(null, "", nextUrl);
+    }
+  }
+
   useEffect(() => {
+    // 1. Saved questions from localStorage (isolated)
     try {
-      const ids = parseSavedQuestionIds(localStorage.getItem(savedKey) ?? "[]", questions);
-      startTransition(() => setSaved(ids));
-      if (new URLSearchParams(location.search).has("restore")) {
+      const rawSaved = localStorage.getItem(savedKey);
+      if (rawSaved !== null) {
+        const ids = parseSavedQuestionIds(rawSaved, questions);
+        startTransition(() => setSaved(ids));
+      }
+    } catch (error: unknown) {
+      startTransition(() =>
+        setNotice(
+          error instanceof SyntaxError ||
+            (error instanceof Error && error.message.includes("Saved questions"))
+            ? "Saved questions could not be read. You can save questions again."
+            : "Saved questions are unavailable in this browser.",
+        ),
+      );
+    }
+
+    // 2. Finder session restore from sessionStorage (isolated)
+    try {
+      const isRestore = new URLSearchParams(window.location.search).has("restore");
+      if (isRestore) {
         const stored = sessionStorage.getItem(finderSessionKey);
         if (stored) {
           const restored = parseFinderSession(stored);
@@ -65,18 +137,41 @@ export function FinderExperience({
             setPageNumber(restored.pageNumber);
             setSelected(restored.selected.filter((id) => approved.some((q) => q.id === id)));
           });
+          return;
         }
       }
-    } catch (error: unknown) {
-      startTransition(() =>
-        setNotice(
-          error instanceof SyntaxError
-            ? "Saved questions could not be read. You can save questions again."
-            : "Saved questions are unavailable in this browser.",
-        ),
-      );
+    } catch {
+      startTransition(() => setNotice("Previous search and filter session could not be restored."));
     }
+
+    // 3. Normal URL query state restoration
+    const urlState = parseUrlParams(window.location.search);
+    if (urlState.keyword || Object.keys(urlState.criteria).length > 0 || urlState.page > 1) {
+      startTransition(() => {
+        setQuery(urlState.keyword);
+        setKeyword(urlState.keyword);
+        setDraft(urlState.criteria);
+        setCriteria(urlState.criteria);
+        setPageNumber(urlState.page);
+      });
+    }
+
+    // 4. Popstate listener for browser back / forward
+    const handlePopState = () => {
+      const popState = parseUrlParams(window.location.search);
+      startTransition(() => {
+        setQuery(popState.keyword);
+        setKeyword(popState.keyword);
+        setDraft(popState.criteria);
+        setCriteria(popState.criteria);
+        setPageNumber(popState.page);
+        setReviewSelectedOnly(false);
+      });
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
   }, [questions, approved]);
+
   const filtered = useMemo(
     () =>
       filterFinderQuestions(questions, {
@@ -85,21 +180,38 @@ export function FinderExperience({
       }),
     [questions, criteria, keyword],
   );
-  const currentPage = questionPage(filtered, pageNumber);
+
+  const displayedPool = useMemo(() => {
+    if (reviewSelectedOnly) {
+      return approved.filter((q) => selected.includes(q.id));
+    }
+    return filtered;
+  }, [reviewSelectedOnly, approved, selected, filtered]);
+
+  const currentPage = questionPage(displayedPool, pageNumber);
   const pool = selected.length ? approved.filter((q) => selected.includes(q.id)) : filtered;
   const activeFilters = Boolean(keyword || Object.keys(criteria).length);
+
   function clear() {
     setQuery("");
     setKeyword("");
     setDraft({});
     setCriteria({});
     setPageNumber(1);
+    setReviewSelectedOnly(false);
+    syncUrl("", {}, 1);
   }
+
   function toggleSelected(id: string) {
-    setSelected((ids) =>
-      ids.includes(id) ? ids.filter((savedId) => savedId !== id) : [...ids, id],
-    );
+    setSelected((ids) => {
+      const next = ids.includes(id) ? ids.filter((savedId) => savedId !== id) : [...ids, id];
+      if (next.length === 0 && reviewSelectedOnly) {
+        setReviewSelectedOnly(false);
+      }
+      return next;
+    });
   }
+
   function toggleSaved(id: string) {
     const next = saved.includes(id) ? saved.filter((savedId) => savedId !== id) : [...saved, id];
     try {
@@ -111,6 +223,7 @@ export function FinderExperience({
       );
     }
   }
+
   function openPlayer(present = false, print = false) {
     if (!pool.length) {
       setNotice("No questions match. Clear your filters before playing.");
@@ -128,25 +241,46 @@ export function FinderExperience({
       );
     }
   }
+
   function popularSearch(value: (typeof popularSearches)[number][1]) {
-    clear();
+    setReviewSelectedOnly(false);
+    let nextCriteria: FinderCriteria = {};
+    let nextKeyword = "";
     if (value === "kids") {
-      setCriteria({ age: "kids" });
-      setDraft({ age: "kids" });
+      nextCriteria = { age: "kids" };
+      setCriteria(nextCriteria);
+      setDraft(nextCriteria);
+      setQuery("");
+      setKeyword("");
     } else if (value === "funny" || value === "deep") {
-      setCriteria({ tone: value });
-      setDraft({ tone: value });
+      nextCriteria = { tone: value };
+      setCriteria(nextCriteria);
+      setDraft(nextCriteria);
+      setQuery("");
+      setKeyword("");
     } else if (value === "friends") {
-      setCriteria({ relationship: "friends" });
-      setDraft({ relationship: "friends" });
+      nextCriteria = { relationship: "friends" };
+      setCriteria(nextCriteria);
+      setDraft(nextCriteria);
+      setQuery("");
+      setKeyword("");
     } else if (value === "classroom" || value === "party") {
-      setCriteria({ occasion: value });
-      setDraft({ occasion: value });
+      nextCriteria = { occasion: value };
+      setCriteria(nextCriteria);
+      setDraft(nextCriteria);
+      setQuery("");
+      setKeyword("");
     } else {
+      nextKeyword = value;
+      setCriteria({});
+      setDraft({});
       setQuery(value);
       setKeyword(value);
     }
+    setPageNumber(1);
+    syncUrl(nextKeyword, nextCriteria, 1);
   }
+
   const visiblePages = Array.from({ length: currentPage.totalPages }, (_, i) => i + 1).filter(
     (p) =>
       p === 1 ||
@@ -154,10 +288,13 @@ export function FinderExperience({
       Math.abs(p - currentPage.page) <= 1 ||
       (currentPage.page < 4 && p <= 5),
   );
+
   function changePage(page: number) {
     setPageNumber(page);
+    syncUrl(keyword, criteria, page);
     document.getElementById("questions")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
+
   return (
     <div className="finder-page" data-theme="light">
       <FinderDecoration />
@@ -172,8 +309,11 @@ export function FinderExperience({
           className="search-form"
           onSubmit={(event) => {
             event.preventDefault();
-            setKeyword(query.trim());
+            const trimmed = query.trim();
+            setKeyword(trimmed);
             setPageNumber(1);
+            setReviewSelectedOnly(false);
+            syncUrl(trimmed, criteria, 1);
           }}
         >
           <FinderIcon name="search" />
@@ -211,6 +351,8 @@ export function FinderExperience({
           onApply={() => {
             setCriteria(draft);
             setPageNumber(1);
+            setReviewSelectedOnly(false);
+            syncUrl(keyword, draft, 1);
           }}
           onClear={clear}
         />
@@ -218,20 +360,37 @@ export function FinderExperience({
           <div className="panel-heading">
             <div>
               <h2 id="questions-title">
-                {activeFilters ? "Your Questions" : "Browse Questions"}
+                {reviewSelectedOnly
+                  ? "Selected Questions"
+                  : activeFilters
+                    ? "Your Questions"
+                    : "Browse Questions"}
                 <img className="crown-art" src="/finder/assets/crown.png" alt="" />
               </h2>
               <p aria-live="polite">
-                {activeFilters
-                  ? `${filtered.length} matching questions`
-                  : `${approved.length} curated questions — browse before choosing filters.`}
+                {reviewSelectedOnly
+                  ? `${selected.length} questions selected across pages — manage or unselect below.`
+                  : activeFilters
+                    ? `${filtered.length} matching questions`
+                    : `${approved.length} curated questions — browse before choosing filters.`}
               </p>
             </div>
             <div className="view-actions">
-              <a className="black" href="#questions">
-                <FinderIcon name="list" size={15} />
-                Browse list
-              </a>
+              {reviewSelectedOnly ? (
+                <button
+                  type="button"
+                  className="black"
+                  onClick={() => setReviewSelectedOnly(false)}
+                >
+                  <FinderIcon name="list" size={15} />
+                  Exit review
+                </button>
+              ) : (
+                <a className="black" href="#questions">
+                  <FinderIcon name="list" size={15} />
+                  Browse list
+                </a>
+              )}
               <button onClick={() => openPlayer()} disabled={!pool.length}>
                 <FinderIcon name="play" size={15} />
                 Play one-by-one
@@ -252,10 +411,14 @@ export function FinderExperience({
                 revision={0}
               />
             ))}
-            {!filtered.length && (
+            {!displayedPool.length && (
               <div className="empty-state">
-                <h3>No questions found</h3>
-                <p>Try another keyword or clear your filters.</p>
+                <h3>{reviewSelectedOnly ? "No questions selected" : "No questions found"}</h3>
+                <p>
+                  {reviewSelectedOnly
+                    ? "You haven't selected any questions yet."
+                    : "Try another keyword or clear your filters."}
+                </p>
                 <button onClick={clear}>Clear search & filters</button>
               </div>
             )}
@@ -292,6 +455,31 @@ export function FinderExperience({
           <p>Selection is optional; the filtered pool itself can be used.</p>
         </div>
         <div className="selection-actions">
+          {selected.length > 0 && (
+            <>
+              <button
+                type="button"
+                className="review-selected-btn"
+                onClick={() => {
+                  setReviewSelectedOnly((prev) => !prev);
+                  setPageNumber(1);
+                }}
+              >
+                <FinderIcon name={reviewSelectedOnly ? "list" : "bookmark"} size={15} />
+                {reviewSelectedOnly ? "Back to browsing" : "Review selected"}
+              </button>
+              <button
+                type="button"
+                className="clear-selected-btn"
+                onClick={() => {
+                  setSelected([]);
+                  setReviewSelectedOnly(false);
+                }}
+              >
+                Clear selected
+              </button>
+            </>
+          )}
           <button className="black" onClick={() => openPlayer()} disabled={!pool.length}>
             Play these questions <FinderIcon name="play" size={15} />
           </button>
@@ -299,7 +487,7 @@ export function FinderExperience({
             <FinderIcon name="screen" />
             Present
           </button>
-          <button onClick={() => openPlayer(false, true)}>
+          <button onClick={() => openPlayer(false, true)} disabled={!pool.length}>
             <FinderIcon name="print" />
             Print / Customize
           </button>

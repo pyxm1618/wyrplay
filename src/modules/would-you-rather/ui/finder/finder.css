@@ -247,11 +247,11 @@
   padding: 7px 6px;
 }
 .finder-page .site-header nav .active {
-  color: #ff6522;
+  color: #872b00;
   background: #ffe7ad;
   border-radius: 20px;
   padding: 6px 12px;
-  font-weight: 400;
+  font-weight: 600;
 }
 .finder-page .nav-search {
   margin: 0 8px;
@@ -474,6 +474,19 @@
   font-size: 32px;
   letter-spacing: -0.6px;
   font-family: FinderHand, Arial, sans-serif;
+}
+.finder-page .filter-heading-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.finder-page .filter-count {
+  font-size: 20px;
+  color: #ad4811;
+  font-weight: 700;
+}
+.finder-page .filter-toggle {
+  display: none;
 }
 .finder-page .clear-link {
   font-size: 13px;
@@ -805,6 +818,7 @@
   min-width: 25px;
   height: 28px;
   font-weight: 600;
+  color: #17212b;
 }
 .finder-page .pagination button:first-child,
 .finder-page .pagination button:last-child {
@@ -818,7 +832,7 @@
   color: white;
   border-color: #31383d;
 }
-.finder-page .pagination span {
+.finder-page .pagination span[aria-hidden="true"] {
   color: #b0a79a;
 }
 .finder-page .pagination-entry {
@@ -874,6 +888,21 @@
   background: #0a1013;
   border-color: #34383b;
   padding: 0 16px;
+}
+.finder-page .selection-actions .clear-selected-btn {
+  color: #ad4811;
+  border-color: #e2cbbd;
+}
+.finder-page .selection-actions .clear-selected-btn:hover {
+  background: #fdf5f0;
+}
+.finder-page .selection-actions .review-selected-btn {
+  background: #f0f7ff;
+  border-color: #bad3ed;
+  color: #0b4e8c;
+}
+.finder-page .selection-actions .review-selected-btn:hover {
+  background: #e2eeff;
 }
 /* Categories and about */
 .finder-page .category-banner {
@@ -978,4 +1007,11 @@
   top: 8px;
   color: white;
   font-size: 25px;
+}
+
+/* Accessibility contrast compliance for ambient consent panel */
+aside[aria-label="Analytics consent"] button.bg-accent,
+aside[aria-label="Analytics settings panel"] button.bg-accent {
+  background-color: #9c4307;
+  color: #ffffff;
 }
