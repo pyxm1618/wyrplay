@@ -198,7 +198,7 @@ test("finder real network sanity uses one live vote-stat request per visible que
     const url = new URL(response.url());
     if (url.pathname !== "/api/wyr/vote" && url.pathname !== "/api/wyr/kids-vote") return;
     const questionId = url.searchParams.get("questionId");
-    if (questionId) responses.push({ endpoint: url.pathname, questionId, status: response.status() });
+    if (questionId)\n      responses.push({ endpoint: url.pathname, questionId, status: response.status() });
   });
 
   await page.goto("/find-questions", { waitUntil: "networkidle" });
@@ -240,7 +240,7 @@ test("finder card stats preserve the Kids aggregate-only privacy boundary", asyn
     const url = new URL(response.url());
     if (url.pathname !== "/api/wyr/vote" && url.pathname !== "/api/wyr/kids-vote") return;
     const questionId = url.searchParams.get("questionId");
-    if (questionId) observed.push({ endpoint: url.pathname, questionId, status: response.status() });
+    if (questionId)\n      observed.push({ endpoint: url.pathname, questionId, status: response.status() });
   });
 
   await page.goto("/find-questions", { waitUntil: "networkidle" });
@@ -248,7 +248,10 @@ test("finder card stats preserve the Kids aggregate-only privacy boundary", asyn
   expect(
     observed.some(
       ({ endpoint, questionId, status }) =>
-        endpoint === "/api/wyr/kids-vote" && questionId === "wyr-000001" && status >= 200 && status < 300,
+        endpoint === "/api/wyr/kids-vote" &&
+        questionId === "wyr-000001" &&
+        status >= 200 &&
+        status < 300,
     ),
   ).toBe(true);
   expect(
@@ -264,7 +267,10 @@ test("finder card stats preserve the Kids aggregate-only privacy boundary", asyn
   expect(
     observed.some(
       ({ endpoint, questionId, status }) =>
-        endpoint === "/api/wyr/vote" && questionId === "wyr-000059" && status >= 200 && status < 300,
+        endpoint === "/api/wyr/vote" &&
+        questionId === "wyr-000059" &&
+        status >= 200 &&
+        status < 300,
     ),
   ).toBe(true);
   expect(
