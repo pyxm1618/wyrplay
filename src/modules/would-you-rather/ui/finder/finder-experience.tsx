@@ -124,6 +124,7 @@ export function FinderExperience({
     }
 
     // 2. Finder session restore from sessionStorage (isolated)
+    let restoredFromSession = false;
     try {
       const isRestore = new URLSearchParams(window.location.search).has("restore");
       if (isRestore) {
@@ -138,7 +139,7 @@ export function FinderExperience({
             setPageNumber(restored.pageNumber);
             setSelected(restored.selected.filter((id) => approved.some((q) => q.id === id)));
           });
-          return;
+          restoredFromSession = true;
         }
       }
     } catch {
@@ -146,15 +147,17 @@ export function FinderExperience({
     }
 
     // 3. Normal URL query state restoration
-    const urlState = parseUrlParams(window.location.search);
-    if (urlState.keyword || Object.keys(urlState.criteria).length > 0 || urlState.page > 1) {
-      startTransition(() => {
-        setQuery(urlState.keyword);
-        setKeyword(urlState.keyword);
-        setDraft(urlState.criteria);
-        setCriteria(urlState.criteria);
-        setPageNumber(urlState.page);
-      });
+    if (!restoredFromSession) {
+      const urlState = parseUrlParams(window.location.search);
+      if (urlState.keyword || Object.keys(urlState.criteria).length > 0 || urlState.page > 1) {
+        startTransition(() => {
+          setQuery(urlState.keyword);
+          setKeyword(urlState.keyword);
+          setDraft(urlState.criteria);
+          setCriteria(urlState.criteria);
+          setPageNumber(urlState.page);
+        });
+      }
     }
 
     // 4. Popstate listener for browser back / forward

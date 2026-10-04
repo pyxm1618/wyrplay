@@ -25,12 +25,8 @@ declare global {
 }
 
 function readConsent(): Consent {
-  try {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    return stored === "granted" || stored === "denied" ? stored : "unknown";
-  } catch {
-    return "unknown";
-  }
+  const stored = window.localStorage.getItem(STORAGE_KEY);
+  return stored === "granted" || stored === "denied" ? stored : "unknown";
 }
 
 function serverConsent(): Consent {

@@ -192,6 +192,96 @@ test("Review selected restores the prior browse page, keyword, filter and URL st
   });
 });
 
+test("finder restore keeps back and forward synchronized after new history states", async ({
+  page,
+}) => {
+  await page.goto("/find-questions?q=have&age=kids&page=7", { waitUntil: "networkidle" });
+  await expect(page.getByRole("searchbox")).toHaveValue("have");
+  await expect(page.getByRole("button", { name: "Kids", exact: true })).toHaveAttribute(
+    "aria-pressed",
+    "true",
+  );
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("7");
+
+  const beforeRestoreIds = await page.locator(".question-card").evaluateAll((cards) =>
+    cards.map((card) => card.getAttribute("data-question-id")),
+  );
+  await page.locator(".select-button").first().click();
+  await page.getByRole("button", { name: "Teens", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Teens", exact: true })).toHaveAttribute(
+    "aria-pressed",
+    "true",
+  );
+
+  await page.getByRole("button", { name: "Play these questions" }).click();
+  await expect(page).toHaveURL(/\/play\?/);
+  await page.getByRole("link", { name: "Back to questions" }).click();
+  await expect(page).toHaveURL(/\/find-questions\?restore=1$/);
+
+  await expect(page.getByRole("searchbox")).toHaveValue("have");
+  await expect(page.getByRole("button", { name: "Teens", exact: true })).toHaveAttribute(
+    "aria-pressed",
+    "true",
+  );
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("7");
+  await expect(page.locator(".selection-bar h3")).toHaveText("1 selected questions");
+  await expect(
+    page.locator(".question-card").evaluateAll((cards) =>
+      cards.map((card) => card.getAttribute("data-question-id")),
+    ),
+  ).resolves.toEqual(beforeRestoreIds);
+
+  await page.getByRole("button", { name: "Kids", exact: true }).click();
+  await page.getByRole("button", { name: "Apply Filters" }).click();
+  await page.getByRole("button", { name: "Page 8", exact: true }).click();
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("8");
+  const backStateIds = await page.locator(".question-card").evaluateAll((cards) =>
+    cards.map((card) => card.getAttribute("data-question-id")),
+  );
+
+  await page.getByRole("searchbox").fill("squirrel tell stories");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await expect(page.locator(".question-card")).toHaveCount(1);
+  const forwardStateIds = await page.locator(".question-card").evaluateAll((cards) =>
+    cards.map((card) => card.getAttribute("data-question-id")),
+  );
+
+  await page.goBack();
+  const backUrl = new URL(page.url());
+  expect(backUrl.searchParams.get("q")).toBe("have");
+  expect(backUrl.searchParams.get("age")).toBe("kids");
+  expect(backUrl.searchParams.get("page")).toBe("8");
+  await expect(page.getByRole("searchbox")).toHaveValue("have");
+  await expect(page.getByRole("button", { name: "Kids", exact: true })).toHaveAttribute(
+    "aria-pressed",
+    "true",
+  );
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("8");
+  await expect(
+    page.locator(".question-card").evaluateAll((cards) =>
+      cards.map((card) => card.getAttribute("data-question-id")),
+    ),
+  ).resolves.toEqual(backStateIds);
+
+  await page.goForward();
+  const forwardUrl = new URL(page.url());
+  expect(forwardUrl.searchParams.get("q")).toBe("squirrel tell stories");
+  expect(forwardUrl.searchParams.get("age")).toBe("kids");
+  expect(forwardUrl.searchParams.has("page")).toBe(false);
+  await expect(page.getByRole("searchbox")).toHaveValue("squirrel tell stories");
+  await expect(page.getByRole("button", { name: "Kids", exact: true })).toHaveAttribute(
+    "aria-pressed",
+    "true",
+  );
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("1");
+  await expect(page.locator(".question-card")).toHaveCount(1);
+  await expect(
+    page.locator(".question-card").evaluateAll((cards) =>
+      cards.map((card) => card.getAttribute("data-question-id")),
+    ),
+  ).resolves.toEqual(forwardStateIds);
+});
+
 test("finder real network sanity uses one live vote-stat request per visible question", async ({
   page,
 }) => {
