@@ -137,7 +137,22 @@ test("dense billing and credit records remain accurate and readable at real view
     for (const width of [320, 360, 375, 390, 768, 1024, 1120, 1200, 1440, 1920]) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto("/account/billing");
-      await expect(page.getByText("Current period starts 2026-10-01T00:00:00.000Z")).toHaveCount(3);
+      await expect(page.getByText("Current period starts Oct 1, 2026, 12:00 AM UTC")).toHaveCount(
+        3,
+      );
+      await expect(page.getByText("Monthly subscription", { exact: true })).toHaveCount(3);
+      await expect(page.getByText(product.key, { exact: false })).toHaveCount(0);
+      expect(await page.locator(".account-detail-content").innerText()).not.toMatch(
+        /\d{4}-\d{2}-\d{2}T/,
+      );
+      if (width <= 390) {
+        for (const field of await page.locator("input:visible").all()) {
+          await field.focus();
+          expect(
+            await field.evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
+          ).toBeGreaterThanOrEqual(16);
+        }
+      }
       await expect(page.getByText("Grace ends", { exact: false })).toContainText(
         "browser-test-policy",
       );
@@ -149,7 +164,7 @@ test("dense billing and credit records remain accurate and readable at real view
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1),
       ).toBe(true);
-      if ([375, 768, 1024, 1200, 1440].includes(width))
+      if ([375, 390, 768, 1024, 1200, 1440].includes(width))
         await page.screenshot({
           path: testInfo.outputPath(`billing-records-${width}.jpg`),
           fullPage: true,
@@ -165,7 +180,7 @@ test("dense billing and credit records remain accurate and readable at real view
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1),
       ).toBe(true);
-      if ([375, 768, 1024, 1200, 1440].includes(width))
+      if ([375, 390, 768, 1024, 1200, 1440].includes(width))
         await page.screenshot({
           path: testInfo.outputPath(`credits-records-${width}.jpg`),
           fullPage: true,

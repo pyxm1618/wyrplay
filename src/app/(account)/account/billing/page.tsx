@@ -3,6 +3,10 @@ import { headers } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import {
+  accountProductName,
+  formatAccountDateTime,
+} from "@/components/account/account-record-display";
 import { accountProfile } from "@/components/account/account-profile";
 import { featuresConfig } from "@/config/features.config";
 import { AccountShell } from "@/components/account/account-shell";
@@ -33,6 +37,7 @@ export default async function BillingPage() {
       minor: orders.expectedMinor,
       createdAt: orders.createdAt,
       productKey: commerceProducts.key,
+      productModel: commerceProducts.model,
       productVersion: commerceProducts.version,
       billingInterval: commerceProducts.billingInterval,
     })
@@ -47,7 +52,9 @@ export default async function BillingPage() {
         .select({
           subscription: subscriptions,
           productKey: commerceProducts.key,
+          productModel: commerceProducts.model,
           billingInterval: commerceProducts.billingInterval,
+          productVersion: commerceProducts.version,
         })
         .from(subscriptions)
         .innerJoin(orders, eq(orders.id, subscriptions.orderId))
@@ -92,39 +99,51 @@ export default async function BillingPage() {
             <p className={`mt-3 ${bodyText}`}>No subscriptions are recorded for this account.</p>
           ) : (
             <ul className={`mt-4 ${panel} ${listDivided} px-5`}>
-              {subscriptionRows.map(({ subscription, productKey, billingInterval }) => (
-                <li key={subscription.id} className="py-4">
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <span className="text-sm font-medium text-foreground">{productKey}</span>
-                    <span className="rounded-md bg-surface-muted px-2 py-0.5 text-xs font-medium text-muted">
-                      {subscription.status}
-                    </span>
-                    {billingInterval ? <span className={metaText}>{billingInterval}ly</span> : null}
-                  </div>
-                  {subscription.currentPeriodStart ? (
-                    <p className={`mt-1 ${metaText}`}>
-                      Current period starts {subscription.currentPeriodStart.toISOString()}
-                    </p>
-                  ) : null}
-                  {subscription.currentPeriodEnd ? (
-                    <p className={`mt-1 ${metaText}`}>
-                      Current period ends {subscription.currentPeriodEnd.toISOString()}
-                    </p>
-                  ) : null}
-                  {subscription.pastDueGraceEndsAt ? (
-                    <p className={`mt-1 ${metaText}`}>
-                      Grace ends {subscription.pastDueGraceEndsAt.toISOString()} (
-                      {subscription.gracePolicyVersion})
-                    </p>
-                  ) : null}
-                  {subscription.status === "active" || subscription.status === "past_due" ? (
-                    <SubscriptionAction subscriptionId={subscription.id} action="cancel" />
-                  ) : null}
-                  {subscription.status === "canceling" ? (
-                    <SubscriptionAction subscriptionId={subscription.id} action="resume" />
-                  ) : null}
-                </li>
-              ))}
+              {subscriptionRows.map(
+                ({ subscription, productKey, productVersion, productModel, billingInterval }) => (
+                  <li key={subscription.id} className="py-4">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                      <span className="text-sm font-medium text-foreground">
+                        {accountProductName({
+                          key: productKey,
+                          version: productVersion,
+                          model: productModel,
+                          billingInterval,
+                        })}
+                      </span>
+                      <span className="rounded-md bg-surface-muted px-2 py-0.5 text-xs font-medium text-muted">
+                        {subscription.status}
+                      </span>
+                      {billingInterval ? (
+                        <span className={metaText}>{billingInterval}ly</span>
+                      ) : null}
+                    </div>
+                    {subscription.currentPeriodStart ? (
+                      <p className={`mt-1 ${metaText}`}>
+                        Current period starts{" "}
+                        {formatAccountDateTime(subscription.currentPeriodStart)}
+                      </p>
+                    ) : null}
+                    {subscription.currentPeriodEnd ? (
+                      <p className={`mt-1 ${metaText}`}>
+                        Current period ends {formatAccountDateTime(subscription.currentPeriodEnd)}
+                      </p>
+                    ) : null}
+                    {subscription.pastDueGraceEndsAt ? (
+                      <p className={`mt-1 ${metaText}`}>
+                        Grace ends {formatAccountDateTime(subscription.pastDueGraceEndsAt)} (
+                        {subscription.gracePolicyVersion})
+                      </p>
+                    ) : null}
+                    {subscription.status === "active" || subscription.status === "past_due" ? (
+                      <SubscriptionAction subscriptionId={subscription.id} action="cancel" />
+                    ) : null}
+                    {subscription.status === "canceling" ? (
+                      <SubscriptionAction subscriptionId={subscription.id} action="resume" />
+                    ) : null}
+                  </li>
+                ),
+              )}
             </ul>
           )}
         </section>
@@ -200,7 +219,12 @@ export default async function BillingPage() {
                 className="flex flex-wrap items-baseline justify-between gap-3 py-3"
               >
                 <span className="text-sm font-medium text-foreground">
-                  {order.productKey} v{order.productVersion}
+                  {accountProductName({
+                    key: order.productKey,
+                    version: order.productVersion,
+                    model: order.productModel,
+                    billingInterval: order.billingInterval,
+                  })}
                   {order.billingInterval ? ` · ${order.billingInterval}ly` : ""}
                 </span>
                 <span className={metaText}>
@@ -209,7 +233,7 @@ export default async function BillingPage() {
                     currency: order.currency as SupportedCurrency,
                     minor: order.minor,
                   })}{" "}
-                  {order.currency} · {order.createdAt.toISOString()}
+                  {order.currency} · {formatAccountDateTime(order.createdAt)}
                 </span>
               </li>
             ))}

@@ -188,7 +188,18 @@
 .account-overview .account-page .library-pagination {
   flex-wrap: wrap;
 }
+/* Preserve warm category colors while keeping small labels readable. */
+.account-overview .account-tags span,
+.account-overview .account-tag {
+  color: #985000;
+}
+.account-overview .account-tags span + span {
+  color: #b51c3c;
+}
 @media (max-width: 700px) {
+  .account-overview .account-page :is(input, textarea, select) {
+    font-size: 16px;
+  }
   .account-overview .account-header {
     min-height: 110px;
   }

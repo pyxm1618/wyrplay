@@ -30,7 +30,7 @@
 
 ## 4. 数据库变化
 
-新增正式迁移：[`0014_account_saved_questions.sql`](../../drizzle/0014_account_saved_questions.sql)，配套 Drizzle snapshot 与 journal。
+新增正式迁移：[`0015_account_saved_questions.sql`](../../drizzle/0015_account_saved_questions.sql)，配套 Drizzle snapshot 与 journal。
 Schema：[`saved-question-schema.ts`](../../src/platform/database/saved-question-schema.ts)，表 `saved_questions`：`user_id`、`question_id`、`saved_at`。
 
 组合主键 `(user_id, question_id)`；外键到 Better Auth `user.id`，`ON DELETE CASCADE`。只新增表，不迁走或覆盖旧业务记录。最终验收使用本工作树新建、仅绑定 localhost:55440 的独立 PostgreSQL；未使用其他任务的数据库。本地独立测试数据库已应用迁移，空库升级与既有主迁移链升级检查通过；实际 PostgreSQL PK/FK 对象也已核对。尚未应用到生产。

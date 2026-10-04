@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- Authenticated avatar and existing local artwork. */
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AccountBrand } from "./account-brand";
 import { AccountIcon } from "./account-icons";
 export type AccountProfile = { name: string; email: string; image: string | null; joined: string };
@@ -15,6 +15,26 @@ export function AccountChrome({
   commerceEnabled: boolean;
   showProfile?: boolean;
 }) {
+  const menu = useRef<HTMLDetailsElement>(null);
+  useEffect(() => {
+    function closeOutside(event: PointerEvent) {
+      if (event.target instanceof Node && !menu.current?.contains(event.target) && menu.current) {
+        menu.current.open = false;
+      }
+    }
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape" && menu.current?.open) {
+        menu.current.open = false;
+        menu.current.querySelector("summary")?.focus();
+      }
+    }
+    document.addEventListener("pointerdown", closeOutside);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOutside);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
   const [avatarFailed, setAvatarFailed] = useState(false);
   const displayName = profile.name.trim() || "Your Account";
   const avatar =
@@ -34,7 +54,7 @@ export function AccountChrome({
           <Link href="/find-questions" aria-label="Find questions">
             <AccountIcon name="search" />
           </Link>
-          <details className="account-menu">
+          <details ref={menu} className="account-menu">
             <summary aria-label="Account menu">
               <img
                 src={avatar}
@@ -44,7 +64,12 @@ export function AccountChrome({
               />
               <span>Account ▾</span>
             </summary>
-            <nav aria-label="Account navigation">
+            <nav
+              aria-label="Account navigation"
+              onClick={() => {
+                if (menu.current) menu.current.open = false;
+              }}
+            >
               <Link href="/account">Overview</Link>
               <Link href="/account/settings">Settings</Link>
               <Link href="/account/security">Security &amp; sessions</Link>

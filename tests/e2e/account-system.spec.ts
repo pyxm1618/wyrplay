@@ -63,13 +63,65 @@ test("all account surfaces share light chrome, load at ten viewports and produce
             .locator(".account-overview")
             .evaluate((el) => getComputedStyle(el).backgroundColor),
         ).toBe("rgb(255, 252, 246)");
-        if ([375, 768, 1024, 1200, 1440].includes(width) && !route.includes("?"))
+        if (width <= 390) {
+          for (const field of await page
+            .locator('input:visible:not([type="checkbox"]), textarea:visible, select:visible')
+            .all()) {
+            await field.focus();
+            expect(
+              await field.evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
+              `${route} input font`,
+            ).toBeGreaterThanOrEqual(16);
+          }
+        }
+        if ([375, 390, 768, 1024, 1200, 1440].includes(width) && !route.includes("?"))
           await page.screenshot({
             path: testInfo.outputPath(`${route.replaceAll("/", "-")}-${width}.png`),
             fullPage: true,
           });
       }
     }
+    await page.goto("/account");
+    const contrasts = await page
+      .locator(".account-tag, .account-tags span")
+      .evaluateAll((labels) => {
+        function luminance(color: string) {
+          const channels = color
+            .match(/\d+(?:\.\d+)?/g)!
+            .slice(0, 3)
+            .map((channel) => {
+              const value = Number(channel) / 255;
+              return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+            });
+          return channels[0]! * 0.2126 + channels[1]! * 0.7152 + channels[2]! * 0.0722;
+        }
+        return labels.map((label) => {
+          const style = getComputedStyle(label);
+          const foreground = luminance(style.color);
+          const background = luminance(style.backgroundColor);
+          return (
+            (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05)
+          );
+        });
+      });
+    expect(contrasts.length).toBeGreaterThan(0);
+    for (const contrast of contrasts) expect(contrast).toBeGreaterThanOrEqual(4.5);
+    await testInfo.attach("label-contrast", {
+      body: JSON.stringify(contrasts),
+      contentType: "application/json",
+    });
+    const menu = page.locator("details.account-menu");
+    await page.getByLabel("Account menu", { exact: true }).click();
+    await expect(menu).toHaveAttribute("open", "");
+    await page.keyboard.press("Escape");
+    await expect(menu).not.toHaveAttribute("open");
+    await page.getByLabel("Account menu", { exact: true }).click();
+    await page.locator("h1").click();
+    await expect(menu).not.toHaveAttribute("open");
+    await page.getByLabel("Account menu", { exact: true }).click();
+    await menu.getByRole("link", { name: "Settings", exact: true }).click();
+    await expect(page).toHaveURL(/account\/settings/);
+    await expect(menu).not.toHaveAttribute("open");
     await page.goto("/account/security");
     await expect(page.getByRole("heading", { name: "Active sessions" })).toBeVisible();
     await expect(page.locator('form[action="/api/account/delete"]')).toHaveCount(0);
@@ -184,7 +236,7 @@ test("display name is saved, mutations reject foreign origin and forged checkout
         })
       ).status(),
     ).toBe(400);
-    await page.goto("/checkout/return?order=unknown&status=success");
+    await page.goto("/checkout/return?order=abc&status=success");
     await expect(
       page.getByText("The requested order was not found for this account."),
     ).toBeVisible();

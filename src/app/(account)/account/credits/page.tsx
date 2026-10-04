@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import { formatAccountDateTime } from "@/components/account/account-record-display";
 import { accountProfile } from "@/components/account/account-profile";
 import { featuresConfig } from "@/config/features.config";
 import { AccountShell } from "@/components/account/account-shell";
@@ -97,7 +98,7 @@ export default async function CreditsPage() {
                 {entry.creditType} · {entry.entryType}
               </span>
               <span className={metaText}>
-                {entry.quantity} · {entry.createdAt.toISOString()}
+                {entry.quantity} · {formatAccountDateTime(entry.createdAt)}
               </span>
             </li>
           ))}
