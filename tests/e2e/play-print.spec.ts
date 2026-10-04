@@ -53,7 +53,7 @@ test("selected set survives play, voting, presentation and return", async ({ pag
 test("both print formats produce a PDF with matching pages and paper size", async ({ page }) => {
   await page.goto("/print");
   await expect(page.locator(".preview-paper")).toBeVisible();
-  await expect(page.locator(".print-preview")).toContainText("116 questions");
+  await expect(page.locator(".print-preview")).toContainText("457 questions");
   await page.getByRole("button", { name: "Question Sheet", exact: false }).click();
   await expect(page.locator(".print-preview h2")).toContainText("Question Sheet");
   await page.getByRole("radio", { name: "A4" }).check();

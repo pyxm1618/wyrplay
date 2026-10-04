@@ -12,11 +12,11 @@ import type { AgeGroup } from "@/modules/would-you-rather";
 import { TEST_FIXTURE_QUESTIONS } from "../../../tests/fixtures/test-questions";
 
 describe("Would You Rather Question Data Contract", () => {
-  it("contains exactly 116 valid questions in the formal database", () => {
-    expect(QUESTIONS_DATABASE).toHaveLength(116);
+  it("contains exactly 457 valid questions in the formal database", () => {
+    expect(QUESTIONS_DATABASE).toHaveLength(457);
   });
 
-  it("passes comprehensive schema validation for all 116 formal questions", () => {
+  it("passes comprehensive schema validation for all 457 formal questions", () => {
     const result = validateQuestionDatabase(QUESTIONS_DATABASE);
     expect(result.valid).toBe(true);
     expect(result.errors).toEqual([]);
@@ -44,9 +44,9 @@ describe("Would You Rather Question Data Contract", () => {
     expect(getPlayableQuestionsByCollection("kids", mockUnreviewed)).toHaveLength(0);
   });
 
-  it("provides 116 approved playable dilemmas in the formal production pool", () => {
+  it("provides 457 approved playable dilemmas in the formal production pool", () => {
     const playable = getPlayableQuestions(QUESTIONS_DATABASE);
-    expect(playable).toHaveLength(116);
+    expect(playable).toHaveLength(457);
 
     const homepagePlayable = getHomepageQuestions(50, QUESTIONS_DATABASE);
     expect(homepagePlayable).toHaveLength(50);

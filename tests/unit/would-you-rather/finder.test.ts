@@ -14,7 +14,7 @@ describe("finder integration contracts", () => {
       ...QUESTIONS_DATABASE,
       { ...QUESTIONS_DATABASE[0]!, id: "unreviewed", reviewStatus: "unreviewed" as const },
     ];
-    expect(filterFinderQuestions(bank, {})).toHaveLength(116);
+    expect(filterFinderQuestions(bank, {})).toHaveLength(457);
     const children = filterFinderQuestions(bank, { age: "kids", difficulty: "hard" });
     expect(children.length).toBeGreaterThan(0);
     expect(
@@ -27,17 +27,18 @@ describe("finder integration contracts", () => {
     ).toBe(true);
     expect(filterFinderQuestions(bank, { searchKeyword: "no-match-xyz" })).toEqual([]);
   });
-  it("paginates all 116 identities exactly once and clamps stale pages after filtering", () => {
+  it("paginates all 457 identities exactly once and clamps stale pages after filtering", () => {
+    const totalPages = Math.ceil(QUESTIONS_DATABASE.length / 10);
     const all = Array.from(
-      { length: 12 },
+      { length: totalPages },
       (_, i) => questionPage(QUESTIONS_DATABASE, i + 1).questions,
     ).flat();
     expect(all.map((q) => q.id)).toEqual(QUESTIONS_DATABASE.map((q) => q.id));
-    expect(questionPage(QUESTIONS_DATABASE.slice(0, 2), 12)).toMatchObject({
+    expect(questionPage(QUESTIONS_DATABASE.slice(0, 2), totalPages)).toMatchObject({
       page: 1,
       totalPages: 1,
     });
-    expect(questionPage([], 12)).toMatchObject({ page: 1, totalPages: 0, questions: [] });
+    expect(questionPage([], totalPages)).toMatchObject({ page: 1, totalPages: 0, questions: [] });
   });
   it("validates local bookmarks, removes duplicates and ignores retired or unknown IDs", () => {
     const id = QUESTIONS_DATABASE[0]!.id;
