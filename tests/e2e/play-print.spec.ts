@@ -72,7 +72,12 @@ test("both print formats produce a PDF with matching pages and paper size", asyn
   await (await cards).saveAs(".artifacts/play-migration/cards-output.pdf");
   await page.emulateMedia({ media: "print" });
   await expect(page.locator(".print-workspace")).not.toBeVisible();
-  expect(await page.locator(".print-output img:visible").count()).toBeGreaterThan(1);
+  await expect(page.locator(".print-output")).toHaveCount(0);
+  const pageText = await page.locator(".print-preview header p").textContent();
+  const expectedPages = Number(pageText?.match(/of (\d+)/)?.[1]);
+  await expect(page.locator(".print-document .print-page-sheet:visible")).toHaveCount(
+    expectedPages,
+  );
 });
 test("invalid sets and small screens remain usable", async ({ page }) => {
   await page.goto("/play?set=unknown");

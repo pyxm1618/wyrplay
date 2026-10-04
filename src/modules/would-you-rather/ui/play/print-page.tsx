@@ -5,14 +5,14 @@ import { useEffect, useState, startTransition, useMemo, useRef } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { Question } from "../../types";
-import { resolveQuestionPool } from "../../domain/play-session";
+import { resolveQuestionPool, questionPoolUrl } from "../../domain/play-session";
 import {
   createPrintLayout,
   type PrintFormat,
   type PaperSize,
   type PrintLayout,
 } from "../../domain/print-layout";
-import { renderSinglePrintPage, createVectorPdf, pdfFromCanvases } from "./print-renderer";
+import { renderSinglePrintPage, createVectorPdf, pngWithDpi } from "./print-renderer";
 import { PlayHeader, PlayArtwork } from "./art";
 import { FinderIcon } from "../finder/icon";
 import QRCode from "qrcode";
@@ -28,10 +28,26 @@ export function PrintPage({
 }) {
   const search = useSearchParams();
   const requestedSet = search.get("set");
-  const pool = useMemo(
+  const availablePool = useMemo(
     () => resolveQuestionPool(questions, requestedSet),
     [questions, requestedSet],
   );
+
+  const [questionCount, setQuestionCount] = useState<number | null>(null);
+  const pool = useMemo(
+    () => availablePool.slice(0, questionCount ?? availablePool.length),
+    [availablePool, questionCount],
+  );
+  const playPath = questionPoolUrl("/play", pool);
+  const [assets, setAssets] = useState<{
+    logo: HTMLImageElement;
+    qr: HTMLImageElement;
+    qrData: string;
+    playUrl: string;
+    path: string;
+  } | null>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [previewSize, setPreviewSize] = useState({ width: 0, height: 0 });
 
   const [format, setFormat] = useState<PrintFormat>(
     search.get("format") === "sheet" ? "sheet" : "cards",
@@ -49,8 +65,6 @@ export function PrintPage({
   const [currentCanvas, setCurrentCanvas] = useState<HTMLCanvasElement | null>(null);
   const [error, setError] = useState("");
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
-  const logoImageRef = useRef<HTMLImageElement | null>(null);
-  const qrImageRef = useRef<HTMLImageElement | null>(null);
 
   // 格式切换时重置合适的每页题数
   const handleFormatChange = (newFormat: PrintFormat) => {
@@ -83,40 +97,49 @@ export function PrintPage({
     }
   }, [page, totalPages]);
 
-  // 加载 Logo 和二维码资产
+  // QR represents exactly the ordered, count-limited set used by all outputs.
   useEffect(() => {
     let cancelled = false;
     void (async () => {
       try {
         const logo = new Image();
-        logo.src = "/finder/assets/logo.png";
+        logo.src = "/play-art/logo.png";
         await logo.decode();
-        if (!cancelled) {
-          logoImageRef.current = logo;
-        }
-
-        const qrData = await QRCode.toDataURL("https://wyrplay.com/play", {
-          margin: 1,
-          width: 120,
-        });
-        const qrImg = new Image();
-        qrImg.src = qrData;
-        await qrImg.decode();
-        if (!cancelled) {
-          qrImageRef.current = qrImg;
-        }
-      } catch {
-        // 静默容错
+        const playUrl = new URL(playPath, window.location.origin).href;
+        const qrData = await QRCode.toDataURL(playUrl, { margin: 4, width: 512 });
+        const qr = new Image();
+        qr.src = qrData;
+        await qr.decode();
+        if (!cancelled) setAssets({ logo, qr, qrData, playUrl, path: playPath });
+      } catch (err) {
+        if (!cancelled)
+          setError(err instanceof Error ? err.message : "Could not load print assets");
       }
     })();
     return () => {
       cancelled = true;
     };
+  }, [playPath]);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    const observer = new ResizeObserver(() => {
+      const style = getComputedStyle(viewport);
+      setPreviewSize({
+        width:
+          viewport.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight),
+        height:
+          viewport.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom),
+      });
+    });
+    observer.observe(viewport);
+    return () => observer.disconnect();
   }, []);
 
   // 按需单页渲染当前预览 Canvas
   useEffect(() => {
-    if (!layout || !totalPages) return;
+    if (!layout || !totalPages || !assets || assets.path !== playPath) return;
     let cancelled = false;
 
     void (async () => {
@@ -124,26 +147,18 @@ export function PrintPage({
         await document.fonts.load("11px PlayBody");
         await document.fonts.load("26px PlayHand");
 
-        let logo = logoImageRef.current;
-        if (!logo) {
-          logo = new Image();
-          logo.src = "/finder/assets/logo.png";
-          await logo.decode();
-          logoImageRef.current = logo;
-        }
-
         const currentPageIndex = Math.min(Math.max(0, page), totalPages - 1);
         const canvas = renderSinglePrintPage(
           layout,
           currentPageIndex,
           format,
           marks,
-          logo,
+          assets.logo,
           {
             showNumbers,
             qrCode: qrCodeEnabled,
           },
-          qrImageRef.current,
+          assets.qr,
         );
 
         if (!cancelled) {
@@ -173,7 +188,7 @@ export function PrintPage({
     return () => {
       cancelled = true;
     };
-  }, [layout, page, totalPages, format, marks, showNumbers, qrCodeEnabled]);
+  }, [layout, page, totalPages, format, marks, showNumbers, qrCodeEnabled, assets, playPath]);
 
   // 组件卸载时释放 URL
   useEffect(() => {
@@ -184,13 +199,14 @@ export function PrintPage({
 
   // 下载高清矢量 PDF
   async function downloadPdf() {
-    if (!layout) return;
+    if (!layout || !assets || assets.path !== playPath) return;
+    setError("");
     setIsGeneratingPdf(true);
     try {
       const pdfBlob = await createVectorPdf(layout, format, marks, {
         showNumbers,
         qrCode: qrCodeEnabled,
-        siteUrl: "https://wyrplay.com/play",
+        siteUrl: assets.playUrl,
       });
       const url = URL.createObjectURL(pdfBlob);
       const link = document.createElement("a");
@@ -200,19 +216,10 @@ export function PrintPage({
       link.click();
       link.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-    } catch {
-      // 若出现未知异常，降级到 Canvas PDF
-      if (currentCanvas) {
-        const fallbackBlob = pdfFromCanvases([currentCanvas], layout.width, layout.height);
-        const url = URL.createObjectURL(fallbackBlob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = `wyrplay-${format}-${paper}.pdf`;
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
-      }
+    } catch (err) {
+      setError(
+        `PDF export failed. No file was downloaded. ${err instanceof Error ? err.message : "Please try again."}`,
+      );
     } finally {
       setIsGeneratingPdf(false);
     }
@@ -220,27 +227,64 @@ export function PrintPage({
 
   // 导出当前页为高清 PNG
   function downloadPng() {
-    if (!currentCanvas || !layout) return;
-    currentCanvas.toBlob((blob: Blob | null) => {
-      if (!blob) return;
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `wyrplay-${format}-${paper}-page-${page + 1}.png`;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    if (!layout || !assets || assets.path !== playPath) return;
+    const canvas = renderSinglePrintPage(
+      layout,
+      page,
+      format,
+      marks,
+      assets.logo,
+      {
+        showNumbers,
+        qrCode: qrCodeEnabled,
+        dpi: 300,
+        transparent: true,
+      },
+      assets.qr,
+    );
+    canvas.toBlob((blob) => {
+      if (!blob) {
+        setError("PNG export failed. Please try again.");
+        return;
+      }
+      void (async () => {
+        try {
+          const output = await pngWithDpi(blob, 300);
+          const url = URL.createObjectURL(output);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = `wyrplay-${format}-${paper}-page-${page + 1}.png`;
+          link.click();
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+        } catch (err) {
+          setError(
+            `PNG export failed. ${err instanceof Error ? err.message : "Please try again."}`,
+          );
+        }
+      })();
     }, "image/png");
   }
 
   // 触发浏览器原生打印
-  function handlePrint() {
-    window.print();
+  async function handlePrint() {
+    try {
+      await document.fonts.ready;
+      await Promise.all(
+        Array.from(document.querySelectorAll<HTMLImageElement>(".print-document img")).map(
+          (image) => image.decode(),
+        ),
+      );
+      window.print();
+    } catch (err) {
+      setError(
+        `Print preparation failed. ${err instanceof Error ? err.message : "Please try again."}`,
+      );
+    }
   }
 
   return (
     <div className="print-page" data-format={format}>
+      <style>{`@page { size: ${paper === "a4" ? "A4" : "letter"}; margin: 0; }`}</style>
       <PlayArtwork />
       <PlayHeader authEnabled={authEnabled} />
       <div className="print-workspace">
@@ -271,7 +315,7 @@ export function PrintPage({
               >
                 <span className="format-radio">{format === "cards" ? "●" : "○"}</span>
                 <div className="format-illustration cards">
-                  <img src="/finder/assets/logo.png" alt="" />
+                  <img src="/play-art/logo.png" alt="" />
                   <span>Cut-out cards</span>
                 </div>
                 <h3>Cut-out Cards</h3>
@@ -285,7 +329,7 @@ export function PrintPage({
               >
                 <span className="format-radio">{format === "sheet" ? "●" : "○"}</span>
                 <div className="format-illustration sheet">
-                  <img src="/finder/assets/logo.png" alt="" />
+                  <img src="/play-art/logo.png" alt="" />
                   <span>Question sheet</span>
                 </div>
                 <h3>Question Sheet</h3>
@@ -295,6 +339,23 @@ export function PrintPage({
           </div>
 
           <div className="print-settings">
+            <label className="question-count">
+              Number of questions
+              <input
+                type="number"
+                min={1}
+                max={availablePool.length || 1}
+                disabled={!availablePool.length}
+                value={Math.min(questionCount ?? availablePool.length, availablePool.length)}
+                onChange={(event) => {
+                  const value = event.target.valueAsNumber;
+                  if (Number.isInteger(value) && value >= 1 && value <= availablePool.length) {
+                    setQuestionCount(value);
+                    setPage(0);
+                  }
+                }}
+              />
+            </label>
             <h2>Page Settings</h2>
             <div className="settings-fields">
               <fieldset>
@@ -323,7 +384,7 @@ export function PrintPage({
 
               <div className="settings-row">
                 <label>
-                  <strong>Items Per Page</strong>
+                  <strong>Maximum Items Per Page</strong>
                   <select
                     className="settings-select"
                     value={itemsPerPage}
@@ -342,8 +403,7 @@ export function PrintPage({
                       <>
                         <option value={0}>Auto (Fill Page)</option>
                         <option value={10}>10 questions</option>
-                        <option value={15}>15 questions</option>
-                        <option value={20}>20 questions</option>
+                        <option value={6}>6 questions</option>
                       </>
                     )}
                   </select>
@@ -368,6 +428,7 @@ export function PrintPage({
                 </label>
               </div>
 
+              <small>Long questions may require fewer items to keep all text on the page.</small>
               <div className="marks-setting">
                 <label>
                   <input
@@ -422,19 +483,36 @@ export function PrintPage({
             )}
           </header>
 
-          <div className="preview-paper-viewport">
+          <div className="preview-paper-viewport" ref={viewportRef}>
             {previewUrl ? (
               <img
                 className="preview-paper"
                 src={previewUrl}
                 alt={`Print preview page ${page + 1}`}
-                style={{ transform: `scale(${zoom / 100})`, transformOrigin: "top center" }}
+                style={
+                  layout
+                    ? {
+                        width:
+                          (Math.max(
+                            0.001,
+                            Math.min(
+                              previewSize.width / layout.width,
+                              previewSize.height / layout.height,
+                            ),
+                          ) *
+                            layout.width *
+                            zoom) /
+                          100,
+                      }
+                    : undefined
+                }
               />
             ) : (
               <p role="status">{error || "No approved questions in this set."}</p>
             )}
           </div>
 
+          {error && <p role="alert">{error}</p>}
           <footer>
             <label>
               Zoom: {zoom}%
@@ -447,17 +525,31 @@ export function PrintPage({
                 onChange={(e) => setZoom(Number(e.target.value))}
               />
             </label>
-            <button type="button" onClick={handlePrint} disabled={!totalPages}>
+            <button
+              type="button"
+              onClick={() => void handlePrint()}
+              disabled={!totalPages || !currentCanvas || !assets || assets.path !== playPath}
+            >
               <FinderIcon name="print" size={20} /> Print
             </button>
-            <button type="button" onClick={downloadPng} disabled={!totalPages}>
+            <button
+              type="button"
+              onClick={downloadPng}
+              disabled={!totalPages || !currentCanvas || !assets || assets.path !== playPath}
+            >
               PNG
             </button>
             <button
               type="button"
               className="download-pdf"
               onClick={() => void downloadPdf()}
-              disabled={!totalPages || isGeneratingPdf}
+              disabled={
+                !totalPages ||
+                !currentCanvas ||
+                !assets ||
+                assets.path !== playPath ||
+                isGeneratingPdf
+              }
             >
               {isGeneratingPdf ? "Generating PDF…" : "Download PDF"}
             </button>
@@ -483,14 +575,19 @@ export function PrintPage({
                   style={{ display: "flex", justifyContent: "space-between", marginBottom: "20pt" }}
                 >
                   <div>
-                    <img src="/finder/assets/logo.png" alt="" style={{ height: "35pt" }} />
+                    <img src="/play-art/logo.png" alt="" style={{ height: "35pt" }} />
                     <h2 style={{ fontFamily: "PlayHand", fontSize: "22pt", margin: "8pt 0 0" }}>
                       Would You Rather?
                     </h2>
                   </div>
                   {qrCodeEnabled && (
                     <div style={{ textAlign: "right" }}>
-                      <img src="/finder/assets/logo.png" alt="" style={{ height: "30pt" }} />
+                      <img
+                        src={assets?.qrData}
+                        data-play-url={assets?.playUrl}
+                        alt="Play this set QR code"
+                        style={{ width: "42pt", height: "42pt" }}
+                      />
                     </div>
                   )}
                 </div>
@@ -518,8 +615,22 @@ export function PrintPage({
                         flexDirection: "column",
                       }}
                     >
+                      {qrCodeEnabled && assets && (
+                        <img
+                          src={assets.qrData}
+                          data-play-url={assets.playUrl}
+                          alt="Play this set QR code"
+                          style={{
+                            position: "absolute",
+                            right: "8pt",
+                            top: "8pt",
+                            width: "38pt",
+                            height: "38pt",
+                          }}
+                        />
+                      )}
                       <div style={{ textAlign: "center", marginBottom: "12pt" }}>
-                        <img src="/finder/assets/logo.png" alt="" style={{ height: "20pt" }} />
+                        <img src="/play-art/logo.png" alt="" style={{ height: "20pt" }} />
                         <h3 style={{ fontFamily: "PlayHand", fontSize: "16pt", margin: "4pt 0 0" }}>
                           Would you rather
                         </h3>
@@ -616,14 +727,6 @@ export function PrintPage({
               ))}
             </div>
           ))}
-        </div>
-      )}
-
-      {/* 保留原有测试兼容的 .print-output 容器 */}
-      {previewUrl && (
-        <div className="print-output" aria-hidden="true">
-          <img src={previewUrl} alt="" />
-          <img src={previewUrl} alt="" />
         </div>
       )}
     </div>

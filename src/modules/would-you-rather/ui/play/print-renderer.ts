@@ -7,7 +7,15 @@ import { wrapPrintText } from "../../domain/print-layout";
 export interface RenderPrintOptions {
   readonly showNumbers?: boolean | undefined;
   readonly qrCode?: boolean | undefined;
+  readonly dpi?: number;
+  readonly transparent?: boolean;
   readonly siteUrl?: string | undefined;
+}
+
+async function fetchPrintAsset(path: string): Promise<ArrayBuffer> {
+  const response = await fetch(path);
+  if (!response.ok) throw new Error(`Print asset ${path} returned HTTP ${response.status}`);
+  return response.arrayBuffer();
 }
 
 let fontCache: {
@@ -23,9 +31,9 @@ export async function loadPrintFonts(): Promise<{
 }> {
   if (fontCache) return fontCache;
   const [playHand, playBody, playBodyBold] = await Promise.all([
-    fetch("/finder/fonts/lilita-one.ttf").then((r) => r.arrayBuffer()),
-    fetch("/finder/fonts/roboto-400.ttf").then((r) => r.arrayBuffer()),
-    fetch("/finder/fonts/roboto-700.ttf").then((r) => r.arrayBuffer()),
+    fetchPrintAsset("/finder/fonts/lilita-one.ttf"),
+    fetchPrintAsset("/finder/fonts/roboto-400.ttf"),
+    fetchPrintAsset("/finder/fonts/roboto-700.ttf"),
   ]);
   fontCache = { playHand, playBody, playBodyBold };
   return fontCache;
@@ -34,13 +42,13 @@ export async function loadPrintFonts(): Promise<{
 let logoCache: ArrayBuffer | null = null;
 export async function loadLogoBytes(): Promise<ArrayBuffer> {
   if (logoCache) return logoCache;
-  const bytes = await fetch("/finder/assets/logo.png").then((r) => r.arrayBuffer());
+  const bytes = await fetchPrintAsset("/play-art/logo.png");
   logoCache = bytes;
   return bytes;
 }
 
 /**
- * 产生单页按需预览的 Canvas (300 DPI 级别高清渲染)
+ * 按需预览默认144 DPI；独立PNG导出可指定300 DPI与透明底
  */
 export function renderSinglePrintPage(
   layout: PrintLayout,
@@ -53,15 +61,17 @@ export function renderSinglePrintPage(
 ): HTMLCanvasElement {
   const placements = layout.pages[pageIndex] ?? [];
   const canvas = document.createElement("canvas");
-  const scale = 2; // Preview scale
-  canvas.width = Math.ceil(layout.width * scale);
-  canvas.height = Math.ceil(layout.height * scale);
+  const scale = (options.dpi ?? 144) / 72;
+  canvas.width = Math.round(layout.width * scale);
+  canvas.height = Math.round(layout.height * scale);
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("Your browser does not support printable canvas output");
 
   ctx.scale(scale, scale);
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, layout.width, layout.height);
+  if (!options.transparent) {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, layout.width, layout.height);
+  }
   ctx.fillStyle = "#090e20";
 
   const showNumbers = options.showNumbers !== false;
@@ -199,16 +209,13 @@ export async function createVectorPdf(
 
   let embeddedQr: Awaited<ReturnType<typeof doc.embedPng>> | null = null;
   if (options.qrCode) {
-    try {
-      const qrDataUrl = await QRCode.toDataURL(options.siteUrl ?? "https://wyrplay.com/play", {
-        margin: 1,
-        width: 120,
-      });
-      const qrBytes = Uint8Array.from(atob(qrDataUrl.split(",")[1]!), (c) => c.charCodeAt(0));
-      embeddedQr = await doc.embedPng(qrBytes);
-    } catch {
-      // 容错处理
-    }
+    if (!options.siteUrl) throw new Error("Missing play URL for print QR code");
+    const qrDataUrl = await QRCode.toDataURL(options.siteUrl, {
+      margin: 1,
+      width: 120,
+    });
+    const qrBytes = Uint8Array.from(atob(qrDataUrl.split(",")[1]!), (c) => c.charCodeAt(0));
+    embeddedQr = await doc.embedPng(qrBytes);
   }
 
   const showNumbers = options.showNumbers !== false;
@@ -436,57 +443,31 @@ export async function createVectorPdf(
   return new Blob([pdfBytes as unknown as BlobPart], { type: "application/pdf" });
 }
 
-/**
- * 旧版本低 DPI Canvas PDF 生成器 (兼容测试用途)
- */
-export function pdfFromCanvases(
-  canvases: readonly HTMLCanvasElement[],
-  width: number,
-  height: number,
-): Blob {
-  const encoder = new TextEncoder();
-  const chunks: Uint8Array[] = [];
-  let position = 0;
-  const offsets: number[] = [0];
-  const append = (value: string | Uint8Array) => {
-    const bytes = typeof value === "string" ? encoder.encode(value) : value;
-    chunks.push(bytes);
-    position += bytes.length;
-  };
-  append("%PDF-1.4\n");
-  const object = (id: number, body: string) => {
-    offsets[id] = position;
-    append(`${id} 0 obj\n${body}\nendobj\n`);
-  };
-  object(1, "<< /Type /Catalog /Pages 2 0 R >>");
-  object(
-    2,
-    `<< /Type /Pages /Count ${canvases.length} /Kids [${canvases.map((_, i) => `${3 + i * 3} 0 R`).join(" ")}] >>`,
-  );
-  canvases.forEach((canvas, i) => {
-    const id = 3 + i * 3;
-    const jpeg = Uint8Array.from(atob(canvas.toDataURL("image/jpeg", 0.98).split(",")[1]!), (c) =>
-      c.charCodeAt(0),
-    );
-    object(
-      id,
-      `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${width} ${height}] /Resources << /XObject << /Im ${id + 1} 0 R >> >> /Contents ${id + 2} 0 R >>`,
-    );
-    offsets[id + 1] = position;
-    append(
-      `${id + 1} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${canvas.width} /Height ${canvas.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpeg.length} >>\nstream\n`,
-    );
-    append(jpeg);
-    append("\nendstream\nendobj\n");
-    const content = `q ${width} 0 0 ${height} 0 0 cm /Im Do Q`;
-    object(
-      id + 2,
-      `<< /Length ${encoder.encode(content).length} >>\nstream\n${content}\nendstream`,
-    );
-  });
-  const start = position;
-  append(`xref\n0 ${offsets.length}\n0000000000 65535 f \n`);
-  offsets.slice(1).forEach((offset) => append(`${String(offset).padStart(10, "0")} 00000 n \n`));
-  append(`trailer\n<< /Size ${offsets.length} /Root 1 0 R >>\nstartxref\n${start}\n%%EOF`);
-  return new Blob(chunks as BlobPart[], { type: "application/pdf" });
+// Canvas encoders default to 96 DPI metadata. Match PNG physical size to its export pixels.
+export async function pngWithDpi(blob: Blob, dpi: number): Promise<Blob> {
+  const bytes = new Uint8Array(await blob.arrayBuffer());
+  const chunk = new Uint8Array(21);
+  const view = new DataView(chunk.buffer);
+  view.setUint32(0, 9);
+  chunk.set([112, 72, 89, 115], 4); // pHYs
+  const pixelsPerMeter = Math.round(dpi / 0.0254);
+  view.setUint32(8, pixelsPerMeter);
+  view.setUint32(12, pixelsPerMeter);
+  chunk[16] = 1;
+  let crc = 0xffffffff;
+  for (const byte of chunk.subarray(4, 17)) {
+    crc ^= byte;
+    for (let bit = 0; bit < 8; bit++) crc = (crc >>> 1) ^ (crc & 1 ? 0xedb88320 : 0);
+  }
+  view.setUint32(17, (crc ^ 0xffffffff) >>> 0);
+  const parts: BlobPart[] = [bytes.slice(0, 33), chunk];
+  for (let offset = 33; offset < bytes.length; ) {
+    const length = new DataView(bytes.buffer, bytes.byteOffset + offset, 4).getUint32(0);
+    const end = offset + length + 12;
+    if (end > bytes.length) throw new Error("Malformed PNG chunk");
+    const type = String.fromCharCode(...bytes.slice(offset + 4, offset + 8));
+    if (type !== "pHYs") parts.push(bytes.slice(offset, end));
+    offset = end;
+  }
+  return new Blob(parts, { type: "image/png" });
 }

@@ -289,9 +289,6 @@
   color: white;
   border-color: #008bff;
 }
-.print-output {
-  display: none;
-}
 @media (max-width: 1200px) {
   .print-workspace {
     margin: 18px 25px;
@@ -398,17 +395,6 @@
   body:has(.print-page) footer {
     display: none !important;
   }
-  .print-output {
-    display: block !important;
-  }
-  .print-output img {
-    display: block;
-    break-after: page;
-    max-width: none !important;
-  }
-  .print-output img:last-child {
-    break-after: auto;
-  }
   .print-document {
     display: block !important;
   }
@@ -491,9 +477,6 @@
   height: auto;
   background: white;
   box-shadow: 0 4px 20px #e8dfd040;
-  object-fit: contain;
-}
-.print-output img {
   object-fit: contain;
 }
 @media (max-width: 800px) {
@@ -617,5 +600,58 @@
   }
   .print-page[data-format="cards"] .print-pool {
     margin-bottom: 15px;
+  }
+}
+
+.print-page .preview-paper-viewport {
+  height: min(650px, 65vh);
+  min-height: 240px;
+  max-height: none;
+}
+.print-page .preview-paper {
+  margin: 0 auto;
+}
+
+.print-page .preview-paper {
+  max-width: none;
+  flex-shrink: 0;
+}
+
+.print-page .settings-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+}
+.print-page .settings-fields fieldset {
+  min-width: 0;
+}
+.print-page .settings-row > label:first-child {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.print-page .settings-fields > small,
+.print-page .settings-fields .marks-setting {
+  grid-column: 1 / -1;
+}
+.print-page .marks-setting {
+  border-left: 0;
+  border-top: 1px solid #eee;
+  padding: 16px 0 0;
+}
+.print-page .question-count {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.print-page .question-count input {
+  width: 90px;
+  border: 1px solid #dcd7ce;
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+@media (max-width: 700px) {
+  .print-page .settings-fields {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

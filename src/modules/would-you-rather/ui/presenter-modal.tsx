@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- Local reference brand crop. */
 
-import { useEffect, useRef, type RefObject } from "react";
+import { useEffect, useLayoutEffect, useRef, type RefObject } from "react";
 import { PlayHeading, OptionPanels, PlayArtwork } from "./play/art";
 import "./play/play.css";
 import type { Question } from "../types";
@@ -104,6 +104,25 @@ export function PresenterModal({
       document.body.style.overflow = previousOverflow;
     };
   }, [isOpen]);
+
+  useLayoutEffect(() => {
+    if (!isOpen) return;
+    // Overlay-only mode stays usable when fullscreen permission was denied.
+    const fullscreenElement = () =>
+      document.fullscreenElement ??
+      (document as Document & { webkitFullscreenElement?: Element }).webkitFullscreenElement;
+    const synchronize = () => {
+      // Both enter and exit events can be queued before delivery. An empty
+      // fullscreenElement on a change event means the browser has exited.
+      if (!fullscreenElement()) onClose();
+    };
+    document.addEventListener("fullscreenchange", synchronize);
+    document.addEventListener("webkitfullscreenchange", synchronize);
+    return () => {
+      document.removeEventListener("fullscreenchange", synchronize);
+      document.removeEventListener("webkitfullscreenchange", synchronize);
+    };
+  }, [isOpen, onClose]);
 
   // 记录打开前的焦点，并在关闭时恢复焦点
   useEffect(() => {
