@@ -96,10 +96,9 @@ test("production rendered SEO matches the route registry", async ({ page }) => {
     ).toBe(1);
 
     if (route.route === "/") {
-      expect(
-        densityPct,
-        "/: primary keyword density must be at least 3%",
-      ).toBeGreaterThanOrEqual(3);
+      expect(densityPct, "/: primary keyword density must be at least 3%").toBeGreaterThanOrEqual(
+        3,
+      );
     }
 
     const renderedInternalPaths = new Set(
