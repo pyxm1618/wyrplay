@@ -274,6 +274,22 @@ test("/find-questions network sanity performs exactly 10 initial vote stats requ
     }
   });
 
+  await page.route("**/api/wyr/vote?*", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        hasVoted: false,
+        selectedOption: null,
+        votesA: 0,
+        votesB: 0,
+        total: 0,
+        percentageA: 50,
+        percentageB: 50,
+      }),
+    });
+  });
+
   await page.goto("/find-questions", { waitUntil: "networkidle" });
   await expect(page.locator(".question-card")).toHaveCount(10);
   await expect(page.locator(".question-stats").first()).not.toContainText("Loading", {
