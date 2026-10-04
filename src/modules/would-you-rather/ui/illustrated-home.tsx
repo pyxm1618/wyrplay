@@ -437,9 +437,9 @@ export function IllustratedHome({
         <ArtCrop box={[748, 1866, 30, 155]} className="together-edge edge-right" />
         <ArtCrop box={[75, 1883, 85, 39]} className="together-flourish flourish-left" />
         <ArtCrop box={[568, 1875, 91, 45]} className="together-flourish flourish-right" />
-        <h2>Play Would You Rather Questions Together, Anywhere</h2>
+        <h2>Play Together with Would You Rather Questions</h2>
         <p>
-          Bring Would You Rather Questions to game night, or use Presenter Mode on a shared screen.
+          Bring a few would you rather questions to game night, or use Presenter Mode on a shared screen.
         </p>
         <div className="occasion-grid">
           {occasions.map((occasion) => (
@@ -466,22 +466,22 @@ export function IllustratedHome({
 function HomeFaq() {
   const answers = [
     {
-      question: "What makes great Would You Rather Questions?",
+      question: "What makes a great Would You Rather question?",
       answer:
         "Two choices that both deserve a second thought. Pick one, explain why, and invite your friends to defend the other side. There are no right answers.",
     },
     {
-      question: "How do you play Would You Rather Questions?",
+      question: "How do you play using would you rather questions?",
       answer:
         "Choose A or B to record your vote and see the real community results. Choose the other option to change your vote. If voting is unavailable, we say so instead of inventing numbers.",
     },
     {
-      question: "Are these Would You Rather Questions good for groups?",
+      question: "Are these would you rather questions good for groups?",
       answer:
         "Start with the Classroom collection and check each question’s age rating and suitability for your group. Open Presenter Mode beside the live question for a shared display, use Previous or Next to move through questions, and Escape to exit.",
     },
     {
-      question: "Where can I find Would You Rather Questions for kids, friends or couples?",
+      question: "Where can I find would you rather questions for kids, friends, or couples?",
       answer:
         "Use the category cards and filters to open the collection that fits your group, then choose any reviewed dilemma to play in the live arena.",
     },
@@ -489,7 +489,7 @@ function HomeFaq() {
   return (
     <section className="home-faq section-shell" aria-labelledby="home-faq-title">
       <p className="faq-eyebrow">A little help before your next debate</p>
-      <h2 id="home-faq-title">Would You Rather Questions FAQ</h2>
+      <h2 id="home-faq-title">Would You Rather Questions: FAQ</h2>
       {answers.map(({ question, answer }) => (
         <details key={question}>
           <summary>{question}</summary>
