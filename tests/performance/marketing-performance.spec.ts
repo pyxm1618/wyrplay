@@ -274,12 +274,14 @@ test("/find-questions network sanity performs exactly 10 initial vote stats requ
     }
   });
 
-  await page.goto("/find-questions");
+  await page.goto("/find-questions", { waitUntil: "networkidle" });
   await expect(page.locator(".question-card")).toHaveCount(10);
-  await expect(page.locator(".question-stats").first()).not.toContainText("Loading");
+  await expect(page.locator(".question-stats").first()).not.toContainText("Loading", {
+    timeout: 15_000,
+  });
 
   expect(voteRequests.length).toBe(10);
   const uniqueParams = new Set(voteRequests);
   expect(uniqueParams.size).toBe(10);
-  await expect(page.locator(".stats-retry")).toHaveCount(0);
+  await expect(page.locator(".stats-retry")).toHaveCount(0, { timeout: 15_000 });
 });

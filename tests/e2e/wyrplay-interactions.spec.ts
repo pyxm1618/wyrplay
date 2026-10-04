@@ -12,8 +12,8 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
     });
   });
 
-  test.describe("1. Production Formal Question Bank (116 Approved Dilemmas)", () => {
-    test("production 首页与 5 个 SEO 落地页真实消费 116 道正式题库", async ({ page }) => {
+  test.describe("1. Production Formal Question Bank (457 Approved Dilemmas)", () => {
+    test("production 首页与 5 个 SEO 落地页真实消费 457 道正式题库", async ({ page }) => {
       // 1.1 检查首页生产行为
       await page.goto("/");
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
@@ -30,8 +30,8 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await expect(page.getByRole("button", { name: /^Random$/i })).toBeVisible();
       await expect(page.getByRole("button", { name: /Presenter Mode/i })).toBeVisible();
 
-      // 统计栏展示全部 116 道已审核可玩题目
-      const counterText = page.getByText(/116 playable dilemmas/i);
+      // 统计栏展示全部 457 道已审核可玩题目
+      const counterText = page.getByText(/457 playable dilemmas/i);
       await expect(counterText).toBeVisible();
 
       // 题目长目录正常渲染题目卡片
@@ -44,11 +44,11 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
 
       // 1.2 检查 5 个核心 SEO 专题落地页全部有且仅有对应分类的正式题目（精确题数）
       const seoRoutes = [
-        { route: "/would-you-rather-questions-for-kids", expectedCount: 58 },
-        { route: "/funny-would-you-rather-questions", expectedCount: 18 },
-        { route: "/hard-would-you-rather-questions", expectedCount: 73 },
-        { route: "/would-you-rather-questions-for-friends", expectedCount: 49 },
-        { route: "/would-you-rather-questions-for-couples", expectedCount: 9 },
+        { route: "/would-you-rather-questions-for-kids", expectedCount: 263 },
+        { route: "/funny-would-you-rather-questions", expectedCount: 140 },
+        { route: "/hard-would-you-rather-questions", expectedCount: 271 },
+        { route: "/would-you-rather-questions-for-friends", expectedCount: 195 },
+        { route: "/would-you-rather-questions-for-couples", expectedCount: 45 },
       ] as const;
 
       for (const { route, expectedCount } of seoRoutes) {
@@ -73,7 +73,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await searchInput.fill("hear");
       await page.waitForTimeout(150);
       const matchCount = await page.locator("#questions article").count();
-      expect(matchCount).toBe(6);
+      expect(matchCount).toBe(12);
 
       // 难度筛选
       const hardBtn = page.getByRole("button", { name: "hard", exact: true });
@@ -91,8 +91,8 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await clearBtn.click();
       await page.waitForTimeout(150);
 
-      // 恢复全部 116 道题展示
-      await expect(page.getByText(/116 playable dilemmas/i)).toBeVisible();
+      // 恢复全部 457 道题展示
+      await expect(page.getByText(/457 playable dilemmas/i)).toBeVisible();
     });
 
     test("正式题库 A/B 投票、改票与刷新恢复 (A/B voting, switch A->B & B->A, refresh persistence)", async ({
