@@ -1,6 +1,8 @@
 import type { Question } from "../types";
+
 export type PrintFormat = "cards" | "sheet";
 export type PaperSize = "letter" | "a4";
+
 export interface PrintPlacement {
   readonly question: Question;
   readonly number: number;
@@ -9,11 +11,18 @@ export interface PrintPlacement {
   readonly width: number;
   readonly height: number;
 }
+
 export interface PrintLayout {
   readonly width: number;
   readonly height: number;
   readonly pages: readonly (readonly PrintPlacement[])[];
 }
+
+export interface PrintLayoutOptions {
+  readonly itemsPerPage?: number | undefined;
+  readonly showNumbers?: boolean | undefined;
+}
+
 // Points (72/inch). Text wraps into these measured boxes in preview, print and PDF.
 export function wrapPrintText(
   text: string,
@@ -45,17 +54,22 @@ export function wrapPrintText(
   if (line) lines.push(line);
   return lines;
 }
+
 export function createPrintLayout(
   questions: readonly Question[],
   format: PrintFormat,
   paper: PaperSize,
   measure: (text: string) => number,
+  options?: PrintLayoutOptions,
 ): PrintLayout {
   const width = paper === "a4" ? 595.28 : 612;
   const height = paper === "a4" ? 841.89 : 792;
   const pages: PrintPlacement[][] = [];
   let page: PrintPlacement[] = [];
   let y = format === "cards" ? 30 : 105;
+  const maxPerPage =
+    options?.itemsPerPage && options.itemsPerPage > 0 ? options.itemsPerPage : null;
+
   questions.forEach((question, index) => {
     if (format === "cards") {
       const cardWidth = (width - 72) / 2;
@@ -69,7 +83,8 @@ export function createPrintLayout(
       const previous = page[page.length - 1];
       const second = Boolean(page.length % 2);
       const rowY = second ? previous!.y : y;
-      if (rowY + cardHeight > height - 30) {
+      const reachedPageLimit = maxPerPage !== null && page.length >= maxPerPage;
+      if (reachedPageLimit || rowY + cardHeight > height - 30) {
         if (page.length) pages.push(page);
         page = [];
         y = 30;
@@ -92,7 +107,8 @@ export function createPrintLayout(
         52,
         wrapPrintText(question.question, width - 170, measure).length * 14 + 16,
       );
-      if (y + rowHeight > height - 30) {
+      const reachedPageLimit = maxPerPage !== null && page.length >= maxPerPage;
+      if (reachedPageLimit || y + rowHeight > height - 30) {
         if (page.length) pages.push(page);
         page = [];
         y = 105;

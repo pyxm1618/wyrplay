@@ -35,4 +35,47 @@ describe("play and print sets", () => {
   it("wraps unusually long individual words", () => {
     expect(wrapPrintText("abcdefghijkl", 4, (t) => t.length)).toEqual(["abcd", "efgh", "ijkl"]);
   });
+  it("supports custom itemsPerPage and respects capacity per page", () => {
+    const pool = resolveQuestionPool(QUESTIONS_DATABASE, null);
+    const resultCards2 = createPrintLayout(
+      pool.slice(0, 5),
+      "cards",
+      "letter",
+      (t) => t.length * 6,
+      {
+        itemsPerPage: 2,
+      },
+    );
+    // 5 questions with 2 per page -> 3 pages (2, 2, 1)
+    expect(resultCards2.pages).toHaveLength(3);
+    expect(resultCards2.pages[0]).toHaveLength(2);
+    expect(resultCards2.pages[1]).toHaveLength(2);
+    expect(resultCards2.pages[2]).toHaveLength(1);
+
+    const resultSheet10 = createPrintLayout(pool.slice(0, 25), "sheet", "a4", (t) => t.length * 6, {
+      itemsPerPage: 10,
+    });
+    // 25 questions with 10 per page -> 3 pages (10, 10, 5)
+    expect(resultSheet10.pages).toHaveLength(3);
+    expect(resultSheet10.pages[0]).toHaveLength(10);
+    expect(resultSheet10.pages[1]).toHaveLength(10);
+    expect(resultSheet10.pages[2]).toHaveLength(5);
+  });
+  it("stress test: handles extremely long text without breaking layout bounds", () => {
+    const pool = resolveQuestionPool(QUESTIONS_DATABASE, null);
+    const extremeQuestion = {
+      ...pool[0]!,
+      id: "stress-test-1",
+      question: "Extremely long question description ".repeat(20),
+      optionA: "An exceptionally long Option A description ".repeat(15),
+      optionB: "Another extraordinarily long Option B description ".repeat(15),
+    };
+    const layout = createPrintLayout([extremeQuestion], "cards", "letter", (t) => t.length * 6);
+    expect(layout.pages.length).toBeGreaterThanOrEqual(1);
+    const box = layout.pages[0]![0]!;
+    expect(box.x).toBeGreaterThan(0);
+    expect(box.y).toBeGreaterThan(0);
+    expect(box.x + box.width).toBeLessThanOrEqual(layout.width);
+    expect(box.y + box.height).toBeLessThanOrEqual(layout.height);
+  });
 });

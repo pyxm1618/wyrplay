@@ -17,6 +17,69 @@ export interface PresenterModalProps {
   readonly totalCount: number;
 }
 
+/**
+ * 检查当前事件目标是否位于交互元素上，防止 Space 键误拦截原生点击行为
+ */
+export function isInteractiveTarget(target: EventTarget | null): boolean {
+  if (!(target instanceof Element)) return false;
+  return Boolean(
+    target.closest(
+      'button, a, input, select, textarea, [contenteditable="true"], [role="button"], [role="link"]',
+    ),
+  );
+}
+
+/**
+ * 同步用户交互链中的 Fullscreen 请求尝试 (平滑降级，不抛出异常)
+ */
+export async function tryEnterFullscreen(element?: HTMLElement | null): Promise<boolean> {
+  if (typeof document === "undefined") return false;
+  const target = element ?? document.documentElement;
+  try {
+    if (document.fullscreenElement) return true;
+    if ("requestFullscreen" in target && typeof target.requestFullscreen === "function") {
+      await target.requestFullscreen();
+      return true;
+    } else if (
+      "webkitRequestFullscreen" in target &&
+      typeof (target as unknown as { webkitRequestFullscreen: () => Promise<void> })
+        .webkitRequestFullscreen === "function"
+    ) {
+      await (
+        target as unknown as { webkitRequestFullscreen: () => Promise<void> }
+      ).webkitRequestFullscreen();
+      return true;
+    }
+  } catch {
+    // 浏览器权限拒绝或不支持时，平滑降级到 fixed overlay
+  }
+  return false;
+}
+
+/**
+ * 安全退出 Fullscreen
+ */
+export async function tryExitFullscreen(): Promise<void> {
+  if (typeof document === "undefined") return;
+  try {
+    if (document.fullscreenElement) {
+      if ("exitFullscreen" in document && typeof document.exitFullscreen === "function") {
+        await document.exitFullscreen();
+      } else if (
+        "webkitExitFullscreen" in document &&
+        typeof (document as unknown as { webkitExitFullscreen: () => Promise<void> })
+          .webkitExitFullscreen === "function"
+      ) {
+        await (
+          document as unknown as { webkitExitFullscreen: () => Promise<void> }
+        ).webkitExitFullscreen();
+      }
+    }
+  } catch {
+    // 忽略异常
+  }
+}
+
 export function PresenterModal({
   isOpen,
   returnFocusRef,
@@ -46,12 +109,14 @@ export function PresenterModal({
   useEffect(() => {
     if (isOpen) {
       previouslyFocusedElementRef.current = document.activeElement as HTMLElement | null;
-      // 转移焦点至 modal
       modalRef.current?.focus();
-    } else if (previouslyFocusedElementRef.current) {
-      const trigger = returnFocusRef?.current ?? previouslyFocusedElementRef.current;
-      trigger?.focus();
-      previouslyFocusedElementRef.current = null;
+    } else {
+      if (previouslyFocusedElementRef.current) {
+        const trigger = returnFocusRef?.current ?? previouslyFocusedElementRef.current;
+        trigger?.focus();
+        previouslyFocusedElementRef.current = null;
+      }
+      void tryExitFullscreen();
     }
   }, [isOpen, returnFocusRef]);
 
@@ -66,12 +131,28 @@ export function PresenterModal({
         return;
       }
 
-      // Space 或 ArrowRight 对应 Next
-      if (e.key === "ArrowRight" || e.key === " ") {
+      // 如果焦点在按钮/链接/输入等交互元素上，Space 必须保留原生激活语义（例如触发按钮自身的 click）
+      if (e.key === " ") {
+        if (isInteractiveTarget(e.target)) {
+          if (e.target instanceof HTMLElement && e.target.classList.contains("presenter-exit")) {
+            e.preventDefault();
+            onClose();
+          }
+          return;
+        }
         e.preventDefault();
         if (!isLast) {
           onNext();
         }
+        return;
+      }
+
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        if (!isLast) {
+          onNext();
+        }
+        return;
       }
 
       // ArrowLeft 对应 Prev：首题禁用时键盘同样禁止回退
@@ -80,9 +161,10 @@ export function PresenterModal({
         if (!isFirst) {
           onPrev();
         }
+        return;
       }
 
-      // 简单的焦点约束 (Tab 键循环)
+      // 焦点约束 (Tab 键循环)
       if (e.key === "Tab" && modalRef.current) {
         const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
           'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
@@ -137,6 +219,17 @@ export function PresenterModal({
           <span aria-hidden="true">→</span>Next
         </button>
       </nav>
+      <div className="presenter-shortcuts" aria-hidden="true">
+        <span>
+          <kbd>←</kbd> Prev
+        </span>
+        <span>
+          <kbd>Space</kbd> / <kbd>→</kbd> Next
+        </span>
+        <span>
+          <kbd>Esc</kbd> Exit
+        </span>
+      </div>
     </div>
   );
 }

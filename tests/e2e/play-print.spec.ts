@@ -127,3 +127,68 @@ test("native sharing receives the current question link", async ({ page }) => {
   await page.getByRole("button", { name: "Share", exact: false }).click();
   await expect.poll(() => sharedUrl).toContain("question=wyr-000001");
 });
+
+test("presenter scales properly on 4K/2K and fits within 1024x768 projector without clipping", async ({
+  page,
+}) => {
+  await page.goto("/play");
+  await page.getByRole("button", { name: "Present", exact: true }).click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+
+  // 4K 大屏测试
+  await page.setViewportSize({ width: 3840, height: 2160 });
+  const optionsBox4k = await dialog.locator(".play-options").boundingBox();
+  expect(optionsBox4k).not.toBeNull();
+  // 验证突破了旧版 1385px 限制，适度放大成为视觉主体
+  expect(optionsBox4k!.width).toBeGreaterThan(1600);
+  await expect(dialog.locator(".presenter-shortcuts")).toBeVisible();
+
+  // 1024x768 4:3 投影测试
+  await page.setViewportSize({ width: 1024, height: 768 });
+  const exitBtn = dialog.getByRole("button", { name: "Exit Presenter" });
+  await expect(exitBtn).toBeVisible();
+  const exitBox = await exitBtn.boundingBox();
+  expect(exitBox!.y).toBeGreaterThanOrEqual(0);
+  expect(exitBox!.y + exitBox!.height).toBeLessThanOrEqual(768);
+
+  const nextBtn = dialog.getByRole("button", { name: "Next", exact: true });
+  await expect(nextBtn).toBeVisible();
+  const nextBox = await nextBtn.boundingBox();
+  expect(nextBox!.y + nextBox!.height).toBeLessThanOrEqual(768);
+});
+
+test("space key on Exit button triggers exit rather than advancing question", async ({ page }) => {
+  await page.goto("/play");
+  await page.getByRole("button", { name: "Present", exact: true }).click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+  await expect(dialog.locator(".presenter-header")).toContainText("1 /");
+
+  const exitBtn = dialog.getByRole("button", { name: "Exit Presenter" });
+  await exitBtn.focus();
+  await expect(exitBtn).toBeFocused();
+
+  // 焦点在 Exit 按钮上按 Space，必须退出 Presenter，绝不能前进到下一题
+  await page.keyboard.press("Space");
+  await expect(dialog).toHaveCount(0);
+});
+
+test("print preview adapts without horizontal overflow and supports PNG download", async ({
+  page,
+}) => {
+  await page.goto("/print");
+  await expect(page.locator(".preview-paper")).toBeVisible();
+
+  // 验证预览视口在桌面视口下无横向滚动条溢出
+  const hasOverflow = await page.locator(".preview-paper-viewport").evaluate((el) => {
+    return el.scrollWidth > el.clientWidth;
+  });
+  expect(hasOverflow).toBe(false);
+
+  // 验证 PNG 导出
+  const pngDownload = page.waitForEvent("download");
+  await page.getByRole("button", { name: "PNG", exact: true }).click();
+  const result = await pngDownload;
+  expect(result.suggestedFilename()).toBe("wyrplay-cards-letter-page-1.png");
+});
