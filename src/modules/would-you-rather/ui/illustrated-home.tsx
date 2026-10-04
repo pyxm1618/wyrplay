@@ -438,7 +438,7 @@ export function IllustratedHome({
         <ArtCrop box={[75, 1883, 85, 39]} className="together-flourish flourish-left" />
         <ArtCrop box={[568, 1875, 91, 45]} className="together-flourish flourish-right" />
         <h2>Play Would You Rather Questions Together, Anywhere</h2>
-        <p>Bring a question to game night, or use Presenter Mode on a shared screen.</p>
+        <p>Bring Would You Rather Questions to game night, or use Presenter Mode on a shared screen.</p>
         <div className="occasion-grid">
           {occasions.map((occasion) => (
             <Link key={occasion.title} href={occasion.href} className="occasion-card">
