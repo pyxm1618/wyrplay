@@ -65,10 +65,13 @@ export default function ContactPage() {
           Billing, subscriptions, and refunds
         </h2>
         <p className={`mt-3 ${bodyText}`}>
-          If paid features are available, use the Billing area first when an in-product control is
-          provided. For unresolved billing issues, email us with the account email, approximate
-          transaction date, amount, and a short description. Do not send full payment-card numbers
-          or security codes by email.
+          For questions regarding subscriptions, billing, or eligible refund requests under our
+          Refund and Cancellation Policy, email us at{" "}
+          <a href={`mailto:${supportEmail}`} className={inlineLink}>
+            {supportEmail}
+          </a>{" "}
+          with your registered account email, approximate transaction date, amount, and a short
+          description. Do not send full payment-card numbers or security codes by email.
         </p>
       </section>
 
@@ -77,9 +80,12 @@ export default function ContactPage() {
           Account deletion
         </h2>
         <p className={`mt-3 ${bodyText}`}>
-          If account deletion is available, use the deletion control in Account Settings. If you
-          cannot access the account, email us from the account email address when possible and
-          explain that you are requesting account deletion.
+          To delete your account, use the Delete Account control in Account Settings. If you cannot
+          access your account, email us at{" "}
+          <a href={`mailto:${supportEmail}`} className={inlineLink}>
+            {supportEmail}
+          </a>{" "}
+          from your account email address requesting deletion.
         </p>
       </section>
 

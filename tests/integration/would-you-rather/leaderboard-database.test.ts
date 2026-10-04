@@ -15,10 +15,15 @@ const scopedUrl = new URL(databaseUrl);
 scopedUrl.searchParams.set("search_path", schema);
 const database = createDatabaseClient(scopedUrl.toString());
 const table = sql.raw(`"${schema}"."wyr_votes"`);
-const q1 = QUESTIONS_DATABASE[0]!;
-const q2 = QUESTIONS_DATABASE[1]!;
-const q3 = QUESTIONS_DATABASE[2]!;
-const questions = [q1, q2, q3, { ...QUESTIONS_DATABASE[3]!, reviewStatus: "unreviewed" as const }];
+const q1 = QUESTIONS_DATABASE.find((question) => question.id === "wyr-000059")!;
+const q2 = QUESTIONS_DATABASE.find((question) => question.id === "wyr-000060")!;
+const q3 = QUESTIONS_DATABASE.find((question) => question.id === "wyr-000100")!;
+const questions = [
+  q1,
+  q2,
+  q3,
+  { ...q3, id: "leaderboard-unreviewed", reviewStatus: "unreviewed" as const },
+];
 const now = new Date("2026-10-01T12:00:00Z");
 beforeAll(async () => {
   await admin.unsafe(`create schema "${schema}"`);

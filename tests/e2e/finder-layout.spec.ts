@@ -112,9 +112,13 @@ test("Finder viewport matrix preserves independent content, artwork and controls
 });
 
 test("Finder long copy and statistics errors grow cards without collisions", async ({ page }) => {
-  await page.route("**/api/wyr/vote?*", (route) =>
-    route.fulfill({ status: 503, json: { error: "Controlled unavailable statistics" } }),
-  );
+  const mockUnavailableStats = (
+    route: Parameters<typeof page.route>[1] extends (r: infer R, ...args: never[]) => unknown
+      ? R
+      : never,
+  ) => route.fulfill({ status: 503, json: { error: "Controlled unavailable statistics" } });
+  await page.route("**/api/wyr/vote?*", mockUnavailableStats);
+  await page.route("**/api/wyr/kids-vote?*", mockUnavailableStats);
   await page.goto("/find-questions");
   await expect(page.locator(".stats-retry")).toHaveCount(10);
   // Stress the component beyond the current bank's longest title without changing source content.
@@ -267,10 +271,16 @@ test("Finder vote summary renders real stats and recovers from an explicit API e
   await expect(page.locator(".question-stats").first()).not.toContainText("Loading");
   await expect(page.locator(".stats-retry")).toHaveCount(0);
   let failed = true;
-  await page.route("**/api/wyr/vote?*", async (route) => {
+  const mockRetry = async (
+    route: Parameters<typeof page.route>[1] extends (r: infer R, ...args: never[]) => unknown
+      ? R
+      : never,
+  ) => {
     if (failed) await route.fulfill({ status: 503, json: { error: "Controlled test failure" } });
     else await route.continue();
-  });
+  };
+  await page.route("**/api/wyr/vote?*", mockRetry);
+  await page.route("**/api/wyr/kids-vote?*", mockRetry);
   await page.reload();
   await expect(page.locator(".stats-retry")).toHaveCount(10);
   failed = false;
