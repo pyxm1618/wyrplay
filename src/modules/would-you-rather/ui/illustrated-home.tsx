@@ -439,7 +439,8 @@ export function IllustratedHome({
         <ArtCrop box={[568, 1875, 91, 45]} className="together-flourish flourish-right" />
         <h2>Play Together with Would You Rather Questions</h2>
         <p>
-          Bring a few would you rather questions to game night, or use Presenter Mode on a shared screen.
+          Bring a few would you rather questions to game night, or use Presenter Mode on a shared
+          screen.
         </p>
         <div className="occasion-grid">
           {occasions.map((occasion) => (
@@ -481,8 +482,7 @@ function HomeFaq() {
         "Start with the Classroom collection and check each question’s age rating and suitability for your group. Open Presenter Mode beside the live question for a shared display, use Previous or Next to move through questions, and Escape to exit.",
     },
     {
-      question:
-        "Where can I find would you rather questions for kids, friends, or couples?",
+      question: "Where can I find would you rather questions for kids, friends, or couples?",
       answer:
         "Use the category cards and filters to open the collection that fits your group, then choose any reviewed dilemma to play in the live arena.",
     },
