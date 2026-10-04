@@ -11,18 +11,19 @@ test.beforeEach(async ({ page }) => {
 });
 test("selected set survives play, voting, presentation and return", async ({ page }) => {
   await page.goto("/find-questions");
-  await page.getByRole("searchbox").fill("hear");
+  await page.getByRole("searchbox").fill("plans");
   await page.getByRole("button", { name: "Search", exact: true }).click();
+  await expect(page.locator(".panel-heading")).toContainText("matching questions");
+  await page.locator(".select-button").nth(0).click();
   await page.locator(".select-button").nth(1).click();
-  await page.locator(".select-button").nth(2).click();
   await page.getByRole("button", { name: "Play these questions" }).click();
   await expect(page).toHaveURL(/\/play\?/);
   await expect(page.locator(".question-navigation")).toContainText("1 / 2");
-  await page.getByRole("button", { name: "Choose option A" }).click();
-  await expect(page.getByRole("button", { name: "Choose option A" })).toHaveAttribute(
-    "aria-pressed",
-    "true",
-  );
+  const optA = page.getByRole("button", { name: "Choose option A" });
+  await expect(optA).toBeVisible();
+  await expect(optA).toHaveText("Choose This");
+  await optA.click();
+  await expect(optA).toHaveAttribute("aria-pressed", "true");
   await page.getByRole("button", { name: "Choose option B" }).click();
   await expect(page.getByRole("button", { name: "Choose option B" })).toHaveAttribute(
     "aria-pressed",
@@ -46,7 +47,7 @@ test("selected set survives play, voting, presentation and return", async ({ pag
   await page.keyboard.press("Escape");
   await expect(dialog).toHaveCount(0);
   await page.getByRole("link", { name: "Back to questions" }).click();
-  await expect(page.getByRole("searchbox")).toHaveValue("hear");
+  await expect(page.getByRole("searchbox")).toHaveValue("plans");
   await expect(page.locator(".selection-bar h3")).toHaveText("2 selected questions");
 });
 test("both print formats produce a PDF with matching pages and paper size", async ({ page }) => {

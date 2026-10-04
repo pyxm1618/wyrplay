@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
+import { expect, test, type Route } from "@playwright/test";
 
 declare global {
   interface Window {
@@ -24,7 +24,7 @@ for (const route of routes) {
 
     // Live vote persistence is covered by integration/E2E suites. Keep this
     // performance gate deterministic so it measures the redesigned page itself.
-    await page.route("**/api/wyr/vote?*", async (route) => {
+    const fulfillEmptyVoteStats = async (route: Route) => {
       await route.fulfill({
         status: 200,
         contentType: "application/json",
@@ -38,7 +38,10 @@ for (const route of routes) {
           percentageB: 50,
         }),
       });
-    });
+    };
+
+    await page.route("**/api/wyr/vote?*", fulfillEmptyVoteStats);
+    await page.route("**/api/wyr/kids-vote?*", fulfillEmptyVoteStats);
 
     await page.addInitScript(() => {
       window.__cwv = { cls: 0, inp: 0, lcp: 0 };

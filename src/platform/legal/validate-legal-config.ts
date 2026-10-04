@@ -89,6 +89,10 @@ function isPlaceholder(value: string): boolean {
   );
 }
 
+function isUnresolvedLegalOperator(value: string): boolean {
+  return value.trim().toLowerCase() === "wyrplay";
+}
+
 export function validateLegalConfig(input: {
   readonly legal: LegalConfig;
   readonly features: LegalFeatureFacts;
@@ -143,6 +147,9 @@ export function validateLegalConfig(input: {
       isPlaceholder(legal.operator.supportEmail)
     ) {
       throw new Error("legal config contains placeholder operator facts");
+    }
+    if (isUnresolvedLegalOperator(legal.operator.legalName)) {
+      throw new Error("legal operator identity is unresolved");
     }
     for (const document of Object.values(legal.documents)) {
       if (document.reviewStatus !== "reviewed") {

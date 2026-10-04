@@ -1,11 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
+import { isKidsCollectionQuestion } from "../domain/filter-questions";
+import { parseVoteStats } from "../domain/finder";
+import type { Question, VoteStats } from "../types";
 import { Arrow, ChoiceFrame } from "./home-art";
 import { PlayHeading, OptionPanels } from "./play/art";
 import "./play/play.css";
-import { parseVoteStats } from "../domain/finder";
-import type { Question, VoteStats } from "../types";
 
 export interface DuelArenaProps {
   readonly appearance?: "default" | "illustrated-play" | "illustrated-home";
@@ -41,6 +42,8 @@ export function DuelArena({
   const voteReadControllerRef = useRef<AbortController | null>(null);
 
   const currentQuestionId = question?.id;
+  const aggregateOnly = Boolean(question && isKidsCollectionQuestion(question));
+  const voteEndpoint = aggregateOnly ? "/api/wyr/kids-vote" : "/api/wyr/vote";
   // 1. 读取当前题目的投票状态 (标准异步 fetch，带 AbortController 与 ignore 清理函数)
   useEffect(() => {
     if (!currentQuestionId) return;
@@ -50,7 +53,7 @@ export function DuelArena({
     const controller = new AbortController();
     voteReadControllerRef.current = controller;
 
-    fetch(`/api/wyr/vote?questionId=${encodeURIComponent(currentQuestionId)}`, {
+    fetch(`${voteEndpoint}?questionId=${encodeURIComponent(currentQuestionId)}`, {
       cache: "no-store",
       signal: controller.signal,
     })
@@ -81,12 +84,14 @@ export function DuelArena({
       ignore = true;
       controller.abort();
     };
-  }, [currentQuestionId, refreshCount]);
+  }, [currentQuestionId, refreshCount, voteEndpoint]);
 
   // 2. 提交投票或改选 (鼠标与键盘走完全一致的逻辑)
   const handleVote = useCallback(
     async (option: "A" | "B") => {
-      if (!currentQuestionId || isSubmitting) return;
+      const aggregateVoteAlreadySubmitted =
+        aggregateOnly && loadedQuestionId === currentQuestionId && Boolean(voteStats?.hasVoted);
+      if (!currentQuestionId || isSubmitting || aggregateVoteAlreadySubmitted) return;
 
       // A pending first read can set a different anonymous cookie after a quick vote.
       voteReadControllerRef.current?.abort();
@@ -95,7 +100,7 @@ export function DuelArena({
       const requestId = ++activeRequestIdRef.current;
 
       try {
-        const res = await fetch("/api/wyr/vote", {
+        const res = await fetch(voteEndpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           cache: "no-store",
@@ -121,7 +126,7 @@ export function DuelArena({
         }
       }
     },
-    [currentQuestionId, isSubmitting],
+    [aggregateOnly, currentQuestionId, isSubmitting, loadedQuestionId, voteEndpoint, voteStats],
   );
 
   // 3. 键盘快捷键监听 (A / B / 左右箭头选择与改选)
@@ -264,12 +269,18 @@ export function DuelArena({
       <>
         <button
           className={`choose-option choose-${option.toLowerCase()}`}
-          disabled={isSubmitting}
+          disabled={isSubmitting || (aggregateOnly && hasVoted)}
           aria-label={`Choose option ${option}`}
           aria-pressed={userPick === option}
           onClick={() => void handleVote(option)}
         >
-          {isSubmitting ? "Recording…" : userPick === option ? "Your choice ✓" : "Choose This"}
+          {isSubmitting
+            ? "Recording…"
+            : userPick === option
+              ? "Your choice ✓"
+              : aggregateOnly && hasVoted
+                ? "Vote recorded"
+                : "Choose This"}
         </button>
         {hasVoted && currentStats && (
           <p className="play-vote-result">
@@ -395,7 +406,7 @@ export function DuelArena({
         <button
           type="button"
           onClick={() => void handleVote("A")}
-          disabled={isSubmitting}
+          disabled={isSubmitting || (aggregateOnly && hasVoted)}
           aria-pressed={userPick === "A"}
           className={`group relative flex min-h-[220px] flex-col justify-between rounded-2xl border p-6 text-left transition-all sm:min-h-[260px] sm:p-8 ${
             userPick === "A"
@@ -438,11 +449,13 @@ export function DuelArena({
               <span className="text-xs font-semibold text-muted">
                 {userPick === "A"
                   ? "✓ Your Choice"
-                  : hasVoted
-                    ? "Click to switch to A"
-                    : isSubmitting
-                      ? "Recording vote..."
-                      : "Click to choose A"}
+                  : aggregateOnly && hasVoted
+                    ? "Vote recorded"
+                    : hasVoted
+                      ? "Click to switch to A"
+                      : isSubmitting
+                        ? "Recording vote..."
+                        : "Click to choose A"}
               </span>
               <div
                 className={`size-5 rounded-full border-2 transition-all ${
@@ -459,7 +472,7 @@ export function DuelArena({
         <button
           type="button"
           onClick={() => void handleVote("B")}
-          disabled={isSubmitting}
+          disabled={isSubmitting || (aggregateOnly && hasVoted)}
           aria-pressed={userPick === "B"}
           className={`group relative flex min-h-[220px] flex-col justify-between rounded-2xl border p-6 text-left transition-all sm:min-h-[260px] sm:p-8 ${
             userPick === "B"
@@ -502,11 +515,13 @@ export function DuelArena({
               <span className="text-xs font-semibold text-muted">
                 {userPick === "B"
                   ? "✓ Your Choice"
-                  : hasVoted
-                    ? "Click to switch to B"
-                    : isSubmitting
-                      ? "Recording vote..."
-                      : "Click to choose B"}
+                  : aggregateOnly && hasVoted
+                    ? "Vote recorded"
+                    : hasVoted
+                      ? "Click to switch to B"
+                      : isSubmitting
+                        ? "Recording vote..."
+                        : "Click to choose B"}
               </span>
               <div
                 className={`size-5 rounded-full border-2 transition-all ${
@@ -529,8 +544,10 @@ export function DuelArena({
               <span className="font-bold underline decoration-[#e27d32] underline-offset-4">
                 {userPick === "A" ? question.optionA : question.optionB}
               </span>
-              . Total of {currentStats.total.toLocaleString()} votes received on wyrplay.com. Click
-              the other option to change your choice anytime!
+              . Total of {currentStats.total.toLocaleString()} votes received on wyrplay.com.
+              {aggregateOnly
+                ? " This Kids vote is counted without retaining a reusable voter identifier."
+                : " Click the other option to change your choice anytime!"}
             </p>
           </div>
         ) : (
