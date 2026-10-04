@@ -1,4 +1,6 @@
 import { expect, test } from "@playwright/test";
+import { QUESTIONS_DATABASE } from "../../src/modules/would-you-rather/data/questions";
+import { isKidsCollectionQuestion } from "../../src/modules/would-you-rather/domain/filter-questions";
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
@@ -180,6 +182,14 @@ test("Review selected restores the prior browse page, keyword, filter and URL st
   expect(afterReview.searchParams.get("q")).toBe("have");
   expect(afterReview.searchParams.get("age")).toBe("kids");
   expect(afterReview.searchParams.get("page")).toBe("8");
+  await expect(page.locator(".question-number").first()).toHaveText("71");
+  await expect(page.locator(".question-card")).toHaveCount(10);
+  console.log("review-page-restore", {
+    before: beforeReview.searchParams.get("page"),
+    during: 1,
+    after: afterReview.searchParams.get("page"),
+    url: afterReview.pathname + afterReview.search,
+  });
 });
 
 test("finder real network sanity uses one live vote-stat request per visible question", async ({
@@ -222,6 +232,19 @@ test("finder real network sanity uses one live vote-stat request per visible que
   const kidsRequests = requests.filter(({ endpoint }) => endpoint === "/api/wyr/kids-vote");
   const generalRequests = requests.filter(({ endpoint }) => endpoint === "/api/wyr/vote");
   expect(kidsRequests.length + generalRequests.length).toBe(10);
+  const visibleIds = await page
+    .locator(".question-card")
+    .evaluateAll((cards) => cards.map((card) => card.getAttribute("data-question-id")));
+  expect(requests.map(({ questionId }) => questionId).sort()).toEqual(visibleIds.sort());
+  console.log("real-network-sanity", {
+    total: requests.length,
+    kids: kidsRequests.length,
+    general: generalRequests.length,
+    unique: new Set(requests.map(({ questionId }) => questionId)).size,
+    successful: responses.filter(({ status }) => status >= 200 && status < 300).length,
+    duplicates: requests.length - new Set(requests.map(({ questionId }) => questionId)).size,
+    retryUI: await page.locator(".stats-retry").count(),
+  });
 });
 
 test("finder card stats preserve the Kids aggregate-only privacy boundary", async ({
@@ -283,4 +306,117 @@ test("finder card stats preserve the Kids aggregate-only privacy boundary", asyn
         endpoint === "/api/wyr/kids-vote" && questionId === "wyr-000059",
     ),
   ).toBe(false);
+});
+
+for (const exitAction of ["Clear selected", "Unselect question 1"] as const) {
+  test(`review exits at the browse page after ${exitAction}`, async ({ page }) => {
+    await page.goto("/find-questions?q=have&age=kids&page=8");
+    await expect(page.locator(".pagination [aria-current=page]")).toHaveText("8");
+    await page.locator(".select-button").first().click();
+    await page.getByRole("button", { name: "Review selected", exact: true }).click();
+    await expect(page.locator(".question-card")).toHaveCount(1);
+    await page.getByRole("button", { name: exitAction, exact: true }).click();
+    await expect(page.locator(".pagination [aria-current=page]")).toHaveText("8");
+    await expect(page.locator(".selection-bar h3")).toHaveText("0 selected questions");
+    await expect(page).toHaveURL(/q=have&age=kids&page=8$/);
+  });
+}
+
+test("review respects filter changes, clear filters and browser history", async ({ page }) => {
+  await page.goto("/find-questions?q=have&age=kids&page=7");
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("7");
+  await page.locator(".select-button").first().click();
+  await page.getByRole("button", { name: "Page 8", exact: true }).click();
+  await page.getByRole("button", { name: "Review selected", exact: true }).click();
+  await expect(page.locator("#questions-title")).toHaveText("Selected Questions");
+  await page.goBack();
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("7");
+  await expect(page.locator("#questions-title")).toHaveText("Your Questions");
+  await page.goForward();
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("8");
+  await page.getByRole("button", { name: "Review selected", exact: true }).click();
+  await page.getByRole("searchbox").fill("squirrel tell stories");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await expect(page.locator(".question-card")).toHaveCount(1);
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("1");
+  await page.getByRole("button", { name: "Review selected", exact: true }).click();
+  await page.getByRole("button", { name: "Back to browsing", exact: true }).click();
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("1");
+  expect(new URL(page.url()).searchParams.has("page")).toBe(false);
+  await page.getByRole("button", { name: "Review selected", exact: true }).click();
+  await page.getByRole("button", { name: "Clear all", exact: true }).click();
+  await expect(page.locator("#questions-title")).toHaveText("Browse Questions");
+  await expect(page.locator(".question-card")).toHaveCount(10);
+  await expect(page.getByRole("searchbox")).toHaveValue("");
+  await expect(page).toHaveURL(/\/find-questions$/);
+});
+
+test("review restores a valid page when the incoming browse page exceeds the filtered pool", async ({
+  page,
+}) => {
+  await page.goto("/find-questions?q=squirrel%20tell%20stories&page=999");
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("1");
+  await page.locator(".select-button").first().click();
+  await page.getByRole("button", { name: "Review selected", exact: true }).click();
+  await page.getByRole("button", { name: "Back to browsing", exact: true }).click();
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("1");
+  expect(new URL(page.url()).searchParams.has("page")).toBe(false);
+});
+
+test("random Finder Kids and General cards use their real privacy endpoints", async ({
+  page,
+  context,
+}) => {
+  const approved = QUESTIONS_DATABASE.filter((question) => question.reviewStatus === "approved");
+  const observed: Array<{ endpoint: string; questionId: string }> = [];
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    if (url.pathname === "/api/wyr/vote" || url.pathname === "/api/wyr/kids-vote") {
+      observed.push({
+        endpoint: url.pathname,
+        questionId: url.searchParams.get("questionId") ?? "",
+      });
+    }
+  });
+  // Visit General first so the subsequent Kids request must respect its cookie scope.
+  for (const kids of [false, true]) {
+    const candidates = approved.filter((question) => isKidsCollectionQuestion(question) === kids);
+    expect(candidates.length).toBeGreaterThan(0);
+    const question = candidates[Math.floor(Math.random() * candidates.length)]!;
+    const browsePage = Math.floor(approved.findIndex((entry) => entry.id === question.id) / 10) + 1;
+    const endpoint = kids ? "/api/wyr/kids-vote" : "/api/wyr/vote";
+    const targetResponse = page.waitForResponse((response) => {
+      const url = new URL(response.url());
+      return url.pathname === endpoint && url.searchParams.get("questionId") === question.id;
+    });
+    await page.goto(`/find-questions?page=${browsePage}`, { waitUntil: "networkidle" });
+    const response = await targetResponse;
+    expect(response.ok()).toBe(true);
+    const card = page.locator(`[data-question-id="${question.id}"]`);
+    await expect(card).toBeVisible();
+    await expect(card.locator(".question-stats")).not.toContainText("Loading");
+    await expect(card.locator(".stats-retry")).toHaveCount(0);
+    expect(
+      observed
+        .filter((request) => request.questionId === question.id)
+        .every((request) => request.endpoint === endpoint),
+    ).toBe(true);
+    if (kids) {
+      expect(await response.json()).toMatchObject({ hasVoted: false, selectedOption: null });
+      expect((await response.request().allHeaders()).cookie ?? "").not.toContain("wyr_vid=");
+      const cookieHeader = (await response.allHeaders())["set-cookie"] ?? "";
+      expect(cookieHeader).toContain("Max-Age=0");
+      expect(cookieHeader).not.toMatch(/wyr_vid=[^;]/);
+    }
+    expect(
+      (await context.cookies())
+        .filter((cookie) => cookie.name === "wyr_vid")
+        .every((cookie) => cookie.path === "/api/wyr/vote"),
+    ).toBe(true);
+    console.log("random-privacy-boundary", {
+      questionId: question.id,
+      endpoint,
+      status: response.status(),
+    });
+  }
 });
