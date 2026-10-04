@@ -114,8 +114,7 @@ test("Finder long copy and statistics errors grow cards without collisions", asy
     route: Parameters<typeof page.route>[1] extends (r: infer R, ...args: never[]) => unknown
       ? R
       : never,
-  ) =>
-    route.fulfill({ status: 503, json: { error: "Controlled unavailable statistics" } });
+  ) => route.fulfill({ status: 503, json: { error: "Controlled unavailable statistics" } });
   await page.route("**/api/wyr/vote?*", mockUnavailableStats);
   await page.route("**/api/wyr/kids-vote?*", mockUnavailableStats);
   await page.goto("/find-questions");
