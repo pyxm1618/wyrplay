@@ -26,8 +26,7 @@ function decodeXml(value: string): string {
     .replace(/&apos;/g, "'");
 }
 
-test("production rendered SEO matches the route registry", async ({ page }) => {
-  test.setTimeout(90_000);
+test("production rendered SEO matches the route registry", async ({ page }) => {\n  test.setTimeout(90_000);
   const sitemapEntries = new Map(
     routeRegistry.sitemapEntries().map((entry) => [entry.route, entry.canonical] as const),
   );
@@ -79,7 +78,6 @@ test("production rendered SEO matches the route registry", async ({ page }) => {
     const densityPct = Number(
       ((exactOccurrences / Math.max(visibleWords.length, 1)) * 100).toFixed(3),
     );
-
     const keywordWordCount = tokenize(route.primaryKeyword).length;
     const weightedDensityPct = Number(
       (((exactOccurrences * keywordWordCount) / Math.max(visibleWords.length, 1)) * 100).toFixed(3),
@@ -92,7 +90,8 @@ test("production rendered SEO matches the route registry", async ({ page }) => {
         primaryKeyword: route.primaryKeyword,
         visibleWords: visibleWords.length,
         exactOccurrences,
-        rawDensityPct: densityPct,
+        keywordWordCount,
+        densityPct,
         weightedDensityPct,
         tokenCoverage: coverage,
       }),
