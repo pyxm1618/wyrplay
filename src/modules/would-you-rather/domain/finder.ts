@@ -74,13 +74,22 @@ export function questionArtworks(questions: readonly Question[]): ReadonlyMap<st
     let hash = 2166136261;
     for (const char of question.id) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619);
     const content = question.question.toLowerCase();
-    const preference = /\b(rocket|astronaut|space)\b/.test(content)
-      ? 9
-      : /\b(pizza|burger|food)\b/.test(content)
-        ? 8
-        : /\b(dragon|dinosaur)\b/.test(content)
-          ? 1
-          : (hash >>> 0) % 10;
+    let preference = (hash >>> 0) % 10;
+    if (/\b(rocket|astronaut|space|galaxy|planet)\b/.test(content)) {
+      preference = 9;
+    } else if (/\b(pizza|burger|taco|cookie|cake|ice cream)\b/.test(content)) {
+      preference = 8;
+    } else if (
+      /\b(squirrel|turtle|puppy|dog|cat|rabbit|kitten|hamster|bird|bear|lion)\b/.test(content)
+    ) {
+      preference = 7;
+    } else if (/\b(guitar|piano|drum|concert|sing|music)\b/.test(content)) {
+      preference = 2;
+    } else if (/\b(dragon|dinosaur|monster)\b/.test(content)) {
+      preference = 1;
+    } else if (preference === 1) {
+      preference = hash % 2 === 0 ? 3 : 4;
+    }
     let artwork = preference;
     while (counts[artwork]! >= 2 || artwork === previous) artwork = (artwork + 1) % 10;
     counts[artwork]! += 1;
