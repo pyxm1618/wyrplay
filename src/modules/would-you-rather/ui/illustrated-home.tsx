@@ -421,7 +421,7 @@ export function IllustratedHome({
           <ArtCrop box={[241, 1530, 48, 47]} />
           <p>
             <strong>{approved.length}</strong>
-            <span>Questions</span>
+            <span>Would You Rather Questions</span>
           </p>
         </div>
         <div className="statistic">
