@@ -62,6 +62,7 @@ export function QuestionFilterBar({
             </svg>
           </div>
           <input
+            aria-label="Search questions by keyword"
             type="text"
             value={searchKeyword}
             onChange={(e) => onSearchChange(e.target.value)}
@@ -88,6 +89,7 @@ export function QuestionFilterBar({
             <button
               type="button"
               onClick={() => onAgeGroupChange(undefined)}
+              aria-pressed={!selectedAgeGroup}
               className={`rounded-full px-2.5 py-1 font-medium transition ${
                 !selectedAgeGroup
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
@@ -101,6 +103,7 @@ export function QuestionFilterBar({
                 key={age}
                 type="button"
                 onClick={() => onAgeGroupChange(selectedAgeGroup === age ? undefined : age)}
+                aria-pressed={selectedAgeGroup === age}
                 className={`rounded-full px-2.5 py-1 font-medium transition ${
                   selectedAgeGroup === age
                     ? "bg-[#e27d32] text-white"
@@ -118,6 +121,7 @@ export function QuestionFilterBar({
             <button
               type="button"
               onClick={() => onRelationshipChange(undefined)}
+              aria-pressed={!selectedRelationship}
               className={`rounded-full px-2.5 py-1 font-medium transition ${
                 !selectedRelationship
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
@@ -131,6 +135,7 @@ export function QuestionFilterBar({
                 key={rel}
                 type="button"
                 onClick={() => onRelationshipChange(selectedRelationship === rel ? undefined : rel)}
+                aria-pressed={selectedRelationship === rel}
                 className={`rounded-full px-2.5 py-1 font-medium capitalize transition ${
                   selectedRelationship === rel
                     ? "bg-[#19a4b8] text-white"
@@ -148,6 +153,7 @@ export function QuestionFilterBar({
             <button
               type="button"
               onClick={() => onOccasionChange(undefined)}
+              aria-pressed={!selectedOccasion}
               className={`rounded-full px-2.5 py-1 font-medium transition ${
                 !selectedOccasion
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
@@ -161,6 +167,7 @@ export function QuestionFilterBar({
                 key={occ}
                 type="button"
                 onClick={() => onOccasionChange(selectedOccasion === occ ? undefined : occ)}
+                aria-pressed={selectedOccasion === occ}
                 className={`rounded-full px-2.5 py-1 font-medium capitalize transition ${
                   selectedOccasion === occ
                     ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
@@ -178,6 +185,7 @@ export function QuestionFilterBar({
             <button
               type="button"
               onClick={() => onToneChange(undefined)}
+              aria-pressed={!selectedTone}
               className={`rounded-full px-2.5 py-1 font-medium transition ${
                 !selectedTone
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
@@ -191,6 +199,7 @@ export function QuestionFilterBar({
                 key={tone}
                 type="button"
                 onClick={() => onToneChange(selectedTone === tone ? undefined : tone)}
+                aria-pressed={selectedTone === tone}
                 className={`rounded-full px-2.5 py-1 font-medium capitalize transition ${
                   selectedTone === tone
                     ? "bg-[#e27d32] text-white"
@@ -208,6 +217,7 @@ export function QuestionFilterBar({
             <button
               type="button"
               onClick={() => onDifficultyChange(undefined)}
+              aria-pressed={!selectedDifficulty}
               className={`rounded-full px-2.5 py-1 font-medium transition ${
                 !selectedDifficulty
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
@@ -221,6 +231,7 @@ export function QuestionFilterBar({
                 key={diff}
                 type="button"
                 onClick={() => onDifficultyChange(selectedDifficulty === diff ? undefined : diff)}
+                aria-pressed={selectedDifficulty === diff}
                 className={`rounded-full px-2.5 py-1 font-medium capitalize transition ${
                   selectedDifficulty === diff
                     ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"

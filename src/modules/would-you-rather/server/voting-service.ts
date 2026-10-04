@@ -5,6 +5,7 @@ import type { db as defaultDb } from "@/platform/database/application-database";
 import { wyrVotes } from "@/platform/database/wyr-schema";
 
 import { QUESTIONS_DATABASE } from "../data/questions";
+import { isKidsCollectionQuestion } from "../domain/filter-questions";
 import { TEST_FIXTURE_QUESTIONS } from "../testing/test-fixtures";
 import type { Question, VoteStats } from "../types";
 
@@ -12,6 +13,11 @@ export interface RecordVoteParams {
   readonly questionId: string;
   readonly option: "A" | "B";
   readonly anonymousVoterId: string;
+}
+
+export interface RecordAggregateVoteParams {
+  readonly questionId: string;
+  readonly option: "A" | "B";
 }
 
 export type ApplicationDb = typeof defaultDb;
@@ -38,15 +44,35 @@ export function isValidQuestion(
   return false;
 }
 
+function findQuestion(
+  questionId: string,
+  questions: readonly Question[] = QUESTIONS_DATABASE,
+): Question | undefined {
+  const found = questions.find((q) => q.id === questionId);
+  if (found) return found;
+  if (process.env.APP_ENV === "test") {
+    return TEST_FIXTURE_QUESTIONS.find((q) => q.id === questionId);
+  }
+  return undefined;
+}
+
 export function isVotableQuestion(
   questionId: string,
   questions: readonly Question[] = QUESTIONS_DATABASE,
 ): boolean {
-  let found = questions.find((q) => q.id === questionId);
-  if (!found && process.env.APP_ENV === "test") {
-    found = TEST_FIXTURE_QUESTIONS.find((q) => q.id === questionId);
-  }
-  return found !== undefined && found.reviewStatus === "approved";
+  return findQuestion(questionId, questions)?.reviewStatus === "approved";
+}
+
+/**
+ * Questions that can appear in the child-directed Kids collection never retain
+ * a reusable browser/user identifier alongside the user's A/B choice.
+ */
+export function usesAggregateOnlyVoting(
+  questionId: string,
+  questions: readonly Question[] = QUESTIONS_DATABASE,
+): boolean {
+  const question = findQuestion(questionId, questions);
+  return question ? isKidsCollectionQuestion(question) : false;
 }
 
 export async function getQuestionVoteStats(
@@ -134,6 +160,10 @@ export async function recordVote(
     throw new Error(`Question '${questionId}' is not approved for voting`);
   }
 
+  if (usesAggregateOnlyVoting(questionId, questions)) {
+    throw new Error(`Question '${questionId}' requires aggregate-only voting`);
+  }
+
   const now = new Date();
 
   // 保证原子性 Upsert: 首次插入、改选更新、重投幂等保持
@@ -156,4 +186,57 @@ export async function recordVote(
     });
 
   return getQuestionVoteStats(questionId, anonymousVoterId, options);
+}
+
+/**
+ * Records a Kids-collection vote without retaining a persistent voter identity.
+ *
+ * The database row receives a server-generated per-vote record token that is
+ * never returned to the browser and is never reused to recognize a person or
+ * browser over time. The selected A/B value is therefore retained only as an
+ * anonymous aggregate contribution rather than as a user-to-choice link.
+ */
+export async function recordAggregateOnlyVote(
+  params: RecordAggregateVoteParams,
+  options?: VotingServiceOptions,
+): Promise<VoteStats> {
+  const db = await resolveDb(options?.db);
+  const { questionId, option } = params;
+
+  if (option !== "A" && option !== "B") {
+    throw new Error(`Invalid option '${option}', must be 'A' or 'B'`);
+  }
+
+  const questions = options?.questions ?? QUESTIONS_DATABASE;
+
+  if (!isValidQuestion(questionId, questions)) {
+    throw new Error(`Invalid question ID '${questionId}'`);
+  }
+
+  if (!isVotableQuestion(questionId, questions)) {
+    throw new Error(`Question '${questionId}' is not approved for voting`);
+  }
+
+  if (!usesAggregateOnlyVoting(questionId, questions)) {
+    throw new Error(`Question '${questionId}' does not use aggregate-only voting`);
+  }
+
+  const now = new Date();
+
+  await db.insert(wyrVotes).values({
+    id: crypto.randomUUID(),
+    questionId,
+    // This is a per-vote storage token, not a reusable voter/browser identifier.
+    anonymousVoterId: `aggregate:${crypto.randomUUID()}`,
+    selectedOption: option,
+    createdAt: now,
+    updatedAt: now,
+  });
+
+  const stats = await getQuestionVoteStats(questionId, undefined, options);
+  return {
+    ...stats,
+    hasVoted: true,
+    selectedOption: option,
+  };
 }

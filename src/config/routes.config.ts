@@ -249,6 +249,7 @@ export const routeDefinitions = [
   { route: "/api/health/ready", class: "system" },
   { route: "/api/test/emails/latest", class: "system" },
   { route: "/api/wyr/vote", class: "system" },
+  { route: "/api/wyr/kids-vote", class: "system" },
   { route: "/api/internal/seo/indexnow", class: "system" },
   { route: "/indexnow-key.txt", class: "system" },
 ] as const satisfies readonly RouteDefinition[];

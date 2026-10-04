@@ -1,20 +1,30 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- Small native screenshot artwork is reused without image regeneration. */
 import { useEffect, useState } from "react";
-import type { Question, VoteStats } from "../../types";
 import { parseVoteStats } from "../../domain/finder";
+import { isKidsCollectionQuestion } from "../../domain/filter-questions";
+import type { Question, VoteStats } from "../../types";
 import { FinderIcon } from "./icon";
 
-function QuestionVoteSummary({ id, revision }: { readonly id: string; readonly revision: number }) {
+function QuestionVoteSummary({
+  question,
+  revision,
+}: {
+  readonly question: Question;
+  readonly revision: number;
+}) {
   const [result, setResult] = useState<{
     readonly id: string;
     readonly stats?: VoteStats;
     readonly error?: string;
   } | null>(null);
   const [retry, setRetry] = useState(0);
+  const id = question.id;
+  const endpoint = isKidsCollectionQuestion(question) ? "/api/wyr/kids-vote" : "/api/wyr/vote";
+
   useEffect(() => {
     const controller = new AbortController();
-    void fetch(`/api/wyr/vote?questionId=${encodeURIComponent(id)}`, {
+    void fetch(`${endpoint}?questionId=${encodeURIComponent(id)}`, {
       cache: "no-store",
       signal: controller.signal,
     })
@@ -33,7 +43,8 @@ function QuestionVoteSummary({ id, revision }: { readonly id: string; readonly r
           });
       });
     return () => controller.abort();
-  }, [id, revision, retry]);
+  }, [endpoint, id, revision, retry]);
+
   const current = result?.id === id ? result : null;
   return (
     <p className="question-stats">
@@ -58,6 +69,7 @@ function QuestionVoteSummary({ id, revision }: { readonly id: string; readonly r
     </p>
   );
 }
+
 export function FinderQuestionCard({
   question,
   artwork,
@@ -104,7 +116,7 @@ export function FinderQuestionCard({
             </span>
           ))}
         </div>
-        <QuestionVoteSummary id={question.id} revision={revision} />
+        <QuestionVoteSummary question={question} revision={revision} />
       </div>
       <img className="question-art" src={artwork} alt="" />
       <button

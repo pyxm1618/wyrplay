@@ -56,6 +56,9 @@ test("finder retains actual A/B voting, changing choices, keyboard shortcuts and
   page,
 }) => {
   await page.goto("/find-questions");
+  await page.getByRole("searchbox").fill("one afternoon each week");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await expect(page.locator(".question-card")).toHaveCount(1);
   await page.getByRole("button", { name: "Play these questions" }).click();
   await expect(page).toHaveURL(/\/play\?/);
   const dialog = page.locator("#play");
@@ -91,7 +94,7 @@ test("finder retains actual A/B voting, changing choices, keyboard shortcuts and
 test("finder presents only selected questions, handles unavailable stats honestly and fits narrow screens", async ({
   page,
 }) => {
-  await page.route("**/api/wyr/vote?*", (route) =>
+  await page.route(/\/api\/wyr\/(?:kids-)?vote\?/, (route) =>
     route.fulfill({
       status: 503,
       contentType: "application/json",
@@ -130,7 +133,7 @@ test("finder is an independent noindex utility route and retains a real home nav
   await page.getByRole("link", { name: "Home", exact: true }).click();
   await expect(page).toHaveURL(/\/$/);
   await expect(page.locator(".finder-page")).toHaveCount(0);
-  await expect(page.locator("h1")).toHaveText("Would You Rather Questions");
+  await expect(page.locator("h1")).toHaveAccessibleName("Would You Rather Questions");
   await page.getByRole("link", { name: "Find Questions", exact: true }).first().click();
   await expect(page).toHaveURL(/\/find-questions$/);
 });

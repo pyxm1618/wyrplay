@@ -54,7 +54,13 @@ export function ChoiceFrame({ variant }: { variant: "dog" | "cat" }) {
       ? "M47 1C36-1 31 4 25 20L0 157C-3 173 3 180 21 180L229 176C242 176 248 171 248 158L248 36C249 25 244 19 233 17L52 1Z"
       : "M27 16L203 1C219-1 226 7 232 27L249 151C252 169 247 180 231 180L17 178C5 178 1 174 1 157L1 32C1 23 11 17 27 16Z";
   return (
-    <svg className="choice-frame" viewBox="0 0 249 180" aria-hidden="true" focusable="false">
+    <svg
+      className="choice-frame"
+      viewBox="0 0 249 180"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      focusable="false"
+    >
       <defs>
         <linearGradient id={`choice-gradient-${variant}`} x1="0" y1="0" x2=".6" y2="1">
           <stop offset="0" stopColor={variant === "dog" ? "#ffd355" : "#3fe6ee"} />
