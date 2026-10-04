@@ -156,7 +156,7 @@ test("Review selected restores the prior browse page, keyword, filter and URL st
   );
 
   await page.locator(".select-button").first().click();
-  await page.getByRole("button", { name: "Page 2", exact: true }).click();
+  await page.getByRole("button", { name: "Page 8", exact: true }).click();
   await expect(page.locator(".pagination [aria-current=page]")).toHaveText("8");
   await page.locator(".select-button").first().click();
   await expect(page.locator(".selection-bar h3")).toHaveText("2 selected questions");
