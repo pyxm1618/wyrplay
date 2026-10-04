@@ -225,13 +225,12 @@ test("finder restore keeps back and forward synchronized after new history state
   await expect(page.locator(".selection-bar h3")).toHaveText("1 selected questions");
   expect(await visibleQuestionIds()).toEqual(beforeRestoreIds);
 
-  await kidsFilter.click();
   await page.getByRole("button", { name: "Apply Filters" }).click();
-  await page.getByRole("button", { name: "Page 8", exact: true }).click();
+  await page.getByRole("button", { name: "Next →" }).click();
   await expect(currentPage).toHaveText("2");
   const backStateIds = await visibleQuestionIds();
 
-  await searchbox.fill("squirrel tell stories");
+  await searchbox.fill("one afternoon each week");
   await page.getByRole("button", { name: "Search", exact: true }).click();
   await expect(page.locator(".question-card")).toHaveCount(1);
   const forwardStateIds = await visibleQuestionIds();
@@ -239,20 +238,20 @@ test("finder restore keeps back and forward synchronized after new history state
   await page.goBack();
   const backUrl = new URL(page.url());
   expect(backUrl.searchParams.get("q")).toBe("have");
-  expect(backUrl.searchParams.get("age")).toBe("kids");
+  expect(backUrl.searchParams.get("age")).toBe("teens");
   expect(backUrl.searchParams.get("page")).toBe("2");
   await expect(searchbox).toHaveValue("have");
-  await expect(kidsFilter).toHaveAttribute("aria-pressed", "true");
+  await expect(teensFilter).toHaveAttribute("aria-pressed", "true");
   await expect(currentPage).toHaveText("2");
   expect(await visibleQuestionIds()).toEqual(backStateIds);
 
   await page.goForward();
   const forwardUrl = new URL(page.url());
-  expect(forwardUrl.searchParams.get("q")).toBe("squirrel tell stories");
-  expect(forwardUrl.searchParams.get("age")).toBe("kids");
+  expect(forwardUrl.searchParams.get("q")).toBe("one afternoon each week");
+  expect(forwardUrl.searchParams.get("age")).toBe("teens");
   expect(forwardUrl.searchParams.has("page")).toBe(false);
-  await expect(searchbox).toHaveValue("squirrel tell stories");
-  await expect(kidsFilter).toHaveAttribute("aria-pressed", "true");
+  await expect(searchbox).toHaveValue("one afternoon each week");
+  await expect(teensFilter).toHaveAttribute("aria-pressed", "true");
   await expect(currentPage).toHaveText("1");
   await expect(page.locator(".question-card")).toHaveCount(1);
   expect(await visibleQuestionIds()).toEqual(forwardStateIds);
