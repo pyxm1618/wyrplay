@@ -44,7 +44,7 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
           label: "Play kids dilemmas",
           href: "/would-you-rather-questions-for-kids#play",
         },
-        secondaryCta: { label: "Return to home page", href: "/" },
+        secondaryCta: { label: "Privacy for Kids & Families", href: "/privacy" },
       },
       {
         type: "tool-demo",

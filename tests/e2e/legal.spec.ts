@@ -38,3 +38,49 @@ test("primary legal routes are linked from the footer", async ({ page }) => {
     await expect(footer.locator(`a[href='${route}']`)).toHaveCount(1);
   }
 });
+
+test("current production Legal copy does not imply live account or checkout features", async ({
+  page,
+}) => {
+  await page.goto("/privacy");
+  await expect(
+    page
+      .getByText("Public account registration is not currently open in the production service.", {
+        exact: false,
+      })
+      .first(),
+  ).toBeVisible();
+
+  await page.goto("/refund-policy");
+  await expect(
+    page
+      .getByText("Public subscription checkout is not currently open in production.", {
+        exact: false,
+      })
+      .first(),
+  ).toBeVisible();
+  await expect(page.getByText(/monthly or annual|monthly or annually/i)).toHaveCount(0);
+
+  await page.goto("/account-deletion");
+  await expect(
+    page.getByText(
+      "When account functionality is opened, the account deletion procedures described below apply.",
+      { exact: false },
+    ),
+  ).toBeVisible();
+});
+
+for (const viewport of [
+  { name: "desktop", width: 1280, height: 800 },
+  { name: "mobile", width: 390, height: 844 },
+] as const) {
+  test(`Kids landing exposes the privacy link on ${viewport.name}`, async ({ page }) => {
+    await page.setViewportSize({ width: viewport.width, height: viewport.height });
+    const response = await page.goto("/would-you-rather-questions-for-kids");
+    expect(response?.status()).toBe(200);
+
+    const privacyLink = page.getByRole("link", { name: "Privacy for Kids & Families" });
+    await expect(privacyLink).toBeVisible();
+    await expect(privacyLink).toHaveAttribute("href", "/privacy");
+  });
+}
