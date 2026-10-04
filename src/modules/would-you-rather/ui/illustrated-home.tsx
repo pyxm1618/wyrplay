@@ -481,7 +481,8 @@ function HomeFaq() {
         "Start with the Classroom collection and check each question’s age rating and suitability for your group. Open Presenter Mode beside the live question for a shared display, use Previous or Next to move through questions, and Escape to exit.",
     },
     {
-      question:\n        "Where can I find would you rather questions for kids, friends, or couples?",
+      question:
+        "Where can I find would you rather questions for kids, friends, or couples?",
       answer:
         "Use the category cards and filters to open the collection that fits your group, then choose any reviewed dilemma to play in the live arena.",
     },
