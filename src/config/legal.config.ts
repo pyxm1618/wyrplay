@@ -1,41 +1,33 @@
 import type { LegalConfig } from "@/platform/legal/types";
 
 export const legalConfig = {
-  // Keep this draft until the owner confirms the final legal operator identity/contact facts
-  // and the production feature set is rechecked against this policy before release.
-  releaseStatus: "draft",
+  releaseStatus: "reviewed",
   operator: {
-    legalName: "WYRPlay",
-    jurisdiction: "United States",
+    legalName: "Wang Yufei",
+    jurisdiction: "China",
     supportEmail: "support@wyrplay.com",
   },
   minimumAge: 13,
   dataCategories: [
     "anonymous voting and gameplay interaction data",
-    "account and authentication information when account features are enabled",
-    "user-submitted content and saved preferences when those features are enabled",
+    "account and authentication information for registered accounts",
     "technical, security, fraud-prevention, and diagnostic information",
-    "support communications and requests",
-    "transaction, subscription, refund, and entitlement records when paid features are enabled",
-    "optional analytics information when analytics is enabled and the user has provided any required consent",
+    "support communications and inquiries",
+    "transaction, subscription, refund, and entitlement records for subscription purchases",
+    "site analytics information if analytics is enabled and permitted",
   ],
   authMethods: [],
   processors: [
     {
       name: "Resend",
-      purpose: "Transactional email delivery when account or email features are enabled",
+      purpose: "Transactional email delivery for account or support communications",
       privacyUrl: "https://resend.com/legal/privacy-policy",
     },
     {
       name: "Google Analytics",
       purpose:
-        "Optional first-party site analytics when analytics is enabled and consent is granted",
+        "Site measurement and product analytics (designated provider; not enabled in the current production deployment)",
       privacyUrl: "https://policies.google.com/privacy",
-    },
-    {
-      name: "Microsoft Clarity",
-      purpose: "Optional site experience analytics when Clarity is enabled and consent is granted",
-      privacyUrl: "https://privacy.microsoft.com/en-us/privacystatement",
     },
     {
       name: "Cloudflare Turnstile",
@@ -44,8 +36,7 @@ export const legalConfig = {
     },
     {
       name: "Waffo",
-      purpose:
-        "Payment, subscription, and refund processing when paid commerce features are enabled",
+      purpose: "Payment, subscription, and refund processing for WYRPlay subscriptions",
     },
   ],
   paymentModel: "none",
@@ -54,11 +45,12 @@ export const legalConfig = {
   credits: false,
   refundPolicy: {
     summary:
-      "At the effective date, WYRPlay's public service does not offer paid purchases or subscriptions. If paid features are introduced, the price, billing cadence, renewal terms, and any transaction-specific refund terms will be disclosed before purchase, and this policy will be updated before those features are enabled.",
+      "WYRPlay operates on an automatic-renewal subscription model without a free trial. Users can cancel online at any time to stop future renewals while retaining access through the end of the currently paid billing period. Because public subscription checkout is not yet open on the production service, no recurring consumer charges are currently incurred. Once subscription checkout is opened, subscription fees are non-refundable on a prorated basis solely due to cancellation during a billing period, subject to refunds for duplicate charges, unauthorized transactions, material service failure, billing errors, or where required by applicable law.",
     cancellationSummary:
-      "There are currently no recurring consumer charges to cancel. If subscriptions are introduced, users will receive a clear online cancellation method and material renewal terms before enrollment.",
+      "Subscribers can cancel their subscription at any time online through Account Settings or Billing to stop future renewals. Access remains active through the end of the current already-paid billing period.",
   },
-  subscriptionTerms: null,
+  subscriptionTerms:
+    "WYRPlay subscriptions renew automatically at the end of each billing cycle unless cancelled online prior to renewal. There is no free trial. Online cancellation stops future renewal charges, while access remains available through the end of the current already-paid period. Subscription charges are not automatically prorated upon cancellation. Refunds are provided for duplicate charges, unauthorized transactions, material service failures, billing errors, or as required by applicable law. Because public subscription checkout is not yet open in production, no subscription charges are currently incurred.",
   retentionRules: [
     {
       category: "anonymous voting and gameplay records",
@@ -100,137 +92,139 @@ export const legalConfig = {
   accountDeletion: {
     enabled: false,
     summary:
-      "If account features are enabled, authenticated users can request deletion from account settings. The deletion workflow revokes account access, prepares any dependent subscription cancellation, removes the authentication identity and account-scoped product data where deletion is appropriate, and may retain limited transaction, security, fraud-prevention, or legal records when required.",
+      "Authenticated users can request account deletion from account settings or by contacting support. The deletion workflow revokes account access, coordinates any active subscription cancellation, and deletes account-scoped personal data, retaining only limited transaction, fraud-prevention, security, or legal compliance records where required by applicable law.",
   },
   internationalTransfers:
-    "WYRPlay is intended primarily for users in the United States. Service providers may process data in the United States or other locations where they operate. When applicable law requires safeguards for a transfer, WYRPlay will use an appropriate legal mechanism.",
+    "WYRPlay is operated by Wang Yufei, an individual operator in China, and is available globally. Service providers such as hosting, database, and infrastructure vendors may process data in the United States or other locations where they operate. When applicable law requires safeguards for international data transfers, WYRPlay implements appropriate legal mechanisms.",
   documents: {
-    privacy: { version: "draft-2", effectiveDate: "2026-10-02", reviewStatus: "draft" },
-    terms: { version: "draft-2", effectiveDate: "2026-10-02", reviewStatus: "draft" },
-    acceptable_use: { version: "draft-2", effectiveDate: "2026-10-02", reviewStatus: "draft" },
-    refund_policy: { version: "draft-2", effectiveDate: "2026-10-02", reviewStatus: "draft" },
-    account_deletion: { version: "draft-2", effectiveDate: "2026-10-02", reviewStatus: "draft" },
+    privacy: { version: "1.0", effectiveDate: "2026-10-02", reviewStatus: "reviewed" },
+    terms: { version: "1.0", effectiveDate: "2026-10-02", reviewStatus: "reviewed" },
+    acceptable_use: { version: "1.0", effectiveDate: "2026-10-02", reviewStatus: "reviewed" },
+    refund_policy: { version: "1.0", effectiveDate: "2026-10-02", reviewStatus: "reviewed" },
+    account_deletion: { version: "1.0", effectiveDate: "2026-10-02", reviewStatus: "reviewed" },
   },
   content: {
     privacy: [
       {
         heading: "Who We Are and Scope",
         paragraphs: [
-          "WYRPlay is the Would You Rather service available at www.wyrplay.com. This Privacy Notice explains how WYRPlay handles information when you browse questions, vote, use interactive features, contact support, and, when available, use account or paid features.",
-          "This notice is written primarily for users in the United States. Some rights described below apply only when a particular state privacy law applies to WYRPlay and to the person making the request.",
+          "WYRPlay is the Would You Rather service available at https://www.wyrplay.com. WYRPlay is operated by Wang Yufei, a sole individual operator based in China. This Privacy Notice explains how we handle information when you browse questions, vote, use interactive features, contact support, or use account and subscription features.",
+          "This notice applies globally, with specific disclosures provided for jurisdictions where our users reside, including applicable United States privacy requirements.",
         ],
       },
       {
         heading: "Audience and Age Rules",
         paragraphs: [
-          "Public question content may be used by families, educators, teens, adults, and children with appropriate adult supervision. Account registration, content submission tied to an account, purchases, and other features that require personal information are intended for users age 13 or older.",
-          "If you are under 13, do not create an account, submit personal information through account features, or make a purchase. A parent, teacher, or other responsible adult may use WYRPlay with a child and may contact us about privacy questions at support@wyrplay.com.",
-          "If we learn that personal information was collected from a child under 13 in a way that requires parental notice or consent under the Children's Online Privacy Protection Act, we will take appropriate steps to delete the information or otherwise comply with the law.",
+          "Public WYRPlay content may be used by families, educators, teens, adults, and children with appropriate adult supervision. Account registration, paid subscription features, and any submission of personal information are strictly intended for users age 13 or older.",
+          "If you are under 13, you must not independently create an account, submit personal information through account features, or make subscription purchases. A parent, teacher, or other responsible adult may use WYRPlay together with a child and may contact us about privacy questions at support@wyrplay.com.",
+          "Users ages 13 through 17 should use account or subscription features only with permission from a parent or legal guardian.",
+          "If we learn that personal information was collected from a child under 13 in a manner requiring parental notice or consent under the Children's Online Privacy Protection Act (COPPA), we will take prompt steps to delete the information or otherwise comply with applicable law.",
         ],
       },
       {
         heading: "Information You Provide",
         paragraphs: [
-          "Depending on which features are enabled, you may provide an email address for sign-in or transactional messages, account preferences, content you choose to create or save, support messages, refund reasons, or other information you submit directly to WYRPlay.",
-          "When paid features are enabled, WYRPlay may receive transaction metadata such as the product purchased, amount, currency, subscription status, payment status, and refund status. Payment-card credentials are processed by the payment provider; WYRPlay is not designed to store complete payment-card numbers.",
+          "When you interact with WYRPlay, you may provide an email address for authentication, account preferences, support communications, or other information submitted directly to support@wyrplay.com.",
+          "WYRPlay operates on a subscription commerce model. Subscription transactions, payments, and refunds are processed by our payment provider, Waffo. When subscription checkout is opened, WYRPlay receives transaction metadata such as subscription status, payment reference, currency, and amount. WYRPlay is not designed to and does not store complete payment-card numbers.",
+          "At the effective date of this notice, public subscription checkout is not yet open on the production service, and no recurring consumer charges are currently processed.",
         ],
       },
       {
         heading: "Gameplay, Voting, and Anonymous Identifiers",
         paragraphs: [
-          "WYRPlay may record question interactions, A-or-B votes, timestamps, aggregate vote counts, and similar gameplay information needed to operate the service.",
-          "On general-audience portions of WYRPlay, anonymous voting may use a first-party HttpOnly cookie to associate a browser with a vote, preserve vote integrity, and reduce duplicate or abusive submissions. Questions that can appear in the Kids collection use a different privacy mode: WYRPlay does not create or read the persistent voter cookie for those votes, and the server stores each vote with a one-time record token that is not reused to recognize a person or browser over time.",
+          "WYRPlay records question interactions, A-or-B votes, timestamps, aggregate vote counts, and similar gameplay data necessary to deliver the service.",
+          "On general-audience portions of WYRPlay, anonymous voting may use a first-party HttpOnly cookie to associate a browser with a vote, preserve vote integrity, and reduce duplicate or abusive submissions. Questions that can appear in the Kids collection use a separate privacy mode: WYRPlay does not create or read the persistent voter cookie for those votes, and the server stores each vote with a one-time record token that is not reused to recognize a person or browser over time.",
         ],
       },
       {
         heading: "Technical and Security Information",
         paragraphs: [
-          "Our systems and infrastructure providers may process network and technical information such as IP address, browser or device information, request metadata, timestamps, authentication events, error records, and security signals. We use this information to deliver the site, keep it reliable, investigate abuse, enforce rate limits, and protect WYRPlay and its users.",
-          "When an anti-abuse challenge such as Cloudflare Turnstile is presented, the provider may process technical information needed to distinguish legitimate users from automated or abusive traffic.",
+          "Our systems and infrastructure providers process technical information such as IP addresses, device and browser metadata, request timestamps, error records, and security signals to keep the site operational, enforce rate limits, and investigate abuse.",
+          "When an anti-abuse challenge such as Cloudflare Turnstile is presented, the provider may process technical information necessary to distinguish genuine users from automated or malicious traffic.",
         ],
       },
       {
         heading: "Cookies, Local Storage, and Similar Technologies",
         paragraphs: [
-          "WYRPlay uses first-party storage when it is reasonably necessary to provide requested functionality, preserve preferences, support authentication or security, maintain vote integrity, or remember a privacy choice.",
-          "Optional analytics technologies are not required for core gameplay. Where WYRPlay presents an analytics-consent choice, analytics scripts are loaded only after the required choice is granted, and users can later withdraw that choice through the available privacy settings.",
+          "WYRPlay uses first-party storage when reasonably necessary to deliver requested functionality, remember preferences, support authentication, maintain vote integrity, or record privacy choices.",
+          "Analytics technologies are not required for core gameplay. Where an analytics consent choice is presented, analytics scripts are loaded only after affirmative consent is granted, and users can withdraw consent at any time through available privacy settings.",
         ],
       },
       {
-        heading: "Optional Analytics",
+        heading: "Site Measurement and Analytics",
         paragraphs: [
-          "When enabled, WYRPlay may use Google Analytics and Microsoft Clarity to understand page usage, feature engagement, performance, and usability. WYRPlay's analytics implementation is designed to avoid sending email-like values, arbitrary query strings, or other unnecessary user-entered content as analytics event properties.",
-          "Where consent is required by our configuration or applicable law, these analytics tools are not activated until consent is granted. If analytics is disabled for the service, these providers do not receive data from WYRPlay through those analytics integrations.",
+          "Google Analytics 4 is WYRPlay's designated analytics provider. Microsoft Clarity is not used.",
+          "In the current production deployment, Google Analytics 4 is not enabled, and no analytics data is collected from production visitors. When analytics is enabled in a deployment, it is loaded only after any required consent is granted, and it is configured to avoid collecting email addresses or unnecessary user-entered content as event properties.",
         ],
       },
       {
         heading: "How We Use Information",
         paragraphs: [
-          "We use information to provide and secure WYRPlay, authenticate users when account features are enabled, record and aggregate gameplay, save user-requested state, respond to support requests, process purchases or refunds when commerce is enabled, send transactional communications, prevent fraud and abuse, diagnose problems, measure site performance, and comply with legal obligations.",
-          "We seek to collect and use information only for purposes that are reasonably necessary and proportionate to the feature or legal obligation involved.",
+          "We use information to provide and secure WYRPlay, authenticate users, aggregate gameplay and voting statistics, respond to support inquiries, process subscriptions and refunds through Waffo once checkout is open, prevent fraud and automated abuse, diagnose technical issues, and comply with legal obligations.",
+          "We collect and use information only for purposes that are reasonably necessary, proportionate, and directly related to operating the service.",
         ],
       },
       {
         heading: "How We Disclose Information",
         paragraphs: [
-          "We may disclose information to service providers that perform functions on our behalf, such as hosting, database services, email delivery, authentication, security, analytics, and payment processing. Providers receive only the information reasonably needed for the relevant service and are subject to their own contractual and legal obligations.",
-          "We may also disclose information when reasonably necessary to comply with law, respond to valid legal process, protect users or the public, investigate fraud or abuse, enforce our terms, or protect the rights and security of WYRPlay.",
-          "WYRPlay does not currently sell personal information for money or use personal information for cross-context behavioral advertising. If those practices change, we will update this notice and provide any choices required by applicable law before the new practice applies.",
+          "We disclose information to third-party service providers performing essential functions on our behalf, including hosting, transactional email delivery (Resend), security and anti-abuse verification (Cloudflare Turnstile), payment and subscription processing (Waffo), and site measurement (Google Analytics 4). Service providers receive only the data reasonably needed to perform their services.",
+          "We may disclose information where required by law, to respond to valid legal process, or when reasonably necessary to protect the safety, security, and integrity of WYRPlay, its users, or the public.",
+          "WYRPlay does not sell personal information for money and does not use personal information for cross-context behavioral advertising. WYRPlay does not currently partner with third-party advertising networks and does not authorize third parties to collect personal information across websites for advertising.",
         ],
       },
       {
         heading: "Children's Privacy",
         paragraphs: [
-          "The WYRPlay Kids collection is specifically designed for children, families, and educators. WYRPlay treats that area as a child-directed portion of the service for privacy-design purposes rather than relying only on a general age statement.",
-          "WYRPlay does not knowingly permit children under 13 to create accounts, submit personal information through account features, or purchase paid features without a legally sufficient parental process. We do not use personal information from children under 13 for targeted advertising or behavioral profiling.",
-          "For voting on questions that can appear in the Kids collection, WYRPlay does not retain a persistent voter identifier together with the user's A/B choice. Existing legacy Kids vote rows are converted so that any former reusable voter identifier is replaced by a one-time record token, preserving aggregate counts without preserving a user-to-choice link. If WYRPlay later introduces a child-directed feature that collects personal information outside an applicable COPPA exception, parental notice and verifiable parental consent must be implemented before that collection begins.",
+          "The WYRPlay Kids collection is specifically designed for children, families, and educators. WYRPlay treats that area as a child-directed portion of the service for privacy-design purposes.",
+          "WYRPlay strictly prohibits children under 13 from creating accounts, submitting personal information, or purchasing subscriptions. We do not use personal information from children under 13 for behavioral advertising or profiling.",
+          "For voting on questions in the Kids collection, WYRPlay does not retain a persistent voter identifier together with the user's choice. Legacy Kids vote records have been sanitized so that any former reusable voter identifier is replaced by a one-time record token, preserving aggregate counts without linking a user or browser to an A/B choice. Because voting is aggregate-only and persistent identifiers are not used to recognize users across time, this child-directed interaction operates within internal operations exceptions and does not collect personal information requiring parental consent.",
         ],
       },
       {
         heading: "Data Retention",
         paragraphs: [
-          "We keep information only for as long as reasonably necessary for the purpose for which it was collected, including operating the service, maintaining security and vote integrity, resolving support requests, administering transactions, meeting tax or accounting obligations, handling disputes, and complying with law.",
-          "Retention periods vary by data type. Account information is generally kept while an account is active and through the deletion workflow. Security and diagnostic records are kept for limited operational periods. Commerce records may be retained longer where needed for accounting, chargebacks, fraud prevention, disputes, or legal obligations. Data that has been irreversibly de-identified or aggregated may be retained because it no longer reasonably identifies an individual.",
+          "We retain information only for as long as reasonably necessary to fulfill the purpose for which it was collected, operate aggregate results, maintain security and vote integrity, resolve support requests, administer transactions, and satisfy legal, accounting, and dispute obligations.",
+          "Account data is maintained while the account is active and during the account-deletion workflow. Operational, security, and diagnostic records are kept for limited periods. Commerce records are retained as necessary for accounting, chargebacks, and legal obligations. De-identified or aggregate statistics that cannot reasonably identify an individual may be retained indefinitely.",
         ],
       },
       {
         heading: "Your Choices and Privacy Rights",
         paragraphs: [
-          "You can decline or withdraw optional analytics where WYRPlay provides that setting. If you have an account, you may be able to update account settings or request account deletion through the account interface.",
-          "Depending on your state of residence and whether the applicable state privacy law covers WYRPlay, you may have rights to request access to personal information, request deletion, request correction, obtain a portable copy, opt out of certain covered processing, limit certain uses of sensitive personal information, or appeal a privacy-rights decision. We will not discriminate against you for exercising a right protected by applicable law.",
-          "To submit a privacy request, email support@wyrplay.com with enough information for us to understand and verify the request. We may request reasonable verification before disclosing or deleting account-linked information.",
+          "You can decline or withdraw analytics consent where analytics is configured. Registered users can manage preferences or request account deletion through Account Settings.",
+          "Depending on your location and applicable privacy laws, you may have statutory rights to request access to personal information, request deletion, request correction, obtain a portable copy, or opt out of covered processing. We will not discriminate against you for exercising rights granted by law.",
+          "To submit a privacy inquiry or rights request, email support@wyrplay.com with sufficient detail for us to verify and respond to your request.",
         ],
       },
       {
-        heading: "California Privacy Disclosures",
+        heading: "California and State Privacy Disclosures",
         paragraphs: [
-          "California's Online Privacy Protection Act requires covered commercial websites that collect personally identifiable information from California consumers to publish privacy disclosures, including the categories of information collected, categories of third parties involved, how users may request review or changes, and the policy's effective date. This notice is structured to provide those disclosures.",
-          "WYRPlay does not currently respond to legacy browser Do Not Track signals as a separate technical control. In the current production configuration, Google Analytics and Microsoft Clarity are disabled, so those analytics integrations do not collect information through WYRPlay. WYRPlay does not currently authorize third parties to collect personal information through the service for cross-site behavioral advertising. If analytics or other tracking technologies are enabled in production later, this notice will be updated to state the actual third-party collection and choices before that change takes effect. If applicable law requires honoring a recognized opt-out preference signal, such as Global Privacy Control for covered processing, WYRPlay will implement the required response before engaging in that covered processing.",
-          "The California Consumer Privacy Act applies only when its statutory coverage requirements are met. Nothing in this notice is intended to represent that WYRPlay is currently a covered CCPA business if those thresholds or other requirements are not satisfied.",
+          "Under the California Online Privacy Protection Act (CalOPPA) and related laws, commercial websites collecting personally identifiable information from California consumers must disclose information practices. This notice provides those required disclosures.",
+          "WYRPlay does not currently respond to browser Do Not Track signals as a separate technical toggle. In the current production deployment, Google Analytics 4 is disabled, and Microsoft Clarity is not used. WYRPlay does not authorize third parties to collect personal information through the service for cross-site behavioral advertising.",
+          "The California Consumer Privacy Act (CCPA) applies where statutory coverage criteria are met; nothing in this notice represents that WYRPlay is a covered CCPA business if statutory thresholds are not satisfied.",
         ],
       },
       {
         heading: "Security",
         paragraphs: [
-          "We use reasonable administrative, technical, and organizational measures designed to protect information against unauthorized access, loss, misuse, or alteration. No online service can guarantee absolute security, so users should also protect access to their email account and devices.",
+          "We implement reasonable administrative, technical, and physical measures designed to protect information from unauthorized access, loss, misuse, or alteration. Because no internet transmission is completely secure, users should also take care to safeguard their devices and email accounts.",
         ],
       },
       {
         heading: "International Processing",
         paragraphs: [
-          "WYRPlay is intended primarily for users in the United States, but service providers may process information in the United States or other locations where they operate. Privacy protections can differ between jurisdictions.",
+          "WYRPlay is operated by Wang Yufei, an individual operator in China. Our hosting, database, and infrastructure providers may store and process data in the United States and other global locations. Where required by applicable law, appropriate safeguards are utilized for cross-border data transfers.",
         ],
       },
       {
         heading: "Changes to This Notice",
         paragraphs: [
-          "We may update this Privacy Notice when our features, providers, or legal obligations change. The effective date shown at the top identifies the version that applies. If a change materially affects how we handle personal information, we will provide additional notice when required by law.",
+          "We may update this Privacy Notice from time to time. The effective date at the top indicates the current version. Material changes will be accompanied by prominent notice where required by law.",
         ],
       },
       {
         heading: "Contact Us",
         paragraphs: [
-          "Questions about this Privacy Notice or privacy requests can be sent to support@wyrplay.com.",
+          "For questions regarding this Privacy Notice or your personal information, contact Wang Yufei at support@wyrplay.com.",
         ],
       },
     ],
@@ -238,257 +232,256 @@ export const legalConfig = {
       {
         heading: "Agreement to These Terms",
         paragraphs: [
-          "These Terms of Service govern your access to and use of WYRPlay at www.wyrplay.com. By using the service, you agree to these Terms and the Acceptable Use Policy. If you do not agree, do not use features that require acceptance of these Terms.",
+          "These Terms of Service govern your access to and use of WYRPlay at https://www.wyrplay.com. WYRPlay is operated by Wang Yufei, a sole individual operator in China. By accessing or using the service, you agree to be bound by these Terms and the Acceptable Use Policy. If you do not agree, do not use the service.",
         ],
       },
       {
         heading: "Eligibility and Age",
         paragraphs: [
-          "Public question content may be used by families, educators, teens, adults, and children with appropriate adult supervision. Account registration, account-linked content submission, and purchases are intended for users age 13 or older.",
-          "Users under 18 should use account or paid features only with permission from a parent or legal guardian. Users under 13 must not independently create an account, submit personal information through account features, or make purchases.",
+          "Public question browsing and gameplay may be enjoyed by families, educators, teens, adults, and children under appropriate adult supervision.",
+          "Account registration and paid subscription features are strictly intended for individuals age 13 or older. Individuals under 13 must not independently create an account or make subscription purchases.",
+          "Users ages 13 through 17 may use account or subscription features only with permission from a parent or legal guardian.",
         ],
       },
       {
         heading: "Accounts and Authentication",
         paragraphs: [
-          "If account features are available, you are responsible for maintaining control of the email account or other authentication method used to access WYRPlay and for activity performed through your account.",
-          "WYRPlay may require recent re-authentication for sensitive actions such as deleting an account, managing subscriptions, or requesting certain billing operations. We may restrict or suspend account access when reasonably necessary for security, fraud prevention, legal compliance, or enforcement of these Terms.",
+          "When you create an account, you are responsible for maintaining the security of your authentication credentials and for all activities that occur under your account.",
+          "WYRPlay may require re-authentication for sensitive account actions such as deleting an account or managing subscriptions. We may suspend or restrict account access when reasonably necessary for security, fraud prevention, legal compliance, or enforcement of these Terms.",
         ],
       },
       {
         heading: "The Service",
         paragraphs: [
-          "WYRPlay provides Would You Rather questions, voting, browsing, presentation, printing, and related entertainment or educational features. Specific features may change, be added, be removed, or be unavailable in certain environments.",
-          "We do not promise that every question will suit every audience or context. Labels such as Kids, Funny, Hard, Friends, Couples, age ranges, or classroom suitability reflect editorial curation and are not a substitute for the judgment of a parent, teacher, organizer, or other responsible adult.",
+          "WYRPlay provides Would You Rather questions, voting, browsing, presentation, printing, and related educational and entertainment features. Specific features may change, be enhanced, or be modified over time.",
+          "Audience labels such as Kids, Funny, Hard, Friends, and Couples represent editorial categorization and do not replace the judgment of a parent, teacher, or responsible adult.",
         ],
       },
       {
-        heading: "User-Submitted Content",
+        heading: "User Feedback and Communications",
         paragraphs: [
-          "If WYRPlay enables creation or submission features, you remain responsible for content you submit and must have the rights needed to submit it. You must not submit illegal, infringing, exploitative, harassing, privacy-invasive, or otherwise prohibited material.",
-          "You retain ownership of your original content. By submitting content to WYRPlay, you grant WYRPlay a non-exclusive, worldwide, royalty-free license to host, reproduce, display, format, moderate, and distribute that content only as reasonably necessary to operate, secure, improve, and promote the service, subject to applicable law and the feature's published controls.",
-          "WYRPlay may reject, hide, remove, or restrict submitted content when reasonably necessary to enforce policies, protect users, comply with law, or maintain the quality and safety of the service.",
+          "WYRPlay does not currently operate a public user-generated content submission or community publishing repository. You may submit product feedback, questions, or support requests to us.",
+          "By submitting feedback or communications, you grant WYRPlay a non-exclusive, worldwide, royalty-free license to use, adapt, and implement such suggestions to operate, improve, and secure the service without compensation or obligation to you.",
         ],
       },
       {
-        heading: "Voting, Rankings, and Community Signals",
+        heading: "Voting and Platform Integrity",
         paragraphs: [
-          "Votes, rankings, and aggregate statistics are provided for entertainment and product functionality. You may not manipulate results through bots, scripts, repeated identities, coordinated abuse, or other deceptive methods.",
-          "Aggregate results may change over time and may be adjusted when WYRPlay removes invalid, fraudulent, duplicated, or abusive activity.",
+          "Voting statistics, rankings, and aggregate percentages are provided for entertainment and product utility. You may not manipulate results through bots, automated scripts, repeated false identities, coordinated attacks, or deceptive methods.",
+          "WYRPlay reserves the right to adjust, filter, or remove votes or activity resulting from automated, abusive, or fraudulent behavior.",
         ],
       },
       {
-        heading: "Paid Features, Subscriptions, and Credits",
+        heading: "Subscriptions and Billing",
         paragraphs: [
-          "At the effective date of these Terms, WYRPlay's public service does not offer paid purchases or subscriptions. If paid features are introduced, the price, currency, billing cadence, renewal terms, included benefits, credit terms if any, and cancellation method will be disclosed before you authorize the transaction.",
-          "Any future recurring subscription will require affirmative consent to the material recurring-charge terms before billing and will provide an online method to stop future recurring charges. Transaction-specific disclosures presented at checkout form part of these Terms for that purchase.",
-          "WYRPlay will not treat the mere existence of payment, subscription, refund, or credit infrastructure in the codebase as an offer to consumers. A commercial feature applies only when it is actually enabled and presented to users.",
+          "WYRPlay's commercial offering is based on recurring paid subscriptions with automatic renewal. There is no free trial.",
+          "Subscription pricing, billing intervals (such as monthly or annual), and included benefits are presented clearly on the subscription checkout page prior to purchase authorization.",
+          "Subscriptions renew automatically at the end of each billing period unless cancelled by the user prior to renewal. You may cancel your subscription online at any time through Account Settings or Billing. Online cancellation stops future renewal charges; your subscription benefits remain active through the end of the current already-paid billing period.",
+          "Payment processing, subscription management, and refund disbursements are handled securely by our payment provider, Waffo. WYRPlay does not store complete payment-card numbers.",
+          "At the effective date of these Terms, subscription checkout is not yet open on the public production service, and no recurring consumer charges are currently incurred. Once subscription checkout is opened, these subscription terms govern all purchase transactions.",
         ],
       },
       {
         heading: "Refunds and Cancellation",
         paragraphs: [
-          "Refund and cancellation rules are described in the Refund and Cancellation Policy. Mandatory consumer rights under applicable law are not waived by these Terms.",
+          "Subscription charges for an already-started billing period are not automatically refunded on a prorated basis merely because you cancel during that period. Cancellation stops future renewal charges at the end of the paid term.",
+          "Refund exceptions are provided in accordance with our Refund and Cancellation Policy in cases of duplicate charges, unauthorized charges, material service failures, billing errors, or where a refund is mandated by applicable law.",
         ],
       },
       {
         heading: "Acceptable Use",
         paragraphs: [
-          "You must follow the Acceptable Use Policy. Prohibited conduct includes unlawful activity, harmful or exploitative content, child-safety violations, security attacks, scraping or automation that materially burdens the service, account abuse, payment abuse, and manipulation of votes or rankings.",
+          "You must comply with our Acceptable Use Policy at all times. Prohibited behavior includes unlawful conduct, child safety violations, harassment, platform manipulation, security attacks, unauthorized scraping, and payment or billing abuse.",
         ],
       },
       {
         heading: "Intellectual Property",
         paragraphs: [
-          "WYRPlay's branding, original editorial material, software, graphics, site design, curation, and other protectable content are owned by or licensed to the operator of WYRPlay and are protected by applicable intellectual-property laws.",
-          "You may use public questions for ordinary personal, family, classroom, and social play. You may not copy the site's protected presentation, software, question bank, or substantial curated collections for republication, resale, automated extraction, or competing commercial use without permission, except where applicable law permits the use.",
+          "WYRPlay's branding, software, design, question curation, graphics, and compilation are owned by or licensed to Wang Yufei and are protected by applicable intellectual property laws.",
+          "You may use public questions for personal, family, classroom, and social gameplay. You may not systematically scrape, reproduce, redistribute, or commercially exploit WYRPlay content without prior written permission.",
         ],
       },
       {
         heading: "Third-Party Services",
         paragraphs: [
-          "WYRPlay may rely on third-party infrastructure or service providers for functions such as hosting, authentication, email delivery, analytics, security, or payments. Those providers may have separate terms or privacy practices that apply to their own services.",
+          "WYRPlay utilizes third-party infrastructure and service providers for hosting, transactional email delivery (Resend), security challenges (Cloudflare Turnstile), payments (Waffo), and measurement (Google Analytics 4). Such providers operate under their own applicable terms and policies.",
         ],
       },
       {
-        heading: "Suspension, Termination, and Account Deletion",
+        heading: "Suspension, Termination, and Deletion",
         paragraphs: [
-          "You may stop using WYRPlay at any time. If account features are enabled, you may request account deletion through the available account controls or support process.",
-          "WYRPlay may suspend or terminate access, remove content, or restrict features when reasonably necessary to address fraud, abuse, security risk, legal obligations, payment disputes, or material violations of these Terms or the Acceptable Use Policy.",
+          "You may discontinue using WYRPlay at any time and may request account deletion through Account Settings or by emailing support@wyrplay.com.",
+          "We may suspend or terminate your access to the service or your account if you materially violate these Terms or the Acceptable Use Policy, engage in fraud or abuse, or where necessary to comply with legal obligations.",
         ],
       },
       {
         heading: "Disclaimers",
         paragraphs: [
-          "WYRPlay is provided for entertainment and educational use. To the maximum extent permitted by law, the service is provided on an 'as is' and 'as available' basis without warranties that it will be uninterrupted, error-free, or suitable for every audience, event, classroom, relationship, or purpose.",
-          "Nothing in WYRPlay is professional medical, legal, financial, therapeutic, or other regulated professional advice.",
+          "WYRPlay is provided for entertainment and educational purposes on an 'as is' and 'as available' basis, without warranties of any kind, whether express or implied.",
+          "Nothing on WYRPlay constitutes professional medical, legal, financial, or psychological advice.",
         ],
       },
       {
         heading: "Limitation of Liability",
         paragraphs: [
-          "To the maximum extent permitted by applicable law, WYRPlay and its operator will not be liable for indirect, incidental, special, consequential, exemplary, or punitive damages arising from use of the service. Any limitation applies only to the extent the law allows and does not exclude liability that cannot lawfully be limited.",
+          "To the maximum extent permitted by applicable law, Wang Yufei and WYRPlay will not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the service. Liability that cannot lawfully be limited under applicable mandatory consumer law is not excluded.",
         ],
       },
       {
         heading: "Indemnity",
         paragraphs: [
-          "To the extent permitted by law, if your unlawful conduct, prohibited content, or material breach of these Terms causes a third-party claim against WYRPlay, you agree to be responsible for the resulting losses and reasonable costs to the extent legally attributable to your conduct. This section does not reduce any non-waivable consumer rights.",
+          "To the extent permitted by law, you agree to indemnify and hold harmless Wang Yufei and WYRPlay from claims, damages, and expenses arising from your unlawful conduct, material violation of these Terms, or infringement of third-party rights. This provision does not restrict non-waivable statutory consumer protections.",
         ],
       },
       {
-        heading: "Applicable Law and Disputes",
+        heading: "Governing Law and Dispute Resolution",
         paragraphs: [
-          "These Terms are subject to applicable United States federal and state law. Nothing in these Terms waives mandatory consumer protections or other rights that cannot legally be waived.",
-          "These Terms do not require mandatory arbitration or a class-action waiver. If WYRPlay later proposes a material dispute-resolution change, the Terms will be updated and any notice or consent required by law will be provided.",
+          "These Terms are governed by and construed in accordance with the laws of the People’s Republic of China, without regard to conflict of law principles.",
+          "Nothing in these Terms excludes, limits, or overrides mandatory consumer rights that you are entitled to under the laws of your habitual residence and that cannot be waived by agreement.",
+          "These Terms do not impose mandatory arbitration, do not include a class-action waiver, and do not establish a China-only exclusive forum. Disputes may be submitted to courts having jurisdiction under applicable law.",
         ],
       },
       {
         heading: "Changes to These Terms",
         paragraphs: [
-          "We may update these Terms when the service or legal requirements change. The effective date shown at the top identifies the current version. Material changes will receive additional notice when required by law.",
+          "We may update these Terms as the service and legal requirements evolve. The effective date at the top indicates the current version. Material modifications will be notified as required by applicable law.",
         ],
       },
       {
         heading: "Contact",
-        paragraphs: ["Questions about these Terms can be sent to support@wyrplay.com."],
+        paragraphs: [
+          "Inquiries regarding these Terms should be directed to Wang Yufei at support@wyrplay.com.",
+        ],
       },
     ],
     acceptable_use: [
       {
         heading: "Purpose",
         paragraphs: [
-          "This Acceptable Use Policy protects WYRPlay users, children and families who may use public content, the integrity of voting and community features, and the security of the service. It applies whenever you access WYRPlay or use an account, submission, voting, printing, presentation, or paid feature.",
+          "This Acceptable Use Policy protects WYRPlay users, children and families who enjoy our questions, the integrity of voting features, and the reliability of our service. It applies to all users accessing WYRPlay.",
         ],
       },
       {
         heading: "Illegal or Harmful Conduct",
         paragraphs: [
-          "Do not use WYRPlay to violate law, facilitate crime, defraud another person, threaten or harass others, encourage violence, or distribute material that is unlawful in the jurisdiction that applies to you or to WYRPlay.",
+          "Do not use WYRPlay to violate applicable laws, facilitate criminal activity, threaten or harass others, encourage violence, or distribute unlawful material.",
         ],
       },
       {
         heading: "Child Safety",
         paragraphs: [
-          "Do not submit, request, upload, link to, or distribute sexual, exploitative, grooming, abusive, or otherwise harmful content involving minors. Do not use WYRPlay to contact, profile, solicit personal information from, or manipulate a child in a manner that is unsafe, deceptive, or unlawful.",
-          "Content submitted for Kids, classroom, or family-facing areas must be appropriate for the labeled audience and must not contain adult sexual content, graphic violence, dangerous challenges, targeted harassment, or other material that defeats the safety purpose of those collections.",
+          "Do not submit, request, link to, or transmit sexual, exploitative, abusive, or harmful material involving minors. Do not use the service to contact, profile, or solicit personal information from children.",
+          "Interactions in the Kids and family collections must remain safe and suitable for all audiences, free from graphic violence, vulgarity, dangerous stunts, or targeted harassment.",
         ],
       },
       {
         heading: "Harassment, Hate, and Personal Harm",
         paragraphs: [
-          "Do not use the service to bully, stalk, threaten, dox, shame, or target a person or protected group. Do not publish another person's private or sensitive information without a lawful basis and appropriate permission.",
+          "Do not use the service to bully, stalk, dox, intimidate, or demean individuals or protected groups. Do not post or transmit private personal information without legal authorization.",
         ],
       },
       {
         heading: "Impersonation and Deception",
         paragraphs: [
-          "Do not impersonate another person or organization, misrepresent your affiliation, create deceptive accounts, submit fraudulent support or refund requests, or mislead users about the source or purpose of content.",
+          "Do not impersonate any person or entity, misrepresent affiliations, operate fraudulent accounts, or submit deceptive support or refund claims.",
         ],
       },
       {
-        heading: "Platform Integrity",
+        heading: "Platform and Voting Integrity",
         paragraphs: [
-          "Do not manipulate votes, rankings, popularity signals, contests, or usage statistics through bots, scripts, coordinated fake activity, repeated identities, cookie resets, automation, or other deceptive means.",
-          "Do not scrape, crawl, copy, or extract the service at a rate or scale that materially burdens WYRPlay, bypasses access controls, ignores technical restrictions, or is used to republish or commercially exploit protected content. Ordinary search-engine indexing authorized by WYRPlay's robots directives is not prohibited by this section.",
+          "Do not manipulate votes, rankings, or gameplay statistics using automated scripts, bots, coordinated networks, repeated browser emulation, or proxy abuse.",
+          "Do not crawl, scrape, or extract content at rates that degrade system performance or circumvent technical access restrictions. Standard search engine indexing conforming to robots.txt is permitted.",
         ],
       },
       {
-        heading: "Security and Access Controls",
+        heading: "Security and Technical Restrictions",
         paragraphs: [
-          "Do not probe, scan, exploit, bypass, reverse engineer for a prohibited purpose, or attempt unauthorized access to accounts, databases, APIs, administrative functions, payment systems, rate limits, security controls, or infrastructure.",
-          "Do not introduce malware, destructive code, denial-of-service traffic, credential attacks, automated abuse, or any mechanism intended to interfere with the availability or integrity of the service.",
+          "Do not probe, scan, or attempt unauthorized access to accounts, APIs, databases, payment workflows, security controls, or infrastructure.",
+          "Do not introduce viruses, malware, denial-of-service traffic, or automated attacks intended to disrupt the availability or integrity of the service.",
         ],
       },
       {
-        heading: "Accounts, Payments, Refunds, and Credits",
+        heading: "Accounts, Subscriptions, and Billing",
         paragraphs: [
-          "If account or commerce features are enabled, do not abuse account creation, authentication, discounts, trials, refunds, chargebacks, subscriptions, credits, entitlements, or other commercial mechanisms. Do not attempt to obtain benefits you did not purchase or earn, or to spend, transfer, duplicate, or reverse entitlements through technical manipulation.",
+          "Do not abuse account registration, authentication, subscriptions, payment channels, refunds, or chargeback mechanisms.",
+          "Do not attempt to obtain subscription access through fraudulent payment methods, technical manipulation, or unauthorized account access.",
         ],
       },
       {
         heading: "Intellectual Property",
         paragraphs: [
-          "Do not upload or distribute content that you do not have the right to use. Do not reproduce WYRPlay's protected branding, software, design, or substantial curated content in a way that infringes intellectual-property rights or falsely suggests endorsement or affiliation.",
+          "Do not copy, reproduce, or republish WYRPlay's proprietary code, visual designs, branding, or substantial curated question banks in violation of copyright and intellectual property laws.",
         ],
       },
       {
         heading: "Enforcement",
         paragraphs: [
-          "WYRPlay may remove content, invalidate activity, limit features, suspend or terminate accounts, block abusive traffic, or take other reasonable steps to enforce this policy, protect users, preserve service integrity, or comply with law.",
-          "Enforcement decisions may consider context, severity, repetition, harm, intent, and risk. Serious child-safety, fraud, or security issues may result in immediate restriction without prior notice where permitted by law.",
+          "We reserve the right to investigate violations, invalidate fraudulent votes, restrict features, or suspend accounts when necessary to enforce this policy, protect users, or comply with law.",
+          "Severe safety, fraud, or security violations may result in immediate access termination without prior notice where permitted by law.",
         ],
       },
       {
-        heading: "Reporting Problems",
+        heading: "Reporting Violations",
         paragraphs: [
-          "Report abuse, child-safety concerns, security issues, copyright concerns, or other policy violations to support@wyrplay.com with enough detail for us to investigate.",
+          "Report safety concerns, policy violations, or abusive behavior to support@wyrplay.com with relevant details for investigation.",
         ],
       },
     ],
     refund_policy: [
       {
-        heading: "Current Service Status",
+        heading: "Subscription Model and Production Status",
         paragraphs: [
-          "At the effective date of this policy, WYRPlay's public service does not offer consumer purchases, subscriptions, recurring charges, or paid credits. There is therefore no current consumer charge to refund or cancel.",
-          "If WYRPlay introduces paid features, this policy will apply together with the transaction-specific terms shown before purchase. Material price, renewal, billing, and cancellation terms will be presented clearly before billing information is used to complete a transaction.",
+          "WYRPlay operates on a recurring paid subscription model with automatic renewal and no free trial. Payments and subscription billing are processed by our payment provider, Waffo.",
+          "At the effective date of this policy, subscription checkout is not yet open on the public production service, and no recurring consumer charges are currently incurred. Once subscription checkout is opened, the terms of this policy apply to all WYRPlay subscriptions.",
         ],
       },
       {
-        heading: "One-Time Digital Purchases",
+        heading: "Automatic Renewal and Online Cancellation",
         paragraphs: [
-          "If one-time digital purchases are introduced, the checkout page will identify the product, price, currency, and material delivery terms before purchase. Unless the checkout terms or applicable law provide otherwise, a completed digital purchase will not be automatically refundable solely because a user changes their mind after the digital benefit has been delivered.",
-          "We will review requests involving duplicate charges, a failed or materially defective delivery, unauthorized charges, incorrect billing, or other circumstances where a refund is required by law or reasonably appropriate.",
+          "Subscriptions automatically renew at the end of each billing cycle (such as monthly or annually, as selected at checkout) unless cancelled prior to renewal.",
+          "Subscribers can cancel online at any time through Account Settings or the Billing section. Online cancellation stops future renewal charges. Cancelling does not immediately terminate access; your paid subscription benefits remain available through the end of the current already-paid billing period.",
         ],
       },
       {
-        heading: "Subscriptions and Automatic Renewal",
+        heading: "Refund Rules and Exceptions",
         paragraphs: [
-          "If subscriptions are introduced, WYRPlay will clearly disclose the recurring price, billing interval, automatic-renewal nature, any trial or promotional period, material cancellation terms, and how to cancel before the user affirmatively consents to recurring charges.",
-          "An online subscription will provide an online cancellation method designed to stop future recurring charges without unnecessary barriers. Cancellation ordinarily affects future renewal; access for an already-paid period may continue until the end of that period unless the checkout terms or law provide otherwise.",
+          "Subscription charges for an already-started billing period are not automatically refunded on a prorated basis solely because a user decides to cancel during that period.",
+          "Refunds are provided under the following recognized exception circumstances:",
+          "1. Duplicate charge: An accidental double charge caused by technical or processing error;",
+          "2. Unauthorized transaction: A verified unauthorized charge not made by the account holder;",
+          "3. Material service failure: A persistent service outage or substantial failure to deliver promised features during the paid period;",
+          "4. Billing error: An incorrect amount or erroneous transaction attributable to the service or payment processor;",
+          "5. Statutory requirement: Any refund mandated by applicable consumer protection laws that cannot be excluded by agreement.",
         ],
       },
       {
-        heading: "Refunds for Subscription Charges",
+        heading: "How to Cancel a Subscription",
         paragraphs: [
-          "Unless the checkout terms or applicable law provide otherwise, subscription charges for a billing period that has already begun are not automatically prorated merely because the user cancels during that period. We may provide a full or partial refund where required by law, where a duplicate or unauthorized charge occurred, where access materially failed, or where we otherwise determine a refund is appropriate.",
+          "To cancel your subscription, sign in to your WYRPlay account, open Account Settings or Billing, and select Cancel Subscription. Confirmation of cancellation will be displayed, and no further renewal charges will occur. Deleting your entire account is not necessary to cancel recurring billing.",
         ],
       },
       {
-        heading: "Credits and Entitlements",
+        heading: "How to Request a Refund",
         paragraphs: [
-          "If WYRPlay later sells or grants credits, the product page or checkout flow will disclose the credit type, quantity, expiration rule if any, and material restrictions. Consumed or expired credits may be non-refundable except where required by law or where the underlying transaction qualifies for a refund.",
-          "If a refund would require reversing a digital entitlement that has already been consumed or cannot safely be reversed automatically, WYRPlay may place the request into manual review rather than creating an inconsistent payment or entitlement state.",
+          "To request a refund under one of the recognized exceptions, email support@wyrplay.com from your registered account email address. Include the approximate transaction date, amount, and an explanation of the issue. Do not send complete payment-card numbers or security codes by email. Our team will review the request against our policy and applicable consumer laws.",
         ],
       },
       {
-        heading: "How to Cancel",
+        heading: "Payment Processing and Chargebacks",
         paragraphs: [
-          "If subscriptions are enabled, users will be able to manage or cancel an active subscription through the Billing area of the authenticated account or another clearly disclosed online cancellation path. Deleting an account is not intended to be the only method of cancelling a recurring charge.",
+          "All subscription transactions and refund disbursements are processed securely through Waffo. WYRPlay does not store full payment-card numbers. If you notice an unfamiliar or erroneous charge, please contact support@wyrplay.com promptly so we can investigate and assist before initiating a chargeback.",
         ],
       },
       {
-        heading: "How to Request a Refund or Report a Billing Problem",
+        heading: "Statutory Consumer Rights",
         paragraphs: [
-          "If paid features are enabled, use the Billing area when an in-product refund option is available or contact support@wyrplay.com. Include the account email, approximate transaction date, amount, and a description of the issue. Do not send full payment-card numbers or security codes by email.",
-        ],
-      },
-      {
-        heading: "Chargebacks and Unauthorized Transactions",
-        paragraphs: [
-          "If you believe a charge was unauthorized, contact us promptly so we can investigate. You may also have rights through your card issuer or payment provider. Nothing in this policy limits rights that cannot be waived under applicable law.",
-        ],
-      },
-      {
-        heading: "California and Other State Requirements",
-        paragraphs: [
-          "If WYRPlay offers automatically renewing subscriptions to California consumers, the subscription flow must satisfy California's Automatic Renewal Law, including required disclosures, affirmative consent, reminders when applicable, and a clear online cancellation method. Other states may impose additional automatic-renewal, cancellation, or refund requirements.",
+          "Nothing in this policy limits or waives any non-waivable statutory consumer rights, mandatory cooling-off periods, or automatic-renewal protections guaranteed under the laws of your jurisdiction.",
         ],
       },
       {
         heading: "Changes to This Policy",
         paragraphs: [
-          "WYRPlay will update this policy before enabling a materially different paid model. The effective date shown at the top identifies the current version.",
+          "We may update this Refund and Cancellation Policy from time to time. The effective date at the top indicates the current version.",
         ],
       },
     ],
@@ -496,53 +489,46 @@ export const legalConfig = {
       {
         heading: "When This Page Applies",
         paragraphs: [
-          "This page applies if WYRPlay account features are enabled and you have an authenticated WYRPlay account. If you only use public, no-account features, there may be no account profile to delete.",
+          "This page explains how users with a registered WYRPlay account can request deletion of their account and associated personal information. If you only enjoy public question gameplay without creating an account, no account profile or authentication identity exists to delete.",
         ],
       },
       {
         heading: "How to Request Account Deletion",
         paragraphs: [
-          "When account deletion is enabled, sign in, open Account Settings, and use the Delete Account control. Sensitive deletion actions may require a recent authenticated session and an explicit confirmation.",
-          "If you cannot access your account but believe WYRPlay still holds account-linked personal information about you, contact support@wyrplay.com from the account email address when possible. We may need to verify your identity before acting on the request.",
+          "To delete your account, sign in, open Account Settings, and select Delete Account. For security, recent re-authentication and explicit confirmation may be required.",
+          "If you cannot access your account, you may email support@wyrplay.com from your registered account email address requesting deletion. We may perform reasonable verification before processing the request.",
         ],
       },
       {
-        heading: "What Happens After You Request Deletion",
+        heading: "What Happens Upon Account Deletion",
         paragraphs: [
-          "Once a valid deletion request is accepted, WYRPlay's deletion workflow is designed to block access to account-scoped product data and then complete downstream cleanup. If a dependency is temporarily unavailable, the deletion request remains durable and the system may retry cleanup automatically.",
-          "The workflow removes the authentication identity and detaches or deletes account-scoped product data where deletion is appropriate. The process is designed so a failed downstream step does not silently restore access to an account that is already pending deletion.",
+          "Once a valid deletion request is accepted, your access to the account is immediately revoked, and downstream cleanup of account-scoped personal data is initiated. If downstream dependencies experience temporary delays, the deletion request remains durable and will complete automatically.",
+          "Your authentication identity and personal profile data are permanently detached or deleted. Anonymous or irreversibly aggregated data, such as public gameplay voting counts, cannot reasonably be linked back to you and will remain.",
         ],
       },
       {
-        heading: "Subscriptions and Billing",
+        heading: "Subscriptions and Billing Coordination",
         paragraphs: [
-          "If an account has an active or pending subscription, the deletion workflow is designed to prepare cancellation before completing identity deletion. If your goal is only to stop future recurring charges, use the subscription cancellation control in Billing rather than deleting the entire account.",
-          "Deleting an account does not erase obligations, refunds, disputes, chargebacks, or transaction records that must be completed or retained for accounting, fraud prevention, security, or legal compliance.",
+          "If an account has an active paid subscription, the deletion workflow coordinates cancellation with our payment provider (Waffo) to stop future renewals before completing identity deletion. If you only wish to stop future subscription charges while keeping your account, use the subscription cancellation option in Billing instead of deleting your account.",
+          "Deleting an account does not erase records that must be retained for legitimate business, dispute resolution, tax, or legal compliance purposes.",
         ],
       },
       {
         heading: "Information We May Retain",
         paragraphs: [
-          "We may retain limited transaction, refund, tax, accounting, fraud-prevention, security, legal-hold, or dispute records when retention is reasonably necessary or required by law. Retained records are limited to the purpose that justifies keeping them and are not treated as an active consumer account.",
-          "Anonymous or irreversibly de-identified information, including aggregate gameplay statistics that can no longer reasonably be linked to you, may remain after account deletion.",
+          "We may retain limited transaction, refund, tax, security, and fraud-prevention records where retention is reasonably required by applicable law. Retained records are kept securely for the duration required by law and are not treated as an active consumer account.",
         ],
       },
       {
-        heading: "Email and Authentication Records",
+        heading: "Children and Parental Inquiries",
         paragraphs: [
-          "The deletion workflow is designed to delete the active authentication identity. Some short-lived security, audit, abuse-prevention, or delivery records may remain for their applicable retention period where necessary to protect the service or comply with law.",
-        ],
-      },
-      {
-        heading: "Children and Parent Requests",
-        paragraphs: [
-          "WYRPlay does not knowingly permit children under 13 to create accounts without a legally sufficient parental process. A parent or legal guardian who believes a child under 13 provided personal information to WYRPlay should contact support@wyrplay.com so we can review and, when appropriate, delete the information.",
+          "WYRPlay strictly prohibits children under 13 from registering accounts. A parent or legal guardian who believes a child under 13 provided personal information or registered an account should contact support@wyrplay.com to request immediate review and deletion.",
         ],
       },
       {
         heading: "Questions About Deletion",
         paragraphs: [
-          "For questions about account deletion or a privacy-rights request, contact support@wyrplay.com.",
+          "For questions regarding account deletion or privacy requests, please contact Wang Yufei at support@wyrplay.com.",
         ],
       },
     ],

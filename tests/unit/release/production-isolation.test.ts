@@ -14,15 +14,18 @@ describe("Production Boundaries & Invariants Gate", () => {
     expect(legalConfig.authMethods).toEqual([]);
   });
 
-  it("preserves Owner / Legal review boundaries (does not falsely mark reviewed)", () => {
-    // 保护边界：绝不擅自修改 minimumAge = 13
+  it("enforces finalized reviewed Legal configuration and minimumAge boundary", () => {
+    // 保护边界：minimumAge 严格为 13
     expect(legalConfig.minimumAge).toBe(13);
 
-    // 保护边界：绝不伪造 Legal 审校状态为 reviewed
-    expect(legalConfig.releaseStatus).toBe("draft");
-    expect(legalConfig.documents.privacy.reviewStatus).toBe("draft");
-    expect(legalConfig.documents.terms.reviewStatus).toBe("draft");
-    expect(legalConfig.documents.acceptable_use.reviewStatus).toBe("draft");
+    // 保护边界：Legal 已经正式定稿并转为 reviewed
+    expect(legalConfig.releaseStatus).toBe("reviewed");
+    expect(legalConfig.documents.privacy.reviewStatus).toBe("reviewed");
+    expect(legalConfig.documents.terms.reviewStatus).toBe("reviewed");
+    expect(legalConfig.documents.acceptable_use.reviewStatus).toBe("reviewed");
+    expect(legalConfig.documents.refund_policy.reviewStatus).toBe("reviewed");
+    expect(legalConfig.documents.account_deletion.reviewStatus).toBe("reviewed");
+    expect(legalConfig.operator.legalName).toBe("Wang Yufei");
   });
 
   it("registers all system routes in routeDefinitions", () => {
