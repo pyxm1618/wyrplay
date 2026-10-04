@@ -26,6 +26,7 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     // 验证目标 DOM 存在
     await expect(page.locator("#play")).toBeAttached();
     await expect(page.locator("#questions")).toBeAttached();
+    await expect(page.locator("#categories")).toBeAttached();
 
     // 8.2 当前首页主导航的 Categories 锚点
     const categoriesNavLink = page
@@ -37,8 +38,8 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     await expect.poll(() => new URL(page.url()).hash).toBe("#categories");
     await expect(page.locator("#categories")).toBeInViewport();
 
-    // 8.3 Hero CTA 进入 Play
-    const playLink = page.getByRole("link", { name: "Make Your Choice" });
+    // 8.3 真实 Play 入口进入 #play
+    const playLink = page.getByRole("link", { name: "Play now" });
     await expect(playLink).toBeVisible();
     await playLink.click();
 
@@ -46,7 +47,7 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     await expect(page.locator("#play")).toBeInViewport();
 
     // 8.4 Questions 入口仍应写入对应 hash
-    const questionsLink = page.locator('a[href="#questions"]').first();
+    const questionsLink = page.locator('a[href$="#questions"]').first();
     await expect(questionsLink).toBeVisible();
     await questionsLink.click();
 

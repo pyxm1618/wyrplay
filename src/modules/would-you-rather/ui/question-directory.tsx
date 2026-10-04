@@ -28,11 +28,15 @@ export function QuestionDirectory({
       );
     }
 
-    const arenaElement = document.getElementById("play");
-    if (arenaElement) {
-      arenaElement.scrollIntoView({ behavior: "smooth" });
-      arenaElement.focus({ preventScroll: true });
-    }
+    const focusArena = () => {
+      const arenaElement = document.getElementById("play");
+      if (arenaElement) {
+        arenaElement.scrollIntoView({ behavior: "smooth" });
+        arenaElement.focus({ preventScroll: true });
+      }
+    };
+    focusArena();
+    requestAnimationFrame(focusArena);
   };
 
   return (

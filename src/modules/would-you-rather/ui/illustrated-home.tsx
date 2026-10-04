@@ -7,10 +7,9 @@ import {
   getQuestionsByCollection,
   QUESTIONS_DATABASE,
 } from "../data/questions";
-import { Arrow, ArtCrop, ChoiceFrame, HeroReferenceDetails } from "./home-art";
+import { Arrow, ArtCrop } from "./home-art";
 import { rankLeaderboard, type LeaderboardResult } from "../domain/leaderboard";
 import { useHydrated } from "./use-hydrated";
-import { ThemeToggle } from "./theme-toggle";
 
 const categories = [
   {
@@ -57,9 +56,9 @@ const categories = [
   },
 ] as const;
 const steps = [
-  { title: "Explore", description: "Browse or get a random question", color: "#009eff" },
+  { title: "Explore", description: "Find your audience, occasion and mood", color: "#009eff" },
   { title: "Choose", description: "Pick the option you prefer", color: "#ff782f" },
-  { title: "See Results", description: "See what other players chose", color: "#00b849" },
+  { title: "See Results", description: "Real votes, never invented percentages", color: "#00b849" },
   { title: "Discuss", description: "Share and debate with friends", color: "#7645ff" },
 ];
 const occasions = [
@@ -107,12 +106,13 @@ export function IllustratedHomeHeader({ authEnabled = false }: { authEnabled?: b
   ];
   return (
     <>
-      <a href="#play" className="sr-only">
+      <a href="#play" className="home-skip-link sr-only">
         Skip to play
       </a>
       <header className="site-header">
         <Link href="/" className="brand" aria-label="WYRPlay Home">
-          <ArtCrop box={[54, 7, 120, 43]} label="WYRPLAY" />
+          <Image src="/brand/logo.svg" alt="" width={40} height={40} priority />
+          <span>WYRPLAY</span>
         </Link>
         <nav aria-label="Primary navigation">
           {links.map((link) => (
@@ -129,7 +129,6 @@ export function IllustratedHomeHeader({ authEnabled = false }: { authEnabled?: b
           >
             ⌕
           </Link>
-          <ThemeToggle />
           {authEnabled ? (
             <Link className="login-button home-login" href="/sign-in">
               Log in
@@ -194,11 +193,13 @@ function Heading({
 }
 export function IllustratedHome({
   children,
+  arena,
   onPlayQuestion,
   leaderboard,
 }: {
   leaderboard: LeaderboardResult;
   children: ReactNode;
+  arena: ReactNode;
   onPlayQuestion: (id: string) => void;
 }) {
   const approved = QUESTIONS_DATABASE.filter((question) => question.reviewStatus === "approved");
@@ -209,26 +210,28 @@ export function IllustratedHome({
       : [];
   const play = (id: string) => {
     onPlayQuestion(id);
-    document.getElementById("play")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    document.getElementById("play")?.focus({ preventScroll: true });
+    const focusArena = () => {
+      const arenaEl = document.getElementById("play");
+      if (arenaEl) {
+        arenaEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        arenaEl.focus({ preventScroll: true });
+      }
+    };
+    focusArena();
+    requestAnimationFrame(focusArena);
   };
   return (
     <>
       <section className="hero" aria-labelledby="page-title">
         <div className="hero-art" aria-hidden="true" />
-        <div className="hero-cloud-floor" aria-hidden="true" />
-        <ArtCrop box={[571, 60, 120, 83]} className="hero-top-doodle" />
-        <ArtCrop box={[646, 60, 132, 97]} className="hero-top-blob" />
-        <ArtCrop box={[691, 157, 87, 40]} className="hero-blob-continuation" />
-        <ArtCrop box={[538, 558, 26, 27]} className="hero-bottom-flower" />
-        <ArtCrop box={[580, 591, 28, 24]} className="hero-bottom-star" />
-        <ArtCrop box={[698, 615, 80, 17]} className="hero-bottom-corner" />
-        <HeroReferenceDetails />
-        <ArtCrop box={[0, 477, 194, 155]} className="hero-cloud-left" />
         <div className="hero-intro">
           <h1 id="page-title">
             <span className="sr-only">Would You Rather Questions</span>
-            <ArtCrop box={[210, 43, 359, 190]} className="hero-lettering" />
+            <span className="hero-lettering" aria-hidden="true">
+              <span className="lettering-would">Would</span>
+              <span className="lettering-you">You</span>
+              <span className="lettering-rather">Rather</span>
+            </span>
           </h1>
           <h2>Same question. Different minds.</h2>
           <p>
@@ -240,34 +243,7 @@ export function IllustratedHome({
           <br />
           you pick?
         </p>
-        <div className="choice-grid" aria-label="Illustrative example: dog or cat">
-          <div className="choice-card dog-card">
-            <ChoiceFrame variant="dog" />
-            <ArtCrop box={[163, 301, 147, 91]} className="pet-art dog-art" />
-            <span>
-              Always have
-              <br />a dog as a pet
-            </span>
-          </div>
-          <span className="or-badge" aria-hidden="true">
-            OR
-          </span>
-          <div className="choice-card cat-card">
-            <ChoiceFrame variant="cat" />
-            <ArtCrop box={[465, 300, 129, 93]} className="pet-art cat-art" />
-            <span>
-              Always have
-              <br />a cat as a pet
-            </span>
-          </div>
-        </div>
-        <div className="vote-summary preview-summary">
-          <p>Two choices. One great conversation.</p>
-        </div>
-        <Link href="#play" className="choice-cta dark-button">
-          Make Your Choice
-          <Arrow />
-        </Link>
+        {arena}
         <div className="hero-bottom">
           <div className="join-players">
             <p>
@@ -458,7 +434,7 @@ export function IllustratedHome({
         <ArtCrop box={[75, 1883, 85, 39]} className="together-flourish flourish-left" />
         <ArtCrop box={[568, 1875, 91, 45]} className="together-flourish flourish-right" />
         <h2>Play Together, Anywhere</h2>
-        <p>Perfect for friends, families, classrooms or just curious minds.</p>
+        <p>Bring a question to game night, or use Presenter Mode on a shared screen.</p>
         <div className="occasion-grid">
           {occasions.map((occasion) => (
             <Link key={occasion.title} href={occasion.href} className="occasion-card">
@@ -472,10 +448,43 @@ export function IllustratedHome({
         </div>
       </section>
       <div className="home-live-experience">
-        <h2 id="tool-demo-title">Play Would You Rather Questions Online</h2>
-        <p>Pick a side, see real results, or launch Presenter Mode for your group.</p>
+        <h2 id="tool-demo-title">Find Your Next Dilemma</h2>
+        <p>Search by keyword and filter by audience, occasion, tone or difficulty.</p>
         {children}
       </div>
+      <HomeFaq />
     </>
+  );
+}
+
+function HomeFaq() {
+  const answers = [
+    {
+      question: "What makes a great Would You Rather question?",
+      answer:
+        "Two choices that both deserve a second thought. Pick one, explain why, and invite your friends to defend the other side. There are no right answers.",
+    },
+    {
+      question: "How does voting work?",
+      answer:
+        "Choose A or B to record your vote and see the real community results. Choose the other option to change your vote. If voting is unavailable, we say so instead of inventing numbers.",
+    },
+    {
+      question: "Can I play with a classroom or group?",
+      answer:
+        "Start with the Classroom collection and check each question’s age rating and suitability for your group. Open Presenter Mode beside the live question for a shared display, use Previous or Next to move through questions, and Escape to exit.",
+    },
+  ];
+  return (
+    <section className="home-faq section-shell" aria-labelledby="home-faq-title">
+      <p className="faq-eyebrow">A little help before your next debate</p>
+      <h2 id="home-faq-title">Good Questions, Answered</h2>
+      {answers.map(({ question, answer }) => (
+        <details key={question}>
+          <summary>{question}</summary>
+          <p>{answer}</p>
+        </details>
+      ))}
+    </section>
   );
 }

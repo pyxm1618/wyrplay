@@ -1,13 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
 import { isKidsCollectionQuestion } from "../domain/filter-questions";
+import { parseVoteStats } from "../domain/finder";
 import type { Question, VoteStats } from "../types";
+import { Arrow, ChoiceFrame } from "./home-art";
 import { PlayHeading, OptionPanels } from "./play/art";
 import "./play/play.css";
 
 export interface DuelArenaProps {
-  readonly appearance?: "default" | "illustrated-play";
+  readonly appearance?: "default" | "illustrated-play" | "illustrated-home";
   readonly question: Question | undefined;
   readonly currentIndex: number;
   readonly totalQuestions: number;
@@ -15,6 +17,7 @@ export interface DuelArenaProps {
   readonly hasActiveFilters?: boolean;
   readonly onNext: () => void;
   readonly onRandom: () => void;
+  readonly presenterButtonRef?: RefObject<HTMLButtonElement | null>;
   readonly onOpenPresenter?: (() => void) | undefined;
 }
 
@@ -28,6 +31,7 @@ export function DuelArena({
   onNext,
   onRandom,
   onOpenPresenter,
+  presenterButtonRef,
 }: DuelArenaProps) {
   const [voteStats, setVoteStats] = useState<VoteStats | null>(null);
   const [loadedQuestionId, setLoadedQuestionId] = useState<string | null>(null);
@@ -35,6 +39,7 @@ export function DuelArena({
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [refreshCount, setRefreshCount] = useState(0);
   const activeRequestIdRef = useRef(0);
+  const voteReadControllerRef = useRef<AbortController | null>(null);
 
   const currentQuestionId = question?.id;
   const aggregateOnly = Boolean(question && isKidsCollectionQuestion(question));
@@ -44,7 +49,9 @@ export function DuelArena({
     if (!currentQuestionId) return;
 
     let ignore = false;
+    const voteRevision = activeRequestIdRef.current;
     const controller = new AbortController();
+    voteReadControllerRef.current = controller;
 
     fetch(`${voteEndpoint}?questionId=${encodeURIComponent(currentQuestionId)}`, {
       cache: "no-store",
@@ -54,17 +61,22 @@ export function DuelArena({
         if (!res.ok) {
           throw new Error(`HTTP ${res.status}: Failed to fetch vote statistics`);
         }
-        return res.json() as Promise<VoteStats>;
+        return res.json() as Promise<unknown>;
       })
       .then((data) => {
-        if (!ignore) {
-          setVoteStats(data);
+        if (!ignore && voteRevision === activeRequestIdRef.current) {
+          setVoteStats(parseVoteStats(data));
           setLoadedQuestionId(currentQuestionId);
+          setErrorMessage(null);
         }
       })
       .catch((err: unknown) => {
-        if (!ignore && (err as { name?: string })?.name !== "AbortError") {
-          setErrorMessage("Unable to connect to voting database. Questions remain fully playable.");
+        if (
+          !ignore &&
+          voteRevision === activeRequestIdRef.current &&
+          (err as { name?: string })?.name !== "AbortError"
+        ) {
+          setErrorMessage("Voting is unavailable. You can still browse questions or try again.");
         }
       });
 
@@ -81,6 +93,8 @@ export function DuelArena({
         aggregateOnly && loadedQuestionId === currentQuestionId && Boolean(voteStats?.hasVoted);
       if (!currentQuestionId || isSubmitting || aggregateVoteAlreadySubmitted) return;
 
+      // A pending first read can set a different anonymous cookie after a quick vote.
+      voteReadControllerRef.current?.abort();
       setIsSubmitting(true);
       setErrorMessage(null);
       const requestId = ++activeRequestIdRef.current;
@@ -98,9 +112,9 @@ export function DuelArena({
           throw new Error(errData.error || `HTTP ${res.status}: Could not record vote`);
         }
 
-        const data = (await res.json()) as VoteStats;
+        const data: unknown = await res.json();
         if (requestId === activeRequestIdRef.current) {
-          setVoteStats(data);
+          setVoteStats(parseVoteStats(data));
           setLoadedQuestionId(currentQuestionId);
           setIsSubmitting(false);
         }
@@ -173,8 +187,82 @@ export function DuelArena({
   }
 
   const currentStats = loadedQuestionId === currentQuestionId ? voteStats : null;
+  const currentErrorMessage = loadedQuestionId === currentQuestionId ? errorMessage : null;
   const hasVoted = Boolean(currentStats?.hasVoted);
   const userPick = currentStats?.selectedOption ?? null;
+
+  if (appearance === "illustrated-home") {
+    return (
+      <section id="play" tabIndex={-1} className="home-hero-arena" aria-labelledby="hero-question">
+        <h2 id="hero-question">{question.question}</h2>
+        <div className="choice-grid">
+          {(["A", "B"] as const).map((option) => (
+            <button
+              type="button"
+              key={option}
+              className={`choice-card ${option === "A" ? "dog-card" : "cat-card"}`}
+              aria-pressed={userPick === option}
+              disabled={isSubmitting}
+              onClick={() => void handleVote(option)}
+            >
+              <ChoiceFrame variant={option === "A" ? "dog" : "cat"} />
+              <span className="choice-label">Option {option}</span>
+              <span className="choice-text">
+                {option === "A" ? question.optionA : question.optionB}
+              </span>
+              <span className="choice-feedback">
+                {isSubmitting
+                  ? "Recording…"
+                  : userPick === option
+                    ? "✓ Your Choice"
+                    : `Choose ${option}`}
+              </span>
+              {hasVoted && currentStats && (
+                <span className="choice-result">
+                  {option === "A" ? currentStats.percentageA : currentStats.percentageB}% ·{" "}
+                  {option === "A" ? currentStats.votesA : currentStats.votesB} votes
+                </span>
+              )}
+            </button>
+          ))}
+          <span className="or-badge" aria-hidden="true">
+            OR
+          </span>
+        </div>
+        <p className="home-vote-status" aria-live="polite">
+          {hasVoted && currentStats
+            ? `Total of ${currentStats.total.toLocaleString()} votes received. Choose the other side to change your vote.`
+            : "Pick A or B to play. Real votes. Real results."}
+        </p>
+        {currentErrorMessage && (
+          <p className="home-vote-error" role="alert">
+            {currentErrorMessage}{" "}
+            <button type="button" onClick={() => setRefreshCount((c) => c + 1)}>
+              Retry
+            </button>
+          </p>
+        )}
+        <div className="home-play-actions">
+          <button type="button" className="choice-cta dark-button" onClick={onNext}>
+            Next Question <Arrow />
+          </button>
+          <button type="button" className="section-link" onClick={onRandom}>
+            Random
+          </button>
+          {onOpenPresenter && (
+            <button
+              ref={presenterButtonRef}
+              type="button"
+              className="section-link"
+              onClick={onOpenPresenter}
+            >
+              Presenter Mode
+            </button>
+          )}
+        </div>
+      </section>
+    );
+  }
 
   if (appearance === "illustrated-play") {
     const choice = (option: "A" | "B") => (
@@ -205,9 +293,10 @@ export function DuelArena({
     return (
       <section id="play" className="illustrated-arena">
         <PlayHeading question={question.question} />
-        {errorMessage && (
+        {currentErrorMessage && (
           <p className="play-error" role="alert">
-            {errorMessage} <button onClick={() => setRefreshCount((c) => c + 1)}>Retry</button>
+            {currentErrorMessage}{" "}
+            <button onClick={() => setRefreshCount((c) => c + 1)}>Retry</button>
           </p>
         )}
         <OptionPanels
@@ -240,6 +329,7 @@ export function DuelArena({
         {onOpenPresenter && (
           <button
             type="button"
+            ref={presenterButtonRef}
             onClick={onOpenPresenter}
             className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1 text-xs font-semibold text-muted transition hover:border-[#19a4b8]/50 hover:text-foreground hover:shadow-sm"
             title="Fullscreen presentation mode for smartboard, projector or TV"
@@ -290,9 +380,9 @@ export function DuelArena({
       </div>
 
       {/* 错误反馈提示区 */}
-      {errorMessage && (
+      {currentErrorMessage && (
         <div className="mb-6 flex items-center justify-between rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-xs text-red-800 dark:text-red-300">
-          <span>{errorMessage}</span>
+          <span>{currentErrorMessage}</span>
           <button
             type="button"
             onClick={() => setRefreshCount((c) => c + 1)}

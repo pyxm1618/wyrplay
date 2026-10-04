@@ -275,7 +275,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
 
   test.describe("3. Theme Toggle & Persistence", () => {
     test("theme persistence (toggles theme and persists across page reloads)", async ({ page }) => {
-      await page.goto("/");
+      await page.goto("/funny-would-you-rather-questions");
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       const themeToggle = page.locator("button[aria-label*='theme' i]").first();
