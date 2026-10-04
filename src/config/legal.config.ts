@@ -61,7 +61,7 @@ export const legalConfig = {
     {
       category: "Kids request and runtime log metadata",
       period:
-        "the current Vercel Hobby plan provides a one-hour Runtime Logs window; the Kids voting route does not write separate application logs containing the vote request",
+        "under the current Vercel Hobby plan, Vercel Runtime Logs are retained for no more than one hour; the Kids voting route does not write separate application logs containing the vote request",
       basis: "temporary service operation, security, reliability, and abuse investigation",
     },
     {
@@ -197,7 +197,7 @@ export const legalConfig = {
         heading: "Data Retention",
         paragraphs: [
           "For Kids voting, the application database stores the question identifier, A/B choice, timestamps, and a server-generated one-time record token. The token is not returned to the browser, is not reused to recognize a child or browser, and is not stored with a persistent Kids voter identifier. These vote contributions may be retained indefinitely for aggregate results after request-level metadata is no longer retained.",
-          "The Kids voting route does not write separate application logs containing the vote request. Vercel may temporarily process request and runtime metadata needed to deliver and secure the request; WYRPlay's current Vercel Hobby plan provides a one-hour Runtime Logs window. After that provider log window, WYRPlay does not retain a reusable child/browser identifier with the Kids A/B choice. Aggregate or de-identified statistics that cannot reasonably identify an individual may be retained indefinitely.",
+          "The Kids voting route does not write separate application logs containing the vote request. Vercel may temporarily process request and runtime metadata needed to deliver and secure the request; under WYRPlay's current Vercel Hobby plan, Vercel Runtime Logs are retained for no more than one hour. After that provider log window, WYRPlay does not retain a reusable child/browser identifier with the Kids A/B choice. Aggregate or de-identified statistics that cannot reasonably identify an individual may be retained indefinitely.",
           "Account data is maintained while an account is active and during the account-deletion workflow once account functionality is opened. Other operational, security, commerce, support, and diagnostic records are retained only as described by the applicable operational or legal purpose.",
         ],
       },
