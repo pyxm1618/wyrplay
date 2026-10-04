@@ -155,13 +155,24 @@ test("late initial statistics cannot overwrite a recorded hero choice", async ({
     percentageA: 50,
     percentageB: 50,
   };
-  await page.route("**/api/wyr/vote?*", async (route) => {
+  const mockRead = async (
+    route: Parameters<typeof page.route>[1] extends (r: infer R, ...args: never[]) => unknown
+      ? R
+      : never,
+  ) => {
     reads += 1;
     await initialRead;
     await route.fulfill({ json: empty });
     completeRead();
-  });
-  await page.route("**/api/wyr/vote", async (route) => {
+  };
+  await page.route("**/api/wyr/vote?*", mockRead);
+  await page.route("**/api/wyr/kids-vote?*", mockRead);
+
+  const mockVote = async (
+    route: Parameters<typeof page.route>[1] extends (r: infer R, ...args: never[]) => unknown
+      ? R
+      : never,
+  ) => {
     await route.fulfill({
       json: {
         ...empty,
@@ -173,7 +184,9 @@ test("late initial statistics cannot overwrite a recorded hero choice", async ({
         percentageB: 0,
       },
     });
-  });
+  };
+  await page.route("**/api/wyr/vote", mockVote);
+  await page.route("**/api/wyr/kids-vote", mockVote);
   await page.goto("/");
   await expect.poll(() => reads).toBe(1);
   const choice = page.locator("#play button[aria-pressed]").first();
@@ -230,7 +243,7 @@ test("a first vote before the initial read finishes keeps its anonymous identity
     await route.fulfill({ response });
     markFinished();
   });
-  await page.goto("/");
+  await page.goto("/would-you-rather-questions-for-couples");
   await ready;
   const choice = page.locator("#play button[aria-pressed]").first();
   await choice.click();
