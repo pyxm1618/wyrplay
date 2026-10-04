@@ -198,7 +198,8 @@ test("finder real network sanity uses one live vote-stat request per visible que
     const url = new URL(response.url());
     if (url.pathname !== "/api/wyr/vote" && url.pathname !== "/api/wyr/kids-vote") return;
     const questionId = url.searchParams.get("questionId");
-    if (questionId)\n      responses.push({ endpoint: url.pathname, questionId, status: response.status() });
+    if (questionId)
+      responses.push({ endpoint: url.pathname, questionId, status: response.status() });
   });
 
   await page.goto("/find-questions", { waitUntil: "networkidle" });
@@ -240,7 +241,8 @@ test("finder card stats preserve the Kids aggregate-only privacy boundary", asyn
     const url = new URL(response.url());
     if (url.pathname !== "/api/wyr/vote" && url.pathname !== "/api/wyr/kids-vote") return;
     const questionId = url.searchParams.get("questionId");
-    if (questionId)\n      observed.push({ endpoint: url.pathname, questionId, status: response.status() });
+    if (questionId)
+      observed.push({ endpoint: url.pathname, questionId, status: response.status() });
   });
 
   await page.goto("/find-questions", { waitUntil: "networkidle" });
