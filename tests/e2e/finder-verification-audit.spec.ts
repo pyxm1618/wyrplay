@@ -36,11 +36,14 @@ test.describe("Storage error isolation", () => {
     page,
   }) => {
     await page.addInitScript(() => {
-      Object.defineProperty(window, "localStorage", {
-        get() {
+      localStorage.setItem("creat-web:analytics-consent:v1", "denied");
+      const originalGetItem = Storage.prototype.getItem;
+      Storage.prototype.getItem = function getItem(key: string) {
+        if (key === "wyrplay:saved-questions:v1") {
           throw new DOMException("The operation is insecure.", "SecurityError");
-        },
-      });
+        }
+        return originalGetItem.call(this, key);
+      };
     });
     await page.goto("/find-questions");
     const notice = page.locator(".notice");

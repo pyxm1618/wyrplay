@@ -156,7 +156,7 @@ test("Review selected restores the prior browse page, keyword, filter and URL st
   );
 
   await page.locator(".select-button").first().click();
-  await page.getByRole("button", { name: "Page 8", exact: true }).click();
+  await page.getByRole("button", { name: "Page 2", exact: true }).click();
   await expect(page.locator(".pagination [aria-current=page]")).toHaveText("8");
   await page.locator(".select-button").first().click();
   await expect(page.locator(".selection-bar h3")).toHaveText("2 selected questions");
@@ -228,7 +228,7 @@ test("finder restore keeps back and forward synchronized after new history state
   await kidsFilter.click();
   await page.getByRole("button", { name: "Apply Filters" }).click();
   await page.getByRole("button", { name: "Page 8", exact: true }).click();
-  await expect(currentPage).toHaveText("8");
+  await expect(currentPage).toHaveText("2");
   const backStateIds = await visibleQuestionIds();
 
   await searchbox.fill("squirrel tell stories");
@@ -240,10 +240,10 @@ test("finder restore keeps back and forward synchronized after new history state
   const backUrl = new URL(page.url());
   expect(backUrl.searchParams.get("q")).toBe("have");
   expect(backUrl.searchParams.get("age")).toBe("kids");
-  expect(backUrl.searchParams.get("page")).toBe("8");
+  expect(backUrl.searchParams.get("page")).toBe("2");
   await expect(searchbox).toHaveValue("have");
   await expect(kidsFilter).toHaveAttribute("aria-pressed", "true");
-  await expect(currentPage).toHaveText("8");
+  await expect(currentPage).toHaveText("2");
   expect(await visibleQuestionIds()).toEqual(backStateIds);
 
   await page.goForward();
