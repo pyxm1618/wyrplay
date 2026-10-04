@@ -472,7 +472,7 @@ function HomeFaq() {
         "Two choices that both deserve a second thought. Pick one, explain why, and invite your friends to defend the other side. There are no right answers.",
     },
     {
-      question: "How do you play using would you rather questions?",
+      question: "How do you play a round of would you rather questions?",
       answer:
         "Choose A or B to record your vote and see the real community results. Choose the other option to change your vote. If voting is unavailable, we say so instead of inventing numbers.",
     },
