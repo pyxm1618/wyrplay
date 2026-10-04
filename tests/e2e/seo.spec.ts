@@ -38,7 +38,7 @@ test("structured data parses and matches registered homepage SEO facts", async (
     structuredData.push(parsed);
   }
 
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText(home.h1);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveAccessibleName(home.h1);
   const serialized = JSON.stringify(structuredData);
   expect(serialized).toContain(home.title);
   expect(serialized).toContain(home.description);

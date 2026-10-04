@@ -55,7 +55,7 @@ test("production rendered SEO matches the route registry", async ({ page }) => {
 
     const h1 = page.locator("h1");
     await expect(h1, `${route.route}: exactly one H1`).toHaveCount(1);
-    await expect(h1).toHaveText(route.h1);
+    await expect(h1).toHaveAccessibleName(route.h1);
 
     const headings = await page.locator("h1,h2,h3,h4,h5,h6").allTextContents();
     expect(
