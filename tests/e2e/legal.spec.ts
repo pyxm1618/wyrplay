@@ -39,7 +39,6 @@ test("primary legal routes are linked from the footer", async ({ page }) => {
   }
 });
 
-
 test("current production Legal copy does not imply live account or checkout features", async ({
   page,
 }) => {
