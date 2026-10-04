@@ -195,10 +195,7 @@ export function FinderExperience({
   const browseTotalPages = Math.max(1, Math.ceil(filtered.length / 10));
 
   function restoreBrowsePage() {
-    const restoredPage = Math.min(
-      Math.max(browsePageBeforeReview.current, 1),
-      browseTotalPages,
-    );
+    const restoredPage = Math.min(Math.max(browsePageBeforeReview.current, 1), browseTotalPages);
     setReviewSelectedOnly(false);
     setPageNumber(restoredPage);
     syncUrl(keyword, criteria, restoredPage);
@@ -393,11 +390,7 @@ export function FinderExperience({
             </div>
             <div className="view-actions">
               {reviewSelectedOnly ? (
-                <button
-                  type="button"
-                  className="black"
-                  onClick={restoreBrowsePage}
-                >
+                <button type="button" className="black" onClick={restoreBrowsePage}>
                   <FinderIcon name="list" size={15} />
                   Exit review
                 </button>
