@@ -165,7 +165,7 @@ test("Review selected restores the prior browse page, keyword, filter and URL st
   expect(beforeReview.searchParams.get("page")).toBe("8");
 
   await page.getByRole("button", { name: "Review selected", exact: true }).click();
-  await expect(page.getByRole("heading", { name: "Selected Questions" })).toBeVisible();
+  await expect(page.locator("#questions-title")).toHaveText("Selected Questions");
   await expect(page.locator(".pagination [aria-current=page]")).toHaveText("1");
 
   await page.getByRole("button", { name: "Back to browsing", exact: true }).click();
@@ -198,8 +198,9 @@ test("finder real network sanity uses one live vote-stat request per visible que
     const url = new URL(response.url());
     if (url.pathname !== "/api/wyr/vote" && url.pathname !== "/api/wyr/kids-vote") return;
     const questionId = url.searchParams.get("questionId");
-    if (questionId)
+    if (questionId) {
       responses.push({ endpoint: url.pathname, questionId, status: response.status() });
+    }
   });
 
   await page.goto("/find-questions", { waitUntil: "networkidle" });
@@ -241,8 +242,9 @@ test("finder card stats preserve the Kids aggregate-only privacy boundary", asyn
     const url = new URL(response.url());
     if (url.pathname !== "/api/wyr/vote" && url.pathname !== "/api/wyr/kids-vote") return;
     const questionId = url.searchParams.get("questionId");
-    if (questionId)
+    if (questionId) {
       observed.push({ endpoint: url.pathname, questionId, status: response.status() });
+    }
   });
 
   await page.goto("/find-questions", { waitUntil: "networkidle" });
