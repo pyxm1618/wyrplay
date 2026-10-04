@@ -141,3 +141,137 @@ test("finder is an independent noindex utility route and retains a real home nav
   await page.getByRole("link", { name: "Find Questions", exact: true }).first().click();
   await expect(page).toHaveURL(/\/find-questions$/);
 });
+
+test("Review selected restores the prior browse page, keyword, filter and URL state", async ({
+  page,
+}) => {
+  await page.goto("/find-questions?q=have&age=kids&page=7", { waitUntil: "networkidle" });
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("7");
+  await expect(page.getByRole("searchbox")).toHaveValue("have");
+  await expect(page.getByRole("button", { name: "Kids", exact: true })).toHaveAttribute(
+    "aria-pressed",
+    "true",
+  );
+
+  await page.locator(".select-button").first().click();
+  await page.getByRole("button", { name: "Page 8", exact: true }).click();
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("8");
+  await page.locator(".select-button").first().click();
+  await expect(page.locator(".selection-bar h3")).toHaveText("2 selected questions");
+
+  const beforeReview = new URL(page.url());
+  expect(beforeReview.searchParams.get("q")).toBe("have");
+  expect(beforeReview.searchParams.get("age")).toBe("kids");
+  expect(beforeReview.searchParams.get("page")).toBe("8");
+
+  await page.getByRole("button", { name: "Review selected", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Selected Questions" })).toBeVisible();
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("1");
+
+  await page.getByRole("button", { name: "Back to browsing", exact: true }).click();
+  await expect(page.locator(".pagination [aria-current=page]")).toHaveText("8");
+  await expect(page.getByRole("searchbox")).toHaveValue("have");
+  await expect(page.getByRole("button", { name: "Kids", exact: true })).toHaveAttribute(
+    "aria-pressed",
+    "true",
+  );
+
+  const afterReview = new URL(page.url());
+  expect(afterReview.searchParams.get("q")).toBe("have");
+  expect(afterReview.searchParams.get("age")).toBe("kids");
+  expect(afterReview.searchParams.get("page")).toBe("8");
+});
+
+test("finder real network sanity uses one live vote-stat request per visible question", async ({
+  page,
+}) => {
+  const requests: Array<{ endpoint: string; questionId: string }> = [];
+  const responses: Array<{ endpoint: string; questionId: string; status: number }> = [];
+
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    if (url.pathname !== "/api/wyr/vote" && url.pathname !== "/api/wyr/kids-vote") return;
+    const questionId = url.searchParams.get("questionId");
+    if (questionId) requests.push({ endpoint: url.pathname, questionId });
+  });
+  page.on("response", (response) => {
+    const url = new URL(response.url());
+    if (url.pathname !== "/api/wyr/vote" && url.pathname !== "/api/wyr/kids-vote") return;
+    const questionId = url.searchParams.get("questionId");
+    if (questionId) responses.push({ endpoint: url.pathname, questionId, status: response.status() });
+  });
+
+  await page.goto("/find-questions", { waitUntil: "networkidle" });
+  await expect(page.locator(".question-card")).toHaveCount(10);
+  await expect
+    .poll(async () =>
+      page
+        .locator(".question-stats")
+        .evaluateAll((nodes) => nodes.every((node) => !node.textContent?.includes("Loading"))),
+    )
+    .toBe(true);
+  await expect(page.locator(".stats-retry")).toHaveCount(0);
+
+  expect(requests).toHaveLength(10);
+  expect(new Set(requests.map(({ questionId }) => questionId)).size).toBe(10);
+  expect(responses).toHaveLength(10);
+  expect(responses.filter(({ status }) => status >= 200 && status < 300)).toHaveLength(10);
+
+  const kidsRequests = requests.filter(({ endpoint }) => endpoint === "/api/wyr/kids-vote");
+  const generalRequests = requests.filter(({ endpoint }) => endpoint === "/api/wyr/vote");
+  expect(kidsRequests.length + generalRequests.length).toBe(10);
+});
+
+test("finder card stats preserve the Kids aggregate-only privacy boundary", async ({
+  page,
+  context,
+}) => {
+  await context.clearCookies();
+  await context.addCookies([
+    {
+      name: "wyr_vid",
+      value: "legacy-root-voter",
+      url: "http://127.0.0.1:3000",
+    },
+  ]);
+
+  const observed: Array<{ endpoint: string; questionId: string; status: number }> = [];
+  page.on("response", (response) => {
+    const url = new URL(response.url());
+    if (url.pathname !== "/api/wyr/vote" && url.pathname !== "/api/wyr/kids-vote") return;
+    const questionId = url.searchParams.get("questionId");
+    if (questionId) observed.push({ endpoint: url.pathname, questionId, status: response.status() });
+  });
+
+  await page.goto("/find-questions", { waitUntil: "networkidle" });
+  await expect(page.locator('[data-question-id="wyr-000001"]')).toBeVisible();
+  expect(
+    observed.some(
+      ({ endpoint, questionId, status }) =>
+        endpoint === "/api/wyr/kids-vote" && questionId === "wyr-000001" && status >= 200 && status < 300,
+    ),
+  ).toBe(true);
+  expect(
+    observed.some(
+      ({ endpoint, questionId }) => endpoint === "/api/wyr/vote" && questionId === "wyr-000001",
+    ),
+  ).toBe(false);
+  expect((await context.cookies()).some((cookie) => cookie.name === "wyr_vid")).toBe(false);
+
+  observed.length = 0;
+  await page.goto("/find-questions?page=6", { waitUntil: "networkidle" });
+  await expect(page.locator('[data-question-id="wyr-000059"]')).toBeVisible();
+  expect(
+    observed.some(
+      ({ endpoint, questionId, status }) =>
+        endpoint === "/api/wyr/vote" && questionId === "wyr-000059" && status >= 200 && status < 300,
+    ),
+  ).toBe(true);
+  expect(
+    observed.some(
+      ({ endpoint, questionId }) =>
+        endpoint === "/api/wyr/kids-vote" && questionId === "wyr-000059",
+    ),
+  ).toBe(false);
+});
+
