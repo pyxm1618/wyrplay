@@ -39,7 +39,7 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         order: 10,
         eyebrow: "Clean & Classroom Safe",
         h1: kidsRoute.h1,
-        lead: "A wholesome, imaginative collection of Would You Rather questions designed specifically for children, elementary students, and family car trips.",
+        lead: "A wholesome, imaginative collection of would you rather questions for kids, created for family car trips, classroom morning meetings, and playful conversations.",
         primaryCta: {
           label: "Play kids dilemmas",
           href: "/would-you-rather-questions-for-kids#play",
@@ -64,20 +64,31 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         type: "how-it-works",
         enabled: true,
         order: 30,
-        heading: "Great Ways to Use Kids Dilemmas",
+        heading: "Ways to Play Would You Rather Questions for Kids",
         steps: [
           {
             title: "Morning classroom meetings",
-            body: "Get every student engaged and speaking at the start of the school day with low-stakes creative choices.",
+            body: "Teachers use these would you rather questions for kids as gentle icebreakers that invite every student to participate without pressure.",
           },
           {
             title: "Long family road trips",
-            body: "Pass highway hours screen-free with hilarious debates that parents and siblings of all ages can join.",
+            body: "Parents share these would you rather questions for kids on the highway to keep everyone laughing and chatting without screens.",
           },
           {
-            title: "Dinner table icebreakers",
-            body: "Replace one-word school check-ins with lively discussions about flying carpets and pet dinosaurs.",
+            title: "Dinner table conversations",
+            body: "Families enjoy these would you rather questions for kids at dinner to spark fun stories and friendly debates across generations.",
           },
+        ],
+      },
+      {
+        type: "seo-content",
+        enabled: true,
+        order: 35,
+        heading: "Why Kids Love These Clean Dilemmas",
+        paragraphs: [
+          "Hypothetical choices encourage children to think creatively and express their opinions with confidence. When children answer would you rather questions for kids, they learn to articulate their reasons and listen to different perspectives.",
+          "Because every prompt presents two playful options, would you rather questions for kids make it simple to start conversations whether you are at home, in the car, or in the classroom.",
+          "To run a quick round of would you rather questions for kids, read both dilemmas out loud, let everyone pick side A or side B, and ask players to give one funny or thoughtful reason for their choice.",
         ],
       },
       {
@@ -87,14 +98,29 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         heading: "Kids Questions FAQ",
         items: [
           {
-            question: "Are these questions strictly clean and age-appropriate?",
+            question: "Are these would you rather questions for kids clean and family-friendly?",
             answer:
-              "Yes. Every question in this collection is carefully filtered to be 100% wholesome, school-safe, and free of violence, gross-out humor, or adult themes.",
+              "Yes. Every dilemma in this deck is selected to be clean, imaginative, and school-safe for kids and families to enjoy together.",
           },
           {
-            question: "What age range is this collection suited for?",
+            question: "What ages are these would you rather questions for kids suitable for?",
             answer:
-              "These dilemmas are ideal for kids aged 5 to 12, but teenagers and parents frequently enjoy them just as much during family gatherings.",
+              "These would you rather questions for kids are designed for children aged 5 to 12, but older siblings and parents often join the fun as well.",
+          },
+          {
+            question: "Can teachers use these would you rather questions for kids in class?",
+            answer:
+              "Yes, educators regularly use these would you rather questions for kids for morning meeting warmups, quick brain breaks, and public speaking practice.",
+          },
+          {
+            question: "How do you play these would you rather questions for kids during car rides?",
+            answer:
+              "One person reads the two options aloud while passengers take turns picking an answer and explaining why they made their choice.",
+          },
+          {
+            question: "Do you need special equipment to play would you rather questions for kids?",
+            answer:
+              "No setup is required. You can browse and vote on these questions directly on your phone, tablet, or classroom display.",
           },
         ],
       },
@@ -125,8 +151,8 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         type: "final-cta",
         enabled: true,
         order: 60,
-        heading: "Start Playing Kids Dilemmas Now",
-        body: "Scroll up to the live arena and pick your first choice!",
+        heading: "Start Playing Would You Rather Questions for Kids",
+        body: "Scroll up to the live arena to pick your choices or present them to your group.",
         cta: { label: "Jump to kids arena", href: "/would-you-rather-questions-for-kids#play" },
       },
     ],

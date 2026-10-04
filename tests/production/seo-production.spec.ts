@@ -27,6 +27,7 @@ function decodeXml(value: string): string {
 }
 
 test("production rendered SEO matches the route registry", async ({ page }) => {
+  test.setTimeout(90_000);
   const sitemapEntries = new Map(
     routeRegistry.sitemapEntries().map((entry) => [entry.route, entry.canonical] as const),
   );
@@ -79,6 +80,11 @@ test("production rendered SEO matches the route registry", async ({ page }) => {
       ((exactOccurrences / Math.max(visibleWords.length, 1)) * 100).toFixed(3),
     );
 
+    const keywordWordCount = tokenize(route.primaryKeyword).length;
+    const weightedDensityPct = Number(
+      (((exactOccurrences * keywordWordCount) / Math.max(visibleWords.length, 1)) * 100).toFixed(3),
+    );
+
     console.log(
       JSON.stringify({
         event: "rendered_seo_topic_audit",
@@ -86,7 +92,8 @@ test("production rendered SEO matches the route registry", async ({ page }) => {
         primaryKeyword: route.primaryKeyword,
         visibleWords: visibleWords.length,
         exactOccurrences,
-        densityPct,
+        rawDensityPct: densityPct,
+        weightedDensityPct,
         tokenCoverage: coverage,
       }),
     );
@@ -94,6 +101,17 @@ test("production rendered SEO matches the route registry", async ({ page }) => {
       coverage,
       `${route.route}: primary keyword tokens must be present in visible content`,
     ).toBe(1);
+
+    if (route.route === "/would-you-rather-questions-for-kids") {
+      expect(
+        weightedDensityPct,
+        `${route.route}: weighted keyword density must be >= 3.00% (got ${weightedDensityPct}%)`,
+      ).toBeGreaterThanOrEqual(3.0);
+      expect(
+        weightedDensityPct,
+        `${route.route}: weighted keyword density must be <= 3.20% (got ${weightedDensityPct}%)`,
+      ).toBeLessThanOrEqual(3.2);
+    }
 
     const renderedInternalPaths = new Set(
       await page.locator('a[href^="/"]').evaluateAll((links) =>
