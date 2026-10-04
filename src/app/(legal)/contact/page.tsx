@@ -65,8 +65,9 @@ export default function ContactPage() {
           Billing, subscriptions, and refunds
         </h2>
         <p className={`mt-3 ${bodyText}`}>
-          For questions regarding subscriptions, billing, or eligible refund requests under our
-          Refund and Cancellation Policy, email us at{" "}
+          Public subscription checkout is not currently open in production. For questions regarding
+          subscription policy, billing, or eligible refund requests under our Refund and
+          Cancellation Policy, email us at{" "}
           <a href={`mailto:${supportEmail}`} className={inlineLink}>
             {supportEmail}
           </a>{" "}
@@ -80,7 +81,8 @@ export default function ContactPage() {
           Account deletion
         </h2>
         <p className={`mt-3 ${bodyText}`}>
-          To delete your account, use the Delete Account control in Account Settings. If you cannot
+          Public account registration is not currently open in the production service. When account
+          functionality is opened, use the Delete Account control in Account Settings. If you cannot
           access your account, email us at{" "}
           <a href={`mailto:${supportEmail}`} className={inlineLink}>
             {supportEmail}
