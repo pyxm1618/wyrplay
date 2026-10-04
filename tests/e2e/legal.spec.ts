@@ -44,16 +44,20 @@ test("current production Legal copy does not imply live account or checkout feat
 }) => {
   await page.goto("/privacy");
   await expect(
-    page.getByText("Public account registration is not currently open in the production service.", {
-      exact: false,
-    }),
+    page
+      .getByText("Public account registration is not currently open in the production service.", {
+        exact: false,
+      })
+      .first(),
   ).toBeVisible();
 
   await page.goto("/refund-policy");
   await expect(
-    page.getByText("Public subscription checkout is not currently open in production.", {
-      exact: false,
-    }),
+    page
+      .getByText("Public subscription checkout is not currently open in production.", {
+        exact: false,
+      })
+      .first(),
   ).toBeVisible();
   await expect(page.getByText(/monthly or annual|monthly or annually/i)).toHaveCount(0);
 
