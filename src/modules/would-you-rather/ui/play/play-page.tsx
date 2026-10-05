@@ -8,7 +8,7 @@ import { resolveQuestionPool, questionPoolUrl } from "../../domain/play-session"
 import { useSavedQuestions } from "../use-saved-questions";
 import { DuelArena } from "../duel-arena";
 import { PresenterModal, tryEnterFullscreen } from "../presenter-modal";
-import { PlayHeader, PlayArtwork } from "./art";
+import { PlayArtwork } from "./art";
 import { FinderIcon } from "../finder/icon";
 import "./play.css";
 export function PlayPage({
@@ -53,13 +53,6 @@ export function PlayPage({
   return (
     <div className="play-page">
       <PlayArtwork />
-      <PlayHeader
-        authEnabled={authEnabled}
-        onPresent={() => {
-          void tryEnterFullscreen();
-          setPresent(true);
-        }}
-      />
       <div className="play-toolbar">
         <Link href="/find-questions?restore=1">← Back to questions</Link>
         <div className="topic-pills">
@@ -104,6 +97,14 @@ export function PlayPage({
       )}
       {question && (
         <div className="play-actions">
+          <button
+            onClick={() => {
+              void tryEnterFullscreen();
+              setPresent(true);
+            }}
+          >
+            <FinderIcon name="screen" size={26} /> Present
+          </button>
           <button
             aria-pressed={saved.includes(question.id)}
             disabled={savedIds === null}
