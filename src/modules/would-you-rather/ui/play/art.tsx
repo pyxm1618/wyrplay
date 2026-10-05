@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element -- Reused local brand artwork. */
-import Link from "next/link";
-import { FinderIcon } from "../finder/icon";
 export function PlayArtwork() {
   return (
     <div className="play-art" aria-hidden="true">
@@ -12,65 +10,6 @@ export function PlayArtwork() {
       <img className="art-star" src="/play-art/star.png" alt="" />
       <img className="art-question" src="/play-art/question.png" alt="" />
     </div>
-  );
-}
-export function PlayHeader({
-  authEnabled = false,
-  onPresent,
-}: {
-  readonly authEnabled?: boolean;
-  readonly onPresent?: () => void;
-}) {
-  return (
-    <header className="play-header">
-      <Link href="/" aria-label="WYRPLAY home">
-        <img src="/play-art/logo.png" alt="WYRPLAY" />
-      </Link>
-      <nav aria-label="Play navigation">
-        <Link href="/">Home</Link>
-        <Link href="/find-questions">Questions</Link>
-        <Link href="/find-questions#category-links">Categories</Link>
-        <Link href="/leaderboards">Leaderboards</Link>
-        <Link href="/create">Create</Link>
-      </nav>
-      <Link href="/find-questions#search" aria-label="Search questions">
-        <FinderIcon name="search" size={28} />
-      </Link>
-      {onPresent && (
-        <button onClick={onPresent}>
-          <FinderIcon name="screen" size={25} /> Present
-        </button>
-      )}
-      <details className="play-menu">
-        <summary aria-label="More actions">•••</summary>
-        <nav className="play-menu-panel" aria-label="More play navigation">
-          <Link className="mobile-menu-link" href="/">
-            Home
-          </Link>
-          <Link href="/find-questions">Browse questions</Link>
-          <Link className="mobile-menu-link" href="/find-questions#category-links">
-            Categories
-          </Link>
-          <Link className="mobile-menu-link" href="/leaderboards">
-            Leaderboards
-          </Link>
-          <Link className="mobile-menu-link" href="/create">
-            Create
-          </Link>
-          <Link href="/print">Print questions</Link>
-          {authEnabled && (
-            <Link className="mobile-menu-link" href="/sign-in">
-              Sign in
-            </Link>
-          )}
-        </nav>
-      </details>
-      {authEnabled && (
-        <Link className="dark-pill" href="/sign-in">
-          Sign in
-        </Link>
-      )}
-    </header>
   );
 }
 export function PlayHeading({ question }: { readonly question: string }) {
