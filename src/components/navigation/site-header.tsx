@@ -9,7 +9,6 @@ import { SiteBrand } from "./site-brand";
 import { featuresConfig } from "@/config/features.config";
 import { navigationConfig, type NavigationItem } from "@/config/navigation.config";
 import { siteConfig } from "@/config/site.config";
-import { ThemeToggle } from "@/modules/would-you-rather";
 import { localePath } from "@/platform/i18n/routing";
 
 const desktopLink =
@@ -65,7 +64,6 @@ export function SiteHeader({
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
-          <ThemeToggle />
           {featuresConfig.auth.enabled ? (
             <>
               <Link
