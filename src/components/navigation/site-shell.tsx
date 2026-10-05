@@ -4,7 +4,6 @@ import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
 import { siteConfig } from "@/config/site.config";
-import { ThemeSync } from "@/modules/would-you-rather";
 
 export function SiteShell({
   children,
@@ -15,7 +14,6 @@ export function SiteShell({
 }>) {
   return (
     <div className="flex min-h-screen flex-col">
-      <ThemeSync />
       <SiteHeader locale={locale} />
       {children}
       <SiteFooter />
