@@ -10,6 +10,7 @@ export type CommercialModel = "one_time" | "subscription";
 export type BillingInterval = "month" | "year";
 
 export type ProductDefinition = {
+  readonly displayName?: string;
   readonly key: string;
   readonly version: number;
   readonly enabled: boolean;

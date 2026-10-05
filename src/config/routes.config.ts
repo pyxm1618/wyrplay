@@ -34,9 +34,9 @@ export const routeDefinitions = [
       "would you rather questions for kids",
       "hard would you rather questions",
     ],
-    title: "Would You Rather Questions – Play Fun Questions Online",
+    title: "Would You Rather Questions – Play Free Online",
     description:
-      "Browse Would You Rather questions for kids, adults, couples, friends and parties. Pick A or B, play instantly, and find the perfect dilemma for any group.",
+      "Browse fun Would You Rather questions for kids, adults, couples, friends and parties. Pick A or B, play free online, and see real community results.",
     h1: "Would You Rather Questions",
     pageType: "WebApplication",
     relatedRoutes: [
@@ -46,9 +46,9 @@ export const routeDefinitions = [
       "/would-you-rather-questions-for-friends",
       "/would-you-rather-questions-for-couples",
     ],
-    lastModified: "2026-09-29",
+    lastModified: "2026-10-04",
     reviewStatus: "reviewed",
-    reviewFingerprint: "82443cae2c9a75367a00acf5fa3615c536f9e0e10eb21d578929e60ad9dc5691",
+    reviewFingerprint: "35496926a47ac75958c16bd653f56035e07b432504c34293a163614cb5bb9c82",
   },
   {
     route: "/would-you-rather-questions-for-kids",
@@ -235,6 +235,7 @@ export const routeDefinitions = [
   { route: "/api/auth/magic-link/request", class: "system" },
   { route: "/api/auth/magic-link/confirm", class: "system" },
   { route: "/api/account/delete", class: "system" },
+  { route: "/api/account/saved-questions", class: "system" },
   { route: "/api/commerce/checkout", class: "system" },
   { route: "/api/commerce/subscription/cancel", class: "system" },
   { route: "/api/commerce/subscription/resume", class: "system" },

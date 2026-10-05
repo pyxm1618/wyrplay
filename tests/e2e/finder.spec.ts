@@ -2,6 +2,21 @@ import { expect, test } from "@playwright/test";
 import { QUESTIONS_DATABASE } from "../../src/modules/would-you-rather/data/questions";
 import { isKidsCollectionQuestion } from "../../src/modules/would-you-rather/domain/filter-questions";
 
+async function openFinder(page: import("@playwright/test").Page, url: string) {
+  await page.goto(url, { waitUntil: "domcontentloaded" });
+  await expect(page.locator(".panel-heading")).toBeVisible();
+  await expect
+    .poll(() =>
+      page
+        .locator(".question-stats")
+        .evaluateAll(
+          (nodes) =>
+            nodes.length > 0 && nodes.every((node) => !node.textContent?.includes("Loading")),
+        ),
+    )
+    .toBe(true);
+}
+
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
     try {
@@ -25,7 +40,7 @@ test("finder uses the source bank, draft filters, real pagination and persistent
   );
   await expect(page.locator(".question-stats").first()).not.toContainText("Loading");
   await page.getByRole("button", { name: "Save question 1", exact: true }).click();
-  await page.getByRole("button", { name: "Unsave question 1", exact: true }).isVisible();
+  await expect(page.getByRole("button", { name: "Unsave question 1", exact: true })).toBeVisible();
   await page.reload();
   await expect(
     page.getByRole("button", { name: "Unsave question 1", exact: true }),
@@ -147,7 +162,7 @@ test("finder is an independent noindex utility route and retains a real home nav
 test("Review selected restores the prior browse page, keyword, filter and URL state", async ({
   page,
 }) => {
-  await page.goto("/find-questions?q=have&age=kids&page=7", { waitUntil: "networkidle" });
+  await openFinder(page, "/find-questions?q=have&age=kids&page=7");
   await expect(page.locator(".pagination [aria-current=page]")).toHaveText("7");
   await expect(page.getByRole("searchbox")).toHaveValue("have");
   await expect(page.getByRole("button", { name: "Kids", exact: true })).toHaveAttribute(
@@ -204,7 +219,7 @@ test("finder restore keeps back and forward synchronized after new history state
       .locator(".question-card")
       .evaluateAll((cards) => cards.map((card) => card.getAttribute("data-question-id")));
 
-  await page.goto("/find-questions?q=have&age=kids&page=7", { waitUntil: "networkidle" });
+  await openFinder(page, "/find-questions?q=have&age=kids&page=7");
   await expect(searchbox).toHaveValue("have");
   await expect(kidsFilter).toHaveAttribute("aria-pressed", "true");
   await expect(currentPage).toHaveText("7");
@@ -278,7 +293,7 @@ test("finder real network sanity uses one live vote-stat request per visible que
     }
   });
 
-  await page.goto("/find-questions", { waitUntil: "networkidle" });
+  await openFinder(page, "/find-questions");
   await expect(page.locator(".question-card")).toHaveCount(10);
   await expect
     .poll(async () =>
@@ -335,17 +350,19 @@ test("finder card stats preserve the Kids aggregate-only privacy boundary", asyn
     }
   });
 
-  await page.goto("/find-questions", { waitUntil: "networkidle" });
+  await openFinder(page, "/find-questions");
   await expect(page.locator('[data-question-id="wyr-000001"]')).toBeVisible();
-  expect(
-    observed.some(
-      ({ endpoint, questionId, status }) =>
-        endpoint === "/api/wyr/kids-vote" &&
-        questionId === "wyr-000001" &&
-        status >= 200 &&
-        status < 300,
-    ),
-  ).toBe(true);
+  await expect
+    .poll(() =>
+      observed.some(
+        ({ endpoint, questionId, status }) =>
+          endpoint === "/api/wyr/kids-vote" &&
+          questionId === "wyr-000001" &&
+          status >= 200 &&
+          status < 300,
+      ),
+    )
+    .toBe(true);
   expect(
     observed.some(
       ({ endpoint, questionId }) => endpoint === "/api/wyr/vote" && questionId === "wyr-000001",
@@ -354,17 +371,19 @@ test("finder card stats preserve the Kids aggregate-only privacy boundary", asyn
   expect((await context.cookies()).some((cookie) => cookie.name === "wyr_vid")).toBe(false);
 
   observed.length = 0;
-  await page.goto("/find-questions?page=6", { waitUntil: "networkidle" });
+  await openFinder(page, "/find-questions?page=6");
   await expect(page.locator('[data-question-id="wyr-000059"]')).toBeVisible();
-  expect(
-    observed.some(
-      ({ endpoint, questionId, status }) =>
-        endpoint === "/api/wyr/vote" &&
-        questionId === "wyr-000059" &&
-        status >= 200 &&
-        status < 300,
-    ),
-  ).toBe(true);
+  await expect
+    .poll(() =>
+      observed.some(
+        ({ endpoint, questionId, status }) =>
+          endpoint === "/api/wyr/vote" &&
+          questionId === "wyr-000059" &&
+          status >= 200 &&
+          status < 300,
+      ),
+    )
+    .toBe(true);
   expect(
     observed.some(
       ({ endpoint, questionId }) =>
@@ -454,7 +473,7 @@ test("random Finder Kids and General cards use their real privacy endpoints", as
       const url = new URL(response.url());
       return url.pathname === endpoint && url.searchParams.get("questionId") === question.id;
     });
-    await page.goto(`/find-questions?page=${browsePage}`, { waitUntil: "networkidle" });
+    await openFinder(page, `/find-questions?page=${browsePage}`);
     const response = await targetResponse;
     expect(response.ok()).toBe(true);
     const card = page.locator(`[data-question-id="${question.id}"]`);

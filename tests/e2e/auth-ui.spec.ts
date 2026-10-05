@@ -116,7 +116,10 @@ test("registration and sign-in links use real routes; provider callback failures
   await page.goto("/sign-in");
   await page.locator(".signup-prompt a").click();
   await expect(page).toHaveURL(/\/sign-up$/);
-  await page.getByRole("link", { name: "Log in", exact: true }).click();
+  await page
+    .getByRole("navigation", { name: "Account navigation" })
+    .getByRole("link", { name: "Log in", exact: true })
+    .click();
   await expect(page).toHaveURL(/\/sign-in$/);
   await page.goto("/sign-in?error=google");
   await expect(page.locator(".auth-page").getByRole("alert")).toContainText(

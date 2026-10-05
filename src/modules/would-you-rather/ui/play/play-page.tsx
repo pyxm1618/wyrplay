@@ -1,13 +1,13 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- Original local illustration. */
-import { startTransition, useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { Question } from "../../types";
-import { resolveQuestionPool, questionPoolUrl, savedQuestionsKey } from "../../domain/play-session";
-import { parseSavedQuestionIds } from "../../domain/finder";
+import { resolveQuestionPool, questionPoolUrl } from "../../domain/play-session";
+import { useSavedQuestions } from "../use-saved-questions";
 import { DuelArena } from "../duel-arena";
-import { PresenterModal } from "../presenter-modal";
+import { PresenterModal, tryEnterFullscreen } from "../presenter-modal";
 import { PlayHeader, PlayArtwork } from "./art";
 import { FinderIcon } from "../finder/icon";
 import "./play.css";
@@ -24,34 +24,15 @@ export function PlayPage({
   const requested = pool.findIndex((q) => q.id === search.get("question"));
   const [index, setIndex] = useState(Math.max(0, requested));
   const [present, setPresent] = useState(search.get("present") === "1");
-  const [saved, setSaved] = useState<string[]>([]);
+  const { savedIds, notice: savedNotice, toggleSaved } = useSavedQuestions(authEnabled);
+  const saved = savedIds ?? [];
   const [notice, setNotice] = useState("");
   const question = pool[index];
-  useEffect(() => {
-    try {
-      const ids = parseSavedQuestionIds(localStorage.getItem(savedQuestionsKey) ?? "[]", questions);
-      startTransition(() => setSaved(ids));
-    } catch {
-      startTransition(() => setNotice("Saved questions could not be loaded."));
-    }
-  }, [questions]);
   function move(next: number) {
     setIndex(next);
     const params = new URLSearchParams(search);
     if (pool[next]) params.set("question", pool[next].id);
     router.replace(`/play?${params}`, { scroll: false });
-  }
-  function save() {
-    if (!question) return;
-    const next = saved.includes(question.id)
-      ? saved.filter((id) => id !== question.id)
-      : [...saved, question.id];
-    try {
-      localStorage.setItem(savedQuestionsKey, JSON.stringify(next));
-      setSaved(next);
-    } catch {
-      setNotice("Your browser could not save this question.");
-    }
   }
   async function share() {
     if (!question) return;
@@ -72,7 +53,13 @@ export function PlayPage({
   return (
     <div className="play-page">
       <PlayArtwork />
-      <PlayHeader authEnabled={authEnabled} onPresent={() => setPresent(true)} />
+      <PlayHeader
+        authEnabled={authEnabled}
+        onPresent={() => {
+          void tryEnterFullscreen();
+          setPresent(true);
+        }}
+      />
       <div className="play-toolbar">
         <Link href="/find-questions?restore=1">← Back to questions</Link>
         <div className="topic-pills">
@@ -117,7 +104,11 @@ export function PlayPage({
       )}
       {question && (
         <div className="play-actions">
-          <button aria-pressed={saved.includes(question.id)} onClick={save}>
+          <button
+            aria-pressed={saved.includes(question.id)}
+            disabled={savedIds === null}
+            onClick={() => toggleSaved(question.id)}
+          >
             <FinderIcon name="heart" size={26} /> {saved.includes(question.id) ? "Saved" : "Save"}
           </button>
           <button onClick={() => void share()}>
@@ -130,6 +121,11 @@ export function PlayPage({
             <FinderIcon name="print" /> Print
           </Link>
         </div>
+      )}
+      {savedNotice && (
+        <p className="play-notice" role="alert">
+          {savedNotice}
+        </p>
       )}
       {notice && (
         <p className="play-notice" role="status">

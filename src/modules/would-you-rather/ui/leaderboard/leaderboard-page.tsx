@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useRef, useState, useTransition } from "react";
 import {
@@ -21,14 +22,6 @@ const periods = [
   { key: "month", label: "This Month" },
   { key: "week", label: "This Week" },
 ] as const;
-const categories = [
-  { label: "Most Popular", subtitle: "Most votes overall", icon: "crown", available: true },
-  { label: "Trending", subtitle: "Not available yet", icon: "flame", available: false },
-  { label: "Most Discussed", subtitle: "Not available yet", icon: "chat", available: false },
-  { label: "Editor's Picks", subtitle: "Not available yet", icon: "star", available: false },
-  { label: "All Time", subtitle: "Top of all time", icon: "trophy", available: true },
-] as const;
-const unavailable = "This feature is not available yet.";
 const formatCount = (value: number) =>
   new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 }).format(value);
 const cardTitle = (question: RankedQuestion["question"]) => {
@@ -64,7 +57,9 @@ function VoteCount({
       title={`${entry.votes.toLocaleString("en")} votes in this period`}
     >
       <Icon name="heart" />
-      {formatCount(entry.votes)}
+      <span>
+        {formatCount(entry.votes)} {entry.votes === 1 ? "vote" : "votes"}
+      </span>
     </button>
   );
 }
@@ -84,7 +79,7 @@ export function LeaderboardPage({
   const router = useRouter();
   const [refreshing, startRefresh] = useTransition();
   const [period, setPeriod] = useState<LeaderboardPeriod>("all");
-  const [category, setCategory] = useState("Most Popular");
+  const [menuOpen, setMenuOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
@@ -102,12 +97,6 @@ export function LeaderboardPage({
   const refresh = () => startRefresh(() => router.refresh());
   const choosePeriod = (value: LeaderboardPeriod) => {
     setPeriod(value);
-    setPage(1);
-    setCategory(value === "all" ? "Most Popular" : "");
-  };
-  const chooseCategory = (label: string) => {
-    setCategory(label);
-    setPeriod("all");
     setPage(1);
   };
   const openQuestion = (entry: RankedQuestion) => {
@@ -136,20 +125,39 @@ export function LeaderboardPage({
   return (
     <div className="leaderboard-page" aria-busy={refreshing}>
       <div className="page-shell">
-        <header className="site-header">
-          <Link href="/" aria-label="WYRPLAY home">
-            <Art name="logo" className="logo" alt="WYRPLAY" width={129} height={46} />
+        <header
+          className="site-header"
+          onKeyDown={(event) => {
+            if (event.key === "Escape") setMenuOpen(false);
+          }}
+        >
+          <Link href="/" className="brand" aria-label="WYRPlay home">
+            <Image src="/brand/logo.svg" alt="" width={40} height={40} priority />
+            <span>WYRPLAY</span>
           </Link>
-          <nav aria-label="Main navigation">
+          <nav
+            id="leaderboard-navigation"
+            className={menuOpen ? "menu-open" : ""}
+            aria-label="Main navigation"
+            onClick={() => setMenuOpen(false)}
+          >
             <Link href="/">Home</Link>
-            <Link href="/#questions">Questions</Link>
-            <Link href="/#categories">Categories</Link>
+            <Link href="/find-questions">Questions</Link>
+            <Link href="/find-questions#category-links">Categories</Link>
             <Link href="/leaderboards" aria-current="page" className="nav-active">
               Leaderboards
             </Link>
-            <button disabled title="Question submissions are not available yet.">
-              Create
-            </button>
+            <Link href="/play">Play</Link>
+            {authEnabled && (
+              <>
+                <Link className="mobile-account" href="/sign-in">
+                  Log in
+                </Link>
+                <Link className="mobile-account" href="/sign-up">
+                  Sign up
+                </Link>
+              </>
+            )}
           </nav>
           <div className="header-actions">
             <button
@@ -171,20 +179,16 @@ export function LeaderboardPage({
                   Sign up
                 </Link>
               </>
-            ) : (
-              <>
-                <button className="login" disabled title="Account access is not enabled.">
-                  Log in
-                </button>
-                <button
-                  className="dark-button signup"
-                  disabled
-                  title="Account access is not enabled."
-                >
-                  Sign up
-                </button>
-              </>
-            )}
+            ) : null}
+            <button
+              className="menu-toggle"
+              aria-controls="leaderboard-navigation"
+              aria-expanded={menuOpen}
+              aria-label={menuOpen ? "Close mobile menu" : "Open mobile menu"}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? "×" : "☰"}
+            </button>
           </div>
         </header>
         <main>
@@ -223,77 +227,22 @@ export function LeaderboardPage({
               ∿
             </span>
           </section>
-          <div className="category-tabs" id="categories" aria-label="Leaderboard categories">
-            {categories.map((item) => (
-              <button
-                className={category === item.label ? "selected" : ""}
-                key={item.label}
-                disabled={!item.available}
-                title={item.available ? item.subtitle : unavailable}
-                aria-pressed={category === item.label}
-                onClick={() => chooseCategory(item.label)}
-              >
-                <Icon name={item.icon} />
-                <span>
-                  <strong>{item.label}</strong>
-                  <small>{item.subtitle}</small>
-                </span>
-              </button>
-            ))}
+          <div className="leaderboard-filter" id="categories">
+            <span>Ranked by real votes</span>
+            <div className="period-tabs" role="group" aria-label="Time period">
+              {periods.map((item) => (
+                <button
+                  key={item.key}
+                  className={period === item.key ? "active" : ""}
+                  aria-pressed={period === item.key}
+                  onClick={() => choosePeriod(item.key)}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </div>
           <div className="leaderboard-layout">
-            <aside className="sidebar">
-              <Art name="sidebar-trophy" className="sidebar-trophy" width={57} height={51} />
-              <h2>Leaderboards</h2>
-              <p>
-                See the best questions
-                <br />
-                in different ways
-              </p>
-              <nav aria-label="Leaderboard views">
-                {categories.map((item) => (
-                  <button
-                    key={item.label}
-                    className={category === item.label ? "active" : ""}
-                    disabled={!item.available}
-                    title={item.available ? item.subtitle : unavailable}
-                    aria-pressed={category === item.label}
-                    onClick={() => chooseCategory(item.label)}
-                  >
-                    <Icon name={item.icon} />
-                    {item.label}
-                  </button>
-                ))}
-                {periods.slice(1).map((item) => (
-                  <button
-                    key={item.key}
-                    className={period === item.key ? "active" : ""}
-                    aria-pressed={period === item.key}
-                    onClick={() => choosePeriod(item.key)}
-                  >
-                    <Icon name="calendar" />
-                    {item.label}
-                  </button>
-                ))}
-              </nav>
-              <section className="create-card">
-                <h3>Create a Question</h3>
-                <p>
-                  Got a great idea?
-                  <br />
-                  Submissions open later.
-                </p>
-                <Art name="bulb" className="bulb" width={168} height={166} />
-                <button
-                  className="dark-button"
-                  disabled
-                  title="Question submissions are not available yet."
-                >
-                  <span className="plus">＋</span>Create Now
-                  <Icon name="arrow" />
-                </button>
-              </section>
-            </aside>
             <div className="rankings">
               <section className="top-three-section">
                 <h2>
@@ -317,7 +266,7 @@ export function LeaderboardPage({
                   <div className="ranking-status" role="status">
                     <strong>No votes in this period yet</strong>
                     <p>Play a question to help build the leaderboard.</p>
-                    <Link className="dark-button" href="/#play">
+                    <Link className="dark-button" href="/play">
                       Start Playing <Icon name="arrow" />
                     </Link>
                   </div>
@@ -331,8 +280,9 @@ export function LeaderboardPage({
                       <Art
                         name={`medal-${index === 1 ? 1 : index === 0 ? 2 : 3}`}
                         className="medal"
-                        width={64}
-                        height={70}
+                        alt={`Rank ${index === 1 ? 1 : index === 0 ? 2 : 3}`}
+                        width={72}
+                        height={84}
                       />
                       {entry ? (
                         <>
@@ -347,12 +297,6 @@ export function LeaderboardPage({
                           <Tags entry={entry} />
                           <div className="card-metrics">
                             <VoteCount entry={entry} onOpen={() => openQuestion(entry)} />
-                            <span
-                              className="comments-unavailable"
-                              title="Comments are not available yet."
-                            >
-                              <Icon name="chat" />—
-                            </span>
                           </div>
                         </>
                       ) : (
@@ -372,18 +316,6 @@ export function LeaderboardPage({
                       ? "Top 10 Questions"
                       : `Questions ${(view.current - 1) * 10 + 1}–${Math.min(view.current * 10, ranked.length)}`}
                   </h2>
-                  <div className="period-tabs" aria-label="Time period">
-                    {periods.map((item) => (
-                      <button
-                        key={item.key}
-                        className={period === item.key ? "active" : ""}
-                        aria-pressed={period === item.key}
-                        onClick={() => choosePeriod(item.key)}
-                      >
-                        {item.label}
-                      </button>
-                    ))}
-                  </div>
                 </div>
                 <div className="ranking-list">
                   {view.entries.map((entry) => (
@@ -415,17 +347,6 @@ export function LeaderboardPage({
                         className="row-votes"
                         onOpen={() => openQuestion(entry)}
                       />
-                      <span className="row-comments" title="Comments are not available yet.">
-                        <Icon name="chat" />—
-                      </span>
-                      <button
-                        className="bookmark"
-                        disabled
-                        aria-label={`Save question ${entry.question.id} — unavailable`}
-                        title="Saved questions are not available yet."
-                      >
-                        <Icon name="bookmark" />
-                      </button>
                     </article>
                   ))}
                   {view.entries.length === 0 && (
@@ -479,7 +400,7 @@ export function LeaderboardPage({
                 {[
                   { icon: "heart", value: snapshot?.totalVotes, label: "Total votes" },
                   {
-                    icon: "chat",
+                    icon: "bars",
                     value: snapshot?.entries.filter((entry) => entry.total > 0).length,
                     label: "Ranked",
                   },
@@ -502,38 +423,20 @@ export function LeaderboardPage({
                 ))}
               </div>
             </section>
-            <section className="hall-panel">
-              <h2>
-                <Icon name="trophy" />
-                Hall of Fame
-              </h2>
-              <p>Selections are not available yet.</p>
-              <div className="hall-grid" aria-hidden="true">
-                {Array.from({ length: 6 }, (_, index) => (
-                  <span className="hall-placeholder" key={index}>
-                    ?
-                  </span>
-                ))}
-              </div>
-            </section>
           </div>
           <section className="footer-cta">
             <Art name="footer-trophy" width={109} height={96} />
             <div>
-              <h2>Think yours can make the list?</h2>
+              <h2>Help choose the next favorite</h2>
               <p>
-                Question submissions are not open yet.
+                Find your next great dilemma.
                 <br />
                 Explore the question bank and cast your vote.
               </p>
             </div>
-            <button
-              className="dark-button"
-              disabled
-              title="Question submissions are not available yet."
-            >
-              Create a Question <Icon name="arrow" />
-            </button>
+            <Link className="dark-button" href="/play">
+              Start Playing <Icon name="arrow" />
+            </Link>
             <span className="footer-star" aria-hidden="true">
               ★
             </span>
@@ -614,15 +517,29 @@ export function LeaderboardPage({
           ×
         </button>
         {selected && (
-          <DuelArena
-            key={selected.question.id}
-            question={selected.question}
-            currentIndex={Math.max(0, selectedIndex)}
-            totalQuestions={ranked.length}
-            categoryBadge="Leaderboard · Real votes"
-            onNext={() => navigateQuestion(false)}
-            onRandom={() => navigateQuestion(true)}
-          />
+          <div className="leaderboard-voting">
+            <DuelArena
+              appearance="illustrated-play"
+              key={selected.question.id}
+              question={selected.question}
+              currentIndex={Math.max(0, selectedIndex)}
+              totalQuestions={ranked.length}
+              categoryBadge="Leaderboard · Real votes"
+              onNext={() => navigateQuestion(false)}
+              onRandom={() => navigateQuestion(true)}
+            />
+            <div className="vote-navigation">
+              <button disabled={ranked.length < 2} onClick={() => navigateQuestion(false)}>
+                Next Question →
+              </button>
+              <button disabled={ranked.length < 2} onClick={() => navigateQuestion(true)}>
+                Random
+              </button>
+            </div>
+            <p className="vote-help">
+              Choose A or B, or use your keyboard. You can change your choice anytime.
+            </p>
+          </div>
         )}
       </dialog>
     </div>

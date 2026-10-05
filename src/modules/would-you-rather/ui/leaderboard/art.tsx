@@ -16,7 +16,7 @@ export function LeaderboardArt({
 }) {
   return (
     <Image
-      src={`/leaderboard-art/${name}.png`}
+      src={`/leaderboard-art/${name}.${name.startsWith("medal-") ? "svg" : "png"}`}
       className={className}
       alt={alt}
       width={width}

@@ -1,0 +1,702 @@
+{
+  "browser": "154.0.8037.93",
+  "profile": "APP_ENV=test; enabled auth; Cloudflare official test key; no Turnstile mock in real capture",
+  "uiObservedOn": "2026-10-03",
+  "turnstileObservedOn": "2026-10-03",
+  "providerRefresh": "passed",
+  "viewports": [
+    {
+      "route": "sign-in",
+      "viewport": [
+        320,
+        568
+      ],
+      "scroll": [
+        320,
+        887
+      ],
+      "card": [
+        284,
+        284
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-in",
+      "viewport": [
+        360,
+        800
+      ],
+      "scroll": [
+        360,
+        887
+      ],
+      "card": [
+        324,
+        324
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-in",
+      "viewport": [
+        375,
+        667
+      ],
+      "scroll": [
+        375,
+        887
+      ],
+      "card": [
+        339,
+        339
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-in",
+      "viewport": [
+        390,
+        844
+      ],
+      "scroll": [
+        390,
+        887
+      ],
+      "card": [
+        354,
+        354
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-in",
+      "viewport": [
+        430,
+        932
+      ],
+      "scroll": [
+        430,
+        932
+      ],
+      "card": [
+        394,
+        394
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-in",
+      "viewport": [
+        768,
+        1024
+      ],
+      "scroll": [
+        768,
+        1024
+      ],
+      "card": [
+        386,
+        386
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-in",
+      "viewport": [
+        1024,
+        768
+      ],
+      "scroll": [
+        1024,
+        772
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-in",
+      "viewport": [
+        1280,
+        800
+      ],
+      "scroll": [
+        1280,
+        800
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-in",
+      "viewport": [
+        1440,
+        800
+      ],
+      "scroll": [
+        1440,
+        810
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-in",
+      "viewport": [
+        1440,
+        900
+      ],
+      "scroll": [
+        1440,
+        976
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-in",
+      "viewport": [
+        1680,
+        900
+      ],
+      "scroll": [
+        1680,
+        976
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-in",
+      "viewport": [
+        1920,
+        900
+      ],
+      "scroll": [
+        1920,
+        976
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-in",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "scroll": [
+        1920,
+        1080
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-in",
+      "viewport": [
+        2560,
+        1080
+      ],
+      "scroll": [
+        2560,
+        1080
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        320,
+        568
+      ],
+      "scroll": [
+        320,
+        1182
+      ],
+      "card": [
+        284,
+        284
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        360,
+        800
+      ],
+      "scroll": [
+        360,
+        1117
+      ],
+      "card": [
+        324,
+        324
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        375,
+        667
+      ],
+      "scroll": [
+        375,
+        1117
+      ],
+      "card": [
+        339,
+        339
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        390,
+        844
+      ],
+      "scroll": [
+        390,
+        1117
+      ],
+      "card": [
+        354,
+        354
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        430,
+        932
+      ],
+      "scroll": [
+        430,
+        1117
+      ],
+      "card": [
+        394,
+        394
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        768,
+        1024
+      ],
+      "scroll": [
+        768,
+        1024
+      ],
+      "card": [
+        386,
+        386
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        1024,
+        768
+      ],
+      "scroll": [
+        1024,
+        790
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        1280,
+        800
+      ],
+      "scroll": [
+        1280,
+        810
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        1440,
+        800
+      ],
+      "scroll": [
+        1440,
+        811
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        1440,
+        900
+      ],
+      "scroll": [
+        1440,
+        922
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        1680,
+        900
+      ],
+      "scroll": [
+        1680,
+        922
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        1920,
+        900
+      ],
+      "scroll": [
+        1920,
+        922
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "scroll": [
+        1920,
+        1080
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "sign-up",
+      "viewport": [
+        2560,
+        1080
+      ],
+      "scroll": [
+        2560,
+        1080
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        320,
+        568
+      ],
+      "scroll": [
+        320,
+        1103
+      ],
+      "card": [
+        284,
+        284
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        360,
+        800
+      ],
+      "scroll": [
+        360,
+        1076
+      ],
+      "card": [
+        324,
+        324
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        375,
+        667
+      ],
+      "scroll": [
+        375,
+        1076
+      ],
+      "card": [
+        339,
+        339
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        390,
+        844
+      ],
+      "scroll": [
+        390,
+        1076
+      ],
+      "card": [
+        354,
+        354
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        430,
+        932
+      ],
+      "scroll": [
+        430,
+        1049
+      ],
+      "card": [
+        394,
+        394
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        768,
+        1024
+      ],
+      "scroll": [
+        768,
+        1024
+      ],
+      "card": [
+        386,
+        386
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        1024,
+        768
+      ],
+      "scroll": [
+        1024,
+        768
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        1280,
+        800
+      ],
+      "scroll": [
+        1280,
+        800
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        1440,
+        800
+      ],
+      "scroll": [
+        1440,
+        800
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        1440,
+        900
+      ],
+      "scroll": [
+        1440,
+        976
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        1680,
+        900
+      ],
+      "scroll": [
+        1680,
+        976
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        1920,
+        900
+      ],
+      "scroll": [
+        1920,
+        976
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "scroll": [
+        1920,
+        1080
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    },
+    {
+      "route": "auth/magic-link/confirm",
+      "viewport": [
+        2560,
+        1080
+      ],
+      "scroll": [
+        2560,
+        1080
+      ],
+      "card": [
+        456,
+        456
+      ],
+      "descriptionVisible": true
+    }
+  ],
+  "turnstile": {
+    "viewport": [
+      320,
+      568
+    ],
+    "iframe": {
+      "title": "包含 Cloudflare 安全质询的小组件",
+      "style": "border-width: medium; border-style: none; border-color: currentcolor; border-image: none; overflow: hidden; width: 150px; height: 140px;",
+      "compact": true,
+      "width": 150,
+      "height": 140,
+      "left": 34,
+      "right": 184
+    },
+    "pageWidth": 320,
+    "sendEnabled": true
+  },
+  "keyboard": {
+    "homeFirstTab": true,
+    "emailFocusedOnExpand": true
+  }
+}

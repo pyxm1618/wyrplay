@@ -1,9 +1,12 @@
 /* eslint-disable @next/next/no-img-element -- Reused local account illustration. */
 import Link from "next/link";
 import { AccountChrome, AccountProfilePhoto, type AccountProfile } from "./account-chrome";
+import { ProfileEditor } from "./profile-editor";
+import { AccountNavigation } from "./account-navigation";
 import { AccountIcon } from "./account-icons";
 import "./account-overview.css";
 import "./account-panels.css";
+import "./account-system.css";
 export function AccountSettings({
   profile,
   commerceEnabled,
@@ -26,15 +29,7 @@ export function AccountSettings({
       <div className="account-page">
         <AccountChrome profile={profile} commerceEnabled={commerceEnabled} />
         <main>
-          <nav className="account-tabs" aria-label="Account sections">
-            <Link href="/account">Overview</Link>
-            <Link href="/account?view=saved">Saved Questions</Link>
-            <Link href="/account?view=my">My Questions</Link>
-            <Link href="/account?view=activity">Recent Activity</Link>
-            <Link href="/account/settings" className="active" aria-current="page">
-              Settings
-            </Link>
-          </nav>
+          <AccountNavigation commerceEnabled={commerceEnabled} />
           <div className="account-settings-layout">
             <nav className="settings-sidebar account-panel" aria-label="Settings sections">
               {[
@@ -71,48 +66,28 @@ export function AccountSettings({
                     </div>
                   </div>
                   <h3>Profile Information</h3>
-                  <p className="unavailable-note">
-                    Profile editing is not available yet. Your current details are shown below.
-                  </p>
                   <div className="settings-field">
                     <span>Profile Photo</span>
-                    <div className="settings-photo">
-                      <AccountProfilePhoto image={profile.image} />
-                      <button disabled>Change Photo</button>
-                      <button disabled>Remove</button>
-                    </div>
+                    <AccountProfilePhoto image={profile.image} />
+                    <p>Your sign-in profile photo is shown when available.</p>
                   </div>
-                  <label className="settings-field">
-                    <span>Display Name</span>
-                    <input value={profile.name} readOnly />
-                  </label>
-                  <label className="settings-field">
-                    <span>Username</span>
-                    <input placeholder="Usernames are not available yet" disabled />
-                  </label>
-                  <label className="settings-field">
-                    <span>Bio (Optional)</span>
-                    <textarea placeholder="Bios are not available yet" disabled />
-                  </label>
-                  <button className="account-blue-button settings-save" disabled>
-                    Save Changes
-                  </button>
+                  <ProfileEditor name={profile.name} />
                 </section>
                 <aside>
                   <section className="account-panel settings-inspiration">
-                    <img src="/account-art/bulb.png" width="80" height="105" alt="" />
+                    <img src="/account-art/bulb-v2.webp" width="80" height="105" alt="" />
                     <h2>
                       Be Yourself
                       <br />
                       Be Curious
                     </h2>
-                    <p>Your profile helps the community get to know you.</p>
+                    <p>A good question starts a great conversation.</p>
                   </section>
                   <section className="account-panel settings-tips">
                     <h2>❤️ Tips</h2>
-                    <p>✓ Use a friendly and recognizable name.</p>
-                    <p>✓ A clear profile helps build a positive community.</p>
-                    <p>Profile editing will be available when supported.</p>
+                    <p>✓ Choose a name you recognize.</p>
+                    <p>✓ Review your sessions on shared devices.</p>
+                    <p>Your favorites follow you across devices.</p>
                   </section>
                 </aside>
               </div>
@@ -127,12 +102,14 @@ export function AccountSettings({
                 <div className="settings-field">
                   <span>Email Address</span>
                   <div>
-                    <input value={profile.email} readOnly aria-label="Email Address" />
+                    <p className="settings-email">{profile.email}</p>
                     <span className={verified ? "verified-badge" : "unverified-badge"}>
                       {verified ? "● Verified" : "Unverified"}
                     </span>
                   </div>
-                  <button disabled>Change Email</button>
+                  <p>
+                    Your sign-in email is shown above. Email changes are not currently supported.
+                  </p>
                 </div>
                 <div className="settings-field">
                   <span>Available sign-in</span>
@@ -194,10 +171,10 @@ export function AccountSettings({
             </div>
           </div>
           <section className="account-explore">
-            <img src="/account-art/bulb.png" width="105" height="120" alt="" />
+            <img src="/account-art/bulb-v2.webp" width="105" height="120" alt="" />
             <div>
               <h2>Keep asking, keep exploring!</h2>
-              <p>Discover new questions or create your own.</p>
+              <p>Discover a new collection of curious questions.</p>
             </div>
             <nav>
               <Link href="/funny-would-you-rather-questions">😄 Funny</Link>

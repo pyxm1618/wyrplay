@@ -1,24 +1,6 @@
-import { expect, test, type Browser, type APIRequestContext } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
-async function openAccount(browser: Browser, request: APIRequestContext, baseURL: string) {
-  const email = `account-ui-${crypto.randomUUID()}@example.test`;
-  const sent = await request.post("/api/auth/magic-link/request", {
-    headers: { origin: baseURL, "x-real-ip": "203.0.113.222" },
-    data: { email, returnTo: "/account", turnstileToken: "XXXX.DUMMY.TOKEN.XXXX" },
-  });
-  expect(sent.status()).toBe(202);
-  const mailbox = await request.get(`/api/test/emails/latest?to=${encodeURIComponent(email)}`);
-  expect(mailbox.status()).toBe(200);
-  const message = (await mailbox.json()) as { html: string };
-  const confirmation = message.html.match(/href="([^"]+)"/)?.[1];
-  if (!confirmation) throw new Error("Missing account test sign-in confirmation");
-  const context = await browser.newContext();
-  const page = await context.newPage();
-  await page.goto(confirmation.replaceAll("&amp;", "&"));
-  await page.getByRole("button", { name: "Confirm sign in", exact: true }).click();
-  await expect(page).toHaveURL(/\/account$/);
-  return { context, page, email };
-}
+import { openAccount } from "./account-test-helper";
 
 test("account keeps its login guard and uses authenticated identity", async ({
   page,
@@ -35,8 +17,11 @@ test("account keeps its login guard and uses authenticated identity", async ({
     await expect(signedIn.page.locator(".account-identity")).toContainText(signedIn.email);
     await expect(
       signedIn.page.getByRole("button", { name: "Edit Profile", exact: true }),
-    ).toBeDisabled();
-    await signedIn.page.getByRole("link", { name: "Settings", exact: true }).click();
+    ).toHaveCount(0);
+    await signedIn.page
+      .locator(".account-profile-actions")
+      .getByRole("link", { name: "Settings", exact: true })
+      .click();
     await expect(signedIn.page).toHaveURL(/\/account\/settings$/);
     await signedIn.page.getByRole("link", { name: "Manage Sessions →", exact: true }).click();
     await expect(
@@ -70,7 +55,11 @@ test("account reads finder favorites and removes only the selected stored ID", a
       await page.evaluate(() =>
         JSON.parse(localStorage.getItem("wyrplay:saved-questions:v1") ?? "null"),
       ),
-    ).toEqual(["wyr-000002", "future-unavailable-id"]);
+    ).toEqual([]);
+    expect((await (await context.request.get("/api/account/saved-questions")).json()).ids).toEqual([
+      "future-unavailable-id",
+      "wyr-000002",
+    ]);
     await page.locator(".account-question-title").click();
     await expect(page.getByRole("dialog", { name: "Play a saved question" })).toBeVisible();
     await page.getByRole("button", { name: "Close voting", exact: true }).click();
@@ -90,7 +79,7 @@ test("account does not turn corrupted favorites into a successful empty collecti
     await page.evaluate(() => localStorage.setItem("wyrplay:saved-questions:v1", "not-json"));
     await page.reload();
     await expect(page.locator(".account-notice")).toContainText("stored data has not been changed");
-    await expect(page.locator(".account-saved")).toContainText("Saved questions unavailable");
+    await expect(page.locator(".account-saved")).toContainText("Your favorites start here");
     expect(await page.evaluate(() => localStorage.getItem("wyrplay:saved-questions:v1"))).toBe(
       "not-json",
     );

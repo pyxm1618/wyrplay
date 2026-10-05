@@ -1,24 +1,6 @@
-import { expect, test, type Browser, type APIRequestContext } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
-async function openAccount(browser: Browser, request: APIRequestContext, baseURL: string) {
-  const email = `account-ui-${crypto.randomUUID()}@example.test`;
-  const sent = await request.post("/api/auth/magic-link/request", {
-    headers: { origin: baseURL, "x-real-ip": "203.0.113.222" },
-    data: { email, returnTo: "/account", turnstileToken: "XXXX.DUMMY.TOKEN.XXXX" },
-  });
-  expect(sent.status()).toBe(202);
-  const mailbox = await request.get(`/api/test/emails/latest?to=${encodeURIComponent(email)}`);
-  expect(mailbox.status()).toBe(200);
-  const message = (await mailbox.json()) as { html: string };
-  const confirmation = message.html.match(/href="([^"]+)"/)?.[1];
-  if (!confirmation) throw new Error("Missing account test sign-in confirmation");
-  const context = await browser.newContext();
-  const page = await context.newPage();
-  await page.goto(confirmation.replaceAll("&amp;", "&"));
-  await page.getByRole("button", { name: "Confirm sign in", exact: true }).click();
-  await expect(page).toHaveURL(/\/account$/);
-  return { context, page, email };
-}
+import { openAccount } from "./account-test-helper";
 
 test("saved library selects a real pool, filters, paginates and preserves unknown IDs", async ({
   browser,
@@ -66,7 +48,10 @@ test("saved library selects a real pool, filters, paginates and preserves unknow
       await page.evaluate(() =>
         JSON.parse(localStorage.getItem("wyrplay:saved-questions:v1") ?? "null"),
       ),
-    ).toEqual([...ids.slice(1), "future-unavailable-id"]);
+    ).toEqual([]);
+    expect((await (await context.request.get("/api/account/saved-questions")).json()).ids).toEqual(
+      expect.arrayContaining([...ids.slice(1), "future-unavailable-id"]),
+    );
     await expect(
       page.getByRole("button", { name: "▶ Play Selected (0)", exact: true }),
     ).toBeDisabled();
@@ -94,11 +79,9 @@ test("settings shows real identity, retains delete validation and signs out", as
   try {
     await page.goto("/account?view=my");
     await expect(page.locator(".my-question-main")).toContainText("not available yet");
-    await expect(page.locator(".creator-stat strong")).toHaveText(["—", "—", "—", "—", "—"]);
+    await expect(page.locator(".creator-stat")).toHaveCount(0);
     await page.goto("/account/settings");
-    await expect(page.getByRole("textbox", { name: "Email Address", exact: true })).toHaveValue(
-      email,
-    );
+    await expect(page.locator(".settings-email")).toHaveText(email);
     await expect(page.getByRole("button", { name: "Save Changes", exact: true })).toBeDisabled();
     await expect(page.locator("#security")).toContainText("1 active session");
     let deletes = 0;

@@ -266,7 +266,11 @@ export function IllustratedHome({
         className="categories-section section-shell"
         aria-label="Popular categories"
       >
-        <Heading title="Popular Categories" href="#question-search" label="Explore categories" />
+        <Heading
+          title="Popular Would You Rather Questions"
+          href="#question-search"
+          label="Explore categories"
+        />
         <div className="category-grid">
           {categories.map((category) => {
             const collection = "key" in category ? FEATURED_COLLECTIONS[category.key] : null;
@@ -292,7 +296,7 @@ export function IllustratedHome({
         className="highlights-section section-shell dark-section"
         aria-label="Today's highlights"
       >
-        <Heading title="Today’s Highlights" href="#questions" />
+        <Heading title="Today’s Would You Rather Questions" href="#questions" />
         <div className="highlight-grid">
           {highlights.map((question, index) => (
             <button
@@ -329,7 +333,7 @@ export function IllustratedHome({
           <ArtCrop box={[530, 1102, 36, 48]} className="step-bubble" />
           <ArtCrop box={[590, 1096, 188, 134]} className="step-ribbon-blue" />
         </div>
-        <h2>How It Works</h2>
+        <h2>How to Play Would You Rather Questions</h2>
         <ol className="steps-grid">
           {steps.map((step, index) => (
             <li key={step.title} style={{ "--step-color": step.color } as CSSProperties}>
@@ -347,7 +351,7 @@ export function IllustratedHome({
         className="trending-section section-shell"
         aria-label="Question rankings"
       >
-        <Heading title="Trending Questions" href="/leaderboards" />
+        <Heading title="Trending Would You Rather Questions" href="/leaderboards" />
         <div className="trending-grid">
           <div className="trending-list">
             {leaderboard.status === "ready" && rankings.length > 0 ? (
@@ -417,7 +421,7 @@ export function IllustratedHome({
           <ArtCrop box={[241, 1530, 48, 47]} />
           <p>
             <strong>{approved.length}</strong>
-            <span>Questions</span>
+            <span>Would You Rather Questions</span>
           </p>
         </div>
         <div className="statistic">
@@ -433,8 +437,11 @@ export function IllustratedHome({
         <ArtCrop box={[748, 1866, 30, 155]} className="together-edge edge-right" />
         <ArtCrop box={[75, 1883, 85, 39]} className="together-flourish flourish-left" />
         <ArtCrop box={[568, 1875, 91, 45]} className="together-flourish flourish-right" />
-        <h2>Play Together, Anywhere</h2>
-        <p>Bring a question to game night, or use Presenter Mode on a shared screen.</p>
+        <h2>Play Together with Would You Rather Questions</h2>
+        <p>
+          Bring a few would you rather questions to game night, or use Presenter Mode on a shared
+          screen.
+        </p>
         <div className="occasion-grid">
           {occasions.map((occasion) => (
             <Link key={occasion.title} href={occasion.href} className="occasion-card">
@@ -448,7 +455,7 @@ export function IllustratedHome({
         </div>
       </section>
       <div className="home-live-experience">
-        <h2 id="tool-demo-title">Find Your Next Dilemma</h2>
+        <h2 id="tool-demo-title">Find More Would You Rather Questions</h2>
         <p>Search by keyword and filter by audience, occasion, tone or difficulty.</p>
         {children}
       </div>
@@ -465,20 +472,25 @@ function HomeFaq() {
         "Two choices that both deserve a second thought. Pick one, explain why, and invite your friends to defend the other side. There are no right answers.",
     },
     {
-      question: "How does voting work?",
+      question: "How do you play a round of would you rather questions?",
       answer:
         "Choose A or B to record your vote and see the real community results. Choose the other option to change your vote. If voting is unavailable, we say so instead of inventing numbers.",
     },
     {
-      question: "Can I play with a classroom or group?",
+      question: "Are these would you rather questions good for groups?",
       answer:
         "Start with the Classroom collection and check each question’s age rating and suitability for your group. Open Presenter Mode beside the live question for a shared display, use Previous or Next to move through questions, and Escape to exit.",
+    },
+    {
+      question: "Where can I find would you rather questions for kids, friends, or couples?",
+      answer:
+        "Use the category cards and filters to open the collection that fits your group, then choose any reviewed dilemma to play in the live arena.",
     },
   ];
   return (
     <section className="home-faq section-shell" aria-labelledby="home-faq-title">
       <p className="faq-eyebrow">A little help before your next debate</p>
-      <h2 id="home-faq-title">Good Questions, Answered</h2>
+      <h2 id="home-faq-title">Would You Rather Questions: FAQ</h2>
       {answers.map(({ question, answer }) => (
         <details key={question}>
           <summary>{question}</summary>

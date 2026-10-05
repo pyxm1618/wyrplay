@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { AccountShell } from "@/components/account/account-shell";
+import { AuthSurface } from "@/components/auth/auth-surface";
 
 import { MagicLinkConfirmation } from "./magic-link-confirmation";
 
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 
 export default function MagicLinkConfirmationPage() {
   return (
-    <AccountShell eyebrow="Security confirmation" title="Confirm sign in" titleId="confirm-title">
+    <AuthSurface mode="confirm">
       <MagicLinkConfirmation />
-    </AccountShell>
+    </AuthSurface>
   );
 }

@@ -1,0 +1,1 @@
+{"original_total":2,"approved":0,"deferred":0,"confirmed_reject":2,"unreviewed":0,"targets":[{"path":".next/cache/webpack","reason":"Generated webpack cache in this task worktree; reproducible by build"},{"path":".next/dev","reason":"Generated dev server cache in this task worktree; server stopped"}],"after":{"removed":2,"retained":0,"reconciled":true}}
