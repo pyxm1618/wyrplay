@@ -9,6 +9,7 @@ import { SiteBrand } from "./site-brand";
 import { featuresConfig } from "@/config/features.config";
 import { navigationConfig, type NavigationItem } from "@/config/navigation.config";
 import { siteConfig } from "@/config/site.config";
+import { ThemeToggle } from "@/modules/would-you-rather";
 import { localePath } from "@/platform/i18n/routing";
 
 const desktopLink =
@@ -34,7 +35,16 @@ export function SiteHeader({
   const toLocaleHref = (href: string) => localePath(siteConfig, locale, href);
 
   return (
-    <header
+    <>
+      {pathname === homeHref ? (
+        <a
+          href="#play"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
+        >
+          Skip to play
+        </a>
+      ) : null}
+      <header
       data-site-header
       className="sticky top-0 z-40 border-b border-border bg-background/95 text-foreground backdrop-blur-md print:hidden"
       onKeyDown={(event) => {
@@ -64,6 +74,7 @@ export function SiteHeader({
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
+          <ThemeToggle />
           {featuresConfig.auth.enabled ? (
             <>
               <Link
@@ -145,6 +156,7 @@ export function SiteHeader({
           </nav>
         </div>
       ) : null}
-    </header>
+      </header>
+    </>
   );
 }
