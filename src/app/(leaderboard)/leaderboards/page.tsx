@@ -1,4 +1,3 @@
-import { featuresConfig } from "@/config/features.config";
 import { routeRegistry } from "@/config/routes.config";
 import { LeaderboardPage, type LeaderboardResult } from "@/modules/would-you-rather";
 import { getLeaderboardSnapshot } from "@/modules/would-you-rather/server";
@@ -15,5 +14,5 @@ export default async function LeaderboardsRoute() {
     // Do not turn database failures into zero votes or expose database details.
     result = { status: "unavailable" };
   }
-  return <LeaderboardPage result={result} authEnabled={featuresConfig.auth.enabled} />;
+  return <LeaderboardPage result={result} />;
 }
