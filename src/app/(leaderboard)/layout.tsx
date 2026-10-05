@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { connection } from "next/server";
 import { AnalyticsBoundary } from "@/components/analytics/analytics-boundary";
+import { SiteShell } from "@/components/navigation/site-shell";
 import { siteConfig } from "@/config/site.config";
 import { rootMetadata } from "@/platform/seo/root-metadata";
 import "../globals.css";
@@ -11,7 +12,7 @@ export default async function LeaderboardLayout({ children }: Readonly<{ childre
   return (
     <html lang={siteConfig.defaultLocale} data-theme="light">
       <body className="leaderboard-body">
-        {children}
+        <SiteShell>{children}</SiteShell>
         <AnalyticsBoundary />
       </body>
     </html>
