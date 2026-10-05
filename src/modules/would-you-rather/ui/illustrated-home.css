@@ -494,6 +494,27 @@
   height: calc(var(--home-unit) * 87);
   mask-image: linear-gradient(#000 85%, transparent);
 }
+.illustrated-home .category-art-popular {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  z-index: 1;
+}
+.illustrated-home .category-card.popular .category-title,
+.illustrated-home .category-card.popular .category-description {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 .illustrated-home .category-title {
   font-size: calc(var(--home-unit) * 16);
   line-height: calc(var(--home-unit) * 20);

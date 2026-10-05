@@ -14,7 +14,7 @@ import { useHydrated } from "./use-hydrated";
 const categories = [
   {
     title: "Popular",
-    description: "Question rankings",
+    description: "Most voted",
     crop: [33, 686, 106, 87],
     color: "popular",
     href: "/leaderboards",
@@ -280,7 +280,17 @@ export function IllustratedHome({
                 href={collection?.route ?? ("href" in category ? category.href : "/#questions")}
                 className={`category-card ${category.color}`}
               >
-                <ArtCrop box={category.crop} className="category-art" />
+                {category.title === "Popular" ? (
+                  <Image
+                    src="/home-art/categories/popular.webp"
+                    alt=""
+                    width={1061}
+                    height={1330}
+                    className="category-art-popular"
+                  />
+                ) : (
+                  <ArtCrop box={category.crop} className="category-art" />
+                )}
                 <span className="category-title">{category.title}</span>
                 <span className="category-description">
                   {"key" in category
