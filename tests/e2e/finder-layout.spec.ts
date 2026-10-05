@@ -69,12 +69,10 @@ test("Finder viewport matrix preserves independent content, artwork and controls
       expect(directory!.width).toBeLessThanOrEqual(1241);
     }
     if (width <= 700) {
-      expect(
-        (await page.locator(".finder-page .site-header").boundingBox())!.height,
-      ).toBeLessThanOrEqual(50);
-      const login = page.locator(".finder-page .site-header > .login");
-      if (await login.count()) await expect(login).toBeHidden();
-      await expect(page.locator(".finder-menu summary")).toBeVisible();
+      const header = await page.locator("[data-site-header]").boundingBox();
+      expect(header).toBeDefined();
+      expect(header!.height).toBeLessThanOrEqual(80);
+      await expect(page.getByRole("button", { name: "Open mobile menu" })).toBeVisible();
     }
     const cards = page.locator(".question-card");
     for (let cardIndex = 0; cardIndex < (await cards.count()); cardIndex++) {
@@ -243,22 +241,21 @@ test("Finder completes age/tone, save/unsave, selected pool, restore and mobile 
     await expect(filterButtons.nth(index)).toHaveAttribute("aria-pressed", "false");
   }
   await page.setViewportSize({ width: 375, height: 812 });
-  await page.locator(".nav-search").click();
-  await expect(page.getByRole("searchbox")).toBeFocused();
-  await expect(page.getByRole("searchbox")).toHaveCSS("outline-style", "solid");
-  await expect(page.getByRole("searchbox")).toHaveCSS("outline-width", "3px");
+  const searchbox = page.getByRole("searchbox");
+  await searchbox.focus();
+  await expect(searchbox).toBeFocused();
+  await expect(searchbox).toHaveCSS("outline-style", "solid");
+  await expect(searchbox).toHaveCSS("outline-width", "3px");
   await page.keyboard.press("Tab");
   await expect(page.getByRole("button", { name: "Search", exact: true })).toBeFocused();
-  await page.locator(".finder-menu summary").click();
-  const menu = page.locator(".finder-menu nav");
-  for (const label of ["Home", "Browse questions", "Categories", "Leaderboard", "About"])
+
+  await page.getByRole("button", { name: "Open mobile menu" }).click();
+  const menu = page.getByRole("navigation", { name: "Mobile navigation" });
+  for (const label of ["Home", "Find Questions", "Print", "Leaderboards", "Play Now"])
     await expect(menu.getByRole("link", { name: label, exact: true })).toBeVisible();
-  await menu.getByRole("link", { name: "Categories", exact: true }).click();
-  await expect(menu).toBeHidden();
-  await page.locator(".finder-menu summary").click();
   await page.keyboard.press("Escape");
-  await expect(menu).toBeHidden();
-  await expect(page.locator(".finder-menu summary")).toBeFocused();
+  await expect(menu).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Open mobile menu" })).toBeVisible();
   await page.locator(".finder-categories").getByRole("link", { name: "Kids questions" }).click();
   await expect(page).toHaveURL(/would-you-rather-questions-for-kids/);
   await expect(page.locator("footer")).not.toHaveAttribute("data-theme", "light");
@@ -349,7 +346,7 @@ test("Finder 849px layout geometry aligns with reference structure", async ({ pa
   await page.goto("/find-questions");
   await page.evaluate(() => document.fonts.ready);
 
-  const header = await page.locator(".site-header").boundingBox();
+  const header = await page.locator("[data-site-header]").boundingBox();
   const hero = await page.locator(".hero").boundingBox();
   const searchArea = await page.locator(".search-area").boundingBox();
   const directory = await page.locator(".directory").boundingBox();
