@@ -35,7 +35,13 @@ export function SiteHeader({
   const toLocaleHref = (href: string) => localePath(siteConfig, locale, href);
 
   return (
-    <>
+    <header
+      data-site-header
+        className="sticky top-0 z-40 border-b border-border bg-background/95 text-foreground backdrop-blur-md print:hidden"
+        onKeyDown={(event) => {
+          if (event.key === "Escape") setMobileMenuOpen(false);
+        }}
+    >
       {pathname === homeHref ? (
         <a
           href="#play"
@@ -44,14 +50,7 @@ export function SiteHeader({
           Skip to play
         </a>
       ) : null}
-      <header
-        data-site-header
-        className="sticky top-0 z-40 border-b border-border bg-background/95 text-foreground backdrop-blur-md print:hidden"
-        onKeyDown={(event) => {
-          if (event.key === "Escape") setMobileMenuOpen(false);
-        }}
-      >
-        <div className="mx-auto flex h-18 w-full max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-18 w-full max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
           <SiteBrand href={homeHref} className="shrink-0" />
 
           <nav
@@ -156,7 +155,6 @@ export function SiteHeader({
             </nav>
           </div>
         ) : null}
-      </header>
-    </>
+    </header>
   );
 }
