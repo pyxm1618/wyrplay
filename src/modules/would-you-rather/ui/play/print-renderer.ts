@@ -1,5 +1,3 @@
-import { PDFDocument, rgb } from "pdf-lib";
-import fontkit from "@pdf-lib/fontkit";
 import QRCode from "qrcode";
 import type { PrintLayout, PrintFormat } from "../../domain/print-layout";
 import { wrapPrintText } from "../../domain/print-layout";
@@ -198,6 +196,10 @@ export async function createVectorPdf(
   marks: boolean,
   options: RenderPrintOptions = {},
 ): Promise<Blob> {
+  const [{ PDFDocument, rgb }, { default: fontkit }] = await Promise.all([
+    import("pdf-lib"),
+    import("@pdf-lib/fontkit"),
+  ]);
   const doc = await PDFDocument.create();
   doc.registerFontkit(fontkit);
 
