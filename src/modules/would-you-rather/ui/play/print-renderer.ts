@@ -5,7 +5,7 @@ import { wrapPrintText } from "../../domain/print-layout";
 import { questionPoolUrl } from "../../domain/play-session";
 
 export const PRINT_QR_CONFIG = {
-  margin: 2,
+  margin: 4,
   errorCorrectionLevel: "M" as const,
   cards: {
     sizePt: 34,

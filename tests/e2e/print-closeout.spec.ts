@@ -8,6 +8,12 @@ for (const format of ["cards", "sheet"] as const) {
     test(`actual browser print and vector PDF preserve ${format}/${paper} pages`, async ({
       page,
     }) => {
+      await page.addInitScript(() => {
+        (window as unknown as { __printCalled?: boolean }).__printCalled = false;
+        window.print = () => {
+          (window as unknown as { __printCalled?: boolean }).__printCalled = true;
+        };
+      });
       await page.goto(`/print?format=${format}`);
       await page.getByLabel("Number of questions").fill("24");
       if (paper === "a4") await page.getByRole("radio", { name: "A4" }).check();
@@ -18,6 +24,20 @@ for (const format of ["cards", "sheet"] as const) {
       );
       expect(expectedPages).toBeGreaterThan(1);
       await expect(page.locator(".print-document .print-page-sheet")).toHaveCount(expectedPages);
+
+      // 点击 Print 之前，Browser Print DOM 中尚未预生成 QR
+      expect(await page.locator('.print-document img[alt="Play this set QR code"]').count()).toBe(
+        0,
+      );
+
+      // 点击 Print 触发按需生成与 flushSync 挂载
+      await page.getByRole("button", { name: "Print" }).click();
+      await expect
+        .poll(() =>
+          page.evaluate(() => (window as unknown as { __printCalled?: boolean }).__printCalled),
+        )
+        .toBe(true);
+
       const qr = page.locator('.print-document img[alt="Play this set QR code"]').first();
       const url = new URL((await qr.getAttribute("data-play-url"))!);
       expect(url.pathname).toBe("/play");
@@ -173,4 +193,104 @@ test("disabling Include QR Code removes QR from Browser Print, PDF, and PNG", as
   await png.saveAs(pngPath);
   const metadata = await sharp(pngPath).metadata();
   expect(metadata.width).toBe(2550);
+});
+
+test("Browser Print lazy generation prepares DOM and images before calling window.print", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    (
+      window as unknown as {
+        __printCheck?: {
+          called: boolean;
+          qrCount: number;
+          allDecoded: boolean;
+          allHaveValidSrc: boolean;
+          allHaveValidUrl: boolean;
+        };
+      }
+    ).__printCheck = {
+      called: false,
+      qrCount: 0,
+      allDecoded: false,
+      allHaveValidSrc: false,
+      allHaveValidUrl: false,
+    };
+
+    window.print = () => {
+      const imgs = Array.from(
+        document.querySelectorAll<HTMLImageElement>(
+          '.print-document img[alt="Play this set QR code"]',
+        ),
+      );
+      (
+        window as unknown as {
+          __printCheck: {
+            called: boolean;
+            qrCount: number;
+            allDecoded: boolean;
+            allHaveValidSrc: boolean;
+            allHaveValidUrl: boolean;
+          };
+        }
+      ).__printCheck = {
+        called: true,
+        qrCount: imgs.length,
+        allDecoded: imgs.length > 0 && imgs.every((img) => img.complete && img.naturalWidth > 0),
+        allHaveValidSrc:
+          imgs.length > 0 && imgs.every((img) => img.src.startsWith("data:image/png;base64,")),
+        allHaveValidUrl:
+          imgs.length > 0 &&
+          imgs.every((img) => {
+            const url = img.getAttribute("data-play-url");
+            return url !== null && url.includes("/play?set=");
+          }),
+      };
+    };
+  });
+
+  await page.goto("/print?format=cards");
+  await expect(page.getByRole("button", { name: "Print" })).toBeEnabled();
+
+  // 1. 在未点击 Print 前，Browser Print DOM 中没有预先生成全部 457 个 QR
+  const preQrCount = await page.locator('.print-document img[alt="Play this set QR code"]').count();
+  expect(preQrCount).toBe(0);
+
+  // 2. 点击 Print 触发按需生成与 flushSync 挂载
+  await page.getByRole("button", { name: "Print" }).click();
+
+  // 3. 验证 window.print 已经被调用，且在被调用的瞬间，所有检查项均已就绪
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (
+            window as unknown as {
+              __printCheck?: { called: boolean };
+            }
+          ).__printCheck?.called,
+      ),
+    )
+    .toBe(true);
+
+  const checkResult = await page.evaluate(
+    () =>
+      (
+        window as unknown as {
+          __printCheck: {
+            called: boolean;
+            qrCount: number;
+            allDecoded: boolean;
+            allHaveValidSrc: boolean;
+            allHaveValidUrl: boolean;
+          };
+        }
+      ).__printCheck,
+  );
+
+  expect(checkResult.called).toBe(true);
+  expect(checkResult.qrCount).toBe(457);
+  expect(checkResult.allHaveValidSrc).toBe(true);
+  expect(checkResult.allHaveValidUrl).toBe(true);
+  expect(checkResult.allDecoded).toBe(true);
 });

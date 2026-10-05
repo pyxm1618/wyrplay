@@ -175,21 +175,25 @@ describe("play and print sets", () => {
       }
     });
 
-    it("enforces QR density moduleSizeMm >= 0.30mm for Cards, Sheet and worst-case Sheet page", () => {
+    it("enforces standard 4-module quiet zone and moduleSizeMm >= 0.30mm for Cards and Sheet", () => {
+      // 必须显式锁死 quiet zone = 4 modules，符合 QR 国际标准
+      expect(PRINT_QR_CONFIG.margin).toBe(4);
+
       const pool = resolveQuestionPool(QUESTIONS_DATABASE, null);
 
-      // 1. Card QR (single question)
-      const sampleQuestion = pool[0]!;
-      const cardUrl = getCardPlayUrl(sampleQuestion, origin);
-      const cardQr = QRCode.create(cardUrl, {
-        errorCorrectionLevel: PRINT_QR_CONFIG.errorCorrectionLevel,
-      });
-      const cardModuleSize = calculateQrModuleSizeMm(
-        cardQr.modules.size,
-        PRINT_QR_CONFIG.cards.sizePt,
-        PRINT_QR_CONFIG.margin,
-      );
-      expect(cardModuleSize).toBeGreaterThanOrEqual(0.3);
+      // 1. Card QR (worst-case single question across entire database)
+      for (const question of pool.slice(0, 20)) {
+        const cardUrl = getCardPlayUrl(question, origin);
+        const cardQr = QRCode.create(cardUrl, {
+          errorCorrectionLevel: PRINT_QR_CONFIG.errorCorrectionLevel,
+        });
+        const cardModuleSize = calculateQrModuleSizeMm(
+          cardQr.modules.size,
+          PRINT_QR_CONFIG.cards.sizePt,
+          4,
+        );
+        expect(cardModuleSize).toBeGreaterThanOrEqual(0.3);
+      }
 
       // 2. Sheet QR (10 questions typical page)
       const sheet10Url = getSheetPagePlayUrl(pool.slice(0, 10), origin);
@@ -199,7 +203,7 @@ describe("play and print sets", () => {
       const sheet10ModuleSize = calculateQrModuleSizeMm(
         sheet10Qr.modules.size,
         PRINT_QR_CONFIG.sheet.sizePt,
-        PRINT_QR_CONFIG.margin,
+        4,
       );
       expect(sheet10ModuleSize).toBeGreaterThanOrEqual(0.3);
 
@@ -225,7 +229,7 @@ describe("play and print sets", () => {
       const worstModuleSize = calculateQrModuleSizeMm(
         worstQr.modules.size,
         PRINT_QR_CONFIG.sheet.sizePt,
-        PRINT_QR_CONFIG.margin,
+        4,
       );
       expect(worstModuleSize).toBeGreaterThanOrEqual(0.3);
     });

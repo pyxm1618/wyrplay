@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- Canvas previews and original local logo. */
 
 import { useEffect, useState, startTransition, useMemo, useRef } from "react";
+import { flushSync } from "react-dom";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { Question } from "../../types";
@@ -211,64 +212,12 @@ export function PrintPage({
     };
   }, [layout, page, totalPages, format, marks, showNumbers, qrCodeEnabled, logo]);
 
-  // 异步为浏览器打印准备全文档短 URL QR 缓存（首页优先同步/快速完成）
+  // 当关闭二维码时清空可能缓存的打印二维码
   useEffect(() => {
-    if (!layout || !qrCodeEnabled) {
+    if (!qrCodeEnabled) {
       setPrintQrData(new Map());
-      return;
     }
-    let cancelled = false;
-    void (async () => {
-      try {
-        const origin = window.location.origin;
-        const newMap = new Map<string, string>();
-        const urlsToPrepare: string[] = [];
-        if (format === "sheet") {
-          for (const pagePlacements of layout.pages) {
-            urlsToPrepare.push(getSheetPagePlayUrl(pagePlacements, origin));
-          }
-        } else {
-          for (const pagePlacements of layout.pages) {
-            for (const p of pagePlacements) {
-              urlsToPrepare.push(getCardPlayUrl(p.question, origin));
-            }
-          }
-        }
-
-        // 优先先生成第 1 页需要的 QR，快速更新 DOM
-        const firstPageLimit = format === "sheet" ? 1 : (layout.pages[0]?.length ?? 0);
-        const firstBatch = urlsToPrepare.slice(0, firstPageLimit);
-        await Promise.all(
-          firstBatch.map(async (url) => {
-            const dataUrl = await getQrDataUrl(url);
-            newMap.set(url, dataUrl);
-          }),
-        );
-        if (!cancelled) {
-          setPrintQrData(new Map(newMap));
-        }
-
-        // 后续批次生成
-        const remaining = urlsToPrepare.slice(firstPageLimit);
-        if (remaining.length > 0) {
-          await Promise.all(
-            remaining.map(async (url) => {
-              const dataUrl = await getQrDataUrl(url);
-              newMap.set(url, dataUrl);
-            }),
-          );
-          if (!cancelled) {
-            setPrintQrData(new Map(newMap));
-          }
-        }
-      } catch {
-        // ignore background QR preparation error
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [layout, format, qrCodeEnabled]);
+  }, [qrCodeEnabled]);
 
   // 组件卸载时释放 URL
   useEffect(() => {
@@ -396,9 +345,12 @@ export function PrintPage({
               updated.set(url, dataUrl);
             }),
           );
-          setPrintQrData(updated);
+          flushSync(() => {
+            setPrintQrData(updated);
+          });
         }
       }
+      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
       await document.fonts.ready;
       await Promise.all(
         Array.from(document.querySelectorAll<HTMLImageElement>(".print-document img")).map(
