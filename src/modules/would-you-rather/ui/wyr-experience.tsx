@@ -263,7 +263,7 @@ export function WyrExperience({
       {/* 4. 目录展示 (仅展示 approved 题目；未审核题严格杜绝暴露在生产界面) */}
       {appearance === "illustrated-home" ? (
         <details className="home-directory" open={hasActiveFilters ? true : undefined}>
-          <summary>Browse all {directoryQuestions.length} questions</summary>
+          <summary>Browse all {directoryQuestions.length} Would You Rather Questions</summary>
           {directory}
         </details>
       ) : (

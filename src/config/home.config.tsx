@@ -31,7 +31,7 @@ function homeSurface(leaderboard: LeaderboardResult) {
       <WyrExperience
         appearance="illustrated-home"
         questions={QUESTIONS_DATABASE}
-        categoryBadge="All Curated Dilemmas"
+        categoryBadge="Curated Would You Rather Questions"
         showCategoryExplorer={true}
         leaderboard={leaderboard}
       />

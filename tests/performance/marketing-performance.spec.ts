@@ -166,3 +166,106 @@ for (const route of routes) {
     expect(metrics.oversizedImages).toEqual([]);
   });
 }
+
+test("/find-questions stays within deterministic release budget and passes axe accessibility", async ({
+  page,
+}) => {
+  const consoleErrors: string[] = [];
+  const serverErrors: string[] = [];
+  page.on("console", (message) => {
+    if (message.type() === "error") consoleErrors.push(message.text());
+  });
+  page.on("response", (response) => {
+    if (response.status() >= 500) {
+      serverErrors.push(`${response.status()} ${response.url()}`);
+    }
+  });
+
+  const fulfillEmptyVoteStats = async (route: Route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        hasVoted: false,
+        selectedOption: null,
+        votesA: 0,
+        votesB: 0,
+        total: 0,
+        percentageA: 50,
+        percentageB: 50,
+      }),
+    });
+  };
+
+  await page.route("**/api/wyr/vote?*", fulfillEmptyVoteStats);
+  await page.route("**/api/wyr/kids-vote?*", fulfillEmptyVoteStats);
+
+  await page.addInitScript(() => {
+    window.__cwv = { cls: 0, inp: 0, lcp: 0 };
+    new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        const shift = entry as PerformanceEntry & { hadRecentInput?: boolean; value?: number };
+        if (!shift.hadRecentInput) window.__cwv!.cls += shift.value ?? 0;
+      }
+    }).observe({ type: "layout-shift", buffered: true });
+    new PerformanceObserver((list) => {
+      const entries = list.getEntries();
+      const last = entries.at(-1);
+      if (last) window.__cwv!.lcp = last.startTime;
+    }).observe({ type: "largest-contentful-paint", buffered: true });
+    new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        const interaction = entry as PerformanceEntry & {
+          duration?: number;
+          interactionId?: number;
+        };
+        if ((interaction.interactionId ?? 0) > 0) {
+          window.__cwv!.inp = Math.max(window.__cwv!.inp, interaction.duration ?? 0);
+        }
+      }
+    }).observe({
+      type: "event",
+      buffered: true,
+      durationThreshold: 16,
+    } as PerformanceObserverInit & { durationThreshold: number });
+  });
+
+  const response = await page.goto("/find-questions", { waitUntil: "networkidle" });
+  expect(response?.status()).toBe(200);
+  expect(response?.headers()["x-robots-tag"]).toContain("noindex");
+
+  await expect(page.locator("h1")).toHaveCount(1);
+  await expect(page.locator(".question-card")).toHaveCount(10);
+
+  // Horizontal overflow check
+  const noOverflow = await page.evaluate(
+    () => document.documentElement.scrollWidth <= window.innerWidth + 1,
+  );
+  expect(noOverflow).toBe(true);
+
+  // Axe accessibility audit
+  const accessibility = await new AxeBuilder({ page }).analyze();
+  const criticalOrSerious = accessibility.violations.filter(
+    (violation) => violation.impact === "critical" || violation.impact === "serious",
+  );
+  expect(criticalOrSerious).toEqual([]);
+
+  const firstSelect = page.locator(".select-button").first();
+  if ((await firstSelect.count()) > 0) {
+    await firstSelect.click();
+    await page.waitForTimeout(50);
+  }
+
+  const metrics = await page.evaluate(() => ({
+    cls: window.__cwv?.cls ?? 0,
+    inp: window.__cwv?.inp ?? 0,
+    lcp: window.__cwv?.lcp ?? 0,
+  }));
+
+  expect(serverErrors).toEqual([]);
+  expect(consoleErrors).toEqual([]);
+  expect(metrics.cls).toBeLessThanOrEqual(0.1);
+  expect(metrics.lcp).toBeGreaterThan(0);
+  expect(metrics.lcp).toBeLessThanOrEqual(2500);
+  expect(metrics.inp).toBeLessThanOrEqual(200);
+});
