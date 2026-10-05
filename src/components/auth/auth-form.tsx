@@ -180,6 +180,7 @@ export function SignInForm({
           <p
             id="sign-in-status"
             aria-live="polite"
+            role={["error", "challenge", "limited"].includes(status) ? "alert" : "status"}
             className="auth-status"
             data-error={["error", "challenge", "limited"].includes(status)}
           >
@@ -195,7 +196,7 @@ export function SignInForm({
           </p>
           {signup && (
             <p className="auth-terms">
-              New to WYRPLAY? Your account is created after you verify your email. Read our{" "}
+              New to WYRPlay? Your account is created after you verify your email. Read our{" "}
               <Link href="/terms">Terms</Link> and <Link href="/privacy">Privacy Notice</Link>.
             </p>
           )}

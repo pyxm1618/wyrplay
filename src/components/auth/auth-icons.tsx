@@ -11,14 +11,6 @@ export function Arrow() {
     </svg>
   );
 }
-export function Search() {
-  return (
-    <svg viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="2.4" />
-      <path d="m18 18 7 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
-    </svg>
-  );
-}
 export function Mail() {
   return (
     <svg viewBox="0 0 48 40" fill="none" aria-hidden="true">
@@ -46,20 +38,6 @@ export function Google() {
         fill="#EA4335"
         d="M24 12.09c3 0 5.67 1.03 7.79 3.04l5.85-5.85C34.11 5.99 29.5 4 24 4a20 20 0 0 0-18.2 11.19l6.79 5.3c1.61-4.82 6.11-8.4 11.41-8.4Z"
       />
-    </svg>
-  );
-}
-export function Crown() {
-  return (
-    <svg className="crown" viewBox="0 0 110 115" fill="none" aria-hidden="true">
-      <path
-        d="m14 99-7-64 27 29 19-57 23 55 29-40-9 72-82 5Z"
-        stroke="#ffbd00"
-        strokeWidth="9"
-        strokeLinejoin="round"
-      />
-      <circle cx="53" cy="2" r="7" fill="#ffbd00" />
-      <circle cx="7" cy="21" r="6" fill="#ffbd00" />
     </svg>
   );
 }

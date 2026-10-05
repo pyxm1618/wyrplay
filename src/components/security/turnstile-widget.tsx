@@ -12,6 +12,7 @@ type TurnstileApi = {
     options: {
       sitekey: string;
       action: string;
+      size: "flexible" | "compact";
       callback: (token: string) => void;
       "error-callback": () => void;
       "expired-callback": () => void;
@@ -80,25 +81,45 @@ export function TurnstileWidget({
 
   useEffect(() => {
     let disposed = false;
+    let resizeObserver: ResizeObserver | undefined;
     const cleanupScriptListener = ensureTurnstileScript(() => {
       if (disposed || !containerRef.current || !window.turnstile || widgetIdRef.current) return;
-      widgetIdRef.current = window.turnstile.render(containerRef.current, {
-        sitekey: siteKey,
-        action: "magic-link",
-        callback: (token) => onTokenRef.current(token),
-        "error-callback": () => {
-          onTokenRef.current(null);
-          onUnavailableRef.current();
-        },
-        "expired-callback": () => onTokenRef.current(null),
-        "timeout-callback": () => onTokenRef.current(null),
-        "response-field": false,
-      });
+      const container = containerRef.current;
+      let currentSize: "flexible" | "compact" | undefined;
+      const renderForWidth = () => {
+        if (disposed || !window.turnstile) return;
+        // Cloudflare flexible still needs 300px. Use its official compact
+        // layout below that threshold, including after viewport changes.
+        const size = container.getBoundingClientRect().width < 300 ? "compact" : "flexible";
+        if (size === currentSize) return;
+        const previousId = widgetIdRef.current;
+        if (previousId) window.turnstile.remove(previousId);
+        onTokenRef.current(null);
+        currentSize = size;
+        container.style.minHeight = size === "compact" ? "140px" : "65px";
+        widgetIdRef.current = window.turnstile.render(container, {
+          sitekey: siteKey,
+          action: "magic-link",
+          size,
+          callback: (token) => onTokenRef.current(token),
+          "error-callback": () => {
+            onTokenRef.current(null);
+            onUnavailableRef.current();
+          },
+          "expired-callback": () => onTokenRef.current(null),
+          "timeout-callback": () => onTokenRef.current(null),
+          "response-field": false,
+        });
+      };
+      renderForWidth();
+      resizeObserver = new ResizeObserver(renderForWidth);
+      resizeObserver.observe(container);
     });
 
     return () => {
       disposed = true;
       cleanupScriptListener();
+      resizeObserver?.disconnect();
       const widgetId = widgetIdRef.current;
       if (widgetId && window.turnstile) window.turnstile.remove(widgetId);
       widgetIdRef.current = null;
@@ -113,5 +134,12 @@ export function TurnstileWidget({
     onTokenRef.current(null);
   }, [resetSignal]);
 
-  return <div ref={containerRef} className="min-h-[65px]" aria-label="Human verification" />;
+  return (
+    <div
+      ref={containerRef}
+      style={{ minHeight: 65, width: "100%" }}
+      role="group"
+      aria-label="Human verification"
+    />
+  );
 }
