@@ -1,24 +1,22 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- User avatar URLs and reused screenshot artwork. */
 import Link from "next/link";
-import { startTransition, useEffect, useRef, useState } from "react";
-import { DuelArena, type Question, type LeaderboardResult } from "@/modules/would-you-rather";
+import { useRef, useState } from "react";
+import {
+  DuelArena,
+  type Question,
+  type LeaderboardResult,
+  useSavedQuestions,
+} from "@/modules/would-you-rather";
+import { AccountNavigation } from "./account-navigation";
 import { AccountIcon } from "./account-icons";
 import "./account-overview.css";
 import "./account-panels.css";
+import "./account-system.css";
 import { AccountChrome, type AccountProfile } from "./account-chrome";
 import { SavedLibrary, MyQuestionsPanel } from "./account-panels";
 
-const savedKey = "wyrplay:saved-questions:v1";
-const tabs = ["Overview", "Saved Questions", "My Questions", "Recent Activity"] as const;
-type Tab = (typeof tabs)[number];
-function readSavedIds(): string[] {
-  const parsed: unknown = JSON.parse(localStorage.getItem(savedKey) ?? "[]");
-  if (!Array.isArray(parsed) || !parsed.every((id) => typeof id === "string")) {
-    throw new Error("Saved questions must contain question IDs.");
-  }
-  return parsed;
-}
+type Tab = "Overview" | "Saved Questions" | "My Questions" | "Recent Activity";
 function randomQuestion(questions: readonly Question[]) {
   return questions[Math.floor(Math.random() * questions.length)];
 }
@@ -35,49 +33,20 @@ export function AccountOverview({
   votes: LeaderboardResult;
   initialTab?: Tab;
 }) {
-  const [tab, setTab] = useState<Tab>(initialTab);
-  const [savedIds, setSavedIds] = useState<string[] | null>(null);
-  const [notice, setNotice] = useState("");
+  const tab = initialTab;
+  const setTab = (next: Tab) => {
+    window.location.assign(
+      next === "Overview"
+        ? "/account"
+        : `/account?view=${next === "Saved Questions" ? "saved" : next === "My Questions" ? "my" : "activity"}`,
+    );
+  };
+  const { savedIds, notice, removeSaved } = useSavedQuestions();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
-  useEffect(() => {
-    const read = () => {
-      try {
-        const ids = readSavedIds();
-        startTransition(() => {
-          setSavedIds(ids);
-          setNotice("");
-        });
-      } catch {
-        startTransition(() => {
-          setSavedIds(null);
-          setNotice(
-            "Saved questions could not be read in this browser. Your stored data has not been changed.",
-          );
-        });
-      }
-    };
-    read();
-    window.addEventListener("storage", read);
-    window.addEventListener("focus", read);
-    return () => {
-      window.removeEventListener("storage", read);
-      window.removeEventListener("focus", read);
-    };
-  }, []);
   const saved = questions.filter((question) => savedIds?.includes(question.id));
   const shownSaved = tab === "Overview" ? saved.slice(0, 3) : saved;
   const current = saved.find((question) => question.id === selectedId);
-  function removeSaved(id: string) {
-    try {
-      const next = readSavedIds().filter((storedId) => storedId !== id);
-      localStorage.setItem(savedKey, JSON.stringify(next));
-      setSavedIds(next);
-      setNotice("");
-    } catch {
-      setNotice("This browser could not update your saved questions. Nothing was removed.");
-    }
-  }
   function openQuestion(id: string) {
     setSelectedId(id);
     dialog.current?.showModal();
@@ -97,18 +66,7 @@ export function AccountOverview({
       <div className="account-page">
         <AccountChrome profile={profile} commerceEnabled={commerceEnabled} />
         <main>
-          <nav className="account-tabs" aria-label="Account sections">
-            {tabs.map((item) => (
-              <button
-                key={item}
-                aria-pressed={tab === item}
-                className={tab === item ? "active" : ""}
-                onClick={() => setTab(item)}
-              >
-                {item}
-              </button>
-            ))}
-          </nav>
+          <AccountNavigation commerceEnabled={commerceEnabled} />
           {tab === "Saved Questions" && (
             <SavedLibrary
               questions={saved}
@@ -137,7 +95,7 @@ export function AccountOverview({
                         <p>Explore a collection and pick your next question!</p>
                       </div>
                     </div>
-                    <img className="account-travel" src="/account-art/travel-sign.png" alt="" />
+                    <img className="account-travel" src="/account-art/travel-sign-v2.webp" alt="" />
                     <div className="account-continue-card">
                       <div className="account-tags">
                         <span>Travel</span>
@@ -161,7 +119,7 @@ export function AccountOverview({
                       <AccountIcon name="heart" />
                       <div>
                         <h2>Saved Questions</h2>
-                        <p>Saved on this browser, ready to play again.</p>
+                        <p>Saved to your account, ready on any device.</p>
                       </div>
                       {overview && (
                         <button
@@ -215,15 +173,15 @@ export function AccountOverview({
                       <div className="account-empty">
                         <AccountIcon name="heart" />
                         <h3>
-                          {notice
+                          {notice && savedIds === null
                             ? "Saved questions unavailable"
                             : savedIds === null
                               ? "Loading saved questions…"
                               : "Your favorites start here"}
                         </h3>
                         <p>
-                          {notice
-                            ? "Check your browser storage permissions and try again."
+                          {notice && savedIds === null
+                            ? "Reload to retry loading your account favorites."
                             : "Save questions in the question finder to see them here."}
                         </p>
                         <Link href="/find-questions">
@@ -268,55 +226,11 @@ export function AccountOverview({
                     </div>
                   </section>
                 )}
-                {overview && (
-                  <section className="account-create account-panel">
-                    <AccountIcon name="edit" />
-                    <div>
-                      <h2>Create a New Question</h2>
-                      <p>Question submissions are not open yet.</p>
-                      <button
-                        className="account-blue-button"
-                        disabled
-                        title="Question submissions are not available yet."
-                      >
-                        Create Question <AccountIcon name="arrow" />
-                      </button>
-                    </div>
-                  </section>
-                )}
               </div>
             </div>
           )}
-          {overview && (
-            <section className="account-mine account-panel">
-              <div className="account-section-heading">
-                <AccountIcon name="edit" />
-                <div>
-                  <h2>My Questions</h2>
-                  <p>Questions you&apos;ve created or submitted.</p>
-                </div>
-                {overview && (
-                  <button className="account-text-button" onClick={() => setTab("My Questions")}>
-                    View all <AccountIcon name="arrow" />
-                  </button>
-                )}
-              </div>
-              <div className="account-empty">
-                <AccountIcon name="game" />
-                <h3>A place for your curious questions</h3>
-                <p>
-                  Creating and submitting questions is not available yet.
-                  <br />
-                  Published, pending and draft records will appear when submissions are supported.
-                </p>
-                <button className="account-blue-button" disabled>
-                  Create a Question
-                </button>
-              </div>
-            </section>
-          )}
           <section className="account-explore">
-            <img src="/account-art/bulb.png" width="105" height="120" alt="" />
+            <img src="/account-art/bulb-v2.webp" width="105" height="120" alt="" />
             <div>
               <h2>Want something different?</h2>
               <p>Explore more questions or change the vibe.</p>
@@ -362,7 +276,7 @@ export function AccountOverview({
             question={current}
             currentIndex={saved.findIndex((q) => q.id === current.id)}
             totalQuestions={saved.length}
-            categoryBadge="Saved on this browser"
+            categoryBadge="Account favorites"
             onNext={() => nextQuestion(false)}
             onRandom={() => nextQuestion(true)}
           />

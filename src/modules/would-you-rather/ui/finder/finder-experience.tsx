@@ -4,13 +4,13 @@ import { startTransition, useEffect, useMemo, useRef, useState } from "react";
 import type { Question } from "../../types";
 import {
   filterFinderQuestions,
-  parseSavedQuestionIds,
   questionPage,
   questionArtworks,
   type FinderCriteria,
 } from "../../domain/finder";
 import { useRouter } from "next/navigation";
 import { finderSessionKey, parseFinderSession, questionPoolUrl } from "../../domain/play-session";
+import { useSavedQuestions } from "../use-saved-questions";
 
 import { FinderIcon } from "./icon";
 import { FinderFilters } from "./filters";
@@ -18,8 +18,6 @@ import { FinderQuestionCard } from "./question-card";
 import { FinderCategories, FinderDecoration, FinderHeader, FinderHero } from "./chrome";
 import "./finder.css";
 import "./finder-responsive.css";
-
-const savedKey = "wyrplay:saved-questions:v1";
 
 const popularSearches = [
   ["for kids", "kids"],
@@ -90,7 +88,8 @@ export function FinderExperience({
   const [criteria, setCriteria] = useState<FinderCriteria>({});
   const [pageNumber, setPageNumber] = useState(1);
   const [selected, setSelected] = useState<string[]>([]);
-  const [saved, setSaved] = useState<string[]>([]);
+  const { savedIds, notice: savedNotice, toggleSaved } = useSavedQuestions(authEnabled);
+  const saved = savedIds ?? [];
   const [reviewSelectedOnly, setReviewSelectedOnly] = useState(false);
   const browsePageBeforeReview = useRef(1);
   const [notice, setNotice] = useState("");
@@ -105,25 +104,7 @@ export function FinderExperience({
   }
 
   useEffect(() => {
-    // 1. Saved questions from localStorage (isolated)
-    try {
-      const rawSaved = localStorage.getItem(savedKey);
-      if (rawSaved !== null) {
-        const ids = parseSavedQuestionIds(rawSaved, questions);
-        startTransition(() => setSaved(ids));
-      }
-    } catch (error: unknown) {
-      startTransition(() =>
-        setNotice(
-          error instanceof SyntaxError ||
-            (error instanceof Error && error.message.includes("Saved questions"))
-            ? "Saved questions could not be read. You can save questions again."
-            : "Saved questions are unavailable in this browser.",
-        ),
-      );
-    }
-
-    // 2. Finder session restore from sessionStorage (isolated)
+    // 1. Finder session restore from sessionStorage (isolated)
     let restoredFromSession = false;
     try {
       const isRestore = new URLSearchParams(window.location.search).has("restore");
@@ -146,7 +127,7 @@ export function FinderExperience({
       startTransition(() => setNotice("Previous search and filter session could not be restored."));
     }
 
-    // 3. Normal URL query state restoration
+    // 2. Normal URL query state restoration
     if (!restoredFromSession) {
       const urlState = parseUrlParams(window.location.search);
       if (urlState.keyword || Object.keys(urlState.criteria).length > 0 || urlState.page > 1) {
@@ -160,7 +141,7 @@ export function FinderExperience({
       }
     }
 
-    // 4. Popstate listener for browser back / forward
+    // 3. Popstate listener for browser back / forward
     const handlePopState = () => {
       const popState = parseUrlParams(window.location.search);
       startTransition(() => {
@@ -226,18 +207,6 @@ export function FinderExperience({
       ids.includes(id) ? ids.filter((savedId) => savedId !== id) : [...ids, id],
     );
     if (exitsReview) restoreBrowsePage();
-  }
-
-  function toggleSaved(id: string) {
-    const next = saved.includes(id) ? saved.filter((savedId) => savedId !== id) : [...saved, id];
-    try {
-      localStorage.setItem(savedKey, JSON.stringify(next));
-      setSaved(next);
-    } catch {
-      setNotice(
-        "This browser could not save the question. Check your storage permissions and try again.",
-      );
-    }
   }
 
   function openPlayer(present = false, print = false) {
@@ -418,6 +387,7 @@ export function FinderExperience({
                 number={(currentPage.page - 1) * 10 + i + 1}
                 selected={selected.includes(question.id)}
                 saved={saved.includes(question.id)}
+                saveDisabled={savedIds === null}
                 onSelect={() => toggleSelected(question.id)}
                 onSave={() => toggleSaved(question.id)}
                 revision={0}
@@ -521,10 +491,15 @@ export function FinderExperience({
         <p>
           Browse reviewed questions from the WYRPLAY question bank. Votes and percentages come from
           the voting service; zero votes and unavailable statistics are shown explicitly. Saved
-          questions stay in this browser. Choose questions across pages, or play the current
-          filtered pool.
+          questions sync to your account when signed in, or stay in this browser for guests. Choose
+          questions across pages, or play the current filtered pool.
         </p>
       </details>
+      {savedNotice && (
+        <p className="notice" role="alert">
+          {savedNotice}
+        </p>
+      )}
       {notice && (
         <div className="notice" role="status">
           <p>{notice}</p>

@@ -3,6 +3,9 @@ import { headers } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import { formatAccountDateTime } from "@/components/account/account-record-display";
+import { accountProfile } from "@/components/account/account-profile";
+import { featuresConfig } from "@/config/features.config";
 import { AccountShell } from "@/components/account/account-shell";
 import {
   bodyText,
@@ -49,7 +52,13 @@ export default async function CreditsPage() {
     .limit(50);
 
   return (
-    <AccountShell eyebrow="Account" title="Credits" titleId="credits-title">
+    <AccountShell
+      profile={accountProfile(context.user)}
+      commerceEnabled={featuresConfig.commerce.enabled}
+      eyebrow="Account"
+      title="Credits"
+      titleId="credits-title"
+    >
       {balances.length === 0 ? (
         <p className={bodyText}>No credit grants have been recorded for this account.</p>
       ) : (
@@ -89,7 +98,7 @@ export default async function CreditsPage() {
                 {entry.creditType} · {entry.entryType}
               </span>
               <span className={metaText}>
-                {entry.quantity} · {entry.createdAt.toISOString()}
+                {entry.quantity} · {formatAccountDateTime(entry.createdAt)}
               </span>
             </li>
           ))}

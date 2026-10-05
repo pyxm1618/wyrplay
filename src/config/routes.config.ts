@@ -235,6 +235,7 @@ export const routeDefinitions = [
   { route: "/api/auth/magic-link/request", class: "system" },
   { route: "/api/auth/magic-link/confirm", class: "system" },
   { route: "/api/account/delete", class: "system" },
+  { route: "/api/account/saved-questions", class: "system" },
   { route: "/api/commerce/checkout", class: "system" },
   { route: "/api/commerce/subscription/cancel", class: "system" },
   { route: "/api/commerce/subscription/resume", class: "system" },
