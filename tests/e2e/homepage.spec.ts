@@ -212,9 +212,9 @@ test("homepage stays warm under a saved dark preference without changing other p
     .first()
     .evaluate((element) => getComputedStyle(element).backgroundColor);
   expect(background).toBe("rgb(255, 249, 240)");
-  await expect(page.getByRole("button", { name: "Switch to light theme" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Toggle theme" })).toBeVisible();
   await page.goto("/funny-would-you-rather-questions");
-  await expect(page.getByRole("button", { name: "Switch to light theme" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Toggle theme" })).toBeVisible();
 });
 
 test("a first vote before the initial read finishes keeps its anonymous identity", async ({
