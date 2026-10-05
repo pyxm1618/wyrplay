@@ -56,30 +56,6 @@
   outline: 3px solid #087eff;
   outline-offset: 5px;
 }
-.play-header {
-  height: 90px;
-  max-width: 1340px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  position: relative;
-  z-index: 5;
-}
-.play-header img {
-  width: 200px;
-  height: 70px;
-  object-fit: contain;
-}
-.play-header > nav {
-  display: flex;
-  gap: 42px;
-  flex: 1;
-  justify-content: center;
-  font-size: 18px;
-}
-.play-header button,
-.play-menu summary,
 .play-actions > * {
   display: flex;
   align-items: center;
@@ -516,17 +492,6 @@
   font-size: 40px;
 }
 @media (max-width: 1100px) {
-  .play-header {
-    padding: 0 24px;
-    gap: 15px;
-  }
-  .play-header > nav {
-    gap: 16px;
-    font-size: 15px;
-  }
-  .play-header img {
-    width: 150px;
-  }
   .play-toolbar {
     padding: 0 24px;
   }
@@ -552,28 +517,6 @@
   }
 }
 @media (max-width: 700px) {
-  .play-header {
-    height: 68px;
-    min-height: 68px;
-    flex-wrap: nowrap;
-    gap: 8px;
-    padding: 8px 12px;
-  }
-  .play-header > nav {
-    display: none;
-  }
-  .play-header img {
-    width: 120px;
-    height: 42px;
-  }
-  .play-header > a[aria-label="Search questions"] {
-    margin-left: auto;
-  }
-  .play-header button {
-    gap: 7px;
-    padding: 8px 10px;
-    white-space: nowrap;
-  }
   .play-menu {
     display: block;
     flex-shrink: 0;
@@ -587,9 +530,6 @@
   }
   .play-menu-panel .mobile-menu-link {
     display: block !important;
-  }
-  .play-header .dark-pill {
-    display: none;
   }
   .play-toolbar {
     height: auto;
@@ -767,9 +707,6 @@ main:has(> .print-page) + footer {
   object-fit: contain;
   background: none;
 }
-.play-header img {
-  mix-blend-mode: multiply;
-}
 .presenter-header img {
   width: 250px;
   height: 83px;
@@ -944,13 +881,6 @@ main:has(> .print-page) + footer {
 }
 
 @media (min-width: 701px) and (max-height: 850px) {
-  .play-page .play-header {
-    height: 72px;
-  }
-  .play-page .play-header img {
-    width: 170px;
-    height: 60px;
-  }
   .play-page .play-toolbar {
     height: 50px;
     font-size: 16px;
