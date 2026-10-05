@@ -132,16 +132,18 @@ test.describe("required responsive viewport matrix", () => {
       await expect(page.locator(".play-actions")).toBeVisible();
 
       if (width <= 430) {
-        await expect(page.locator(".play-header > nav")).toBeHidden();
-        const menu = page.locator(".play-menu > summary");
+        const menu = page.getByRole("button", { name: "Open mobile menu" });
         await expect(menu).toBeVisible();
         if (width === 390 && height === 844) {
           await menu.click();
           await expect(
-            page.locator(".play-menu-panel").getByRole("link", { name: "Home" }),
+            page.getByRole("navigation", { name: "Mobile navigation" }).getByRole("link", {
+              name: "Home",
+              exact: true,
+            }),
           ).toBeVisible();
-          await menu.click();
-          await expect(page.locator(".play-menu-panel")).toBeHidden();
+          await page.keyboard.press("Escape");
+          await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toHaveCount(0);
         }
       }
 
@@ -204,16 +206,18 @@ test.describe("required responsive viewport matrix", () => {
       await noOverflow(page);
 
       if (width <= 430) {
-        await expect(page.locator(".finder-page .site-header > nav")).toBeHidden();
-        const menu = page.locator(".finder-menu > summary");
+        const menu = page.getByRole("button", { name: "Open mobile menu" });
         await expect(menu).toBeVisible();
         if (width === 390 && height === 844) {
           await menu.click();
           await expect(
-            page.locator(".finder-menu nav").getByRole("link", { name: "Browse questions" }),
+            page.getByRole("navigation", { name: "Mobile navigation" }).getByRole("link", {
+              name: "Find Questions",
+              exact: true,
+            }),
           ).toBeVisible();
-          await menu.click();
-          await expect(page.locator(".finder-menu nav")).toBeHidden();
+          await page.keyboard.press("Escape");
+          await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toHaveCount(0);
         }
       }
 
