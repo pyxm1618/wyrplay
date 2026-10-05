@@ -9,7 +9,6 @@ import {
 } from "../data/questions";
 import { Arrow, ArtCrop } from "./home-art";
 import { rankLeaderboard, type LeaderboardResult } from "../domain/leaderboard";
-import { useHydrated } from "./use-hydrated";
 
 const categories = [
   {
