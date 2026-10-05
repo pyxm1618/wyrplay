@@ -2,13 +2,6 @@
   min-height: 1024px;
   background: #fffaf0;
 }
-.print-page .play-header {
-  max-width: 1380px;
-  height: 85px;
-}
-.print-page .play-header img {
-  width: 175px;
-}
 .print-workspace {
   display: grid;
   grid-template-columns: minmax(0, 1.16fr) minmax(0, 1fr);
