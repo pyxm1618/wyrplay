@@ -12,10 +12,7 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     });
   });
 
-  test("8. 初始访问 / 必须无 hash，点击 Play / Questions 正确写入对应 hash 且目标 DOM 存在", async ({
-    page,
-  }) => {
-    // 8.1 初始访问 /
+  test("8. 统一 Header 使用正式路由，首页局部锚点仍保持有效", async ({ page }) => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
@@ -23,34 +20,31 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     expect(initialUrl.pathname).toBe("/");
     expect(initialUrl.hash).toBe("");
 
-    // 验证目标 DOM 存在
     await expect(page.locator("#play")).toBeAttached();
     await expect(page.locator("#questions")).toBeAttached();
     await expect(page.locator("#categories")).toBeAttached();
 
-    // 8.2 当前首页主导航的 Categories 锚点
-    const categoriesNavLink = page
-      .getByRole("navigation", { name: "Primary navigation" })
-      .getByRole("link", { name: "Categories" });
-    await expect(categoriesNavLink).toBeVisible();
-    await categoriesNavLink.click();
+    const primary = page.getByRole("navigation", { name: "Primary navigation" });
+    for (const [name, href] of [
+      ["Home", "/"],
+      ["Find Questions", "/find-questions"],
+      ["Print", "/print"],
+      ["Leaderboards", "/leaderboards"],
+    ] as const) {
+      await expect(primary.getByRole("link", { name, exact: true })).toHaveAttribute("href", href);
+    }
+    await expect(primary.getByRole("link", { name: "Categories", exact: true })).toHaveCount(0);
+    await expect(primary.getByRole("link", { name: "Create", exact: true })).toHaveCount(0);
 
-    await expect.poll(() => new URL(page.url()).hash).toBe("#categories");
-    await expect(page.locator("#categories")).toBeInViewport();
-
-    // 8.3 真实 Play 入口进入 #play
-    const playLink = page.getByRole("link", { name: "Play now" });
-    await expect(playLink).toBeVisible();
+    const playLink = page.getByRole("link", { name: "Play Now", exact: true }).first();
+    await expect(playLink).toHaveAttribute("href", "/play");
     await playLink.click();
+    await expect(page).toHaveURL(/\/play$/);
 
-    await expect.poll(() => new URL(page.url()).hash).toBe("#play");
-    await expect(page.locator("#play")).toBeInViewport();
-
-    // 8.4 Questions 入口仍应写入对应 hash
-    const questionsLink = page.locator('a[href$="#questions"]').first();
-    await expect(questionsLink).toBeVisible();
-    await questionsLink.click();
-
+    await page.goto("/");
+    const localQuestionsLink = page.locator('a[href="#questions"], a[href="/#questions"]').first();
+    await expect(localQuestionsLink).toBeVisible();
+    await localQuestionsLink.click();
     await expect.poll(() => new URL(page.url()).hash).toBe("#questions");
     await expect(page.locator("#questions")).toBeInViewport();
   });
@@ -63,6 +57,7 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
       "/hard-would-you-rather-questions",
       "/would-you-rather-questions-for-friends",
       "/would-you-rather-questions-for-couples",
+      "/questions",
       "/privacy",
       "/terms",
       "/acceptable-use",
