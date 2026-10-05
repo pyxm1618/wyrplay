@@ -1,4 +1,6 @@
 import { describe, it, expect } from "vitest";
+import QRCode from "qrcode";
+import type { Question } from "@/modules/would-you-rather/types";
 import { QUESTIONS_DATABASE } from "@/modules/would-you-rather";
 import {
   resolveQuestionPool,
@@ -6,6 +8,12 @@ import {
   questionPoolUrl,
 } from "@/modules/would-you-rather/domain/play-session";
 import { createPrintLayout, wrapPrintText } from "@/modules/would-you-rather/domain/print-layout";
+import {
+  getCardPlayUrl,
+  getSheetPagePlayUrl,
+  calculateQrModuleSizeMm,
+  PRINT_QR_CONFIG,
+} from "@/modules/would-you-rather/ui/play/print-renderer";
 describe("play and print sets", () => {
   it("keeps the entire expanded question bank QR-encodable without changing IDs or order", async () => {
     const { default: QRCode } = await import("qrcode");
@@ -92,5 +100,153 @@ describe("play and print sets", () => {
     expect(box.y).toBeGreaterThan(0);
     expect(box.x + box.width).toBeLessThanOrEqual(layout.width);
     expect(box.y + box.height).toBeLessThanOrEqual(layout.height);
+  });
+
+  describe("print QR scanability closeout", () => {
+    const origin = "https://wyrplay.com";
+
+    it("Card QR only encodes the single question for each card", () => {
+      const pool = resolveQuestionPool(QUESTIONS_DATABASE, null);
+      const testCards = pool.slice(0, 10);
+      for (const question of testCards) {
+        const urlStr = getCardPlayUrl(question, origin);
+        const url = new URL(urlStr);
+        expect(url.pathname).toBe("/play");
+        const setParam = url.searchParams.get("set");
+        const resolved = resolveQuestionPool(QUESTIONS_DATABASE, setParam);
+        expect(resolved).toHaveLength(1);
+        expect(resolved[0]!.id).toBe(question.id);
+      }
+    });
+
+    it("Sheet QR only encodes the placements belonging to the current page", () => {
+      const pool = resolveQuestionPool(QUESTIONS_DATABASE, null);
+      const testSet = pool.slice(0, 24);
+      const layout = createPrintLayout(testSet, "sheet", "letter", (t) => t.length * 6, {
+        itemsPerPage: 10,
+      });
+      // 24 questions with 10 per page -> 3 pages: 10, 10, 4
+      expect(layout.pages).toHaveLength(3);
+
+      for (let pageIdx = 0; pageIdx < layout.pages.length; pageIdx++) {
+        const placements = layout.pages[pageIdx]!;
+        const urlStr = getSheetPagePlayUrl(placements, origin);
+        const url = new URL(urlStr);
+        expect(url.pathname).toBe("/play");
+        const setParam = url.searchParams.get("set");
+        const resolved = resolveQuestionPool(QUESTIONS_DATABASE, setParam);
+
+        expect(resolved).toHaveLength(placements.length);
+        expect(resolved.map((q) => q.id)).toEqual(placements.map((p) => p.question.id));
+
+        // Ensure questions from other pages are not included
+        const otherPagesPlacements = layout.pages
+          .filter((_, idx) => idx !== pageIdx)
+          .flatMap((pg) => pg.map((p) => p.question.id));
+        for (const otherId of otherPagesPlacements) {
+          expect(resolved.map((q) => q.id)).not.toContain(otherId);
+        }
+      }
+    });
+
+    it("anti-regression: no physical QR encodes the entire 457 question bank", () => {
+      const pool = resolveQuestionPool(QUESTIONS_DATABASE, null);
+      expect(pool).toHaveLength(457);
+
+      // 1. Cards layout across all 457 questions
+      const cardsLayout = createPrintLayout(pool, "cards", "letter", (t) => t.length * 6);
+      for (const page of cardsLayout.pages) {
+        for (const p of page) {
+          const cardUrl = new URL(getCardPlayUrl(p.question, origin));
+          const resolved = resolveQuestionPool(QUESTIONS_DATABASE, cardUrl.searchParams.get("set"));
+          expect(resolved).toHaveLength(1);
+          expect(resolved[0]!.id).toBe(p.question.id);
+        }
+      }
+
+      // 2. Sheet layout across all 457 questions
+      const sheetLayout = createPrintLayout(pool, "sheet", "a4", (t) => t.length * 6);
+      for (const page of sheetLayout.pages) {
+        const pageUrl = new URL(getSheetPagePlayUrl(page, origin));
+        const resolved = resolveQuestionPool(QUESTIONS_DATABASE, pageUrl.searchParams.get("set"));
+        expect(resolved).toHaveLength(page.length);
+        expect(resolved.length).toBeLessThanOrEqual(14); // sheet page max capacity
+        expect(resolved.length).not.toBe(457);
+      }
+    });
+
+    it("enforces standard 4-module quiet zone and moduleSizeMm >= 0.30mm for Cards and Sheet", () => {
+      // 必须显式锁死 quiet zone = 4 modules，符合 QR 国际标准
+      expect(PRINT_QR_CONFIG.margin).toBe(4);
+
+      const pool = resolveQuestionPool(QUESTIONS_DATABASE, null);
+
+      // 1. Card QR (worst-case single question across entire database)
+      for (const question of pool.slice(0, 20)) {
+        const cardUrl = getCardPlayUrl(question, origin);
+        const cardQr = QRCode.create(cardUrl, {
+          errorCorrectionLevel: PRINT_QR_CONFIG.errorCorrectionLevel,
+        });
+        const cardModuleSize = calculateQrModuleSizeMm(
+          cardQr.modules.size,
+          PRINT_QR_CONFIG.cards.sizePt,
+          4,
+        );
+        expect(cardModuleSize).toBeGreaterThanOrEqual(0.3);
+      }
+
+      // 2. Sheet QR (10 questions typical page)
+      const sheet10Url = getSheetPagePlayUrl(pool.slice(0, 10), origin);
+      const sheet10Qr = QRCode.create(sheet10Url, {
+        errorCorrectionLevel: PRINT_QR_CONFIG.errorCorrectionLevel,
+      });
+      const sheet10ModuleSize = calculateQrModuleSizeMm(
+        sheet10Qr.modules.size,
+        PRINT_QR_CONFIG.sheet.sizePt,
+        4,
+      );
+      expect(sheet10ModuleSize).toBeGreaterThanOrEqual(0.3);
+
+      // 3. Find worst-case sheet page across full 457 questions (maximum placements on one page)
+      let worstPlacements: readonly Question[] = [];
+      for (const paper of ["letter", "a4"] as const) {
+        for (const itemsPerPage of [0, 6, 10]) {
+          const layout = createPrintLayout(pool, "sheet", paper, (t) => t.length * 6.2, {
+            itemsPerPage,
+          });
+          for (const page of layout.pages) {
+            if (page.length > worstPlacements.length) {
+              worstPlacements = page.map((p) => p.question);
+            }
+          }
+        }
+      }
+      expect(worstPlacements.length).toBeGreaterThanOrEqual(10);
+      const worstSheetUrl = getSheetPagePlayUrl(worstPlacements, origin);
+      const worstQr = QRCode.create(worstSheetUrl, {
+        errorCorrectionLevel: PRINT_QR_CONFIG.errorCorrectionLevel,
+      });
+      const worstModuleSize = calculateQrModuleSizeMm(
+        worstQr.modules.size,
+        PRINT_QR_CONFIG.sheet.sizePt,
+        4,
+      );
+      expect(worstModuleSize).toBeGreaterThanOrEqual(0.3);
+    });
+
+    it("produces identical URL destination across helper calls", () => {
+      const q = QUESTIONS_DATABASE[0]!;
+      const url1 = getCardPlayUrl(q, origin);
+      const url2 = getCardPlayUrl(q, origin);
+      expect(url1).toBe(url2);
+
+      const pageQuestions = QUESTIONS_DATABASE.slice(0, 5);
+      const pageUrl1 = getSheetPagePlayUrl(pageQuestions, origin);
+      const pageUrl2 = getSheetPagePlayUrl(
+        pageQuestions.map((question) => ({ question })),
+        origin,
+      );
+      expect(pageUrl1).toBe(pageUrl2);
+    });
   });
 });

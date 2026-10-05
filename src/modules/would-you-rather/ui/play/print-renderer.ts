@@ -1,6 +1,87 @@
 import QRCode from "qrcode";
+import type { Question } from "../../types";
 import type { PrintLayout, PrintFormat } from "../../domain/print-layout";
 import { wrapPrintText } from "../../domain/print-layout";
+import { questionPoolUrl } from "../../domain/play-session";
+
+export const PRINT_QR_CONFIG = {
+  margin: 4,
+  errorCorrectionLevel: "M" as const,
+  cards: {
+    sizePt: 34,
+  },
+  sheet: {
+    sizePt: 52,
+  },
+} as const;
+
+export function getCardPlayUrl(question: { id: string }, origin?: string): string {
+  const path = questionPoolUrl("/play", [question as Question]);
+  return origin ? new URL(path, origin).href : path;
+}
+
+export function getSheetPagePlayUrl(
+  items: readonly { readonly question: Question }[] | readonly Question[],
+  origin?: string,
+): string {
+  const questions: Question[] = items.map((item) =>
+    "optionA" in item ? (item as Question) : (item.question as Question),
+  );
+  const path = questionPoolUrl("/play", questions);
+  return origin ? new URL(path, origin).href : path;
+}
+
+export function calculateQrModuleSizeMm(
+  matrixModules: number,
+  sizePt: number,
+  margin: number = PRINT_QR_CONFIG.margin,
+): number {
+  const physicalSizeMm = (sizePt * 25.4) / 72;
+  const totalModules = matrixModules + margin * 2;
+  return physicalSizeMm / totalModules;
+}
+
+const qrDataUrlCache = new Map<string, string>();
+export async function getQrDataUrl(
+  url: string,
+  margin: number = PRINT_QR_CONFIG.margin,
+  width = 256,
+): Promise<string> {
+  const key = `${margin}:${width}:${url}`;
+  const cached = qrDataUrlCache.get(key);
+  if (cached) return cached;
+  const dataUrl = await QRCode.toDataURL(url, {
+    margin,
+    errorCorrectionLevel: PRINT_QR_CONFIG.errorCorrectionLevel,
+    width,
+  });
+  qrDataUrlCache.set(key, dataUrl);
+  return dataUrl;
+}
+
+const qrImageCache = new Map<string, HTMLImageElement>();
+export async function getQrImage(
+  url: string,
+  margin: number = PRINT_QR_CONFIG.margin,
+  width = 256,
+): Promise<HTMLImageElement> {
+  const key = `${margin}:${width}:${url}`;
+  const cached = qrImageCache.get(key);
+  if (cached) return cached;
+  const dataUrl = await getQrDataUrl(url, margin, width);
+  const img = new Image();
+  img.src = dataUrl;
+  await img.decode();
+  qrImageCache.set(key, img);
+  return img;
+}
+
+export type QrSource =
+  | HTMLImageElement
+  | null
+  | undefined
+  | Map<string, HTMLImageElement>
+  | ((question: Question, placementIndex: number) => HTMLImageElement | null | undefined);
 
 export interface RenderPrintOptions {
   readonly showNumbers?: boolean | undefined;
@@ -55,7 +136,7 @@ export function renderSinglePrintPage(
   marks: boolean,
   logo: HTMLImageElement,
   options: RenderPrintOptions = {},
-  qrImage?: HTMLImageElement | null,
+  qrSource?: QrSource,
 ): HTMLCanvasElement {
   const placements = layout.pages[pageIndex] ?? [];
   const canvas = document.createElement("canvas");
@@ -86,15 +167,31 @@ export function renderSinglePrintPage(
     ctx.font = "26px PlayHand";
     ctx.fillText("Would You Rather?", 30, 86);
 
-    if (options.qrCode && qrImage) {
-      ctx.drawImage(qrImage, layout.width - 70, 20, 42, 42);
-      ctx.font = "8px PlayBody, Arial";
-      ctx.fillStyle = "#666";
-      ctx.fillText("Play Online", layout.width - 70, 70);
+    if (options.qrCode && qrSource) {
+      let sheetQr: HTMLImageElement | null = null;
+      if (qrSource instanceof HTMLImageElement) {
+        sheetQr = qrSource;
+      } else if (qrSource instanceof Map) {
+        const pageUrl = getSheetPagePlayUrl(placements, options.siteUrl);
+        sheetQr = qrSource.get(pageUrl) ?? qrSource.get(getSheetPagePlayUrl(placements)) ?? null;
+      } else if (typeof qrSource === "function" && placements[0]) {
+        sheetQr = qrSource(placements[0].question, 0) ?? null;
+      }
+      if (sheetQr) {
+        const qrSize = PRINT_QR_CONFIG.sheet.sizePt;
+        const qrX = layout.width - 30 - qrSize;
+        const qrY = 16;
+        ctx.drawImage(sheetQr, qrX, qrY, qrSize, qrSize);
+        ctx.font = "8px PlayBody, Arial";
+        ctx.fillStyle = "#666";
+        const label = "Play Online";
+        const labelWidth = ctx.measureText(label).width;
+        ctx.fillText(label, qrX + (qrSize - labelWidth) / 2, qrY + qrSize + 10);
+      }
     }
   }
 
-  placements.forEach((p) => {
+  placements.forEach((p, pIndex) => {
     if (format === "cards") {
       if (marks) {
         ctx.strokeStyle = "#a7a1a0";
@@ -118,8 +215,22 @@ export function renderSinglePrintPage(
         ctx.fillText(`#${p.number}`, p.x + 12, p.y + 20);
       }
 
-      if (options.qrCode && qrImage) {
-        ctx.drawImage(qrImage, p.x + p.width - 36, p.y + 8, 26, 26);
+      if (options.qrCode && qrSource) {
+        let cardQr: HTMLImageElement | null = null;
+        if (qrSource instanceof HTMLImageElement) {
+          cardQr = qrSource;
+        } else if (qrSource instanceof Map) {
+          const cardUrl = getCardPlayUrl(p.question, options.siteUrl);
+          cardQr = qrSource.get(cardUrl) ?? qrSource.get(p.question.id) ?? null;
+        } else if (typeof qrSource === "function") {
+          cardQr = qrSource(p.question, pIndex) ?? null;
+        }
+        if (cardQr) {
+          const qrSize = PRINT_QR_CONFIG.cards.sizePt;
+          const qrX = p.x + p.width - qrSize - 10;
+          const qrY = p.y + 8;
+          ctx.drawImage(cardQr, qrX, qrY, qrSize, qrSize);
+        }
       }
 
       const a = wrapPrintText(p.question.optionA, p.width - 55, (t) => {
@@ -209,15 +320,29 @@ export async function createVectorPdf(
   const playBodyBoldFont = await doc.embedFont(fonts.playBodyBold, { subset: true });
   const embeddedLogo = await doc.embedPng(logoBytes);
 
-  let embeddedQr: Awaited<ReturnType<typeof doc.embedPng>> | null = null;
+  const embeddedQrMap = new Map<string, Awaited<ReturnType<typeof doc.embedPng>>>();
   if (options.qrCode) {
-    if (!options.siteUrl) throw new Error("Missing play URL for print QR code");
-    const qrDataUrl = await QRCode.toDataURL(options.siteUrl, {
-      margin: 1,
-      width: 120,
-    });
-    const qrBytes = Uint8Array.from(atob(qrDataUrl.split(",")[1]!), (c) => c.charCodeAt(0));
-    embeddedQr = await doc.embedPng(qrBytes);
+    const origin = options.siteUrl ?? "https://wyrplay.com";
+    const urlsToEmbed = new Set<string>();
+    if (format === "sheet") {
+      layout.pages.forEach((pagePlacements) => {
+        urlsToEmbed.add(getSheetPagePlayUrl(pagePlacements, origin));
+      });
+    } else {
+      layout.pages.forEach((pagePlacements) => {
+        pagePlacements.forEach((p) => {
+          urlsToEmbed.add(getCardPlayUrl(p.question, origin));
+        });
+      });
+    }
+    await Promise.all(
+      Array.from(urlsToEmbed).map(async (url) => {
+        const qrDataUrl = await getQrDataUrl(url, PRINT_QR_CONFIG.margin, 256);
+        const qrBytes = Uint8Array.from(atob(qrDataUrl.split(",")[1]!), (c) => c.charCodeAt(0));
+        const embedded = await doc.embedPng(qrBytes);
+        embeddedQrMap.set(url, embedded);
+      }),
+    );
   }
 
   const showNumbers = options.showNumbers !== false;
@@ -249,20 +374,30 @@ export async function createVectorPdf(
         color: inkColor,
       });
 
-      if (embeddedQr) {
-        page.drawImage(embeddedQr, {
-          x: layout.width - 70,
-          y: height - 20 - 42,
-          width: 42,
-          height: 42,
-        });
-        page.drawText("Play Online", {
-          x: layout.width - 70,
-          y: height - 70,
-          size: 8,
-          font: playBodyFont,
-          color: rgb(0.4, 0.4, 0.4),
-        });
+      if (options.qrCode) {
+        const origin = options.siteUrl ?? "https://wyrplay.com";
+        const pageUrl = getSheetPagePlayUrl(placements, origin);
+        const embeddedQr = embeddedQrMap.get(pageUrl);
+        if (embeddedQr) {
+          const qrSize = PRINT_QR_CONFIG.sheet.sizePt;
+          const qrX = layout.width - 30 - qrSize;
+          const qrY = 16;
+          page.drawImage(embeddedQr, {
+            x: qrX,
+            y: height - qrY - qrSize,
+            width: qrSize,
+            height: qrSize,
+          });
+          const label = "Play Online";
+          const labelWidth = playBodyFont.widthOfTextAtSize(label, 8);
+          page.drawText(label, {
+            x: qrX + (qrSize - labelWidth) / 2,
+            y: height - (qrY + qrSize + 9),
+            size: 8,
+            font: playBodyFont,
+            color: rgb(0.4, 0.4, 0.4),
+          });
+        }
       }
     }
 
@@ -317,13 +452,21 @@ export async function createVectorPdf(
           });
         }
 
-        if (embeddedQr) {
-          page.drawImage(embeddedQr, {
-            x: p.x + p.width - 36,
-            y: height - (p.y + 8) - 26,
-            width: 26,
-            height: 26,
-          });
+        if (options.qrCode) {
+          const origin = options.siteUrl ?? "https://wyrplay.com";
+          const cardUrl = getCardPlayUrl(p.question, origin);
+          const embeddedQr = embeddedQrMap.get(cardUrl);
+          if (embeddedQr) {
+            const qrSize = PRINT_QR_CONFIG.cards.sizePt;
+            const qrX = p.x + p.width - qrSize - 10;
+            const qrY = p.y + 8;
+            page.drawImage(embeddedQr, {
+              x: qrX,
+              y: height - qrY - qrSize,
+              width: qrSize,
+              height: qrSize,
+            });
+          }
         }
 
         // Options

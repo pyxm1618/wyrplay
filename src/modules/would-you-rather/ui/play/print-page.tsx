@@ -2,20 +2,29 @@
 /* eslint-disable @next/next/no-img-element -- Canvas previews and original local logo. */
 
 import { useEffect, useState, startTransition, useMemo, useRef } from "react";
+import { flushSync } from "react-dom";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { Question } from "../../types";
-import { resolveQuestionPool, questionPoolUrl } from "../../domain/play-session";
+import { resolveQuestionPool } from "../../domain/play-session";
 import {
   createPrintLayout,
   type PrintFormat,
   type PaperSize,
   type PrintLayout,
 } from "../../domain/print-layout";
-import { renderSinglePrintPage, createVectorPdf, pngWithDpi } from "./print-renderer";
+import {
+  renderSinglePrintPage,
+  createVectorPdf,
+  pngWithDpi,
+  getCardPlayUrl,
+  getSheetPagePlayUrl,
+  getQrDataUrl,
+  getQrImage,
+  PRINT_QR_CONFIG,
+} from "./print-renderer";
 import { PlayHeader, PlayArtwork } from "./art";
 import { FinderIcon } from "../finder/icon";
-import QRCode from "qrcode";
 import "./play.css";
 import "./print.css";
 
@@ -38,14 +47,8 @@ export function PrintPage({
     () => availablePool.slice(0, questionCount ?? availablePool.length),
     [availablePool, questionCount],
   );
-  const playPath = questionPoolUrl("/play", pool);
-  const [assets, setAssets] = useState<{
-    logo: HTMLImageElement;
-    qr: HTMLImageElement;
-    qrData: string;
-    playUrl: string;
-    path: string;
-  } | null>(null);
+  const [logo, setLogo] = useState<HTMLImageElement | null>(null);
+  const [printQrData, setPrintQrData] = useState<Map<string, string>>(new Map());
   const viewportRef = useRef<HTMLDivElement>(null);
   const [previewSize, setPreviewSize] = useState({ width: 0, height: 0 });
 
@@ -97,29 +100,25 @@ export function PrintPage({
     }
   }, [page, totalPages]);
 
-  // QR represents exactly the ordered, count-limited set used by all outputs.
+  // 加载公共 Logo
   useEffect(() => {
     let cancelled = false;
     void (async () => {
       try {
-        const logo = new Image();
-        logo.src = "/play-art/logo.png";
-        await logo.decode();
-        const playUrl = new URL(playPath, window.location.origin).href;
-        const qrData = await QRCode.toDataURL(playUrl, { margin: 4, width: 512 });
-        const qr = new Image();
-        qr.src = qrData;
-        await qr.decode();
-        if (!cancelled) setAssets({ logo, qr, qrData, playUrl, path: playPath });
+        const img = new Image();
+        img.src = "/play-art/logo.png";
+        await img.decode();
+        if (!cancelled) setLogo(img);
       } catch (err) {
-        if (!cancelled)
+        if (!cancelled) {
           setError(err instanceof Error ? err.message : "Could not load print assets");
+        }
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, [playPath]);
+  }, []);
 
   useEffect(() => {
     const viewport = viewportRef.current;
@@ -139,7 +138,7 @@ export function PrintPage({
 
   // 按需单页渲染当前预览 Canvas
   useEffect(() => {
-    if (!layout || !totalPages || !assets || assets.path !== playPath) return;
+    if (!layout || !totalPages || !logo) return;
     let cancelled = false;
 
     void (async () => {
@@ -148,17 +147,40 @@ export function PrintPage({
         await document.fonts.load("26px PlayHand");
 
         const currentPageIndex = Math.min(Math.max(0, page), totalPages - 1);
+        const currentPlacements = layout.pages[currentPageIndex] ?? [];
+        const qrImageMap = new Map<string, HTMLImageElement>();
+
+        if (qrCodeEnabled && currentPlacements.length > 0) {
+          const origin = window.location.origin;
+          if (format === "sheet") {
+            const pageUrl = getSheetPagePlayUrl(currentPlacements, origin);
+            const img = await getQrImage(pageUrl);
+            qrImageMap.set(pageUrl, img);
+          } else {
+            await Promise.all(
+              currentPlacements.map(async (p) => {
+                const cardUrl = getCardPlayUrl(p.question, origin);
+                const img = await getQrImage(cardUrl);
+                qrImageMap.set(cardUrl, img);
+              }),
+            );
+          }
+        }
+
+        if (cancelled) return;
+
         const canvas = renderSinglePrintPage(
           layout,
           currentPageIndex,
           format,
           marks,
-          assets.logo,
+          logo,
           {
             showNumbers,
             qrCode: qrCodeEnabled,
+            siteUrl: window.location.origin,
           },
-          assets.qr,
+          qrImageMap,
         );
 
         if (!cancelled) {
@@ -188,7 +210,14 @@ export function PrintPage({
     return () => {
       cancelled = true;
     };
-  }, [layout, page, totalPages, format, marks, showNumbers, qrCodeEnabled, assets, playPath]);
+  }, [layout, page, totalPages, format, marks, showNumbers, qrCodeEnabled, logo]);
+
+  // 当关闭二维码时清空可能缓存的打印二维码
+  useEffect(() => {
+    if (!qrCodeEnabled) {
+      setPrintQrData(new Map());
+    }
+  }, [qrCodeEnabled]);
 
   // 组件卸载时释放 URL
   useEffect(() => {
@@ -199,14 +228,14 @@ export function PrintPage({
 
   // 下载高清矢量 PDF
   async function downloadPdf() {
-    if (!layout || !assets || assets.path !== playPath) return;
+    if (!layout || !logo) return;
     setError("");
     setIsGeneratingPdf(true);
     try {
       const pdfBlob = await createVectorPdf(layout, format, marks, {
         showNumbers,
         qrCode: qrCodeEnabled,
-        siteUrl: assets.playUrl,
+        siteUrl: window.location.origin,
       });
       const url = URL.createObjectURL(pdfBlob);
       const link = document.createElement("a");
@@ -226,48 +255,102 @@ export function PrintPage({
   }
 
   // 导出当前页为高清 PNG
-  function downloadPng() {
-    if (!layout || !assets || assets.path !== playPath) return;
-    const canvas = renderSinglePrintPage(
-      layout,
-      page,
-      format,
-      marks,
-      assets.logo,
-      {
-        showNumbers,
-        qrCode: qrCodeEnabled,
-        dpi: 300,
-        transparent: true,
-      },
-      assets.qr,
-    );
-    canvas.toBlob((blob) => {
-      if (!blob) {
-        setError("PNG export failed. Please try again.");
-        return;
-      }
-      void (async () => {
-        try {
-          const output = await pngWithDpi(blob, 300);
-          const url = URL.createObjectURL(output);
-          const link = document.createElement("a");
-          link.href = url;
-          link.download = `wyrplay-${format}-${paper}-page-${page + 1}.png`;
-          link.click();
-          setTimeout(() => URL.revokeObjectURL(url), 1000);
-        } catch (err) {
-          setError(
-            `PNG export failed. ${err instanceof Error ? err.message : "Please try again."}`,
+  async function downloadPng() {
+    if (!layout || !logo) return;
+    try {
+      const currentPageIndex = Math.min(Math.max(0, page), totalPages - 1);
+      const currentPlacements = layout.pages[currentPageIndex] ?? [];
+      const qrImageMap = new Map<string, HTMLImageElement>();
+      if (qrCodeEnabled && currentPlacements.length > 0) {
+        const origin = window.location.origin;
+        if (format === "sheet") {
+          const pageUrl = getSheetPagePlayUrl(currentPlacements, origin);
+          const img = await getQrImage(pageUrl);
+          qrImageMap.set(pageUrl, img);
+        } else {
+          await Promise.all(
+            currentPlacements.map(async (p) => {
+              const cardUrl = getCardPlayUrl(p.question, origin);
+              const img = await getQrImage(cardUrl);
+              qrImageMap.set(cardUrl, img);
+            }),
           );
         }
-      })();
-    }, "image/png");
+      }
+      const canvas = renderSinglePrintPage(
+        layout,
+        currentPageIndex,
+        format,
+        marks,
+        logo,
+        {
+          showNumbers,
+          qrCode: qrCodeEnabled,
+          dpi: 300,
+          transparent: true,
+          siteUrl: window.location.origin,
+        },
+        qrImageMap,
+      );
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          setError("PNG export failed. Please try again.");
+          return;
+        }
+        void (async () => {
+          try {
+            const output = await pngWithDpi(blob, 300);
+            const url = URL.createObjectURL(output);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = `wyrplay-${format}-${paper}-page-${page + 1}.png`;
+            link.click();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+          } catch (err) {
+            setError(
+              `PNG export failed. ${err instanceof Error ? err.message : "Please try again."}`,
+            );
+          }
+        })();
+      }, "image/png");
+    } catch (err) {
+      setError(`PNG export failed. ${err instanceof Error ? err.message : "Please try again."}`);
+    }
   }
 
   // 触发浏览器原生打印
   async function handlePrint() {
     try {
+      if (qrCodeEnabled && layout) {
+        const origin = window.location.origin;
+        const missingUrls: string[] = [];
+        if (format === "sheet") {
+          for (const pagePlacements of layout.pages) {
+            const u = getSheetPagePlayUrl(pagePlacements, origin);
+            if (!printQrData.has(u)) missingUrls.push(u);
+          }
+        } else {
+          for (const pagePlacements of layout.pages) {
+            for (const p of pagePlacements) {
+              const u = getCardPlayUrl(p.question, origin);
+              if (!printQrData.has(u)) missingUrls.push(u);
+            }
+          }
+        }
+        if (missingUrls.length > 0) {
+          const updated = new Map(printQrData);
+          await Promise.all(
+            missingUrls.map(async (url) => {
+              const dataUrl = await getQrDataUrl(url);
+              updated.set(url, dataUrl);
+            }),
+          );
+          flushSync(() => {
+            setPrintQrData(updated);
+          });
+        }
+      }
+      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
       await document.fonts.ready;
       await Promise.all(
         Array.from(document.querySelectorAll<HTMLImageElement>(".print-document img")).map(
@@ -528,14 +611,14 @@ export function PrintPage({
             <button
               type="button"
               onClick={() => void handlePrint()}
-              disabled={!totalPages || !currentCanvas || !assets || assets.path !== playPath}
+              disabled={!totalPages || !currentCanvas || !logo}
             >
               <FinderIcon name="print" size={20} /> Print
             </button>
             <button
               type="button"
-              onClick={downloadPng}
-              disabled={!totalPages || !currentCanvas || !assets || assets.path !== playPath}
+              onClick={() => void downloadPng()}
+              disabled={!totalPages || !currentCanvas || !logo}
             >
               PNG
             </button>
@@ -543,13 +626,7 @@ export function PrintPage({
               type="button"
               className="download-pdf"
               onClick={() => void downloadPdf()}
-              disabled={
-                !totalPages ||
-                !currentCanvas ||
-                !assets ||
-                assets.path !== playPath ||
-                isGeneratingPdf
-              }
+              disabled={!totalPages || !currentCanvas || !logo || isGeneratingPdf}
             >
               {isGeneratingPdf ? "Generating PDF…" : "Download PDF"}
             </button>
@@ -580,16 +657,44 @@ export function PrintPage({
                       Would You Rather?
                     </h2>
                   </div>
-                  {qrCodeEnabled && (
-                    <div style={{ textAlign: "right" }}>
-                      <img
-                        src={assets?.qrData}
-                        data-play-url={assets?.playUrl}
-                        alt="Play this set QR code"
-                        style={{ width: "42pt", height: "42pt" }}
-                      />
-                    </div>
-                  )}
+                  {qrCodeEnabled &&
+                    (() => {
+                      const pagePlayUrl =
+                        typeof window !== "undefined"
+                          ? getSheetPagePlayUrl(placements, window.location.origin)
+                          : getSheetPagePlayUrl(placements);
+                      const qrSrc = printQrData.get(pagePlayUrl);
+                      return (
+                        <div style={{ textAlign: "right" }}>
+                          {qrSrc ? (
+                            <img
+                              src={qrSrc}
+                              data-play-url={pagePlayUrl}
+                              alt="Play this set QR code"
+                              style={{
+                                width: `${PRINT_QR_CONFIG.sheet.sizePt}pt`,
+                                height: `${PRINT_QR_CONFIG.sheet.sizePt}pt`,
+                                display: "block",
+                                marginLeft: "auto",
+                              }}
+                            />
+                          ) : null}
+                          <span
+                            style={{
+                              fontSize: "8pt",
+                              color: "#666",
+                              display: "block",
+                              textAlign: "center",
+                              width: `${PRINT_QR_CONFIG.sheet.sizePt}pt`,
+                              marginLeft: "auto",
+                              marginTop: "2pt",
+                            }}
+                          >
+                            Play Online
+                          </span>
+                        </div>
+                      );
+                    })()}
                 </div>
               )}
               {placements.map((p) => (
@@ -615,20 +720,28 @@ export function PrintPage({
                         flexDirection: "column",
                       }}
                     >
-                      {qrCodeEnabled && assets && (
-                        <img
-                          src={assets.qrData}
-                          data-play-url={assets.playUrl}
-                          alt="Play this set QR code"
-                          style={{
-                            position: "absolute",
-                            right: "8pt",
-                            top: "8pt",
-                            width: "38pt",
-                            height: "38pt",
-                          }}
-                        />
-                      )}
+                      {qrCodeEnabled &&
+                        (() => {
+                          const cardPlayUrl =
+                            typeof window !== "undefined"
+                              ? getCardPlayUrl(p.question, window.location.origin)
+                              : getCardPlayUrl(p.question);
+                          const qrSrc = printQrData.get(cardPlayUrl);
+                          return qrSrc ? (
+                            <img
+                              src={qrSrc}
+                              data-play-url={cardPlayUrl}
+                              alt="Play this set QR code"
+                              style={{
+                                position: "absolute",
+                                right: "10pt",
+                                top: "8pt",
+                                width: `${PRINT_QR_CONFIG.cards.sizePt}pt`,
+                                height: `${PRINT_QR_CONFIG.cards.sizePt}pt`,
+                              }}
+                            />
+                          ) : null;
+                        })()}
                       <div style={{ textAlign: "center", marginBottom: "12pt" }}>
                         <img src="/play-art/logo.png" alt="" style={{ height: "20pt" }} />
                         <h3 style={{ fontFamily: "PlayHand", fontSize: "16pt", margin: "4pt 0 0" }}>
