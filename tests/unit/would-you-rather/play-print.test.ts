@@ -3,9 +3,24 @@ import { QUESTIONS_DATABASE } from "@/modules/would-you-rather";
 import {
   resolveQuestionPool,
   parseFinderSession,
+  questionPoolUrl,
 } from "@/modules/would-you-rather/domain/play-session";
 import { createPrintLayout, wrapPrintText } from "@/modules/would-you-rather/domain/print-layout";
 describe("play and print sets", () => {
+  it("keeps the entire expanded question bank QR-encodable without changing IDs or order", async () => {
+    const { default: QRCode } = await import("qrcode");
+    const pool = resolveQuestionPool(QUESTIONS_DATABASE, null);
+    const url = new URL(questionPoolUrl("/play", pool), "https://wyrplay.com");
+    expect(
+      resolveQuestionPool(QUESTIONS_DATABASE, url.searchParams.get("set")).map((q) => q.id),
+    ).toEqual(pool.map((q) => q.id));
+    expect(() => QRCode.create(url.href)).not.toThrow();
+  });
+  it("preserves reordered compact IDs and filters unknown IDs", () => {
+    expect(
+      resolveQuestionPool(QUESTIONS_DATABASE, "2,missing,1,2,999999").map((q) => q.id),
+    ).toEqual(["wyr-000002", "wyr-000001"]);
+  });
   it("preserves approved ID order and rejects unknown IDs", () => {
     const first = QUESTIONS_DATABASE[0]!;
     const second = QUESTIONS_DATABASE[1]!;
