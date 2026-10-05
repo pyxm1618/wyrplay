@@ -207,9 +207,10 @@ test("homepage stays warm under a saved dark preference without changing other p
   await page.emulateMedia({ colorScheme: "dark" });
   await page.addInitScript(() => localStorage.setItem("wyr-theme", "dark"));
   await page.goto("/");
-  const background = await page.locator(".illustrated-home").first().evaluate((element) => {
-    return getComputedStyle(element).backgroundColor;
-  });
+  const background = await page
+    .locator(".illustrated-home")
+    .first()
+    .evaluate((element) => getComputedStyle(element).backgroundColor);
   expect(background).toBe("rgb(255, 249, 240)");
   await expect(page.getByRole("button", { name: "Switch to light theme" })).toBeVisible();
   await page.goto("/funny-would-you-rather-questions");
