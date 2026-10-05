@@ -54,25 +54,15 @@ function subscribeTheme(callback: () => void) {
   };
 }
 
-function useThemeState(): "dark" | "light" {
+export function ThemeToggle() {
   const theme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerSnapshot);
 
+  // 挂载与主题变更时，确保真实 DOM 根节点的 data-theme 属性与当前状态严格同步
   useEffect(() => {
     if (typeof document !== "undefined") {
       document.documentElement.setAttribute("data-theme", theme);
     }
   }, [theme]);
-
-  return theme;
-}
-
-export function ThemeSync() {
-  useThemeState();
-  return null;
-}
-
-export function ThemeToggle() {
-  const theme = useThemeState();
 
   const toggle = () => {
     const next = theme === "dark" ? "light" : "dark";
