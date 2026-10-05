@@ -217,42 +217,13 @@
   width: 100%;
   height: 24px;
 }
-/* Illustrated header */
-.finder-page .site-header {
-  height: 42px;
-  margin: 9px 30px 0 42px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  position: relative;
-  z-index: 2;
-  font-weight: 700;
-  font-size: 13px;
-}
+
 .finder-page .logo {
   width: 120px;
   height: 43px;
   object-fit: contain;
 }
-.finder-page .site-header nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 7px;
-  flex: 1;
-  margin-left: 12px;
-}
-.finder-page .site-header nav a {
-  white-space: nowrap;
-  padding: 7px 6px;
-}
-.finder-page .site-header nav .active {
-  color: #872b00;
-  background: #ffe7ad;
-  border-radius: 20px;
-  padding: 6px 12px;
-  font-weight: 600;
-}
+
 .finder-page .nav-search {
   margin: 0 8px;
   width: 32px;
@@ -273,11 +244,7 @@
   white-space: nowrap;
   padding: 0 18px;
 }
-.finder-page .site-header .login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 /* Hero */
 .finder-page .hero {
   height: 212px;
