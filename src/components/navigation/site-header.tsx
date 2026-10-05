@@ -38,6 +38,9 @@ export function SiteHeader({
     <header
       data-site-header
       className="sticky top-0 z-40 border-b border-border bg-background/95 text-foreground backdrop-blur-md print:hidden"
+      onKeyDown={(event) => {
+        if (event.key === "Escape") setMobileMenuOpen(false);
+      }}
     >
       <div className="mx-auto flex h-18 w-full max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
         <SiteBrand href={homeHref} className="shrink-0" />
