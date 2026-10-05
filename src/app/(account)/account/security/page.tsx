@@ -1,18 +1,12 @@
+import { isAPIError } from "better-auth/api";
+import Link from "next/link";
 import { headers } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 
+import { accountProfile } from "@/components/account/account-profile";
+import { featuresConfig } from "@/config/features.config";
 import { AccountShell } from "@/components/account/account-shell";
-import {
-  bodyText,
-  buttonDanger,
-  buttonSecondary,
-  input,
-  label,
-  listDivided,
-  metaText,
-  panel,
-  subTitle,
-} from "@/components/ui/styles";
+import { buttonSecondary, listDivided, metaText, panel } from "@/components/ui/styles";
 import { getAccountContext } from "@/platform/auth/account-context";
 import { getAuth } from "@/platform/auth/auth";
 
@@ -38,10 +32,29 @@ export default async function AccountSecurityPage() {
   const context = await getAccountContext(requestHeaders);
   if (!context) redirect("/sign-in");
 
-  const sessions = await auth.api.listSessions({ headers: requestHeaders });
+  let sessions;
+  try {
+    sessions = await auth.api.listSessions({ headers: requestHeaders });
+  } catch (error) {
+    if (!isAPIError(error) || error.body?.code !== "SESSION_NOT_FRESH") throw error;
+    return (
+      <AccountShell
+        profile={accountProfile(context.user)}
+        commerceEnabled={featuresConfig.commerce.enabled}
+        eyebrow="Account security"
+        title="Sign in again"
+        titleId="security-title"
+        intro="A fresh sign-in is required to review and revoke sessions."
+      >
+        <Link href="/sign-in">Sign in again →</Link>
+      </AccountShell>
+    );
+  }
 
   return (
     <AccountShell
+      profile={accountProfile(context.user)}
+      commerceEnabled={featuresConfig.commerce.enabled}
       eyebrow="Account security"
       title="Active sessions"
       titleId="security-title"
@@ -88,31 +101,6 @@ export default async function AccountSecurityPage() {
         <form action={revokeAllSessionsAction}>
           <button type="submit" className={buttonSecondary}>
             Revoke every session
-          </button>
-        </form>
-      </div>
-
-      <div className="mt-12 rounded-xl border border-red-200 bg-red-50/50 p-6 dark:border-red-900/60 dark:bg-red-950/20">
-        <h2 className={subTitle}>Delete account</h2>
-        <p className={`mt-3 ${bodyText}`}>
-          This revokes all access and permanently removes your authentication identity. Required
-          financial or security records may remain pseudonymized according to the published policy.
-        </p>
-        <form action="/api/account/delete" method="post" className="mt-5 max-w-sm">
-          <label htmlFor="delete-confirmation" className={label}>
-            Type DELETE to confirm
-          </label>
-          <input
-            id="delete-confirmation"
-            name="confirmation"
-            type="text"
-            autoComplete="off"
-            pattern="DELETE"
-            required
-            className={input}
-          />
-          <button type="submit" className={`mt-4 ${buttonDanger}`}>
-            Permanently delete account
           </button>
         </form>
       </div>

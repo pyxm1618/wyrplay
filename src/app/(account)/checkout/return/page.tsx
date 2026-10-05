@@ -2,7 +2,10 @@ import { and, eq } from "drizzle-orm";
 import { headers } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { z } from "zod";
 
+import { accountProfile } from "@/components/account/account-profile";
+import { featuresConfig } from "@/config/features.config";
 import { AccountShell } from "@/components/account/account-shell";
 import { bodyText, inlineLink, panel } from "@/components/ui/styles";
 import { getAccountContext } from "@/platform/auth/account-context";
@@ -17,14 +20,20 @@ export default async function CheckoutReturnPage({
   const params = await searchParams;
   const orderId = typeof params.order === "string" ? params.order : "";
 
-  const order = orderId
+  const order = z.uuid().safeParse(orderId).success
     ? await db.query.orders.findFirst({
         where: and(eq(orders.id, orderId), eq(orders.subjectId, context.subject.id)),
       })
     : null;
 
   return (
-    <AccountShell eyebrow="Payment return" title="Payment status" titleId="checkout-return-title">
+    <AccountShell
+      profile={accountProfile(context.user)}
+      commerceEnabled={featuresConfig.commerce.enabled}
+      eyebrow="Payment return"
+      title="Payment status"
+      titleId="checkout-return-title"
+    >
       {order ? (
         <>
           <div className={`${panel} p-5`}>

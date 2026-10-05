@@ -76,6 +76,7 @@ export function FinderQuestionCard({
   number,
   selected,
   saved,
+  saveDisabled,
   onSelect,
   onSave,
   revision,
@@ -85,6 +86,7 @@ export function FinderQuestionCard({
   readonly number: number;
   readonly selected: boolean;
   readonly saved: boolean;
+  readonly saveDisabled: boolean;
   readonly onSelect: () => void;
   readonly onSave: () => void;
   readonly revision: number;
@@ -121,6 +123,7 @@ export function FinderQuestionCard({
         className={`bookmark icon-button ${saved ? "saved" : ""}`}
         aria-label={`${saved ? "Unsave" : "Save"} question ${number}`}
         aria-pressed={saved}
+        disabled={saveDisabled}
         onClick={onSave}
       >
         <FinderIcon name="bookmark" size={16} />

@@ -4,6 +4,7 @@ import { eq } from "drizzle-orm";
 import { createDatabaseClient } from "@/platform/database/client";
 import { session } from "@/platform/database/schema";
 
+const TEST_ORIGIN = process.env.PLAYWRIGHT_TEST_ORIGIN ?? "http://127.0.0.1:3000";
 const TURNSTILE_TEST_TOKEN = "XXXX.DUMMY.TOKEN.XXXX";
 let nextMagicLinkConfirmIpOctet = 210;
 
@@ -43,7 +44,7 @@ async function signInWithMagicLink(input: {
 }): Promise<Page> {
   const send = await input.request.post("/api/auth/magic-link/request", {
     headers: {
-      origin: "http://127.0.0.1:3000",
+      origin: TEST_ORIGIN,
       "content-type": "application/json",
       "x-real-ip": "203.0.113.201",
     },
@@ -192,7 +193,7 @@ test("billing mutations require a fresh session", async ({ browser, request }) =
   for (const path of Object.keys(validBodies) as Array<keyof typeof validBodies>) {
     const response = await context.request.post(path, {
       headers: {
-        origin: "http://127.0.0.1:3000",
+        origin: TEST_ORIGIN,
         "content-type": "application/json",
         "idempotency-key": `billing-stale:${index++}:${Date.now()}`,
       },
@@ -263,7 +264,7 @@ test("magic link confirmation is scanner-safe and single-use", async ({ page, re
 
   const wrongCallback = await request.post("/api/auth/magic-link/confirm", {
     headers: {
-      origin: "http://127.0.0.1:3000",
+      origin: TEST_ORIGIN,
       "content-type": "application/json",
       "x-real-ip": "203.0.113.20",
     },
@@ -292,7 +293,7 @@ test("magic link confirmation is scanner-safe and single-use", async ({ page, re
 
   const replay = await request.post("/api/auth/magic-link/confirm", {
     headers: {
-      origin: "http://127.0.0.1:3000",
+      origin: TEST_ORIGIN,
       "content-type": "application/json",
       "x-real-ip": "203.0.113.20",
     },
@@ -304,7 +305,7 @@ test("magic link confirmation is scanner-safe and single-use", async ({ page, re
 test("magic link requests fail closed without a Turnstile token", async ({ request }) => {
   const response = await request.post("/api/auth/magic-link/request", {
     headers: {
-      origin: "http://127.0.0.1:3000",
+      origin: TEST_ORIGIN,
       "content-type": "application/json",
       "x-real-ip": "203.0.113.80",
     },
@@ -321,7 +322,7 @@ test("magic link email rate limits follow a valid challenge", async ({ request }
   for (let index = 0; index < 3; index += 1) {
     const response = await request.post("/api/auth/magic-link/request", {
       headers: {
-        origin: "http://127.0.0.1:3000",
+        origin: TEST_ORIGIN,
         "content-type": "application/json",
         "x-real-ip": `203.0.113.${30 + index}`,
       },
@@ -336,7 +337,7 @@ test("magic link email rate limits follow a valid challenge", async ({ request }
 
   const limited = await request.post("/api/auth/magic-link/request", {
     headers: {
-      origin: "http://127.0.0.1:3000",
+      origin: TEST_ORIGIN,
       "content-type": "application/json",
       "x-real-ip": "203.0.113.99",
     },
