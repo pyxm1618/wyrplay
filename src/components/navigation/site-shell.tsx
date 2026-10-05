@@ -4,7 +4,7 @@ import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
 import { siteConfig } from "@/config/site.config";
-import { ThemeSync } from "@/modules/would-you-rather/ui/theme-toggle";
+import { ThemeSync } from "@/modules/would-you-rather";
 
 export function SiteShell({
   children,
