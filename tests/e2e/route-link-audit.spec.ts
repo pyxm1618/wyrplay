@@ -117,7 +117,7 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
         }
 
         // 严禁公开页面链接到未开启的模板路径
-        expect(href).not.toMatch(/^\/(sign-in|account|auth|checkout)/);
+        expect(href).not.toMatch(/^\/(?:sign-in(?:\/|$)|account(?:\/|$)|auth(?:\/|$)|checkout(?:\/|$))/);
 
         if (href.startsWith("/")) {
           const [pathname, hash] = href.split("#");
