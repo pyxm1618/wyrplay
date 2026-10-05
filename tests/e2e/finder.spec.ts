@@ -337,15 +337,17 @@ test("finder card stats preserve the Kids aggregate-only privacy boundary", asyn
 
   await page.goto("/find-questions", { waitUntil: "domcontentloaded" });
   await expect(page.locator('[data-question-id="wyr-000001"]')).toBeVisible();
-  expect(
-    observed.some(
-      ({ endpoint, questionId, status }) =>
-        endpoint === "/api/wyr/kids-vote" &&
-        questionId === "wyr-000001" &&
-        status >= 200 &&
-        status < 300,
-    ),
-  ).toBe(true);
+  await expect
+    .poll(() =>
+      observed.some(
+        ({ endpoint, questionId, status }) =>
+          endpoint === "/api/wyr/kids-vote" &&
+          questionId === "wyr-000001" &&
+          status >= 200 &&
+          status < 300,
+      ),
+    )
+    .toBe(true);
   expect(
     observed.some(
       ({ endpoint, questionId }) => endpoint === "/api/wyr/vote" && questionId === "wyr-000001",
@@ -356,15 +358,17 @@ test("finder card stats preserve the Kids aggregate-only privacy boundary", asyn
   observed.length = 0;
   await page.goto("/find-questions?page=6", { waitUntil: "domcontentloaded" });
   await expect(page.locator('[data-question-id="wyr-000059"]')).toBeVisible();
-  expect(
-    observed.some(
-      ({ endpoint, questionId, status }) =>
-        endpoint === "/api/wyr/vote" &&
-        questionId === "wyr-000059" &&
-        status >= 200 &&
-        status < 300,
-    ),
-  ).toBe(true);
+  await expect
+    .poll(() =>
+      observed.some(
+        ({ endpoint, questionId, status }) =>
+          endpoint === "/api/wyr/vote" &&
+          questionId === "wyr-000059" &&
+          status >= 200 &&
+          status < 300,
+      ),
+    )
+    .toBe(true);
   expect(
     observed.some(
       ({ endpoint, questionId }) =>
