@@ -2,7 +2,7 @@ export * from "./types";
 export * from "./data/questions";
 export * from "./domain/validation";
 export * from "./domain/filter-questions";
-export { ThemeToggle } from "./ui/theme-toggle";
+export { ThemeSync, ThemeToggle } from "./ui/theme-toggle";
 export { DuelArena } from "./ui/duel-arena";
 export { PresenterModal } from "./ui/presenter-modal";
 export { QuestionDirectory } from "./ui/question-directory";
