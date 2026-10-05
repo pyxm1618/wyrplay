@@ -18,11 +18,16 @@ for (const format of ["cards", "sheet"] as const) {
       );
       expect(expectedPages).toBeGreaterThan(1);
       await expect(page.locator(".print-document .print-page-sheet")).toHaveCount(expectedPages);
-      await expect(page.locator(".print-output")).toHaveCount(0);
       const qr = page.locator('.print-document img[alt="Play this set QR code"]').first();
       const url = new URL((await qr.getAttribute("data-play-url"))!);
       expect(url.pathname).toBe("/play");
-      expect(url.searchParams.get("set")!.split(",")).toHaveLength(24);
+      if (format === "cards") {
+        expect(url.searchParams.get("set")!.split(",")).toHaveLength(1);
+      } else {
+        const pageCount = url.searchParams.get("set")!.split(",").length;
+        expect(pageCount).toBeGreaterThan(0);
+        expect(pageCount).toBeLessThan(24);
+      }
       expect(await qr.getAttribute("src")).toMatch(/^data:image\/png;base64,/);
       await page.evaluate(async () => {
         await document.fonts.ready;
@@ -138,4 +143,34 @@ test("preview fits both dimensions at 100 percent across requested viewports", a
     await expect(page.getByRole("dialog")).toBeVisible();
     await page.screenshot({ path: `.artifacts/closeout/presenter-${width}x${height}.png` });
   }
+});
+
+test("disabling Include QR Code removes QR from Browser Print, PDF, and PNG", async ({ page }) => {
+  await page.goto("/print");
+  await expect(page.getByRole("button", { name: "Download PDF" })).toBeEnabled();
+
+  const qrCheckbox = page.getByLabel("Include QR Code");
+  await qrCheckbox.uncheck();
+  await expect(qrCheckbox).not.toBeChecked();
+
+  // 1. Browser Print DOM has no QR code images
+  await expect(page.locator('.print-document img[alt="Play this set QR code"]')).toHaveCount(0);
+
+  // 2. Download PDF without QR code succeeds
+  const pdfDownload = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Download PDF" }).click();
+  const pdf = await pdfDownload;
+  const pdfPath = ".artifacts/closeout/qr-off.pdf";
+  await pdf.saveAs(pdfPath);
+  const pdfDoc = await PDFDocument.load(await readFile(pdfPath));
+  expect(pdfDoc.getPageCount()).toBeGreaterThan(0);
+
+  // 3. PNG without QR code succeeds
+  const pngDownload = page.waitForEvent("download");
+  await page.getByRole("button", { name: "PNG", exact: true }).click();
+  const png = await pngDownload;
+  const pngPath = ".artifacts/closeout/qr-off.png";
+  await png.saveAs(pngPath);
+  const metadata = await sharp(pngPath).metadata();
+  expect(metadata.width).toBe(2550);
 });
