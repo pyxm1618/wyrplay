@@ -134,3 +134,17 @@
 .font-display {
   font-family: var(--font-display);
 }
+
+
+/* Site-shell visibility rules shared by every route. */
+html[data-presenter-open="true"] [data-site-header],
+html[data-presenter-open="true"] [data-site-footer] {
+  display: none !important;
+}
+
+@media print {
+  [data-site-header],
+  [data-site-footer] {
+    display: none !important;
+  }
+}
