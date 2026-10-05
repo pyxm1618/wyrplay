@@ -7,6 +7,11 @@
   src: url("/finder/fonts/roboto-400.ttf");
   font-weight: 400;
 }
+@font-face {
+  font-family: PlayBody;
+  src: url("/finder/fonts/roboto-700.ttf");
+  font-weight: 700;
+}
 .play-page,
 .presenter-page,
 .print-page {
@@ -426,20 +431,6 @@
   align-items: center;
   justify-content: space-between;
 }
-.presenter-brand {
-  font: 58px PlayHand;
-  letter-spacing: -3px;
-  text-shadow:
-    3px 3px black,
-    -3px -3px black,
-    -3px 3px black,
-    3px -3px black;
-  color: white;
-  transform: rotate(-8deg);
-}
-.presenter-brand span {
-  color: #03c9ef;
-}
 .presenter-header > b {
   font-size: 30px;
   border-radius: 50px;
@@ -448,21 +439,24 @@
   padding: 12px 40px;
 }
 .presenter-exit {
-  position: absolute;
-  top: 8px;
-  right: 15px;
-  opacity: 0;
-  border: 0;
-  background: white;
-  border-radius: 20px;
-  padding: 8px;
+  opacity: 1;
+  min-height: 44px;
+  border: 2px solid #dfe3e7;
+  background: #fffdf8;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 9px 18px;
+  box-shadow: 0 3px 10px #18203312;
+  font-weight: 700;
+  white-space: nowrap;
 }
 .presenter-exit:hover,
 .presenter-exit:focus-visible {
   opacity: 1;
+  background: #fff4df;
 }
 .presenter-page .play-heading {
-  max-width: 1300px;
+  max-width: min(94vw, 1800px);
   margin: 52px auto 44px;
 }
 .presenter-page .play-heading h1 {
@@ -472,8 +466,9 @@
   font-size: 34px;
 }
 .presenter-page .play-options {
-  max-width: 1385px;
-  gap: 124px;
+  width: min(94vw, max(1120px, 74vw));
+  max-width: 2200px;
+  gap: clamp(40px, 5.5vw, 120px);
 }
 .presenter-page .option-panel {
   min-height: 388px;
@@ -693,9 +688,6 @@
   .presenter-page .play-heading {
     margin: 40px auto 25px;
   }
-  .presenter-brand {
-    font-size: 32px;
-  }
   .presenter-header > b {
     font-size: 17px;
     padding: 8px 15px;
@@ -816,16 +808,12 @@ main:has(> .print-page) + footer {
   max-width: 370px;
 }
 
-.presenter-page .play-heading {
-  margin-bottom: 34px;
-}
-
 .presenter-page .play-art {
   background:
-    url("/play-art/presenter-left.png") left 128px / 144px calc(100% - 128px) no-repeat,
-    url("/play-art/presenter-right.png") right 128px / 138px calc(100% - 128px) no-repeat,
-    url("/play-art/presenter-bottom-left.png") left bottom / 585px 169px no-repeat,
-    url("/play-art/presenter-bottom-right.png") right bottom / 552px 169px no-repeat;
+    url("/play-art/presenter-left.png") left 128px / 144px auto no-repeat,
+    url("/play-art/presenter-right.png") right 128px / 138px auto no-repeat,
+    url("/play-art/presenter-bottom-left.png") left bottom / 585px auto no-repeat,
+    url("/play-art/presenter-bottom-right.png") right bottom / 552px auto no-repeat;
 }
 .presenter-page .play-art > * {
   display: none;
@@ -833,31 +821,44 @@ main:has(> .print-page) + footer {
 @media (max-width: 700px) {
   .presenter-page .play-art {
     background-size:
-      60px calc(100% - 128px),
-      60px calc(100% - 128px),
-      220px 70px,
-      220px 70px;
+      60px auto,
+      60px auto,
+      220px auto,
+      220px auto;
   }
 }
 
-/* Responsive Web Product layer: height-aware play and true single-viewport presenter. */
-.presenter-exit {
-  position: static;
-  opacity: 1;
-  min-height: 44px;
-  border: 2px solid #dfe3e7;
-  background: #fffdf8;
-  color: var(--ink);
-  border-radius: 999px;
-  padding: 9px 18px;
-  box-shadow: 0 3px 10px #18203312;
-  font-weight: 700;
-  white-space: nowrap;
+.presenter-shortcuts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: clamp(4px, 1dvh, 12px) auto 0;
+  font-size: clamp(12px, 0.9vw, 15px);
+  color: #6b778c;
+  pointer-events: none;
 }
-.presenter-exit:hover,
-.presenter-exit:focus-visible {
-  opacity: 1;
-  background: #fff4df;
+.presenter-shortcuts span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.presenter-shortcuts kbd {
+  display: inline-block;
+  padding: 1px 6px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.9em;
+  background: #ffffff;
+  border: 1px solid #d3d8e0;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px #0000000d;
+  color: #2b3545;
+}
+@media (max-width: 700px) {
+  .presenter-shortcuts {
+    display: none;
+  }
 }
 
 @media (min-width: 701px) {
@@ -866,73 +867,79 @@ main:has(> .print-page) + footer {
     min-height: 0;
     overflow: hidden;
     display: grid;
-    grid-template-rows: auto auto minmax(0, 1fr) auto;
-    padding: clamp(12px, 2dvh, 26px) clamp(24px, 3vw, 58px) clamp(10px, 1.6dvh, 24px);
+    grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+    padding: clamp(10px, 1.8dvh, 26px) clamp(20px, 2.8vw, 56px) clamp(8px, 1.4dvh, 20px);
   }
   .presenter-header {
     gap: clamp(12px, 2vw, 34px);
     min-width: 0;
   }
   .presenter-header img {
-    width: clamp(170px, 14vw, 230px);
+    width: clamp(170px, 13vw, 240px);
     height: auto;
-    max-height: clamp(54px, 8dvh, 76px);
+    max-height: clamp(50px, 7dvh, 76px);
   }
   .presenter-topic {
-    padding: clamp(7px, 1.2dvh, 10px) clamp(14px, 2vw, 26px);
+    padding: clamp(6px, 1.1dvh, 10px) clamp(14px, 2vw, 26px);
     font-size: clamp(14px, 1.25vw, 20px);
   }
   .presenter-header > b {
-    padding: clamp(7px, 1.2dvh, 11px) clamp(18px, 2.3vw, 34px);
+    padding: clamp(6px, 1.1dvh, 11px) clamp(18px, 2.3vw, 34px);
     font-size: clamp(18px, 2vw, 28px);
   }
   .presenter-page .play-heading {
-    margin: clamp(8px, 1.7dvh, 18px) auto clamp(9px, 1.8dvh, 20px);
+    max-width: min(94vw, 1800px);
+    margin: clamp(6px, 1.4dvh, 18px) auto clamp(8px, 1.6dvh, 20px);
   }
   .presenter-page .play-heading h1 {
-    font-size: clamp(44px, min(6vw, 8dvh), 96px);
-    line-height: 1;
+    font-size: clamp(40px, min(5.5vw, 7.5dvh), 96px);
+    line-height: 1.05;
   }
   .presenter-page .play-heading p {
-    margin-top: clamp(2px, 0.7dvh, 7px);
-    font-size: clamp(20px, min(2.1vw, 3.6dvh), 30px);
+    margin-top: clamp(2px, 0.6dvh, 6px);
+    font-size: clamp(18px, min(1.8vw, 3.2dvh), 30px);
+    max-width: 1400px;
   }
   .presenter-page .play-options {
     align-self: center;
-    width: min(100%, 1385px);
-    max-width: 1385px;
-    gap: clamp(48px, 7vw, 100px);
+    width: min(94vw, max(1120px, 74vw));
+    max-width: 2200px;
+    gap: clamp(40px, 5.5vw, 120px);
+    min-height: 0;
   }
   .presenter-page .option-panel {
-    min-height: 0;
-    height: clamp(210px, 38dvh, 360px);
-    padding: clamp(18px, 3dvh, 36px);
+    min-height: clamp(200px, 35dvh, 520px);
+    height: 100%;
+    padding: clamp(16px, 2.8dvh, 48px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .presenter-page .option-panel h2 {
     max-width: 95%;
-    font-size: clamp(34px, min(4vw, 6.5dvh), 62px);
-    line-height: 1.02;
+    font-size: clamp(32px, min(3.8vw, 5.8dvh), 70px);
+    line-height: 1.05;
+    word-break: break-word;
   }
   .presenter-page .or-disc {
-    width: clamp(64px, 10dvh, 112px);
-    height: clamp(64px, 10dvh, 112px);
-    font-size: clamp(36px, 6dvh, 64px);
-    line-height: clamp(64px, 10dvh, 112px);
+    width: clamp(60px, 9dvh, 120px);
+    height: clamp(60px, 9dvh, 120px);
+    font-size: clamp(34px, 5.5dvh, 68px);
+    line-height: clamp(60px, 9dvh, 120px);
   }
   .presenter-controls {
     align-self: end;
-    gap: clamp(72px, 14vw, 190px);
-    margin: clamp(8px, 1.5dvh, 18px) auto 0;
+    gap: clamp(64px, 12vw, 200px);
+    margin: clamp(6px, 1.2dvh, 16px) auto 0;
   }
   .presenter-controls button {
     flex-direction: row;
     gap: 10px;
-    font-size: clamp(15px, 1.2vw, 19px);
+    font-size: clamp(15px, 1.2vw, 20px);
   }
   .presenter-controls span {
-    width: clamp(44px, 6dvh, 60px);
-    height: clamp(44px, 6dvh, 60px);
-    font-size: clamp(25px, 4dvh, 34px);
+    width: clamp(42px, 5.5dvh, 64px);
+    height: clamp(42px, 5.5dvh, 64px);
+    font-size: clamp(24px, 3.6dvh, 36px);
   }
 }
 

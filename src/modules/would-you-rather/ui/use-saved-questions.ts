@@ -32,13 +32,18 @@ function localIds() {
   let serialized: string;
   try {
     serialized = localStorage.getItem(savedQuestionsKey) ?? "[]";
-  } catch {
-    throw new Error("Saved questions are unavailable in this browser.");
+  } catch (cause) {
+    throw new Error(
+      "Saved questions are unavailable in this browser. Your stored data has not been changed.",
+      { cause },
+    );
   }
   try {
     return parseStoredSavedIds(serialized);
-  } catch {
-    throw new Error("Saved questions could not be read. You can save questions again.");
+  } catch (cause) {
+    throw new Error("Saved questions could not be read. Your stored data has not been changed.", {
+      cause,
+    });
   }
 }
 

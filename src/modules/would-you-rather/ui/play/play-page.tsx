@@ -7,7 +7,7 @@ import type { Question } from "../../types";
 import { resolveQuestionPool, questionPoolUrl } from "../../domain/play-session";
 import { useSavedQuestions } from "../use-saved-questions";
 import { DuelArena } from "../duel-arena";
-import { PresenterModal } from "../presenter-modal";
+import { PresenterModal, tryEnterFullscreen } from "../presenter-modal";
 import { PlayHeader, PlayArtwork } from "./art";
 import { FinderIcon } from "../finder/icon";
 import "./play.css";
@@ -53,7 +53,13 @@ export function PlayPage({
   return (
     <div className="play-page">
       <PlayArtwork />
-      <PlayHeader authEnabled={authEnabled} onPresent={() => setPresent(true)} />
+      <PlayHeader
+        authEnabled={authEnabled}
+        onPresent={() => {
+          void tryEnterFullscreen();
+          setPresent(true);
+        }}
+      />
       <div className="play-toolbar">
         <Link href="/find-questions?restore=1">← Back to questions</Link>
         <div className="topic-pills">

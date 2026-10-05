@@ -12,7 +12,10 @@ test.describe("Storage error isolation", () => {
     const notice = page.locator(".notice");
     await expect(notice).toBeVisible();
     await expect(notice).toContainText(
-      "Saved questions could not be read. You can save questions again.",
+      "Saved questions could not be read. Your stored data has not been changed.",
+    );
+    expect(await page.evaluate(() => localStorage.getItem("wyrplay:saved-questions:v1"))).toBe(
+      "{bad-json",
     );
     // Page remains fully functional
     await expect(page.locator(".question-card")).toHaveCount(10);

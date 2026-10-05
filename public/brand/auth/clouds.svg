@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 180" preserveAspectRatio="none">
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#b5ecff"/><stop offset="1" stop-color="#e4f6ff"/></linearGradient><linearGradient id="sun" x2="0" y2="1"><stop stop-color="#ffe49a"/><stop offset="1" stop-color="#fff1cc"/></linearGradient></defs>
+  <path fill="url(#sun)" d="M0 90Q50 5 125 65Q180 10 250 80Q320 35 385 95Q480 40 560 100Q650 55 735 95Q820 10 900 65Q960 15 1040 85Q1130 35 1200 75Q1280 0 1350 55Q1400 20 1440 60V180H0Z"/>
+  <path fill="url(#sky)" d="M0 135Q65 55 150 125Q220 70 310 130Q420 90 500 145Q590 95 690 135Q780 60 880 120Q970 70 1060 135Q1140 95 1210 120Q1300 65 1380 125Q1410 105 1440 115V180H0Z"/>
+</svg>
