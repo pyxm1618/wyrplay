@@ -29,7 +29,17 @@ async function serverSavedIds(command?: SavedQuestionCommand) {
   return result.ids.map((id) => savedQuestionIds.element.parse(id));
 }
 function localIds() {
-  return parseStoredSavedIds(localStorage.getItem(savedQuestionsKey) ?? "[]");
+  let serialized: string;
+  try {
+    serialized = localStorage.getItem(savedQuestionsKey) ?? "[]";
+  } catch {
+    throw new Error("Saved questions are unavailable in this browser.");
+  }
+  try {
+    return parseStoredSavedIds(serialized);
+  } catch {
+    throw new Error("Saved questions could not be read. You can save questions again.");
+  }
 }
 
 /** Account results never enter guest storage. Import is additive and removed locally only after acknowledgement. */
