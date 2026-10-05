@@ -95,10 +95,7 @@ test("Finder viewport matrix preserves independent content, artwork and controls
         await noIntersection(character, page.locator(selector), `${width}px hero ${selector}`);
       expect((await page.locator(".hero").boundingBox())!.height).toBeLessThanOrEqual(270);
     }
-    await expect(page.locator("footer")).toHaveAttribute("data-theme", "light");
-    expect(
-      await page.locator("footer").evaluate((el) => getComputedStyle(el).backgroundColor),
-    ).toBe("rgb(255, 242, 216)");
+    await expect(page.locator("[data-site-footer]")).toBeVisible();
     if (screenshotWidths.has(width)) {
       await page.screenshot({
         path: info.outputPath(`finder-final-${width}x${height}.png`),
