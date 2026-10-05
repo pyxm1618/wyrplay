@@ -23,14 +23,13 @@ import {
   getQrImage,
   PRINT_QR_CONFIG,
 } from "./print-renderer";
-import { PlayHeader, PlayArtwork } from "./art";
+import { PlayArtwork } from "./art";
 import { FinderIcon } from "../finder/icon";
 import "./play.css";
 import "./print.css";
 
 export function PrintPage({
   questions,
-  authEnabled,
 }: {
   readonly questions: readonly Question[];
   readonly authEnabled: boolean;
@@ -369,7 +368,6 @@ export function PrintPage({
     <div className="print-page" data-format={format}>
       <style>{`@page { size: ${paper === "a4" ? "A4" : "letter"}; margin: 0; }`}</style>
       <PlayArtwork />
-      <PlayHeader authEnabled={authEnabled} />
       <div className="print-workspace">
         <section className="print-editor">
           <Link className="print-back" href="/find-questions?restore=1">
