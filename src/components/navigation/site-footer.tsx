@@ -1,52 +1,62 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { marketingChrome } from "./marketing-chrome";
 
+import { SiteBrand } from "./site-brand";
+
+import { navigationConfig } from "@/config/navigation.config";
 import { siteConfig } from "@/config/site.config";
 
-const legalLinks = [
-  ["Privacy", "/privacy"],
-  ["Terms", "/terms"],
-  ["Acceptable use", "/acceptable-use"],
-  ["Contact", "/contact"],
-] as const;
-
-export function SiteFooter({
-  appearance,
+function FooterColumn({
+  title,
+  links,
 }: Readonly<{
-  appearance?: "default" | "illustrated" | "finder";
-}> = {}) {
-  const pathname = usePathname();
-  const currentAppearance = appearance ?? marketingChrome(pathname).footerAppearance;
+  title: string;
+  links: readonly { readonly label: string; readonly href: string }[];
+}>) {
+  return (
+    <section>
+      <h2 className="text-xs font-bold uppercase tracking-[0.16em] text-foreground">{title}</h2>
+      <ul className="mt-4 space-y-2.5">
+        {links.map((item) => (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              className="text-sm leading-relaxed text-muted transition-colors hover:text-foreground"
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+export function SiteFooter() {
+  const categoryLinks = [
+    ...navigationConfig.footer.questionCategories,
+    navigationConfig.footer.allCategories,
+  ];
 
   return (
     <footer
-      data-theme={currentAppearance === "finder" ? "light" : undefined}
-      className={`mt-auto border-t border-border bg-surface-muted ${
-        currentAppearance === "illustrated"
-          ? "site-footer-illustrated"
-          : currentAppearance === "finder"
-            ? "finder-footer"
-            : ""
-      }`}
+      data-site-footer
+      className="mt-auto border-t border-border bg-surface-muted text-foreground print:hidden"
     >
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-10 sm:px-8 md:flex-row md:items-center md:justify-between">
-        <p className="text-sm text-muted">
-          © {new Date().getUTCFullYear()} {siteConfig.name}. All rights reserved.
-        </p>
-        <nav aria-label="Legal navigation" className="flex flex-wrap gap-x-5 gap-y-2">
-          {legalLinks.map(([label, href]) => (
-            <Link
-              href={href}
-              key={href}
-              className="text-sm text-muted transition-colors hover:text-foreground"
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
+      <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-12 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1.35fr_0.9fr_1.1fr]">
+        <section>
+          <SiteBrand />
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
+            Fun questions. Better conversations.
+          </p>
+          <p className="mt-6 text-xs text-muted">
+            © {new Date().getUTCFullYear()} {siteConfig.name}. All rights reserved.
+          </p>
+        </section>
+
+        <FooterColumn title="Explore" links={navigationConfig.footer.explore} />
+        <FooterColumn title="Question Categories" links={categoryLinks} />
+        <FooterColumn title="Support" links={navigationConfig.footer.support} />
+        <FooterColumn title="Legal" links={navigationConfig.footer.legal} />
       </div>
     </footer>
   );
