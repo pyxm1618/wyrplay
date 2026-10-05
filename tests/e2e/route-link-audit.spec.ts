@@ -116,10 +116,10 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
           continue;
         }
 
-        // 严禁公开页面链接到未开启的模板路径
-        expect(href).not.toMatch(
-          /^\/(?:sign-in(?:\/|$)|account(?:\/|$)|auth(?:\/|$)|checkout(?:\/|$))/,
-        );
+        // Account/checkout internals must never leak into public navigation.
+        // Sign-in/sign-up are intentionally available in the enabled E2E profile;
+        // production readiness is enforced separately below.
+        expect(href).not.toMatch(/^\/(?:account(?:\/|$)|auth(?:\/|$)|checkout(?:\/|$))/);
 
         if (href.startsWith("/")) {
           const [pathname, hash] = href.split("#");
