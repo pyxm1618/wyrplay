@@ -57,10 +57,7 @@ export const routeDefinitions = [
     searchIntent:
       "browse all available Would You Rather question categories and choose a collection to play or print",
     primaryKeyword: "would you rather question categories",
-    secondaryKeywords: [
-      "would you rather questions by category",
-      "would you rather collections",
-    ],
+    secondaryKeywords: ["would you rather questions by category", "would you rather collections"],
     title: "Would You Rather Question Categories | WYRPlay",
     description:
       "Browse WYRPlay's real Would You Rather question categories for kids, funny, hard, friends, and couples, then play, select, or print a set.",
