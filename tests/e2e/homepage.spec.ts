@@ -93,7 +93,10 @@ for (const [width, height] of homeViewports) {
     ]) {
       await expect(page.locator(selector)).toBeVisible();
     }
-    await expect(page.locator("[data-site-header] img").first()).toHaveAttribute("src", /brand\/logo.svg/);
+    await expect(page.locator("[data-site-header] img").first()).toHaveAttribute(
+      "src",
+      /brand\/logo.svg/,
+    );
     await expect(page.locator("h1 image")).toHaveCount(0);
     await expect(page.getByRole("button", { name: /switch to .* theme/i })).toHaveCount(0);
     await expect(page.getByText("Crafted for Genuine Social Play")).toHaveCount(0);
