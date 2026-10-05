@@ -1,52 +1,8 @@
 /* Responsive layers: shared menu, desktop shell, tablet composition, mobile, print. */
-.finder-page .finder-menu {
-  display: none;
-}
 @media (max-width: 1099px) {
-
-  .finder-page .finder-menu {
-    display: block;
-    position: relative;
-    flex-shrink: 0;
-  }
-  .finder-page .finder-menu summary {
-    cursor: pointer;
-    list-style: none;
-    min-height: 32px;
-    padding: 7px 10px;
-    border: 1px solid #d9d8d6;
-    border-radius: 14px;
-    background: #fff;
-    font-weight: 700;
-  }
-  .finder-page .finder-menu nav {
-    position: absolute;
-    top: calc(100% + 7px);
-    right: 0;
-    z-index: 30;
-    display: grid;
-    min-width: 190px;
-    margin: 0;
-    gap: 2px;
-    padding: 8px;
-    overflow: visible;
-    border: 1px solid #e4e0da;
-    border-radius: 14px;
-    background: #fff;
-    box-shadow: 0 10px 28px #18203320;
-  }
-  .finder-page .finder-menu nav a {
-    padding: 9px 11px;
-    border-radius: 9px;
-    white-space: nowrap;
-  }
   .finder-page .finder-menu nav a:hover,
   .finder-page .finder-menu nav a:focus-visible {
     background: #fff1cf;
-  }
-
-  .finder-page .nav-search {
-    margin-left: auto;
   }
 }
 @media (min-width: 701px) {
@@ -177,17 +133,6 @@
     min-height: 100vh;
   }
 
-  .finder-page .logo {
-    width: 110px;
-    height: 40px;
-  }
-  .finder-page .nav-search {
-    margin-left: auto;
-    margin-right: 0;
-  }
-  .finder-page .signup {
-    padding: 0 12px;
-  }
   .finder-page .hero {
     height: 260px;
   }
