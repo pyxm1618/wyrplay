@@ -3,7 +3,7 @@
   display: none;
 }
 @media (max-width: 1099px) {
-  
+
   .finder-page .finder-menu {
     display: block;
     position: relative;
@@ -44,8 +44,7 @@
   .finder-page .finder-menu nav a:focus-visible {
     background: #fff1cf;
   }
-  
-  
+
   .finder-page .nav-search {
     margin-left: auto;
   }
@@ -72,7 +71,7 @@
     padding-left: 8px;
     padding-right: 8px;
   }
-  
+
   .finder-page .hero,
   .finder-page .search-area {
     width: min(calc(100% - 48px), 1240px);
@@ -177,7 +176,7 @@
   .finder-page {
     min-height: 100vh;
   }
-  
+
   .finder-page .logo {
     width: 110px;
     height: 40px;
