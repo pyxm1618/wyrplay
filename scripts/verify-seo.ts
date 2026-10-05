@@ -2,6 +2,7 @@ import "./verify-indexnow";
 
 import type { LandingSection } from "@/components/landing/landing-page";
 import { homeConfig } from "@/config/home.config";
+import { navigationConfig } from "@/config/navigation.config";
 import { routeRegistry } from "@/config/routes.config";
 import { seoConfig } from "@/config/seo.config";
 import { seoLandingPages } from "@/config/seo-landings.config";
@@ -87,6 +88,14 @@ for (const route of indexable) {
     }
     if (targetRoute.class === "public_indexable") inbound.add(target);
   }
+}
+
+for (const item of [
+  ...navigationConfig.footer.questionCategories,
+  navigationConfig.footer.allCategories,
+]) {
+  const target = routeRegistry.get(item.href);
+  if (target.class === "public_indexable") inbound.add(item.href);
 }
 
 for (const route of indexable) {
