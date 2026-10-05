@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { connection } from "next/server";
 import type { ReactNode } from "react";
 
-import { SiteFooter } from "@/components/navigation/site-footer";
-import { SiteHeader } from "@/components/navigation/site-header";
+import { SiteShell } from "@/components/navigation/site-shell";
 import { siteConfig } from "@/config/site.config";
 import { rootMetadata } from "@/platform/seo/root-metadata";
 
@@ -16,11 +15,7 @@ export default async function LegalLayout({ children }: Readonly<{ children: Rea
   return (
     <html lang={siteConfig.defaultLocale} data-theme="dark">
       <body>
-        <div className="flex min-h-screen flex-col">
-          <SiteHeader />
-          {children}
-          <SiteFooter />
-        </div>
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );
