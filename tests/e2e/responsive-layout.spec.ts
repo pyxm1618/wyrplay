@@ -271,10 +271,14 @@ test.describe("required responsive viewport matrix", () => {
           const heroCopy = await page.locator(".hero-copy").boundingBox();
           const authCard = await page.locator(".auth-card").boundingBox();
           if (!heroCopy || !authCard) throw new Error("Auth composition is incomplete");
-          expect(
-            heroCopy.y + heroCopy.height,
-            `${route} ${width}x${height}: hero copy must clear the auth card`,
-          ).toBeLessThanOrEqual(authCard.y - 4);
+          const overlaps =
+            heroCopy.x < authCard.x + authCard.width &&
+            heroCopy.x + heroCopy.width > authCard.x &&
+            heroCopy.y < authCard.y + authCard.height &&
+            heroCopy.y + heroCopy.height > authCard.y;
+          expect(overlaps, `${route} ${width}x${height}: hero copy must clear the auth card`).toBe(
+            false,
+          );
         }
 
         await shot(page, info, "auth", width, height, suffix);

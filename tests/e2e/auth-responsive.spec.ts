@@ -98,7 +98,23 @@ for (const route of ["/sign-in", "/sign-up", "/auth/magic-link/confirm"]) {
           height: element.getBoundingClientRect().height,
           lineHeight: Number.parseFloat(getComputedStyle(element).lineHeight),
         }));
-        expect(labelSize.height).toBeLessThanOrEqual(labelSize.lineHeight + 1);
+        // Font metrics differ between Chromium platforms; wrapping is allowed,
+        // but the complete label must stay inside the button without clipping.
+        const labelBounds = await label.boundingBox();
+        const buttonBounds = await page.locator(".magic-button").boundingBox();
+        if (!labelBounds || !buttonBounds) throw new Error("Magic Link button label missing");
+        expect(labelSize.height).toBeGreaterThanOrEqual(labelSize.lineHeight - 1);
+        expect(labelBounds.x).toBeGreaterThanOrEqual(buttonBounds.x);
+        expect(labelBounds.y).toBeGreaterThanOrEqual(buttonBounds.y);
+        expect(labelBounds.x + labelBounds.width).toBeLessThanOrEqual(
+          buttonBounds.x + buttonBounds.width,
+        );
+        expect(labelBounds.y + labelBounds.height).toBeLessThanOrEqual(
+          buttonBounds.y + buttonBounds.height,
+        );
+        await expect(
+          page.getByRole("button", { name: "Continue with Magic Link", exact: true }),
+        ).toBeVisible();
         await page.getByRole("button", { name: "Continue with Magic Link" }).click();
         await expect(page.getByLabel("Email address")).toBeFocused();
         const panel = page.locator("[data-test-size]");

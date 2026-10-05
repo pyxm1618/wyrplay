@@ -29,7 +29,22 @@ async function serverSavedIds(command?: SavedQuestionCommand) {
   return result.ids.map((id) => savedQuestionIds.element.parse(id));
 }
 function localIds() {
-  return parseStoredSavedIds(localStorage.getItem(savedQuestionsKey) ?? "[]");
+  let serialized: string;
+  try {
+    serialized = localStorage.getItem(savedQuestionsKey) ?? "[]";
+  } catch (cause) {
+    throw new Error(
+      "Saved questions are unavailable in this browser. Your stored data has not been changed.",
+      { cause },
+    );
+  }
+  try {
+    return parseStoredSavedIds(serialized);
+  } catch (cause) {
+    throw new Error("Saved questions could not be read. Your stored data has not been changed.", {
+      cause,
+    });
+  }
 }
 
 /** Account results never enter guest storage. Import is additive and removed locally only after acknowledgement. */
