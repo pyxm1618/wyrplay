@@ -45,78 +45,18 @@ export function SiteHeader({
         </a>
       ) : null}
       <header
-      data-site-header
-      className="sticky top-0 z-40 border-b border-border bg-background/95 text-foreground backdrop-blur-md print:hidden"
-      onKeyDown={(event) => {
-        if (event.key === "Escape") setMobileMenuOpen(false);
-      }}
-    >
-      <div className="mx-auto flex h-18 w-full max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
-        <SiteBrand href={homeHref} className="shrink-0" />
+        data-site-header
+        className="sticky top-0 z-40 border-b border-border bg-background/95 text-foreground backdrop-blur-md print:hidden"
+        onKeyDown={(event) => {
+          if (event.key === "Escape") setMobileMenuOpen(false);
+        }}
+      >
+        <div className="mx-auto flex h-18 w-full max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+          <SiteBrand href={homeHref} className="shrink-0" />
 
-        <nav
-          aria-label="Primary navigation"
-          className="ml-4 hidden flex-1 items-center justify-center gap-1 lg:flex"
-        >
-          {navigationConfig.header.primary.map((item) => {
-            const active = isActive(pathname, item);
-            return (
-              <Link
-                key={item.href}
-                href={toLocaleHref(item.href)}
-                aria-current={active ? "page" : undefined}
-                className={`${desktopLink} ${active ? "bg-surface text-foreground" : ""}`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        <div className="ml-auto flex items-center gap-2">
-          <ThemeToggle />
-          {featuresConfig.auth.enabled ? (
-            <>
-              <Link
-                href={toLocaleHref(navigationConfig.header.auth.loggedOut[0].href)}
-                className="hidden px-2 py-2 text-sm font-semibold text-muted hover:text-foreground xl:inline-flex"
-              >
-                {navigationConfig.header.auth.loggedOut[0].label}
-              </Link>
-              <Link
-                href={toLocaleHref(navigationConfig.header.auth.loggedOut[1].href)}
-                className="hidden rounded-full border border-border bg-surface px-4 py-2 text-sm font-semibold text-foreground transition hover:bg-surface-muted xl:inline-flex"
-              >
-                {navigationConfig.header.auth.loggedOut[1].label}
-              </Link>
-            </>
-          ) : null}
-          <Link
-            href={toLocaleHref(navigationConfig.header.primaryCta.href)}
-            className="hidden items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-bold text-background shadow-sm transition hover:opacity-90 sm:inline-flex"
-          >
-            {navigationConfig.header.primaryCta.label}
-          </Link>
-          <button
-            type="button"
-            aria-controls="site-mobile-navigation"
-            aria-expanded={mobileMenuOpen}
-            aria-label={mobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
-            onClick={() => setMobileMenuOpen((open) => !open)}
-            className="flex size-10 items-center justify-center rounded-full border border-border bg-surface text-foreground transition hover:bg-surface-muted lg:hidden"
-          >
-            <span aria-hidden="true" className="text-xl leading-none">
-              {mobileMenuOpen ? "×" : "☰"}
-            </span>
-          </button>
-        </div>
-      </div>
-
-      {mobileMenuOpen ? (
-        <div id="site-mobile-navigation" className="border-t border-border bg-background lg:hidden">
           <nav
-            aria-label="Mobile navigation"
-            className="mx-auto flex w-full max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6"
+            aria-label="Primary navigation"
+            className="ml-4 hidden flex-1 items-center justify-center gap-1 lg:flex"
           >
             {navigationConfig.header.primary.map((item) => {
               const active = isActive(pathname, item);
@@ -125,37 +65,97 @@ export function SiteHeader({
                   key={item.href}
                   href={toLocaleHref(item.href)}
                   aria-current={active ? "page" : undefined}
-                  className={`${mobileLink} ${active ? "bg-surface-muted" : ""}`}
-                  onClick={() => setMobileMenuOpen(false)}
+                  className={`${desktopLink} ${active ? "bg-surface text-foreground" : ""}`}
                 >
                   {item.label}
                 </Link>
               );
             })}
+          </nav>
+
+          <div className="ml-auto flex items-center gap-2">
+            <ThemeToggle />
+            {featuresConfig.auth.enabled ? (
+              <>
+                <Link
+                  href={toLocaleHref(navigationConfig.header.auth.loggedOut[0].href)}
+                  className="hidden px-2 py-2 text-sm font-semibold text-muted hover:text-foreground xl:inline-flex"
+                >
+                  {navigationConfig.header.auth.loggedOut[0].label}
+                </Link>
+                <Link
+                  href={toLocaleHref(navigationConfig.header.auth.loggedOut[1].href)}
+                  className="hidden rounded-full border border-border bg-surface px-4 py-2 text-sm font-semibold text-foreground transition hover:bg-surface-muted xl:inline-flex"
+                >
+                  {navigationConfig.header.auth.loggedOut[1].label}
+                </Link>
+              </>
+            ) : null}
             <Link
               href={toLocaleHref(navigationConfig.header.primaryCta.href)}
-              className="mt-2 flex items-center justify-center rounded-xl bg-foreground px-4 py-3 text-base font-bold text-background"
-              onClick={() => setMobileMenuOpen(false)}
+              className="hidden items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-bold text-background shadow-sm transition hover:opacity-90 sm:inline-flex"
             >
               {navigationConfig.header.primaryCta.label}
             </Link>
-            {featuresConfig.auth.enabled ? (
-              <div className="mt-2 grid grid-cols-2 gap-2 border-t border-border pt-3">
-                {navigationConfig.header.auth.loggedOut.map((item) => (
+            <button
+              type="button"
+              aria-controls="site-mobile-navigation"
+              aria-expanded={mobileMenuOpen}
+              aria-label={mobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              className="flex size-10 items-center justify-center rounded-full border border-border bg-surface text-foreground transition hover:bg-surface-muted lg:hidden"
+            >
+              <span aria-hidden="true" className="text-xl leading-none">
+                {mobileMenuOpen ? "×" : "☰"}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {mobileMenuOpen ? (
+          <div id="site-mobile-navigation" className="border-t border-border bg-background lg:hidden">
+            <nav
+              aria-label="Mobile navigation"
+              className="mx-auto flex w-full max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6"
+            >
+              {navigationConfig.header.primary.map((item) => {
+                const active = isActive(pathname, item);
+                return (
                   <Link
                     key={item.href}
                     href={toLocaleHref(item.href)}
-                    className="rounded-xl border border-border px-3 py-3 text-center text-sm font-semibold text-foreground"
+                    aria-current={active ? "page" : undefined}
+                    className={`${mobileLink} ${active ? "bg-surface-muted" : ""}`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
                   </Link>
-                ))}
-              </div>
-            ) : null}
-          </nav>
-        </div>
-      ) : null}
+                );
+              })}
+              <Link
+                href={toLocaleHref(navigationConfig.header.primaryCta.href)}
+                className="mt-2 flex items-center justify-center rounded-xl bg-foreground px-4 py-3 text-base font-bold text-background"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {navigationConfig.header.primaryCta.label}
+              </Link>
+              {featuresConfig.auth.enabled ? (
+                <div className="mt-2 grid grid-cols-2 gap-2 border-t border-border pt-3">
+                  {navigationConfig.header.auth.loggedOut.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={toLocaleHref(item.href)}
+                      className="rounded-xl border border-border px-3 py-3 text-center text-sm font-semibold text-foreground"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+            </nav>
+          </div>
+        ) : null}
       </header>
     </>
   );
