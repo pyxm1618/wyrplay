@@ -46,11 +46,11 @@ test("finder uses the source bank, draft filters, real pagination and persistent
     page.getByRole("button", { name: "Unsave question 1", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
   await page.locator(".select-button").first().click();
-  await expect(page.locator(".selection-bar h3")).toHaveText("1 selected questions");
+  await expect(page.locator(".selection-bar h3")).toHaveText("1 selected question");
   await page.getByRole("button", { name: "Page 46", exact: true }).click();
   await expect(page.locator(".question-card")).toHaveCount(7);
   await expect(page.locator(".question-number").first()).toHaveText("451");
-  await expect(page.locator(".selection-bar h3")).toHaveText("1 selected questions");
+  await expect(page.locator(".selection-bar h3")).toHaveText("1 selected question");
   await page.getByRole("searchbox").fill("hear");
   await expect(page.locator(".question-number").first()).toHaveText("451");
   await expect(page.locator(".question-card")).toHaveCount(7);
@@ -237,7 +237,7 @@ test("finder restore keeps back and forward synchronized after new history state
   await expect(searchbox).toHaveValue("have");
   await expect(teensFilter).toHaveAttribute("aria-pressed", "true");
   await expect(currentPage).toHaveText("7");
-  await expect(page.locator(".selection-bar h3")).toHaveText("1 selected questions");
+  await expect(page.locator(".selection-bar h3")).toHaveText("1 selected question");
   expect(await visibleQuestionIds()).toEqual(beforeRestoreIds);
 
   await page.getByRole("button", { name: "Apply Filters" }).click();

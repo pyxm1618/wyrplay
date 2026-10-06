@@ -428,7 +428,9 @@ export function FinderExperience({
       </nav>
       <section className="selection-bar" aria-label="Selected questions">
         <div>
-          <h3 aria-live="polite">{selected.length} selected questions</h3>
+          <h3 aria-live="polite">
+            {selected.length} selected {selected.length === 1 ? "question" : "questions"}
+          </h3>
           <p>Selection is optional; the filtered pool itself can be used.</p>
         </div>
         <div className="selection-actions">
