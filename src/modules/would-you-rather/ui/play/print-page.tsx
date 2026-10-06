@@ -8,10 +8,7 @@ import { useSearchParams } from "next/navigation";
 import type { FeaturedCollectionKey, Occasion, Question } from "../../types";
 import { resolveQuestionPool } from "../../domain/play-session";
 import { type FinderAge } from "../../domain/finder";
-import {
-  filterPrintQuestions,
-  type PrintQuestionCriteria,
-} from "../../domain/print-question-pool";
+import { filterPrintQuestions, type PrintQuestionCriteria } from "../../domain/print-question-pool";
 import {
   createPrintLayout,
   type PrintFormat,
