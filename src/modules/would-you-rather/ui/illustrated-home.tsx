@@ -95,7 +95,7 @@ const occasions = [
 // Container gutters, grid gaps and column weights mirror illustrated-home.css.
 function categoryImageSizes(artWidth: number) {
   const columnRatio = 692 / artWidth;
-  return `(max-width: 520px) calc((100vw - clamp(32px, 7vw, 80px) - 8px) / 2), (max-width: 900px) calc((100vw - clamp(32px, 7vw, 80px) - 24px) / 3), (max-width: 1240px) calc((100vw - clamp(32px, 7vw, 80px) - clamp(25px, 3.2134vw, 40px)) / ${columnRatio}), ${1120 / columnRatio}px`;
+  return `(max-width: 520px) calc((100vw - clamp(32px, 7vw, 80px) - 8px) / 2), (max-width: 1000px) calc((100vw - clamp(32px, 7vw, 80px) - 24px) / 3), (max-width: 1240px) calc((100vw - clamp(32px, 7vw, 80px) - clamp(25px, 3.2134vw, 40px)) / ${columnRatio}), ${1120 / columnRatio}px`;
 }
 
 const highlightImageSizes =
