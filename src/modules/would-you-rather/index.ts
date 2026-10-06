@@ -13,7 +13,6 @@ export { QuestionFilterBar } from "./ui/question-filter-bar";
 export { WyrExperience } from "./ui/wyr-experience";
 export { TEST_FIXTURE_QUESTIONS } from "./testing/test-fixtures";
 
-export { IllustratedHomeHeader } from "./ui/illustrated-home";
 export { FinderExperience } from "./ui/finder/finder-experience";
 
 export type {
