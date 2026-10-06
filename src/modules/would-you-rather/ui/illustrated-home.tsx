@@ -442,14 +442,16 @@ function HomeFaq() {
   ];
   return (
     <section className="home-faq section-shell" aria-labelledby="home-faq-title">
-      <p className="faq-eyebrow">A little help before your next debate</p>
-      <h2 id="home-faq-title">Would You Rather Questions: FAQ</h2>
-      {answers.map(({ question, answer }) => (
-        <details key={question}>
-          <summary>{question}</summary>
-          <p>{answer}</p>
-        </details>
-      ))}
+      <div className="home-container">
+        <p className="faq-eyebrow">A little help before your next debate</p>
+        <h2 id="home-faq-title">Would You Rather Questions: FAQ</h2>
+        {answers.map(({ question, answer }) => (
+          <details key={question}>
+            <summary>{question}</summary>
+            <p>{answer}</p>
+          </details>
+        ))}
+      </div>
     </section>
   );
 }

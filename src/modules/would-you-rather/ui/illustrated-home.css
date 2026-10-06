@@ -1641,12 +1641,14 @@
   color: var(--foreground);
   background: var(--background);
 }
-.illustrated-home .home-live-experience :is(h2, .home-container > h2) {
+.illustrated-home .home-live-experience > h2,
+.illustrated-home .home-live-experience > .home-container > h2 {
   font-size: 30px;
   line-height: 1.2;
   color: var(--foreground);
 }
-.illustrated-home .home-live-experience :is(p, .home-container > p) {
+.illustrated-home .home-live-experience > p,
+.illustrated-home .home-live-experience > .home-container > p {
   margin-block: 12px 30px;
 }
 .illustrated-home .home-live-experience button,
