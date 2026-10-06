@@ -177,7 +177,16 @@ export function PrintPage({
 
   // 按需单页渲染当前预览 Canvas
   useEffect(() => {
-    if (!layout || !totalPages || !logo) return;
+    if (!layout || !totalPages) {
+      setPreviewUrl((old) => {
+        if (old) URL.revokeObjectURL(old);
+        return "";
+      });
+      setCurrentCanvas(null);
+      setPrintQrData(new Map());
+      return;
+    }
+    if (!logo) return;
     let cancelled = false;
 
     void (async () => {
@@ -267,7 +276,7 @@ export function PrintPage({
 
   // 下载高清矢量 PDF
   async function downloadPdf() {
-    if (!layout || !logo) return;
+    if (!layout || !totalPages || !currentCanvas || !logo) return;
     setError("");
     setIsGeneratingPdf(true);
     try {
@@ -295,7 +304,7 @@ export function PrintPage({
 
   // 导出当前页为高清 PNG
   async function downloadPng() {
-    if (!layout || !logo) return;
+    if (!layout || !totalPages || !currentCanvas || !logo) return;
     try {
       const currentPageIndex = Math.min(Math.max(0, page), totalPages - 1);
       const currentPlacements = layout.pages[currentPageIndex] ?? [];
@@ -359,6 +368,7 @@ export function PrintPage({
 
   // 触发浏览器原生打印
   async function handlePrint() {
+    if (!layout || !totalPages || !currentCanvas || !logo) return;
     try {
       if (qrCodeEnabled && layout) {
         const origin = window.location.origin;
