@@ -266,180 +266,190 @@ export function IllustratedHome({
         className="categories-section section-shell"
         aria-label="Popular categories"
       >
-        <Heading
-          title="Popular Would You Rather Questions"
-          href="#question-search"
-          label="Explore categories"
-        />
-        <div className="category-grid">
-          {categories.map((category) => {
-            const collection = "key" in category ? FEATURED_COLLECTIONS[category.key] : null;
-            return (
-              <Link
-                key={category.title}
-                href={collection?.route ?? ("href" in category ? category.href : "/#questions")}
-                className={`category-card ${category.color}`}
-              >
-                {category.title === "Popular" ? (
-                  <Image
-                    src="/home-art/categories/popular.webp"
-                    alt=""
-                    width={1061}
-                    height={1330}
-                    className="category-art-popular"
-                  />
-                ) : (
-                  <ArtCrop box={category.crop} className="category-art" />
-                )}
-                <span className="category-title">{category.title}</span>
-                <span className="category-description">
-                  {"key" in category
-                    ? `${getQuestionsByCollection(category.key).length} questions`
-                    : category.description}
-                </span>
-              </Link>
-            );
-          })}
+        <div className="home-container">
+          <Heading
+            title="Popular Would You Rather Questions"
+            href="#question-search"
+            label="Explore categories"
+          />
+          <div className="category-grid">
+            {categories.map((category) => {
+              const collection = "key" in category ? FEATURED_COLLECTIONS[category.key] : null;
+              return (
+                <Link
+                  key={category.title}
+                  href={collection?.route ?? ("href" in category ? category.href : "/#questions")}
+                  className={`category-card ${category.color}`}
+                >
+                  {category.title === "Popular" ? (
+                    <Image
+                      src="/home-art/categories/popular.webp"
+                      alt=""
+                      width={1061}
+                      height={1330}
+                      className="category-art-popular"
+                    />
+                  ) : (
+                    <ArtCrop box={category.crop} className="category-art" />
+                  )}
+                  <span className="category-title">{category.title}</span>
+                  <span className="category-description">
+                    {"key" in category
+                      ? `${getQuestionsByCollection(category.key).length} questions`
+                      : category.description}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </section>
       <section
         className="highlights-section section-shell dark-section"
         aria-label="Today's highlights"
       >
-        <Heading title="Today’s Would You Rather Questions" href="#questions" />
-        <div className="highlight-grid">
-          {highlights.map((question, index) => (
-            <button
-              type="button"
-              key={question.id}
-              className="highlight-card"
-              onClick={() => play(question.id)}
-            >
-              <svg
-                className="highlight-image"
-                viewBox={`${index * 724} 70 724 560`}
-                preserveAspectRatio="xMidYMid slice"
-                aria-hidden="true"
-                focusable="false"
+        <div className="home-container">
+          <Heading title="Today's Would You Rather Questions" href="#questions" />
+          <div className="highlight-grid">
+            {highlights.map((question, index) => (
+              <button
+                type="button"
+                key={question.id}
+                className="highlight-card"
+                onClick={() => play(question.id)}
               >
-                <image href="/home-art/highlights.png" width="2172" height="724" />
-              </svg>
-              <span className="highlight-body">
-                <span className="highlight-title">{question.question}</span>
-                <span className="highlight-footer">
-                  <span>Editorial pick</span>
-                  <span className="round-arrow">
-                    <Arrow />
+                <svg
+                  className="highlight-image"
+                  viewBox={`${index * 724} 70 724 560`}
+                  preserveAspectRatio="xMidYMid slice"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <image href="/home-art/highlights.png" width="2172" height="724" />
+                </svg>
+                <span className="highlight-body">
+                  <span className="highlight-title">{question.question}</span>
+                  <span className="highlight-footer">
+                    <span>Editorial pick</span>
+                    <span className="round-arrow">
+                      <Arrow />
+                    </span>
                   </span>
                 </span>
-              </span>
-            </button>
-          ))}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
       <section className="how-section section-shell" aria-label="How it works">
-        <div className="steps-decoration" aria-hidden="true">
-          <ArtCrop box={[320, 1095, 97, 50]} className="step-ribbon-yellow" />
-          <ArtCrop box={[530, 1102, 36, 48]} className="step-bubble" />
-          <ArtCrop box={[590, 1096, 188, 134]} className="step-ribbon-blue" />
+        <div className="how-container">
+          <div className="steps-decoration" aria-hidden="true">
+            <ArtCrop box={[320, 1095, 97, 50]} className="step-ribbon-yellow" />
+            <ArtCrop box={[530, 1102, 36, 48]} className="step-bubble" />
+            <ArtCrop box={[590, 1096, 188, 134]} className="step-ribbon-blue" />
+          </div>
+          <h2>How to Play Would You Rather Questions</h2>
+          <ol className="steps-grid">
+            {steps.map((step, index) => (
+              <li key={step.title} style={{ "--step-color": step.color } as CSSProperties}>
+                <span className="step-number">{index + 1}</span>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
-        <h2>How to Play Would You Rather Questions</h2>
-        <ol className="steps-grid">
-          {steps.map((step, index) => (
-            <li key={step.title} style={{ "--step-color": step.color } as CSSProperties}>
-              <span className="step-number">{index + 1}</span>
-              <div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
       </section>
       <section
         id="trending"
         className="trending-section section-shell"
         aria-label="Question rankings"
       >
-        <Heading title="Trending Would You Rather Questions" href="/leaderboards" />
-        <div className="trending-grid">
-          <div className="trending-list">
-            {leaderboard.status === "ready" && rankings.length > 0 ? (
-              rankings.map((entry) => (
-                <button
-                  type="button"
-                  key={entry.question.id}
-                  className="trending-card"
-                  onClick={() => play(entry.question.id)}
-                >
-                  <span className="ranking-number">#{entry.rank}</span>
-                  <span className="trending-body">
-                    <span className="trending-title">{entry.question.question}</span>
-                    <span className="trending-meta">{entry.votes.toLocaleString()} votes</span>
-                  </span>
-                  <span className="round-arrow">
+        <div className="home-container">
+          <Heading title="Trending Would You Rather Questions" href="/leaderboards" />
+          <div className="trending-grid">
+            <div className="trending-list">
+              {leaderboard.status === "ready" && rankings.length > 0 ? (
+                rankings.map((entry) => (
+                  <button
+                    type="button"
+                    key={entry.question.id}
+                    className="trending-card"
+                    onClick={() => play(entry.question.id)}
+                  >
+                    <span className="ranking-number">#{entry.rank}</span>
+                    <span className="trending-body">
+                      <span className="trending-title">{entry.question.question}</span>
+                      <span className="trending-meta">{entry.votes.toLocaleString()} votes</span>
+                    </span>
+                    <span className="round-arrow">
+                      <Arrow />
+                    </span>
+                  </button>
+                ))
+              ) : (
+                <div className="ranking-awaiting">
+                  <ArtCrop box={[33, 686, 106, 87]} className="ranking-crown" />
+                  <h3>Question Rankings</h3>
+                  <p>
+                    {leaderboard.status === "ready"
+                      ? "No votes yet. Make your choice to start the rankings."
+                      : "Rankings are temporarily unavailable. Try the leaderboard again."}
+                  </p>
+                  <Link className="section-link" href="/leaderboards">
+                    View leaderboard
                     <Arrow />
-                  </span>
-                </button>
-              ))
-            ) : (
-              <div className="ranking-awaiting">
-                <ArtCrop box={[33, 686, 106, 87]} className="ranking-crown" />
-                <h3>Question Rankings</h3>
+                  </Link>
+                </div>
+              )}
+            </div>
+            <div className="create-panel">
+              <div className="create-copy">
+                <h3>Create Your Own Question</h3>
                 <p>
-                  {leaderboard.status === "ready"
-                    ? "No votes yet. Make your choice to start the rankings."
-                    : "Rankings are temporarily unavailable. Try the leaderboard again."}
+                  Got a wild idea?
+                  <br />
+                  Share it with the world!
                 </p>
-                <Link className="section-link" href="/leaderboards">
-                  View leaderboard
-                  <Arrow />
+                <Link className="dark-button create-button" href="/create">
+                  <span aria-hidden="true">＋</span>Create
                 </Link>
               </div>
-            )}
-          </div>
-          <div className="create-panel">
-            <div className="create-copy">
-              <h3>Create Your Own Question</h3>
-              <p>
-                Got a wild idea?
-                <br />
-                Share it with the world!
-              </p>
-              <Link className="dark-button create-button" href="/create">
-                <span aria-hidden="true">＋</span>Create
-              </Link>
+              <Image
+                src="/home-art/bulb-hand.png"
+                width={1122}
+                height={1402}
+                alt=""
+                className="bulb-art"
+              />
+              <span className="create-doodle doodle-one" aria-hidden="true">
+                ✚
+              </span>
+              <span className="create-doodle doodle-two" aria-hidden="true">
+                ♡
+              </span>
             </div>
-            <Image
-              src="/home-art/bulb-hand.png"
-              width={1122}
-              height={1402}
-              alt=""
-              className="bulb-art"
-            />
-            <span className="create-doodle doodle-one" aria-hidden="true">
-              ✚
-            </span>
-            <span className="create-doodle doodle-two" aria-hidden="true">
-              ♡
-            </span>
           </div>
         </div>
       </section>
       <section className="statistics home-real-statistics" aria-label="Question library">
-        <div className="statistic">
-          <ArtCrop box={[241, 1530, 48, 47]} />
-          <p>
-            <strong>{approved.length}</strong>
-            <span>Would You Rather Questions</span>
-          </p>
-        </div>
-        <div className="statistic">
-          <ArtCrop box={[410, 1530, 48, 47]} />
-          <p>
-            <strong>{Object.keys(FEATURED_COLLECTIONS).length}</strong>
-            <span>Collections</span>
-          </p>
+        <div className="statistics-container">
+          <div className="statistic">
+            <ArtCrop box={[241, 1530, 48, 47]} />
+            <p>
+              <strong>{approved.length}</strong>
+              <span>Would You Rather Questions</span>
+            </p>
+          </div>
+          <div className="statistic">
+            <ArtCrop box={[410, 1530, 48, 47]} />
+            <p>
+              <strong>{Object.keys(FEATURED_COLLECTIONS).length}</strong>
+              <span>Collections</span>
+            </p>
+          </div>
         </div>
       </section>
       <section className="together-section" aria-label="Play together anywhere">
@@ -447,26 +457,30 @@ export function IllustratedHome({
         <ArtCrop box={[748, 1866, 30, 155]} className="together-edge edge-right" />
         <ArtCrop box={[75, 1883, 85, 39]} className="together-flourish flourish-left" />
         <ArtCrop box={[568, 1875, 91, 45]} className="together-flourish flourish-right" />
-        <h2>Play Together with Would You Rather Questions</h2>
-        <p>
-          Bring a few would you rather questions to game night, or use Presenter Mode on a shared
-          screen.
-        </p>
-        <div className="occasion-grid">
-          {occasions.map((occasion) => (
-            <Link key={occasion.title} href={occasion.href} className="occasion-card">
-              <ArtCrop box={occasion.crop} />
-              <span>
-                <strong>{occasion.title}</strong>
-                <span>{occasion.description}</span>
-              </span>
-            </Link>
-          ))}
+        <div className="together-container">
+          <h2>Play Together with Would You Rather Questions</h2>
+          <p>
+            Bring a few would you rather questions to game night, or use Presenter Mode on a shared
+            screen.
+          </p>
+          <div className="occasion-grid">
+            {occasions.map((occasion) => (
+              <Link key={occasion.title} href={occasion.href} className="occasion-card">
+                <ArtCrop box={occasion.crop} />
+                <span>
+                  <strong>{occasion.title}</strong>
+                  <span>{occasion.description}</span>
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
       <div className="home-live-experience">
-        <h2 id="tool-demo-title">Find More Would You Rather Questions</h2>
-        <p>Search by keyword and filter by audience, occasion, tone or difficulty.</p>
+        <div className="home-container">
+          <h2 id="tool-demo-title">Find More Would You Rather Questions</h2>
+          <p>Search by keyword and filter by audience, occasion, tone or difficulty.</p>
+        </div>
         {children}
       </div>
       <HomeFaq />
