@@ -184,6 +184,7 @@ export function PrintPage({
       });
       setCurrentCanvas(null);
       setPrintQrData(new Map());
+      setError("");
       return;
     }
     if (!logo) return;
