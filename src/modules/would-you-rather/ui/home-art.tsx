@@ -1,53 +1,32 @@
-type Crop = readonly [number, number, number, number];
-export function ArtCrop({
-  box,
+import Image from "next/image";
+
+/** Small lossless crops retain the original pixels without another lossy encoding. */
+export function HomeArt({
+  src,
+  width,
+  height,
   className = "",
-  label,
+  sizes,
 }: {
-  box: Crop;
+  src: string;
+  width: number;
+  height: number;
   className?: string;
-  label?: string;
+  sizes: string;
 }) {
-  const [x, y, width, height] = box;
   return (
-    <svg
-      className={`art-crop ${className}`}
-      viewBox={`${x} ${y} ${width} ${height}`}
+    <Image
+      src={`/home-art/${src}.webp`}
       width={width}
       height={height}
-      role={label ? "img" : undefined}
-      aria-label={label}
-      aria-hidden={label ? undefined : true}
-      focusable="false"
-      preserveAspectRatio="xMidYMid slice"
-    >
-      <image href="/home-art/reference-art.png" width="778" height="2021" />
-    </svg>
+      sizes={sizes}
+      alt=""
+      className={`art-crop ${className}`}
+      unoptimized
+    />
   );
 }
-export function HeroReferenceDetails() {
-  return (
-    <svg
-      className="hero-reference-details"
-      viewBox="0 60 778 572"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <defs>
-        <clipPath id="hero-reference-cutouts">
-          <path d="M0 60H210V280H166L154 305L123 451L138 477H0Z" />
-          <path d="M778 185L737 186L702 210L670 219L648 243L624 272L618 290L650 440L648 485H778Z" />
-        </clipPath>
-      </defs>
-      <image
-        href="/home-art/reference-art.png"
-        width="778"
-        height="2021"
-        clipPath="url(#hero-reference-cutouts)"
-      />
-    </svg>
-  );
-}
+
 export function ChoiceFrame({ variant }: { variant: "dog" | "cat" }) {
   const path =
     variant === "dog"

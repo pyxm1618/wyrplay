@@ -4,6 +4,7 @@ test("public release surface renders from versioned config without hidden setup"
   page,
 }) => {
   await page.goto("/");
+  await expect(page.locator("[data-home-ready=true]")).toBeVisible();
   await expect(page.locator("h1")).toBeVisible();
   await expect(page).toHaveTitle(/.+/);
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/i);
