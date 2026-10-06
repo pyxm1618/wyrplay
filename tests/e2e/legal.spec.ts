@@ -79,8 +79,10 @@ for (const viewport of [
     const response = await page.goto("/would-you-rather-questions-for-kids");
     expect(response?.status()).toBe(200);
 
-    const privacyLink = page.getByRole("link", { name: "Privacy for Kids & Families" });
+    const privacyLink = page
+      .getByRole("contentinfo")
+      .getByRole("link", { name: "Kids & Families Privacy" });
     await expect(privacyLink).toBeVisible();
-    await expect(privacyLink).toHaveAttribute("href", "/privacy");
+    await expect(privacyLink).toHaveAttribute("href", "/privacy#childrens-privacy");
   });
 }
