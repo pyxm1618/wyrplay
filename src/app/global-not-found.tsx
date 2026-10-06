@@ -3,6 +3,10 @@ import { siteConfig } from "@/config/site.config";
 
 import "./globals.css";
 
+export const metadata = {
+  title: `Page Not Found | ${siteConfig.name}`,
+};
+
 export default function GlobalNotFoundPage() {
   return (
     <html lang={siteConfig.defaultLocale}>
