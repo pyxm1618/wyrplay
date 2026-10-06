@@ -1,0 +1,134 @@
+{
+  "source": "/Users/milushangdi/Projects/wyrplay/UI/privacy.png",
+  "source_sha256": "8ab34ebe9b8ee25294574ae5bc4e676d5af29f4a6b74c21c32326f20cbc89afa",
+  "source_size": [
+    1024,
+    1536
+  ],
+  "css_mapping": {
+    "assumed_viewport_width": 1024,
+    "css_per_image_pixel": 1.0,
+    "meaning": "实现约定，不证明参考图原始 DPR 或 CSS 视口"
+  },
+  "regions": [
+    {
+      "name": "hero",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        60,
+        60,
+        904,
+        250
+      ],
+      "normalized_box": [
+        0.058594,
+        0.039062,
+        0.882812,
+        0.16276
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        60.0,
+        60.0,
+        904.0,
+        250.0
+      ],
+      "selector": ".privacy-hero",
+      "dom_comparable": true
+    },
+    {
+      "name": "sidebar",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        60,
+        320,
+        205,
+        410
+      ],
+      "normalized_box": [
+        0.058594,
+        0.208333,
+        0.200195,
+        0.266927
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        60.0,
+        320.0,
+        205.0,
+        410.0
+      ],
+      "selector": ".privacy-sidebar",
+      "dom_comparable": true
+    },
+    {
+      "name": "content",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        285,
+        320,
+        680,
+        1040
+      ],
+      "normalized_box": [
+        0.27832,
+        0.208333,
+        0.664062,
+        0.677083
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        285.0,
+        320.0,
+        680.0,
+        1040.0
+      ],
+      "selector": ".privacy-content",
+      "dom_comparable": true
+    },
+    {
+      "name": "contact-banner",
+      "kind": "box",
+      "box_type": "element",
+      "box": [
+        60,
+        1380,
+        904,
+        88
+      ],
+      "normalized_box": [
+        0.058594,
+        0.898438,
+        0.882812,
+        0.057292
+      ],
+      "boundary_evidence": "Agent 选择的标注范围，非自动识别的真实元素边界",
+      "css_box": [
+        60.0,
+        1380.0,
+        904.0,
+        88.0
+      ],
+      "selector": ".privacy-contact-card",
+      "dom_comparable": true
+    }
+  ],
+  "groups": [],
+  "vertical_scans": [],
+  "expected": {
+    "url": "http://127.0.0.1:3210/privacy",
+    "title": "Privacy Notice · Would You Rather",
+    "viewport": {
+      "width": 1024,
+      "height": 1536
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "expected_assets": {},
+  "input_manifest_sha256": "9ea405530395e4fd784e89dc8f108dbf4b8bdbcdabb0ddee104b4e5ecd32eeb8"
+}

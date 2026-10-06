@@ -1,0 +1,124 @@
+{
+  "measurement_sha256": "b3d1f15154dc38c3e7983d0b625c0578ae6e75728416dc3c88d67309502862c9",
+  "url": "http://127.0.0.1:3210/privacy",
+  "title": "Privacy Notice · Would You Rather",
+  "viewport": {
+    "width": 1024,
+    "height": 1536
+  },
+  "dpr": 1,
+  "scroll": {
+    "x": 0,
+    "y": 0
+  },
+  "document_height": 5091,
+  "fonts_ready": true,
+  "images_ready": true,
+  "document_overflow_x": false,
+  "captured_at": "2026-10-06T08:05:04.507Z",
+  "elements": [
+    {
+      "name": "hero",
+      "selector": ".privacy-hero",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        52,
+        117,
+        920,
+        248.4375
+      ],
+      "text": "Your Privacy MattersPrivacy NoticeThis notice explains how WYRPlay collects, uses, and protects your information.Effective 2026-10-04 | Last updated: 2026-10-04",
+      "computed": {
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "PrivacyRoboto, system-ui, -apple-system, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "fontWeight": "400",
+        "color": "rgb(30, 41, 59)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "sidebar",
+      "selector": ".privacy-sidebar",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        52,
+        381.4375,
+        200,
+        606.25
+      ],
+      "text": "On this page1Who We Are and Scope2Audience and Age Rules3Information You Provide4Gameplay, Voting, and Anonymous Identifiers5Technical and Security Information6Cookies, Local Storage, and Similar Technologies7Site Measurement and Analytics8How We Use Information9How We Disclose Information10Children",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "PrivacyRoboto, system-ui, -apple-system, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "fontWeight": "400",
+        "color": "rgb(30, 41, 59)",
+        "backgroundColor": "rgb(255, 255, 255)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "content",
+      "selector": ".privacy-content",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        280,
+        381.4375,
+        692,
+        4401.15625
+      ],
+      "text": "1Who We Are and ScopeWYRPlay is the Would You Rather service available at https://www.wyrplay.com. WYRPlay is operated by Wang Yufei, a sole individual operator based in China. This Privacy Notice explains how we handle information when you browse questions, vote, use interactive features, contact s",
+      "computed": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "PrivacyRoboto, system-ui, -apple-system, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "fontWeight": "400",
+        "color": "rgb(30, 41, 59)",
+        "backgroundColor": "rgb(255, 255, 255)"
+      },
+      "viewport_intersects": true
+    },
+    {
+      "name": "contact-banner",
+      "selector": ".privacy-contact-card",
+      "count": 1,
+      "status": "measured",
+      "box": [
+        52,
+        4818.59375,
+        920,
+        111
+      ],
+      "text": "Questions about your privacy?We're here to help. Contact us anytime.Contact us →support@wyrplay.com",
+      "computed": {
+        "display": "flex",
+        "visibility": "visible",
+        "opacity": "1",
+        "fontFamily": "PrivacyRoboto, system-ui, -apple-system, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "fontWeight": "400",
+        "color": "rgb(30, 41, 59)",
+        "backgroundColor": "rgb(255, 255, 255)"
+      },
+      "viewport_intersects": false
+    }
+  ],
+  "assets": {},
+  "full_page": true,
+  "screenshot_scale": "css"
+}

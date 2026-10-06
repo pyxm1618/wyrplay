@@ -1,0 +1,36 @@
+{
+  "eslint": "PASS (changed files)",
+  "typecheck": "PASS (tsc --noEmit)",
+  "unit_tests": {
+    "files": 60,
+    "passed": 324
+  },
+  "e2e_legal_tests": {
+    "files": 1,
+    "passed": 10,
+    "duration_seconds": 20.2
+  },
+  "viewports_verified": {
+    "baseline_1024x1536": {
+      "overflow": false,
+      "fonts_ready": true,
+      "images_ready": true
+    },
+    "desktop_1280": {
+      "overflow": false
+    },
+    "desktop_1440": {
+      "overflow": false
+    },
+    "mobile_390": {
+      "overflow": false
+    }
+  },
+  "artifacts": {
+    "reference": "UI/privacy.png (1024x1536)",
+    "candidate": "privacy-reconstruction/round-01/candidate-1024x1536.png",
+    "side_by_side": "privacy-reconstruction/round-01/report/side-by-side-1024x1536.png",
+    "overlay": "privacy-reconstruction/round-01/report/overlay-1024x1536.png",
+    "diff": "privacy-reconstruction/round-01/report/diff-1024x1536.png"
+  }
+}

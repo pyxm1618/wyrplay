@@ -1,0 +1,57 @@
+{
+  "reference": "../UI/privacy.png",
+  "css_viewport_width": 1024,
+  "expected": {
+    "url": "http://127.0.0.1:3210/privacy",
+    "title": "Privacy Notice · Would You Rather",
+    "viewport": {
+      "width": 1024,
+      "height": 1536
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "regions": [
+    {
+      "name": "hero",
+      "box": [
+        60,
+        60,
+        904,
+        250
+      ],
+      "selector": ".privacy-hero"
+    },
+    {
+      "name": "sidebar",
+      "box": [
+        60,
+        320,
+        205,
+        410
+      ],
+      "selector": ".privacy-sidebar"
+    },
+    {
+      "name": "content",
+      "box": [
+        285,
+        320,
+        680,
+        1040
+      ],
+      "selector": ".privacy-content"
+    },
+    {
+      "name": "contact-banner",
+      "box": [
+        60,
+        1380,
+        904,
+        88
+      ],
+      "selector": ".privacy-contact-card"
+    }
+  ]
+}

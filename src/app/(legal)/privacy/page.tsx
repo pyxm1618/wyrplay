@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { LegalDocument } from "@/components/legal/legal-document";
+import { PrivacyView } from "@/components/legal/privacy-view";
 import { legalConfig } from "@/config/legal.config";
 import { routeRegistry } from "@/config/routes.config";
 import { currentSeoEnvironment } from "@/platform/seo/environment-policy";
@@ -14,8 +14,7 @@ export const metadata: Metadata = metadataForRoute(
 
 export default function PrivacyPage() {
   return (
-    <LegalDocument
-      title="Privacy Notice"
+    <PrivacyView
       document={legalConfig.documents.privacy}
       sections={legalConfig.content.privacy}
     />

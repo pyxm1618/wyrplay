@@ -1,0 +1,26 @@
+{
+  "reference": "../../UI/privacy.png",
+  "candidate": "candidate.png",
+  "capture_metadata": "capture.json",
+  "expected": {
+    "url": "http://127.0.0.1:3210/privacy",
+    "title": "Privacy Notice · Would You Rather",
+    "viewport": {
+      "width": 1024,
+      "height": 1536
+    },
+    "dpr": 1,
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "measurement_baseline": "../measurement-01/measurements.json",
+  "measurement_sha256": "b3d1f15154dc38c3e7983d0b625c0578ae6e75728416dc3c88d67309502862c9",
+  "allow_height_difference": true,
+  "expected_assets": {},
+  "clips": [
+    "region-000:60,60,904,250",
+    "region-001:60,320,205,410",
+    "region-002:285,320,680,1040",
+    "region-003:60,1380,904,88"
+  ]
+}

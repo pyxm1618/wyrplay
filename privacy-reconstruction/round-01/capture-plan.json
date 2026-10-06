@@ -1,0 +1,21 @@
+{
+  "measurement_sha256": "b3d1f15154dc38c3e7983d0b625c0578ae6e75728416dc3c88d67309502862c9",
+  "targets": [
+    {
+      "name": "hero",
+      "selector": ".privacy-hero"
+    },
+    {
+      "name": "sidebar",
+      "selector": ".privacy-sidebar"
+    },
+    {
+      "name": "content",
+      "selector": ".privacy-content"
+    },
+    {
+      "name": "contact-banner",
+      "selector": ".privacy-contact-card"
+    }
+  ]
+}

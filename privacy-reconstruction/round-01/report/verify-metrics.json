@@ -1,0 +1,85 @@
+{
+  "reference": "privacy-reconstruction/round-01/../../UI/privacy.png",
+  "candidate": "privacy-reconstruction/round-01/candidate.png",
+  "reference_size": [
+    1024,
+    1536
+  ],
+  "candidate_size_original": [
+    1024,
+    5091
+  ],
+  "candidate_size_compared": [
+    1024,
+    1536
+  ],
+  "resized": false,
+  "geometry_match": false,
+  "height_delta": 3555,
+  "unmatched_tails": {
+    "candidate": "privacy-reconstruction/round-01/report/verify-candidate-tail.png"
+  },
+  "regions": [
+    {
+      "name": "overlap",
+      "size": [
+        1024,
+        1536
+      ],
+      "rms_diff": 68.999,
+      "mean_abs_diff": 32.406,
+      "candidate": "privacy-reconstruction/round-01/report/verify-overlap-candidate.png",
+      "diff": "privacy-reconstruction/round-01/report/verify-overlap-diff.png",
+      "heatmap": "privacy-reconstruction/round-01/report/verify-overlap-heatmap.png"
+    },
+    {
+      "name": "region-000",
+      "size": [
+        904,
+        250
+      ],
+      "rms_diff": 74.445,
+      "mean_abs_diff": 39.785,
+      "candidate": "privacy-reconstruction/round-01/report/verify-region-000-candidate.png",
+      "diff": "privacy-reconstruction/round-01/report/verify-region-000-diff.png",
+      "heatmap": "privacy-reconstruction/round-01/report/verify-region-000-heatmap.png"
+    },
+    {
+      "name": "region-001",
+      "size": [
+        205,
+        410
+      ],
+      "rms_diff": 43.163,
+      "mean_abs_diff": 20.794,
+      "candidate": "privacy-reconstruction/round-01/report/verify-region-001-candidate.png",
+      "diff": "privacy-reconstruction/round-01/report/verify-region-001-diff.png",
+      "heatmap": "privacy-reconstruction/round-01/report/verify-region-001-heatmap.png"
+    },
+    {
+      "name": "region-002",
+      "size": [
+        680,
+        1040
+      ],
+      "rms_diff": 55.98,
+      "mean_abs_diff": 26.087,
+      "candidate": "privacy-reconstruction/round-01/report/verify-region-002-candidate.png",
+      "diff": "privacy-reconstruction/round-01/report/verify-region-002-diff.png",
+      "heatmap": "privacy-reconstruction/round-01/report/verify-region-002-heatmap.png"
+    },
+    {
+      "name": "region-003",
+      "size": [
+        904,
+        88
+      ],
+      "rms_diff": 73.918,
+      "mean_abs_diff": 38.154,
+      "candidate": "privacy-reconstruction/round-01/report/verify-region-003-candidate.png",
+      "diff": "privacy-reconstruction/round-01/report/verify-region-003-diff.png",
+      "heatmap": "privacy-reconstruction/round-01/report/verify-region-003-heatmap.png"
+    }
+  ],
+  "note": "误差不等于还原度；字体、摄影和位置分别判断。尺寸一致也不代表视觉通过。"
+}

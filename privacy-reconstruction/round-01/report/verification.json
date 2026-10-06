@@ -1,0 +1,282 @@
+{
+  "status": "截图身份与渲染前提通过；视觉仍需复核",
+  "manifest": "/Users/milushangdi/Projects/wyrplay/privacy-reconstruction/round-01/run.json",
+  "capture": {
+    "measurement_sha256": "b3d1f15154dc38c3e7983d0b625c0578ae6e75728416dc3c88d67309502862c9",
+    "url": "http://127.0.0.1:3210/privacy",
+    "title": "Privacy Notice · Would You Rather",
+    "viewport": {
+      "width": 1024,
+      "height": 1536
+    },
+    "dpr": 1,
+    "scroll": {
+      "x": 0,
+      "y": 0
+    },
+    "document_height": 5091,
+    "fonts_ready": true,
+    "images_ready": true,
+    "document_overflow_x": false,
+    "captured_at": "2026-10-06T08:05:04.507Z",
+    "elements": [
+      {
+        "name": "hero",
+        "selector": ".privacy-hero",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          52,
+          117,
+          920,
+          248.4375
+        ],
+        "text": "Your Privacy MattersPrivacy NoticeThis notice explains how WYRPlay collects, uses, and protects your information.Effective 2026-10-04 | Last updated: 2026-10-04",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "PrivacyRoboto, system-ui, -apple-system, sans-serif",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": "400",
+          "color": "rgb(30, 41, 59)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "sidebar",
+        "selector": ".privacy-sidebar",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          52,
+          381.4375,
+          200,
+          606.25
+        ],
+        "text": "On this page1Who We Are and Scope2Audience and Age Rules3Information You Provide4Gameplay, Voting, and Anonymous Identifiers5Technical and Security Information6Cookies, Local Storage, and Similar Technologies7Site Measurement and Analytics8How We Use Information9How We Disclose Information10Children",
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "PrivacyRoboto, system-ui, -apple-system, sans-serif",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": "400",
+          "color": "rgb(30, 41, 59)",
+          "backgroundColor": "rgb(255, 255, 255)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "content",
+        "selector": ".privacy-content",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          280,
+          381.4375,
+          692,
+          4401.15625
+        ],
+        "text": "1Who We Are and ScopeWYRPlay is the Would You Rather service available at https://www.wyrplay.com. WYRPlay is operated by Wang Yufei, a sole individual operator based in China. This Privacy Notice explains how we handle information when you browse questions, vote, use interactive features, contact s",
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "PrivacyRoboto, system-ui, -apple-system, sans-serif",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": "400",
+          "color": "rgb(30, 41, 59)",
+          "backgroundColor": "rgb(255, 255, 255)"
+        },
+        "viewport_intersects": true
+      },
+      {
+        "name": "contact-banner",
+        "selector": ".privacy-contact-card",
+        "count": 1,
+        "status": "measured",
+        "box": [
+          52,
+          4818.59375,
+          920,
+          111
+        ],
+        "text": "Questions about your privacy?We're here to help. Contact us anytime.Contact us →support@wyrplay.com",
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "PrivacyRoboto, system-ui, -apple-system, sans-serif",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": "400",
+          "color": "rgb(30, 41, 59)",
+          "backgroundColor": "rgb(255, 255, 255)"
+        },
+        "viewport_intersects": false
+      }
+    ],
+    "assets": {},
+    "full_page": true,
+    "screenshot_scale": "css"
+  },
+  "section_positions": [],
+  "comparison": "privacy-reconstruction/round-01/report/verify-metrics.json",
+  "geometry": {
+    "measurement_sha256": "b3d1f15154dc38c3e7983d0b625c0578ae6e75728416dc3c88d67309502862c9",
+    "complete": true,
+    "unavailable_regions": [],
+    "regions": [
+      {
+        "name": "hero",
+        "selector": ".privacy-hero",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          52,
+          117,
+          920,
+          248.4375
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "PrivacyRoboto, system-ui, -apple-system, sans-serif",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": "400",
+          "color": "rgb(30, 41, 59)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        "reference_css_box": [
+          60.0,
+          60.0,
+          904.0,
+          250.0
+        ],
+        "delta_css": [
+          -8.0,
+          57.0,
+          16.0,
+          -1.562
+        ],
+        "max_abs_delta_css": 57.0
+      },
+      {
+        "name": "sidebar",
+        "selector": ".privacy-sidebar",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          52,
+          381.4375,
+          200,
+          606.25
+        ],
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "PrivacyRoboto, system-ui, -apple-system, sans-serif",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": "400",
+          "color": "rgb(30, 41, 59)",
+          "backgroundColor": "rgb(255, 255, 255)"
+        },
+        "reference_css_box": [
+          60.0,
+          320.0,
+          205.0,
+          410.0
+        ],
+        "delta_css": [
+          -8.0,
+          61.438,
+          -5.0,
+          196.25
+        ],
+        "max_abs_delta_css": 196.25
+      },
+      {
+        "name": "content",
+        "selector": ".privacy-content",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          280,
+          381.4375,
+          692,
+          4401.15625
+        ],
+        "computed": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "PrivacyRoboto, system-ui, -apple-system, sans-serif",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": "400",
+          "color": "rgb(30, 41, 59)",
+          "backgroundColor": "rgb(255, 255, 255)"
+        },
+        "reference_css_box": [
+          285.0,
+          320.0,
+          680.0,
+          1040.0
+        ],
+        "delta_css": [
+          -5.0,
+          61.438,
+          12.0,
+          3361.156
+        ],
+        "max_abs_delta_css": 3361.156
+      },
+      {
+        "name": "contact-banner",
+        "selector": ".privacy-contact-card",
+        "status": "measured",
+        "box_type": "element",
+        "actual_css_box": [
+          52,
+          4818.59375,
+          920,
+          111
+        ],
+        "computed": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "fontFamily": "PrivacyRoboto, system-ui, -apple-system, sans-serif",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": "400",
+          "color": "rgb(30, 41, 59)",
+          "backgroundColor": "rgb(255, 255, 255)"
+        },
+        "reference_css_box": [
+          60.0,
+          1380.0,
+          904.0,
+          88.0
+        ],
+        "delta_css": [
+          -8.0,
+          3438.594,
+          16.0,
+          23.0
+        ],
+        "max_abs_delta_css": 3438.594
+      }
+    ],
+    "note": "偏差是 CSS 像素，不是还原率；布局可测量不证明未遮挡、字体正确或交互可用。"
+  }
+}
