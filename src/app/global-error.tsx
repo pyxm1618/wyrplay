@@ -60,10 +60,14 @@ export default function GlobalError() {
                 <StatusIcon kind="retry" />
                 Try Again
               </button>
-              <a className="status-button" href="/">
+              <button
+                type="button"
+                className="status-button"
+                onClick={() => window.location.assign("/")}
+              >
                 <StatusIcon kind="home" />
                 Back to Home
-              </a>
+              </button>
             </div>
           </div>
         </main>
