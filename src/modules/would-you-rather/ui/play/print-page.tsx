@@ -493,9 +493,7 @@ export function PrintPage({
                           value
                             ? { ...current, age: value }
                             : {
-                                ...(current.collection
-                                  ? { collection: current.collection }
-                                  : {}),
+                                ...(current.collection ? { collection: current.collection } : {}),
                                 ...(current.occasion ? { occasion: current.occasion } : {}),
                               },
                         );
