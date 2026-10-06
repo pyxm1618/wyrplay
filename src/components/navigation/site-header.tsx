@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { SiteBrand } from "./site-brand";
 
@@ -35,6 +35,10 @@ export function SiteHeader({
   const homeHref = localePath(siteConfig, locale, "/");
   const toLocaleHref = (href: string) => localePath(siteConfig, locale, href);
 
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
   return (
     <header
       data-site-header
@@ -57,7 +61,7 @@ export function SiteHeader({
 
         <nav
           aria-label="Primary navigation"
-          className="ml-4 hidden flex-1 items-center justify-center gap-1 lg:flex"
+          className="ml-4 hidden flex-1 items-center justify-center gap-1 xl:flex"
         >
           {navigationConfig.header.primary.map((item) => {
             const active = isActive(pathname, item);
@@ -104,7 +108,7 @@ export function SiteHeader({
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
             onClick={() => setMobileMenuOpen((open) => !open)}
-            className="flex size-10 items-center justify-center rounded-full border border-border bg-surface text-foreground transition hover:bg-surface-muted lg:hidden"
+            className="flex size-10 items-center justify-center rounded-full border border-border bg-surface text-foreground transition hover:bg-surface-muted xl:hidden"
           >
             <span aria-hidden="true" className="text-xl leading-none">
               {mobileMenuOpen ? "×" : "☰"}
@@ -114,7 +118,7 @@ export function SiteHeader({
       </div>
 
       {mobileMenuOpen ? (
-        <div id="site-mobile-navigation" className="border-t border-border bg-background lg:hidden">
+        <div id="site-mobile-navigation" className="border-t border-border bg-background xl:hidden">
           <nav
             aria-label="Mobile navigation"
             className="mx-auto flex w-full max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6"
