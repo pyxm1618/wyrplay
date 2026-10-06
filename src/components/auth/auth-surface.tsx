@@ -13,7 +13,7 @@ export function AuthSurface({ mode, children }: Readonly<{ mode: AuthMode; child
     <main className={`auth-page ${mode}`}>
       <header className="auth-header">
         <Link className="auth-logo" href="/" aria-label="WYRPlay home">
-          <Image src="/brand/logo.svg" alt="" width={48} height={48} priority />
+          <Image src="/brand/logo.svg" alt="" width={48} height={48} />
           <span>
             WYR<span>Play</span>
           </span>
