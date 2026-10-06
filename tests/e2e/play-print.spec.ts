@@ -131,7 +131,10 @@ test("empty generated print set clears stale preview and disables output actions
 
   await expect(page.locator(".print-pool")).toContainText("0 questions");
   await expect(page.locator(".preview-paper")).toHaveCount(0);
-  await expect(page.getByRole("status")).toContainText("No approved questions in this set.");
+  await expect(page.locator(".print-document")).toHaveCount(0);
+  await expect(page.locator(".preview-paper-viewport").getByRole("status")).toContainText(
+    "No approved questions in this set.",
+  );
 
   const previewFooter = page.locator(".print-preview footer");
   const printButton = previewFooter.getByRole("button", { name: "Print", exact: true });
