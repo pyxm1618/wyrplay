@@ -6,7 +6,7 @@ import "./globals.css";
 export default function GlobalNotFoundPage() {
   return (
     <html lang={siteConfig.defaultLocale}>
-      <body>
+      <body style={{ margin: 0, background: "#fff8ee" }}>
         <NotFoundPage />
       </body>
     </html>
