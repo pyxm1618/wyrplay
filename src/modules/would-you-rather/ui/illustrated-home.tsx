@@ -14,6 +14,13 @@ const categories = [
     href: "/leaderboards",
   },
   {
+    title: "For Kids",
+    description: "Clean & imaginative",
+    crop: [514, 686, 115, 87],
+    color: "classroom",
+    key: "kids",
+  },
+  {
     title: "Funny",
     description: "Lighten the mood",
     crop: [144, 686, 112, 87],
@@ -33,13 +40,6 @@ const categories = [
     crop: [389, 686, 120, 87],
     color: "couples",
     key: "couples",
-  },
-  {
-    title: "Classroom",
-    description: "Clean & imaginative",
-    crop: [514, 686, 115, 87],
-    color: "classroom",
-    key: "kids",
   },
   {
     title: "Hard Questions",
