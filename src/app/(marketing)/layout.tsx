@@ -3,7 +3,7 @@ import { connection } from "next/server";
 import type { ReactNode } from "react";
 
 import { AnalyticsBoundary } from "@/components/analytics/analytics-boundary";
-import { MarketingShell } from "@/components/navigation/marketing-shell";
+import { SiteShell } from "@/components/navigation/site-shell";
 import { siteConfig } from "@/config/site.config";
 import { rootMetadata } from "@/platform/seo/root-metadata";
 
@@ -17,7 +17,7 @@ export default async function MarketingLayout({ children }: Readonly<{ children:
   return (
     <html lang={siteConfig.defaultLocale} data-theme="dark">
       <body>
-        <MarketingShell>{children}</MarketingShell>
+        <SiteShell>{children}</SiteShell>
         <AnalyticsBoundary />
       </body>
     </html>

@@ -2,13 +2,6 @@
   min-height: 1024px;
   background: #fffaf0;
 }
-.print-page .play-header {
-  max-width: 1380px;
-  height: 85px;
-}
-.print-page .play-header img {
-  width: 175px;
-}
 .print-workspace {
   display: grid;
   grid-template-columns: minmax(0, 1.16fr) minmax(0, 1fr);
@@ -48,14 +41,17 @@
   margin-bottom: 20px;
   font-size: 18px;
 }
-.print-pool a {
+.print-pool a,
+.print-pool button {
   color: #007dff;
   font-weight: 700;
   background: #edf8ff;
+  border: 0;
   border-radius: 12px;
   padding: 12px 20px;
   white-space: nowrap;
 }
+.question-source-settings,
 .format-settings,
 .print-settings {
   background: #fffeff;
@@ -66,6 +62,75 @@
 .print-page h2 {
   font: 400 29px/1.15 PlayHand;
   margin: 0 0 15px;
+}
+.question-source-lead {
+  margin: -6px 0 16px;
+  color: #425373;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.requested-set-note {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid #dcecff;
+  border-radius: 14px;
+  background: #f4faff;
+  padding: 14px 16px;
+  color: #1b3557;
+}
+.requested-set-note span {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.print-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.print-filter-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #263552;
+}
+.print-filter-grid select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #dcd7ce;
+  border-radius: 10px;
+  background: #fff;
+  color: #1a2233;
+  padding: 10px 12px;
+  font-size: 15px;
+}
+.print-filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+.print-filter-actions button {
+  border: 0;
+  border-radius: 11px;
+  padding: 11px 16px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.print-filter-actions .generate-set {
+  background: #008bff;
+  color: white;
+}
+.print-filter-actions .reset-set {
+  background: #eef1f5;
+  color: #27334b;
+}
+.print-match-count {
+  margin: 11px 0 0;
+  color: #526185;
+  font-size: 14px;
 }
 .format-options {
   display: grid;
@@ -334,6 +399,16 @@
   }
 }
 @media (max-width: 800px) {
+  .print-filter-grid {
+    grid-template-columns: 1fr;
+  }
+  .print-filter-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .print-filter-actions button {
+    width: 100%;
+  }
   .print-workspace {
     grid-template-columns: 1fr;
     margin: 20px 15px;

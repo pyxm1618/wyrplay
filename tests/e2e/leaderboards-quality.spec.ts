@@ -177,7 +177,7 @@ test("seven responsive sizes, loaded assets, clean console and mobile voting", a
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole("button", { name: "Open mobile menu" }).click();
-  await expect(page.getByRole("navigation", { name: "Main navigation" })).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(page.getByRole("button", { name: "Open mobile menu" })).toHaveAttribute(
     "aria-expanded",

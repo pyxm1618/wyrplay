@@ -15,7 +15,7 @@ import { useSavedQuestions } from "../use-saved-questions";
 import { FinderIcon } from "./icon";
 import { FinderFilters } from "./filters";
 import { FinderQuestionCard } from "./question-card";
-import { FinderCategories, FinderDecoration, FinderHeader, FinderHero } from "./chrome";
+import { FinderCategories, FinderDecoration, FinderHero } from "./chrome";
 import "./finder.css";
 import "./finder-responsive.css";
 
@@ -283,11 +283,6 @@ export function FinderExperience({
   return (
     <div className="finder-page" data-theme="light">
       <FinderDecoration />
-      <FinderHeader
-        authEnabled={authEnabled}
-        onSearch={() => input.current?.focus()}
-        onPlay={() => openPlayer()}
-      />
       <FinderHero />
       <div className="search-area" id="search">
         <form

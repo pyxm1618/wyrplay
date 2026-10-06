@@ -100,8 +100,10 @@ export function PresenterModal({
     if (!isOpen) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    document.documentElement.dataset.presenterOpen = "true";
     return () => {
       document.body.style.overflow = previousOverflow;
+      delete document.documentElement.dataset.presenterOpen;
     };
   }, [isOpen]);
 

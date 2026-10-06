@@ -134,3 +134,28 @@
 .font-display {
   font-family: var(--font-display);
 }
+
+.theme-toggle-moon {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle-sun {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle-moon {
+  display: block;
+}
+
+/* Site-shell visibility rules shared by every route. */
+html[data-presenter-open="true"] [data-site-header],
+html[data-presenter-open="true"] [data-site-footer] {
+  display: none !important;
+}
+
+@media print {
+  [data-site-header],
+  [data-site-footer] {
+    display: none !important;
+  }
+}

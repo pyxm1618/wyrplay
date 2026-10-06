@@ -5,8 +5,10 @@ import { useEffect, useState, startTransition, useMemo, useRef } from "react";
 import { flushSync } from "react-dom";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import type { Question } from "../../types";
+import type { FeaturedCollectionKey, Occasion, Question } from "../../types";
 import { resolveQuestionPool } from "../../domain/play-session";
+import { type FinderAge } from "../../domain/finder";
+import { filterPrintQuestions, type PrintQuestionCriteria } from "../../domain/print-question-pool";
 import {
   createPrintLayout,
   type PrintFormat,
@@ -23,24 +25,55 @@ import {
   getQrImage,
   PRINT_QR_CONFIG,
 } from "./print-renderer";
-import { PlayHeader, PlayArtwork } from "./art";
+import { PlayArtwork } from "./art";
 import { FinderIcon } from "../finder/icon";
 import "./play.css";
 import "./print.css";
 
+const printThemes: readonly [FeaturedCollectionKey, string][] = [
+  ["kids", "Kids"],
+  ["funny", "Funny"],
+  ["hard", "Hard"],
+  ["friends", "Friends"],
+  ["couples", "Couples"],
+];
+
+const printAudiences: readonly [FinderAge, string][] = [
+  ["kids", "Kids"],
+  ["7-9", "Ages 7–9"],
+  ["10-12", "Ages 10–12"],
+  ["teens", "Teens 13–17"],
+  ["adults", "Adults 18+"],
+];
+
+const printScenarios: readonly [Occasion, string][] = [
+  ["classroom", "Classroom"],
+  ["party", "Party"],
+  ["road-trip", "Road Trip"],
+  ["date-night", "Date Night"],
+  ["dinner", "Dinner"],
+];
+
 export function PrintPage({
   questions,
-  authEnabled,
 }: {
   readonly questions: readonly Question[];
   readonly authEnabled: boolean;
 }) {
   const search = useSearchParams();
   const requestedSet = search.get("set");
-  const availablePool = useMemo(
+  const requestedPool = useMemo(
     () => resolveQuestionPool(questions, requestedSet),
     [questions, requestedSet],
   );
+  const [useRequestedSet, setUseRequestedSet] = useState(requestedSet !== null);
+  const [questionCriteriaDraft, setQuestionCriteriaDraft] = useState<PrintQuestionCriteria>({});
+  const [questionCriteria, setQuestionCriteria] = useState<PrintQuestionCriteria>({});
+  const generatedPool = useMemo(
+    () => filterPrintQuestions(questions, questionCriteria),
+    [questions, questionCriteria],
+  );
+  const availablePool = useRequestedSet ? requestedPool : generatedPool;
 
   const [questionCount, setQuestionCount] = useState<number | null>(null);
   const pool = useMemo(
@@ -62,6 +95,12 @@ export function PrintPage({
   const [itemsPerPage, setItemsPerPage] = useState<number>(format === "cards" ? 6 : 0);
   const [page, setPage] = useState(0);
   const [zoom, setZoom] = useState(100);
+
+  useEffect(() => {
+    setUseRequestedSet(requestedSet !== null);
+    setQuestionCount(null);
+    setPage(0);
+  }, [requestedSet]);
 
   // 资源与预览状态
   const [previewUrl, setPreviewUrl] = useState<string>("");
@@ -369,7 +408,6 @@ export function PrintPage({
     <div className="print-page" data-format={format}>
       <style>{`@page { size: ${paper === "a4" ? "A4" : "letter"}; margin: 0; }`}</style>
       <PlayArtwork />
-      <PlayHeader authEnabled={authEnabled} />
       <div className="print-workspace">
         <section className="print-editor">
           <Link className="print-back" href="/find-questions?restore=1">
@@ -383,9 +421,149 @@ export function PrintPage({
           </p>
           <div className="print-pool">
             <span>
-              <strong>{pool.length}</strong> questions in this set
+              <strong>{pool.length}</strong>{" "}
+              {useRequestedSet
+                ? "questions from your selected set"
+                : "questions in this generated set"}
             </span>
-            <Link href="/find-questions?restore=1">Change questions</Link>
+            {useRequestedSet ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setUseRequestedSet(false);
+                  setQuestionCount(null);
+                  setPage(0);
+                }}
+              >
+                Choose a different set
+              </button>
+            ) : (
+              <Link href="/find-questions?restore=1">Advanced finder</Link>
+            )}
+          </div>
+
+          <div className="question-source-settings">
+            <h2>Choose Questions</h2>
+            <p className="question-source-lead">
+              Build a printable set here, or use Find Questions when you want keyword search and
+              hand-picked questions.
+            </p>
+            {useRequestedSet ? (
+              <div className="requested-set-note">
+                <strong>Using your exact Finder selection.</strong>
+                <span>
+                  Your selected question IDs stay unchanged until you choose a different set.
+                </span>
+              </div>
+            ) : (
+              <>
+                <div className="print-filter-grid">
+                  <label>
+                    Theme
+                    <select
+                      value={questionCriteriaDraft.collection ?? ""}
+                      onChange={(event) => {
+                        const value = event.target.value as FeaturedCollectionKey | "";
+                        setQuestionCriteriaDraft((current) =>
+                          value
+                            ? { ...current, collection: value }
+                            : {
+                                ...(current.age ? { age: current.age } : {}),
+                                ...(current.occasion ? { occasion: current.occasion } : {}),
+                              },
+                        );
+                      }}
+                    >
+                      <option value="">All themes</option>
+                      {printThemes.map(([value, label]) => (
+                        <option key={value} value={value}>
+                          {label}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+
+                  <label>
+                    Audience / Age
+                    <select
+                      value={questionCriteriaDraft.age ?? ""}
+                      onChange={(event) => {
+                        const value = event.target.value as FinderAge | "";
+                        setQuestionCriteriaDraft((current) =>
+                          value
+                            ? { ...current, age: value }
+                            : {
+                                ...(current.collection ? { collection: current.collection } : {}),
+                                ...(current.occasion ? { occasion: current.occasion } : {}),
+                              },
+                        );
+                      }}
+                    >
+                      <option value="">All audiences</option>
+                      {printAudiences.map(([value, label]) => (
+                        <option key={value} value={value}>
+                          {label}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+
+                  <label>
+                    Scenario
+                    <select
+                      value={questionCriteriaDraft.occasion ?? ""}
+                      onChange={(event) => {
+                        const value = event.target.value as Occasion | "";
+                        setQuestionCriteriaDraft((current) =>
+                          value
+                            ? { ...current, occasion: value }
+                            : {
+                                ...(current.collection ? { collection: current.collection } : {}),
+                                ...(current.age ? { age: current.age } : {}),
+                              },
+                        );
+                      }}
+                    >
+                      <option value="">All scenarios</option>
+                      {printScenarios.map(([value, label]) => (
+                        <option key={value} value={value}>
+                          {label}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
+
+                <div className="print-filter-actions">
+                  <button
+                    type="button"
+                    className="generate-set"
+                    onClick={() => {
+                      setQuestionCriteria(questionCriteriaDraft);
+                      setQuestionCount(null);
+                      setPage(0);
+                    }}
+                  >
+                    Generate question set
+                  </button>
+                  <button
+                    type="button"
+                    className="reset-set"
+                    onClick={() => {
+                      setQuestionCriteriaDraft({});
+                      setQuestionCriteria({});
+                      setQuestionCount(null);
+                      setPage(0);
+                    }}
+                  >
+                    Reset
+                  </button>
+                </div>
+                <p className="print-match-count" role="status">
+                  {generatedPool.length} approved questions match the current generated set.
+                </p>
+              </>
+            )}
           </div>
 
           <div className="format-settings">

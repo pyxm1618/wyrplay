@@ -1,195 +1,162 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
-import { marketingChrome } from "./marketing-chrome";
+import { SiteBrand } from "./site-brand";
 
+import { navigationConfig, type NavigationItem } from "@/config/navigation.config";
 import { siteConfig } from "@/config/site.config";
-import { featuresConfig } from "@/config/features.config";
-import { IllustratedHomeHeader, ThemeToggle } from "@/modules/would-you-rather";
+import { ThemeToggle } from "@/modules/would-you-rather";
 import { localePath } from "@/platform/i18n/routing";
 
-const navLink = "text-sm font-medium text-muted transition-colors hover:text-foreground";
-const mobileNavLink =
-  "block py-2 text-base font-medium text-foreground transition-colors hover:text-[#e27d32]";
+const desktopLink =
+  "rounded-full px-3 py-2 text-sm font-semibold text-muted transition-colors hover:bg-surface hover:text-foreground";
+const mobileLink =
+  "block rounded-xl px-3 py-3 text-base font-semibold text-foreground transition-colors hover:bg-surface-muted";
+
+function isActive(pathname: string, item: NavigationItem): boolean {
+  const activeRoutes = item.activeRoutes ?? [item.href];
+  return activeRoutes.some((route) =>
+    route === "/" ? pathname === "/" : pathname === route || pathname.startsWith(`${route}/`),
+  );
+}
 
 export function SiteHeader({
   locale = siteConfig.defaultLocale,
-  appearance,
-  ownHeader,
+  authEnabled = false,
 }: Readonly<{
   locale?: string;
-  appearance?: "default" | "illustrated-home";
-  ownHeader?: boolean;
+  authEnabled?: boolean;
 }> = {}) {
   const pathname = usePathname();
-  const chrome = marketingChrome(pathname);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const homeHref = localePath(siteConfig, locale, "/");
-
-  const closeMenu = () => setMobileMenuOpen(false);
-
-  const isOwnHeader = ownHeader ?? chrome.ownHeader;
-  const currentAppearance = appearance ?? chrome.headerAppearance;
-
-  if (isOwnHeader) return null;
-  if (currentAppearance === "illustrated-home") {
-    return (
-      <div className="illustrated-home homepage">
-        <IllustratedHomeHeader authEnabled={featuresConfig.auth.enabled} />
-      </div>
-    );
-  }
+  const toLocaleHref = (href: string) => localePath(siteConfig, locale, href);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md transition-colors">
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link
-          className="flex items-center gap-3 text-base font-bold tracking-tight text-foreground transition-opacity hover:opacity-90"
-          href={homeHref}
-          aria-label={`${siteConfig.name} Home`}
-          onClick={closeMenu}
+    <header
+      data-site-header
+      className="sticky top-0 z-40 border-b border-border bg-background/95 text-foreground backdrop-blur-md print:hidden"
+      onKeyDown={(event) => {
+        if (event.key === "Escape") setMobileMenuOpen(false);
+      }}
+    >
+      {pathname === homeHref ? (
+        <a
+          href="#play"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
         >
-          <Image
-            src="/brand/logo.svg"
-            alt={`${siteConfig.name} Logo`}
-            width={32}
-            height={32}
-            className="size-8 object-contain"
-            priority
-          />
-          <span className="font-serif text-lg tracking-tight sm:inline">{siteConfig.name}</span>
-        </Link>
+          Skip to play
+        </a>
+      ) : null}
 
-        {/* 桌面端主导航 */}
-        <nav aria-label="Primary navigation" className="hidden items-center gap-5 lg:gap-6 xl:flex">
-          <Link className={navLink} href="/find-questions">
-            Find Questions
-          </Link>
-          <Link className={navLink} href="/#play">
-            Play
-          </Link>
-          <Link className={navLink} href="/#questions">
-            Questions
-          </Link>
-          <Link className={navLink} href="/would-you-rather-questions-for-kids">
-            Kids
-          </Link>
-          <Link className={navLink} href="/funny-would-you-rather-questions">
-            Funny
-          </Link>
-          <Link className={navLink} href="/hard-would-you-rather-questions">
-            Hard
-          </Link>
-          <Link className={navLink} href="/would-you-rather-questions-for-friends">
-            Friends
-          </Link>
-          <Link className={navLink} href="/would-you-rather-questions-for-couples">
-            Couples
-          </Link>
-          <Link className={navLink} href="/leaderboards">
-            Leaderboards
-          </Link>
+      <div className="mx-auto flex h-18 w-full max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+        <SiteBrand href={homeHref} className="shrink-0" />
+
+        <nav
+          aria-label="Primary navigation"
+          className="ml-4 hidden flex-1 items-center justify-center gap-1 lg:flex"
+        >
+          {navigationConfig.header.primary.map((item) => {
+            const active = isActive(pathname, item);
+            return (
+              <Link
+                key={item.href}
+                href={toLocaleHref(item.href)}
+                aria-current={active ? "page" : undefined}
+                className={`${desktopLink} ${active ? "bg-surface text-foreground" : ""}`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
+          {authEnabled ? (
+            <>
+              <Link
+                href={toLocaleHref(navigationConfig.header.auth.loggedOut[0].href)}
+                className="hidden px-2 py-2 text-sm font-semibold text-muted hover:text-foreground xl:inline-flex"
+              >
+                {navigationConfig.header.auth.loggedOut[0].label}
+              </Link>
+              <Link
+                href={toLocaleHref(navigationConfig.header.auth.loggedOut[1].href)}
+                className="hidden rounded-full border border-border bg-surface px-4 py-2 text-sm font-semibold text-foreground transition hover:bg-surface-muted xl:inline-flex"
+              >
+                {navigationConfig.header.auth.loggedOut[1].label}
+              </Link>
+            </>
+          ) : null}
           <Link
-            href="/#play"
-            className="hidden items-center justify-center rounded-full bg-[#121418] text-white dark:bg-white dark:text-black px-4 py-2 text-xs font-semibold shadow transition hover:opacity-90 active:scale-95 sm:inline-flex sm:text-sm"
+            href={toLocaleHref(navigationConfig.header.primaryCta.href)}
+            className="hidden items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-bold text-background shadow-sm transition hover:opacity-90 sm:inline-flex"
           >
-            Start Playing
+            {navigationConfig.header.primaryCta.label}
           </Link>
-
-          {/* 移动端汉堡菜单触发按钮 */}
           <button
             type="button"
-            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            aria-controls="site-mobile-navigation"
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
-            className="flex size-9 items-center justify-center rounded-full border border-border text-foreground transition hover:bg-surface xl:hidden"
+            onClick={() => setMobileMenuOpen((open) => !open)}
+            className="flex size-10 items-center justify-center rounded-full border border-border bg-surface text-foreground transition hover:bg-surface-muted lg:hidden"
           >
-            {mobileMenuOpen ? (
-              <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            ) : (
-              <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            )}
+            <span aria-hidden="true" className="text-xl leading-none">
+              {mobileMenuOpen ? "×" : "☰"}
+            </span>
           </button>
         </div>
       </div>
 
-      {/* 移动端展开菜单 */}
-      {mobileMenuOpen && (
-        <div className="border-t border-border bg-background px-5 py-4 xl:hidden">
-          <nav aria-label="Mobile navigation" className="flex flex-col space-y-2">
-            <Link className={mobileNavLink} href="/find-questions" onClick={closeMenu}>
-              Find Questions
-            </Link>
-            <Link className={mobileNavLink} href="/#play" onClick={closeMenu}>
-              🎮 Play Live Dilemmas
-            </Link>
-            <Link className={mobileNavLink} href="/#questions" onClick={closeMenu}>
-              📋 All Questions Directory
-            </Link>
-            <Link className={mobileNavLink} href="/leaderboards" onClick={closeMenu}>
-              Leaderboards
-            </Link>
-            <div className="my-1 border-t border-border/60" />
+      {mobileMenuOpen ? (
+        <div id="site-mobile-navigation" className="border-t border-border bg-background lg:hidden">
+          <nav
+            aria-label="Mobile navigation"
+            className="mx-auto flex w-full max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6"
+          >
+            {navigationConfig.header.primary.map((item) => {
+              const active = isActive(pathname, item);
+              return (
+                <Link
+                  key={item.href}
+                  href={toLocaleHref(item.href)}
+                  aria-current={active ? "page" : undefined}
+                  className={`${mobileLink} ${active ? "bg-surface-muted" : ""}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
             <Link
-              className={mobileNavLink}
-              href="/would-you-rather-questions-for-kids"
-              onClick={closeMenu}
+              href={toLocaleHref(navigationConfig.header.primaryCta.href)}
+              className="mt-2 flex items-center justify-center rounded-xl bg-foreground px-4 py-3 text-base font-bold text-background"
+              onClick={() => setMobileMenuOpen(false)}
             >
-              🧒 Kids Questions
+              {navigationConfig.header.primaryCta.label}
             </Link>
-            <Link
-              className={mobileNavLink}
-              href="/funny-would-you-rather-questions"
-              onClick={closeMenu}
-            >
-              😂 Funny Questions
-            </Link>
-            <Link
-              className={mobileNavLink}
-              href="/hard-would-you-rather-questions"
-              onClick={closeMenu}
-            >
-              🧠 Hard Dilemmas
-            </Link>
-            <Link
-              className={mobileNavLink}
-              href="/would-you-rather-questions-for-friends"
-              onClick={closeMenu}
-            >
-              👥 Friends Dilemmas
-            </Link>
-            <Link
-              className={mobileNavLink}
-              href="/would-you-rather-questions-for-couples"
-              onClick={closeMenu}
-            >
-              ❤️ Couples Dilemmas
-            </Link>
+            {authEnabled ? (
+              <div className="mt-2 grid grid-cols-2 gap-2 border-t border-border pt-3">
+                {navigationConfig.header.auth.loggedOut.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={toLocaleHref(item.href)}
+                    className="rounded-xl border border-border px-3 py-3 text-center text-sm font-semibold text-foreground"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
           </nav>
         </div>
-      )}
+      ) : null}
     </header>
   );
 }

@@ -21,6 +21,7 @@ const funnyRoute = indexableRoute("/funny-would-you-rather-questions");
 const hardRoute = indexableRoute("/hard-would-you-rather-questions");
 const friendsRoute = indexableRoute("/would-you-rather-questions-for-friends");
 const couplesRoute = indexableRoute("/would-you-rather-questions-for-couples");
+const questionsRoute = indexableRoute("/questions");
 
 const kidsQuestions = getQuestionsByCollection("kids");
 const funnyQuestions = getQuestionsByCollection("funny");
@@ -29,6 +30,94 @@ const friendsQuestions = getQuestionsByCollection("friends");
 const couplesQuestions = getQuestionsByCollection("couples");
 
 export const seoLandingPages: readonly SeoLandingConfig[] = [
+  {
+    route: "/questions",
+    sections: [
+      {
+        type: "hero",
+        enabled: true,
+        order: 10,
+        eyebrow: "Browse by Audience, Style & Relationship",
+        h1: questionsRoute.h1,
+        lead: "Choose from WYRPlay's existing question collections. Every link below points to a real, reviewed category page; use Find Questions when you want more granular filters.",
+        primaryCta: { label: "Find specific questions", href: "/find-questions" },
+        secondaryCta: { label: "Build a printable set", href: "/print" },
+      },
+      {
+        type: "use-cases",
+        enabled: true,
+        order: 20,
+        heading: "By Audience",
+        items: [
+          {
+            title: "Kids Would You Rather Questions",
+            body: "Clean, imaginative dilemmas designed for family and classroom-friendly play.",
+            href: "/would-you-rather-questions-for-kids",
+          },
+        ],
+      },
+      {
+        type: "use-cases",
+        enabled: true,
+        order: 30,
+        heading: "By Style",
+        items: [
+          {
+            title: "Funny Would You Rather Questions",
+            body: "Absurd and playful choices for groups that want a lighter round.",
+            href: "/funny-would-you-rather-questions",
+          },
+          {
+            title: "Hard Would You Rather Questions",
+            body: "Tougher trade-offs for players who want deeper debate.",
+            href: "/hard-would-you-rather-questions",
+          },
+        ],
+      },
+      {
+        type: "use-cases",
+        enabled: true,
+        order: 40,
+        heading: "By Relationship",
+        items: [
+          {
+            title: "Would You Rather Questions for Friends",
+            body: "Conversation-starting dilemmas for hangouts, game nights, and close friends.",
+            href: "/would-you-rather-questions-for-friends",
+          },
+          {
+            title: "Would You Rather Questions for Couples",
+            body: "Relationship-focused prompts for dates and conversations with a partner.",
+            href: "/would-you-rather-questions-for-couples",
+          },
+        ],
+      },
+      {
+        type: "related-resources",
+        enabled: true,
+        order: 50,
+        heading: "More Ways to Use the Question Bank",
+        links: [
+          {
+            label: "Search and filter the full question bank",
+            href: "/find-questions",
+            description: "Use audience, occasion, tone, difficulty, and keyword filters.",
+          },
+          {
+            label: "Create a printable question set",
+            href: "/print",
+            description: "Choose a question count, format, paper size, and export option.",
+          },
+          {
+            label: "Return to WYRPlay home",
+            href: "/",
+            description: "Play immediately or browse today's highlighted questions.",
+          },
+        ],
+      },
+    ],
+  },
+
   // 1. Kids
   {
     route: "/would-you-rather-questions-for-kids",

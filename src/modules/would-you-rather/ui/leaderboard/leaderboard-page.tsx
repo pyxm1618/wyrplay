@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useRef, useState, useTransition } from "react";
 import {
@@ -69,17 +68,10 @@ function randomAlternative(entries: readonly RankedQuestion[], currentId: string
   return alternatives[Math.floor(Math.random() * alternatives.length)];
 }
 
-export function LeaderboardPage({
-  result,
-  authEnabled,
-}: {
-  result: LeaderboardResult;
-  authEnabled: boolean;
-}) {
+export function LeaderboardPage({ result }: { result: LeaderboardResult }) {
   const router = useRouter();
   const [refreshing, startRefresh] = useTransition();
   const [period, setPeriod] = useState<LeaderboardPeriod>("all");
-  const [menuOpen, setMenuOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
@@ -125,72 +117,6 @@ export function LeaderboardPage({
   return (
     <div className="leaderboard-page" aria-busy={refreshing}>
       <div className="page-shell">
-        <header
-          className="site-header"
-          onKeyDown={(event) => {
-            if (event.key === "Escape") setMenuOpen(false);
-          }}
-        >
-          <Link href="/" className="brand" aria-label="WYRPlay home">
-            <Image src="/brand/logo.svg" alt="" width={40} height={40} priority />
-            <span>WYRPLAY</span>
-          </Link>
-          <nav
-            id="leaderboard-navigation"
-            className={menuOpen ? "menu-open" : ""}
-            aria-label="Main navigation"
-            onClick={() => setMenuOpen(false)}
-          >
-            <Link href="/">Home</Link>
-            <Link href="/find-questions">Questions</Link>
-            <Link href="/find-questions#category-links">Categories</Link>
-            <Link href="/leaderboards" aria-current="page" className="nav-active">
-              Leaderboards
-            </Link>
-            <Link href="/play">Play</Link>
-            {authEnabled && (
-              <>
-                <Link className="mobile-account" href="/sign-in">
-                  Log in
-                </Link>
-                <Link className="mobile-account" href="/sign-up">
-                  Sign up
-                </Link>
-              </>
-            )}
-          </nav>
-          <div className="header-actions">
-            <button
-              className="search-button"
-              aria-label="Search ranked questions"
-              onClick={() => {
-                setSearchOpen(true);
-                searchDialog.current?.showModal();
-              }}
-            >
-              <Icon name="search" />
-            </button>
-            {authEnabled ? (
-              <>
-                <Link className="login" href="/sign-in">
-                  Log in
-                </Link>
-                <Link className="dark-button signup" href="/sign-up">
-                  Sign up
-                </Link>
-              </>
-            ) : null}
-            <button
-              className="menu-toggle"
-              aria-controls="leaderboard-navigation"
-              aria-expanded={menuOpen}
-              aria-label={menuOpen ? "Close mobile menu" : "Open mobile menu"}
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              {menuOpen ? "×" : "☰"}
-            </button>
-          </div>
-        </header>
         <main>
           <section className="hero" aria-labelledby="hero-title">
             <div className="hero-copy">
@@ -241,6 +167,16 @@ export function LeaderboardPage({
                 </button>
               ))}
             </div>
+            <button
+              className="dark-button"
+              aria-label="Search ranked questions"
+              onClick={() => {
+                setSearchOpen(true);
+                searchDialog.current?.showModal();
+              }}
+            >
+              <Icon name="search" /> Search
+            </button>
           </div>
           <div className="leaderboard-layout">
             <div className="rankings">
@@ -445,11 +381,6 @@ export function LeaderboardPage({
             Votes count each anonymous voter once per question. Month and week use the first vote
             time, in UTC. Changing A/B does not add a vote.
           </p>
-          <footer className="leaderboard-legal">
-            <Link href="/privacy">Privacy</Link>
-            <Link href="/terms">Terms</Link>
-            <Link href="/contact">Contact</Link>
-          </footer>
         </main>
         <dialog
           ref={searchDialog}

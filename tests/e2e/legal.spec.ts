@@ -34,9 +34,17 @@ test("/contact is reachable and noindex", async ({ page }) => {
 test("primary legal routes are linked from the footer", async ({ page }) => {
   await page.goto("/");
   const footer = page.getByRole("contentinfo");
-  for (const route of ["/privacy", "/terms", "/acceptable-use", "/contact"] as const) {
+  for (const route of [
+    "/privacy",
+    "/terms",
+    "/acceptable-use",
+    "/refund-policy",
+    "/account-deletion",
+    "/contact",
+  ] as const) {
     await expect(footer.locator(`a[href='${route}']`)).toHaveCount(1);
   }
+  await expect(footer.locator("a[href='/privacy#childrens-privacy']")).toHaveCount(1);
 });
 
 test("current production Legal copy does not imply live account or checkout features", async ({

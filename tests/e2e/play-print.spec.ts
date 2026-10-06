@@ -1,5 +1,8 @@
 import { expect, test } from "@playwright/test";
 
+import { QUESTIONS_DATABASE } from "@/modules/would-you-rather/data/questions";
+import { filterPrintQuestions } from "@/modules/would-you-rather/domain/print-question-pool";
+
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
     try {
@@ -79,6 +82,48 @@ test("both print formats produce a PDF with matching pages and paper size", asyn
     expectedPages,
   );
 });
+test("direct print entry builds a set by theme, audience and scenario", async ({ page }) => {
+  const funnyCount = filterPrintQuestions(QUESTIONS_DATABASE, { collection: "funny" }).length;
+  const kidsCount = filterPrintQuestions(QUESTIONS_DATABASE, { age: "kids" }).length;
+  const partyCount = filterPrintQuestions(QUESTIONS_DATABASE, { occasion: "party" }).length;
+
+  expect(funnyCount).toBeGreaterThan(0);
+  expect(kidsCount).toBeGreaterThan(0);
+  expect(partyCount).toBeGreaterThan(0);
+
+  await page.goto("/print");
+  await expect(page.getByRole("heading", { name: "Choose Questions" })).toBeVisible();
+  await expect(page.getByRole("combobox", { name: "Theme", exact: true })).toBeVisible();
+  await expect(page.getByRole("combobox", { name: "Audience / Age", exact: true })).toBeVisible();
+  await expect(page.getByRole("combobox", { name: "Scenario", exact: true })).toBeVisible();
+
+  await page.getByRole("combobox", { name: "Theme", exact: true }).selectOption("funny");
+  await page.getByRole("button", { name: "Generate question set" }).click();
+  await expect(page.locator(".print-pool")).toContainText(`${funnyCount} questions`);
+
+  await page.getByRole("button", { name: "Reset" }).click();
+  await page.getByRole("combobox", { name: "Audience / Age", exact: true }).selectOption("kids");
+  await page.getByRole("button", { name: "Generate question set" }).click();
+  await expect(page.locator(".print-pool")).toContainText(`${kidsCount} questions`);
+
+  await page.getByRole("button", { name: "Reset" }).click();
+  await page.getByRole("combobox", { name: "Scenario", exact: true }).selectOption("party");
+  await page.getByRole("button", { name: "Generate question set" }).click();
+  await expect(page.locator(".print-pool")).toContainText(`${partyCount} questions`);
+  await expect(page.locator(".preview-paper")).toBeVisible();
+});
+
+test("finder print set stays exact until the user chooses a different set", async ({ page }) => {
+  await page.goto("/print?set=1,2");
+  await expect(page.locator(".print-pool")).toContainText("2 questions from your selected set");
+  await expect(page.getByText("Using your exact Finder selection.")).toBeVisible();
+  await expect(page.getByRole("combobox", { name: "Theme", exact: true })).toHaveCount(0);
+
+  await page.getByRole("button", { name: "Choose a different set" }).click();
+  await expect(page.getByRole("combobox", { name: "Theme", exact: true })).toBeVisible();
+  await expect(page.locator(".print-pool")).toContainText("457 questions in this generated set");
+});
+
 test("invalid sets and small screens remain usable", async ({ page }) => {
   await page.goto("/play?set=unknown");
   await expect(page.locator("#play")).toContainText("No approved questions in this set");
