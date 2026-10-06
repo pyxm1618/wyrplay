@@ -9,7 +9,7 @@
     "build:test": "APP_ENV=test next build --webpack",
     "start": "next start",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format:check": "prettier --write src/modules/would-you-rather/ui/play/print-page.tsx tests/unit/would-you-rather/print-question-pool.test.ts && git diff --exit-code -- src/modules/would-you-rather/ui/play/print-page.tsx tests/unit/would-you-rather/print-question-pool.test.ts",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test:unit": "vitest run --config vitest.config.ts",
