@@ -27,9 +27,9 @@ describe("direct print question pool", () => {
       expect(question.reviewStatus).toBe("approved");
       expect(question.ageGroups.some((age) => ["4-6", "7-9", "10-12"].includes(age))).toBe(true);
       expect(question.occasions).toContain("party");
-      expect(
-        question.tones.includes("funny") || (question.moods?.includes("funny") ?? false),
-      ).toBe(true);
+      expect(question.tones.includes("funny") || (question.moods?.includes("funny") ?? false)).toBe(
+        true,
+      );
     }
   });
 
