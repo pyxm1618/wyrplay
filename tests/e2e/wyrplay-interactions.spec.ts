@@ -57,8 +57,15 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
           0,
         );
         await expect(page.locator("#play h2").first()).toBeVisible();
-        const routeCards = await page.locator("#questions article").count();
-        expect(routeCards).toBe(expectedCount);
+        if (route === "/would-you-rather-questions-for-kids") {
+          await page
+            .getByRole("button", { name: "Browse more kids questions", exact: true })
+            .click();
+          await expect(page.locator(".kids-reviewed-card")).toHaveCount(expectedCount);
+          await expect(page.locator("#questions article:not(.kids-reviewed-card)")).toHaveCount(8);
+        } else {
+          await expect(page.locator("#questions article")).toHaveCount(expectedCount);
+        }
       }
     });
 
@@ -141,15 +148,16 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       ]);
 
       await page.goto("/would-you-rather-questions-for-kids");
-      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
+      await page.getByRole("button", { name: "Next question", exact: true }).click();
+      await expect(page.locator(".kids-vote-arena")).toBeVisible();
 
       // The Kids stats request deletes the old root-scoped identity cookie.
       await expect
         .poll(async () => (await context.cookies()).some((cookie) => cookie.name === "wyr_vid"))
         .toBe(false);
 
-      const optionA = page.locator("#play button:has-text('Option A')").first();
-      const optionB = page.locator("#play button:has-text('Option B')").first();
+      const optionA = page.locator(".kids-choice-a");
+      const optionB = page.locator(".kids-choice-b");
       await optionA.click();
       await expect(optionA).toHaveAttribute("aria-pressed", "true");
       await expect(optionB).toBeDisabled();
@@ -157,7 +165,8 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       expect((await context.cookies()).some((cookie) => cookie.name === "wyr_vid")).toBe(false);
 
       await page.reload();
-      const reloadedOptionA = page.locator("#play button:has-text('Option A')").first();
+      await page.getByRole("button", { name: "Next question", exact: true }).click();
+      const reloadedOptionA = page.locator(".kids-choice-a");
       await expect(reloadedOptionA).toHaveAttribute("aria-pressed", "false");
       expect((await context.cookies()).some((cookie) => cookie.name === "wyr_vid")).toBe(false);
     });

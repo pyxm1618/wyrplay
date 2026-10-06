@@ -28,3 +28,5 @@ export { PrintPage } from "./ui/play/print-page";
 
 export { savedQuestionCommand } from "./domain/saved-questions";
 export { useSavedQuestions } from "./ui/use-saved-questions";
+
+export { KidsPage } from "./ui/kids/kids-page";

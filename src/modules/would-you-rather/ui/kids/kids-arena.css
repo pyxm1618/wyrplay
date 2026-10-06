@@ -1,0 +1,221 @@
+.kids-arena {
+  margin-top: 0;
+  border-radius: 22px;
+  background: white;
+  position: relative;
+  padding: 28px 52px;
+  scroll-margin-top: 16px;
+  outline: none;
+  overflow: hidden;
+}
+.kids-arena-heading {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+}
+.kids-arena h2 {
+  font-family: KidsRounded, sans-serif;
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.15;
+  margin-top: 14px;
+}
+.kids-arena-heading > p {
+  color: var(--kids-muted);
+  font-size: 18px;
+  margin-top: 8px;
+}
+.kids-question-label {
+  display: inline-flex;
+  margin-top: 12px;
+  border-radius: 20px;
+  background: #f4f5f7;
+  padding: 7px 14px;
+  color: #29446b;
+  font-size: 15px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+.kids-choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 20px auto 0;
+  position: relative;
+}
+.kids-choice {
+  border: 0;
+  background: transparent;
+  position: relative;
+  min-height: 248px;
+  padding: 36px 38px 54px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  isolation: isolate;
+  min-width: 0;
+}
+.kids-choice-frame {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  filter: drop-shadow(0 4px 3px #ffc7844d);
+}
+.kids-choice-b .kids-choice-frame {
+  filter: drop-shadow(0 4px 3px #00b4ea33);
+}
+.kids-choice-doodles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.kids-choice-text {
+  color: white;
+  line-height: 1.08;
+  text-shadow: 0 2px 2px #6a3e244d;
+  overflow-wrap: anywhere;
+  position: relative;
+  font-family: KidsRounded, sans-serif;
+  font-size: clamp(27px, 3.4vw, 46px);
+}
+.kids-choice-b .kids-choice-text {
+  text-shadow: 0 2px 2px #0042774d;
+}
+.kids-choice[aria-pressed="true"] .kids-choice-frame {
+  filter: drop-shadow(0 0 4px #07111d);
+}
+.kids-choice:hover:not(:disabled) .kids-choice-frame {
+  filter: drop-shadow(0 4px 5px #07111d40);
+}
+.kids-choice-selected {
+  display: block;
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  right: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+.kids-or {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(at 40% 30%, #14242b, #000b12 70%);
+  color: white;
+  font-weight: 700;
+  font-size: 34px;
+  box-shadow: 0 4px 5px #0003;
+  pointer-events: none;
+}
+.kids-arena-edge {
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  width: 64px;
+  height: 216px;
+  object-fit: contain;
+  pointer-events: none;
+}
+.kids-arena-edge.left {
+  left: 0;
+}
+.kids-arena-edge.right {
+  right: 0;
+}
+.kids-arena-controls {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr 1fr 1fr;
+  gap: 14px;
+  margin: 20px auto 0;
+  max-width: 1040px;
+  position: relative;
+}
+.kids-arena-controls .kids-pill {
+  padding-inline: 14px;
+  min-height: 48px;
+}
+.kids-arrow-left {
+  transform: rotate(180deg);
+}
+.kids-example-status,
+.kids-vote-error,
+.kids-vote-results,
+.kids-live-hint {
+  color: var(--kids-muted);
+  font-size: 16px;
+  position: relative;
+  line-height: 1.45;
+  text-align: center;
+  padding-top: 12px;
+  min-height: 36px;
+}
+.kids-vote-error {
+  color: #a32721;
+}
+.kids-vote-error button {
+  border: 1px solid #e5c9c8;
+  border-radius: 20px;
+  background: white;
+  padding: 8px 16px;
+  min-height: 44px;
+  margin-left: 8px;
+  font-weight: 700;
+}
+.kids-vote-results {
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.kids-presenter {
+  color: var(--ink);
+  background: #fdfaf5;
+  border: 0;
+  border-radius: 24px;
+  padding: 64px 28px 28px;
+  width: min(95vw, 1200px);
+  margin: auto;
+  max-height: 95dvh;
+  overflow: auto;
+}
+.kids-presenter::backdrop {
+  background: #061321d9;
+}
+.kids-presenter .kids-choices {
+  margin-block: 24px;
+}
+.kids-presenter .kids-choice {
+  min-height: 280px;
+}
+.kids-presenter .kids-choice-text {
+  font-size: clamp(27px, 4vw, 58px);
+  line-height: 1.12;
+}
+.kids-presenter-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+.kids-presenter > h2,
+.kids-presenter > p {
+  text-align: center;
+}
+.kids-presenter-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+}

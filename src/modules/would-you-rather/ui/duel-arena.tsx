@@ -7,9 +7,11 @@ import type { Question, VoteStats } from "../types";
 import { Arrow, ChoiceFrame } from "./home-art";
 import { PlayHeading, OptionPanels } from "./play/art";
 import "./play/play.css";
+import { KidsChoicePanels } from "./kids/art";
 
 export interface DuelArenaProps {
-  readonly appearance?: "default" | "illustrated-play" | "illustrated-home";
+  readonly appearance?: "default" | "illustrated-play" | "illustrated-home" | "illustrated-kids";
+  readonly keyboardEnabled?: boolean;
   readonly question: Question | undefined;
   readonly currentIndex: number;
   readonly totalQuestions: number;
@@ -23,6 +25,7 @@ export interface DuelArenaProps {
 
 export function DuelArena({
   appearance = "default",
+  keyboardEnabled = true,
   question,
   currentIndex,
   totalQuestions,
@@ -132,6 +135,16 @@ export function DuelArena({
   // 3. 键盘快捷键监听 (A / B / 左右箭头选择与改选)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (!keyboardEnabled) return;
+      if (appearance === "illustrated-kids") {
+        const target = e.target as HTMLElement | null;
+        if (
+          !document.getElementById("play")?.contains(target) ||
+          target?.closest("a,summary") ||
+          (target?.closest("button") && !target.closest(".kids-choice"))
+        )
+          return;
+      }
       if (document.querySelector(".presenter-page")) return;
       if (
         e.target instanceof HTMLInputElement ||
@@ -155,9 +168,15 @@ export function DuelArena({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleVote]);
+  }, [handleVote, keyboardEnabled, appearance]);
 
   if (!question) {
+    if (appearance === "illustrated-kids")
+      return (
+        <p className="kids-empty" role="status">
+          No kids questions match this age. Try another age group.
+        </p>
+      );
     return (
       <section id="play" className="mx-auto w-full max-w-5xl px-4 py-16 text-center sm:px-6">
         <div className="rounded-2xl border border-dashed border-border bg-surface p-12">
@@ -190,6 +209,34 @@ export function DuelArena({
   const currentErrorMessage = loadedQuestionId === currentQuestionId ? errorMessage : null;
   const hasVoted = Boolean(currentStats?.hasVoted);
   const userPick = currentStats?.selectedOption ?? null;
+
+  if (appearance === "illustrated-kids")
+    return (
+      <div className="kids-vote-arena">
+        <KidsChoicePanels
+          a={question.optionA}
+          b={question.optionB}
+          selected={userPick}
+          busy={isSubmitting || (aggregateOnly && hasVoted)}
+          onChoose={(option) => void handleVote(option)}
+        />
+        <p role="status" className="kids-example-status">
+          {isSubmitting
+            ? "Recording your choice…"
+            : hasVoted && currentStats
+              ? `Thanks for voting! A: ${currentStats.percentageA}% · ${currentStats.votesA} votes | B: ${currentStats.percentageB}% · ${currentStats.votesB} votes. Only totals are saved, not your identity.`
+              : "Choose A or B to add to the totals. No personal voting history is saved."}
+        </p>
+        {errorMessage && (
+          <p className="kids-vote-error" role="alert">
+            {errorMessage}{" "}
+            <button type="button" onClick={() => setRefreshCount((count) => count + 1)}>
+              Retry
+            </button>
+          </p>
+        )}
+      </div>
+    );
 
   if (appearance === "illustrated-home") {
     return (
