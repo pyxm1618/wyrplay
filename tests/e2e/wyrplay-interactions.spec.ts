@@ -279,11 +279,10 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
         "nav[aria-label='Mobile navigation'] a[href='/find-questions']",
       );
       await expect(mobileFindQuestionsLink).toBeVisible();
-      await expect(
-        page.locator(
-          "nav[aria-label='Mobile navigation'] a[href='/would-you-rather-questions-for-kids']",
-        ),
-      ).toHaveCount(0);
+      const mobileKidsLink = page.locator(
+        "nav[aria-label='Mobile navigation'] a[href='/would-you-rather-questions-for-kids']",
+      );
+      await expect(mobileKidsLink).toBeVisible();
     });
   });
 

@@ -9,12 +9,16 @@ export const navigationConfig = {
     primary: [
       { label: "Home", href: "/", activeRoutes: ["/"] },
       {
+        label: "For Kids",
+        href: "/would-you-rather-questions-for-kids",
+        activeRoutes: ["/would-you-rather-questions-for-kids"],
+      },
+      {
         label: "Find Questions",
         href: "/find-questions",
         activeRoutes: [
           "/find-questions",
           "/questions",
-          "/would-you-rather-questions-for-kids",
           "/funny-would-you-rather-questions",
           "/hard-would-you-rather-questions",
           "/would-you-rather-questions-for-friends",
