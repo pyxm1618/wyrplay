@@ -471,7 +471,7 @@ export function FinderExperience({
         </div>
       </section>
       <section className="category-banner">
-        <img src="/finder/assets/bulb.png" alt="" />
+        <img src="/finder/assets/bulb.png" alt="" loading="lazy" />
         <div>
           <h2>Still can’t find the right questions?</h2>
           <p>Try our category browsing and discover more fun Would You Rather questions.</p>
