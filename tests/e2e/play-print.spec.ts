@@ -134,15 +134,9 @@ test("empty generated print set clears stale preview and disables output actions
   await expect(page.getByRole("status")).toContainText("No approved questions in this set.");
 
   const previewFooter = page.locator(".print-preview footer");
-  await expect(
-    previewFooter.getByRole("button", { name: "Print", exact: true }),
-  ).toBeDisabled();
-  await expect(
-    previewFooter.getByRole("button", { name: "PNG", exact: true }),
-  ).toBeDisabled();
-  await expect(
-    previewFooter.getByRole("button", { name: "Download PDF" }),
-  ).toBeDisabled();
+  await expect(previewFooter.getByRole("button", { name: "Print", exact: true })).toBeDisabled();
+  await expect(previewFooter.getByRole("button", { name: "PNG", exact: true })).toBeDisabled();
+  await expect(previewFooter.getByRole("button", { name: "Download PDF" })).toBeDisabled();
 });
 
 test("finder print set stays exact until the user chooses a different set", async ({ page }) => {
