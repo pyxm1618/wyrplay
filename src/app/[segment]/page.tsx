@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { KidsPage, getQuestionsByCollection } from "@/modules/would-you-rather";
+
 import { LandingPage } from "@/components/landing/landing-page";
 import { JsonLd } from "@/components/seo/json-ld";
 import { localeBundle } from "@/config/locales.config";
@@ -90,9 +92,15 @@ export default async function SegmentPage({ params }: SegmentPageProps) {
         });
 
   return (
-    <main>
+    <>
       <JsonLd value={structuredData} />
-      <LandingPage sections={landing.sections} />
-    </main>
+      {route === "/would-you-rather-questions-for-kids" ? (
+        <KidsPage questions={getQuestionsByCollection("kids")} />
+      ) : (
+        <main>
+          <LandingPage sections={landing.sections} />
+        </main>
+      )}
+    </>
   );
 }

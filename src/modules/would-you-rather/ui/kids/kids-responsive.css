@@ -1,0 +1,288 @@
+@media (max-width: 1100px) {
+  .kids-question-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .kids-related-card {
+    gap: 8px;
+    padding: 14px;
+  }
+  .kids-related-card > .kids-art {
+    width: 80px;
+    height: 80px;
+  }
+  .kids-related-card h3 {
+    font-size: 18px;
+  }
+}
+@media (max-width: 900px) {
+  .kids-hero {
+    grid-template-columns: 1fr;
+    padding-bottom: 0;
+  }
+  .kids-hero-copy {
+    max-width: 620px;
+  }
+  .kids-page h1 {
+    font-size: clamp(36px, 6vw, 52px);
+  }
+  .kids-hero-art {
+    width: min(100%, 460px);
+    margin-top: -24px;
+    justify-self: end;
+  }
+  .kids-hero-crown {
+    display: none;
+  }
+  .kids-arena {
+    padding: 24px 36px;
+  }
+  .kids-use-grid {
+    grid-template-columns: 1fr;
+    padding: 22px;
+  }
+  .kids-use-grid article + article {
+    border-left: 0;
+    border-top: 1px solid #dae1ea;
+    padding: 18px 0 0;
+  }
+  .kids-related-grid {
+    grid-template-columns: 1fr;
+  }
+  .kids-related-card {
+    padding: 16px 20px;
+    min-height: 124px;
+    gap: 20px;
+  }
+  .kids-related-card > .kids-art {
+    width: 104px;
+    height: 92px;
+  }
+  .kids-related-card h3 {
+    font-size: 22px;
+  }
+  .kids-related-card p {
+    font-size: 18px;
+    max-width: 440px;
+  }
+}
+@media (max-width: 799px) {
+  .kids-question-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .kids-arena-controls {
+    grid-template-columns: 1fr 1.6fr;
+    gap: 12px;
+  }
+  .kids-arena-controls .kids-pill {
+    min-height: 48px;
+  }
+  .kids-choice {
+    min-height: 220px;
+    padding: 30px 28px 50px;
+  }
+  .kids-choice-text {
+    font-size: clamp(26px, 4.1vw, 34px);
+  }
+  .kids-or {
+    width: 58px;
+    height: 58px;
+    font-size: 29px;
+  }
+  .kids-closing-left,
+  .kids-closing-right {
+    width: 160px;
+    height: 98px;
+  }
+}
+@media (max-width: 480px) {
+  .kids-uses-cloud {
+    display: none;
+  }
+  .kids-hero,
+  .kids-arena,
+  .kids-browse,
+  .kids-uses,
+  .kids-faq,
+  .kids-related {
+    width: calc(100% - 28px);
+  }
+  .kids-search {
+    display: none;
+  }
+  .kids-page h1 {
+    font-size: 36px;
+    letter-spacing: -0.6px;
+  }
+  .kids-hero-copy {
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+  .kids-hero-copy > p {
+    font-size: 18px;
+  }
+  .kids-hero-copy > p br {
+    display: none;
+  }
+  .kids-hero-actions .kids-pill {
+    padding-inline: 16px;
+    font-size: 15px;
+  }
+  .kids-hero-art {
+    width: min(100%, 370px);
+    margin-top: 0;
+  }
+  .kids-arena {
+    padding: 22px 16px;
+  }
+  .kids-arena h2 {
+    font-size: 30px;
+  }
+  .kids-arena-heading > p {
+    font-size: 17px;
+  }
+  .kids-arena-edge {
+    width: 38px;
+    height: 130px;
+    opacity: 0.7;
+  }
+  .kids-choices {
+    gap: 14px;
+  }
+  .kids-choice {
+    padding: 28px 20px 52px;
+    min-height: 224px;
+  }
+  .kids-choice-text {
+    font-size: 26px;
+  }
+  .kids-choice-selected {
+    font-size: 14px;
+    bottom: 18px;
+  }
+  .kids-or {
+    width: 48px;
+    height: 48px;
+    font-size: 26px;
+  }
+  .kids-arena-controls .kids-pill {
+    padding-inline: 10px;
+    gap: 8px;
+    font-size: 15px;
+  }
+  .kids-browse {
+    padding: 18px 12px;
+  }
+  .kids-browse > h2 .kids-burst {
+    display: none;
+  }
+  .kids-browse-intro {
+    font-size: 17px;
+  }
+  .kids-age-filters {
+    gap: 8px;
+  }
+  .kids-age-filters .kids-pill {
+    padding-inline: 14px;
+    font-size: 15px;
+  }
+  .kids-question-grid {
+    gap: 10px;
+  }
+  .kids-card {
+    padding: 10px;
+    min-height: 290px;
+  }
+  .kids-card > .kids-art,
+  .kids-card > .kids-motif {
+    width: 124px;
+    height: 74px;
+  }
+  .kids-card h3 {
+    font-size: 17px;
+    padding: 0;
+    line-height: 1.3;
+  }
+  .kids-card .kids-pill {
+    font-size: 14px;
+    gap: 5px;
+    padding-inline: 4px;
+  }
+  .kids-card .kids-pill svg {
+    width: 16px;
+    height: 16px;
+  }
+  .kids-browse-bottom > .kids-art {
+    display: none;
+  }
+  .kids-browse-bottom {
+    justify-content: center;
+  }
+  .kids-use-grid {
+    padding: 18px;
+  }
+  .kids-uses > h2 .kids-burst {
+    display: none;
+  }
+  .kids-faq details {
+    padding: 12px;
+  }
+  .kids-faq summary {
+    font-size: 17px;
+    gap: 10px;
+  }
+  .kids-faq details p {
+    margin-left: 36px;
+  }
+  .kids-related h2 .kids-burst {
+    display: none;
+  }
+  .kids-related-card {
+    gap: 12px;
+    padding: 14px;
+    min-height: 136px;
+  }
+  .kids-related-card h3 {
+    font-size: 20px;
+  }
+  .kids-related-card p {
+    font-size: 16px;
+  }
+  .kids-related-card > .kids-art {
+    width: 90px;
+    height: 88px;
+  }
+  .kids-closing {
+    padding: 30px 18px 74px;
+  }
+  .kids-closing > p {
+    font-size: 18px;
+  }
+  .kids-closing-left,
+  .kids-closing-right {
+    width: 120px;
+    height: 73px;
+  }
+  .kids-presenter {
+    padding: 64px 14px 24px;
+  }
+  .kids-presenter .kids-choice {
+    padding-inline: 18px;
+    min-height: 240px;
+  }
+  .kids-presenter .kids-choice-text {
+    font-size: 27px;
+  }
+}
+@media (max-width: 359px) {
+  .kids-question-grid {
+    grid-template-columns: 1fr;
+  }
+  .kids-page h1 {
+    font-size: 32px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kids-page {
+    scroll-behavior: auto;
+  }
+}
