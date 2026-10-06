@@ -113,7 +113,7 @@ test("direct print entry builds a set by theme, audience and scenario", async ({
   await expect(page.locator(".preview-paper")).toBeVisible();
 });
 
-test("empty generated print set clears stale preview and disables output actions", async ({ page }) => {
+test("empty generated print set clears stale preview and disables output actions", async ({\n  page,\n}) => {
   const emptyCount = filterPrintQuestions(QUESTIONS_DATABASE, {
     collection: "couples",
     age: "kids",
