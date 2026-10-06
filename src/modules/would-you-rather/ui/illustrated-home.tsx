@@ -2,18 +2,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type ReactNode, type CSSProperties } from "react";
-import {
-  FEATURED_COLLECTIONS,
-  getQuestionsByCollection,
-  QUESTIONS_DATABASE,
-} from "../data/questions";
-import { Arrow, ArtCrop } from "./home-art";
+import { FEATURED_COLLECTIONS, QUESTIONS_DATABASE } from "../data/questions";
+import { Arrow, HomeArt } from "./home-art";
 import { rankLeaderboard, type LeaderboardResult } from "../domain/leaderboard";
 
 const categories = [
   {
     title: "Popular",
-    description: "Most voted",
     crop: [33, 686, 106, 87],
     color: "popular",
     href: "/leaderboards",
@@ -48,7 +43,6 @@ const categories = [
   },
   {
     title: "Hard Questions",
-    description: "Challenge your mind",
     crop: [634, 686, 116, 87],
     color: "hard",
     key: "hard",
@@ -63,35 +57,49 @@ const steps = [
 const occasions = [
   {
     title: "Friends",
+    art: "friends",
     description: "Game nights",
     crop: [60, 1947, 29, 30],
     href: "/would-you-rather-questions-for-friends",
   },
   {
     title: "Parties",
+    art: "parties",
     description: "Break the ice",
     crop: [193, 1947, 29, 30],
     href: "/funny-would-you-rather-questions",
   },
   {
     title: "Classrooms",
+    art: "classrooms",
     description: "Group discussions",
     crop: [327, 1947, 29, 30],
     href: "/would-you-rather-questions-for-kids",
   },
   {
     title: "Road trips",
+    art: "road-trips",
     description: "Longer journeys",
     crop: [481, 1947, 29, 30],
     href: "/find-questions",
   },
   {
     title: "Dates",
+    art: "dates",
     description: "Better conversations",
     crop: [622, 1947, 29, 30],
     href: "/would-you-rather-questions-for-couples",
   },
 ] as const;
+
+// Container gutters, grid gaps and column weights mirror illustrated-home.css.
+function categoryImageSizes(artWidth: number) {
+  const columnRatio = 692 / artWidth;
+  return `(max-width: 520px) calc((100vw - clamp(32px, 7vw, 80px) - 8px) / 2), (max-width: 900px) calc((100vw - clamp(32px, 7vw, 80px) - 24px) / 3), (max-width: 1240px) calc((100vw - clamp(32px, 7vw, 80px) - clamp(25px, 3.2134vw, 40px)) / ${columnRatio}), ${1120 / columnRatio}px`;
+}
+
+const highlightImageSizes =
+  "(max-width: 900px) calc(100vw - clamp(32px, 7vw, 80px) - 2px), (max-width: 1240px) calc((100vw - clamp(32px, 7vw, 80px) - clamp(28px, 3.599vw, 44.8px)) / 2.9646 - 2px), 375px";
 
 function Heading({
   title,
@@ -210,23 +218,25 @@ export function IllustratedHome({
                   href={collection?.route ?? ("href" in category ? category.href : "/#questions")}
                   className={`category-card ${category.color}`}
                 >
-                  {category.title === "Popular" ? (
+                  {category.color === "popular" || category.color === "hard" ? (
                     <Image
-                      src="/home-art/categories/popular.webp"
+                      src={`/home-art/categories/${category.color}-no-subtitle.webp`}
                       alt=""
                       width={1061}
                       height={1330}
-                      className="category-art-popular"
+                      className="category-art-card"
+                      sizes={categoryImageSizes(category.crop[2])}
                     />
                   ) : (
-                    <ArtCrop box={category.crop} className="category-art" />
+                    <HomeArt
+                      src={`categories/${category.color}`}
+                      width={category.crop[2]}
+                      height={category.crop[3]}
+                      sizes={categoryImageSizes(category.crop[2])}
+                      className="category-art"
+                    />
                   )}
                   <span className="category-title">{category.title}</span>
-                  <span className="category-description">
-                    {"key" in category
-                      ? `${getQuestionsByCollection(category.key).length} questions`
-                      : category.description}
-                  </span>
                 </Link>
               );
             })}
@@ -247,15 +257,14 @@ export function IllustratedHome({
                 className="highlight-card"
                 onClick={() => play(question.id)}
               >
-                <svg
+                <Image
+                  src={`/home-art/highlights/scene-${index + 1}.webp`}
+                  width={724}
+                  height={560}
+                  sizes={highlightImageSizes}
                   className="highlight-image"
-                  viewBox={`${index * 724} 70 724 560`}
-                  preserveAspectRatio="xMidYMid slice"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <image href="/home-art/highlights.png" width="2172" height="724" />
-                </svg>
+                  alt=""
+                />
                 <span className="highlight-body">
                   <span className="highlight-title">{question.question}</span>
                   <span className="highlight-footer">
@@ -273,9 +282,27 @@ export function IllustratedHome({
       <section className="how-section section-shell" aria-label="How it works">
         <div className="home-container how-container">
           <div className="steps-decoration" aria-hidden="true">
-            <ArtCrop box={[320, 1095, 97, 50]} className="step-ribbon-yellow" />
-            <ArtCrop box={[530, 1102, 36, 48]} className="step-bubble" />
-            <ArtCrop box={[590, 1096, 188, 134]} className="step-ribbon-blue" />
+            <HomeArt
+              src="decorations/step-ribbon-yellow"
+              width={97}
+              height={50}
+              sizes="(max-width: 600px) 97px, (max-width: 1244.8px) 12.467866vw, 155.2px"
+              className="step-ribbon-yellow"
+            />
+            <HomeArt
+              src="decorations/step-bubble"
+              width={36}
+              height={48}
+              sizes="(max-width: 600px) 36px, (max-width: 1244.8px) 4.627249vw, 57.6px"
+              className="step-bubble"
+            />
+            <HomeArt
+              src="decorations/step-ribbon-blue"
+              width={188}
+              height={134}
+              sizes="(max-width: 600px) 188px, (max-width: 1244.8px) 24.164524vw, 300.8px"
+              className="step-ribbon-blue"
+            />
           </div>
           <h2>How to Play Would You Rather Questions</h2>
           <ol className="steps-grid">
@@ -320,7 +347,13 @@ export function IllustratedHome({
                 ))
               ) : (
                 <div className="ranking-awaiting">
-                  <ArtCrop box={[33, 686, 106, 87]} className="ranking-crown" />
+                  <HomeArt
+                    src="decorations/ranking-crown"
+                    width={106}
+                    height={87}
+                    sizes="95px"
+                    className="ranking-crown"
+                  />
                   <h3>Question Rankings</h3>
                   <p>
                     {leaderboard.status === "ready"
@@ -352,6 +385,7 @@ export function IllustratedHome({
                 height={1402}
                 alt=""
                 className="bulb-art"
+                sizes="(max-width: 600px) 160px, (max-width: 1244.8px) 20.5656vw, 256px"
               />
               <span className="create-doodle doodle-one" aria-hidden="true">
                 ✚
@@ -366,14 +400,24 @@ export function IllustratedHome({
       <section className="statistics home-real-statistics" aria-label="Question library">
         <div className="home-container statistics-container">
           <div className="statistic">
-            <ArtCrop box={[241, 1530, 48, 47]} />
+            <HomeArt
+              src="icons/question-statistic"
+              width={48}
+              height={47}
+              sizes="(max-width: 600px) 48px, (max-width: 1244.8px) 6.169666vw, 76.8px"
+            />
             <p>
               <strong>{approved.length}</strong>
               <span>Would You Rather Questions</span>
             </p>
           </div>
           <div className="statistic">
-            <ArtCrop box={[410, 1530, 48, 47]} />
+            <HomeArt
+              src="icons/collection-statistic"
+              width={48}
+              height={47}
+              sizes="(max-width: 600px) 48px, (max-width: 1244.8px) 6.169666vw, 76.8px"
+            />
             <p>
               <strong>{Object.keys(FEATURED_COLLECTIONS).length}</strong>
               <span>Collections</span>
@@ -382,10 +426,34 @@ export function IllustratedHome({
         </div>
       </section>
       <section className="together-section" aria-label="Play together anywhere">
-        <ArtCrop box={[0, 1866, 62, 155]} className="together-edge edge-left" />
-        <ArtCrop box={[748, 1866, 30, 155]} className="together-edge edge-right" />
-        <ArtCrop box={[75, 1883, 85, 39]} className="together-flourish flourish-left" />
-        <ArtCrop box={[568, 1875, 91, 45]} className="together-flourish flourish-right" />
+        <HomeArt
+          src="decorations/together-edge-left"
+          width={62}
+          height={155}
+          sizes="(max-width: 600px) 62px, (max-width: 1244.8px) 7.969152vw, 99.2px"
+          className="together-edge edge-left"
+        />
+        <HomeArt
+          src="decorations/together-edge-right"
+          width={30}
+          height={155}
+          sizes="(max-width: 600px) 30px, (max-width: 1244.8px) 3.856041vw, 48px"
+          className="together-edge edge-right"
+        />
+        <HomeArt
+          src="decorations/together-flourish-left"
+          width={85}
+          height={39}
+          sizes="(max-width: 600px) 85px, (max-width: 1244.8px) 10.925450vw, 136px"
+          className="together-flourish flourish-left"
+        />
+        <HomeArt
+          src="decorations/together-flourish-right"
+          width={91}
+          height={45}
+          sizes="(max-width: 600px) 91px, (max-width: 1244.8px) 11.696658vw, 145.6px"
+          className="together-flourish flourish-right"
+        />
         <div className="home-container together-container">
           <h2>Play Together with Would You Rather Questions</h2>
           <p>
@@ -395,7 +463,12 @@ export function IllustratedHome({
           <div className="occasion-grid">
             {occasions.map((occasion) => (
               <Link key={occasion.title} href={occasion.href} className="occasion-card">
-                <ArtCrop box={occasion.crop} />
+                <HomeArt
+                  src={`icons/occasion-${occasion.art}`}
+                  width={occasion.crop[2]}
+                  height={occasion.crop[3]}
+                  sizes="(max-width: 600px) 29px, (max-width: 1244.8px) 3.727506vw, 46.4px"
+                />
                 <span>
                   <strong>{occasion.title}</strong>
                   <span>{occasion.description}</span>

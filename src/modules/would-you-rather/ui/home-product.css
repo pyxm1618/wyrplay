@@ -221,6 +221,7 @@
   height: auto;
 }
 .illustrated-home .highlight-image {
+  object-fit: cover;
   width: 100%;
   height: calc(var(--home-unit) * 90);
   flex-shrink: 0;
@@ -393,7 +394,7 @@
 /* Browser review confirmed rectangular joins between the hero reference cutouts.
    The existing high-resolution background preserves the character direction without joins. */
 .illustrated-home .hero-art {
-  background: url("/home-art/hero-background.png") center top / 100% auto no-repeat;
+  background: url("/home-art/hero-background.webp") center top / 100% auto no-repeat;
   inset: 0;
   mask-image: linear-gradient(#000 88%, transparent);
 }
