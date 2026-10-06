@@ -104,6 +104,7 @@ export function PrintPage({
 
   // 资源与预览状态
   const [previewUrl, setPreviewUrl] = useState<string>("");
+  const previewUrlRef = useRef("");
   const [currentCanvas, setCurrentCanvas] = useState<HTMLCanvasElement | null>(null);
   const [error, setError] = useState("");
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
@@ -177,7 +178,17 @@ export function PrintPage({
 
   // 按需单页渲染当前预览 Canvas
   useEffect(() => {
-    if (!layout || !totalPages || !logo) return;
+    if (!layout || !totalPages) {
+      const oldPreviewUrl = previewUrlRef.current;
+      previewUrlRef.current = "";
+      if (oldPreviewUrl) URL.revokeObjectURL(oldPreviewUrl);
+      setPreviewUrl("");
+      setCurrentCanvas(null);
+      setPrintQrData(new Map());
+      setError("");
+      return;
+    }
+    if (!logo) return;
     let cancelled = false;
 
     void (async () => {
@@ -226,11 +237,11 @@ export function PrintPage({
           canvas.toBlob((blob: Blob | null) => {
             if (blob && !cancelled) {
               const url = URL.createObjectURL(blob);
+              const oldPreviewUrl = previewUrlRef.current;
+              previewUrlRef.current = url;
+              if (oldPreviewUrl) URL.revokeObjectURL(oldPreviewUrl);
               startTransition(() => {
-                setPreviewUrl((old) => {
-                  if (old) URL.revokeObjectURL(old);
-                  return url;
-                });
+                setPreviewUrl(url);
                 setCurrentCanvas(canvas);
                 setError("");
               });
@@ -258,16 +269,19 @@ export function PrintPage({
     }
   }, [qrCodeEnabled]);
 
-  // 组件卸载时释放 URL
+  // 组件卸载时释放当前 Blob URL；替换与空状态失效由 previewUrlRef 单点管理。
   useEffect(() => {
     return () => {
-      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      if (previewUrlRef.current) {
+        URL.revokeObjectURL(previewUrlRef.current);
+        previewUrlRef.current = "";
+      }
     };
-  }, [previewUrl]);
+  }, []);
 
   // 下载高清矢量 PDF
   async function downloadPdf() {
-    if (!layout || !logo) return;
+    if (!layout || !totalPages || !currentCanvas || !logo) return;
     setError("");
     setIsGeneratingPdf(true);
     try {
@@ -295,7 +309,7 @@ export function PrintPage({
 
   // 导出当前页为高清 PNG
   async function downloadPng() {
-    if (!layout || !logo) return;
+    if (!layout || !totalPages || !currentCanvas || !logo) return;
     try {
       const currentPageIndex = Math.min(Math.max(0, page), totalPages - 1);
       const currentPlacements = layout.pages[currentPageIndex] ?? [];
@@ -359,6 +373,7 @@ export function PrintPage({
 
   // 触发浏览器原生打印
   async function handlePrint() {
+    if (!layout || !totalPages || !currentCanvas || !logo) return;
     try {
       if (qrCodeEnabled && layout) {
         const origin = window.location.origin;
@@ -745,7 +760,7 @@ export function PrintPage({
           </header>
 
           <div className="preview-paper-viewport" ref={viewportRef}>
-            {previewUrl ? (
+            {previewUrl && layout && totalPages > 0 ? (
               <img
                 className="preview-paper"
                 src={previewUrl}

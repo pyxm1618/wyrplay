@@ -113,6 +113,38 @@ test("direct print entry builds a set by theme, audience and scenario", async ({
   await expect(page.locator(".preview-paper")).toBeVisible();
 });
 
+test("empty generated print set clears stale preview and disables output actions", async ({
+  page,
+}) => {
+  const emptyCount = filterPrintQuestions(QUESTIONS_DATABASE, {
+    collection: "couples",
+    age: "kids",
+  }).length;
+  expect(emptyCount).toBe(0);
+
+  await page.goto("/print");
+  await expect(page.locator(".preview-paper")).toBeVisible();
+
+  await page.getByRole("combobox", { name: "Theme", exact: true }).selectOption("couples");
+  await page.getByRole("combobox", { name: "Audience / Age", exact: true }).selectOption("kids");
+  await page.getByRole("button", { name: "Generate question set" }).click();
+
+  await expect(page.locator(".print-pool")).toContainText("0 questions");
+  await expect(page.locator(".preview-paper")).toHaveCount(0);
+  await expect(page.locator(".print-document")).toHaveCount(0);
+  await expect(page.locator(".preview-paper-viewport").getByRole("status")).toContainText(
+    "No approved questions in this set.",
+  );
+
+  const previewFooter = page.locator(".print-preview footer");
+  const printButton = previewFooter.getByRole("button", { name: "Print", exact: true });
+  const pngButton = previewFooter.getByRole("button", { name: "PNG", exact: true });
+  const pdfButton = previewFooter.getByRole("button", { name: "Download PDF" });
+  await expect(printButton).toBeDisabled();
+  await expect(pngButton).toBeDisabled();
+  await expect(pdfButton).toBeDisabled();
+});
+
 test("finder print set stays exact until the user chooses a different set", async ({ page }) => {
   await page.goto("/print?set=1,2");
   await expect(page.locator(".print-pool")).toContainText("2 questions from your selected set");
