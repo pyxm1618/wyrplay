@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { SiteBrand } from "./site-brand";
 
@@ -31,13 +31,29 @@ export function SiteHeader({
   authEnabled?: boolean;
 }> = {}) {
   const pathname = usePathname();
+
+  return (
+    <SiteHeaderContent
+      key={pathname}
+      pathname={pathname}
+      locale={locale}
+      authEnabled={authEnabled}
+    />
+  );
+}
+
+function SiteHeaderContent({
+  pathname,
+  locale,
+  authEnabled,
+}: Readonly<{
+  pathname: string;
+  locale: string;
+  authEnabled: boolean;
+}>) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const homeHref = localePath(siteConfig, locale, "/");
   const toLocaleHref = (href: string) => localePath(siteConfig, locale, href);
-
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [pathname]);
 
   return (
     <header
