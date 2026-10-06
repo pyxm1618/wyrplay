@@ -275,10 +275,15 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await menuButton.click();
       await page.waitForTimeout(200);
 
-      const mobileKidsLink = page.locator(
-        "nav[aria-label='Mobile navigation'] a[href='/would-you-rather-questions-for-kids']",
+      const mobileFindQuestionsLink = page.locator(
+        "nav[aria-label='Mobile navigation'] a[href='/find-questions']",
       );
-      await expect(mobileKidsLink).toBeVisible();
+      await expect(mobileFindQuestionsLink).toBeVisible();
+      await expect(
+        page.locator(
+          "nav[aria-label='Mobile navigation'] a[href='/would-you-rather-questions-for-kids']",
+        ),
+      ).toHaveCount(0);
     });
   });
 
