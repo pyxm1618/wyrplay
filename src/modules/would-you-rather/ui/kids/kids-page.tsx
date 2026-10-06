@@ -428,7 +428,9 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
               aria-label={expanded ? "Show fewer questions" : "Browse more kids questions"}
               onClick={() => setExpanded(!expanded)}
             >
-              {expanded ? "Show fewer questions" : "Browse More Would You Rather Questions for Kids"}
+              {expanded
+                ? "Show fewer questions"
+                : "Browse More Would You Rather Questions for Kids"}
               <FinderIcon name="arrow" />
             </button>
             <KidsArt name="browse-spark" />
@@ -450,17 +452,20 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
               {
                 art: "classroom",
                 title: "Morning classroom meetings",
-                body: "Use Would You Rather questions for kids as quick classroom warmups that get everyone talking.",
+                body:
+                  "Use Would You Rather questions for kids as quick classroom warmups that get everyone talking.",
               },
               {
                 art: "road",
                 title: "Long family road trips",
-                body: "Use Would You Rather questions for kids on road trips for easy, screen-free family conversation.",
+                body:
+                  "Use Would You Rather questions for kids on road trips for easy, screen-free family conversation.",
               },
               {
                 art: "dinner",
                 title: "Dinner table icebreakers",
-                body: "Use Would You Rather questions for kids at dinner to turn short answers into family conversations.",
+                body:
+                  "Use Would You Rather questions for kids at dinner to turn short answers into family conversations.",
               },
             ].map((use) => (
               <article key={use.art}>
