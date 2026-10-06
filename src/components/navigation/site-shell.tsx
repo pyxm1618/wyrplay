@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
+import { featuresConfig } from "@/config/features.config";
 import { siteConfig } from "@/config/site.config";
 
 export function SiteShell({
@@ -14,7 +15,7 @@ export function SiteShell({
 }>) {
   return (
     <div className="flex min-h-screen flex-col">
-      <SiteHeader locale={locale} />
+      <SiteHeader locale={locale} authEnabled={featuresConfig.auth.enabled} />
       {children}
       <SiteFooter />
     </div>
