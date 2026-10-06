@@ -309,7 +309,7 @@ export function IllustratedHome({
         aria-label="Today's highlights"
       >
         <div className="home-container">
-          <Heading title="Today's Would You Rather Questions" href="#questions" />
+          <Heading title="Today’s Would You Rather Questions" href="#questions" />
           <div className="highlight-grid">
             {highlights.map((question, index) => (
               <button
@@ -342,7 +342,7 @@ export function IllustratedHome({
         </div>
       </section>
       <section className="how-section section-shell" aria-label="How it works">
-        <div className="how-container">
+        <div className="home-container how-container">
           <div className="steps-decoration" aria-hidden="true">
             <ArtCrop box={[320, 1095, 97, 50]} className="step-ribbon-yellow" />
             <ArtCrop box={[530, 1102, 36, 48]} className="step-bubble" />
@@ -435,7 +435,7 @@ export function IllustratedHome({
         </div>
       </section>
       <section className="statistics home-real-statistics" aria-label="Question library">
-        <div className="statistics-container">
+        <div className="home-container statistics-container">
           <div className="statistic">
             <ArtCrop box={[241, 1530, 48, 47]} />
             <p>
@@ -457,7 +457,7 @@ export function IllustratedHome({
         <ArtCrop box={[748, 1866, 30, 155]} className="together-edge edge-right" />
         <ArtCrop box={[75, 1883, 85, 39]} className="together-flourish flourish-left" />
         <ArtCrop box={[568, 1875, 91, 45]} className="together-flourish flourish-right" />
-        <div className="together-container">
+        <div className="home-container together-container">
           <h2>Play Together with Would You Rather Questions</h2>
           <p>
             Bring a few would you rather questions to game night, or use Presenter Mode on a shared
@@ -480,8 +480,8 @@ export function IllustratedHome({
         <div className="home-container">
           <h2 id="tool-demo-title">Find More Would You Rather Questions</h2>
           <p>Search by keyword and filter by audience, occasion, tone or difficulty.</p>
+          {children}
         </div>
-        {children}
       </div>
       <HomeFaq />
     </>
