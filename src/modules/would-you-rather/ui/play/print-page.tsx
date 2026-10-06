@@ -465,10 +465,10 @@ export function PrintPage({
                       value={questionCriteriaDraft.collection ?? ""}
                       onChange={(event) => {
                         const value = event.target.value as FeaturedCollectionKey | "";
-                        setQuestionCriteriaDraft((current) => ({
-                          ...current,
-                          collection: value || undefined,
-                        }));
+                        setQuestionCriteriaDraft((current) => {
+                          const { collection: _collection, ...rest } = current;
+                          return value ? { ...rest, collection: value } : rest;
+                        });
                       }}
                     >
                       <option value="">All themes</option>
@@ -486,10 +486,10 @@ export function PrintPage({
                       value={questionCriteriaDraft.age ?? ""}
                       onChange={(event) => {
                         const value = event.target.value as FinderAge | "";
-                        setQuestionCriteriaDraft((current) => ({
-                          ...current,
-                          age: value || undefined,
-                        }));
+                        setQuestionCriteriaDraft((current) => {
+                          const { age: _age, ...rest } = current;
+                          return value ? { ...rest, age: value } : rest;
+                        });
                       }}
                     >
                       <option value="">All audiences</option>
@@ -507,10 +507,10 @@ export function PrintPage({
                       value={questionCriteriaDraft.occasion ?? ""}
                       onChange={(event) => {
                         const value = event.target.value as Occasion | "";
-                        setQuestionCriteriaDraft((current) => ({
-                          ...current,
-                          occasion: value || undefined,
-                        }));
+                        setQuestionCriteriaDraft((current) => {
+                          const { occasion: _occasion, ...rest } = current;
+                          return value ? { ...rest, occasion: value } : rest;
+                        });
                       }}
                     >
                       <option value="">All scenarios</option>
