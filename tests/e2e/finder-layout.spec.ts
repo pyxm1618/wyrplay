@@ -317,25 +317,81 @@ test("Finder privacy and analytics banner safe positioning across profiles", asy
   }
 });
 
-test("Finder DPR 1 and DPR 2 asset rendering across representative viewports", async ({ page }) => {
-  for (const [width, height] of [
-    [390, 844],
-    [834, 1194],
-    [1440, 900],
-  ] as const) {
-    await page.setViewportSize({ width, height });
-    await page.goto("/find-questions");
-    await page.evaluate(() => document.fonts.ready);
+test("Finder DPR 1 and DPR 2 asset rendering across representative viewports", async ({
+  browser,
+}) => {
+  for (const deviceScaleFactor of [1, 2]) {
+    const context = await browser.newContext({
+      baseURL: test.info().project.use.baseURL,
+      deviceScaleFactor,
+    });
+    const page = await context.newPage();
+    await page.addInitScript(() =>
+      localStorage.setItem("creat-web:analytics-consent:v1", "denied"),
+    );
 
-    const brokenImages = await page
-      .locator("img")
-      .evaluateAll((imgs) =>
-        (imgs as HTMLImageElement[])
-          .filter((img) => img.naturalWidth === 0 && !img.src.includes("data:"))
-          .map((img) => img.src),
+    for (const [width, height] of [
+      [390, 844],
+      [834, 1194],
+      [1440, 900],
+    ] as const) {
+      await page.setViewportSize({ width, height });
+      await page.goto("/find-questions");
+      await page.evaluate(() => document.fonts.ready);
+
+      const brokenImages = await page
+        .locator("img")
+        .evaluateAll((imgs) =>
+          (imgs as HTMLImageElement[])
+            .filter((img) => img.naturalWidth === 0 && !img.src.includes("data:"))
+            .map((img) => img.src),
+        );
+      expect(brokenImages).toEqual([]);
+
+      await expect(page.locator(".hero-character")).toHaveAttribute("src", /\/_next\/image\?/);
+      await expect(page.locator(".question-art").first()).toHaveAttribute(
+        "src",
+        /\/_next\/image\?/,
       );
-    expect(brokenImages).toEqual([]);
+    }
+
+    await context.close();
   }
+});
+
+test("Finder image delivery skips mobile-only decorations and uses optimized content images", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    baseURL: test.info().project.use.baseURL,
+    viewport: { width: 390, height: 900 },
+    deviceScaleFactor: 2,
+  });
+  const page = await context.newPage();
+  const imageRequests: string[] = [];
+  page.on("request", (request) => {
+    if (request.resourceType() === "image") imageRequests.push(request.url());
+  });
+
+  await page.goto("/find-questions");
+  await page.waitForLoadState("networkidle");
+
+  await expect(page.locator(".hero-character")).toHaveAttribute("src", /\/_next\/image\?/);
+  await expect(page.locator(".question-art").first()).toHaveAttribute("src", /\/_next\/image\?/);
+
+  for (const file of [
+    "search-left.png",
+    "search-right.png",
+    "selection-left.png",
+    "left-bottom.png",
+  ]) {
+    expect(
+      imageRequests.some((url) => url.includes(`/finder/assets/${file}`)),
+      `mobile should not request hidden decoration ${file}`,
+    ).toBe(false);
+  }
+
+  await context.close();
 });
 
 test("Finder 849px layout geometry aligns with reference structure", async ({ page }) => {

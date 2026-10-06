@@ -154,8 +154,15 @@
   z-index: -1;
   pointer-events: none;
 }
-.finder-page .page-art img {
+.finder-page .page-art img,
+.finder-page .page-art span {
   position: absolute;
+}
+.finder-page .page-art span {
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 .finder-page .left-top-art {
   top: 49px;

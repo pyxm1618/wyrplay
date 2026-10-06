@@ -6,6 +6,12 @@
   }
 }
 @media (min-width: 701px) {
+  .finder-page .search-left-art {
+    background-image: url("/finder/assets/search-left.png");
+  }
+  .finder-page .search-right-art {
+    background-image: url("/finder/assets/search-right.png");
+  }
   .finder-page .hero h1 {
     font-size: 66px;
   }
