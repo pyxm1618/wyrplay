@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { type ReactNode, type CSSProperties } from "react";
+import { useState, type ReactNode, type CSSProperties } from "react";
 import {
   FEATURED_COLLECTIONS,
   getQuestionsByCollection,
@@ -9,6 +9,7 @@ import {
 } from "../data/questions";
 import { Arrow, ArtCrop } from "./home-art";
 import { rankLeaderboard, type LeaderboardResult } from "../domain/leaderboard";
+import { useHydrated } from "./use-hydrated";
 
 const categories = [
   {
@@ -92,6 +93,77 @@ const occasions = [
     href: "/would-you-rather-questions-for-couples",
   },
 ] as const;
+
+export function IllustratedHomeHeader({ authEnabled = false }: { authEnabled?: boolean }) {
+  const hydrated = useHydrated();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const links = [
+    { label: "Home", href: "/" },
+    { label: "Find Questions", href: "/find-questions" },
+    { label: "Categories", href: "/#categories" },
+    { label: "Leaderboard", href: "/leaderboards" },
+    { label: "Create", href: "/create" },
+  ];
+  return (
+    <>
+      <a href="#play" className="home-skip-link sr-only">
+        Skip to play
+      </a>
+      <header className="site-header">
+        <Link href="/" className="brand" aria-label="WYRPlay Home">
+          <Image src="/brand/logo.svg" alt="" width={40} height={40} priority />
+          <span>WYRPLAY</span>
+        </Link>
+        <nav aria-label="Primary navigation">
+          {links.map((link) => (
+            <Link key={link.label} href={link.href}>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+        <fieldset disabled={!hydrated} className="header-actions">
+          <Link
+            href="/find-questions#search"
+            className="search-button"
+            aria-label="Search questions"
+          >
+            ⌕
+          </Link>
+          {authEnabled ? (
+            <Link className="login-button home-login" href="/sign-in">
+              Log in
+            </Link>
+          ) : (
+            <Link className="signup-button home-login" href="/#play">
+              Play now
+            </Link>
+          )}
+          <button
+            type="button"
+            className="home-menu"
+            aria-label={menuOpen ? "Close mobile menu" : "Open mobile menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </button>
+        </fieldset>
+      </header>
+      {menuOpen && (
+        <nav className="home-mobile-nav" aria-label="Mobile navigation">
+          {[
+            ...links,
+            { label: "Kids Questions", href: "/would-you-rather-questions-for-kids" },
+          ].map((link) => (
+            <Link key={link.label} href={link.href} onClick={() => setMenuOpen(false)}>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      )}
+    </>
+  );
+}
 
 function Heading({
   title,
