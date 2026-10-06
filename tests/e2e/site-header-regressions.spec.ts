@@ -40,12 +40,16 @@ test("auth-enabled header exposes login and signup at every breakpoint boundary"
     await menuButton.click();
 
     const mobileNav = header.getByRole("navigation", { name: "Mobile navigation" });
-    await expect(mobileNav.getByRole("link", { name: "Log In", exact: true })).toBeVisible();
-    await expect(mobileNav.getByRole("link", { name: "Sign Up", exact: true })).toBeVisible();
+    await expect(
+      mobileNav.getByRole("link", { name: "Log In", exact: true }),
+    ).toBeVisible();
+    await expect(
+      mobileNav.getByRole("link", { name: "Sign Up", exact: true }),
+    ).toBeVisible();
 
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
-      true,
-    );
+    true,
+  );
 
     await page.keyboard.press("Escape");
     await expect(mobileNav).toHaveCount(0);
