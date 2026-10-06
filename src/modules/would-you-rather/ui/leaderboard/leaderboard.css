@@ -48,6 +48,7 @@
   --lb-blue: #008aff;
   --lb-gold: #ffb500;
   --lb-heart: #ff1649;
+  position: relative;
   color-scheme: light;
   background: var(--lb-paper);
   color: var(--lb-ink);
@@ -55,18 +56,35 @@
     400 14px/1.5 LeaderboardRoboto,
     Arial,
     sans-serif;
+  min-height: 100dvh;
+  isolation: isolate;
+}
+.leaderboard-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100vw, 1720px);
+  height: 1100px;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    linear-gradient(var(--lb-paper) clamp(76px, 7vw, 100px), transparent clamp(76px, 7vw, 100px)),
+    url("/leaderboard-art/edge-decoration.png") center top / 100% auto no-repeat;
+  mask-image: linear-gradient(to bottom, black 0%, black 500px, transparent 1000px);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 500px, transparent 1000px);
 }
 .leaderboard-page * {
   box-sizing: border-box;
 }
 .leaderboard-page .page-shell {
-  width: min(calc(100% - 32px), 1520px);
+  position: relative;
+  z-index: 1;
+  width: min(calc(100% - 32px), 1200px);
   margin: auto;
   min-height: 100dvh;
-  padding: 0 clamp(28px, 3vw, 52px) 40px;
-  background:
-    linear-gradient(var(--lb-paper) clamp(76px, 7vw, 110px), transparent clamp(76px, 7vw, 110px)),
-    url("/leaderboard-art/edge-decoration.png") center top / 100% auto no-repeat;
+  padding: 0 clamp(16px, 2.5vw, 32px) 40px;
 }
 .leaderboard-page .page-shell :is(h1, h2, h3, p) {
   margin: 0;
@@ -190,11 +208,11 @@
 .leaderboard-page .hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: center;
-  gap: 24px;
-  padding: 20px 0 34px;
-  max-width: 1120px;
+  gap: 20px;
+  padding: 12px 0 18px;
+  max-width: 100%;
   margin: auto;
 }
 .leaderboard-page .hero-copy {
@@ -203,26 +221,26 @@
   text-align: center;
 }
 .leaderboard-page .hero h1 {
-  line-height: 1;
-  letter-spacing: -1.8px;
+  line-height: 1.05;
+  letter-spacing: -1.4px;
 }
 .leaderboard-page .hero-best {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
-  font-size: clamp(66px, 7vw, 96px);
+  gap: 16px;
+  font-size: clamp(48px, 5.2vw, 70px);
   transform: rotate(-6deg);
 }
 .leaderboard-page .hero-best .icon {
-  width: 72px;
-  height: 66px;
+  width: 52px;
+  height: 48px;
   transform: rotate(12deg);
 }
 .leaderboard-page .hero-wyr {
   display: block;
   white-space: nowrap;
-  font-size: clamp(40px, 4.7vw, 64px);
+  font-size: clamp(32px, 3.8vw, 48px);
   transform: rotate(-4deg);
 }
 .leaderboard-page .hero-wyr > span:first-child {
@@ -233,22 +251,22 @@
 }
 .leaderboard-page .hero-questions {
   display: block;
-  font-size: clamp(43px, 4.7vw, 64px);
+  font-size: clamp(34px, 3.8vw, 48px);
   transform: rotate(-4deg);
-  margin: 0 0 0 48px;
+  margin: 0 0 0 32px;
 }
 .leaderboard-page .hero-copy p {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 /* Artwork is an opaque illustration, displayed at its native aspect ratio. */
 .leaderboard-page .hero-art {
-  width: min(100%, 330px);
+  width: min(100%, 260px);
   height: auto;
   justify-self: end;
-  border-radius: 28px;
+  border-radius: 24px;
 }
 .leaderboard-page .spark {
   position: absolute;
@@ -336,7 +354,7 @@
   grid-template-columns: 1fr 1.055fr 1fr;
   gap: 20px;
   align-items: stretch;
-  margin: 52px 0 0;
+  margin: 44px 0 0;
 }
 .leaderboard-page .question-card {
   min-width: 0;
@@ -344,7 +362,7 @@
   border: 1px solid #c0dcff;
   background: linear-gradient(145deg, #fff, #eff6ff);
   border-radius: 18px;
-  padding: 24px 22px 20px;
+  padding: 20px 18px 18px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 3px 6px #2772b808;
@@ -354,7 +372,7 @@
   margin-top: 0;
   border-color: #ffb600;
   background: linear-gradient(150deg, #fff3c1, #fffbed);
-  padding-top: 46px;
+  padding-top: 40px;
 }
 .leaderboard-page .question-card.pizza {
   border-color: #ff9e89;
@@ -381,8 +399,9 @@
 .leaderboard-page .question-art {
   display: block;
   width: 100%;
-  height: 113px;
-  margin-bottom: 14px;
+  max-width: 140px;
+  height: 72px;
+  margin: 0 auto 12px;
 }
 .leaderboard-page .question-card h3 {
   font:
@@ -457,11 +476,11 @@
 }
 .leaderboard-page .ranking-row {
   display: grid;
-  grid-template-columns: 36px 64px minmax(0, 1fr) 108px;
-  gap: 16px;
+  grid-template-columns: 36px 52px minmax(0, 1fr) 108px;
+  gap: 14px;
   align-items: center;
-  min-height: 88px;
-  padding: 12px 0;
+  min-height: 76px;
+  padding: 10px 0;
   border-bottom: 1px solid #f2ece3;
 }
 .leaderboard-page .ranking-row:last-child {
@@ -489,8 +508,8 @@
 }
 .leaderboard-page .row-art {
   display: block;
-  width: 64px;
-  height: 50px;
+  width: 52px;
+  height: 38px;
 }
 .leaderboard-page .row-content {
   min-width: 0;
@@ -562,6 +581,17 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+.leaderboard-page .stats-period-badge {
+  font-size: 13px;
+  font-family: LeaderboardRoboto, sans-serif;
+  font-weight: 700;
+  background: #e6f3ff;
+  color: #0070cc;
+  border-radius: 12px;
+  padding: 3px 10px;
+  margin-left: 8px;
+  vertical-align: middle;
 }
 .leaderboard-page .stats-grid {
   display: grid;
@@ -645,31 +675,6 @@
 
 /* Tablet: avoid the old hero overlap; give titles room. */
 @media (max-width: 1150px) {
-  .leaderboard-page .page-shell {
-    position: relative;
-    isolation: isolate;
-    background: var(--lb-paper);
-  }
-  .leaderboard-page .page-shell::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    aspect-ratio: 868 / 1812;
-    pointer-events: none;
-    z-index: -1;
-    background:
-      linear-gradient(var(--lb-paper) clamp(76px, 7vw, 110px), transparent clamp(76px, 7vw, 110px)),
-      url("/leaderboard-art/edge-decoration.png") center top / 100% 100% no-repeat;
-    mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 160px), transparent 100%);
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      black 0%,
-      black calc(100% - 160px),
-      transparent 100%
-    );
-  }
   .leaderboard-page .hero {
     gap: 16px;
   }

@@ -114,6 +114,11 @@ export function LeaderboardPage({ result }: { result: LeaderboardResult }) {
     .filter((n) => n >= 1 && n <= view.pages)
     .sort((a, b) => a - b);
 
+  const currentPeriodVotes =
+    period === "all" ? snapshot?.totalVotes : ranked.reduce((sum, entry) => sum + entry.votes, 0);
+  const currentRankedCount =
+    period === "all" ? snapshot?.entries.filter((entry) => entry.total > 0).length : ranked.length;
+
   return (
     <div className="leaderboard-page" aria-busy={refreshing}>
       <div className="page-shell">
@@ -140,8 +145,8 @@ export function LeaderboardPage({ result }: { result: LeaderboardResult }) {
               name="hero-art"
               className="hero-art"
               alt="A player raising a golden trophy. Great questions by real people!"
-              width={330}
-              height={293}
+              width={260}
+              height={230}
             />
             <span className="spark spark-one" aria-hidden="true">
               ✦
@@ -245,58 +250,51 @@ export function LeaderboardPage({ result }: { result: LeaderboardResult }) {
                   ))}
                 </div>
               </section>
-              <section className="top-ten-section" id="top-ten">
-                <div className="ranking-heading">
-                  <h2>
-                    {view.current === 1
-                      ? "Top 10 Questions"
-                      : `Questions ${(view.current - 1) * 10 + 1}–${Math.min(view.current * 10, ranked.length)}`}
-                  </h2>
-                </div>
-                <div className="ranking-list">
-                  {view.entries.map((entry) => (
-                    <article
-                      className="ranking-row"
-                      key={entry.question.id}
-                      data-question-id={entry.question.id}
-                    >
-                      <span className={`rank-number rank-${entry.rank}`}>{entry.rank}</span>
-                      <button
-                        className="row-art-button"
-                        onClick={() => openQuestion(entry)}
-                        aria-label={`Open question ${entry.question.id}`}
+              {ranked.length > 3 && (
+                <section className="top-ten-section" id="top-ten">
+                  <div className="ranking-heading">
+                    <h2>
+                      {view.current === 1
+                        ? "Top 10 Questions"
+                        : `Questions ${(view.current - 1) * 10 + 1}–${Math.min(view.current * 10, ranked.length)}`}
+                    </h2>
+                  </div>
+                  <div className="ranking-list">
+                    {view.entries.map((entry) => (
+                      <article
+                        className="ranking-row"
+                        key={entry.question.id}
+                        data-question-id={entry.question.id}
                       >
-                        <ChoiceArt className="row-art" />
-                      </button>
-                      <div className="row-content">
+                        <span className={`rank-number rank-${entry.rank}`}>{entry.rank}</span>
                         <button
-                          className="row-title"
+                          className="row-art-button"
                           onClick={() => openQuestion(entry)}
-                          title={entry.question.question}
+                          aria-label={`Open question ${entry.question.id}`}
                         >
-                          {cardTitle(entry.question)}
+                          <ChoiceArt className="row-art" />
                         </button>
-                        <Tags entry={entry} />
-                      </div>
-                      <VoteCount
-                        entry={entry}
-                        className="row-votes"
-                        onOpen={() => openQuestion(entry)}
-                      />
-                    </article>
-                  ))}
-                  {view.entries.length === 0 && (
-                    <p className="empty-ranking-list">
-                      {!snapshot
-                        ? "Rankings could not be loaded."
-                        : ranked.length === 0
-                          ? "No ranked questions in this period."
-                          : "All ranked questions are displayed above."}
-                    </p>
-                  )}
-                </div>
-              </section>
-              {view.pages > 0 && (
+                        <div className="row-content">
+                          <button
+                            className="row-title"
+                            onClick={() => openQuestion(entry)}
+                            title={entry.question.question}
+                          >
+                            {cardTitle(entry.question)}
+                          </button>
+                          <Tags entry={entry} />
+                        </div>
+                        <VoteCount
+                          entry={entry}
+                          className="row-votes"
+                          onOpen={() => openQuestion(entry)}
+                        />
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              )}
+              {view.pages > 1 && (
                 <nav className="pagination" aria-label="Ranking pages">
                   <button disabled={view.current === 1} onClick={() => setPage(view.current - 1)}>
                     ← Previous
@@ -331,27 +329,36 @@ export function LeaderboardPage({ result }: { result: LeaderboardResult }) {
               <h2>
                 <Icon name="bars" />
                 Leaderboard Stats
+                <span className="stats-period-badge">{periodLabel}</span>
               </h2>
               <div className="stats-grid">
                 {[
-                  { icon: "heart", value: snapshot?.totalVotes, label: "Total votes" },
+                  {
+                    icon: "heart",
+                    value: currentPeriodVotes,
+                    label: period === "all" ? "Total votes" : `${periodLabel} votes`,
+                    title: `${periodLabel} votes cast across ranked questions`,
+                  },
                   {
                     icon: "bars",
-                    value: snapshot?.entries.filter((entry) => entry.total > 0).length,
-                    label: "Ranked",
+                    value: currentRankedCount,
+                    label: period === "all" ? "Ranked" : `${periodLabel} ranked`,
+                    title: `Questions with votes in ${periodLabel.toLowerCase()}`,
                   },
-                  { icon: "people", value: snapshot?.anonymousVoters, label: "Voters" },
-                  { icon: "question", value: snapshot?.entries.length, label: "Questions" },
+                  {
+                    icon: "people",
+                    value: snapshot?.anonymousVoters,
+                    label: "All-time voters",
+                    title: "Distinct anonymous voter identities across all time.",
+                  },
+                  {
+                    icon: "question",
+                    value: snapshot?.entries.length,
+                    label: "Question pool",
+                    title: "Total approved questions eligible for ranking.",
+                  },
                 ].map((stat) => (
-                  <div
-                    className={`stat stat-${stat.icon}`}
-                    key={stat.label}
-                    title={
-                      stat.label === "Voters"
-                        ? "Distinct anonymous voter identities, not verified people."
-                        : undefined
-                    }
-                  >
+                  <div className={`stat stat-${stat.icon}`} key={stat.label} title={stat.title}>
                     <Icon name={stat.icon as IconName} />
                     <strong>{stat.value === undefined ? "—" : formatCount(stat.value)}</strong>
                     <span>{stat.label}</span>
