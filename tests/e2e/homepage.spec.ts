@@ -98,7 +98,7 @@ for (const [width, height] of homeViewports) {
       /brand\/logo.svg/,
     );
     await expect(page.locator("h1 image")).toHaveCount(0);
-    await expect(page.getByRole("button", { name: /switch to .* theme/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Toggle theme" })).toBeVisible();
     await expect(page.getByText("Crafted for Genuine Social Play")).toHaveCount(0);
     for (const href of [
       "/would-you-rather-questions-for-kids",
