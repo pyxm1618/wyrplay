@@ -425,7 +425,9 @@ export function PrintPage({
           <div className="print-pool">
             <span>
               <strong>{pool.length}</strong>{" "}
-              {useRequestedSet ? "questions from your selected set" : "questions in this generated set"}
+              {useRequestedSet
+                ? "questions from your selected set"
+                : "questions in this generated set"}
             </span>
             {useRequestedSet ? (
               <button
