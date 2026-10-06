@@ -518,9 +518,7 @@ export function PrintPage({
                           value
                             ? { ...current, occasion: value }
                             : {
-                                ...(current.collection
-                                  ? { collection: current.collection }
-                                  : {}),
+                                ...(current.collection ? { collection: current.collection } : {}),
                                 ...(current.age ? { age: current.age } : {}),
                               },
                         );
