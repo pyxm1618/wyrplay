@@ -7,12 +7,14 @@ export function LeaderboardArt({
   alt = "",
   width = 180,
   height = 113,
+  sizes,
 }: {
   name: string;
   className?: string;
   alt?: string;
   width?: number;
   height?: number;
+  sizes?: string;
 }) {
   return (
     <Image
@@ -21,7 +23,8 @@ export function LeaderboardArt({
       alt={alt}
       width={width}
       height={height}
-      unoptimized
+      sizes={sizes}
+      unoptimized={name.startsWith("medal-")}
     />
   );
 }

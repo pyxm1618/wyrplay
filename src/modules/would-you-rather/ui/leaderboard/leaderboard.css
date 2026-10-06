@@ -71,7 +71,7 @@
   z-index: -1;
   background:
     linear-gradient(var(--lb-paper) clamp(76px, 7vw, 100px), transparent clamp(76px, 7vw, 100px)),
-    url("/leaderboard-art/edge-decoration.png") center top / 100% auto no-repeat;
+    url("/leaderboard-art/edge-decoration.webp") center top / 100% auto no-repeat;
   mask-image: linear-gradient(to bottom, black 0%, black 500px, transparent 1000px);
   -webkit-mask-image: linear-gradient(to bottom, black 0%, black 500px, transparent 1000px);
 }
