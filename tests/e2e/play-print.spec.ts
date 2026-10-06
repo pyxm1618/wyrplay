@@ -140,7 +140,9 @@ test("empty generated print set clears stale preview and disables output actions
   await expect(
     previewFooter.getByRole("button", { name: "PNG", exact: true }),
   ).toBeDisabled();
-  await expect(previewFooter.getByRole("button", { name: "Download PDF" })).toBeDisabled();
+  await expect(
+    previewFooter.getByRole("button", { name: "Download PDF" }),
+  ).toBeDisabled();
 });
 
 test("finder print set stays exact until the user chooses a different set", async ({ page }) => {
