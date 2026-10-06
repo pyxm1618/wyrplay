@@ -425,6 +425,7 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
             <button
               className="kids-pill"
               aria-expanded={expanded}
+              aria-label={expanded ? "Show fewer questions" : "Browse more kids questions"}
               onClick={() => setExpanded(!expanded)}
             >
               {expanded ? "Show fewer questions" : "Browse More Would You Rather Questions for Kids"}
