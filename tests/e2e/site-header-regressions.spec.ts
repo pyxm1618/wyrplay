@@ -20,9 +20,9 @@ test("mobile navigation closes when pathname changes through a persistent header
   await header.getByRole("button", { name: "Open mobile menu" }).click();
   await expect(header.getByRole("navigation", { name: "Mobile navigation" })).toBeVisible();
 
-  await header.getByRole("link", { name: "Play Now", exact: true }).first().click();
+  await header.getByRole("link", { name: "WYRPlay Home", exact: true }).click();
 
-  await expect(page).toHaveURL(/\/play$/);
+  await expect(page).toHaveURL(/\/$/);
   await expect(header.getByRole("navigation", { name: "Mobile navigation" })).toHaveCount(0);
 });
 
