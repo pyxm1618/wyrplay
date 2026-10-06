@@ -4,9 +4,7 @@ import "@/components/status/status-page.css";
 
 function StatusIcon({ kind }: { kind: "home" | "retry" }) {
   const path =
-    kind === "home"
-      ? "M3 11 12 3l9 8v10h-6v-7H9v7H3Z"
-      : "M20 7v5h-5M20 12a8 8 0 1 0-2 6M20 7l-3-3";
+    kind === "home" ? "M3 11 12 3l9 8v10h-6v-7H9v7H3Z" : "M20 7v5h-5M20 12a8 8 0 1 0-2 6M20 7l-3-3";
 
   return (
     <svg
