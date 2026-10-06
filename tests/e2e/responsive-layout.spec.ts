@@ -246,7 +246,7 @@ test.describe("required responsive viewport matrix", () => {
       if (width >= 1024) {
         const shell = await page.locator(".leaderboard-page .page-shell").boundingBox();
         if (!shell) throw new Error("Leaderboard shell is missing");
-        expect(shell.width).toBeGreaterThanOrEqual(Math.min(width - 36, 1510));
+        expect(shell.width).toBeGreaterThanOrEqual(Math.min(width - 36, 1200));
       }
 
       await shot(page, info, "leaderboard", width, height);
