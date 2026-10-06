@@ -147,6 +147,7 @@ export function LeaderboardPage({ result }: { result: LeaderboardResult }) {
               alt="A player raising a golden trophy. Great questions by real people!"
               width={260}
               height={230}
+              sizes="(max-width: 600px) 180px, 260px"
             />
             <span className="spark spark-one" aria-hidden="true">
               ✦
@@ -368,7 +369,12 @@ export function LeaderboardPage({ result }: { result: LeaderboardResult }) {
             </section>
           </div>
           <section className="footer-cta">
-            <Art name="footer-trophy" width={109} height={96} />
+            <Art
+              name="footer-trophy"
+              width={109}
+              height={96}
+              sizes="(max-width: 600px) 70px, 109px"
+            />
             <div>
               <h2>Help choose the next favorite</h2>
               <p>
