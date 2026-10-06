@@ -6,7 +6,6 @@ import { useState } from "react";
 
 import { SiteBrand } from "./site-brand";
 
-import { featuresConfig } from "@/config/features.config";
 import { navigationConfig, type NavigationItem } from "@/config/navigation.config";
 import { siteConfig } from "@/config/site.config";
 import { ThemeToggle } from "@/modules/would-you-rather";
@@ -26,8 +25,10 @@ function isActive(pathname: string, item: NavigationItem): boolean {
 
 export function SiteHeader({
   locale = siteConfig.defaultLocale,
+  authEnabled = false,
 }: Readonly<{
   locale?: string;
+  authEnabled?: boolean;
 }> = {}) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -75,7 +76,7 @@ export function SiteHeader({
 
         <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
-          {featuresConfig.auth.enabled ? (
+          {authEnabled ? (
             <>
               <Link
                 href={toLocaleHref(navigationConfig.header.auth.loggedOut[0].href)}
@@ -139,7 +140,7 @@ export function SiteHeader({
             >
               {navigationConfig.header.primaryCta.label}
             </Link>
-            {featuresConfig.auth.enabled ? (
+            {authEnabled ? (
               <div className="mt-2 grid grid-cols-2 gap-2 border-t border-border pt-3">
                 {navigationConfig.header.auth.loggedOut.map((item) => (
                   <Link
