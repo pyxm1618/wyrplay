@@ -53,8 +53,12 @@ test("auth-enabled header exposes login and signup at every breakpoint boundary"
 
   await page.setViewportSize({ width: 1280, height: 900 });
 
-  await expect(header.getByRole("link", { name: "Log In", exact: true }).first()).toBeVisible();
-  await expect(header.getByRole("link", { name: "Sign Up", exact: true }).first()).toBeVisible();
+  await expect(
+    header.getByRole("link", { name: "Log In", exact: true }).first(),
+  ).toBeVisible();
+  await expect(
+    header.getByRole("link", { name: "Sign Up", exact: true }).first(),
+  ).toBeVisible();
   await expect(header.getByRole("button", { name: "Open mobile menu" })).toBeHidden();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
