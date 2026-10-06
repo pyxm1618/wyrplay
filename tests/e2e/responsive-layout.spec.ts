@@ -92,6 +92,7 @@ test.describe("required responsive viewport matrix", () => {
   test("Home full-bleed shell and desktop fold", async ({ page }, info) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await openStable(page, "/");
+    await expect(page.locator("[data-home-ready=true]")).toBeVisible();
 
     for (const [width, height] of viewports) {
       await page.setViewportSize({ width, height });
