@@ -760,7 +760,7 @@ export function PrintPage({
           </header>
 
           <div className="preview-paper-viewport" ref={viewportRef}>
-            {previewUrl ? (
+            {previewUrl && layout && totalPages > 0 ? (
               <img
                 className="preview-paper"
                 src={previewUrl}
