@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 
+import rawQuestionsJson from "../../../content/question-bank/questions.json";
+
 import {
   getHomepageQuestions,
   getPlayableQuestions,
@@ -20,6 +22,16 @@ describe("Would You Rather Question Data Contract", () => {
     const result = validateQuestionDatabase(QUESTIONS_DATABASE);
     expect(result.valid).toBe(true);
     expect(result.errors).toEqual([]);
+  });
+
+  it("P0-2: requires every raw formal record to declare an explicit reviewStatus", () => {
+    const allowedStatuses = ["unreviewed", "approved", "deferred", "rejected", "retired"];
+
+    expect(rawQuestionsJson).toHaveLength(457);
+    for (const q of rawQuestionsJson) {
+      expect(q).toHaveProperty("reviewStatus");
+      expect(allowedStatuses).toContain(q.reviewStatus);
+    }
   });
 
   it("ensures every formal question has a standard wyr- id and required fields", () => {
