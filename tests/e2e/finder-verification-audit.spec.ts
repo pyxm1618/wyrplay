@@ -19,7 +19,7 @@ test.describe("Storage error isolation", () => {
     );
     // Page remains fully functional
     await expect(page.locator(".question-card")).toHaveCount(10);
-    await expect(page.locator(".panel-heading")).toContainText("457 curated questions");
+    await expect(page.locator(".panel-heading")).toContainText("512 curated questions");
   });
 
   test("Finder sessionStorage invalid JSON triggers accurate restore notice", async ({ page }) => {
