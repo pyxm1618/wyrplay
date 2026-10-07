@@ -164,60 +164,6 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-.finder-page .left-top-art {
-  top: 49px;
-  left: 0;
-  width: 60px;
-  height: 214px;
-}
-.finder-page .left-edge-art {
-  top: 366px;
-  left: 0;
-  width: 21px;
-  height: 879px;
-}
-.finder-page .right-edge-art {
-  top: 328px;
-  right: 0;
-  width: 21px;
-  height: 1406px;
-}
-.finder-page .left-bottom-art {
-  top: 1245px;
-  left: 0;
-  width: 261px;
-  height: 382px;
-}
-.finder-page .bottom-left-art {
-  bottom: 0;
-  left: 0;
-  width: 46px;
-  height: 139px;
-}
-.finder-page .bottom-right-art {
-  bottom: 0;
-  right: 0;
-  width: 43px;
-  height: 139px;
-}
-.finder-page .search-left-art {
-  left: 0;
-  top: 263px;
-  width: 43px;
-  height: 103px;
-}
-.finder-page .search-right-art {
-  right: 0;
-  top: 263px;
-  width: 43px;
-  height: 103px;
-}
-.finder-page .selection-left-art {
-  left: 0;
-  top: 1627px;
-  width: 21px;
-  height: 107px;
-}
 .finder-page .bottom-band-art {
   left: 0;
   bottom: 0;

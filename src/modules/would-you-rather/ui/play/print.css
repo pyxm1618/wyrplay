@@ -491,11 +491,6 @@
   display: none;
 }
 
-.print-page .play-art {
-  background:
-    url("/play-art/print-left.png") left 80px / 55px auto no-repeat,
-    url("/play-art/print-right.png") right 80px / 30px auto no-repeat;
-}
 .print-page .play-art > * {
   display: none;
 }
