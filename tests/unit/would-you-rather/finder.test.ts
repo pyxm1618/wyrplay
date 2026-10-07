@@ -14,7 +14,7 @@ describe("finder integration contracts", () => {
       ...QUESTIONS_DATABASE,
       { ...QUESTIONS_DATABASE[0]!, id: "unreviewed", reviewStatus: "unreviewed" as const },
     ];
-    expect(filterFinderQuestions(bank, {})).toHaveLength(457);
+    expect(filterFinderQuestions(bank, {})).toHaveLength(512);
     const children = filterFinderQuestions(bank, { age: "kids", difficulty: "hard" });
     expect(children.length).toBeGreaterThan(0);
     expect(
@@ -27,7 +27,7 @@ describe("finder integration contracts", () => {
     ).toBe(true);
     expect(filterFinderQuestions(bank, { searchKeyword: "no-match-xyz" })).toEqual([]);
   });
-  it("paginates all 457 identities exactly once and clamps stale pages after filtering", () => {
+  it("paginates all 512 identities exactly once and clamps stale pages after filtering", () => {
     const totalPages = Math.ceil(QUESTIONS_DATABASE.length / 10);
     const all = Array.from(
       { length: totalPages },

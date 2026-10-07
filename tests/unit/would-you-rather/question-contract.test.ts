@@ -14,10 +14,10 @@ import type { AgeGroup } from "@/modules/would-you-rather";
 import { TEST_FIXTURE_QUESTIONS } from "../../../tests/fixtures/test-questions";
 
 describe("Would You Rather Question Data Contract", () => {
-  it("contains 457 approved questions plus 55 unreviewed kids candidates", () => {
+  it("contains 512 approved questions after kids editorial review", () => {
     expect(QUESTIONS_DATABASE).toHaveLength(512);
-    expect(QUESTIONS_DATABASE.filter((q) => q.reviewStatus === "approved")).toHaveLength(457);
-    expect(QUESTIONS_DATABASE.filter((q) => q.reviewStatus === "unreviewed")).toHaveLength(55);
+    expect(QUESTIONS_DATABASE.filter((q) => q.reviewStatus === "approved")).toHaveLength(512);
+    expect(QUESTIONS_DATABASE.filter((q) => q.reviewStatus === "unreviewed")).toHaveLength(0);
   });
 
   it("passes comprehensive schema validation for all 512 question records", () => {
@@ -45,15 +45,20 @@ describe("Would You Rather Question Data Contract", () => {
     }
   });
 
-  it("P0-2: keeps all 55 kids candidates out of every playable pool", () => {
-    const candidates = QUESTIONS_DATABASE.filter((q) => q.reviewStatus === "unreviewed");
+  it("publishes the 55 reviewed kids additions into the approved kids pool", () => {
+    const additions = QUESTIONS_DATABASE.filter(
+      (q) => q.id >= "wyr-000458" && q.id <= "wyr-000512",
+    );
+    const kidsPlayable = getPlayableQuestionsByCollection("kids", QUESTIONS_DATABASE);
+    const kidsPlayableIds = new Set(kidsPlayable.map((q) => q.id));
 
-    expect(candidates).toHaveLength(55);
-    expect(candidates[0]?.id).toBe("wyr-000458");
-    expect(candidates.at(-1)?.id).toBe("wyr-000512");
-    expect(candidates.every((q) => q.primaryCollection === "kids")).toBe(true);
-    expect(getPlayableQuestions(candidates)).toHaveLength(0);
-    expect(getPlayableQuestionsByCollection("kids", candidates)).toHaveLength(0);
+    expect(additions).toHaveLength(55);
+    expect(additions[0]?.id).toBe("wyr-000458");
+    expect(additions.at(-1)?.id).toBe("wyr-000512");
+    expect(additions.every((q) => q.reviewStatus === "approved")).toBe(true);
+    expect(additions.every((q) => q.primaryCollection === "kids")).toBe(true);
+    expect(getPlayableQuestions(additions)).toHaveLength(55);
+    expect(additions.every((q) => kidsPlayableIds.has(q.id))).toBe(true);
   });
 
   it("P0-2: guarantees unreviewed questions are blocked from playable pools", () => {
@@ -68,9 +73,9 @@ describe("Would You Rather Question Data Contract", () => {
     expect(getPlayableQuestionsByCollection("kids", mockUnreviewed)).toHaveLength(0);
   });
 
-  it("provides 457 approved playable dilemmas in the formal production pool", () => {
+  it("provides 512 approved playable dilemmas in the formal production pool", () => {
     const playable = getPlayableQuestions(QUESTIONS_DATABASE);
-    expect(playable).toHaveLength(457);
+    expect(playable).toHaveLength(512);
 
     const homepagePlayable = getHomepageQuestions(50, QUESTIONS_DATABASE);
     expect(homepagePlayable).toHaveLength(50);

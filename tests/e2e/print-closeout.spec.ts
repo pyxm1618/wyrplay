@@ -252,7 +252,7 @@ test("Browser Print lazy generation prepares DOM and images before calling windo
   await page.goto("/print?format=cards");
   await expect(page.getByRole("button", { name: "Print" })).toBeEnabled();
 
-  // 1. 在未点击 Print 前，Browser Print DOM 中没有预先生成全部 457 个 QR
+  // 1. 在未点击 Print 前，Browser Print DOM 中没有预先生成全部 512 个 QR
   const preQrCount = await page.locator('.print-document img[alt="Play this set QR code"]').count();
   expect(preQrCount).toBe(0);
 
@@ -289,7 +289,7 @@ test("Browser Print lazy generation prepares DOM and images before calling windo
   );
 
   expect(checkResult.called).toBe(true);
-  expect(checkResult.qrCount).toBe(457);
+  expect(checkResult.qrCount).toBe(512);
   expect(checkResult.allHaveValidSrc).toBe(true);
   expect(checkResult.allHaveValidUrl).toBe(true);
   expect(checkResult.allDecoded).toBe(true);
