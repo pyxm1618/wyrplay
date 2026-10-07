@@ -25,7 +25,8 @@
 .kids-page {
   --ink: #07111d;
   --kids-muted: #34527c;
-  --kids-content: 1320px;
+  --kids-content: var(--site-content-max);
+  --kids-wide: var(--site-grid-max);
   color-scheme: light;
   color: var(--ink);
   background: #fdfaf5;

@@ -286,3 +286,10 @@
     scroll-behavior: auto;
   }
 }
+
+@media (min-width: 1441px) {
+  .kids-page :is(.kids-hero, .kids-arena, .kids-browse, .kids-related) {
+    width: min(calc(100% - 2 * var(--site-wide-gutter)), var(--kids-wide));
+    max-width: none;
+  }
+}

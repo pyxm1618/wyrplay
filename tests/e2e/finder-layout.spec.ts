@@ -23,6 +23,7 @@ const finderViewports = [
   [1440, 900],
   [1536, 864],
   [1920, 1080],
+  [2048, 1152],
   [2560, 1440],
 ] as const;
 test.beforeEach(async ({ page }) => {
@@ -66,7 +67,7 @@ test("Finder viewport matrix preserves independent content, artwork and controls
     if (width >= 1100) {
       const directory = await page.locator(".directory").boundingBox();
       expect(directory!.width).toBeGreaterThanOrEqual(Math.min(width - 64, 1180));
-      expect(directory!.width).toBeLessThanOrEqual(1241);
+      expect(directory!.width).toBeLessThanOrEqual(width > 1440 ? 1521 : 1241);
     }
     if (width <= 700) {
       const header = await page.locator("[data-site-header]").boundingBox();
@@ -414,6 +415,7 @@ test("Finder image delivery skips mobile-only decorations and uses optimized con
 test("Finder 849px layout geometry aligns with reference structure", async ({ page }) => {
   await page.setViewportSize({ width: 849, height: 900 });
   await page.goto("/find-questions");
+  await expect(page.locator(".directory")).toBeVisible();
   await page.evaluate(() => document.fonts.ready);
 
   const header = await page.locator("[data-site-header]").boundingBox();

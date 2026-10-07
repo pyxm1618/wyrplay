@@ -1111,3 +1111,10 @@
 .leaderboard-page .page-shell :is(.question-open, .row-title):hover {
   color: #005dae;
 }
+
+@media (min-width: 1441px) {
+  .leaderboard-page .page-shell {
+    width: min(calc(100% - 2 * var(--site-wide-gutter)), var(--site-wide-max));
+    padding-inline: 0;
+  }
+}

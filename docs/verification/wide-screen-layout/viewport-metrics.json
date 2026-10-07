@@ -1,0 +1,4653 @@
+{
+  "baseMain": "4668c6e619dd8dffe18ba07641d1e288abdfa418",
+  "browser": "Installed Google Chrome, headless, DPR 1",
+  "runtime": "Local Next production builds; unavailable disposable DB address, no database writes",
+  "before": [
+    {
+      "name": "home",
+      "route": "/",
+      "width": 1280,
+      "height": 800,
+      "viewport": 1280,
+      "document": 1280,
+      "body": 1280,
+      "cls": 0.005315694046020508,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3939.359375,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 0,
+          "y": 73,
+          "width": 1280,
+          "height": 768.40625
+        },
+        ".hero-boy": {
+          "x": -13.4375,
+          "y": 122.265625,
+          "width": 309.109375,
+          "height": 309.90625
+        },
+        ".hero-girl": {
+          "x": 977.59375,
+          "y": 202.90625,
+          "width": 320.3125,
+          "height": 186.84375
+        },
+        ".home-hero-arena": {
+          "x": 280,
+          "y": 424.859375,
+          "width": 720,
+          "height": 343.359375
+        },
+        ".categories-section .home-container": {
+          "x": 20,
+          "y": 897.40625,
+          "width": 1240,
+          "height": 267.203125
+        },
+        ".home-faq .home-container": {
+          "x": 20,
+          "y": 3529.15625,
+          "width": 1240,
+          "height": 361.203125
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 1440,
+      "height": 900,
+      "viewport": 1440,
+      "document": 1440,
+      "body": 1440,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 80,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 80,
+          "y": 3994.671875,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 0,
+          "y": 73,
+          "width": 1440,
+          "height": 823.71875
+        },
+        ".hero-boy": {
+          "x": -15.109375,
+          "y": 128.4375,
+          "width": 347.75,
+          "height": 348.640625
+        },
+        ".hero-girl": {
+          "x": 1099.796875,
+          "y": 219.15625,
+          "width": 360.359375,
+          "height": 210.203125
+        },
+        ".home-hero-arena": {
+          "x": 360,
+          "y": 453.953125,
+          "width": 720,
+          "height": 369.578125
+        },
+        ".categories-section .home-container": {
+          "x": 100,
+          "y": 952.71875,
+          "width": 1240,
+          "height": 267.203125
+        },
+        ".home-faq .home-container": {
+          "x": 100,
+          "y": 3584.46875,
+          "width": 1240,
+          "height": 361.203125
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 1920,
+      "height": 1080,
+      "viewport": 1920,
+      "document": 1920,
+      "body": 1920,
+      "cls": 0.16574074074074074,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 320,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 320,
+          "y": 4060.0625,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 240,
+          "y": 73,
+          "width": 1440,
+          "height": 889.109375
+        },
+        ".hero-boy": {
+          "x": 221.859375,
+          "y": 139.515625,
+          "width": 417.296875,
+          "height": 418.375
+        },
+        ".hero-girl": {
+          "x": 1271.765625,
+          "y": 248.390625,
+          "width": 432.421875,
+          "height": 252.234375
+        },
+        ".home-hero-arena": {
+          "x": 600,
+          "y": 500.546875,
+          "width": 720,
+          "height": 388.375
+        },
+        ".categories-section .home-container": {
+          "x": 340,
+          "y": 1018.109375,
+          "width": 1240,
+          "height": 267.203125
+        },
+        ".home-faq .home-container": {
+          "x": 340,
+          "y": 3649.859375,
+          "width": 1240,
+          "height": 361.203125
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 2048,
+      "height": 1152,
+      "viewport": 2048,
+      "document": 2048,
+      "body": 2048,
+      "cls": 0.21788194444444445,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 384,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 384,
+          "y": 4086.140625,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 304,
+          "y": 73,
+          "width": 1440,
+          "height": 915.1875
+        },
+        ".hero-boy": {
+          "x": 284.8125,
+          "y": 143.390625,
+          "width": 441.59375,
+          "height": 442.734375
+        },
+        ".hero-girl": {
+          "x": 1312,
+          "y": 258.59375,
+          "width": 457.59375,
+          "height": 266.921875
+        },
+        ".home-hero-arena": {
+          "x": 664,
+          "y": 516.921875,
+          "width": 720,
+          "height": 390.390625
+        },
+        ".categories-section .home-container": {
+          "x": 404,
+          "y": 1044.1875,
+          "width": 1240,
+          "height": 267.203125
+        },
+        ".home-faq .home-container": {
+          "x": 404,
+          "y": 3675.9375,
+          "width": 1240,
+          "height": 361.203125
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 2560,
+      "height": 1440,
+      "viewport": 2560,
+      "document": 2560,
+      "body": 2560,
+      "cls": 0.22708333333333333,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 640,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 640,
+          "y": 4086.140625,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 560,
+          "y": 73,
+          "width": 1440,
+          "height": 915.1875
+        },
+        ".hero-boy": {
+          "x": 540.8125,
+          "y": 143.390625,
+          "width": 441.59375,
+          "height": 442.734375
+        },
+        ".hero-girl": {
+          "x": 1568,
+          "y": 258.59375,
+          "width": 457.59375,
+          "height": 266.921875
+        },
+        ".home-hero-arena": {
+          "x": 920,
+          "y": 517.109375,
+          "width": 720,
+          "height": 390.390625
+        },
+        ".categories-section .home-container": {
+          "x": 660,
+          "y": 1044.1875,
+          "width": 1240,
+          "height": 267.203125
+        },
+        ".home-faq .home-container": {
+          "x": 660,
+          "y": 3675.9375,
+          "width": 1240,
+          "height": 361.203125
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "viewport": 390,
+      "document": 390,
+      "body": 390,
+      "cls": 0.10781990521327015,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 4964.453125,
+          "width": 390,
+          "height": 1024.75
+        },
+        ".hero-stage-backdrop": {
+          "x": 0,
+          "y": 70,
+          "width": 390,
+          "height": 768.859375
+        },
+        ".hero-boy": {
+          "x": -15,
+          "y": 160,
+          "width": 101.390625,
+          "height": 101.640625
+        },
+        ".hero-girl": {
+          "x": 300,
+          "y": 180,
+          "width": 110,
+          "height": 64.15625
+        },
+        ".home-hero-arena": {
+          "x": 16,
+          "y": 376.640625,
+          "width": 358,
+          "height": 389.03125
+        },
+        ".categories-section .home-container": {
+          "x": 0,
+          "y": 870.859375,
+          "width": 390,
+          "height": 469
+        },
+        ".home-faq .home-container": {
+          "x": 0,
+          "y": 4469.453125,
+          "width": 390,
+          "height": 446
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 768,
+      "height": 1024,
+      "viewport": 768,
+      "document": 768,
+      "body": 768,
+      "cls": 0.1513671875,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3917.875,
+          "width": 768,
+          "height": 728.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 0,
+          "y": 73,
+          "width": 768,
+          "height": 719.953125
+        },
+        ".hero-boy": {
+          "x": -12,
+          "y": 117,
+          "width": 276,
+          "height": 276.71875
+        },
+        ".hero-girl": {
+          "x": 498,
+          "y": 189,
+          "width": 286,
+          "height": 166.828125
+        },
+        ".home-hero-arena": {
+          "x": 24,
+          "y": 380.671875,
+          "width": 720,
+          "height": 339.09375
+        },
+        ".categories-section .home-container": {
+          "x": 0,
+          "y": 812.953125,
+          "width": 768,
+          "height": 326.5
+        },
+        ".home-faq .home-container": {
+          "x": 0,
+          "y": 3527.28125,
+          "width": 768,
+          "height": 341.59375
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 1024,
+      "height": 768,
+      "viewport": 1024,
+      "document": 1024,
+      "body": 1024,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3555.40625,
+          "width": 1024,
+          "height": 450.25
+        },
+        ".hero-stage-backdrop": {
+          "x": 0,
+          "y": 72,
+          "width": 1024,
+          "height": 703.765625
+        },
+        ".hero-boy": {
+          "x": -12.890625,
+          "y": 119.296875,
+          "width": 296.75,
+          "height": 297.515625
+        },
+        ".hero-girl": {
+          "x": 733.703125,
+          "y": 196.71875,
+          "width": 307.5,
+          "height": 179.375
+        },
+        ".home-hero-arena": {
+          "x": 152,
+          "y": 402.03125,
+          "width": 720,
+          "height": 300.546875
+        },
+        ".categories-section .home-container": {
+          "x": 0,
+          "y": 821.84375,
+          "width": 1024,
+          "height": 225.671875
+        },
+        ".home-faq .home-container": {
+          "x": 0,
+          "y": 3154.28125,
+          "width": 1024,
+          "height": 352.125
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 1366,
+      "height": 768,
+      "viewport": 1366,
+      "document": 1366,
+      "body": 1366,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 43,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 43,
+          "y": 3924.65625,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 0,
+          "y": 72,
+          "width": 1366,
+          "height": 754.703125
+        },
+        ".hero-boy": {
+          "x": -12.890625,
+          "y": 119.296875,
+          "width": 296.75,
+          "height": 297.515625
+        },
+        ".hero-girl": {
+          "x": 1075.703125,
+          "y": 196.71875,
+          "width": 307.5,
+          "height": 179.375
+        },
+        ".home-hero-arena": {
+          "x": 323,
+          "y": 418.5625,
+          "width": 720,
+          "height": 334.953125
+        },
+        ".categories-section .home-container": {
+          "x": 63,
+          "y": 882.703125,
+          "width": 1240,
+          "height": 267.203125
+        },
+        ".home-faq .home-container": {
+          "x": 63,
+          "y": 3514.453125,
+          "width": 1240,
+          "height": 361.203125
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 1280,
+      "height": 800,
+      "viewport": 1280,
+      "document": 1280,
+      "body": 1280,
+      "cls": 0.0036733843803405763,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3179.5,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".kids-hero": {
+          "x": 24,
+          "y": 73,
+          "width": 1232,
+          "height": 434.171875
+        },
+        ".kids-browse": {
+          "x": 24,
+          "y": 1129.96875,
+          "width": 1232,
+          "height": 906.21875
+        },
+        ".kids-faq": {
+          "x": 24,
+          "y": 2302.875,
+          "width": 1232,
+          "height": 387.734375
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 1440,
+      "height": 900,
+      "viewport": 1440,
+      "document": 1440,
+      "body": 1440,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 80,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 80,
+          "y": 3195.9375,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".kids-hero": {
+          "x": 60,
+          "y": 73,
+          "width": 1320,
+          "height": 448.328125
+        },
+        ".kids-browse": {
+          "x": 60,
+          "y": 1148.265625,
+          "width": 1320,
+          "height": 910.171875
+        },
+        ".kids-faq": {
+          "x": 60,
+          "y": 2305.890625,
+          "width": 1320,
+          "height": 391.6875
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 1920,
+      "height": 1080,
+      "viewport": 1920,
+      "document": 1920,
+      "body": 1920,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 320,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 320,
+          "y": 3201.140625,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".kids-hero": {
+          "x": 300,
+          "y": 73,
+          "width": 1320,
+          "height": 452.609375
+        },
+        ".kids-browse": {
+          "x": 300,
+          "y": 1152.546875,
+          "width": 1320,
+          "height": 910.171875
+        },
+        ".kids-faq": {
+          "x": 300,
+          "y": 2310.171875,
+          "width": 1320,
+          "height": 391.6875
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 2048,
+      "height": 1152,
+      "viewport": 2048,
+      "document": 2048,
+      "body": 2048,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 384,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 384,
+          "y": 3201.140625,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".kids-hero": {
+          "x": 364,
+          "y": 73,
+          "width": 1320,
+          "height": 452.609375
+        },
+        ".kids-browse": {
+          "x": 364,
+          "y": 1152.546875,
+          "width": 1320,
+          "height": 910.171875
+        },
+        ".kids-faq": {
+          "x": 364,
+          "y": 2310.171875,
+          "width": 1320,
+          "height": 391.6875
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 2560,
+      "height": 1440,
+      "viewport": 2560,
+      "document": 2560,
+      "body": 2560,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 640,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 640,
+          "y": 3201.140625,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".kids-hero": {
+          "x": 620,
+          "y": 73,
+          "width": 1320,
+          "height": 452.609375
+        },
+        ".kids-browse": {
+          "x": 620,
+          "y": 1152.546875,
+          "width": 1320,
+          "height": 910.171875
+        },
+        ".kids-faq": {
+          "x": 620,
+          "y": 2310.171875,
+          "width": 1320,
+          "height": 391.6875
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 390,
+      "height": 844,
+      "viewport": 390,
+      "document": 390,
+      "body": 390,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 4836.203125,
+          "width": 390,
+          "height": 1024.75
+        },
+        ".kids-hero": {
+          "x": 14,
+          "y": 72,
+          "width": 362,
+          "height": 552.25
+        },
+        ".kids-browse": {
+          "x": 14,
+          "y": 1294.4375,
+          "width": 362,
+          "height": 1654.59375
+        },
+        ".kids-faq": {
+          "x": 14,
+          "y": 3504.265625,
+          "width": 362,
+          "height": 520.75
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 768,
+      "height": 1024,
+      "viewport": 768,
+      "document": 768,
+      "body": 768,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 4461.734375,
+          "width": 768,
+          "height": 728.5
+        },
+        ".kids-hero": {
+          "x": 24,
+          "y": 73,
+          "width": 720,
+          "height": 623.5
+        },
+        ".kids-browse": {
+          "x": 24,
+          "y": 1333.640625,
+          "width": 720,
+          "height": 1542.796875
+        },
+        ".kids-faq": {
+          "x": 24,
+          "y": 3314.734375,
+          "width": 720,
+          "height": 428.1875
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 1024,
+      "height": 768,
+      "viewport": 1024,
+      "document": 1024,
+      "body": 1024,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3442.375,
+          "width": 1024,
+          "height": 450.25
+        },
+        ".kids-hero": {
+          "x": 24,
+          "y": 73,
+          "width": 976,
+          "height": 411.484375
+        },
+        ".kids-browse": {
+          "x": 24,
+          "y": 1098.4375,
+          "width": 976,
+          "height": 1207.796875
+        },
+        ".kids-faq": {
+          "x": 24,
+          "y": 2588.5625,
+          "width": 976,
+          "height": 380.1875
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 1366,
+      "height": 768,
+      "viewport": 1366,
+      "document": 1366,
+      "body": 1366,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 43,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 43,
+          "y": 3180.53125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".kids-hero": {
+          "x": 24,
+          "y": 73,
+          "width": 1318,
+          "height": 441.765625
+        },
+        ".kids-browse": {
+          "x": 24,
+          "y": 1140.53125,
+          "width": 1318,
+          "height": 908.890625
+        },
+        ".kids-faq": {
+          "x": 24,
+          "y": 2295.59375,
+          "width": 1318,
+          "height": 390.40625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 1280,
+      "height": 800,
+      "viewport": 1280,
+      "document": 1280,
+      "body": 1280,
+      "cls": 0.002362498557567596,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 2176.578125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".directory": {
+          "x": 24,
+          "y": 418,
+          "width": 1232,
+          "height": 1260
+        },
+        ".filters": {
+          "x": 24,
+          "y": 418,
+          "width": 268.796875,
+          "height": 790.59375
+        },
+        ".question-panel": {
+          "x": 318.390625,
+          "y": 418,
+          "width": 937.609375,
+          "height": 1260
+        },
+        ".finder-about": {
+          "x": 24,
+          "y": 2100.6875,
+          "width": 1232,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 1440,
+      "height": 900,
+      "viewport": 1440,
+      "document": 1440,
+      "body": 1440,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 80,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 80,
+          "y": 2176.578125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".directory": {
+          "x": 100,
+          "y": 418,
+          "width": 1240,
+          "height": 1260
+        },
+        ".filters": {
+          "x": 100,
+          "y": 418,
+          "width": 280,
+          "height": 790.59375
+        },
+        ".question-panel": {
+          "x": 408,
+          "y": 418,
+          "width": 932,
+          "height": 1260
+        },
+        ".finder-about": {
+          "x": 100,
+          "y": 2100.6875,
+          "width": 1240,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 1920,
+      "height": 1080,
+      "viewport": 1920,
+      "document": 1920,
+      "body": 1920,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 320,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 320,
+          "y": 2181.921875,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".directory": {
+          "x": 340,
+          "y": 418,
+          "width": 1240,
+          "height": 1265.34375
+        },
+        ".filters": {
+          "x": 340,
+          "y": 418,
+          "width": 280,
+          "height": 790.59375
+        },
+        ".question-panel": {
+          "x": 648,
+          "y": 418,
+          "width": 932,
+          "height": 1265.34375
+        },
+        ".finder-about": {
+          "x": 340,
+          "y": 2106.03125,
+          "width": 1240,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 2048,
+      "height": 1152,
+      "viewport": 2048,
+      "document": 2048,
+      "body": 2048,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 384,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 384,
+          "y": 2181.921875,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".directory": {
+          "x": 404,
+          "y": 418,
+          "width": 1240,
+          "height": 1265.34375
+        },
+        ".filters": {
+          "x": 404,
+          "y": 418,
+          "width": 280,
+          "height": 790.59375
+        },
+        ".question-panel": {
+          "x": 712,
+          "y": 418,
+          "width": 932,
+          "height": 1265.34375
+        },
+        ".finder-about": {
+          "x": 404,
+          "y": 2106.03125,
+          "width": 1240,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 2560,
+      "height": 1440,
+      "viewport": 2560,
+      "document": 2560,
+      "body": 2560,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 640,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 640,
+          "y": 2181.921875,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".directory": {
+          "x": 660,
+          "y": 418,
+          "width": 1240,
+          "height": 1265.34375
+        },
+        ".filters": {
+          "x": 660,
+          "y": 418,
+          "width": 280,
+          "height": 790.59375
+        },
+        ".question-panel": {
+          "x": 968,
+          "y": 418,
+          "width": 932,
+          "height": 1265.34375
+        },
+        ".finder-about": {
+          "x": 660,
+          "y": 2106.03125,
+          "width": 1240,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 390,
+      "height": 844,
+      "viewport": 390,
+      "document": 390,
+      "body": 390,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3278.234375,
+          "width": 390,
+          "height": 1024.75
+        },
+        ".directory": {
+          "x": 14,
+          "y": 458.296875,
+          "width": 362,
+          "height": 2067.828125
+        },
+        ".filters": {
+          "x": 14,
+          "y": 458.296875,
+          "width": 362,
+          "height": 60.390625
+        },
+        ".question-panel": {
+          "x": 14,
+          "y": 538.6875,
+          "width": 362,
+          "height": 1987.4375
+        },
+        ".finder-about": {
+          "x": 14,
+          "y": 3202.34375,
+          "width": 362,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 768,
+      "height": 1024,
+      "viewport": 768,
+      "document": 768,
+      "body": 768,
+      "cls": 7.990747690200806e-07,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3074.515625,
+          "width": 768,
+          "height": 728.5
+        },
+        ".directory": {
+          "x": 24,
+          "y": 418,
+          "width": 720,
+          "height": 2036.65625
+        },
+        ".filters": {
+          "x": 24,
+          "y": 418,
+          "width": 221,
+          "height": 826.34375
+        },
+        ".question-panel": {
+          "x": 260.359375,
+          "y": 418,
+          "width": 483.640625,
+          "height": 2036.65625
+        },
+        ".finder-about": {
+          "x": 24,
+          "y": 2998.625,
+          "width": 720,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 1024,
+      "height": 768,
+      "viewport": 1024,
+      "document": 1024,
+      "body": 1024,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 2790.328125,
+          "width": 1024,
+          "height": 450.25
+        },
+        ".directory": {
+          "x": 24,
+          "y": 418,
+          "width": 976,
+          "height": 1847.75
+        },
+        ".filters": {
+          "x": 24,
+          "y": 418,
+          "width": 221,
+          "height": 826.34375
+        },
+        ".question-panel": {
+          "x": 265.46875,
+          "y": 418,
+          "width": 734.53125,
+          "height": 1847.75
+        },
+        ".finder-about": {
+          "x": 24,
+          "y": 2714.4375,
+          "width": 976,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 1366,
+      "height": 768,
+      "viewport": 1366,
+      "document": 1366,
+      "body": 1366,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 43,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 43,
+          "y": 2176.578125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".directory": {
+          "x": 63,
+          "y": 418,
+          "width": 1240,
+          "height": 1260
+        },
+        ".filters": {
+          "x": 63,
+          "y": 418,
+          "width": 280,
+          "height": 790.59375
+        },
+        ".question-panel": {
+          "x": 370.3125,
+          "y": 418,
+          "width": 932.6875,
+          "height": 1260
+        },
+        ".finder-about": {
+          "x": 63,
+          "y": 2100.6875,
+          "width": 1240,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 1280,
+      "height": 800,
+      "viewport": 1280,
+      "document": 1280,
+      "body": 1280,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 48,
+          "y": 91,
+          "width": 1184,
+          "height": 1512.515625
+        },
+        ".print-editor": {
+          "x": 48,
+          "y": 91,
+          "width": 619.890625,
+          "height": 1512.515625
+        },
+        ".print-preview": {
+          "x": 689.890625,
+          "y": 91,
+          "width": 542.109375,
+          "height": 723.6875
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 1440,
+      "height": 900,
+      "viewport": 1440,
+      "document": 1440,
+      "body": 1440,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 80,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 48,
+          "y": 91,
+          "width": 1344,
+          "height": 1487.015625
+        },
+        ".print-editor": {
+          "x": 48,
+          "y": 91,
+          "width": 705.25,
+          "height": 1487.015625
+        },
+        ".print-preview": {
+          "x": 775.25,
+          "y": 91,
+          "width": 616.75,
+          "height": 788.6875
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 1920,
+      "height": 1080,
+      "viewport": 1920,
+      "document": 1920,
+      "body": 1920,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 320,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 240,
+          "y": 91,
+          "width": 1440,
+          "height": 1465.265625
+        },
+        ".print-editor": {
+          "x": 240,
+          "y": 91,
+          "width": 756.453125,
+          "height": 1465.265625
+        },
+        ".print-preview": {
+          "x": 1018.453125,
+          "y": 91,
+          "width": 661.546875,
+          "height": 853.6875
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 2048,
+      "height": 1152,
+      "viewport": 2048,
+      "document": 2048,
+      "body": 2048,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 384,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 304,
+          "y": 91,
+          "width": 1440,
+          "height": 1465.265625
+        },
+        ".print-editor": {
+          "x": 304,
+          "y": 91,
+          "width": 756.453125,
+          "height": 1465.265625
+        },
+        ".print-preview": {
+          "x": 1082.453125,
+          "y": 91,
+          "width": 661.546875,
+          "height": 853.6875
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 2560,
+      "height": 1440,
+      "viewport": 2560,
+      "document": 2560,
+      "body": 2560,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 640,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 560,
+          "y": 91,
+          "width": 1440,
+          "height": 1465.265625
+        },
+        ".print-editor": {
+          "x": 560,
+          "y": 91,
+          "width": 756.453125,
+          "height": 1465.265625
+        },
+        ".print-preview": {
+          "x": 1338.453125,
+          "y": 91,
+          "width": 661.546875,
+          "height": 853.6875
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 390,
+      "height": 844,
+      "viewport": 390,
+      "document": 390,
+      "body": 390,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 15,
+          "y": 93,
+          "width": 360,
+          "height": 2867.4375
+        },
+        ".print-editor": {
+          "x": 15,
+          "y": 93,
+          "width": 360,
+          "height": 2021.65625
+        },
+        ".print-preview": {
+          "x": 15,
+          "y": 2138.65625,
+          "width": 360,
+          "height": 821.78125
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 768,
+      "height": 1024,
+      "viewport": 768,
+      "document": 768,
+      "body": 768,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 15,
+          "y": 93,
+          "width": 738,
+          "height": 2556.84375
+        },
+        ".print-editor": {
+          "x": 15,
+          "y": 93,
+          "width": 738,
+          "height": 1661.65625
+        },
+        ".print-preview": {
+          "x": 15,
+          "y": 1778.65625,
+          "width": 738,
+          "height": 871.1875
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 1024,
+      "height": 768,
+      "viewport": 1024,
+      "document": 1024,
+      "body": 1024,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 25,
+          "y": 91,
+          "width": 974,
+          "height": 1599.109375
+        },
+        ".print-editor": {
+          "x": 25,
+          "y": 91,
+          "width": 475,
+          "height": 1599.109375
+        },
+        ".print-preview": {
+          "x": 524,
+          "y": 91,
+          "width": 475,
+          "height": 737.375
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 1366,
+      "height": 768,
+      "viewport": 1366,
+      "document": 1366,
+      "body": 1366,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 43,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 48,
+          "y": 91,
+          "width": 1270,
+          "height": 1487.015625
+        },
+        ".print-editor": {
+          "x": 48,
+          "y": 91,
+          "width": 665.765625,
+          "height": 1487.015625
+        },
+        ".print-preview": {
+          "x": 735.765625,
+          "y": 91,
+          "width": 582.21875,
+          "height": 702.875
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 1280,
+      "height": 800,
+      "viewport": 1280,
+      "document": 1280,
+      "body": 1280,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 0,
+          "y": 77,
+          "width": 1280,
+          "height": 50
+        },
+        ".play-options": {
+          "x": 140,
+          "y": 273.65625,
+          "width": 1000,
+          "height": 304
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 1440,
+      "height": 900,
+      "viewport": 1440,
+      "document": 1440,
+      "body": 1440,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 80,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 50,
+          "y": 77,
+          "width": 1340,
+          "height": 64
+        },
+        ".play-options": {
+          "x": 172,
+          "y": 348.546875,
+          "width": 1096,
+          "height": 404
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 1920,
+      "height": 1080,
+      "viewport": 1920,
+      "document": 1920,
+      "body": 1920,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 320,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 290,
+          "y": 77,
+          "width": 1340,
+          "height": 64
+        },
+        ".play-options": {
+          "x": 412,
+          "y": 357.6875,
+          "width": 1096,
+          "height": 404
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 2048,
+      "height": 1152,
+      "viewport": 2048,
+      "document": 2048,
+      "body": 2048,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 384,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 354,
+          "y": 77,
+          "width": 1340,
+          "height": 64
+        },
+        ".play-options": {
+          "x": 476,
+          "y": 357.6875,
+          "width": 1096,
+          "height": 404
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 2560,
+      "height": 1440,
+      "viewport": 2560,
+      "document": 2560,
+      "body": 2560,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 640,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 610,
+          "y": 77,
+          "width": 1340,
+          "height": 64
+        },
+        ".play-options": {
+          "x": 732,
+          "y": 357.6875,
+          "width": 1096,
+          "height": 404
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 390,
+      "height": 844,
+      "viewport": 390,
+      "document": 390,
+      "body": 390,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 0,
+          "y": 77,
+          "width": 390,
+          "height": 126
+        },
+        ".play-options": {
+          "x": 20,
+          "y": 345.59375,
+          "width": 350,
+          "height": 571.1875
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 768,
+      "height": 1024,
+      "viewport": 768,
+      "document": 768,
+      "body": 768,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 0,
+          "y": 77,
+          "width": 768,
+          "height": 64
+        },
+        ".play-options": {
+          "x": 30,
+          "y": 289.296875,
+          "width": 708,
+          "height": 408
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 1024,
+      "height": 768,
+      "viewport": 1024,
+      "document": 1024,
+      "body": 1024,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 0,
+          "y": 77,
+          "width": 1024,
+          "height": 50
+        },
+        ".play-options": {
+          "x": 30,
+          "y": 257.328125,
+          "width": 976,
+          "height": 291.828125
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 1366,
+      "height": 768,
+      "viewport": 1366,
+      "document": 1366,
+      "body": 1366,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 43,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 13,
+          "y": 77,
+          "width": 1340,
+          "height": 50
+        },
+        ".play-options": {
+          "x": 183,
+          "y": 275.59375,
+          "width": 1000,
+          "height": 291.828125
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 1280,
+      "height": 800,
+      "viewport": 1280,
+      "document": 1280,
+      "body": 1280,
+      "cls": 0.004219514692015946,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 1365.03125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 40,
+          "y": 73,
+          "width": 1200,
+          "height": 1291.03125
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 1440,
+      "height": 900,
+      "viewport": 1440,
+      "document": 1440,
+      "body": 1440,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 80,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 80,
+          "y": 1365.03125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 120,
+          "y": 73,
+          "width": 1200,
+          "height": 1291.03125
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 1920,
+      "height": 1080,
+      "viewport": 1920,
+      "document": 1920,
+      "body": 1920,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 320,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 320,
+          "y": 1365.03125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 360,
+          "y": 73,
+          "width": 1200,
+          "height": 1291.03125
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 2048,
+      "height": 1152,
+      "viewport": 2048,
+      "document": 2048,
+      "body": 2048,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 384,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 384,
+          "y": 1365.03125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 424,
+          "y": 73,
+          "width": 1200,
+          "height": 1291.03125
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 2560,
+      "height": 1440,
+      "viewport": 2560,
+      "document": 2560,
+      "body": 2560,
+      "cls": 0.035526123046875,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 640,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 640,
+          "y": 1514,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 680,
+          "y": 73,
+          "width": 1200,
+          "height": 1440
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 390,
+      "height": 844,
+      "viewport": 390,
+      "document": 390,
+      "body": 390,
+      "cls": 0.10781990521327015,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 2145.859375,
+          "width": 390,
+          "height": 1024.75
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 0,
+          "y": 73,
+          "width": 390,
+          "height": 2071.859375
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 768,
+      "height": 1024,
+      "viewport": 768,
+      "document": 768,
+      "body": 768,
+      "cls": 0.0863589346408844,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 1454.21875,
+          "width": 768,
+          "height": 728.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 16,
+          "y": 73,
+          "width": 736,
+          "height": 1380.21875
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 1024,
+      "height": 768,
+      "viewport": 1024,
+      "document": 1024,
+      "body": 1024,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 1365.03125,
+          "width": 1024,
+          "height": 450.25
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 16,
+          "y": 73,
+          "width": 992,
+          "height": 1291.03125
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 1366,
+      "height": 768,
+      "viewport": 1366,
+      "document": 1366,
+      "body": 1366,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 43,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 43,
+          "y": 1365.03125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 83,
+          "y": 73,
+          "width": 1200,
+          "height": 1291.03125
+        }
+      }
+    }
+  ],
+  "after": [
+    {
+      "name": "home",
+      "route": "/",
+      "width": 1280,
+      "height": 800,
+      "viewport": 1280,
+      "document": 1280,
+      "body": 1280,
+      "cls": 0.005175786304473877,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3938.359375,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 0,
+          "y": 72,
+          "width": 1280,
+          "height": 768.40625
+        },
+        ".hero-boy": {
+          "x": -13.4375,
+          "y": 121.265625,
+          "width": 309.109375,
+          "height": 309.90625
+        },
+        ".hero-girl": {
+          "x": 977.59375,
+          "y": 201.90625,
+          "width": 320.3125,
+          "height": 186.84375
+        },
+        ".home-hero-arena": {
+          "x": 280,
+          "y": 423.859375,
+          "width": 720,
+          "height": 343.359375
+        },
+        ".categories-section .home-container": {
+          "x": 20,
+          "y": 896.40625,
+          "width": 1240,
+          "height": 267.203125
+        },
+        ".home-faq .home-container": {
+          "x": 20,
+          "y": 3528.15625,
+          "width": 1240,
+          "height": 361.203125
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 1440,
+      "height": 900,
+      "viewport": 1440,
+      "document": 1440,
+      "body": 1440,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 80,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 80,
+          "y": 3994.671875,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 0,
+          "y": 73,
+          "width": 1440,
+          "height": 823.71875
+        },
+        ".hero-boy": {
+          "x": -15.109375,
+          "y": 128.4375,
+          "width": 347.75,
+          "height": 348.640625
+        },
+        ".hero-girl": {
+          "x": 1099.796875,
+          "y": 219.15625,
+          "width": 360.359375,
+          "height": 210.203125
+        },
+        ".home-hero-arena": {
+          "x": 360,
+          "y": 453.953125,
+          "width": 720,
+          "height": 369.578125
+        },
+        ".categories-section .home-container": {
+          "x": 100,
+          "y": 952.71875,
+          "width": 1240,
+          "height": 267.203125
+        },
+        ".home-faq .home-container": {
+          "x": 100,
+          "y": 3584.46875,
+          "width": 1240,
+          "height": 361.203125
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 1920,
+      "height": 1080,
+      "viewport": 1920,
+      "document": 1920,
+      "body": 1920,
+      "cls": 0.16574074074074074,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 120,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 120,
+          "y": 4042.453125,
+          "width": 1680,
+          "height": 326.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 120,
+          "y": 73,
+          "width": 1680,
+          "height": 889.109375
+        },
+        ".hero-boy": {
+          "x": 120,
+          "y": 139.515625,
+          "width": 417.296875,
+          "height": 418.375
+        },
+        ".hero-girl": {
+          "x": 1367.578125,
+          "y": 248.390625,
+          "width": 432.421875,
+          "height": 252.234375
+        },
+        ".home-hero-arena": {
+          "x": 500,
+          "y": 500.546875,
+          "width": 920,
+          "height": 388.375
+        },
+        ".categories-section .home-container": {
+          "x": 200,
+          "y": 1018.109375,
+          "width": 1520,
+          "height": 267.203125
+        },
+        ".home-faq .home-container": {
+          "x": 300,
+          "y": 3632.25,
+          "width": 1320,
+          "height": 361.203125
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 2048,
+      "height": 1152,
+      "viewport": 2048,
+      "document": 2048,
+      "body": 2048,
+      "cls": 0.21788194444444445,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 184,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 184,
+          "y": 4068.53125,
+          "width": 1680,
+          "height": 326.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 184,
+          "y": 73,
+          "width": 1680,
+          "height": 915.1875
+        },
+        ".hero-boy": {
+          "x": 184,
+          "y": 143.390625,
+          "width": 441.59375,
+          "height": 442.734375
+        },
+        ".hero-girl": {
+          "x": 1406.40625,
+          "y": 258.59375,
+          "width": 457.59375,
+          "height": 266.921875
+        },
+        ".home-hero-arena": {
+          "x": 564,
+          "y": 516.921875,
+          "width": 920,
+          "height": 390.390625
+        },
+        ".categories-section .home-container": {
+          "x": 264,
+          "y": 1044.1875,
+          "width": 1520,
+          "height": 267.203125
+        },
+        ".home-faq .home-container": {
+          "x": 364,
+          "y": 3658.328125,
+          "width": 1320,
+          "height": 361.203125
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 2560,
+      "height": 1440,
+      "viewport": 2560,
+      "document": 2560,
+      "body": 2560,
+      "cls": 0.22708333333333333,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 440,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 440,
+          "y": 4068.53125,
+          "width": 1680,
+          "height": 326.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 440,
+          "y": 73,
+          "width": 1680,
+          "height": 915.1875
+        },
+        ".hero-boy": {
+          "x": 440,
+          "y": 143.390625,
+          "width": 441.59375,
+          "height": 442.734375
+        },
+        ".hero-girl": {
+          "x": 1662.40625,
+          "y": 258.59375,
+          "width": 457.59375,
+          "height": 266.921875
+        },
+        ".home-hero-arena": {
+          "x": 820,
+          "y": 517.109375,
+          "width": 920,
+          "height": 390.390625
+        },
+        ".categories-section .home-container": {
+          "x": 520,
+          "y": 1044.1875,
+          "width": 1520,
+          "height": 267.203125
+        },
+        ".home-faq .home-container": {
+          "x": 620,
+          "y": 3658.328125,
+          "width": 1320,
+          "height": 361.203125
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "viewport": 390,
+      "document": 390,
+      "body": 390,
+      "cls": 0.10781990521327015,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 4964.453125,
+          "width": 390,
+          "height": 1024.75
+        },
+        ".hero-stage-backdrop": {
+          "x": 0,
+          "y": 70,
+          "width": 390,
+          "height": 768.859375
+        },
+        ".hero-boy": {
+          "x": -15,
+          "y": 160,
+          "width": 101.390625,
+          "height": 101.640625
+        },
+        ".hero-girl": {
+          "x": 300,
+          "y": 180,
+          "width": 110,
+          "height": 64.15625
+        },
+        ".home-hero-arena": {
+          "x": 16,
+          "y": 376.640625,
+          "width": 358,
+          "height": 389.03125
+        },
+        ".categories-section .home-container": {
+          "x": 0,
+          "y": 870.859375,
+          "width": 390,
+          "height": 469
+        },
+        ".home-faq .home-container": {
+          "x": 0,
+          "y": 4469.453125,
+          "width": 390,
+          "height": 446
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 768,
+      "height": 1024,
+      "viewport": 768,
+      "document": 768,
+      "body": 768,
+      "cls": 0.1513671875,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3917.875,
+          "width": 768,
+          "height": 728.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 0,
+          "y": 73,
+          "width": 768,
+          "height": 719.953125
+        },
+        ".hero-boy": {
+          "x": -12,
+          "y": 117,
+          "width": 276,
+          "height": 276.71875
+        },
+        ".hero-girl": {
+          "x": 498,
+          "y": 189,
+          "width": 286,
+          "height": 166.828125
+        },
+        ".home-hero-arena": {
+          "x": 24,
+          "y": 380.671875,
+          "width": 720,
+          "height": 339.09375
+        },
+        ".categories-section .home-container": {
+          "x": 0,
+          "y": 812.953125,
+          "width": 768,
+          "height": 326.5
+        },
+        ".home-faq .home-container": {
+          "x": 0,
+          "y": 3527.28125,
+          "width": 768,
+          "height": 341.59375
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 1024,
+      "height": 768,
+      "viewport": 1024,
+      "document": 1024,
+      "body": 1024,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3554.40625,
+          "width": 1024,
+          "height": 450.25
+        },
+        ".hero-stage-backdrop": {
+          "x": 0,
+          "y": 71,
+          "width": 1024,
+          "height": 703.765625
+        },
+        ".hero-boy": {
+          "x": -12.890625,
+          "y": 118.296875,
+          "width": 296.75,
+          "height": 297.515625
+        },
+        ".hero-girl": {
+          "x": 733.703125,
+          "y": 195.71875,
+          "width": 307.5,
+          "height": 179.375
+        },
+        ".home-hero-arena": {
+          "x": 152,
+          "y": 401.03125,
+          "width": 720,
+          "height": 300.546875
+        },
+        ".categories-section .home-container": {
+          "x": 0,
+          "y": 820.84375,
+          "width": 1024,
+          "height": 225.671875
+        },
+        ".home-faq .home-container": {
+          "x": 0,
+          "y": 3153.28125,
+          "width": 1024,
+          "height": 352.125
+        }
+      }
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 1366,
+      "height": 768,
+      "viewport": 1366,
+      "document": 1366,
+      "body": 1366,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 43,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 43,
+          "y": 3924.65625,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".hero-stage-backdrop": {
+          "x": 0,
+          "y": 72,
+          "width": 1366,
+          "height": 754.703125
+        },
+        ".hero-boy": {
+          "x": -12.890625,
+          "y": 119.296875,
+          "width": 296.75,
+          "height": 297.515625
+        },
+        ".hero-girl": {
+          "x": 1075.703125,
+          "y": 196.71875,
+          "width": 307.5,
+          "height": 179.375
+        },
+        ".home-hero-arena": {
+          "x": 323,
+          "y": 418.5625,
+          "width": 720,
+          "height": 334.953125
+        },
+        ".categories-section .home-container": {
+          "x": 63,
+          "y": 882.703125,
+          "width": 1240,
+          "height": 267.203125
+        },
+        ".home-faq .home-container": {
+          "x": 63,
+          "y": 3514.453125,
+          "width": 1240,
+          "height": 361.203125
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 1280,
+      "height": 800,
+      "viewport": 1280,
+      "document": 1280,
+      "body": 1280,
+      "cls": 0.0036733843803405763,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3179.5,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".kids-hero": {
+          "x": 24,
+          "y": 73,
+          "width": 1232,
+          "height": 434.171875
+        },
+        ".kids-browse": {
+          "x": 24,
+          "y": 1129.96875,
+          "width": 1232,
+          "height": 906.21875
+        },
+        ".kids-faq": {
+          "x": 24,
+          "y": 2302.875,
+          "width": 1232,
+          "height": 387.734375
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 1440,
+      "height": 900,
+      "viewport": 1440,
+      "document": 1440,
+      "body": 1440,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 80,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 80,
+          "y": 3195.9375,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".kids-hero": {
+          "x": 60,
+          "y": 73,
+          "width": 1320,
+          "height": 448.328125
+        },
+        ".kids-browse": {
+          "x": 60,
+          "y": 1148.265625,
+          "width": 1320,
+          "height": 910.171875
+        },
+        ".kids-faq": {
+          "x": 60,
+          "y": 2305.890625,
+          "width": 1320,
+          "height": 391.6875
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 1920,
+      "height": 1080,
+      "viewport": 1920,
+      "document": 1920,
+      "body": 1920,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 120,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 120,
+          "y": 3201.140625,
+          "width": 1680,
+          "height": 326.5
+        },
+        ".kids-hero": {
+          "x": 200,
+          "y": 73,
+          "width": 1520,
+          "height": 452.609375
+        },
+        ".kids-browse": {
+          "x": 200,
+          "y": 1152.546875,
+          "width": 1520,
+          "height": 910.171875
+        },
+        ".kids-faq": {
+          "x": 300,
+          "y": 2310.171875,
+          "width": 1320,
+          "height": 391.6875
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 2048,
+      "height": 1152,
+      "viewport": 2048,
+      "document": 2048,
+      "body": 2048,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 184,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 184,
+          "y": 3201.140625,
+          "width": 1680,
+          "height": 326.5
+        },
+        ".kids-hero": {
+          "x": 264,
+          "y": 73,
+          "width": 1520,
+          "height": 452.609375
+        },
+        ".kids-browse": {
+          "x": 264,
+          "y": 1152.546875,
+          "width": 1520,
+          "height": 910.171875
+        },
+        ".kids-faq": {
+          "x": 364,
+          "y": 2310.171875,
+          "width": 1320,
+          "height": 391.6875
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 2560,
+      "height": 1440,
+      "viewport": 2560,
+      "document": 2560,
+      "body": 2560,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 440,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 440,
+          "y": 3201.140625,
+          "width": 1680,
+          "height": 326.5
+        },
+        ".kids-hero": {
+          "x": 520,
+          "y": 73,
+          "width": 1520,
+          "height": 452.609375
+        },
+        ".kids-browse": {
+          "x": 520,
+          "y": 1152.546875,
+          "width": 1520,
+          "height": 910.171875
+        },
+        ".kids-faq": {
+          "x": 620,
+          "y": 2310.171875,
+          "width": 1320,
+          "height": 391.6875
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 390,
+      "height": 844,
+      "viewport": 390,
+      "document": 390,
+      "body": 390,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 4836.203125,
+          "width": 390,
+          "height": 1024.75
+        },
+        ".kids-hero": {
+          "x": 14,
+          "y": 72,
+          "width": 362,
+          "height": 552.25
+        },
+        ".kids-browse": {
+          "x": 14,
+          "y": 1294.4375,
+          "width": 362,
+          "height": 1654.59375
+        },
+        ".kids-faq": {
+          "x": 14,
+          "y": 3504.265625,
+          "width": 362,
+          "height": 520.75
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 768,
+      "height": 1024,
+      "viewport": 768,
+      "document": 768,
+      "body": 768,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 4461.734375,
+          "width": 768,
+          "height": 728.5
+        },
+        ".kids-hero": {
+          "x": 24,
+          "y": 73,
+          "width": 720,
+          "height": 623.5
+        },
+        ".kids-browse": {
+          "x": 24,
+          "y": 1333.640625,
+          "width": 720,
+          "height": 1542.796875
+        },
+        ".kids-faq": {
+          "x": 24,
+          "y": 3314.734375,
+          "width": 720,
+          "height": 428.1875
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 1024,
+      "height": 768,
+      "viewport": 1024,
+      "document": 1024,
+      "body": 1024,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3442.375,
+          "width": 1024,
+          "height": 450.25
+        },
+        ".kids-hero": {
+          "x": 24,
+          "y": 73,
+          "width": 976,
+          "height": 411.484375
+        },
+        ".kids-browse": {
+          "x": 24,
+          "y": 1098.4375,
+          "width": 976,
+          "height": 1207.796875
+        },
+        ".kids-faq": {
+          "x": 24,
+          "y": 2588.5625,
+          "width": 976,
+          "height": 380.1875
+        }
+      }
+    },
+    {
+      "name": "kids",
+      "route": "/would-you-rather-questions-for-kids",
+      "width": 1366,
+      "height": 768,
+      "viewport": 1366,
+      "document": 1366,
+      "body": 1366,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 43,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 43,
+          "y": 3180.53125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".kids-hero": {
+          "x": 24,
+          "y": 73,
+          "width": 1318,
+          "height": 441.765625
+        },
+        ".kids-browse": {
+          "x": 24,
+          "y": 1140.53125,
+          "width": 1318,
+          "height": 908.890625
+        },
+        ".kids-faq": {
+          "x": 24,
+          "y": 2295.59375,
+          "width": 1318,
+          "height": 390.40625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 1280,
+      "height": 800,
+      "viewport": 1280,
+      "document": 1280,
+      "body": 1280,
+      "cls": 0.002362498557567596,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 2176.578125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".directory": {
+          "x": 24,
+          "y": 418,
+          "width": 1232,
+          "height": 1260
+        },
+        ".filters": {
+          "x": 24,
+          "y": 418,
+          "width": 268.796875,
+          "height": 790.59375
+        },
+        ".question-panel": {
+          "x": 318.390625,
+          "y": 418,
+          "width": 937.609375,
+          "height": 1260
+        },
+        ".finder-about": {
+          "x": 24,
+          "y": 2100.6875,
+          "width": 1232,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 1440,
+      "height": 900,
+      "viewport": 1440,
+      "document": 1440,
+      "body": 1440,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 80,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 80,
+          "y": 2176.578125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".directory": {
+          "x": 100,
+          "y": 418,
+          "width": 1240,
+          "height": 1260
+        },
+        ".filters": {
+          "x": 100,
+          "y": 418,
+          "width": 280,
+          "height": 790.59375
+        },
+        ".question-panel": {
+          "x": 408,
+          "y": 418,
+          "width": 932,
+          "height": 1260
+        },
+        ".finder-about": {
+          "x": 100,
+          "y": 2100.6875,
+          "width": 1240,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 1920,
+      "height": 1080,
+      "viewport": 1920,
+      "document": 1920,
+      "body": 1920,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 120,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 120,
+          "y": 2176.578125,
+          "width": 1680,
+          "height": 326.5
+        },
+        ".directory": {
+          "x": 200,
+          "y": 418,
+          "width": 1520,
+          "height": 1260
+        },
+        ".filters": {
+          "x": 200,
+          "y": 418,
+          "width": 280,
+          "height": 790.59375
+        },
+        ".question-panel": {
+          "x": 508,
+          "y": 418,
+          "width": 1212,
+          "height": 1260
+        },
+        ".finder-about": {
+          "x": 340,
+          "y": 2100.6875,
+          "width": 1240,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 2048,
+      "height": 1152,
+      "viewport": 2048,
+      "document": 2048,
+      "body": 2048,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 184,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 184,
+          "y": 2176.578125,
+          "width": 1680,
+          "height": 326.5
+        },
+        ".directory": {
+          "x": 264,
+          "y": 418,
+          "width": 1520,
+          "height": 1260
+        },
+        ".filters": {
+          "x": 264,
+          "y": 418,
+          "width": 280,
+          "height": 790.59375
+        },
+        ".question-panel": {
+          "x": 572,
+          "y": 418,
+          "width": 1212,
+          "height": 1260
+        },
+        ".finder-about": {
+          "x": 404,
+          "y": 2100.6875,
+          "width": 1240,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 2560,
+      "height": 1440,
+      "viewport": 2560,
+      "document": 2560,
+      "body": 2560,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 440,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 440,
+          "y": 2176.578125,
+          "width": 1680,
+          "height": 326.5
+        },
+        ".directory": {
+          "x": 520,
+          "y": 418,
+          "width": 1520,
+          "height": 1260
+        },
+        ".filters": {
+          "x": 520,
+          "y": 418,
+          "width": 280,
+          "height": 790.59375
+        },
+        ".question-panel": {
+          "x": 828,
+          "y": 418,
+          "width": 1212,
+          "height": 1260
+        },
+        ".finder-about": {
+          "x": 660,
+          "y": 2100.6875,
+          "width": 1240,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 390,
+      "height": 844,
+      "viewport": 390,
+      "document": 390,
+      "body": 390,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3278.234375,
+          "width": 390,
+          "height": 1024.75
+        },
+        ".directory": {
+          "x": 14,
+          "y": 458.296875,
+          "width": 362,
+          "height": 2067.828125
+        },
+        ".filters": {
+          "x": 14,
+          "y": 458.296875,
+          "width": 362,
+          "height": 60.390625
+        },
+        ".question-panel": {
+          "x": 14,
+          "y": 538.6875,
+          "width": 362,
+          "height": 1987.4375
+        },
+        ".finder-about": {
+          "x": 14,
+          "y": 3202.34375,
+          "width": 362,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 768,
+      "height": 1024,
+      "viewport": 768,
+      "document": 768,
+      "body": 768,
+      "cls": 7.990747690200806e-07,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 3074.515625,
+          "width": 768,
+          "height": 728.5
+        },
+        ".directory": {
+          "x": 24,
+          "y": 418,
+          "width": 720,
+          "height": 2036.65625
+        },
+        ".filters": {
+          "x": 24,
+          "y": 418,
+          "width": 221,
+          "height": 826.34375
+        },
+        ".question-panel": {
+          "x": 260.359375,
+          "y": 418,
+          "width": 483.640625,
+          "height": 2036.65625
+        },
+        ".finder-about": {
+          "x": 24,
+          "y": 2998.625,
+          "width": 720,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 1024,
+      "height": 768,
+      "viewport": 1024,
+      "document": 1024,
+      "body": 1024,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 2790.328125,
+          "width": 1024,
+          "height": 450.25
+        },
+        ".directory": {
+          "x": 24,
+          "y": 418,
+          "width": 976,
+          "height": 1847.75
+        },
+        ".filters": {
+          "x": 24,
+          "y": 418,
+          "width": 221,
+          "height": 826.34375
+        },
+        ".question-panel": {
+          "x": 265.46875,
+          "y": 418,
+          "width": 734.53125,
+          "height": 1847.75
+        },
+        ".finder-about": {
+          "x": 24,
+          "y": 2714.4375,
+          "width": 976,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "finder",
+      "route": "/find-questions",
+      "width": 1366,
+      "height": 768,
+      "viewport": 1366,
+      "document": 1366,
+      "body": 1366,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 43,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 43,
+          "y": 2176.578125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".directory": {
+          "x": 63,
+          "y": 418,
+          "width": 1240,
+          "height": 1260
+        },
+        ".filters": {
+          "x": 63,
+          "y": 418,
+          "width": 280,
+          "height": 790.59375
+        },
+        ".question-panel": {
+          "x": 370.3125,
+          "y": 418,
+          "width": 932.6875,
+          "height": 1260
+        },
+        ".finder-about": {
+          "x": 63,
+          "y": 2100.6875,
+          "width": 1240,
+          "height": 44.890625
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 1280,
+      "height": 800,
+      "viewport": 1280,
+      "document": 1280,
+      "body": 1280,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 48,
+          "y": 91,
+          "width": 1184,
+          "height": 1512.515625
+        },
+        ".print-editor": {
+          "x": 48,
+          "y": 91,
+          "width": 619.890625,
+          "height": 1512.515625
+        },
+        ".print-preview": {
+          "x": 689.890625,
+          "y": 91,
+          "width": 542.109375,
+          "height": 723.6875
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 1440,
+      "height": 900,
+      "viewport": 1440,
+      "document": 1440,
+      "body": 1440,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 80,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 48,
+          "y": 91,
+          "width": 1344,
+          "height": 1487.015625
+        },
+        ".print-editor": {
+          "x": 48,
+          "y": 91,
+          "width": 705.25,
+          "height": 1487.015625
+        },
+        ".print-preview": {
+          "x": 775.25,
+          "y": 91,
+          "width": 616.75,
+          "height": 788.6875
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 1920,
+      "height": 1080,
+      "viewport": 1920,
+      "document": 1920,
+      "body": 1920,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 120,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 120,
+          "y": 91,
+          "width": 1680,
+          "height": 1465.265625
+        },
+        ".print-editor": {
+          "x": 120,
+          "y": 91,
+          "width": 800,
+          "height": 1465.265625
+        },
+        ".print-preview": {
+          "x": 1010.75,
+          "y": 91,
+          "width": 789.25,
+          "height": 853.6875
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 2048,
+      "height": 1152,
+      "viewport": 2048,
+      "document": 2048,
+      "body": 2048,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 184,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 184,
+          "y": 91,
+          "width": 1680,
+          "height": 1465.265625
+        },
+        ".print-editor": {
+          "x": 184,
+          "y": 91,
+          "width": 800,
+          "height": 1465.265625
+        },
+        ".print-preview": {
+          "x": 1075.53125,
+          "y": 91,
+          "width": 788.46875,
+          "height": 853.6875
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 2560,
+      "height": 1440,
+      "viewport": 2560,
+      "document": 2560,
+      "body": 2560,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 440,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 440,
+          "y": 91,
+          "width": 1680,
+          "height": 1465.265625
+        },
+        ".print-editor": {
+          "x": 440,
+          "y": 91,
+          "width": 800,
+          "height": 1465.265625
+        },
+        ".print-preview": {
+          "x": 1331.53125,
+          "y": 91,
+          "width": 788.46875,
+          "height": 853.6875
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 390,
+      "height": 844,
+      "viewport": 390,
+      "document": 390,
+      "body": 390,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 15,
+          "y": 93,
+          "width": 360,
+          "height": 2867.4375
+        },
+        ".print-editor": {
+          "x": 15,
+          "y": 93,
+          "width": 360,
+          "height": 2021.65625
+        },
+        ".print-preview": {
+          "x": 15,
+          "y": 2138.65625,
+          "width": 360,
+          "height": 821.78125
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 768,
+      "height": 1024,
+      "viewport": 768,
+      "document": 768,
+      "body": 768,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 15,
+          "y": 93,
+          "width": 738,
+          "height": 2556.84375
+        },
+        ".print-editor": {
+          "x": 15,
+          "y": 93,
+          "width": 738,
+          "height": 1661.65625
+        },
+        ".print-preview": {
+          "x": 15,
+          "y": 1778.65625,
+          "width": 738,
+          "height": 871.1875
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 1024,
+      "height": 768,
+      "viewport": 1024,
+      "document": 1024,
+      "body": 1024,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 25,
+          "y": 91,
+          "width": 974,
+          "height": 1599.109375
+        },
+        ".print-editor": {
+          "x": 25,
+          "y": 91,
+          "width": 475,
+          "height": 1599.109375
+        },
+        ".print-preview": {
+          "x": 524,
+          "y": 91,
+          "width": 475,
+          "height": 737.375
+        }
+      }
+    },
+    {
+      "name": "print",
+      "route": "/print",
+      "width": 1366,
+      "height": 768,
+      "viewport": 1366,
+      "document": 1366,
+      "body": 1366,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 43,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".print-workspace": {
+          "x": 48,
+          "y": 91,
+          "width": 1270,
+          "height": 1487.015625
+        },
+        ".print-editor": {
+          "x": 48,
+          "y": 91,
+          "width": 665.765625,
+          "height": 1487.015625
+        },
+        ".print-preview": {
+          "x": 735.765625,
+          "y": 91,
+          "width": 582.21875,
+          "height": 702.875
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 1280,
+      "height": 800,
+      "viewport": 1280,
+      "document": 1280,
+      "body": 1280,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 0,
+          "y": 77,
+          "width": 1280,
+          "height": 50
+        },
+        ".play-options": {
+          "x": 140,
+          "y": 273.65625,
+          "width": 1000,
+          "height": 304
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 1440,
+      "height": 900,
+      "viewport": 1440,
+      "document": 1440,
+      "body": 1440,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 80,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 50,
+          "y": 77,
+          "width": 1340,
+          "height": 64
+        },
+        ".play-options": {
+          "x": 172,
+          "y": 348.546875,
+          "width": 1096,
+          "height": 404
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 1920,
+      "height": 1080,
+      "viewport": 1920,
+      "document": 1920,
+      "body": 1920,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 120,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 120,
+          "y": 77,
+          "width": 1680,
+          "height": 64
+        },
+        ".play-options": {
+          "x": 300,
+          "y": 357.6875,
+          "width": 1320,
+          "height": 404
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 2048,
+      "height": 1152,
+      "viewport": 2048,
+      "document": 2048,
+      "body": 2048,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 184,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 184,
+          "y": 77,
+          "width": 1680,
+          "height": 64
+        },
+        ".play-options": {
+          "x": 364,
+          "y": 357.6875,
+          "width": 1320,
+          "height": 404
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 2560,
+      "height": 1440,
+      "viewport": 2560,
+      "document": 2560,
+      "body": 2560,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 440,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 440,
+          "y": 77,
+          "width": 1680,
+          "height": 64
+        },
+        ".play-options": {
+          "x": 620,
+          "y": 357.6875,
+          "width": 1320,
+          "height": 404
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 390,
+      "height": 844,
+      "viewport": 390,
+      "document": 390,
+      "body": 390,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 0,
+          "y": 77,
+          "width": 390,
+          "height": 126
+        },
+        ".play-options": {
+          "x": 20,
+          "y": 345.59375,
+          "width": 350,
+          "height": 571.1875
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 768,
+      "height": 1024,
+      "viewport": 768,
+      "document": 768,
+      "body": 768,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 0,
+          "y": 77,
+          "width": 768,
+          "height": 64
+        },
+        ".play-options": {
+          "x": 30,
+          "y": 289.296875,
+          "width": 708,
+          "height": 408
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 1024,
+      "height": 768,
+      "viewport": 1024,
+      "document": 1024,
+      "body": 1024,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 0,
+          "y": 77,
+          "width": 1024,
+          "height": 50
+        },
+        ".play-options": {
+          "x": 30,
+          "y": 257.328125,
+          "width": 976,
+          "height": 291.828125
+        }
+      }
+    },
+    {
+      "name": "play",
+      "route": "/play",
+      "width": 1366,
+      "height": 768,
+      "viewport": 1366,
+      "document": 1366,
+      "body": 1366,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 43,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        ".play-toolbar": {
+          "x": 13,
+          "y": 77,
+          "width": 1340,
+          "height": 50
+        },
+        ".play-options": {
+          "x": 183,
+          "y": 275.59375,
+          "width": 1000,
+          "height": 291.828125
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 1280,
+      "height": 800,
+      "viewport": 1280,
+      "document": 1280,
+      "body": 1280,
+      "cls": 0.0041193306805565955,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 1365.03125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 40,
+          "y": 73,
+          "width": 1200,
+          "height": 1291.03125
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 1440,
+      "height": 900,
+      "viewport": 1440,
+      "document": 1440,
+      "body": 1440,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 80,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 80,
+          "y": 1365.03125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 120,
+          "y": 73,
+          "width": 1200,
+          "height": 1291.03125
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 1920,
+      "height": 1080,
+      "viewport": 1920,
+      "document": 1920,
+      "body": 1920,
+      "cls": 0.039936666606385035,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 120,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 120,
+          "y": 1365.03125,
+          "width": 1680,
+          "height": 326.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 120,
+          "y": 73,
+          "width": 1680,
+          "height": 1291.03125
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 2048,
+      "height": 1152,
+      "viewport": 2048,
+      "document": 2048,
+      "body": 2048,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 184,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 184,
+          "y": 1365.03125,
+          "width": 1680,
+          "height": 326.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 184,
+          "y": 73,
+          "width": 1680,
+          "height": 1291.03125
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 2560,
+      "height": 1440,
+      "viewport": 2560,
+      "document": 2560,
+      "body": 2560,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 440,
+          "y": 0,
+          "width": 1680,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 440,
+          "y": 1514,
+          "width": 1680,
+          "height": 326.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 440,
+          "y": 73,
+          "width": 1680,
+          "height": 1440
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 390,
+      "height": 844,
+      "viewport": 390,
+      "document": 390,
+      "body": 390,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 2145.859375,
+          "width": 390,
+          "height": 1024.75
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 0,
+          "y": 73,
+          "width": 390,
+          "height": 2071.859375
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 768,
+      "height": 1024,
+      "viewport": 768,
+      "document": 768,
+      "body": 768,
+      "cls": 0.0863589346408844,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 1454.21875,
+          "width": 768,
+          "height": 728.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 16,
+          "y": 73,
+          "width": 736,
+          "height": 1380.21875
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 1024,
+      "height": 768,
+      "viewport": 1024,
+      "document": 1024,
+      "body": 1024,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 0,
+          "y": 1365.03125,
+          "width": 1024,
+          "height": 450.25
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 16,
+          "y": 73,
+          "width": 992,
+          "height": 1291.03125
+        }
+      }
+    },
+    {
+      "name": "leaderboards",
+      "route": "/leaderboards",
+      "width": 1366,
+      "height": 768,
+      "viewport": 1366,
+      "document": 1366,
+      "body": 1366,
+      "cls": 0,
+      "boxes": {
+        "[data-site-header] > div": {
+          "x": 43,
+          "y": 0,
+          "width": 1280,
+          "height": 72
+        },
+        "footer > div": {
+          "x": 43,
+          "y": 1365.03125,
+          "width": 1280,
+          "height": 326.5
+        },
+        ".leaderboard-page .page-shell": {
+          "x": 83,
+          "y": 73,
+          "width": 1200,
+          "height": 1291.03125
+        }
+      }
+    }
+  ]
+}

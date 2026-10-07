@@ -467,3 +467,12 @@
   min-height: 48px;
   font-size: 24px;
 }
+
+@media (min-width: 1441px) {
+  .site-footer-illustrated > .site-wide-chrome {
+    max-width: none;
+  }
+  .illustrated-home .home-hero-arena {
+    width: min(100%, clamp(720px, 48vw, 920px));
+  }
+}

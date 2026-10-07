@@ -95,11 +95,11 @@ const occasions = [
 // Container gutters, grid gaps and column weights mirror illustrated-home.css.
 function categoryImageSizes(artWidth: number) {
   const columnRatio = 692 / artWidth;
-  return `(max-width: 520px) calc((100vw - clamp(32px, 7vw, 80px) - 8px) / 2), (max-width: 1000px) calc((100vw - clamp(32px, 7vw, 80px) - 24px) / 3), (max-width: 1240px) calc((100vw - clamp(32px, 7vw, 80px) - clamp(25px, 3.2134vw, 40px)) / ${columnRatio}), ${1120 / columnRatio}px`;
+  return `(min-width: 1441px) ${1520 / columnRatio}px, (max-width: 520px) calc((100vw - clamp(32px, 7vw, 80px) - 8px) / 2), (max-width: 1000px) calc((100vw - clamp(32px, 7vw, 80px) - 24px) / 3), (max-width: 1240px) calc((100vw - clamp(32px, 7vw, 80px) - clamp(25px, 3.2134vw, 40px)) / ${columnRatio}), ${1120 / columnRatio}px`;
 }
 
 const highlightImageSizes =
-  "(max-width: 900px) calc(100vw - clamp(32px, 7vw, 80px) - 2px), (max-width: 1240px) calc((100vw - clamp(32px, 7vw, 80px) - clamp(28px, 3.599vw, 44.8px)) / 2.9646 - 2px), 375px";
+  "(min-width: 1441px) 512px, (max-width: 900px) calc(100vw - clamp(32px, 7vw, 80px) - 2px), (max-width: 1240px) calc((100vw - clamp(32px, 7vw, 80px) - clamp(28px, 3.599vw, 44.8px)) / 2.9646 - 2px), 375px";
 
 function Heading({
   title,
