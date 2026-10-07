@@ -17,7 +17,7 @@ const categories = [
     title: "For Kids",
     description: "Clean & imaginative",
     crop: [514, 686, 115, 87],
-    color: "classroom",
+    color: "kids",
     key: "kids",
   },
   {
@@ -218,7 +218,9 @@ export function IllustratedHome({
                   href={collection?.route ?? ("href" in category ? category.href : "/#questions")}
                   className={`category-card ${category.color}`}
                 >
-                  {category.color === "popular" || category.color === "hard" ? (
+                  {category.color === "popular" ||
+                  category.color === "hard" ||
+                  category.color === "kids" ? (
                     <Image
                       src={`/home-art/categories/${category.color}-no-subtitle.webp`}
                       alt=""
