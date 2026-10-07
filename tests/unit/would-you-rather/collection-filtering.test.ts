@@ -40,7 +40,7 @@ describe("Would You Rather SEO collections", () => {
     expect(couples.every((q) => q.relationships.includes("couples"))).toBe(true);
   });
 
-  it("enforces exact 5 SEO collection counts in the formal 457 question bank without overextending", () => {
+  it("enforces exact 5 SEO collection counts in the formal 512 question bank without overextending", () => {
     const kids = getQuestionsByCollection("kids", QUESTIONS_DATABASE);
     const funny = getQuestionsByCollection("funny", QUESTIONS_DATABASE);
     const hard = getQuestionsByCollection("hard", QUESTIONS_DATABASE);
@@ -48,11 +48,11 @@ describe("Would You Rather SEO collections", () => {
     const couples = getQuestionsByCollection("couples", QUESTIONS_DATABASE);
 
     // 关键业务事实：
-    // Kids 绝非全部安全题（安全不等于受众符合），而是严格属于儿童年龄段的 263 题
-    expect(kids).toHaveLength(263);
-    expect(funny).toHaveLength(140);
-    expect(hard).toHaveLength(271);
-    expect(friends).toHaveLength(195);
+    // Kids 绝非全部安全题（安全不等于受众符合），而是严格属于儿童年龄段的 318 题
+    expect(kids).toHaveLength(318);
+    expect(funny).toHaveLength(145);
+    expect(hard).toHaveLength(297);
+    expect(friends).toHaveLength(209);
     expect(couples).toHaveLength(45);
   });
 
