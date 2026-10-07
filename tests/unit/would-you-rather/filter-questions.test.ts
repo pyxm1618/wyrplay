@@ -63,7 +63,7 @@ describe("Would You Rather Question Filtering & Search", () => {
     expect(unapprovedResult).toHaveLength(0);
 
     const formalPlayable = filterQuestions(QUESTIONS_DATABASE, { onlyApproved: true });
-    expect(formalPlayable).toHaveLength(457);
+    expect(formalPlayable).toHaveLength(512);
 
     const fixturePlayable = filterQuestions(TEST_FIXTURE_QUESTIONS, { onlyApproved: true });
     expect(fixturePlayable).toHaveLength(3);
