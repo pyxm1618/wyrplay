@@ -9,12 +9,10 @@ import "./globals.css";
 
 export const metadata: Metadata = rootMetadata();
 
-export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
-  const nonce = (await headers()).get("x-nonce") ?? undefined;
-
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang={siteConfig.defaultLocale} data-theme="dark">
-      <body nonce={nonce}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

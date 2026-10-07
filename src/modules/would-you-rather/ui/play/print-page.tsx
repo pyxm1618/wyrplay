@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- Canvas previews and original local logo. */
 
-import { useEffect, useState, startTransition, useMemo, useRef } from "react";
+import { Suspense, useEffect, useState, startTransition, useMemo, useRef } from "react";
 import { flushSync } from "react-dom";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -54,7 +54,7 @@ const printScenarios: readonly [Occasion, string][] = [
   ["dinner", "Dinner"],
 ];
 
-export function PrintPage({
+function PrintPageContent({
   questions,
 }: {
   readonly questions: readonly Question[];
@@ -422,7 +422,6 @@ export function PrintPage({
   return (
     <div className="print-page" data-format={format}>
       <style>{`@page { size: ${paper === "a4" ? "A4" : "letter"}; margin: 0; }`}</style>
-      <PlayArtwork />
       <div className="print-workspace">
         <section className="print-editor">
           <Link className="print-back" href="/find-questions?restore=1">
@@ -1035,6 +1034,59 @@ export function PrintPage({
           ))}
         </div>
       )}
+    </div>
+  );
+}
+
+function PrintPageFallback() {
+  return (
+    <div className="print-page">
+      <div className="print-workspace" aria-busy="true">
+        <section className="print-editor">
+          <Link className="print-back" href="/find-questions?restore=1">
+            ← Back to questions
+          </Link>
+          <h1>
+            Print <span className="word-rather">Cards</span> & Sheets
+          </h1>
+          <p className="print-lead">
+            Turn your favorite Would You Rather questions into printable games and handouts.
+          </p>
+          <div className="print-pool">
+            <span>Loading printable questions and layout…</span>
+          </div>
+        </section>
+        <section className="print-preview" aria-busy="true">
+          <div
+            className="print-preview-viewport"
+            style={{
+              minHeight: 600,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <span className="text-sm font-medium text-muted">Preparing print layout…</span>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+export function PrintPage({
+  questions,
+  authEnabled,
+}: {
+  readonly questions: readonly Question[];
+  readonly authEnabled: boolean;
+}) {
+  return (
+    <div className="print-shell">
+      <PlayArtwork />
+      <Suspense fallback={<PrintPageFallback />}>
+        <PrintPageContent questions={questions} authEnabled={authEnabled} />
+      </Suspense>
     </div>
   );
 }

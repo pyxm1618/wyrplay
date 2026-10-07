@@ -1,5 +1,6 @@
 export type ContentSecurityPolicyInput = Readonly<{
-  nonce?: string;
+  nonce?: string | undefined;
+  hashes?: readonly string[] | undefined;
   development: boolean;
   production: boolean;
   analytics: Readonly<{ ga4: boolean; clarity: boolean }>;
@@ -15,6 +16,9 @@ export function buildContentSecurityPolicy(input: ContentSecurityPolicyInput): s
   const scriptSources = [
     "'self'",
     ...(input.nonce ? [`'nonce-${input.nonce}'`] : []),
+    ...(input.hashes && input.hashes.length > 0
+      ? input.hashes.map((hash) => `'sha256-${hash}'`)
+      : []),
     ...(input.development ? ["'unsafe-eval'"] : []),
     ...(input.analytics.ga4 ? ["https://www.googletagmanager.com"] : []),
     ...(input.analytics.clarity ? ["https://www.clarity.ms"] : []),

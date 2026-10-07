@@ -11,6 +11,13 @@ import { getLeaderboardSnapshot } from "./leaderboard-service";
  * hero & arena from database contention.
  */
 export async function loadHomepageLeaderboard(): Promise<LeaderboardResult> {
+  if (process.env.APP_ENV === "test" && process.env.HOMEPAGE_LEADERBOARD_TEST_DELAY_MS) {
+    const ms = parseInt(process.env.HOMEPAGE_LEADERBOARD_TEST_DELAY_MS, 10);
+    if (!Number.isNaN(ms) && ms > 0) {
+      await new Promise((resolve) => setTimeout(resolve, ms));
+    }
+  }
+
   const cached = unstable_cache(
     async () => {
       try {

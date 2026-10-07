@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { LandingSection } from "@/components/landing/landing-page";
 import {
   QUESTIONS_DATABASE,
@@ -39,6 +40,28 @@ function homeSurface(leaderboard: LeaderboardResult) {
   );
 }
 
+export function homeConfigWithTrendingSlot(trendingSlot: ReactNode) {
+  return {
+    ...homeConfig,
+    sections: homeConfig.sections.map((section) =>
+      section.type === "hero"
+        ? {
+            ...section,
+            surface: (
+              <WyrExperience
+                appearance="illustrated-home"
+                questions={QUESTIONS_DATABASE}
+                categoryBadge="Curated Would You Rather Questions"
+                showCategoryExplorer={true}
+                trendingSlot={trendingSlot}
+              />
+            ),
+          }
+        : section,
+    ),
+  };
+}
+
 export function homeConfigWithLeaderboard(leaderboard: LeaderboardResult) {
   return {
     ...homeConfig,
@@ -47,3 +70,4 @@ export function homeConfigWithLeaderboard(leaderboard: LeaderboardResult) {
     ),
   };
 }
+

@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
 
 import { featuresConfig } from "@/config/features.config";
@@ -10,21 +12,63 @@ function createNonce(): string {
   return Buffer.from(crypto.randomUUID()).toString("base64");
 }
 
+const sensitivePathPatterns = [
+  /^\/account(?:\/.*)?$/,
+  /^\/sign-in(?:\/.*)?$/,
+  /^\/sign-up(?:\/.*)?$/,
+  /^\/auth(?:\/.*)?$/,
+  /^\/checkout(?:\/.*)?$/,
+  /^\/api(?:\/.*)?$/,
+];
+
+function isSensitiveRoute(pathname: string): boolean {
+  return sensitivePathPatterns.some((pattern) => pattern.test(pathname));
+}
+
+let cachedHashes: string[] | null = null;
+
+function getStaticInlineHashes(): string[] {
+  if (cachedHashes) return cachedHashes;
+  try {
+    const filePath = path.resolve(process.cwd(), ".next/static-inline-hashes.json");
+    if (fs.existsSync(filePath)) {
+      const raw = fs.readFileSync(filePath, "utf8");
+      const data = JSON.parse(raw);
+      if (Array.isArray(data.all)) {
+        cachedHashes = data.all;
+        return cachedHashes!;
+      }
+    }
+  } catch {
+    // ignore
+  }
+  return [];
+}
+
 export function proxy(request: NextRequest) {
-  const nonce = createNonce();
+  const pathname = request.nextUrl.pathname;
+  const isSensitive = isSensitiveRoute(pathname);
+  const nonce = isSensitive ? createNonce() : undefined;
+  const hashes = !isSensitive ? getStaticInlineHashes() : undefined;
+
   const contentSecurityPolicy = buildContentSecurityPolicy({
     nonce,
+    hashes,
     development: isDevelopment,
     production: isProduction,
     analytics: {
       ga4: featuresConfig.analytics.enabled && featuresConfig.analytics.ga4,
       clarity: featuresConfig.analytics.enabled && featuresConfig.analytics.clarity,
     },
-    turnstile: featuresConfig.auth.enabled && featuresConfig.auth.magicLink,
+    turnstile: isSensitive && featuresConfig.auth.enabled && featuresConfig.auth.magicLink,
   });
 
   const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-nonce", nonce);
+  if (nonce) {
+    requestHeaders.set("x-nonce", nonce);
+  } else {
+    requestHeaders.delete("x-nonce");
+  }
   requestHeaders.set("content-security-policy", contentSecurityPolicy);
 
   const response = NextResponse.next({ request: { headers: requestHeaders } });
