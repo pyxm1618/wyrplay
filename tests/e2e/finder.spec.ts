@@ -34,7 +34,7 @@ test("finder uses the source bank, draft filters, real pagination and persistent
   await expect(page.locator("h1")).toHaveCount(1);
   await expect(page.locator("h1")).toHaveText("Find Would You Rather Questions");
   await expect(page.locator(".question-card")).toHaveCount(10);
-  await expect(page.locator(".panel-heading")).toContainText("457 curated questions");
+  await expect(page.locator(".panel-heading")).toContainText("512 curated questions");
   await expect(page.locator(".question-card").first()).toContainText(
     "hear a squirrel tell stories",
   );
@@ -47,21 +47,21 @@ test("finder uses the source bank, draft filters, real pagination and persistent
   ).toHaveAttribute("aria-pressed", "true");
   await page.locator(".select-button").first().click();
   await expect(page.locator(".selection-bar h3")).toHaveText("1 selected question");
-  await page.getByRole("button", { name: "Page 46", exact: true }).click();
-  await expect(page.locator(".question-card")).toHaveCount(7);
-  await expect(page.locator(".question-number").first()).toHaveText("451");
+  await page.getByRole("button", { name: "Page 52", exact: true }).click();
+  await expect(page.locator(".question-card")).toHaveCount(2);
+  await expect(page.locator(".question-number").first()).toHaveText("511");
   await expect(page.locator(".selection-bar h3")).toHaveText("1 selected question");
   await page.getByRole("searchbox").fill("hear");
   await expect(page.locator(".question-number").first()).toHaveText("451");
-  await expect(page.locator(".question-card")).toHaveCount(7);
+  await expect(page.locator(".question-card")).toHaveCount(2);
   await page.getByRole("button", { name: "Search", exact: true }).click();
   await expect(page.locator(".question-card")).toHaveCount(10);
   await expect(page.locator(".pagination [aria-current=page]")).toHaveText("1");
   await page.getByRole("button", { name: "Clear all", exact: true }).click();
   await page.getByRole("button", { name: "Hard", exact: true }).click();
-  await expect(page.locator(".panel-heading")).toContainText("457");
+  await expect(page.locator(".panel-heading")).toContainText("512");
   await page.getByRole("button", { name: "Apply Filters" }).click();
-  await expect(page.locator(".panel-heading")).toContainText("271 matching questions");
+  await expect(page.locator(".panel-heading")).toContainText("297 matching questions");
   await page.getByRole("searchbox").fill("no-such-question-xyz");
   await page.getByRole("button", { name: "Search", exact: true }).click();
   await expect(page.locator(".empty-state")).toBeVisible();
