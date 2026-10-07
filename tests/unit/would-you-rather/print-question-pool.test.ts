@@ -35,7 +35,7 @@ describe("direct print question pool", () => {
 
   it("keeps the unfiltered direct print pool equal to the approved formal bank", () => {
     const result = filterPrintQuestions(QUESTIONS_DATABASE, {});
-    expect(result).toHaveLength(457);
-    expect(new Set(result.map((question) => question.id)).size).toBe(457);
+    expect(result).toHaveLength(512);
+    expect(new Set(result.map((question) => question.id)).size).toBe(512);
   });
 });
