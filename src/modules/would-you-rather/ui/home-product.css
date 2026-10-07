@@ -343,9 +343,6 @@
   .illustrated-home .hero {
     padding-top: 12px;
   }
-  .illustrated-home .hero-lettering {
-    font-size: 52px;
-  }
   .illustrated-home .hero-intro > p {
     padding: 0 12px;
   }
@@ -396,13 +393,6 @@
   padding: 4px 12px;
 }
 
-/* Browser review confirmed rectangular joins between the hero reference cutouts.
-   The existing high-resolution background preserves the character direction without joins. */
-.illustrated-home .hero-art {
-  background: url("/home-art/hero-background.webp") center top / 100% auto no-repeat;
-  inset: 0;
-  mask-image: linear-gradient(#000 88%, transparent);
-}
 .illustrated-home .home-hero-arena .choice-text {
   overflow-wrap: anywhere;
   max-width: 100%;
@@ -417,10 +407,6 @@
   color: inherit;
 }
 @media (max-width: 600px) {
-  .illustrated-home .hero-art {
-    background-size: auto 100%;
-    opacity: 0.35;
-  }
   .illustrated-home .home-hero-arena .choice-card {
     padding-inline: 14px;
   }
