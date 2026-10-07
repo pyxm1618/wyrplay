@@ -9,10 +9,20 @@ export const metadata: Metadata = metadataForRoute(
   "/print",
   currentSeoEnvironment(),
 );
+function PrintFallback() {
+  return (
+    <div className="print-page" aria-busy="true" aria-label="Loading print session">
+      <div className="print-toolbar">
+        <span className="text-sm font-medium text-muted">Preparing printable cards…</span>
+      </div>
+    </div>
+  );
+}
+
 export default function Page() {
   return (
     <main>
-      <Suspense fallback={<p>Loading your questions…</p>}>{printConfig.surface}</Suspense>
+      <Suspense fallback={<PrintFallback />}>{printConfig.surface}</Suspense>
     </main>
   );
 }

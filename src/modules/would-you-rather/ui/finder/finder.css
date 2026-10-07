@@ -2,49 +2,65 @@
 /* Fonts */
 @font-face {
   font-family: FinderBody;
-  src: url("/finder/fonts/roboto-condensed-regular.ttf");
+  src:
+    url("/home-fonts/roboto-condensed-regular.woff2") format("woff2"),
+    url("/finder/fonts/roboto-condensed-regular.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: FinderBody;
-  src: url("/finder/fonts/roboto-condensed-semibold.ttf");
+  src:
+    url("/home-fonts/roboto-condensed-semibold.woff2") format("woff2"),
+    url("/finder/fonts/roboto-condensed-semibold.ttf") format("truetype");
   font-weight: 600;
   font-display: swap;
 }
 @font-face {
   font-family: FinderBody;
-  src: url("/finder/fonts/roboto-condensed-bold.ttf");
+  src:
+    url("/leaderboard-fonts/roboto-condensed-bold.woff2") format("woff2"),
+    url("/finder/fonts/roboto-condensed-bold.ttf") format("truetype");
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: FinderRoboto;
-  src: url("/finder/fonts/roboto-400.ttf");
+  src:
+    url("/leaderboard-fonts/roboto-400.woff2") format("woff2"),
+    url("/finder/fonts/roboto-400.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: FinderRoboto;
-  src: url("/finder/fonts/roboto-500.ttf");
+  src:
+    url("/leaderboard-fonts/roboto-500.woff2") format("woff2"),
+    url("/finder/fonts/roboto-500.ttf") format("truetype");
   font-weight: 500;
   font-display: swap;
 }
 @font-face {
   font-family: FinderRoboto;
-  src: url("/finder/fonts/roboto-600.ttf");
+  src:
+    url("/leaderboard-fonts/roboto-600.woff2") format("woff2"),
+    url("/finder/fonts/roboto-600.ttf") format("truetype");
   font-weight: 600;
   font-display: swap;
 }
 @font-face {
   font-family: FinderRoboto;
-  src: url("/finder/fonts/roboto-700.ttf");
+  src:
+    url("/leaderboard-fonts/roboto-700.woff2") format("woff2"),
+    url("/finder/fonts/roboto-700.ttf") format("truetype");
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: FinderHand;
-  src: url("/finder/fonts/chewy.ttf");
+  src:
+    url("/leaderboard-fonts/chewy.woff2") format("woff2"),
+    url("/finder/fonts/chewy.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
 }

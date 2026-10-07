@@ -1,30 +1,40 @@
 @font-face {
   font-family: WyrCondensed;
-  src: url("/home-fonts/roboto-condensed-semibold.ttf") format("truetype");
+  src:
+    url("/home-fonts/roboto-condensed-semibold.woff2") format("woff2"),
+    url("/home-fonts/roboto-condensed-semibold.ttf") format("truetype");
   font-weight: 600;
   font-display: swap;
 }
 @font-face {
   font-family: WyrHandwritten;
-  src: url("/home-fonts/kalam-bold.ttf") format("truetype");
+  src:
+    url("/home-fonts/kalam-bold.woff2") format("woff2"),
+    url("/home-fonts/kalam-bold.ttf") format("truetype");
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: WyrCondensed;
-  src: url("/home-fonts/roboto-condensed-regular.ttf") format("truetype");
+  src:
+    url("/home-fonts/roboto-condensed-regular.woff2") format("woff2"),
+    url("/home-fonts/roboto-condensed-regular.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: WyrCondensed;
-  src: url("/home-fonts/roboto-condensed-bold.ttf") format("truetype");
+  src:
+    url("/home-fonts/roboto-condensed-bold.woff2") format("woff2"),
+    url("/home-fonts/roboto-condensed-bold.ttf") format("truetype");
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: WyrCondensed;
-  src: url("/home-fonts/roboto-condensed-extrabold.ttf") format("truetype");
+  src:
+    url("/home-fonts/roboto-condensed-extrabold.woff2") format("woff2"),
+    url("/home-fonts/roboto-condensed-extrabold.ttf") format("truetype");
   font-weight: 800 900;
   font-display: swap;
 }

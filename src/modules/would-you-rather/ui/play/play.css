@@ -1,16 +1,25 @@
 @font-face {
   font-family: PlayHand;
-  src: url("/finder/fonts/lilita-one.ttf");
+  src:
+    url("/finder/fonts/lilita-one.woff2") format("woff2"),
+    url("/finder/fonts/lilita-one.ttf") format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: PlayBody;
-  src: url("/finder/fonts/roboto-400.ttf");
+  src:
+    url("/leaderboard-fonts/roboto-400.woff2") format("woff2"),
+    url("/finder/fonts/roboto-400.ttf") format("truetype");
   font-weight: 400;
+  font-display: swap;
 }
 @font-face {
   font-family: PlayBody;
-  src: url("/finder/fonts/roboto-700.ttf");
+  src:
+    url("/leaderboard-fonts/roboto-700.woff2") format("woff2"),
+    url("/finder/fonts/roboto-700.ttf") format("truetype");
   font-weight: 700;
+  font-display: swap;
 }
 .play-page,
 .presenter-page,

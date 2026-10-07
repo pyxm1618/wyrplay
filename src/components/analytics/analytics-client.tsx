@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { usePathname } from "next/navigation";
 
 import { buttonGhost, buttonPrimary, buttonSecondary } from "@/components/ui/styles";
 
@@ -167,6 +168,8 @@ export function AnalyticsClient({
   const [settingsOpen, setSettingsOpen] = useState(false);
   const consent: Consent = consentRequired ? storedConsent : "granted";
 
+  const pathname = usePathname();
+
   useEffect(() => {
     if (consent !== "granted") {
       stopAnalytics();
@@ -187,6 +190,22 @@ export function AnalyticsClient({
     if (ga4MeasurementId) startGa4(ga4MeasurementId);
     if (clarityProjectId) startClarity(clarityProjectId);
 
+    return stopAnalytics;
+  }, [clarityProjectId, consent, ga4MeasurementId]);
+
+  useEffect(() => {
+    if (consent !== "granted") return;
+
+    if (
+      !isAnalyticsLocationSafe({
+        pathname: window.location.pathname,
+        search: window.location.search,
+        hash: window.location.hash,
+      })
+    ) {
+      return;
+    }
+
     emitAnalyticsEvent(
       sanitizeAnalyticsEvent({
         name: "page_view",
@@ -196,9 +215,7 @@ export function AnalyticsClient({
         },
       }),
     );
-
-    return stopAnalytics;
-  }, [clarityProjectId, consent, ga4MeasurementId]);
+  }, [consent, pathname]);
 
   const chooseConsent = (nextConsent: Exclude<Consent, "unknown">) => {
     persistConsent(nextConsent);
