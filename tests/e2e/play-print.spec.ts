@@ -56,7 +56,7 @@ test("selected set survives play, voting, presentation and return", async ({ pag
 test("both print formats produce a PDF with matching pages and paper size", async ({ page }) => {
   await page.goto("/print");
   await expect(page.locator(".preview-paper")).toBeVisible();
-  await expect(page.locator(".print-preview")).toContainText("457 questions");
+  await expect(page.locator(".print-preview")).toContainText("512 questions");
   await page.getByRole("button", { name: "Question Sheet", exact: false }).click();
   await expect(page.locator(".print-preview h2")).toContainText("Question Sheet");
   await page.getByRole("radio", { name: "A4" }).check();
@@ -153,7 +153,7 @@ test("finder print set stays exact until the user chooses a different set", asyn
 
   await page.getByRole("button", { name: "Choose a different set" }).click();
   await expect(page.getByRole("combobox", { name: "Theme", exact: true })).toBeVisible();
-  await expect(page.locator(".print-pool")).toContainText("457 questions in this generated set");
+  await expect(page.locator(".print-pool")).toContainText("512 questions in this generated set");
 });
 
 test("invalid sets and small screens remain usable", async ({ page }) => {
