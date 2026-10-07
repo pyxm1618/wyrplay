@@ -14,11 +14,13 @@ import type { AgeGroup } from "@/modules/would-you-rather";
 import { TEST_FIXTURE_QUESTIONS } from "../../../tests/fixtures/test-questions";
 
 describe("Would You Rather Question Data Contract", () => {
-  it("contains exactly 457 valid questions in the formal database", () => {
-    expect(QUESTIONS_DATABASE).toHaveLength(457);
+  it("contains 457 approved questions plus 55 unreviewed kids candidates", () => {
+    expect(QUESTIONS_DATABASE).toHaveLength(512);
+    expect(QUESTIONS_DATABASE.filter((q) => q.reviewStatus === "approved")).toHaveLength(457);
+    expect(QUESTIONS_DATABASE.filter((q) => q.reviewStatus === "unreviewed")).toHaveLength(55);
   });
 
-  it("passes comprehensive schema validation for all 457 formal questions", () => {
+  it("passes comprehensive schema validation for all 512 question records", () => {
     const result = validateQuestionDatabase(QUESTIONS_DATABASE);
     expect(result.valid).toBe(true);
     expect(result.errors).toEqual([]);
@@ -27,7 +29,7 @@ describe("Would You Rather Question Data Contract", () => {
   it("P0-2: requires every raw formal record to declare an explicit reviewStatus", () => {
     const allowedStatuses = ["unreviewed", "approved", "deferred", "rejected", "retired"];
 
-    expect(rawQuestionsJson).toHaveLength(457);
+    expect(rawQuestionsJson).toHaveLength(512);
     for (const q of rawQuestionsJson) {
       expect(q).toHaveProperty("reviewStatus");
       expect(allowedStatuses).toContain(q.reviewStatus);
@@ -40,8 +42,18 @@ describe("Would You Rather Question Data Contract", () => {
       expect(q.question.trim().length).toBeGreaterThan(5);
       expect(q.optionA.trim().length).toBeGreaterThan(0);
       expect(q.optionB.trim().length).toBeGreaterThan(0);
-      expect(q.reviewStatus).toBe("approved");
     }
+  });
+
+  it("P0-2: keeps all 55 kids candidates out of every playable pool", () => {
+    const candidates = QUESTIONS_DATABASE.filter((q) => q.reviewStatus === "unreviewed");
+
+    expect(candidates).toHaveLength(55);
+    expect(candidates[0]?.id).toBe("wyr-000458");
+    expect(candidates.at(-1)?.id).toBe("wyr-000512");
+    expect(candidates.every((q) => q.primaryCollection === "kids")).toBe(true);
+    expect(getPlayableQuestions(candidates)).toHaveLength(0);
+    expect(getPlayableQuestionsByCollection("kids", candidates)).toHaveLength(0);
   });
 
   it("P0-2: guarantees unreviewed questions are blocked from playable pools", () => {

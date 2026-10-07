@@ -12120,5 +12120,1325 @@
       "candidateId": "expansion-004-278",
       "reviewRound": 2
     }
+  },
+  {
+    "id": "wyr-000458",
+    "question": "Would you rather spend a day playing with a bouncy puppy or a curious kitten?",
+    "optionA": "Spend a day with a bouncy puppy",
+    "optionB": "Spend a day with a curious kitten",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["light"],
+    "difficulty": "easy",
+    "topics": ["animals-nature"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-001"
+    }
+  },
+  {
+    "id": "wyr-000459",
+    "question": "Would you rather have pancakes shaped like stars or waffles shaped like hearts for breakfast?",
+    "optionA": "Have star-shaped pancakes",
+    "optionB": "Have heart-shaped waffles",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": ["family"],
+    "scenarios": ["general"],
+    "moods": ["light"],
+    "difficulty": "easy",
+    "topics": ["food-everyday"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-002"
+    }
+  },
+  {
+    "id": "wyr-000460",
+    "question": "Would you rather explore tide pools at the beach or look for animal tracks on a mountain trail?",
+    "optionA": "Explore tide pools at the beach",
+    "optionB": "Look for animal tracks on a mountain trail",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": ["family"],
+    "scenarios": ["general"],
+    "moods": ["light"],
+    "difficulty": "easy",
+    "topics": ["travel-adventure"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-003"
+    }
+  },
+  {
+    "id": "wyr-000461",
+    "question": "Would you rather have a summer day for water play or a winter day for snow play?",
+    "optionA": "Have a summer day for water play",
+    "optionB": "Have a winter day for snow play",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": ["family"],
+    "scenarios": ["general"],
+    "moods": ["light"],
+    "difficulty": "easy",
+    "topics": ["animals-nature"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-004"
+    }
+  },
+  {
+    "id": "wyr-000462",
+    "question": "Would you rather watch baby animals at a zoo or colorful fish at an aquarium?",
+    "optionA": "Watch baby animals at a zoo",
+    "optionB": "Watch colorful fish at an aquarium",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": ["family"],
+    "scenarios": ["general"],
+    "moods": ["light"],
+    "difficulty": "easy",
+    "topics": ["animals-nature"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-005"
+    }
+  },
+  {
+    "id": "wyr-000463",
+    "question": "Would you rather sing every answer for an hour or dance everywhere you go for an hour?",
+    "optionA": "Sing every answer for an hour",
+    "optionB": "Dance everywhere you go for an hour",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["party", "general"],
+    "moods": ["funny"],
+    "difficulty": "easy",
+    "topics": ["hobbies-entertainment"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-006"
+    }
+  },
+  {
+    "id": "wyr-000464",
+    "question": "Would you rather have a tiny dragon that warms your mittens or a tiny unicorn that makes flowers sparkle?",
+    "optionA": "Have a tiny dragon that warms your mittens",
+    "optionB": "Have a tiny unicorn that makes flowers sparkle",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "easy",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-007"
+    }
+  },
+  {
+    "id": "wyr-000465",
+    "question": "Would you rather eat a tiny slice of pizza at every meal or a tiny scoop of ice cream at every meal?",
+    "optionA": "Eat a tiny slice of pizza at every meal",
+    "optionB": "Eat a tiny scoop of ice cream at every meal",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": ["family"],
+    "scenarios": ["dinner", "general"],
+    "moods": ["funny"],
+    "difficulty": "easy",
+    "topics": ["food-everyday"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-008"
+    }
+  },
+  {
+    "id": "wyr-000466",
+    "question": "Would you rather sleep one night in a cozy treehouse or one night in a friendly castle?",
+    "optionA": "Sleep in a cozy treehouse",
+    "optionB": "Sleep in a friendly castle",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": ["family"],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "easy",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-009"
+    }
+  },
+  {
+    "id": "wyr-000467",
+    "question": "Would you rather glide through the sky like a bird for ten minutes or swim underwater like a fish for ten minutes?",
+    "optionA": "Glide through the sky like a bird",
+    "optionB": "Swim underwater like a fish",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "easy",
+    "topics": ["animals-nature"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-010"
+    }
+  },
+  {
+    "id": "wyr-000468",
+    "question": "Would you rather meet a hamster as big as a sofa or an elephant small enough to sit on your lap?",
+    "optionA": "Meet a hamster as big as a sofa",
+    "optionB": "Meet a lap-sized elephant",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["funny"],
+    "difficulty": "easy",
+    "topics": ["animals-nature"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-011"
+    }
+  },
+  {
+    "id": "wyr-000469",
+    "question": "Would you rather see jellybeans fall like rain or soft ice cream pile up like snow?",
+    "optionA": "See jellybeans fall like rain",
+    "optionB": "See soft ice cream pile up like snow",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "easy",
+    "topics": ["food-everyday"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-012"
+    }
+  },
+  {
+    "id": "wyr-000470",
+    "question": "Would you rather wear pajamas to a birthday party or fancy clothes to the playground?",
+    "optionA": "Wear pajamas to a birthday party",
+    "optionB": "Wear fancy clothes to the playground",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["party", "general"],
+    "moods": ["funny"],
+    "difficulty": "easy",
+    "topics": ["food-everyday"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-013"
+    }
+  },
+  {
+    "id": "wyr-000471",
+    "question": "Would you rather build a giant sandcastle or a giant snowman?",
+    "optionA": "Build a giant sandcastle",
+    "optionB": "Build a giant snowman",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "4-6",
+    "ageBands": ["4-6"],
+    "relationships": ["family"],
+    "scenarios": ["general"],
+    "moods": ["light"],
+    "difficulty": "easy",
+    "topics": ["animals-nature"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-014"
+    }
+  },
+  {
+    "id": "wyr-000472",
+    "question": "Would you rather be able to fly for fifteen minutes a day or disappear from sight for fifteen minutes a day?",
+    "optionA": "Fly for fifteen minutes a day",
+    "optionB": "Disappear from sight for fifteen minutes a day",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "easy",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-015"
+    }
+  },
+  {
+    "id": "wyr-000473",
+    "question": "Would you rather understand what animals are saying or understand any human language you hear?",
+    "optionA": "Understand what animals are saying",
+    "optionB": "Understand any human language you hear",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "hard",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-016"
+    }
+  },
+  {
+    "id": "wyr-000474",
+    "question": "Would you rather choose the weather for one whole day or pause time for ten minutes once a day?",
+    "optionA": "Choose the weather for one whole day",
+    "optionB": "Pause time for ten minutes once a day",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "hard",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-017"
+    }
+  },
+  {
+    "id": "wyr-000475",
+    "question": "Would you rather turn invisible for ten minutes or hear one person's thoughts for ten minutes?",
+    "optionA": "Turn invisible for ten minutes",
+    "optionB": "Hear one person's thoughts for ten minutes",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "hard",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-018"
+    }
+  },
+  {
+    "id": "wyr-000476",
+    "question": "Would you rather jump instantly to any place you have visited before or breathe underwater for one hour a day?",
+    "optionA": "Jump instantly to any place you have visited",
+    "optionB": "Breathe underwater for one hour a day",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "hard",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-019"
+    }
+  },
+  {
+    "id": "wyr-000477",
+    "question": "Would you rather be strong enough to lift anything you can see or fast enough to run as quickly as a race car?",
+    "optionA": "Be strong enough to lift anything you can see",
+    "optionB": "Run as quickly as a race car",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "hard",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-020"
+    }
+  },
+  {
+    "id": "wyr-000478",
+    "question": "Would you rather see through one wall for five minutes or see five minutes into the future?",
+    "optionA": "See through one wall for five minutes",
+    "optionB": "See five minutes into the future",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "hard",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-021"
+    }
+  },
+  {
+    "id": "wyr-000479",
+    "question": "Would you rather safely make a small flame appear in your hand or safely freeze a cup of water with a touch?",
+    "optionA": "Make a small flame appear safely",
+    "optionB": "Freeze a cup of water safely with a touch",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "easy",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-022"
+    }
+  },
+  {
+    "id": "wyr-000480",
+    "question": "Would you rather run one class for a day or help run the whole school for a day?",
+    "optionA": "Run one class for a day",
+    "optionB": "Help run the whole school for a day",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["classroom"],
+    "moods": ["light"],
+    "difficulty": "easy",
+    "topics": ["school-learning"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-023"
+    }
+  },
+  {
+    "id": "wyr-000481",
+    "question": "Would you rather have lessons in a giant treehouse or on a ship that looks like a pirate ship?",
+    "optionA": "Have lessons in a giant treehouse",
+    "optionB": "Have lessons on a pirate-style ship",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["classroom"],
+    "moods": ["imaginative"],
+    "difficulty": "easy",
+    "topics": ["school-learning"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-024"
+    }
+  },
+  {
+    "id": "wyr-000482",
+    "question": "Would you rather take a class trip where you can watch animals up close or one where you can try science experiments?",
+    "optionA": "Take a class trip to watch animals up close",
+    "optionB": "Take a class trip to try science experiments",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": ["friends"],
+    "scenarios": ["classroom"],
+    "moods": ["light"],
+    "difficulty": "easy",
+    "topics": ["school-learning"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-025"
+    }
+  },
+  {
+    "id": "wyr-000483",
+    "question": "Would you rather add an extra art lesson each week or an extra sports lesson each week?",
+    "optionA": "Add an extra art lesson each week",
+    "optionB": "Add an extra sports lesson each week",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["classroom"],
+    "moods": ["light"],
+    "difficulty": "easy",
+    "topics": ["school-learning"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-026"
+    }
+  },
+  {
+    "id": "wyr-000484",
+    "question": "Would you rather have your closest friend live next door but attend another school, or attend your school but live far away?",
+    "optionA": "Have your closest friend live next door but attend another school",
+    "optionB": "Have your closest friend attend your school but live far away",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": ["friends"],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["relationships-values"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-027"
+    }
+  },
+  {
+    "id": "wyr-000485",
+    "question": "Would you rather get to redesign your classroom or redesign the school playground?",
+    "optionA": "Redesign your classroom",
+    "optionB": "Redesign the school playground",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["classroom"],
+    "moods": ["imaginative"],
+    "difficulty": "easy",
+    "topics": ["school-learning"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-028"
+    }
+  },
+  {
+    "id": "wyr-000486",
+    "question": "Would you rather have a small bedroom to yourself or a bigger bedroom shared with a sibling?",
+    "optionA": "Have a small bedroom to yourself",
+    "optionB": "Have a bigger bedroom shared with a sibling",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": ["family"],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["relationships-values"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": false,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-029"
+    }
+  },
+  {
+    "id": "wyr-000487",
+    "question": "Would you rather have a magic shelf that gives you one new book each week or a magic toy box that gives you one new toy each week?",
+    "optionA": "Have a magic shelf with one new book each week",
+    "optionB": "Have a magic toy box with one new toy each week",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "easy",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-030"
+    }
+  },
+  {
+    "id": "wyr-000488",
+    "question": "Would you rather travel on a flying broom that is very fast or a flying carpet that has room for three friends?",
+    "optionA": "Travel on a very fast flying broom",
+    "optionB": "Travel on a flying carpet with room for three friends",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": ["friends"],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "hard",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-031"
+    }
+  },
+  {
+    "id": "wyr-000489",
+    "question": "Would you rather explore the top of a snowy mountain or the deepest safe cave you can reach?",
+    "optionA": "Explore the top of a snowy mountain",
+    "optionB": "Explore the deepest safe cave you can reach",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "hard",
+    "topics": ["travel-adventure"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-032"
+    }
+  },
+  {
+    "id": "wyr-000490",
+    "question": "Would you rather ride a long zip line through a forest or a huge roller coaster at a theme park?",
+    "optionA": "Ride a long forest zip line",
+    "optionB": "Ride a huge theme-park roller coaster",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["general"],
+    "moods": ["light"],
+    "difficulty": "easy",
+    "topics": ["travel-adventure"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-033"
+    }
+  },
+  {
+    "id": "wyr-000491",
+    "question": "Would you rather explore a hidden island on Earth or visit a safe research base on a newly discovered planet?",
+    "optionA": "Explore a hidden island on Earth",
+    "optionB": "Visit a safe research base on a new planet",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "hard",
+    "topics": ["travel-adventure"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-034"
+    }
+  },
+  {
+    "id": "wyr-000492",
+    "question": "Would you rather eat your favorite food once every day or give it up for a year while you try a new food every week?",
+    "optionA": "Eat your favorite food once every day",
+    "optionB": "Give it up for a year and try a new food every week",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": ["family"],
+    "scenarios": ["dinner", "general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["food-everyday"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-035"
+    }
+  },
+  {
+    "id": "wyr-000493",
+    "question": "Would you rather have every snack be a little sweet or every snack be a little salty?",
+    "optionA": "Have every snack be a little sweet",
+    "optionB": "Have every snack be a little salty",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": ["family"],
+    "scenarios": ["general"],
+    "moods": ["light"],
+    "difficulty": "easy",
+    "topics": ["food-everyday"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-036"
+    }
+  },
+  {
+    "id": "wyr-000494",
+    "question": "Would you rather eat breakfast foods for every dinner or dessert foods for every breakfast?",
+    "optionA": "Eat breakfast foods for every dinner",
+    "optionB": "Eat dessert foods for every breakfast",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": ["family"],
+    "scenarios": ["dinner", "general"],
+    "moods": ["funny"],
+    "difficulty": "easy",
+    "topics": ["food-everyday"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-037"
+    }
+  },
+  {
+    "id": "wyr-000495",
+    "question": "Would you rather have a pet that can talk with you or a pet that can fly beside you?",
+    "optionA": "Have a pet that can talk with you",
+    "optionB": "Have a pet that can fly beside you",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "easy",
+    "topics": ["animals-nature"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-038"
+    }
+  },
+  {
+    "id": "wyr-000496",
+    "question": "Would you rather play your favorite video game with friends or play your favorite outdoor game with friends?",
+    "optionA": "Play your favorite video game with friends",
+    "optionB": "Play your favorite outdoor game with friends",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": ["friends"],
+    "scenarios": ["general"],
+    "moods": ["light"],
+    "difficulty": "easy",
+    "topics": ["hobbies-entertainment"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-039"
+    }
+  },
+  {
+    "id": "wyr-000497",
+    "question": "Would you rather become really good at one musical instrument or be able to speak one new language fluently?",
+    "optionA": "Become really good at one musical instrument",
+    "optionB": "Speak one new language fluently",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["school-learning"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-040"
+    }
+  },
+  {
+    "id": "wyr-000498",
+    "question": "Would you rather hear one person's thoughts for one minute or see one minute into the future?",
+    "optionA": "Hear one person's thoughts for one minute",
+    "optionB": "See one minute into the future",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "hard",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-041"
+    }
+  },
+  {
+    "id": "wyr-000499",
+    "question": "Would you rather breathe underwater for an hour or walk across water without sinking for an hour?",
+    "optionA": "Breathe underwater for an hour",
+    "optionB": "Walk across water without sinking for an hour",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "7-9",
+    "ageBands": ["7-9"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["imaginative"],
+    "difficulty": "easy",
+    "topics": ["fantasy-superpowers"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-042"
+    }
+  },
+  {
+    "id": "wyr-000500",
+    "question": "Would you rather be known as the smartest person in your group or the person who can make everyone laugh?",
+    "optionA": "Be known as the smartest person in your group",
+    "optionB": "Be known as the person who makes everyone laugh",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": ["10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["relationships-values"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-043"
+    }
+  },
+  {
+    "id": "wyr-000501",
+    "question": "Would you rather have a friend who always tells you the truth or one who always knows how to cheer you up?",
+    "optionA": "Have a friend who always tells you the truth",
+    "optionB": "Have a friend who always knows how to cheer you up",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": ["10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["relationships-values"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-044"
+    }
+  },
+  {
+    "id": "wyr-000502",
+    "question": "Would you rather be famous everywhere but never be sure who truly likes you, or stay unknown and have one best friend you completely trust?",
+    "optionA": "Be famous everywhere but unsure who truly likes you",
+    "optionB": "Stay unknown and have one best friend you completely trust",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": ["10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["relationships-values"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-045"
+    }
+  },
+  {
+    "id": "wyr-000503",
+    "question": "Would you rather master one game and win most matches or keep trying new games and lose more often while learning?",
+    "optionA": "Master one game and win most matches",
+    "optionB": "Keep trying new games and lose more often while learning",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": ["10-12"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["relationships-values"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-046"
+    }
+  },
+  {
+    "id": "wyr-000504",
+    "question": "Would you rather tell a difficult truth gently right away or wait until a better moment to say it?",
+    "optionA": "Tell a difficult truth gently right away",
+    "optionB": "Wait until a better moment to say it",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": ["10-12"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["relationships-values"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-047"
+    }
+  },
+  {
+    "id": "wyr-000505",
+    "question": "Would you rather instantly know the answer to one hard question each day or get one perfect hint whenever you are stuck?",
+    "optionA": "Know the answer to one hard question each day",
+    "optionB": "Get one perfect hint whenever you are stuck",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": ["10-12"],
+    "relationships": [],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["school-learning"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-048"
+    }
+  },
+  {
+    "id": "wyr-000506",
+    "question": "Would you rather be known for being brave when things get scary or kind when people need help?",
+    "optionA": "Be known for being brave when things get scary",
+    "optionB": "Be known for being kind when people need help",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": ["10-12"],
+    "relationships": ["friends", "family"],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["relationships-values"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-049"
+    }
+  },
+  {
+    "id": "wyr-000507",
+    "question": "Would you rather help a friend brainstorm solutions or listen carefully without trying to solve the problem?",
+    "optionA": "Help a friend brainstorm solutions",
+    "optionB": "Listen carefully without trying to solve the problem",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": ["10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["relationships-values"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-050"
+    }
+  },
+  {
+    "id": "wyr-000508",
+    "question": "Would you rather discover a place nobody has mapped or invent something nobody has built?",
+    "optionA": "Discover a place nobody has mapped",
+    "optionB": "Invent something nobody has built",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": ["10-12"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["travel-adventure"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-051"
+    }
+  },
+  {
+    "id": "wyr-000509",
+    "question": "Would you rather have a friend who can always make you laugh or one who always listens carefully when you need to talk?",
+    "optionA": "Have a friend who always makes you laugh",
+    "optionB": "Have a friend who always listens carefully",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": ["10-12"],
+    "relationships": ["friends"],
+    "scenarios": ["general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["relationships-values"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-052"
+    }
+  },
+  {
+    "id": "wyr-000510",
+    "question": "Would you rather read a great story on paper or listen to the same story as an audiobook?",
+    "optionA": "Read a great story on paper",
+    "optionB": "Listen to the same story as an audiobook",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": ["10-12"],
+    "relationships": [],
+    "scenarios": ["general"],
+    "moods": ["light"],
+    "difficulty": "easy",
+    "topics": ["hobbies-entertainment"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-053"
+    }
+  },
+  {
+    "id": "wyr-000511",
+    "question": "Would you rather have one very long summer break or several shorter breaks spread through the school year?",
+    "optionA": "Have one very long summer break",
+    "optionB": "Have several shorter breaks through the school year",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": ["10-12"],
+    "relationships": [],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["school-learning"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-054"
+    }
+  },
+  {
+    "id": "wyr-000512",
+    "question": "Would you rather try something difficult and risk failing or choose something easy that you know you can finish?",
+    "optionA": "Try something difficult and risk failing",
+    "optionB": "Choose something easy you know you can finish",
+    "reviewStatus": "unreviewed",
+    "primaryCollection": "kids",
+    "primaryAgeBand": "10-12",
+    "ageBands": ["10-12"],
+    "relationships": [],
+    "scenarios": ["classroom", "general"],
+    "moods": ["thoughtful"],
+    "difficulty": "hard",
+    "topics": ["school-learning"],
+    "safety": {
+      "kidsSafe": true,
+      "classroomSafe": true,
+      "familySafe": true
+    },
+    "provenance": {
+      "batch": "kids-gap-candidates-2026-10-07",
+      "candidateId": "kids-gap-055"
+    }
   }
 ]
