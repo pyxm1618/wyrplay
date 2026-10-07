@@ -160,16 +160,99 @@ export function IllustratedHome({
   return (
     <>
       <section className="hero" aria-labelledby="page-title">
-        <div className="hero-art" aria-hidden="true" />
+        <div className="hero-stage-backdrop" aria-hidden="true">
+          <Image
+            src="/home-art/hero/hero-cloud-left.webp"
+            alt=""
+            width={785}
+            height={637}
+            sizes="(max-width: 600px) 0px, (max-width: 1000px) 250px, 320px"
+            className="hero-cloud-left"
+          />
+          <Image
+            src="/home-art/hero/hero-cloud-right.webp"
+            alt=""
+            width={786}
+            height={637}
+            sizes="(max-width: 600px) 0px, (max-width: 1000px) 320px, 390px"
+            className="hero-cloud-right"
+          />
+          <Image
+            src="/home-art/hero/hero-cloud-topleft.webp"
+            alt=""
+            width={310}
+            height={225}
+            sizes="(max-width: 600px) 0px, (max-width: 1000px) 90px, 140px"
+            className="hero-cloud-topleft"
+          />
+          <Image
+            src="/home-art/hero/hero-cloud-topright.webp"
+            alt=""
+            width={350}
+            height={255}
+            sizes="(max-width: 600px) 0px, (max-width: 1000px) 120px, 190px"
+            className="hero-cloud-topright"
+          />
+          <Image
+            src="/home-art/hero/hero-doodles-left.webp"
+            alt=""
+            width={270}
+            height={260}
+            sizes="(max-width: 600px) 0px, (max-width: 1000px) 90px, 140px"
+            className="hero-doodles-left"
+          />
+          <Image
+            src="/home-art/hero/hero-doodles-right.webp"
+            alt=""
+            width={340}
+            height={500}
+            sizes="(max-width: 600px) 0px, (max-width: 1000px) 100px, 150px"
+            className="hero-doodles-right"
+          />
+          <Image
+            src="/home-art/hero/hero-boy.webp"
+            alt=""
+            width={790}
+            height={793}
+            sizes="(max-width: 600px) 110px, (max-width: 1000px) 280px, 350px"
+            priority
+            className="hero-boy"
+          />
+          <Image
+            src="/home-art/hero/hero-girl.webp"
+            alt=""
+            width={1179}
+            height={688}
+            sizes="(max-width: 600px) 120px, (max-width: 1000px) 290px, 360px"
+            priority
+            className="hero-girl"
+          />
+        </div>
         <div className="hero-intro">
-          <h1 id="page-title">
-            <span className="sr-only">Would You Rather Questions</span>
-            <span className="hero-lettering" aria-hidden="true">
-              <span className="lettering-would">Would</span>
-              <span className="lettering-you">You</span>
-              <span className="lettering-rather">Rather</span>
-            </span>
-          </h1>
+          <div className="hero-title-wrapper">
+            <Image
+              src="/home-art/hero/hero-crown.webp"
+              alt=""
+              aria-hidden="true"
+              width={257}
+              height={199}
+              sizes="(max-width: 600px) 46px, (max-width: 1000px) 55px, 75px"
+              className="hero-crown"
+            />
+            <h1 id="page-title">
+              <span className="sr-only">Would You Rather Questions</span>
+              <Image
+                src="/home-art/hero/hero-title.webp"
+                alt=""
+                aria-hidden="true"
+                width={1662}
+                height={887}
+                sizes="(max-width: 600px) 330px, (max-width: 1000px) 330px, 420px"
+                priority
+                className="hero-title-img"
+              />
+            </h1>
+          </div>
           <h2>Same question. Different minds.</h2>
           <p>
             Play fun and thought-provoking would you rather questions with people around the world.
