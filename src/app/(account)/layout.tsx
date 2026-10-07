@@ -19,6 +19,9 @@ export default async function AccountRootLayout({ children }: Readonly<{ childre
   if (!featuresConfig.auth.enabled) notFound();
   return (
     <html lang={siteConfig.defaultLocale}>
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-2804737462866511" />
+      </head>
       <body>{children}</body>
     </html>
   );

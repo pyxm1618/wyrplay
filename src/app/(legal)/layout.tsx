@@ -14,6 +14,9 @@ export default async function LegalLayout({ children }: Readonly<{ children: Rea
   await connection();
   return (
     <html lang={siteConfig.defaultLocale} data-theme="dark">
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-2804737462866511" />
+      </head>
       <body>
         <SiteShell>{children}</SiteShell>
       </body>

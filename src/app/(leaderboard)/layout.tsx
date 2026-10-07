@@ -11,6 +11,9 @@ export default async function LeaderboardLayout({ children }: Readonly<{ childre
   await connection();
   return (
     <html lang={siteConfig.defaultLocale} data-theme="light">
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-2804737462866511" />
+      </head>
       <body className="leaderboard-body">
         <SiteShell>{children}</SiteShell>
         <AnalyticsBoundary />
