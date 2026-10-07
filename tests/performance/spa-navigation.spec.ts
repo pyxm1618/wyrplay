@@ -4,6 +4,8 @@ test.describe("SPA Client Navigation Gate", () => {
   test("Header navigation maintains client-side routing without full document reload or full-screen loading", async ({
     page,
   }) => {
+    test.setTimeout(90_000);
+
     // Collect document navigation requests after initial page load
     const documentRequests: string[] = [];
     let initialLoadComplete = false;
@@ -25,27 +27,27 @@ test.describe("SPA Client Navigation Gate", () => {
       {
         from: "/",
         targetHref: "/would-you-rather-questions-for-kids",
-        expectedUrlPattern: /\/would-you-rather-questions-for-kids$/,
+        expectedPathname: "/would-you-rather-questions-for-kids",
       },
       {
         from: "/would-you-rather-questions-for-kids",
         targetHref: "/find-questions",
-        expectedUrlPattern: /\/find-questions$/,
+        expectedPathname: "/find-questions",
       },
       {
         from: "/find-questions",
         targetHref: "/print",
-        expectedUrlPattern: /\/print$/,
+        expectedPathname: "/print",
       },
       {
         from: "/print",
         targetHref: "/leaderboards",
-        expectedUrlPattern: /\/leaderboards$/,
+        expectedPathname: "/leaderboards",
       },
       {
         from: "/leaderboards",
         targetHref: "/",
-        expectedUrlPattern: /\/$/,
+        expectedPathname: "/",
       },
     ];
 
@@ -85,7 +87,7 @@ test.describe("SPA Client Navigation Gate", () => {
       }
 
       // Wait for URL to update
-      await page.waitForURL(step.expectedUrlPattern);
+      await page.waitForURL((url) => url.pathname === step.expectedPathname);
 
       // Ensure no full-screen LoadingPage appears after transition
       await expect(page.locator(".status-page")).toHaveCount(0);

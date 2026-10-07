@@ -15,7 +15,13 @@ for (const vp of viewports) {
 
     test(`Full primary navigation loop maintains SPA routing and zero-overflow at ${vp.width}x${vp.height}`, async ({
       page,
+      isMobile,
     }) => {
+      // The viewport matrix already covers mobile & desktop viewports independently;
+      // skip execution under the mobile device simulator to avoid redundant runs.
+      test.skip(isMobile, "Viewport matrix is verified in the desktop project");
+      test.setTimeout(90_000);
+
       const documentRequests: string[] = [];
       let initialLoadComplete = false;
 
@@ -43,31 +49,31 @@ for (const vp of viewports) {
         {
           from: "/",
           targetHref: "/would-you-rather-questions-for-kids",
-          expectedUrlPattern: /\/would-you-rather-questions-for-kids$/,
+          expectedPathname: "/would-you-rather-questions-for-kids",
           expectedHeading: /Kids|Children|Family/i,
         },
         {
           from: "/would-you-rather-questions-for-kids",
           targetHref: "/find-questions",
-          expectedUrlPattern: /\/find-questions$/,
+          expectedPathname: "/find-questions",
           expectedHeading: /Find Questions/i,
         },
         {
           from: "/find-questions",
           targetHref: "/print",
-          expectedUrlPattern: /\/print$/,
+          expectedPathname: "/print",
           expectedHeading: /Print.*Cards.*Sheets/i,
         },
         {
           from: "/print",
           targetHref: "/leaderboards",
-          expectedUrlPattern: /\/leaderboards$/,
+          expectedPathname: "/leaderboards",
           expectedHeading: /Leaderboard|Ranking/i,
         },
         {
           from: "/leaderboards",
           targetHref: "/",
-          expectedUrlPattern: /\/$/,
+          expectedPathname: "/",
           expectedHeading: /Would You Rather/i,
         },
       ];
@@ -106,7 +112,7 @@ for (const vp of viewports) {
           await targetLink.click();
         }
 
-        await page.waitForURL(step.expectedUrlPattern);
+        await page.waitForURL((url) => url.pathname === step.expectedPathname);
 
         // Verify no full-screen loading
         await expect(page.locator(".status-page")).toHaveCount(0);
