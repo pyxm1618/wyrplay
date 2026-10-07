@@ -8,6 +8,7 @@ import type {
   Occasion,
   Question,
   Relationship,
+  ReviewStatus,
   Tone,
   Topic,
 } from "../types";
@@ -246,6 +247,7 @@ interface RawQuestionSchema {
   readonly question: string;
   readonly optionA: string;
   readonly optionB: string;
+  readonly reviewStatus?: string;
   readonly primaryCollection?: string;
   readonly primaryAgeBand?: string;
   readonly ageBands?: readonly string[];
@@ -268,7 +270,7 @@ interface RawQuestionSchema {
 /**
  * 确定性数据适配器：
  * 将 content/question-bank/questions.json 中的正式题目映射为强类型的 Question 运行时实体。
- * 不改题干、不改选项、保留永久稳定 ID (wyr-000001 ~ wyr-000116)。
+ * 不改题干、不改选项、保留永久稳定 ID；审核状态必须由 raw 数据显式提供。
  */
 function adaptRawQuestion(raw: RawQuestionSchema): Question {
   if (!raw.id || !raw.id.startsWith("wyr-")) {
@@ -277,6 +279,18 @@ function adaptRawQuestion(raw: RawQuestionSchema): Question {
   if (!raw.question || !raw.optionA || !raw.optionB) {
     throw new Error(`Incomplete formal question data for ID: ${raw.id}`);
   }
+
+  const allowedReviewStatuses: readonly ReviewStatus[] = [
+    "unreviewed",
+    "approved",
+    "deferred",
+    "rejected",
+    "retired",
+  ];
+  if (!raw.reviewStatus || !allowedReviewStatuses.includes(raw.reviewStatus as ReviewStatus)) {
+    throw new Error(`Invalid or missing reviewStatus for formal question ID: ${raw.id}`);
+  }
+  const reviewStatus = raw.reviewStatus as ReviewStatus;
 
   const ageGroups: AgeGroup[] = [];
   for (const band of raw.ageBands ?? []) {
@@ -340,7 +354,7 @@ function adaptRawQuestion(raw: RawQuestionSchema): Question {
       classroom: raw.safety?.classroomSafe ? "suitable" : "unsuitable",
       workplace: "unreviewed",
     },
-    reviewStatus: "approved",
+    reviewStatus,
     reviewNotes: raw.provenance
       ? `${raw.provenance.batch} / ${raw.provenance.candidateId}`
       : undefined,
