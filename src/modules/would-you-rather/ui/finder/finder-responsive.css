@@ -6,12 +6,6 @@
   }
 }
 @media (min-width: 701px) {
-  .finder-page .search-left-art {
-    background-image: url("/finder/assets/search-left.png");
-  }
-  .finder-page .search-right-art {
-    background-image: url("/finder/assets/search-right.png");
-  }
   .finder-page .hero h1 {
     font-size: 66px;
   }
@@ -364,22 +358,9 @@
     height: 35px;
     font-size: 12px;
   }
-  .finder-page .left-bottom-art {
-    display: none;
-  }
-  .finder-page .right-edge-art,
-  .finder-page .left-edge-art {
-    height: 100%;
-    object-fit: cover;
-  }
   .finder-page .question-stats img {
     width: 16px;
     height: 12px;
-  }
-  .finder-page .search-left-art,
-  .finder-page .search-right-art,
-  .finder-page .selection-left-art {
-    display: none;
   }
   .finder-page .finder-categories,
   .finder-page .finder-about {

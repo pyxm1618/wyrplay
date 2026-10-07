@@ -3,26 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { FinderIcon } from "./icon";
 export function FinderDecoration() {
-  const art = [
-    ["search-left", "search-left-art"],
-    ["search-right", "search-right-art"],
-    ["selection-left", "selection-left-art"],
-    ["bottom-band", "bottom-band-art"],
-    ["left-top", "left-top-art"],
-    ["left-edge", "left-edge-art"],
-    ["right-edge", "right-edge-art"],
-    ["left-bottom", "left-bottom-art"],
-    ["bottom-left", "bottom-left-art"],
-    ["bottom-right", "bottom-right-art"],
-  ] as const;
-  const desktopCssArt = new Set(["search-left", "search-right"]);
-  const lazyArt = new Set([
-    "selection-left",
-    "bottom-band",
-    "left-bottom",
-    "bottom-left",
-    "bottom-right",
-  ]);
+  const art = [["bottom-band", "bottom-band-art"]] as const;
+  const desktopCssArt = new Set<string>();
+  const lazyArt = new Set(["bottom-band"]);
 
   return (
     <div className="page-art" aria-hidden="true">

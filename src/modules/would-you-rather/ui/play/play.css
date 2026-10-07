@@ -747,8 +747,6 @@ main:has(> .print-page) + footer {
 
 .presenter-page .play-art {
   background:
-    url("/play-art/presenter-left.png") left 128px / 144px auto no-repeat,
-    url("/play-art/presenter-right.png") right 128px / 138px auto no-repeat,
     url("/play-art/presenter-bottom-left.png") left bottom / 585px auto no-repeat,
     url("/play-art/presenter-bottom-right.png") right bottom / 552px auto no-repeat;
 }
@@ -758,8 +756,6 @@ main:has(> .print-page) + footer {
 @media (max-width: 700px) {
   .presenter-page .play-art {
     background-size:
-      60px auto,
-      60px auto,
       220px auto,
       220px auto;
   }
