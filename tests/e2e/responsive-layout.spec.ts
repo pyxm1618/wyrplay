@@ -355,7 +355,6 @@ test.describe("formal route cross-page smoke", () => {
   const routes = [
     "/",
     "/find-questions",
-    "/create",
     "/play",
     "/print",
     "/leaderboards",

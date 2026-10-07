@@ -162,6 +162,16 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     const nonExistentRes = await page.goto("/non-existent-route-for-audit");
     expect(nonExistentRes?.status()).toBe(404);
 
+    // /create 未完成占位路由必须严格 404
+    const createRes = await page.goto("/create");
+    expect(createRes?.status()).toBe(404);
+
+    // /ads.txt 必须返回 200 且精确匹配 Google seller entry
+    const adsTxtRes = await page.goto("/ads.txt");
+    expect(adsTxtRes?.status()).toBe(200);
+    const adsTxtBody = await adsTxtRes?.text();
+    expect(adsTxtBody?.trim()).toBe("google.com, pub-2804737462866511, DIRECT, f08c47fec0942fa0");
+
     // 当针对生产域名或生产环境运行时，验证隔离页面严格 404
     const isProductionTarget =
       baseURL?.includes("wyrplay.com") || process.env.APP_ENV === "production";
@@ -180,6 +190,29 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
 
       const testBenchRes = await page.goto("/test-bench");
       expect(testBenchRes?.status()).toBe(404);
+    } else {
+      const testBenchRes = await page.goto("/test-bench");
+      expect(testBenchRes?.status()).toBe(200);
     }
+  });
+
+  test("11. 首页 Create CTA 保持为 Coming soon 且点击弹出无障碍 Toast 不发生导航", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+
+    const createButton = page.locator("button.create-button");
+    await expect(createButton).toBeVisible();
+    await expect(createButton).toContainText("Coming soon");
+
+    // 点击按钮，验证 URL 未变化，且出现 toast
+    const currentUrl = page.url();
+    await createButton.click();
+    expect(page.url()).toBe(currentUrl);
+
+    const toast = page.locator('.create-toast[role="status"]');
+    await expect(toast).toBeVisible();
+    await expect(toast).toHaveText("Coming soon — question creation is on the way.");
   });
 });

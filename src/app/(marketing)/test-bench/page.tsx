@@ -1,16 +1,29 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { connection } from "next/server";
 
 import { TEST_FIXTURE_QUESTIONS, WyrExperience } from "@/modules/would-you-rather";
 import type { Question } from "@/modules/would-you-rather";
 
-export const metadata: Metadata = {
-  title: "WYRPlay Test Bench",
-  robots: { index: false, follow: false },
-};
+function isProductionTarget(): boolean {
+  return process.env.APP_ENV === "production" || process.env.VERCEL_ENV === "production";
+}
 
-export default function TestBenchPage() {
-  if (process.env.APP_ENV !== "test" && process.env.NODE_ENV === "production") {
+export async function generateMetadata(): Promise<Metadata> {
+  await connection();
+  if (isProductionTarget()) {
+    notFound();
+  }
+
+  return {
+    title: "WYRPlay Test Bench",
+    robots: { index: false, follow: false },
+  };
+}
+
+export default async function TestBenchPage() {
+  await connection();
+  if (isProductionTarget()) {
     notFound();
   }
 

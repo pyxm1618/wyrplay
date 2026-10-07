@@ -137,3 +137,35 @@ it("rejects the WYRPlay brand name as a reviewed production legal operator", () 
     }),
   ).toThrow(/legal operator identity is unresolved/i);
 });
+
+it("verifies AdSense pre-review disclosure invariants", () => {
+  if ((legalConfig as { releaseStatus: string }).releaseStatus !== "reviewed") return;
+  const privacyDoc = legalConfig.documents.privacy as { version: string; effectiveDate: string };
+  expect(privacyDoc.version).toBe("1.1");
+  expect(privacyDoc.effectiveDate).toBe("2026-10-07");
+
+  const processors = legalConfig.processors as ReadonlyArray<{ name: string; privacyUrl: string }>;
+  const adsenseProcessor = processors.find((p) => p.name === "Google AdSense");
+  expect(adsenseProcessor).toBeDefined();
+  expect(adsenseProcessor?.privacyUrl).toBe("https://policies.google.com/privacy");
+
+  const privacySections = legalConfig.content.privacy as ReadonlyArray<{
+    heading: string;
+    paragraphs: readonly string[];
+  }>;
+  const adsSection = privacySections.find((s) => s.heading === "Advertising and Google AdSense");
+  expect(adsSection).toBeDefined();
+  const adsText = adsSection?.paragraphs.join(" ") ?? "";
+  expect(adsText).toContain("Google AdSense");
+  expect(adsText).toContain("not currently enabled in production");
+  expect(adsText).toContain("cookies");
+  expect(adsText).toContain("web beacons");
+  expect(adsText).toContain("https://adssettings.google.com");
+  expect(adsText).not.toContain("currently serves Google ads");
+
+  const childrenSection = privacySections.find((s) => s.heading === "Children's Privacy");
+  expect(childrenSection).toBeDefined();
+  const childrenText = childrenSection?.paragraphs.join(" ") ?? "";
+  expect(childrenText).toContain("child-directed treatment and advertising restrictions");
+  expect(childrenText).not.toContain("TFAT");
+});

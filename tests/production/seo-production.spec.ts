@@ -167,3 +167,49 @@ test("production legal surfaces remain noindex and outside the sitemap", async (
     );
   }
 });
+
+test("production AdSense pre-review readiness verification", async ({ page, request }) => {
+  // 1. /test-bench 生产模式严格 404
+  const testBenchRes = await request.get("/test-bench");
+  expect(testBenchRes.status(), "production /test-bench must be 404").toBe(404);
+
+  // 2. /create 生产模式严格 404
+  const createRes = await request.get("/create");
+  expect(createRes.status(), "production /create must be 404").toBe(404);
+
+  // 3. /ads.txt 严格 200 且精确匹配
+  const adsTxtRes = await request.get("/ads.txt");
+  expect(adsTxtRes.status(), "production /ads.txt must be 200").toBe(200);
+  const adsTxtText = (await adsTxtRes.text()).trim();
+  expect(adsTxtText).toBe("google.com, pub-2804737462866511, DIRECT, f08c47fec0942fa0");
+
+  // 4. /privacy 正常渲染且包含正确披露
+  const privacyRes = await page.goto("/privacy", { waitUntil: "networkidle" });
+  expect(privacyRes?.status(), "production /privacy must be 200").toBe(200);
+  await expect(page.locator("text=Advertising and Google AdSense")).toBeVisible();
+  const privacyContent = await page.textContent("main");
+  expect(privacyContent).toContain("Google AdSense");
+  expect(privacyContent).toContain("not currently enabled in production");
+  expect(privacyContent).toContain("https://adssettings.google.com");
+  expect(privacyContent).not.toContain("currently serves Google ads");
+
+  // 5. 页面包含所有权标记，绝不加载 adsbygoogle.js
+  await page.goto("/", { waitUntil: "networkidle" });
+  const metaAccount = page.locator('meta[name="google-adsense-account"]');
+  await expect(metaAccount).toHaveAttribute("content", "ca-pub-2804737462866511");
+  const adsScript = page.locator('script[src*="adsbygoogle"]');
+  await expect(adsScript).toHaveCount(0);
+
+  // 6. 首页 Create CTA 为 Coming soon，点击弹出 Toast 不发生跳转
+  const createBtn = page.locator("button.create-button");
+  await expect(createBtn).toBeVisible();
+  await expect(createBtn).toContainText("Coming soon");
+
+  const startUrl = page.url();
+  await createBtn.click();
+  expect(page.url()).toBe(startUrl);
+
+  const toast = page.locator('.create-toast[role="status"]');
+  await expect(toast).toBeVisible();
+  await expect(toast).toHaveText("Coming soon — question creation is on the way.");
+});
