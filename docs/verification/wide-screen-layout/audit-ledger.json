@@ -1,0 +1,107 @@
+{
+  "baseMain": "4668c6e619dd8dffe18ba07641d1e288abdfa418",
+  "originalTotal": 19,
+  "states": {
+    "approved/pass": 19,
+    "deferred": 0,
+    "confirmedReject/delete": 0,
+    "unreviewed/unknown": 0
+  },
+  "items": [
+    {
+      "item": "Shared desktop header/footer",
+      "state": "approved/pass",
+      "evidence": "max-w-7xl in site-header/footer; visual navigation and five-column footer; expand with shared token"
+    },
+    {
+      "item": "Illustrated footer override",
+      "state": "approved/pass",
+      "evidence": "home-product.css 1244.8 overrides shared footer; replace with shared chrome sizing at wide breakpoint"
+    },
+    {
+      "item": "Home decoration stage",
+      "state": "approved/pass",
+      "evidence": "illustrated-home.css 1440 cap; independent absolute Retina images anchored to stage edges; expand stage without changing intrinsic sizes"
+    },
+    {
+      "item": "Home multi-column containers",
+      "state": "approved/pass",
+      "evidence": "1240 cap on home/how/statistics/together containers; expand card-heavy areas to 1520 while retaining typography/art unit"
+    },
+    {
+      "item": "Home arena",
+      "state": "approved/pass",
+      "evidence": "720px cap; controlled 720-to-920px growth"
+    },
+    {
+      "item": "Home FAQ/reading/live directory",
+      "state": "approved/pass",
+      "evidence": "760px paragraph and single arena flow; preserve reading and live control limits"
+    },
+    {
+      "item": "Kids hero/browse/arena/related",
+      "state": "approved/pass",
+      "evidence": "shared 1320 cap; separate wide 1520 from content 1320; inner choices remain bounded at 1100"
+    },
+    {
+      "item": "Kids uses/FAQ/copy/art",
+      "state": "approved/pass",
+      "evidence": "single-column FAQ, 560px hero copy and 540px art; retain limits"
+    },
+    {
+      "item": "Finder workspace and visual containers",
+      "state": "approved/pass",
+      "evidence": "1240 cap; desktop 280px sidebar already bounded; expand results to 1520"
+    },
+    {
+      "item": "Finder about",
+      "state": "approved/pass",
+      "evidence": "long text with 1240 cap; retain container and bound paragraph line length"
+    },
+    {
+      "item": "Print cards and sheet workspace",
+      "state": "approved/pass",
+      "evidence": "1418/1440/1445 caps and 757:662/773:650 ratios; expand to 1680 with bounded editor and extra preview space"
+    },
+    {
+      "item": "Print document canvas/controls",
+      "state": "approved/pass",
+      "evidence": "preview-paper intentional export dimensions; retain document dimensions, internal field grid and mobile layout"
+    },
+    {
+      "item": "Play toolbar/discovery",
+      "state": "approved/pass",
+      "evidence": "1340/1440 caps; visual chrome expands to 1680"
+    },
+    {
+      "item": "Play choices/heading/presenter",
+      "state": "approved/pass",
+      "evidence": "1096px choices and 400px text; grow choices only to 1320, keep title/text bounds and fullscreen presenter rules"
+    },
+    {
+      "item": "Leaderboards shell",
+      "state": "approved/pass",
+      "evidence": "1200px shell incl 64px padding constrains multi-column podium/grid; expand to 1680; constrain intro copy"
+    },
+    {
+      "item": "SEO landings/category multi-column sections",
+      "state": "approved/pass",
+      "evidence": "LandingPage generic max-w-5xl; widen use cases/features/comparison/related grids only; retain FAQ/SEO/hero paragraphs"
+    },
+    {
+      "item": "Legal/contact/create/auth",
+      "state": "approved/pass",
+      "evidence": "max-w-3xl legal/create, containerNarrow contact and auth 460px form are deliberate reading/form bounds; retain"
+    },
+    {
+      "item": "Account/private and dialogs/status",
+      "state": "approved/pass",
+      "evidence": "private routes outside public desktop workspace scope; dialog max-width and status illustration artboard bounds are intentional; retain"
+    },
+    {
+      "item": "Remaining image/paragraph/mobile constraints",
+      "state": "approved/pass",
+      "evidence": "full src width search saved in width-inventory.txt; image sizes, single-column text and mobile breakpoints are not desktop workspace caps; retain"
+    }
+  ]
+}

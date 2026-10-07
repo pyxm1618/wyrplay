@@ -491,3 +491,14 @@
     grid-row: 1;
   }
 }
+
+@media (min-width: 1441px) {
+  .finder-page
+    :is(.hero, .search-area, .directory, .selection-bar, .category-banner, .finder-categories) {
+    width: min(calc(100% - 2 * var(--site-wide-gutter)), var(--site-grid-max));
+  }
+  /* The existing 280px sidebar cap stays fixed; all extra width goes to results. */
+  .finder-page .finder-about p {
+    max-width: 75ch;
+  }
+}

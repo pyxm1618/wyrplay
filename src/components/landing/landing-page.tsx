@@ -155,7 +155,7 @@ function ToolDemoSection(props: Extract<LandingSection, { type: "tool-demo" }>) 
 function UseCasesSection(props: Extract<LandingSection, { type: "use-cases" }>) {
   return (
     <section className={sectionSpacing} aria-labelledby="use-cases-title">
-      <div className={container}>
+      <div className={`${container} site-visual-grid`}>
         <h2 id="use-cases-title" className={sectionTitle}>
           {props.heading}
         </h2>
@@ -207,7 +207,7 @@ function HowItWorksSection(props: Extract<LandingSection, { type: "how-it-works"
 function FeaturesSection(props: Extract<LandingSection, { type: "features" }>) {
   return (
     <section className={sectionSpacing} aria-labelledby="features-title">
-      <div className={container}>
+      <div className={`${container} site-visual-grid`}>
         <h2 id="features-title" className={sectionTitle}>
           {props.heading}
         </h2>
@@ -227,7 +227,7 @@ function FeaturesSection(props: Extract<LandingSection, { type: "features" }>) {
 function ComparisonSection(props: Extract<LandingSection, { type: "comparison" }>) {
   return (
     <section className={sectionSpacing} aria-labelledby="comparison-title">
-      <div className={container}>
+      <div className={`${container} site-visual-grid`}>
         <h2 id="comparison-title" className={sectionTitle}>
           {props.heading}
         </h2>
@@ -312,7 +312,7 @@ function SeoContentSection(props: Extract<LandingSection, { type: "seo-content" 
 function RelatedResourcesSection(props: Extract<LandingSection, { type: "related-resources" }>) {
   return (
     <nav className={`${sectionSpacing} border-t border-border`} aria-labelledby="related-title">
-      <div className={container}>
+      <div className={`${container} site-visual-grid`}>
         <h2 id="related-title" className={sectionTitle}>
           {props.heading}
         </h2>

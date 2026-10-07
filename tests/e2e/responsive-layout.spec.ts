@@ -14,6 +14,7 @@ const viewports = [
   [1728, 900],
   [1792, 850],
   [1920, 1080],
+  [2048, 1152],
   [2560, 1440],
 ] as const;
 
@@ -48,6 +49,15 @@ test.beforeEach(async ({ page }) => {
 async function openStable(page: Page, route: string) {
   await page.goto(route);
   await page.waitForLoadState("load");
+  const surface = {
+    "/": "[data-home-ready=true]",
+    "/play": ".play-page",
+    "/find-questions": ".finder-page",
+    "/leaderboards": ".leaderboard-page",
+    "/print": ".print-page",
+    "/would-you-rather-questions-for-kids": ".kids-page",
+  }[route];
+  if (surface) await expect(page.locator(surface)).toBeVisible();
   await page.evaluate(() => document.fonts.ready);
 }
 
@@ -118,7 +128,30 @@ test.describe("required responsive viewport matrix", () => {
         expect(categories.y).toBeLessThan(height);
       }
 
+      if (width >= 1920) {
+        const stage = await page.locator(".hero-stage-backdrop").boundingBox();
+        const arena = await page.locator(".home-hero-arena").boundingBox();
+        expect(stage!.width).toBe(1680);
+        expect(arena!.width).toBeGreaterThanOrEqual(900);
+        expect(arena!.width).toBeLessThanOrEqual(920);
+      }
+
       await shot(page, info, "home", width, height);
+    }
+  });
+
+  test("Kids separates wide visual sections from readable FAQ", async ({ page }) => {
+    await openStable(page, "/would-you-rather-questions-for-kids");
+    for (const [width, height] of viewports) {
+      await page.setViewportSize({ width, height });
+      await noOverflow(page);
+      if (width >= 1920) {
+        expect((await page.locator(".kids-browse").boundingBox())!.width).toBe(1520);
+        expect((await page.locator(".kids-faq").boundingBox())!.width).toBe(1320);
+        expect((await page.locator(".kids-choices").boundingBox())!.width).toBeLessThanOrEqual(
+          1100,
+        );
+      }
     }
   });
 
@@ -232,6 +265,11 @@ test.describe("required responsive viewport matrix", () => {
         expect(directory.width).toBeGreaterThanOrEqual(Math.min(width - 64, 1180));
       }
 
+      if (width >= 1920) {
+        expect((await page.locator(".directory").boundingBox())!.width).toBe(1520);
+        expect((await page.locator(".filters").boundingBox())!.width).toBeLessThanOrEqual(280);
+      }
+
       await shot(page, info, "finder", width, height);
     }
   });
@@ -247,7 +285,9 @@ test.describe("required responsive viewport matrix", () => {
       if (width >= 1024) {
         const shell = await page.locator(".leaderboard-page .page-shell").boundingBox();
         if (!shell) throw new Error("Leaderboard shell is missing");
-        expect(shell.width).toBeGreaterThanOrEqual(Math.min(width - 36, 1200));
+        expect(shell.width).toBeGreaterThanOrEqual(
+          Math.min(width - 36, width >= 1920 ? 1680 : 1200),
+        );
       }
 
       await shot(page, info, "leaderboard", width, height);
@@ -299,6 +339,12 @@ test.describe("required responsive viewport matrix", () => {
       await page.setViewportSize({ width, height });
       await noOverflow(page);
       await expect(page.locator(".preview-paper")).toBeVisible();
+      if (width >= 1920) {
+        expect((await page.locator(".print-workspace").boundingBox())!.width).toBe(1680);
+        expect((await page.locator(".print-editor").boundingBox())!.width).toBeLessThanOrEqual(800);
+        expect((await page.locator(".print-preview").boundingBox())!.width).toBeGreaterThan(760);
+      }
+
       await shot(page, info, "print", width, height);
     }
   });

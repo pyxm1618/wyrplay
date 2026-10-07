@@ -42,7 +42,7 @@ export function SiteFooter() {
       data-site-footer
       className="mt-auto border-t border-border bg-surface-muted text-foreground print:hidden"
     >
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-12 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1.35fr_0.9fr_1.1fr]">
+      <div className="site-wide-chrome mx-auto grid w-full max-w-7xl gap-10 px-6 py-12 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1.35fr_0.9fr_1.1fr]">
         <section>
           <SiteBrand />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">

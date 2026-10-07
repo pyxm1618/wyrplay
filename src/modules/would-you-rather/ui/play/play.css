@@ -970,3 +970,14 @@ main:has(> .print-page) + footer {
     font-size: 14px;
   }
 }
+
+@media (min-width: 1441px) {
+  .play-page > :is(.play-toolbar, .play-discover) {
+    width: min(calc(100% - 2 * var(--site-wide-gutter)), var(--site-wide-max));
+    max-width: none;
+  }
+  .play-page > .illustrated-arena > .play-options {
+    width: min(calc(100% - 2 * var(--site-wide-gutter)), var(--site-content-max));
+    max-width: none;
+  }
+}

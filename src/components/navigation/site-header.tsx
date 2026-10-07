@@ -72,7 +72,7 @@ function SiteHeaderContent({
         </a>
       ) : null}
 
-      <div className="mx-auto flex h-18 w-full max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+      <div className="site-wide-chrome mx-auto flex h-18 w-full max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
         <SiteBrand href={homeHref} className="shrink-0" />
 
         <nav

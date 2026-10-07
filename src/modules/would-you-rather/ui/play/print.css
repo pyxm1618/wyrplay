@@ -730,3 +730,18 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+@media (min-width: 1441px) {
+  .print-page .print-workspace,
+  .print-page[data-format="sheet"] .print-workspace {
+    width: min(calc(100% - 2 * var(--site-wide-gutter)), var(--site-wide-max));
+    max-width: none;
+    /* Keep the editor near its established size; give new space to the preview. */
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    gap: clamp(22px, 2vw, 40px);
+  }
+  .print-page .print-editor {
+    width: 100%;
+    max-width: 800px;
+  }
+}
