@@ -54,7 +54,7 @@
 .illustrated-home .hero {
   height: auto;
   min-height: calc(var(--home-unit) * 572);
-  padding: 8px 16px 24px;
+  padding: 8px 16px 20px;
 }
 .illustrated-home .hero-intro {
   height: auto;
@@ -64,34 +64,17 @@
   top: 0;
   margin-bottom: 10px;
 }
-.illustrated-home .hero-lettering {
-  width: auto;
+.illustrated-home .hero-title-wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+.illustrated-home .hero-title-img {
+  width: min(calc(var(--home-unit) * 330), 86vw);
   height: auto;
-  display: grid;
-  justify-items: center;
-  font:
-    900 clamp(48px, calc(var(--home-unit) * 52), 78px)/0.85 WyrCondensed,
-    Arial,
-    sans-serif;
-  letter-spacing: -2px;
-  text-shadow:
-    1px 2px 0 #fff,
-    2px 3px 0 #07121a;
-}
-.illustrated-home .hero-lettering > span {
   display: block;
-}
-.illustrated-home .lettering-would {
-  color: #00a4de;
-  transform: rotate(-6deg);
-}
-.illustrated-home .lettering-you {
-  color: #ff752e;
-  transform: rotate(4deg);
-}
-.illustrated-home .lettering-rather {
-  color: #02a6e4;
-  transform: rotate(-3deg);
 }
 .illustrated-home .hero-intro h2 {
   margin-top: 0;
@@ -105,8 +88,8 @@
   margin-top: 6px;
 }
 .illustrated-home .speech-bubble {
-  right: 9%;
-  top: 48px;
+  right: clamp(16px, 8vw, 120px);
+  top: clamp(40px, calc(var(--home-unit) * 78), 85px);
 }
 .home-arena-controls {
   border: 0;
@@ -116,14 +99,14 @@
 }
 .illustrated-home .home-hero-arena {
   width: min(100%, 720px);
-  margin: 16px auto 0;
+  margin: clamp(6px, 1.2vh, 14px) auto 0;
   outline: none;
 }
 .illustrated-home .home-hero-arena > h2 {
   font-size: clamp(18px, 2vw, 24px);
   line-height: 1.25;
   max-width: 620px;
-  margin: 0 auto 12px;
+  margin: 0 auto clamp(6px, 1vh, 10px);
 }
 .illustrated-home .home-hero-arena .choice-grid {
   width: 100%;
@@ -131,6 +114,28 @@
   left: 0;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+}
+@media (min-width: 1024px) and (max-height: 760px) {
+  .illustrated-home .hero {
+    padding-top: 4px;
+    padding-bottom: 10px;
+  }
+  .illustrated-home .hero h1 {
+    margin-bottom: 4px;
+  }
+  .illustrated-home .hero-title-img {
+    width: min(calc(var(--home-unit) * 310), 38vh);
+  }
+  .illustrated-home .home-hero-arena {
+    margin-top: 4px;
+  }
+  .illustrated-home .home-hero-arena > h2 {
+    margin-bottom: 4px;
+  }
+  .illustrated-home .home-hero-arena .choice-card {
+    min-height: 145px;
+    padding-block: 14px;
+  }
 }
 .illustrated-home .home-hero-arena .choice-card {
   cursor: pointer;
