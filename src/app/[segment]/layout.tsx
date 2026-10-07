@@ -36,6 +36,9 @@ export default async function SegmentRootLayout({ children, params }: SegmentLay
 
   return (
     <html lang={locale}>
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-2804737462866511" />
+      </head>
       <body>
         <SiteShell locale={locale}>{children}</SiteShell>
         <AnalyticsBoundary />
