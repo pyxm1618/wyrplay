@@ -115,10 +115,9 @@ for (const vp of viewports) {
         const noOverflow = await page.evaluate(
           () => document.documentElement.scrollWidth <= window.innerWidth + 1,
         );
-        expect(
-          noOverflow,
-          `horizontal overflow detected at ${vp.name} on ${step.targetHref}`,
-        ).toBe(true);
+        expect(noOverflow, `horizontal overflow detected at ${vp.name} on ${step.targetHref}`).toBe(
+          true,
+        );
 
         // Verify shell remains mounted
         await expect(page.locator("header[data-site-header]")).toBeVisible();

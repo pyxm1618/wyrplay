@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import type { ReactNode } from "react";
 
 import { siteConfig } from "@/config/site.config";
@@ -12,6 +11,9 @@ export const metadata: Metadata = rootMetadata();
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang={siteConfig.defaultLocale} data-theme="dark">
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-2804737462866511" />
+      </head>
       <body>{children}</body>
     </html>
   );

@@ -54,4 +54,6 @@ const outputPayload = {
 
 const targetPath = path.resolve(process.cwd(), ".next/static-inline-hashes.json");
 fs.writeFileSync(targetPath, JSON.stringify(outputPayload, null, 2) + "\n", "utf8");
-console.log(`Successfully generated static inline CSP hashes for ${Object.keys(routeHashes).length} routes (total unique: ${allHashes.size}) to .next/static-inline-hashes.json`);
+console.log(
+  `Successfully generated static inline CSP hashes for ${Object.keys(routeHashes).length} routes (total unique: ${allHashes.size}) to .next/static-inline-hashes.json`,
+);

@@ -274,3 +274,14 @@ test("print preview adapts without horizontal overflow and supports PNG download
   const result = await pngDownload;
   expect(result.suggestedFilename()).toBe("wyrplay-cards-letter-page-1.png");
 });
+
+test("print and play pages hide the site footer", async ({ page }) => {
+  await page.goto("/print");
+  await expect(page.locator(".print-page")).toBeVisible();
+  const siteFooter = page.locator("footer[data-site-footer='true']");
+  await expect(siteFooter).toBeHidden();
+
+  await page.goto("/play");
+  await expect(page.locator(".play-page")).toBeVisible();
+  await expect(siteFooter).toBeHidden();
+});

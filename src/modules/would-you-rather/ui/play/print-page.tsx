@@ -422,6 +422,7 @@ function PrintPageContent({
   return (
     <div className="print-page" data-format={format}>
       <style>{`@page { size: ${paper === "a4" ? "A4" : "letter"}; margin: 0; }`}</style>
+      <PlayArtwork />
       <div className="print-workspace">
         <section className="print-editor">
           <Link className="print-back" href="/find-questions?restore=1">
@@ -1041,6 +1042,7 @@ function PrintPageContent({
 function PrintPageFallback() {
   return (
     <div className="print-page">
+      <PlayArtwork />
       <div className="print-workspace" aria-busy="true">
         <section className="print-editor">
           <Link className="print-back" href="/find-questions?restore=1">
@@ -1082,11 +1084,8 @@ export function PrintPage({
   readonly authEnabled: boolean;
 }) {
   return (
-    <div className="print-shell">
-      <PlayArtwork />
-      <Suspense fallback={<PrintPageFallback />}>
-        <PrintPageContent questions={questions} authEnabled={authEnabled} />
-      </Suspense>
-    </div>
+    <Suspense fallback={<PrintPageFallback />}>
+      <PrintPageContent questions={questions} authEnabled={authEnabled} />
+    </Suspense>
   );
 }

@@ -12,7 +12,9 @@ function createNonce(): string {
   return Buffer.from(crypto.randomUUID()).toString("base64");
 }
 
-const sensitivePathPatterns = [
+const dynamicPathPatterns = [
+  /^\/$/,
+  /^\/leaderboards(?:\/.*)?$/,
   /^\/account(?:\/.*)?$/,
   /^\/sign-in(?:\/.*)?$/,
   /^\/sign-up(?:\/.*)?$/,
@@ -21,8 +23,9 @@ const sensitivePathPatterns = [
   /^\/api(?:\/.*)?$/,
 ];
 
-function isSensitiveRoute(pathname: string): boolean {
-  return sensitivePathPatterns.some((pattern) => pattern.test(pathname));
+function isDynamicRoute(pathname: string): boolean {
+  if (isDevelopment) return true;
+  return dynamicPathPatterns.some((pattern) => pattern.test(pathname));
 }
 
 let cachedHashes: string[] | null = null;
@@ -40,16 +43,16 @@ function getStaticInlineHashes(): string[] {
       }
     }
   } catch {
-    // ignore
+    // Graceful fallback if static hashes file cannot be read
   }
   return [];
 }
 
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const isSensitive = isSensitiveRoute(pathname);
-  const nonce = isSensitive ? createNonce() : undefined;
-  const hashes = !isSensitive ? getStaticInlineHashes() : undefined;
+  const isDynamic = isDynamicRoute(pathname);
+  const nonce = isDynamic ? createNonce() : undefined;
+  const hashes = !isDynamic ? getStaticInlineHashes() : undefined;
 
   const contentSecurityPolicy = buildContentSecurityPolicy({
     nonce,
@@ -60,7 +63,7 @@ export function proxy(request: NextRequest) {
       ga4: featuresConfig.analytics.enabled && featuresConfig.analytics.ga4,
       clarity: featuresConfig.analytics.enabled && featuresConfig.analytics.clarity,
     },
-    turnstile: isSensitive && featuresConfig.auth.enabled && featuresConfig.auth.magicLink,
+    turnstile: isDynamic && featuresConfig.auth.enabled && featuresConfig.auth.magicLink,
   });
 
   const requestHeaders = new Headers(request.headers);

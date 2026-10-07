@@ -29,3 +29,4 @@ export { savedQuestionCommand } from "./domain/saved-questions";
 export { useSavedQuestions } from "./ui/use-saved-questions";
 
 export { KidsPage } from "./ui/kids/kids-page";
+export { TrendingListContent, TrendingListSkeleton } from "./ui/trending-list";

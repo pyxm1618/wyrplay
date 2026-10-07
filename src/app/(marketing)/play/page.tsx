@@ -4,11 +4,7 @@ import { routeRegistry } from "@/config/routes.config";
 import { currentSeoEnvironment } from "@/platform/seo/environment-policy";
 import { metadataForRoute } from "@/platform/seo/metadata";
 
-export const metadata: Metadata = metadataForRoute(
-  routeRegistry,
-  "/play",
-  currentSeoEnvironment(),
-);
+export const metadata: Metadata = metadataForRoute(routeRegistry, "/play", currentSeoEnvironment());
 
 export default function Page() {
   return <main>{playConfig.surface}</main>;
