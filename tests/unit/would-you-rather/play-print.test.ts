@@ -149,11 +149,11 @@ describe("play and print sets", () => {
       }
     });
 
-    it("anti-regression: no physical QR encodes the entire 457 question bank", () => {
+    it("anti-regression: no physical QR encodes the entire 512 question bank", () => {
       const pool = resolveQuestionPool(QUESTIONS_DATABASE, null);
-      expect(pool).toHaveLength(457);
+      expect(pool).toHaveLength(512);
 
-      // 1. Cards layout across all 457 questions
+      // 1. Cards layout across all 512 questions
       const cardsLayout = createPrintLayout(pool, "cards", "letter", (t) => t.length * 6);
       for (const page of cardsLayout.pages) {
         for (const p of page) {
@@ -164,14 +164,14 @@ describe("play and print sets", () => {
         }
       }
 
-      // 2. Sheet layout across all 457 questions
+      // 2. Sheet layout across all 512 questions
       const sheetLayout = createPrintLayout(pool, "sheet", "a4", (t) => t.length * 6);
       for (const page of sheetLayout.pages) {
         const pageUrl = new URL(getSheetPagePlayUrl(page, origin));
         const resolved = resolveQuestionPool(QUESTIONS_DATABASE, pageUrl.searchParams.get("set"));
         expect(resolved).toHaveLength(page.length);
         expect(resolved.length).toBeLessThanOrEqual(14); // sheet page max capacity
-        expect(resolved.length).not.toBe(457);
+        expect(resolved.length).not.toBe(512);
       }
     });
 
@@ -207,7 +207,7 @@ describe("play and print sets", () => {
       );
       expect(sheet10ModuleSize).toBeGreaterThanOrEqual(0.3);
 
-      // 3. Find worst-case sheet page across full 457 questions (maximum placements on one page)
+      // 3. Find worst-case sheet page across full 512 questions (maximum placements on one page)
       let worstPlacements: readonly Question[] = [];
       for (const paper of ["letter", "a4"] as const) {
         for (const itemsPerPage of [0, 6, 10]) {
