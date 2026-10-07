@@ -1,16 +1,19 @@
 /* eslint-disable @next/next/no-img-element -- Pre-sized static WebP avoids runtime re-encoding; explicit dimensions and srcset reserve layout and serve the appropriate resolution. */
 import { useId, type ReactNode } from "react";
 
-import { kidsAssets, kidsHeroSrcSet } from "./assets.generated";
+import { kidsAssets, kidsHeroSrcSet, kidsRetinaAssets } from "./assets.generated";
 
 export function KidsArt({ name, className = "" }: { name: string; className?: string }) {
   const asset = kidsAssets[name];
   if (!asset) throw new Error(`Unknown Kids illustration: ${name}`);
   const { src, width, height } = asset;
+  const retinaSrc = kidsRetinaAssets[name];
   return (
     <img
       src={src}
-      srcSet={name === "hero" ? kidsHeroSrcSet : undefined}
+      srcSet={
+        name === "hero" ? kidsHeroSrcSet : retinaSrc ? `${src} 1x, ${retinaSrc} 2x` : undefined
+      }
       sizes={
         name === "hero"
           ? "(max-width: 480px) calc(100vw - 28px), (max-width: 900px) 460px, (max-width: 1150px) calc((100vw - 72px) / 2.05), 540px"

@@ -100,3 +100,23 @@ export const kidsHeroSrcSet =
   "/kids-art/optimized/hero-hd-480.adfd6f617b5e.webp 480w, /kids-art/optimized/hero-hd-768.2efd06640b26.webp 768w, /kids-art/optimized/hero-hd-1080.28ace45bd77d.webp 1080w, /kids-art/optimized/hero-hd-1480.9bc65f33790f.webp 1480w";
 export const kidsLogoSrcSet =
   "/kids-art/optimized/logo-hd-256.7e77467d88de.webp 256w, /kids-art/optimized/logo-hd-320.1f8361e2a219.webp 320w, /kids-art/optimized/logo-hd-480.66f02a91910a.webp 480w";
+
+export const kidsRetinaAssets: Record<string, string> = {
+  "question-1": "/kids-art/optimized/question-1-2x.b8217669a518.webp",
+  "question-3": "/kids-art/optimized/question-3-2x.0bd69f1d3e83.webp",
+  "question-5": "/kids-art/optimized/question-5-2x.5db49b4a8cb4.webp",
+  "question-6": "/kids-art/optimized/question-6-2x.f72d9d70595e.webp",
+  "question-7": "/kids-art/optimized/question-7-2x.eb0188867184.webp",
+  "question-8": "/kids-art/optimized/question-8-2x.9cab41da66d7.webp",
+  "use-classroom": "/kids-art/optimized/use-classroom-2x.6109fa1b8001.webp",
+  "use-road": "/kids-art/optimized/use-road-2x.c46aa776a894.webp",
+  "use-dinner": "/kids-art/optimized/use-dinner-2x.af32798991fe.webp",
+  "uses-cloud": "/kids-art/optimized/uses-cloud-2x.839588eec63e.webp",
+  "browse-star": "/kids-art/optimized/browse-star-2x.1d7ca94057c1.webp",
+  "browse-spark": "/kids-art/optimized/browse-spark-2x.c8726bd748a8.webp",
+  "related-funny": "/kids-art/optimized/related-funny-2x.5d5f3b3f8789.webp",
+  "related-friends": "/kids-art/optimized/related-friends-2x.9d1275e230e0.webp",
+  "related-all": "/kids-art/optimized/related-all-2x.e87b6decc3b3.webp",
+  "closing-left": "/kids-art/optimized/closing-left-2x.7896e3166309.webp",
+  "closing-right": "/kids-art/optimized/closing-right-2x.b8e966b14cc3.webp",
+};
