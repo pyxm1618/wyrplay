@@ -173,7 +173,7 @@ test("Finder completes age/tone, save/unsave, selected pool, restore and mobile 
   await page.goto("/find-questions");
   await page.getByRole("button", { name: "Kids", exact: true }).click();
   await page.getByRole("button", { name: "Funny", exact: true }).click();
-  await expect(page.locator(".panel-heading")).toContainText("457 curated questions");
+  await expect(page.locator(".panel-heading")).toContainText("512 curated questions");
   await page.getByRole("button", { name: "Apply Filters" }).click();
   await expect(page.locator(".panel-heading")).toContainText("matching questions");
   const poolCount = await page.locator(".panel-heading p").textContent();
