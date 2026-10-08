@@ -15,6 +15,19 @@ if (!fs.existsSync(launcherPath)) {
   process.exit(1);
 }
 
+const middlewareNextDir = path.resolve(
+  projectRoot,
+  ".vercel/output/functions/_middleware.func/.next",
+);
+const rootNextDir = path.resolve(projectRoot, ".next");
+if (!fs.existsSync(middlewareNextDir) && fs.existsSync(rootNextDir)) {
+  try {
+    fs.symlinkSync(rootNextDir, middlewareNextDir, "dir");
+  } catch {
+    // Ignore symlink failure
+  }
+}
+
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const launcher = require(launcherPath);
 
@@ -112,154 +125,175 @@ const server = http.createServer(async (req, res) => {
 const PORT = 4123;
 
 async function runVerification() {
-  await new Promise<void>((resolve) => server.listen(PORT, resolve));
-  console.log(`Vercel output verification server running at http://127.0.0.1:${PORT}`);
-
-  const browser = await chromium.launch();
-  const context = await browser.newContext();
-  const page = await context.newPage();
-
-  const testRoutes = [
-    {
-      path: "/find-questions",
-      name: "Find Questions",
-      interactiveCheck: async () => {
-        // Find Questions search input or category button
-        const searchInput = page.locator('input[type="search"], input[placeholder*="search" i]');
-        if (await searchInput.isVisible({ timeout: 3000 }).catch(() => false)) {
-          await searchInput.fill("party");
-          console.log("  ✓ Search input filled successfully");
-        } else {
-          // Check category pill or button
-          const button = page.locator("button").first();
-          if (await button.isVisible({ timeout: 2000 }).catch(() => false)) {
-            await button.click();
-            console.log("  ✓ Filter button clickable");
-          }
-        }
-      },
-    },
-    {
-      path: "/play",
-      name: "Play",
-      interactiveCheck: async () => {
-        // Choice buttons in game
-        const choiceButton = page.locator("button").first();
-        if (await choiceButton.isVisible({ timeout: 3000 }).catch(() => false)) {
-          await choiceButton.click();
-          console.log("  ✓ Play choice button clicked");
-        }
-      },
-    },
-    {
-      path: "/print",
-      name: "Print",
-      interactiveCheck: async () => {
-        // Print preset button
-        const button = page.locator("button").first();
-        if (await button.isVisible({ timeout: 3000 }).catch(() => false)) {
-          await button.click();
-          console.log("  ✓ Print preset button clicked");
-        }
-      },
-    },
-    {
-      path: "/would-you-rather-questions-for-kids",
-      name: "Kids SEO Landing",
-      interactiveCheck: async () => {
-        // Vote button or next question button
-        const button = page.locator("button").first();
-        if (await button.isVisible({ timeout: 3000 }).catch(() => false)) {
-          await button.click();
-          console.log("  ✓ Kids question button clicked");
-        }
-      },
-    },
-  ];
-
-  let allPassed = true;
-
-  for (const route of testRoutes) {
-    console.log(`\n--- Testing ${route.name} (${route.path}) ---`);
-    const cspViolations: string[] = [];
-    const hydrationErrors: string[] = [];
-    const pageErrors: string[] = [];
-
-    page.on("console", (msg) => {
-      const text = msg.text();
-      if (
-        text.toLowerCase().includes("content security policy") ||
-        text.toLowerCase().includes("violates the following content security policy") ||
-        text.toLowerCase().includes("refused to execute") ||
-        text.toLowerCase().includes("refused to apply")
-      ) {
-        cspViolations.push(text);
-      }
-      if (
-        text.includes("Minified React error #418") ||
-        text.includes("Minified React error #423") ||
-        text.includes("Minified React error #425") ||
-        text.includes("Hydration failed") ||
-        text.includes("Text content does not match server-rendered HTML")
-      ) {
-        hydrationErrors.push(text);
-      }
-    });
-
-    page.on("pageerror", (err) => {
-      pageErrors.push(err.message);
-    });
-
-    const response = await page.goto(`http://127.0.0.1:${PORT}${route.path}`, {
-      waitUntil: "networkidle",
-    });
-
-    const cspHeader = response?.headers()["content-security-policy"];
-    console.log("Status:", response?.status());
-    console.log("CSP Header present:", !!cspHeader);
-    const hashCount = (cspHeader?.match(/sha256-/g) || []).length;
-    console.log("CSP sha256 hashes count:", hashCount);
-    console.log("CSP nonce present:", cspHeader?.includes("nonce-"));
-
-    // Wait a moment for any hydration or asynchronous execution
-    await page.waitForTimeout(1000);
-
-    // Perform interactive check
-    await route.interactiveCheck();
-
-    console.log("CSP violations:", cspViolations.length);
-    if (cspViolations.length > 0) {
-      console.error("  Details:", cspViolations);
-      allPassed = false;
-    }
-
-    console.log("Hydration errors:", hydrationErrors.length);
-    if (hydrationErrors.length > 0) {
-      console.error("  Details:", hydrationErrors);
-      allPassed = false;
-    }
-
-    console.log("Page errors:", pageErrors.length);
-    if (pageErrors.length > 0) {
-      console.error("  Details:", pageErrors);
-      allPassed = false;
-    }
-
-    if (
-      cspViolations.length === 0 &&
-      hydrationErrors.length === 0 &&
-      pageErrors.length === 0 &&
-      hashCount > 0
-    ) {
-      console.log(`✅ ${route.name} passed all checks!`);
-    } else {
-      console.error(`❌ ${route.name} failed checks!`);
-      allPassed = false;
-    }
+  const jsonPath = path.resolve(projectRoot, ".next/static-inline-hashes.json");
+  const bakPath = path.resolve(projectRoot, ".next/static-inline-hashes.json.bak");
+  let renamedJson = false;
+  if (fs.existsSync(jsonPath)) {
+    fs.renameSync(jsonPath, bakPath);
+    renamedJson = true;
+    console.log(
+      "Temporarily removed .next/static-inline-hashes.json to prove runtime independence from JSON file.",
+    );
   }
 
-  await browser.close();
-  server.close();
+  let browser: Awaited<ReturnType<typeof chromium.launch>> | null = null;
+  let allPassed = true;
+  try {
+    await new Promise<void>((resolve) => server.listen(PORT, resolve));
+    console.log(`Vercel output verification server running at http://127.0.0.1:${PORT}`);
+
+    browser = await chromium.launch();
+    const context = await browser.newContext();
+    const page = await context.newPage();
+
+    const testRoutes = [
+      {
+        path: "/find-questions",
+        name: "Find Questions",
+        interactiveCheck: async () => {
+          // Find Questions search input or category button
+          const searchInput = page.locator('input[type="search"], input[placeholder*="search" i]');
+          if (await searchInput.isVisible({ timeout: 3000 }).catch(() => false)) {
+            await searchInput.fill("party");
+            console.log("  ✓ Search input filled successfully");
+          } else {
+            // Check category pill or button
+            const button = page.locator("button").first();
+            if (await button.isVisible({ timeout: 2000 }).catch(() => false)) {
+              await button.click();
+              console.log("  ✓ Filter button clickable");
+            }
+          }
+        },
+      },
+      {
+        path: "/play",
+        name: "Play",
+        interactiveCheck: async () => {
+          // Choice buttons in game
+          const choiceButton = page.locator("button").first();
+          if (await choiceButton.isVisible({ timeout: 3000 }).catch(() => false)) {
+            await choiceButton.click();
+            console.log("  ✓ Play choice button clicked");
+          }
+        },
+      },
+      {
+        path: "/print",
+        name: "Print",
+        interactiveCheck: async () => {
+          // Print preset button
+          const button = page.locator("button").first();
+          if (await button.isVisible({ timeout: 3000 }).catch(() => false)) {
+            await button.click();
+            console.log("  ✓ Print preset button clicked");
+          }
+        },
+      },
+      {
+        path: "/would-you-rather-questions-for-kids",
+        name: "Kids SEO Landing",
+        interactiveCheck: async () => {
+          // Vote button or next question button
+          const button = page.locator("button").first();
+          if (await button.isVisible({ timeout: 3000 }).catch(() => false)) {
+            await button.click();
+            console.log("  ✓ Kids question button clicked");
+          }
+        },
+      },
+    ];
+
+    allPassed = true;
+
+    for (const route of testRoutes) {
+      console.log(`\n--- Testing ${route.name} (${route.path}) ---`);
+      const cspViolations: string[] = [];
+      const hydrationErrors: string[] = [];
+      const pageErrors: string[] = [];
+
+      page.on("console", (msg) => {
+        const text = msg.text();
+        if (
+          text.toLowerCase().includes("content security policy") ||
+          text.toLowerCase().includes("violates the following content security policy") ||
+          text.toLowerCase().includes("refused to execute") ||
+          text.toLowerCase().includes("refused to apply")
+        ) {
+          cspViolations.push(text);
+        }
+        if (
+          text.includes("Minified React error #418") ||
+          text.includes("Minified React error #423") ||
+          text.includes("Minified React error #425") ||
+          text.includes("Hydration failed") ||
+          text.includes("Text content does not match server-rendered HTML")
+        ) {
+          hydrationErrors.push(text);
+        }
+      });
+
+      page.on("pageerror", (err) => {
+        pageErrors.push(err.message);
+      });
+
+      const response = await page.goto(`http://127.0.0.1:${PORT}${route.path}`, {
+        waitUntil: "networkidle",
+      });
+
+      const cspHeader = response?.headers()["content-security-policy"];
+      console.log("Status:", response?.status());
+      console.log("CSP Header present:", !!cspHeader);
+      const hashCount = (cspHeader?.match(/sha256-/g) || []).length;
+      console.log("CSP sha256 hashes count:", hashCount);
+      console.log("CSP nonce present:", cspHeader?.includes("nonce-"));
+
+      // Wait a moment for any hydration or asynchronous execution
+      await page.waitForTimeout(1000);
+
+      // Perform interactive check
+      await route.interactiveCheck();
+
+      console.log("CSP violations:", cspViolations.length);
+      if (cspViolations.length > 0) {
+        console.error("  Details:", cspViolations);
+        allPassed = false;
+      }
+
+      console.log("Hydration errors:", hydrationErrors.length);
+      if (hydrationErrors.length > 0) {
+        console.error("  Details:", hydrationErrors);
+        allPassed = false;
+      }
+
+      console.log("Page errors:", pageErrors.length);
+      if (pageErrors.length > 0) {
+        console.error("  Details:", pageErrors);
+        allPassed = false;
+      }
+
+      if (
+        cspViolations.length === 0 &&
+        hydrationErrors.length === 0 &&
+        pageErrors.length === 0 &&
+        hashCount > 0
+      ) {
+        console.log(`✅ ${route.name} passed all checks!`);
+      } else {
+        console.error(`❌ ${route.name} failed checks!`);
+        allPassed = false;
+      }
+    }
+  } finally {
+    if (browser) {
+      await browser.close().catch(() => {});
+    }
+    server.close();
+    if (renamedJson && fs.existsSync(bakPath)) {
+      fs.renameSync(bakPath, jsonPath);
+      console.log("Restored .next/static-inline-hashes.json.");
+    }
+  }
 
   if (!allPassed) {
     console.error("\n❌ Vercel output CSP verification FAILED.");
