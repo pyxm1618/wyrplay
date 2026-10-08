@@ -16,8 +16,6 @@ import { FinderIcon } from "./icon";
 import { FinderFilters } from "./filters";
 import { FinderQuestionCard } from "./question-card";
 import { FinderCategories, FinderDecoration, FinderHero } from "./chrome";
-import "./finder.css";
-import "./finder-responsive.css";
 
 const popularSearches = [
   ["for kids", "kids"],

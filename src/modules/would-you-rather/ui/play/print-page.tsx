@@ -27,8 +27,6 @@ import {
 } from "./print-renderer";
 import { PlayArtwork } from "./art";
 import { FinderIcon } from "../finder/icon";
-import "./play.css";
-import "./print.css";
 
 const printThemes: readonly [FeaturedCollectionKey, string][] = [
   ["kids", "Kids"],

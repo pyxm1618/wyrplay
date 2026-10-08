@@ -10,7 +10,6 @@ import { DuelArena } from "../duel-arena";
 import { PresenterModal, tryEnterFullscreen } from "../presenter-modal";
 import { PlayArtwork } from "./art";
 import { FinderIcon } from "../finder/icon";
-import "./play.css";
 
 function PlaySessionFallback() {
   return (

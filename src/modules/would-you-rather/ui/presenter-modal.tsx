@@ -1,9 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- Local reference brand crop. */
-
 import { useEffect, useLayoutEffect, useRef, type RefObject } from "react";
 import { PlayHeading, OptionPanels, PlayArtwork } from "./play/art";
-import "./play/play.css";
 import type { Question } from "../types";
 
 export interface PresenterModalProps {

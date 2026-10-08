@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
-import { STATIC_INLINE_HASHES } from "../src/platform/security/static-inline-hashes";
 
 const appServerDir = path.resolve(process.cwd(), ".next/server/app");
 
@@ -25,7 +24,7 @@ function scanHtmlFiles(dir: string): string[] {
 
 const htmlFiles = scanHtmlFiles(appServerDir);
 const routeHashes: Record<string, string[]> = {};
-const allHashes = new Set<string>(STATIC_INLINE_HASHES);
+const allHashes = new Set<string>();
 
 for (const file of htmlFiles) {
   const relative = path.relative(appServerDir, file);

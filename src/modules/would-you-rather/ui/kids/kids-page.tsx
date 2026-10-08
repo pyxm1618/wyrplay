@@ -7,9 +7,6 @@ import { questionPoolUrl } from "../../domain/question-pool";
 import { DuelArena } from "../duel-arena";
 import { FinderIcon } from "../finder/icon";
 import { KidsArt, KidsBurst, KidsChoicePanels, KidsMotif, KidsArenaEdge } from "./art";
-import "./kids.css";
-import "./kids-arena.css";
-import "./kids-responsive.css";
 
 type Example = {
   id: string;

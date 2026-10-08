@@ -45,6 +45,7 @@ for (const file of htmlFiles) {
 
 const compiledHashSet = new Set<string>(STATIC_INLINE_HASHES);
 const missingHashes: string[] = [];
+const staleHashes: string[] = [];
 
 for (const hash of foundHashes) {
   if (!compiledHashSet.has(hash)) {
@@ -52,10 +53,17 @@ for (const hash of foundHashes) {
   }
 }
 
+for (const hash of compiledHashSet) {
+  if (!foundHashes.has(hash)) {
+    staleHashes.push(hash);
+  }
+}
+
 console.log("=== CSP Static Inline Hash Verification ===");
 console.log(`Scanned HTML files: ${htmlFiles.length}`);
 console.log(`Unique inline script hashes found: ${foundHashes.size}`);
 console.log(`Compiled STATIC_INLINE_HASHES count: ${STATIC_INLINE_HASHES.length}`);
+console.log(`Stale hashes count (unreferenced in current build): ${staleHashes.length}`);
 
 if (missingHashes.length > 0) {
   console.error(
@@ -67,7 +75,13 @@ if (missingHashes.length > 0) {
   process.exit(1);
 }
 
+if (staleHashes.length > 0) {
+  console.warn(
+    `\n[WARN] Found ${staleHashes.length} stale hashes in STATIC_INLINE_HASHES not present in current build HTML.`,
+  );
+}
+
 console.log(
-  `\n[PASS] All ${foundHashes.size} static inline hashes are covered by compiled STATIC_INLINE_HASHES. Missing: 0.`,
+  `\n[PASS] All ${foundHashes.size} static inline hashes are covered by compiled STATIC_INLINE_HASHES. Missing: 0. Stale: ${staleHashes.length}.`,
 );
 process.exit(0);
