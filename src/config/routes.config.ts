@@ -236,7 +236,6 @@ export const routeDefinitions = [
     title: "Account Deletion",
     description: "How WYRPlay account deletion works and what information may be retained.",
   },
-  { route: "/create", class: "public_noindex" },
   {
     route: "/leaderboards",
     class: "public_noindex",

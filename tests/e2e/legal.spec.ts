@@ -78,6 +78,23 @@ test("current production Legal copy does not imply live account or checkout feat
   ).toBeVisible();
 });
 
+test("/privacy renders AdSense opt-out and partner-sites URLs as clickable links", async ({
+  page,
+}) => {
+  await page.goto("/privacy");
+  const adsSettingsLink = page.locator('a[href="https://adssettings.google.com"]');
+  await expect(adsSettingsLink).toBeVisible();
+  expect(await adsSettingsLink.getAttribute("href")).toBe("https://adssettings.google.com");
+
+  const partnerSitesLink = page.locator(
+    'a[href="https://policies.google.com/technologies/partner-sites"]',
+  );
+  await expect(partnerSitesLink).toBeVisible();
+  expect(await partnerSitesLink.getAttribute("href")).toBe(
+    "https://policies.google.com/technologies/partner-sites",
+  );
+});
+
 for (const viewport of [
   { name: "desktop", width: 1280, height: 800 },
   { name: "mobile", width: 390, height: 844 },

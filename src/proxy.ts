@@ -27,6 +27,12 @@ export function proxy(request: NextRequest) {
   requestHeaders.set("x-nonce", nonce);
   requestHeaders.set("content-security-policy", contentSecurityPolicy);
 
+  if (isProduction && request.nextUrl.pathname === "/test-bench") {
+    const response = new NextResponse(null, { status: 404 });
+    response.headers.set("content-security-policy", contentSecurityPolicy);
+    return response;
+  }
+
   const response = NextResponse.next({ request: { headers: requestHeaders } });
   response.headers.set("content-security-policy", contentSecurityPolicy);
   return response;
