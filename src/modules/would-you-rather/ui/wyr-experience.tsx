@@ -280,43 +280,45 @@ export function WyrExperience({
           {hasActiveFilters || isDirectoryOpen ? (
             directory
           ) : (
-            <ol className="home-directory-semantic-list space-y-3 p-4">
-              {directoryQuestions.map((item, idx) => (
-                <li
-                  key={item.id}
-                  className="home-directory-semantic-item border-b border-border/30 pb-3"
-                >
-                  <article>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-mono text-xs font-bold text-muted">
-                        #{String(idx + 1).padStart(2, "0")}
-                      </span>
-                      {item.difficulty && (
-                        <span className="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">
-                          {item.difficulty}
+            <section id="questions">
+              <ol className="home-directory-semantic-list space-y-3 p-4">
+                {directoryQuestions.map((item, idx) => (
+                  <li
+                    key={item.id}
+                    className="home-directory-semantic-item border-b border-border/30 pb-3"
+                  >
+                    <article>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-mono text-xs font-bold text-muted">
+                          #{String(idx + 1).padStart(2, "0")}
                         </span>
-                      )}
-                      {(item.relationships[0] ?? item.primaryCollection) && (
-                        <span className="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">
-                          {item.relationships[0] ?? item.primaryCollection}
+                        {item.difficulty && (
+                          <span className="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">
+                            {item.difficulty}
+                          </span>
+                        )}
+                        {(item.relationships[0] ?? item.primaryCollection) && (
+                          <span className="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">
+                            {item.relationships[0] ?? item.primaryCollection}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="font-serif text-sm font-bold text-foreground">
+                        {item.question}
+                      </h3>
+                      <div className="mt-1 flex flex-wrap gap-x-4 text-xs text-muted">
+                        <span>
+                          <strong>A:</strong> {item.optionA}
                         </span>
-                      )}
-                    </div>
-                    <h3 className="font-serif text-sm font-bold text-foreground">
-                      {item.question}
-                    </h3>
-                    <div className="mt-1 flex flex-wrap gap-x-4 text-xs text-muted">
-                      <span>
-                        <strong>A:</strong> {item.optionA}
-                      </span>
-                      <span>
-                        <strong>B:</strong> {item.optionB}
-                      </span>
-                    </div>
-                  </article>
-                </li>
-              ))}
-            </ol>
+                        <span>
+                          <strong>B:</strong> {item.optionB}
+                        </span>
+                      </div>
+                    </article>
+                  </li>
+                ))}
+              </ol>
+            </section>
           )}
         </details>
       ) : (

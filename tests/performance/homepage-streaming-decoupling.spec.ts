@@ -32,8 +32,8 @@ test.describe("Homepage Streaming & Leaderboard Decoupling Gate", () => {
     const timeTrendingResolved = Date.now() - startTime;
     console.log(`[STREAMING BENCHMARK] Trending resolved at ${timeTrendingResolved}ms`);
 
-    // The hero must appear at or before the leaderboard resolution
-    expect(timeTrendingResolved).toBeGreaterThanOrEqual(timeHeroVisible);
+    // The hero must appear significantly ahead of the async leaderboard resolution
+    expect(timeTrendingResolved - timeHeroVisible).toBeGreaterThan(300);
 
     // 4. Skeleton should be replaced and no longer visible
     await expect(page.locator('[data-trending-skeleton="true"]')).toHaveCount(0);

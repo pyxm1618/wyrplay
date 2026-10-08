@@ -15,6 +15,8 @@ import { currentSeoEnvironment } from "@/platform/seo/environment-policy";
 import { metadataForRoute } from "@/platform/seo/metadata";
 import { webApplicationJsonLd, websiteJsonLd } from "@/platform/seo/structured-data";
 
+import { connection } from "next/server";
+
 export const metadata: Metadata = metadataForRoute(routeRegistry, "/", currentSeoEnvironment());
 
 async function HomepageTrendingAsync() {
@@ -34,6 +36,7 @@ async function HomepageTrendingAsync() {
 }
 
 export default async function HomePage() {
+  await connection();
   const home = routeRegistry.get("/");
   if (home.class !== "public_indexable") throw new Error("home route must be indexable");
 

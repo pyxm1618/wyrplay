@@ -14,6 +14,7 @@ function createNonce(): string {
 }
 
 const dynamicPathPatterns = [
+  /^\/$/,
   /^\/leaderboards(?:\/.*)?$/,
   /^\/test-bench(?:\/.*)?$/,
   /^\/account(?:\/.*)?$/,
