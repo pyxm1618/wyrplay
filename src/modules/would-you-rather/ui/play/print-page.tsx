@@ -6,7 +6,7 @@ import { flushSync } from "react-dom";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { FeaturedCollectionKey, Occasion, Question } from "../../types";
-import { resolveQuestionPool } from "../../domain/play-session";
+import { resolveQuestionPool } from "../../domain/question-pool";
 import { type FinderAge } from "../../domain/finder";
 import { filterPrintQuestions, type PrintQuestionCriteria } from "../../domain/print-question-pool";
 import {

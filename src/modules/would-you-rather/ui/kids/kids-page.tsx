@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { AgeGroup, Question } from "../../types";
 import { getPlayableQuestionsByCollection } from "../../data/questions";
-import { questionPoolUrl } from "../../domain/play-session";
+import { questionPoolUrl } from "../../domain/question-pool";
 import { DuelArena } from "../duel-arena";
 import { FinderIcon } from "../finder/icon";
 import { KidsArt, KidsBurst, KidsChoicePanels, KidsMotif, KidsArenaEdge } from "./art";

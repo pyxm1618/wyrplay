@@ -2,7 +2,7 @@ import QRCode from "qrcode";
 import type { Question } from "../../types";
 import type { PrintLayout, PrintFormat } from "../../domain/print-layout";
 import { wrapPrintText } from "../../domain/print-layout";
-import { questionPoolUrl } from "../../domain/play-session";
+import { questionPoolUrl } from "../../domain/question-pool";
 
 export const PRINT_QR_CONFIG = {
   margin: 4,

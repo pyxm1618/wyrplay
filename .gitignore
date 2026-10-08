@@ -20,3 +20,4 @@ test-results
 # Reproducible calibration rasters; keep references, candidates and JSON/SVG reports.
 **/report/verify-*.png
 **/measurement*/annotations.png
+.lighthouse-reports/

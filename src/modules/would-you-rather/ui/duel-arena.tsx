@@ -6,7 +6,6 @@ import { parseVoteStats } from "../domain/finder";
 import type { Question, VoteStats } from "../types";
 import { Arrow, ChoiceFrame } from "./home-art";
 import { PlayHeading, OptionPanels } from "./play/art";
-import "./play/play.css";
 import { KidsChoicePanels } from "./kids/art";
 
 export interface DuelArenaProps {

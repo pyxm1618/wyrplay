@@ -1,3 +1,4 @@
+import path from "node:path";
 import type { NextConfig } from "next";
 import { getBuildId } from "./src/platform/build/build-id";
 
@@ -43,6 +44,19 @@ const nextConfig: NextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"],
+  },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.module.rules.push({
+        test: /[\\/]zod[\\/].*util\.(js|cjs|mjs)$/,
+        use: [
+          {
+            loader: path.resolve(__dirname, "scripts/webpack-zod-csp-loader.cjs"),
+          },
+        ],
+      });
+    }
+    return config;
   },
   async headers() {
     return [

@@ -120,7 +120,7 @@ function Heading({
             <Arrow />
           </a>
         ) : (
-          <Link className="section-link" href={href}>
+          <Link className="section-link" href={href} prefetch={false}>
             {label}
             <Arrow />
           </Link>
@@ -258,7 +258,6 @@ export function IllustratedHome({
             width={1179}
             height={688}
             sizes="(max-width: 600px) 120px, (max-width: 1000px) 290px, 360px"
-            priority
             className="hero-girl"
           />
         </div>
@@ -282,7 +281,9 @@ export function IllustratedHome({
                 width={1662}
                 height={887}
                 sizes="(max-width: 600px) 330px, (max-width: 1000px) 330px, 420px"
+                quality={70}
                 priority
+                fetchPriority="high"
                 className="hero-title-img"
               />
             </h1>
@@ -334,6 +335,7 @@ export function IllustratedHome({
                   key={category.title}
                   href={collection?.route ?? ("href" in category ? category.href : "/#questions")}
                   className={`category-card ${category.color}`}
+                  prefetch={false}
                 >
                   {category.color === "popular" ||
                   category.color === "hard" ||
@@ -347,12 +349,13 @@ export function IllustratedHome({
                       sizes={categoryImageSizes(category.crop[2])}
                     />
                   ) : (
-                    <HomeArt
-                      src={`categories/${category.color}`}
+                    <Image
+                      src={`/home-art/categories/${category.color}.webp`}
+                      alt=""
                       width={category.crop[2]}
                       height={category.crop[3]}
                       sizes={categoryImageSizes(category.crop[2])}
-                      className="category-art"
+                      className="art-crop category-art"
                     />
                   )}
                   <span className="category-title">{category.title}</span>
@@ -381,6 +384,7 @@ export function IllustratedHome({
                   width={724}
                   height={560}
                   sizes={highlightImageSizes}
+                  quality={60}
                   className="highlight-image"
                   alt=""
                 />
@@ -415,12 +419,13 @@ export function IllustratedHome({
               sizes="(max-width: 600px) 36px, (max-width: 1244.8px) 4.627249vw, 57.6px"
               className="step-bubble"
             />
-            <HomeArt
-              src="decorations/step-ribbon-blue"
+            <Image
+              src="/home-art/decorations/step-ribbon-blue.webp"
+              alt=""
               width={188}
               height={134}
               sizes="(max-width: 600px) 188px, (max-width: 1244.8px) 24.164524vw, 300.8px"
-              className="step-ribbon-blue"
+              className="art-crop step-ribbon-blue"
             />
           </div>
           <h2>How to Play Would You Rather Questions</h2>
@@ -480,7 +485,7 @@ export function IllustratedHome({
                         ? "No votes yet. Make your choice to start the rankings."
                         : "Rankings are temporarily unavailable. Try the leaderboard again."}
                     </p>
-                    <Link className="section-link" href="/leaderboards">
+                    <Link className="section-link" href="/leaderboards" prefetch={false}>
                       View leaderboard
                       <Arrow />
                     </Link>
@@ -586,7 +591,12 @@ export function IllustratedHome({
           </p>
           <div className="occasion-grid">
             {occasions.map((occasion) => (
-              <Link key={occasion.title} href={occasion.href} className="occasion-card">
+              <Link
+                key={occasion.title}
+                href={occasion.href}
+                className="occasion-card"
+                prefetch={false}
+              >
                 <HomeArt
                   src={`icons/occasion-${occasion.art}`}
                   width={occasion.crop[2]}
