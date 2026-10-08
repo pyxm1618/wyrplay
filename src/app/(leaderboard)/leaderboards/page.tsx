@@ -3,6 +3,7 @@ import { connection } from "next/server";
 import { routeRegistry } from "@/config/routes.config";
 import { LeaderboardPage, type LeaderboardResult } from "@/modules/would-you-rather";
 import { getLeaderboardSnapshot } from "@/modules/would-you-rather/server";
+import "./leaderboard.css";
 import { currentSeoEnvironment } from "@/platform/seo/environment-policy";
 import { metadataForRoute } from "@/platform/seo/metadata";
 

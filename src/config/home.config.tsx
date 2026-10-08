@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import type { LandingSection } from "@/components/landing/landing-page";
-import { WyrExperience, type LeaderboardResult } from "@/modules/would-you-rather";
+import type { LeaderboardResult } from "@/modules/would-you-rather";
+import { WyrExperience } from "@/modules/would-you-rather";
 
 import { routeRegistry } from "./routes.config";
 

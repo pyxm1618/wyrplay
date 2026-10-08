@@ -6,9 +6,9 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { homeConfigWithTrendingSlot } from "@/config/home.config";
 import { routeRegistry } from "@/config/routes.config";
 import {
+  rankLeaderboard,
   TrendingListContent,
   TrendingListSkeleton,
-  rankLeaderboard,
 } from "@/modules/would-you-rather";
 import { loadHomepageLeaderboard } from "@/modules/would-you-rather/server";
 import { currentSeoEnvironment } from "@/platform/seo/environment-policy";

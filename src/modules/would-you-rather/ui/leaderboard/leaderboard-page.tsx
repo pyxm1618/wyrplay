@@ -14,7 +14,6 @@ import {
 import { DuelArena } from "../duel-arena";
 import { LeaderboardArt as Art, ChoiceArt } from "./art";
 import { Icon, type IconName } from "./icons";
-import "./leaderboard.css";
 
 const periods = [
   { key: "all", label: "All Time" },
