@@ -183,7 +183,7 @@ test("production AdSense pre-review readiness verification", async ({ page, requ
   const adsTxtText = (await adsTxtRes.text()).trim();
   expect(adsTxtText).toBe("google.com, pub-2804737462866511, DIRECT, f08c47fec0942fa0");
 
-  // 4. /privacy 正常渲染且包含正确披露
+  // 4. /privacy 正常渲染且包含正确披露与真实可点击链接
   const privacyRes = await page.goto("/privacy", { waitUntil: "networkidle" });
   expect(privacyRes?.status(), "production /privacy must be 200").toBe(200);
   await expect(page.locator("text=Advertising and Google AdSense")).toBeVisible();
@@ -192,6 +192,18 @@ test("production AdSense pre-review readiness verification", async ({ page, requ
   expect(privacyContent).toContain("not currently enabled in production");
   expect(privacyContent).toContain("https://adssettings.google.com");
   expect(privacyContent).not.toContain("currently serves Google ads");
+
+  const adsSettingsLink = page.locator('a[href="https://adssettings.google.com"]');
+  await expect(adsSettingsLink).toBeVisible();
+  expect(await adsSettingsLink.getAttribute("href")).toBe("https://adssettings.google.com");
+
+  const partnerSitesLink = page.locator(
+    'a[href="https://policies.google.com/technologies/partner-sites"]',
+  );
+  await expect(partnerSitesLink).toBeVisible();
+  expect(await partnerSitesLink.getAttribute("href")).toBe(
+    "https://policies.google.com/technologies/partner-sites",
+  );
 
   // 5. 页面包含所有权标记，绝不加载 adsbygoogle.js
   await page.goto("/", { waitUntil: "networkidle" });
