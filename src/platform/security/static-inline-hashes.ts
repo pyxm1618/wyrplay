@@ -171,5 +171,5 @@ export const STATIC_INLINE_HASHES: readonly string[] = [
   "yfvfntrXixYg2NgsHvQLqeS+8Hyn28wHT23yTYhxne8=",
   "yiujivqm2XsO8g50dfHnosGxF9OKyQUKf8X57tF2VRg=",
   "yxSLvwXKe8mMO2fEBbBzSGncY7hor/Ii2F7eqGx+gYA=",
-  "z+z/j3Nb9Ba1ddyxMtmK6ARJvqshPMkUlwK3xUE0Ez4="
+  "z+z/j3Nb9Ba1ddyxMtmK6ARJvqshPMkUlwK3xUE0Ez4=",
 ];
