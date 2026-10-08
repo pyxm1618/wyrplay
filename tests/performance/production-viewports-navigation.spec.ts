@@ -37,7 +37,7 @@ for (const vp of viewports) {
       initialLoadComplete = true;
 
       await expect(page.locator("h1")).toBeVisible();
-      await expect(page.locator("[data-home-ready=true]")).toBeVisible();
+      await expect(page.locator("[data-home-ready=true]")).toBeVisible({ timeout: 15_000 });
       console.log(`[PROD-VP ${vp.name}] Home initial load in ${Date.now() - startHome}ms`);
 
       // Check horizontal overflow

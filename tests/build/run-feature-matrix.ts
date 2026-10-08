@@ -6,6 +6,8 @@ import type { ProductConfig } from "@/platform/config/types";
 
 const featureConfigPath = "src/config/features.config.ts";
 const originalFeatureConfig = await readFile(featureConfigPath, "utf8");
+const hashesPath = "src/platform/security/static-inline-hashes.ts";
+const originalHashes = await readFile(hashesPath, "utf8");
 
 const disabled = {
   auth: { enabled: false, google: false, magicLink: false, password: false },
@@ -80,6 +82,7 @@ try {
   });
 } finally {
   await writeFile(featureConfigPath, originalFeatureConfig, "utf8");
+  await writeFile(hashesPath, originalHashes, "utf8");
 }
 
 let productionFailure: unknown;
