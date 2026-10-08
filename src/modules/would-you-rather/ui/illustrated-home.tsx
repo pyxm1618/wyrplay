@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, type ReactNode, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
 import { FEATURED_COLLECTIONS, QUESTIONS_DATABASE } from "../data/questions";
 import { Arrow, HomeArt } from "./home-art";
 import { rankLeaderboard, type LeaderboardResult } from "../domain/leaderboard";
@@ -169,6 +169,27 @@ export function IllustratedHome({
     };
     window.addEventListener("wyr:play-question", handler);
     return () => window.removeEventListener("wyr:play-question", handler);
+  }, []);
+
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const toastTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleCreateClick = () => {
+    setToastMessage("Coming soon — question creation is on the way.");
+    if (toastTimeoutRef.current) {
+      clearTimeout(toastTimeoutRef.current);
+    }
+    toastTimeoutRef.current = setTimeout(() => {
+      setToastMessage(null);
+    }, 3000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (toastTimeoutRef.current) {
+        clearTimeout(toastTimeoutRef.current);
+      }
+    };
   }, []);
   return (
     <>
@@ -474,9 +495,13 @@ export function IllustratedHome({
                   <br />
                   Share it with the world!
                 </p>
-                <Link className="dark-button create-button" href="/create">
-                  <span aria-hidden="true">＋</span>Create
-                </Link>
+                <button
+                  type="button"
+                  className="dark-button create-button"
+                  onClick={handleCreateClick}
+                >
+                  <span aria-hidden="true">＋</span>Coming soon
+                </button>
               </div>
               <Image
                 src="/home-art/bulb-hand.png"
@@ -585,6 +610,13 @@ export function IllustratedHome({
         </div>
       </div>
       <HomeFaq />
+      <div
+        role="status"
+        aria-live="polite"
+        className={`create-toast ${toastMessage ? "visible" : ""}`}
+      >
+        {toastMessage}
+      </div>
     </>
   );
 }

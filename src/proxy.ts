@@ -16,6 +16,7 @@ function createNonce(): string {
 const dynamicPathPatterns = [
   /^\/$/,
   /^\/leaderboards(?:\/.*)?$/,
+  /^\/test-bench(?:\/.*)?$/,
   /^\/account(?:\/.*)?$/,
   /^\/sign-in(?:\/.*)?$/,
   /^\/sign-up(?:\/.*)?$/,
@@ -80,6 +81,12 @@ export function proxy(request: NextRequest) {
     requestHeaders.delete("x-nonce");
   }
   requestHeaders.set("content-security-policy", contentSecurityPolicy);
+
+  if (isProduction && pathname === "/test-bench") {
+    const response = new NextResponse(null, { status: 404 });
+    response.headers.set("content-security-policy", contentSecurityPolicy);
+    return response;
+  }
 
   const response = NextResponse.next({ request: { headers: requestHeaders } });
   response.headers.set("content-security-policy", contentSecurityPolicy);
