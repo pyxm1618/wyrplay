@@ -29,6 +29,7 @@ const sensitiveHeaders = [
 ] as const;
 
 const nextConfig: NextConfig = {
+  generateBuildId: async () => "wyrplay-build",
   poweredByHeader: false,
   reactStrictMode: true,
   trailingSlash: false,

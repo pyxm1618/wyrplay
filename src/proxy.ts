@@ -1,9 +1,8 @@
-import fs from "node:fs";
-import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
 
 import { featuresConfig } from "@/config/features.config";
 import { buildContentSecurityPolicy } from "@/platform/security/content-security-policy";
+import { STATIC_INLINE_HASHES } from "@/platform/security/static-inline-hashes";
 
 const isDevelopment = process.env.NODE_ENV === "development";
 const isProduction = process.env.APP_ENV === "production";
@@ -28,31 +27,11 @@ function isDynamicRoute(pathname: string): boolean {
   return dynamicPathPatterns.some((pattern) => pattern.test(pathname));
 }
 
-let cachedHashes: string[] | null = null;
-
-function getStaticInlineHashes(): string[] {
-  if (cachedHashes) return cachedHashes;
-  try {
-    const filePath = path.resolve(process.cwd(), ".next/static-inline-hashes.json");
-    if (fs.existsSync(filePath)) {
-      const raw = fs.readFileSync(filePath, "utf8");
-      const data = JSON.parse(raw);
-      if (Array.isArray(data.all)) {
-        cachedHashes = data.all;
-        return cachedHashes!;
-      }
-    }
-  } catch {
-    // Graceful fallback if static hashes file cannot be read
-  }
-  return [];
-}
-
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const isDynamic = isDynamicRoute(pathname);
   const nonce = isDynamic ? createNonce() : undefined;
-  const hashes = !isDynamic ? getStaticInlineHashes() : undefined;
+  const hashes = !isDynamic ? STATIC_INLINE_HASHES : undefined;
 
   const contentSecurityPolicy = buildContentSecurityPolicy({
     nonce,

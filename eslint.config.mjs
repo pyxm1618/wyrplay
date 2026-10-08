@@ -196,6 +196,7 @@ export default defineConfig([
   ...nextTypeScript,
   globalIgnores([
     ".next/**",
+    ".vercel/**",
     ".worktrees/**",
     "finder-reconstruction/**",
     "home-reconstruction/**",
