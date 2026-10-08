@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "bun scripts/build-with-csp-closure.ts",
-    "build:test": "APP_ENV=test bun scripts/build-with-csp-closure.ts",
+    "build:test": "APP_ENV=test next build --webpack && bun scripts/generate-static-csp-hashes.ts",
     "start": "next start",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
