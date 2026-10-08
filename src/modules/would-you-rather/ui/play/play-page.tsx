@@ -1,6 +1,6 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- Original local illustration. */
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { Question } from "../../types";
@@ -11,7 +11,17 @@ import { PresenterModal, tryEnterFullscreen } from "../presenter-modal";
 import { PlayArtwork } from "./art";
 import { FinderIcon } from "../finder/icon";
 import "./play.css";
-export function PlayPage({
+
+function PlaySessionFallback() {
+  return (
+    <div className="play-toolbar" aria-busy="true">
+      <Link href="/find-questions?restore=1">← Back to questions</Link>
+      <span className="text-sm font-medium text-muted">Loading play session…</span>
+    </div>
+  );
+}
+
+function PlaySession({
   questions,
   authEnabled,
 }: {
@@ -51,8 +61,7 @@ export function PlayPage({
     }
   }
   return (
-    <div className="play-page">
-      <PlayArtwork />
+    <>
       <div className="play-toolbar">
         <Link href="/find-questions?restore=1">← Back to questions</Link>
         <div className="topic-pills">
@@ -133,6 +142,32 @@ export function PlayPage({
           {notice}
         </p>
       )}
+      <PresenterModal
+        isOpen={present}
+        question={question}
+        currentIndex={index}
+        totalCount={pool.length}
+        onNext={() => move(Math.min(index + 1, pool.length - 1))}
+        onPrev={() => move(Math.max(index - 1, 0))}
+        onClose={() => setPresent(false)}
+      />
+    </>
+  );
+}
+
+export function PlayPage({
+  questions,
+  authEnabled,
+}: {
+  readonly questions: readonly Question[];
+  readonly authEnabled: boolean;
+}) {
+  return (
+    <div className="play-page">
+      <PlayArtwork />
+      <Suspense fallback={<PlaySessionFallback />}>
+        <PlaySession questions={questions} authEnabled={authEnabled} />
+      </Suspense>
       <aside className="play-discover">
         <img src="/finder/assets/bulb.png" alt="" />
         <div>
@@ -144,15 +179,6 @@ export function PlayPage({
         <Link href="/would-you-rather-questions-for-friends">👥 Friends</Link>
         <Link href="/find-questions">▦ Browse all →</Link>
       </aside>
-      <PresenterModal
-        isOpen={present}
-        question={question}
-        currentIndex={index}
-        totalCount={pool.length}
-        onNext={() => move(Math.min(index + 1, pool.length - 1))}
-        onPrev={() => move(Math.max(index - 1, 0))}
-        onClose={() => setPresent(false)}
-      />
     </div>
   );
 }

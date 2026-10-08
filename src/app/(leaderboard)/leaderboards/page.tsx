@@ -1,3 +1,5 @@
+import { connection } from "next/server";
+
 import { routeRegistry } from "@/config/routes.config";
 import { LeaderboardPage, type LeaderboardResult } from "@/modules/would-you-rather";
 import { getLeaderboardSnapshot } from "@/modules/would-you-rather/server";
@@ -6,6 +8,7 @@ import { metadataForRoute } from "@/platform/seo/metadata";
 
 export const metadata = metadataForRoute(routeRegistry, "/leaderboards", currentSeoEnvironment());
 export default async function LeaderboardsRoute() {
+  await connection();
   let result: LeaderboardResult;
   try {
     result = { status: "ready", snapshot: await getLeaderboardSnapshot() };

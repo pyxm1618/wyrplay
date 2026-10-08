@@ -30,6 +30,7 @@ export interface WyrExperienceProps {
   readonly defaultCollection?: FeaturedCollectionKey;
   readonly showCategoryExplorer?: boolean;
   readonly allowUnreviewed?: boolean;
+  readonly trendingSlot?: React.ReactNode;
 }
 
 export function WyrExperience({
@@ -40,6 +41,7 @@ export function WyrExperience({
   defaultCollection,
   showCategoryExplorer = false,
   allowUnreviewed = false,
+  trendingSlot,
 }: WyrExperienceProps) {
   const hydrated = useHydrated();
   // 1. 搜索与筛选状态
@@ -288,6 +290,7 @@ export function WyrExperience({
       <IllustratedHome
         arena={arena}
         leaderboard={leaderboard}
+        trendingSlot={trendingSlot}
         onPlayQuestion={(id) => {
           if (
             questions.some((question) => question.id === id && question.reviewStatus === "approved")

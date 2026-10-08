@@ -133,16 +133,18 @@ export function IllustratedHome({
   arena,
   onPlayQuestion,
   leaderboard,
+  trendingSlot,
 }: {
-  leaderboard: LeaderboardResult;
+  leaderboard?: LeaderboardResult;
   children: ReactNode;
   arena: ReactNode;
   onPlayQuestion: (id: string) => void;
+  trendingSlot?: ReactNode;
 }) {
   const approved = QUESTIONS_DATABASE.filter((question) => question.reviewStatus === "approved");
   const highlights = approved.slice(0, 3);
   const rankings =
-    leaderboard.status === "ready"
+    leaderboard && leaderboard.status === "ready"
       ? rankLeaderboard(leaderboard.snapshot.entries, "all").slice(0, 3)
       : [];
   const play = (id: string) => {
@@ -157,6 +159,17 @@ export function IllustratedHome({
     focusArena();
     requestAnimationFrame(focusArena);
   };
+
+  useEffect(() => {
+    const handler = (event: Event) => {
+      const custom = event as CustomEvent<{ id: string }>;
+      if (custom.detail?.id) {
+        play(custom.detail.id);
+      }
+    };
+    window.addEventListener("wyr:play-question", handler);
+    return () => window.removeEventListener("wyr:play-question", handler);
+  }, []);
 
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const toastTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -433,45 +446,46 @@ export function IllustratedHome({
           <Heading title="Trending Would You Rather Questions" href="/leaderboards" />
           <div className="trending-grid">
             <div className="trending-list">
-              {leaderboard.status === "ready" && rankings.length > 0 ? (
-                rankings.map((entry) => (
-                  <button
-                    type="button"
-                    key={entry.question.id}
-                    className="trending-card"
-                    onClick={() => play(entry.question.id)}
-                  >
-                    <span className="ranking-number">#{entry.rank}</span>
-                    <span className="trending-body">
-                      <span className="trending-title">{entry.question.question}</span>
-                      <span className="trending-meta">{entry.votes.toLocaleString()} votes</span>
-                    </span>
-                    <span className="round-arrow">
+              {trendingSlot ??
+                (leaderboard && leaderboard.status === "ready" && rankings.length > 0 ? (
+                  rankings.map((entry) => (
+                    <button
+                      type="button"
+                      key={entry.question.id}
+                      className="trending-card"
+                      onClick={() => play(entry.question.id)}
+                    >
+                      <span className="ranking-number">#{entry.rank}</span>
+                      <span className="trending-body">
+                        <span className="trending-title">{entry.question.question}</span>
+                        <span className="trending-meta">{entry.votes.toLocaleString()} votes</span>
+                      </span>
+                      <span className="round-arrow">
+                        <Arrow />
+                      </span>
+                    </button>
+                  ))
+                ) : (
+                  <div className="ranking-awaiting">
+                    <HomeArt
+                      src="decorations/ranking-crown"
+                      width={106}
+                      height={87}
+                      sizes="95px"
+                      className="ranking-crown"
+                    />
+                    <h3>Question Rankings</h3>
+                    <p>
+                      {leaderboard && leaderboard.status === "ready"
+                        ? "No votes yet. Make your choice to start the rankings."
+                        : "Rankings are temporarily unavailable. Try the leaderboard again."}
+                    </p>
+                    <Link className="section-link" href="/leaderboards">
+                      View leaderboard
                       <Arrow />
-                    </span>
-                  </button>
-                ))
-              ) : (
-                <div className="ranking-awaiting">
-                  <HomeArt
-                    src="decorations/ranking-crown"
-                    width={106}
-                    height={87}
-                    sizes="95px"
-                    className="ranking-crown"
-                  />
-                  <h3>Question Rankings</h3>
-                  <p>
-                    {leaderboard.status === "ready"
-                      ? "No votes yet. Make your choice to start the rankings."
-                      : "Rankings are temporarily unavailable. Try the leaderboard again."}
-                  </p>
-                  <Link className="section-link" href="/leaderboards">
-                    View leaderboard
-                    <Arrow />
-                  </Link>
-                </div>
-              )}
+                    </Link>
+                  </div>
+                ))}
             </div>
             <div className="create-panel">
               <div className="create-copy">

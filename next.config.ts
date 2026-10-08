@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { getBuildId } from "./src/platform/build/build-id";
 
 const isProduction = process.env.APP_ENV === "production";
 
@@ -29,6 +30,7 @@ const sensitiveHeaders = [
 ] as const;
 
 const nextConfig: NextConfig = {
+  generateBuildId: async () => getBuildId(),
   poweredByHeader: false,
   reactStrictMode: true,
   trailingSlash: false,

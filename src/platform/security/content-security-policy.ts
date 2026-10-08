@@ -1,5 +1,6 @@
 export type ContentSecurityPolicyInput = Readonly<{
-  nonce: string;
+  nonce?: string | undefined;
+  hashes?: readonly string[] | undefined;
   development: boolean;
   production: boolean;
   analytics: Readonly<{ ga4: boolean; clarity: boolean }>;
@@ -7,12 +8,17 @@ export type ContentSecurityPolicyInput = Readonly<{
 }>;
 
 export function buildContentSecurityPolicy(input: ContentSecurityPolicyInput): string {
-  if (!input.nonce.trim()) throw new Error("CSP nonce is required");
+  if (input.nonce !== undefined && !input.nonce.trim()) {
+    throw new Error("CSP nonce must not be empty");
+  }
 
   const turnstileOrigin = "https://challenges.cloudflare.com";
   const scriptSources = [
     "'self'",
-    `'nonce-${input.nonce}'`,
+    ...(input.nonce ? [`'nonce-${input.nonce}'`] : []),
+    ...(input.hashes && input.hashes.length > 0
+      ? input.hashes.map((hash) => `'sha256-${hash}'`)
+      : []),
     ...(input.development ? ["'unsafe-eval'"] : []),
     ...(input.analytics.ga4 ? ["https://www.googletagmanager.com"] : []),
     ...(input.analytics.clarity ? ["https://www.clarity.ms"] : []),

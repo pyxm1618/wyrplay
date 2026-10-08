@@ -32,14 +32,7 @@ export function SiteHeader({
 }> = {}) {
   const pathname = usePathname();
 
-  return (
-    <SiteHeaderContent
-      key={pathname}
-      pathname={pathname}
-      locale={locale}
-      authEnabled={authEnabled}
-    />
-  );
+  return <SiteHeaderContent pathname={pathname} locale={locale} authEnabled={authEnabled} />;
 }
 
 function SiteHeaderContent({
@@ -52,6 +45,12 @@ function SiteHeaderContent({
   authEnabled: boolean;
 }>) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(pathname);
+
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setMobileMenuOpen(false);
+  }
   const homeHref = localePath(siteConfig, locale, "/");
   const toLocaleHref = (href: string) => localePath(siteConfig, locale, href);
 

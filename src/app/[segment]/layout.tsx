@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { connection } from "next/server";
 import type { ReactNode } from "react";
 
 import { AnalyticsBoundary } from "@/components/analytics/analytics-boundary";
@@ -8,8 +7,6 @@ import { seoLandingPages } from "@/config/seo-landings.config";
 import { siteConfig } from "@/config/site.config";
 import { isSupportedLocale } from "@/platform/i18n/routing";
 import { rootMetadata } from "@/platform/seo/root-metadata";
-
-import "../globals.css";
 
 export const metadata: Metadata = rootMetadata();
 
@@ -26,8 +23,7 @@ export function generateStaticParams() {
   return [...new Set([...landingSegments, ...localeSegments])].map((segment) => ({ segment }));
 }
 
-export default async function SegmentRootLayout({ children, params }: SegmentLayoutProps) {
-  await connection();
+export default async function SegmentLayout({ children, params }: SegmentLayoutProps) {
   const { segment } = await params;
   const locale =
     segment !== siteConfig.defaultLocale && isSupportedLocale(siteConfig, segment)
@@ -35,14 +31,9 @@ export default async function SegmentRootLayout({ children, params }: SegmentLay
       : siteConfig.defaultLocale;
 
   return (
-    <html lang={locale}>
-      <head>
-        <meta name="google-adsense-account" content="ca-pub-2804737462866511" />
-      </head>
-      <body>
-        <SiteShell locale={locale}>{children}</SiteShell>
-        <AnalyticsBoundary />
-      </body>
-    </html>
+    <>
+      <SiteShell locale={locale}>{children}</SiteShell>
+      <AnalyticsBoundary />
+    </>
   );
 }

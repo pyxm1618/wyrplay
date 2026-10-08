@@ -5,8 +5,8 @@
   "packageManager": "bun@1.3.14",
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "next build --webpack",
-    "build:test": "APP_ENV=test next build --webpack",
+    "build": "bun scripts/build-with-csp-closure.ts",
+    "build:test": "APP_ENV=test next build --webpack && bun scripts/generate-static-csp-hashes.ts",
     "start": "next start",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -25,6 +25,7 @@
     "verify:seo": "bun scripts/verify-seo.ts",
     "verify:seo:production": "playwright test --config playwright.production.config.ts",
     "verify:i18n": "bun scripts/verify-i18n.ts",
+    "verify:csp-hashes": "bun scripts/verify-static-csp-hashes.ts",
     "verify:performance": "playwright test --config playwright.performance.config.ts && playwright test --config playwright.performance-analytics.config.ts",
     "verify:security": "bun scripts/verify-security.ts && APP_ENV=production bun scripts/verify-security.ts",
     "verify:subscription": "bun scripts/verify-subscription.ts",

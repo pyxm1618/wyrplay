@@ -3,7 +3,7 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   testDir: "./tests/performance",
   fullyParallel: false,
-  timeout: 45_000,
+  timeout: 60_000,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? "github" : "list",
   use: {
@@ -21,6 +21,7 @@ export default defineConfig({
     env: {
       APP_ENV: "test",
       APP_ORIGIN: "http://127.0.0.1:3000",
+      HOMEPAGE_LEADERBOARD_TEST_DELAY_MS: process.env.HOMEPAGE_LEADERBOARD_TEST_DELAY_MS ?? "1000",
       DATABASE_URL:
         process.env.TEST_DATABASE_URL ??
         "postgres://postgres:postgres@localhost:5432/creat_web_test",
