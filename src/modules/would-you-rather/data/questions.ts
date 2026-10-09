@@ -34,7 +34,7 @@ export const FEATURED_COLLECTIONS: Record<FeaturedCollectionKey, CollectionMeta>
     seoTitle: "Would You Rather Questions for Kids – Fun & Clean Dilemmas",
     seoDescription:
       "Discover the best clean and imaginative Would You Rather questions for kids. Perfect for school classrooms, family road trips, and dinner conversations.",
-    badge: "For Ages 6–12",
+    badge: "For Ages 4–12",
   },
   funny: {
     key: "funny",
