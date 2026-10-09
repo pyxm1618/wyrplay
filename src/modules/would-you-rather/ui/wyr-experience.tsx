@@ -26,6 +26,31 @@ import { useHydrated } from "./use-hydrated";
 import { IllustratedHome } from "./illustrated-home";
 import { CategoryExplorer } from "./category-explorer";
 
+function escapeSemanticHtml(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function buildHomeDirectorySemanticMarkup(questions: readonly Question[]): string {
+  return questions
+    .map((item, idx) => {
+      const difficulty = item.difficulty
+        ? `<span class="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">${escapeSemanticHtml(item.difficulty)}</span>`
+        : "";
+      const relationship = item.relationships[0] ?? item.primaryCollection;
+      const relationshipBadge = relationship
+        ? `<span class="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">${escapeSemanticHtml(relationship)}</span>`
+        : "";
+
+      return `<li class="home-directory-semantic-item border-b border-border/30 pb-3"><article><div class="flex items-center gap-2 mb-1"><span class="font-mono text-xs font-bold text-muted">#${String(idx + 1).padStart(2, "0")}</span>${difficulty}${relationshipBadge}</div><h3 class="font-serif text-sm font-bold text-foreground">${escapeSemanticHtml(item.question)}</h3><div class="mt-1 flex flex-wrap gap-x-4 text-xs text-muted"><span><strong>A:</strong> ${escapeSemanticHtml(item.optionA)}</span><span><strong>B:</strong> ${escapeSemanticHtml(item.optionB)}</span></div></article></li>`;
+    })
+    .join("");
+}
+
 function ArenaHydrationGate({ children }: { readonly children: React.ReactNode }) {
   const hydrated = useHydrated();
   return (
@@ -218,6 +243,14 @@ export function WyrExperience({
     selectedDifficulty,
   );
 
+  const homeDirectorySemanticMarkup = useMemo(
+    () =>
+      appearance === "illustrated-home"
+        ? buildHomeDirectorySemanticMarkup(directoryQuestions)
+        : "",
+    [appearance, directoryQuestions],
+  );
+
   const directory = (
     <QuestionDirectory
       questions={directoryQuestions}
@@ -309,43 +342,10 @@ export function WyrExperience({
             directory
           ) : (
             <section id="questions">
-              <ol className="home-directory-semantic-list space-y-3 p-4">
-                {directoryQuestions.map((item, idx) => (
-                  <li
-                    key={item.id}
-                    className="home-directory-semantic-item border-b border-border/30 pb-3"
-                  >
-                    <article>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="font-mono text-xs font-bold text-muted">
-                          #{String(idx + 1).padStart(2, "0")}
-                        </span>
-                        {item.difficulty && (
-                          <span className="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">
-                            {item.difficulty}
-                          </span>
-                        )}
-                        {(item.relationships[0] ?? item.primaryCollection) && (
-                          <span className="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">
-                            {item.relationships[0] ?? item.primaryCollection}
-                          </span>
-                        )}
-                      </div>
-                      <h3 className="font-serif text-sm font-bold text-foreground">
-                        {item.question}
-                      </h3>
-                      <div className="mt-1 flex flex-wrap gap-x-4 text-xs text-muted">
-                        <span>
-                          <strong>A:</strong> {item.optionA}
-                        </span>
-                        <span>
-                          <strong>B:</strong> {item.optionB}
-                        </span>
-                      </div>
-                    </article>
-                  </li>
-                ))}
-              </ol>
+              <ol
+                className="home-directory-semantic-list space-y-3 p-4"
+                dangerouslySetInnerHTML={{ __html: homeDirectorySemanticMarkup }}
+              />
             </section>
           )}
         </details>
