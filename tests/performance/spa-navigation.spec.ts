@@ -1,4 +1,15 @@
-import { expect, test, type Request } from "@playwright/test";
+import { expect, test, type Page, type Request } from "@playwright/test";
+
+async function waitForInteractiveHome(page: Page) {
+  await expect(page.locator('[data-home-ready="true"]')).toBeVisible();
+  await page.waitForFunction(() => {
+    const image = document.querySelector<HTMLImageElement>(".hero-title-img");
+    return Boolean(image?.complete && image.naturalWidth > 0);
+  });
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+  });
+}
 
 test.describe("SPA Client Navigation Gate", () => {
   test("Header navigation maintains client-side routing without full document reload or full-screen loading", async ({
