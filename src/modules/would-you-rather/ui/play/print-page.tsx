@@ -996,18 +996,43 @@ function PrintPageContent({
                             <>
                               <div style={{ textAlign: "center", marginBottom: "8pt" }}>
                                 <img src="/play-art/logo.png" alt="" style={{ height: "18pt" }} />
-                                <h3 style={{ fontFamily: "PlayHand", fontSize: "15pt", margin: "2pt 0 0" }}>
+                                <h3
+                                  style={{
+                                    fontFamily: "PlayHand",
+                                    fontSize: "15pt",
+                                    margin: "2pt 0 0",
+                                  }}
+                                >
                                   Would you rather
                                 </h3>
                                 {showNumbers && (
-                                  <span style={{ fontSize: "8pt", color: "#888", display: "block" }}>
+                                  <span
+                                    style={{ fontSize: "8pt", color: "#888", display: "block" }}
+                                  >
                                     #{p.number}
                                   </span>
                                 )}
                               </div>
-                              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14pt", flex: 1, alignItems: "start" }}>
+                              <div
+                                style={{
+                                  display: "grid",
+                                  gridTemplateColumns: "1fr 1fr",
+                                  gap: "14pt",
+                                  flex: 1,
+                                  alignItems: "start",
+                                }}
+                              >
                                 <div>
-                                  <div style={{ aspectRatio: "1 / 1", border: "1pt solid #cbd5e1", borderRadius: "4pt", overflow: "hidden", marginBottom: "6pt", position: "relative" }}>
+                                  <div
+                                    style={{
+                                      aspectRatio: "1 / 1",
+                                      border: "1pt solid #cbd5e1",
+                                      borderRadius: "4pt",
+                                      overflow: "hidden",
+                                      marginBottom: "6pt",
+                                      position: "relative",
+                                    }}
+                                  >
                                     <img
                                       src={visualAsset.src}
                                       alt=""
@@ -1023,7 +1048,13 @@ function PrintPageContent({
                                       }}
                                     />
                                   </div>
-                                  <div style={{ display: "flex", gap: "6pt", alignItems: "flex-start" }}>
+                                  <div
+                                    style={{
+                                      display: "flex",
+                                      gap: "6pt",
+                                      alignItems: "flex-start",
+                                    }}
+                                  >
                                     <span
                                       style={{
                                         background: "#ff3457",
@@ -1046,7 +1077,16 @@ function PrintPageContent({
                                   </div>
                                 </div>
                                 <div>
-                                  <div style={{ aspectRatio: "1 / 1", border: "1pt solid #cbd5e1", borderRadius: "4pt", overflow: "hidden", marginBottom: "6pt", position: "relative" }}>
+                                  <div
+                                    style={{
+                                      aspectRatio: "1 / 1",
+                                      border: "1pt solid #cbd5e1",
+                                      borderRadius: "4pt",
+                                      overflow: "hidden",
+                                      marginBottom: "6pt",
+                                      position: "relative",
+                                    }}
+                                  >
                                     <img
                                       src={visualAsset.src}
                                       alt=""
@@ -1062,7 +1102,13 @@ function PrintPageContent({
                                       }}
                                     />
                                   </div>
-                                  <div style={{ display: "flex", gap: "6pt", alignItems: "flex-start" }}>
+                                  <div
+                                    style={{
+                                      display: "flex",
+                                      gap: "6pt",
+                                      alignItems: "flex-start",
+                                    }}
+                                  >
                                     <span
                                       style={{
                                         background: "#008cff",
@@ -1093,7 +1139,13 @@ function PrintPageContent({
                           <>
                             <div style={{ textAlign: "center", marginBottom: "12pt" }}>
                               <img src="/play-art/logo.png" alt="" style={{ height: "20pt" }} />
-                              <h3 style={{ fontFamily: "PlayHand", fontSize: "16pt", margin: "4pt 0 0" }}>
+                              <h3
+                                style={{
+                                  fontFamily: "PlayHand",
+                                  fontSize: "16pt",
+                                  margin: "4pt 0 0",
+                                }}
+                              >
                                 Would you rather
                               </h3>
                               {showNumbers && (
