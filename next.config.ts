@@ -37,6 +37,7 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   allowedDevOrigins: ["127.0.0.1", "localhost"],
   experimental: {
+    inlineCss: true,
     globalNotFound: true,
     sri: {
       algorithm: "sha256",
