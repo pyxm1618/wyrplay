@@ -32,6 +32,7 @@ test.describe("SPA Client Navigation Gate", () => {
 
     // 1. Initial load of Home page
     await page.goto("/", { waitUntil: "load" });
+    await waitForInteractiveHome(page);
     initialLoadComplete = true;
 
     const navSteps = [
