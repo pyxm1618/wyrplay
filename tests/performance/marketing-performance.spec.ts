@@ -58,9 +58,10 @@ for (const route of routes) {
               size?: number;
             };
             const element = item.element;
+            const classes = typeof element?.className === "string" ? element.className : "";
             window.__homeDiagnostic!.lcp = {
               element: element
-                ? `${element.tagName.toLowerCase()}#${element.id}.${typeof element.className === "string" ? element.className : ""}`
+                ? `${element.tagName.toLowerCase()}#${element.id}.${classes}`
                 : "(no element)",
               url: item.url ?? "",
               start: item.startTime,
@@ -189,7 +190,9 @@ for (const route of routes) {
             bytes: item.transferSize,
           })),
       }));
-      console.log(`[HOME PERF DIAGNOSTIC ${test.info().project.name}] ${JSON.stringify(diagnostics)}`);
+      console.log(
+        `[HOME PERF DIAGNOSTIC ${test.info().project.name}] ${JSON.stringify(diagnostics)}`,
+      );
     }
 
     const metrics = await page.evaluate(() => {
