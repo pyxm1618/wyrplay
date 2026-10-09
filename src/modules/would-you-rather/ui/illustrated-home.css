@@ -1885,10 +1885,10 @@
   cursor: pointer;
   color: var(--foreground);
   font-weight: 700;
+}
 .illustrated-home .home-directory-semantic-item {
   content-visibility: auto;
   contain-intrinsic-size: auto 100px;
-}
 }
 .illustrated-home .ranking-number {
   display: grid;
