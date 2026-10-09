@@ -272,7 +272,11 @@ const masters: MasterSpec[] = [
 async function main() {
   for (const m of masters) {
     const masterPath = join(process.cwd(), "content/question-bank/visual-masters", `${m.id}.svg`);
-    const masterPngPath = join(process.cwd(), "content/question-bank/visual-masters", `${m.id}.png`);
+    const masterPngPath = join(
+      process.cwd(),
+      "content/question-bank/visual-masters",
+      `${m.id}.png`,
+    );
     const publicPngPath = join(process.cwd(), "public/question-visuals", `${m.id}.png`);
 
     writeFileSync(masterPath, m.svg, "utf-8");
@@ -284,10 +288,7 @@ async function main() {
       .toFile(masterPngPath);
 
     // 复制/发布到 public/question-visuals/
-    await sharp(Buffer.from(m.svg))
-      .resize(1200, 600)
-      .png({ quality: 90 })
-      .toFile(publicPngPath);
+    await sharp(Buffer.from(m.svg)).resize(1200, 600).png({ quality: 90 }).toFile(publicPngPath);
 
     console.log(`Generated master and public visual for ${m.id}`);
   }
