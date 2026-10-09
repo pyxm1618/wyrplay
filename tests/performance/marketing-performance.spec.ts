@@ -4,6 +4,10 @@ import { expect, test, type Route } from "@playwright/test";
 declare global {
   interface Window {
     __cwv?: { cls: number; inp: number; lcp: number };
+    __homeDiagnostic?: {
+      lcp: { element: string; url: string; start: number; size: number } | null;
+      longTasks: { start: number; duration: number }[];
+    };
   }
 }
 
@@ -42,6 +46,39 @@ for (const route of routes) {
 
     await page.route("**/api/wyr/vote?*", fulfillEmptyVoteStats);
     await page.route("**/api/wyr/kids-vote?*", fulfillEmptyVoteStats);
+
+    if (route === "/") {
+      await page.addInitScript(() => {
+        window.__homeDiagnostic = { lcp: null, longTasks: [] };
+        new PerformanceObserver((list) => {
+          for (const entry of list.getEntries()) {
+            const item = entry as PerformanceEntry & {
+              element?: Element;
+              url?: string;
+              size?: number;
+            };
+            const element = item.element;
+            const classes = typeof element?.className === "string" ? element.className : "";
+            window.__homeDiagnostic!.lcp = {
+              element: element
+                ? `${element.tagName.toLowerCase()}#${element.id}.${classes}`
+                : "(no element)",
+              url: item.url ?? "",
+              start: item.startTime,
+              size: item.size ?? 0,
+            };
+          }
+        }).observe({ type: "largest-contentful-paint", buffered: true });
+        new PerformanceObserver((list) => {
+          for (const item of list.getEntries()) {
+            window.__homeDiagnostic!.longTasks.push({
+              start: Math.round(item.startTime),
+              duration: Math.round(item.duration),
+            });
+          }
+        }).observe({ type: "longtask", buffered: true });
+      });
+    }
 
     await page.addInitScript(() => {
       window.__cwv = { cls: 0, inp: 0, lcp: 0 };
@@ -136,6 +173,26 @@ for (const route of routes) {
       });
       await firstLink.click();
       await page.waitForTimeout(100);
+    }
+
+    if (route === "/") {
+      const diagnostics = await page.evaluate(() => ({
+        lcp: window.__homeDiagnostic?.lcp,
+        longTasks: (window.__homeDiagnostic?.longTasks ?? [])
+          .sort((a, b) => b.duration - a.duration)
+          .slice(0, 8),
+        css: (performance.getEntriesByType("resource") as PerformanceResourceTiming[])
+          .filter((item) => item.name.includes(".css"))
+          .map((item) => ({
+            name: item.name.split("/").at(-1),
+            start: Math.round(item.startTime),
+            duration: Math.round(item.duration),
+            bytes: item.transferSize,
+          })),
+      }));
+      console.log(
+        `[HOME PERF DIAGNOSTIC ${test.info().project.name}] ${JSON.stringify(diagnostics)}`,
+      );
     }
 
     const metrics = await page.evaluate(() => {
