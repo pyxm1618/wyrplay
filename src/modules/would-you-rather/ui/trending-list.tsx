@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { Arrow, HomeArt } from "./home-art";
+import { Arrow } from "./home-art";
 import { rankLeaderboard, type LeaderboardResult } from "../domain/leaderboard";
 
 export function TrendingListSkeleton() {
@@ -44,29 +45,63 @@ export function TrendingListSkeleton() {
   );
 }
 
-export function TrendingListContent({ leaderboard }: { leaderboard: LeaderboardResult }) {
-  const rankings =
-    leaderboard.status === "ready"
-      ? rankLeaderboard(leaderboard.snapshot.entries, "all").slice(0, 3)
-      : [];
+export type HomepageTrendingItem = {
+  readonly rank: number;
+  readonly id: string;
+  readonly question: string;
+  readonly votes: number;
+};
+
+export type TrendingListContentProps =
+  | {
+      status: "ready" | "unavailable";
+      items: readonly HomepageTrendingItem[];
+      leaderboard?: never;
+    }
+  | {
+      leaderboard: LeaderboardResult;
+      status?: never;
+      items?: never;
+    };
+
+export function TrendingListContent(props: TrendingListContentProps) {
+  let status: "ready" | "unavailable" = "unavailable";
+  let items: readonly HomepageTrendingItem[] = [];
+
+  if ("items" in props && props.items) {
+    status = props.status;
+    items = props.items;
+  } else if ("leaderboard" in props && props.leaderboard) {
+    status = props.leaderboard.status;
+    if (props.leaderboard.status === "ready") {
+      items = rankLeaderboard(props.leaderboard.snapshot.entries, "all")
+        .slice(0, 3)
+        .map((entry) => ({
+          rank: entry.rank,
+          id: entry.question.id,
+          question: entry.question.question,
+          votes: entry.votes,
+        }));
+    }
+  }
 
   const handleSelect = (id: string) => {
     window.dispatchEvent(new CustomEvent("wyr:play-question", { detail: { id } }));
   };
 
-  if (leaderboard.status === "ready" && rankings.length > 0) {
+  if (status === "ready" && items.length > 0) {
     return (
       <div className="trending-content-ready" data-trending-ready="true">
-        {rankings.map((entry) => (
+        {items.map((entry) => (
           <button
             type="button"
-            key={entry.question.id}
+            key={entry.id}
             className="trending-card"
-            onClick={() => handleSelect(entry.question.id)}
+            onClick={() => handleSelect(entry.id)}
           >
             <span className="ranking-number">#{entry.rank}</span>
             <span className="trending-body">
-              <span className="trending-title">{entry.question.question}</span>
+              <span className="trending-title">{entry.question}</span>
               <span className="trending-meta">{entry.votes.toLocaleString()} votes</span>
             </span>
             <span className="round-arrow">
@@ -80,20 +115,21 @@ export function TrendingListContent({ leaderboard }: { leaderboard: LeaderboardR
 
   return (
     <div className="ranking-awaiting" data-trending-unavailable="true">
-      <HomeArt
-        src="decorations/ranking-crown"
+      <Image
+        src="/home-art/decorations/ranking-crown.webp"
+        alt=""
         width={106}
         height={87}
         sizes="95px"
-        className="ranking-crown"
+        className="ranking-crown art-crop"
       />
       <h3>Question Rankings</h3>
       <p>
-        {leaderboard.status === "ready"
+        {status === "ready"
           ? "No votes yet. Make your choice to start the rankings."
           : "Rankings are temporarily unavailable. Try the leaderboard again."}
       </p>
-      <Link className="section-link" href="/leaderboards">
+      <Link className="section-link" href="/leaderboards" prefetch={false}>
         View leaderboard
         <Arrow />
       </Link>

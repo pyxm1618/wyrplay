@@ -20,6 +20,7 @@ export type {
   LeaderboardPeriod,
   LeaderboardSnapshot,
 } from "./domain/leaderboard";
+export { rankLeaderboard } from "./domain/leaderboard";
 export { LeaderboardPage } from "./ui/leaderboard/leaderboard-page";
 
 export { PlayPage } from "./ui/play/play-page";

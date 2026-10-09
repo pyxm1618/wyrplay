@@ -1,10 +1,7 @@
 import type { ReactNode } from "react";
 import type { LandingSection } from "@/components/landing/landing-page";
-import {
-  QUESTIONS_DATABASE,
-  WyrExperience,
-  type LeaderboardResult,
-} from "@/modules/would-you-rather";
+import type { LeaderboardResult } from "@/modules/would-you-rather";
+import { WyrExperience } from "@/modules/would-you-rather";
 
 import { routeRegistry } from "./routes.config";
 
@@ -31,7 +28,6 @@ function homeSurface(leaderboard: LeaderboardResult) {
     <>
       <WyrExperience
         appearance="illustrated-home"
-        questions={QUESTIONS_DATABASE}
         categoryBadge="Curated Would You Rather Questions"
         showCategoryExplorer={true}
         leaderboard={leaderboard}
@@ -50,7 +46,6 @@ export function homeConfigWithTrendingSlot(trendingSlot: ReactNode) {
             surface: (
               <WyrExperience
                 appearance="illustrated-home"
-                questions={QUESTIONS_DATABASE}
                 categoryBadge="Curated Would You Rather Questions"
                 showCategoryExplorer={true}
                 trendingSlot={trendingSlot}

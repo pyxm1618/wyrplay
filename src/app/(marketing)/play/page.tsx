@@ -3,6 +3,7 @@ import { playConfig } from "@/config/play.config";
 import { routeRegistry } from "@/config/routes.config";
 import { currentSeoEnvironment } from "@/platform/seo/environment-policy";
 import { metadataForRoute } from "@/platform/seo/metadata";
+import "./play.css";
 
 export const metadata: Metadata = metadataForRoute(routeRegistry, "/play", currentSeoEnvironment());
 

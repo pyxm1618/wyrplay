@@ -5,7 +5,11 @@ import { LandingPage } from "@/components/landing/landing-page";
 import { JsonLd } from "@/components/seo/json-ld";
 import { homeConfigWithTrendingSlot } from "@/config/home.config";
 import { routeRegistry } from "@/config/routes.config";
-import { TrendingListContent, TrendingListSkeleton } from "@/modules/would-you-rather";
+import {
+  rankLeaderboard,
+  TrendingListContent,
+  TrendingListSkeleton,
+} from "@/modules/would-you-rather";
 import { loadHomepageLeaderboard } from "@/modules/would-you-rather/server";
 import { currentSeoEnvironment } from "@/platform/seo/environment-policy";
 import { metadataForRoute } from "@/platform/seo/metadata";
@@ -17,7 +21,18 @@ export const metadata: Metadata = metadataForRoute(routeRegistry, "/", currentSe
 
 async function HomepageTrendingAsync() {
   const leaderboard = await loadHomepageLeaderboard();
-  return <TrendingListContent leaderboard={leaderboard} />;
+  if (leaderboard.status === "ready") {
+    const items = rankLeaderboard(leaderboard.snapshot.entries, "all")
+      .slice(0, 3)
+      .map((entry) => ({
+        rank: entry.rank,
+        id: entry.question.id,
+        question: entry.question.question,
+        votes: entry.votes,
+      }));
+    return <TrendingListContent status="ready" items={items} />;
+  }
+  return <TrendingListContent status="unavailable" items={[]} />;
 }
 
 export default async function HomePage() {

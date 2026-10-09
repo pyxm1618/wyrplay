@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { KidsPage, getQuestionsByCollection } from "@/modules/would-you-rather";
+import "./kids.css";
 
 import { LandingPage } from "@/components/landing/landing-page";
 import { JsonLd } from "@/components/seo/json-ld";

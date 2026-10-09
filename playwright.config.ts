@@ -4,6 +4,8 @@ export default defineConfig({
   testDir: "./tests/e2e",
   fullyParallel: false,
   retries: process.env.CI ? 1 : 0,
+  ...(process.env.CI ? { workers: 1 } : {}),
+  expect: { timeout: 10_000 },
   reporter: process.env.CI ? "github" : "list",
   use: {
     baseURL: "http://127.0.0.1:3000",
@@ -14,6 +16,7 @@ export default defineConfig({
     command: "bun tests/e2e/start-enabled-test-server.ts",
     url: "http://127.0.0.1:3000",
     reuseExistingServer: !process.env.CI,
+    timeout: 180_000,
     env: {
       APP_ENV: "test",
       APP_ORIGIN: "http://127.0.0.1:3000",

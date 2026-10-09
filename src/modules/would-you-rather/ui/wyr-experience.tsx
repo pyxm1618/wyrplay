@@ -13,8 +13,12 @@ import type {
   Relationship,
   Tone,
 } from "../types";
+import dynamic from "next/dynamic";
 import { DuelArena } from "./duel-arena";
-import { PresenterModal } from "./presenter-modal";
+
+const PresenterModal = dynamic(() => import("./presenter-modal").then((m) => m.PresenterModal), {
+  ssr: false,
+});
 import { QuestionDirectory } from "./question-directory";
 import { QuestionFilterBar } from "./question-filter-bar";
 import type { LeaderboardResult } from "../domain/leaderboard";
@@ -57,6 +61,9 @@ export function WyrExperience({
   // 2. Presenter Modal 状态
   const [isPresenterOpen, setIsPresenterOpen] = useState(false);
   const presenterTriggerRef = useRef<HTMLButtonElement>(null);
+
+  // 2.1 首页折叠目录懒展开状态（避免未展开时在初始 HTML 中一次性输出 1MB DOM 节点）
+  const [isDirectoryOpen, setIsDirectoryOpen] = useState(false);
 
   // 3. 计算当前有效题集
   // 3.1 可玩题集 (严格限定 reviewStatus === 'approved'，用于 Arena、Random、Presenter)
@@ -264,9 +271,55 @@ export function WyrExperience({
 
       {/* 4. 目录展示 (仅展示 approved 题目；未审核题严格杜绝暴露在生产界面) */}
       {appearance === "illustrated-home" ? (
-        <details className="home-directory" open={hasActiveFilters ? true : undefined}>
+        <details
+          className="home-directory"
+          open={hasActiveFilters || isDirectoryOpen ? true : undefined}
+          onToggle={(e) => setIsDirectoryOpen((e.currentTarget as HTMLDetailsElement).open)}
+        >
           <summary>Browse all {directoryQuestions.length} Would You Rather Questions</summary>
-          {directory}
+          {hasActiveFilters || isDirectoryOpen ? (
+            directory
+          ) : (
+            <section id="questions">
+              <ol className="home-directory-semantic-list space-y-3 p-4">
+                {directoryQuestions.map((item, idx) => (
+                  <li
+                    key={item.id}
+                    className="home-directory-semantic-item border-b border-border/30 pb-3"
+                  >
+                    <article>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-mono text-xs font-bold text-muted">
+                          #{String(idx + 1).padStart(2, "0")}
+                        </span>
+                        {item.difficulty && (
+                          <span className="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">
+                            {item.difficulty}
+                          </span>
+                        )}
+                        {(item.relationships[0] ?? item.primaryCollection) && (
+                          <span className="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">
+                            {item.relationships[0] ?? item.primaryCollection}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="font-serif text-sm font-bold text-foreground">
+                        {item.question}
+                      </h3>
+                      <div className="mt-1 flex flex-wrap gap-x-4 text-xs text-muted">
+                        <span>
+                          <strong>A:</strong> {item.optionA}
+                        </span>
+                        <span>
+                          <strong>B:</strong> {item.optionB}
+                        </span>
+                      </div>
+                    </article>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
         </details>
       ) : (
         directory

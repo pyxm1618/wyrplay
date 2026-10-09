@@ -4,13 +4,12 @@ import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { Question } from "../../types";
-import { resolveQuestionPool, questionPoolUrl } from "../../domain/play-session";
+import { resolveQuestionPool, questionPoolUrl } from "../../domain/question-pool";
 import { useSavedQuestions } from "../use-saved-questions";
 import { DuelArena } from "../duel-arena";
 import { PresenterModal, tryEnterFullscreen } from "../presenter-modal";
 import { PlayArtwork } from "./art";
 import { FinderIcon } from "../finder/icon";
-import "./play.css";
 
 function PlaySessionFallback() {
   return (
