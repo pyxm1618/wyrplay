@@ -1,0 +1,140 @@
+name: Lighthouse Preview Acceptance
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+concurrency:
+  group: lighthouse-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  lighthouse-preview:
+    if: github.head_ref == 'perf/home-lighthouse-100-safe-closeout-20261009'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PREVIEW_URL: https://wyrplay-git-perf-home-lighthouse-100-9d6fb8-pyxm1618s-projects.vercel.app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.19.0'
+
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Install Lighthouse
+        run: npm install --global lighthouse@13.5.0
+
+      - name: Verify production-equivalent preview is reachable
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in {1..60}; do
+            status="$(curl -L -sS -o /dev/null -w '%{http_code}' "$PREVIEW_URL/")"
+            if [ "$status" = "200" ]; then
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "Preview never returned HTTP 200" >&2
+          exit 1
+
+      - name: Run 3 cold mobile and 3 cold desktop Lighthouse audits
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p lighthouse-reports
+
+          run_lighthouse() {
+            mode="$1"
+            run="$2"
+            extra=()
+            if [ "$mode" = "desktop" ]; then
+              extra+=(--preset=desktop)
+            fi
+
+            lighthouse "$PREVIEW_URL/"               --only-categories=performance,accessibility,best-practices,seo               --output=json               --output=html               --output-path="./lighthouse-reports/${mode}-${run}"               --chrome-flags="--headless=new --no-sandbox"               --quiet               "${extra[@]}"
+          }
+
+          for run in 1 2 3; do
+            run_lighthouse mobile "$run"
+          done
+
+          for run in 1 2 3; do
+            run_lighthouse desktop "$run"
+          done
+
+      - name: Summarize scores and enforce 100/100/100/100
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+
+          const modes = ['mobile', 'desktop'];
+          const summary = [];
+          let failed = false;
+
+          const ms = v => Math.round(Number(v || 0));
+          const score = v => Math.round(Number(v || 0) * 100);
+
+          for (const mode of modes) {
+            for (let run = 1; run <= 3; run++) {
+              const file = path.join('lighthouse-reports', `${mode}-${run}.report.json`);
+              const report = JSON.parse(fs.readFileSync(file, 'utf8'));
+              const c = report.categories;
+              const a = report.audits;
+              const row = {
+                mode,
+                run,
+                performance: score(c.performance.score),
+                accessibility: score(c.accessibility.score),
+                bestPractices: score(c['best-practices'].score),
+                seo: score(c.seo.score),
+                fcpMs: ms(a['first-contentful-paint']?.numericValue),
+                lcpMs: ms(a['largest-contentful-paint']?.numericValue),
+                tbtMs: ms(a['total-blocking-time']?.numericValue),
+                cls: Number(a['cumulative-layout-shift']?.numericValue || 0),
+                speedIndexMs: ms(a['speed-index']?.numericValue),
+                totalBytes: ms(a['total-byte-weight']?.numericValue),
+              };
+              summary.push(row);
+              if (
+                row.performance !== 100 ||
+                row.accessibility !== 100 ||
+                row.bestPractices !== 100 ||
+                row.seo !== 100
+              ) {
+                failed = true;
+              }
+            }
+          }
+
+          fs.writeFileSync(
+            'lighthouse-reports/summary.json',
+            JSON.stringify(summary, null, 2),
+          );
+
+          console.table(summary);
+
+          if (failed) {
+            console.error('Lighthouse hard gate failed: every run must be 100/100/100/100.');
+            process.exit(1);
+          }
+          NODE
+
+      - name: Upload Lighthouse evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-preview-reports
+          path: lighthouse-reports/
+          if-no-files-found: warn
+          retention-days: 14
