@@ -12,7 +12,7 @@ declare global {
 }
 
 async function waitForInteractiveHome(page: Page) {
-  await expect(page.locator('[data-home-ready="true"]')).toBeVisible();
+  await expect(page.locator(".home-main")).toBeVisible();
   await page.waitForFunction(() => {
     const image = document.querySelector<HTMLImageElement>(".hero-title-img");
     return Boolean(image?.complete && image.naturalWidth > 0);
