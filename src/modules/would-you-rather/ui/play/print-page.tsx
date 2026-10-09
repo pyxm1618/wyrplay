@@ -996,30 +996,16 @@ function PrintPageContent({
                             <>
                               <div style={{ textAlign: "center", marginBottom: "8pt" }}>
                                 <img src="/play-art/logo.png" alt="" style={{ height: "18pt" }} />
-                                <h3
-                                  style={{
-                                    fontFamily: "PlayHand",
-                                    fontSize: "15pt",
-                                    margin: "2pt 0 0",
-                                  }}
-                                >
+                                <h3 style={{ fontFamily: "PlayHand", fontSize: "15pt", margin: "2pt 0 0" }}>
                                   Would you rather
                                 </h3>
                                 {showNumbers && (
-                                  <span
-                                    style={{ fontSize: "8pt", color: "#888", display: "block" }}
-                                  >
+                                  <span style={{ fontSize: "8pt", color: "#888", display: "block" }}>
                                     #{p.number}
                                   </span>
                                 )}
                               </div>
-                              <div
-                                style={{
-                                  display: "grid",
-                                  gridTemplateColumns: "1fr 1fr",
-                                  gap: "14pt",
-                                  flex: 1,
-          ...[truncated]
+                              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14pt", flex: 1, alignItems: "start" }}>
                                 <div>
                                   <div style={{ aspectRatio: "1 / 1", border: "1pt solid #cbd5e1", borderRadius: "4pt", overflow: "hidden", marginBottom: "6pt", position: "relative" }}>
                                     <img
