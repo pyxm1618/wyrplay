@@ -249,7 +249,7 @@ export function IllustratedHome({
             width={790}
             height={793}
             sizes="(max-width: 600px) 110px, (max-width: 1000px) 280px, 350px"
-            loading="eager"
+            priority
             className="hero-boy"
           />
           <Image
