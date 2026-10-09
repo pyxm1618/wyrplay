@@ -110,7 +110,7 @@ for (const route of routes) {
       } as PerformanceObserverInit & { durationThreshold: number });
     });
 
-    const response = await page.goto(route, { waitUntil: "networkidle" });
+    const response = await page.goto(route, { waitUntil: "load" });
     expect(response?.status()).toBe(200);
     expect(response?.headers()["x-robots-tag"]).toContain("noindex");
 
