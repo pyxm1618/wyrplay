@@ -1,9 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import {
-  getQuestionVisual,
-  type QuestionVisualAsset,
-} from "../data/question-visuals";
+import { getQuestionVisual, type QuestionVisualAsset } from "../data/question-visuals";
 import "./question-visual.css";
 
 export type QuestionVisualMode = "full" | "option-a" | "option-b";
