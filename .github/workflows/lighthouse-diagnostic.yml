@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - diag/lighthouse-safe-closeout-20261009
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 permissions:
   contents: read
