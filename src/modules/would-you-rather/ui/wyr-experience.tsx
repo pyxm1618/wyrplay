@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 
 import { filterQuestions } from "../domain/filter-questions";
 import { QUESTIONS_DATABASE } from "../data/questions";
@@ -55,17 +55,8 @@ function ExperienceHydrationGate({
 }
 
 function HomeHydrationGate({ children }: { readonly children: React.ReactNode }) {
-  const rootRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    rootRef.current?.setAttribute("data-home-ready", "true");
-  }, []);
-
-  return (
-    <div ref={rootRef} data-home-ready="false">
-      {children}
-    </div>
-  );
+  const hydrated = useHydrated();
+  return <div data-home-ready={hydrated}>{children}</div>;
 }
 
 export interface WyrExperienceProps {
