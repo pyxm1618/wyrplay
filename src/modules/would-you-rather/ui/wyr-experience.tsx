@@ -35,18 +35,36 @@ function escapeSemanticHtml(value: string): string {
     .replaceAll("'", "&#39;");
 }
 
+function semanticDirectoryBadge(value: string | undefined): string {
+  if (!value) return "";
+  return [
+    '<span class="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">',
+    escapeSemanticHtml(value),
+    "</span>",
+  ].join("");
+}
+
 function buildHomeDirectorySemanticMarkup(questions: readonly Question[]): string {
   return questions
     .map((item, idx) => {
-      const difficulty = item.difficulty
-        ? `<span class="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">${escapeSemanticHtml(item.difficulty)}</span>`
-        : "";
-      const relationship = item.relationships[0] ?? item.primaryCollection;
-      const relationshipBadge = relationship
-        ? `<span class="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">${escapeSemanticHtml(relationship)}</span>`
-        : "";
+      const difficulty = semanticDirectoryBadge(item.difficulty);
+      const relationshipBadge = semanticDirectoryBadge(
+        item.relationships[0] ?? item.primaryCollection,
+      );
 
-      return `<li class="home-directory-semantic-item border-b border-border/30 pb-3"><article><div class="flex items-center gap-2 mb-1"><span class="font-mono text-xs font-bold text-muted">#${String(idx + 1).padStart(2, "0")}</span>${difficulty}${relationshipBadge}</div><h3 class="font-serif text-sm font-bold text-foreground">${escapeSemanticHtml(item.question)}</h3><div class="mt-1 flex flex-wrap gap-x-4 text-xs text-muted"><span><strong>A:</strong> ${escapeSemanticHtml(item.optionA)}</span><span><strong>B:</strong> ${escapeSemanticHtml(item.optionB)}</span></div></article></li>`;
+      return [
+        '<li class="home-directory-semantic-item border-b border-border/30 pb-3"><article>',
+        '<div class="flex items-center gap-2 mb-1">',
+        `<span class="font-mono text-xs font-bold text-muted">#${String(idx + 1).padStart(2, "0")}</span>`,
+        difficulty,
+        relationshipBadge,
+        "</div>",
+        `<h3 class="font-serif text-sm font-bold text-foreground">${escapeSemanticHtml(item.question)}</h3>`,
+        '<div class="mt-1 flex flex-wrap gap-x-4 text-xs text-muted">',
+        `<span><strong>A:</strong> ${escapeSemanticHtml(item.optionA)}</span>`,
+        `<span><strong>B:</strong> ${escapeSemanticHtml(item.optionB)}</span>`,
+        "</div></article></li>",
+      ].join("");
     })
     .join("");
 }
