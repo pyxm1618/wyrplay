@@ -56,6 +56,7 @@ const diagnosticJsonPath = path.resolve(process.cwd(), ".next/static-inline-hash
 fs.writeFileSync(diagnosticJsonPath, serializedPayload, "utf8");
 
 const runtimeJsonPath = path.resolve(process.cwd(), ".runtime/static-inline-hashes.json");
+fs.mkdirSync(path.dirname(runtimeJsonPath), { recursive: true });
 fs.writeFileSync(runtimeJsonPath, serializedPayload, "utf8");
 
 console.log(
