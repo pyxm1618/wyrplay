@@ -45,6 +45,9 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  outputFileTracingIncludes: {
+    "/*": ["./.runtime/static-inline-hashes.json"],
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.module.rules.push({
