@@ -6156,7 +6156,7 @@
   },
   {
     "id": "wyr-000237",
-    "question": "Would you rather wear shoes that let you jump over every puddle but only once, or boots that let you splash through every puddle without getting wet?",
+    "question": "Would you rather jump over every puddle in magic shoes or splash through every puddle in magic boots without getting wet?",
     "optionA": "Jump over every puddle once",
     "optionB": "Splash through every puddle and stay dry",
     "reviewStatus": "approved",
@@ -6210,7 +6210,7 @@
   },
   {
     "id": "wyr-000239",
-    "question": "Would you rather understand everything a dog says for ten minutes but not answer, or let a dog understand one sentence you say?",
+    "question": "Would you rather understand everything a dog says for ten minutes or have a dog understand everything you say for ten minutes?",
     "optionA": "Understand the dog for ten minutes",
     "optionB": "Let the dog understand one sentence",
     "reviewStatus": "approved",
@@ -6426,7 +6426,7 @@
   },
   {
     "id": "wyr-000247",
-    "question": "Would you rather solve a mystery where every clue is true but tiny or one where clues are huge but one clue is fake?",
+    "question": "Would you rather solve a mystery with lots of tiny clues that are all true or a few big clues where one is fake?",
     "optionA": "Use tiny clues that are all true",
     "optionB": "Use big clues with one fake clue",
     "reviewStatus": "approved",
@@ -6507,7 +6507,7 @@
   },
   {
     "id": "wyr-000250",
-    "question": "Would you rather learn a new hobby from a strict step-by-step guide or from a box of examples you can reverse-engineer?",
+    "question": "Would you rather learn a new hobby from a step-by-step guide or figure it out by studying finished examples?",
     "optionA": "Use a step-by-step guide",
     "optionB": "Reverse-engineer examples",
     "reviewStatus": "approved",
@@ -8937,7 +8937,7 @@
   },
   {
     "id": "wyr-000340",
-    "question": "Would you rather do a vocabulary challenge where you cannot use the word's first letter or one where you must explain it without using any examples?",
+    "question": "Would you rather explain a new word without using any examples or explain it using only three words?",
     "optionA": "Avoid the first letter",
     "optionB": "Avoid all examples",
     "reviewStatus": "approved",
@@ -9126,7 +9126,7 @@
   },
   {
     "id": "wyr-000347",
-    "question": "Would you rather have students invent examples that fit a rule or invent near-misses that almost fit but fail?",
+    "question": "Would you rather invent examples that follow a rule or invent examples that almost follow it but break one part?",
     "optionA": "Invent valid examples",
     "optionB": "Invent convincing near-misses",
     "reviewStatus": "approved",
@@ -9882,7 +9882,7 @@
   },
   {
     "id": "wyr-000375",
-    "question": "Would you rather have the car display how many miles are left but not arrival time or arrival time but not miles left?",
+    "question": "Would you rather have the car show the distance left but not the arrival time, or the arrival time but not the distance left?",
     "optionA": "See miles remaining",
     "optionB": "See arrival time",
     "reviewStatus": "approved",
@@ -11745,7 +11745,7 @@
   },
   {
     "id": "wyr-000444",
-    "question": "Would you rather have a little robot put all your toys in one big basket or point to the right home for each toy while you put them away?",
+    "question": "Would you rather have a little robot put all your toys in one big basket or help you put every toy back in the right place?",
     "optionA": "Let the robot put everything in one basket",
     "optionB": "Have the robot show where each toy belongs",
     "reviewStatus": "approved",
@@ -11826,7 +11826,7 @@
   },
   {
     "id": "wyr-000447",
-    "question": "Would you rather invent a snack together from three pre-checked ingredients everyone can safely eat or invent a game together from three random objects?",
+    "question": "Would you rather invent a snack together from three ingredients everyone can eat or invent a game together from three random objects?",
     "optionA": "Invent a snack from three pre-checked ingredients",
     "optionB": "Invent a game from three random objects",
     "reviewStatus": "approved",
@@ -11907,7 +11907,7 @@
   },
   {
     "id": "wyr-000450",
-    "question": "Would you rather have each audience member name one thing that was especially clear in a class presentation or ask one question that could make the idea better?",
+    "question": "Would you rather have classmates tell you one thing that was clear in your presentation or ask one question that could make your idea better?",
     "optionA": "Name one thing that was especially clear",
     "optionB": "Ask one question that could improve the idea",
     "reviewStatus": "approved",
@@ -12069,7 +12069,7 @@
   },
   {
     "id": "wyr-000456",
-    "question": "Would you rather do a midnight snack challenge where everyone uses the same three ingredients or where each person gets one different surprise ingredient chosen from an allergy-checked list?",
+    "question": "Would you rather make a late-night snack where everyone uses the same three safe ingredients or each person gets one different surprise ingredient everyone can eat?",
     "optionA": "Use the same three ingredients",
     "optionB": "Give everyone one allergy-checked surprise ingredient",
     "reviewStatus": "approved",
@@ -12096,7 +12096,7 @@
   },
   {
     "id": "wyr-000457",
-    "question": "Would you rather have everyone write one silly prediction for the morning or one easy breakfast activity idea the group can choose from?",
+    "question": "Would you rather have everyone write one silly prediction for the morning or one fun breakfast idea the group can try?",
     "optionA": "Write silly morning predictions",
     "optionB": "Write easy breakfast activity ideas",
     "reviewStatus": "approved",
@@ -12531,7 +12531,7 @@
   },
   {
     "id": "wyr-000475",
-    "question": "Would you rather turn invisible for ten minutes or hear one person's thoughts for ten minutes?",
+    "question": "Would you rather turn invisible for ten minutes or shrink to the size of a mouse for ten minutes?",
     "optionA": "Turn invisible for ten minutes",
     "optionB": "Hear one person's thoughts for ten minutes",
     "reviewStatus": "approved",
@@ -12627,7 +12627,7 @@
   },
   {
     "id": "wyr-000479",
-    "question": "Would you rather safely make a small flame appear in your hand or safely freeze a cup of water with a touch?",
+    "question": "Would you rather make a small ball of light appear in your hand or freeze a cup of water with a touch?",
     "optionA": "Make a small flame appear safely",
     "optionB": "Freeze a cup of water safely with a touch",
     "reviewStatus": "approved",
@@ -12939,7 +12939,7 @@
   },
   {
     "id": "wyr-000492",
-    "question": "Would you rather eat your favorite food once every day but try no new foods for a year, or skip your favorite food for a year and try one new food every week?",
+    "question": "Would you rather eat your favorite food every day for a month or skip it for a month and try a new food every week?",
     "optionA": "Eat your favorite food daily but try no new foods for a year",
     "optionB": "Skip your favorite food for a year but try one new food every week",
     "reviewStatus": "approved",
