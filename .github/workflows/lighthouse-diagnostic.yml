@@ -1,0 +1,80 @@
+name: Lighthouse Diagnostic
+
+on:
+  push:
+    branches:
+      - diag/lighthouse-safe-closeout-20261009
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run Lighthouse matrix
+        env:
+          TARGET_URL: https://wyrplay-git-perf-home-lighthouse-100-9d6fb8-pyxm1618s-projects.vercel.app/
+        run: |
+          set -euo pipefail
+          mkdir -p lighthouse-results
+          npx --yes lighthouse@13.5.0 --version
+          for i in 1 2 3; do
+            npx --yes lighthouse@13.5.0 "$TARGET_URL" \
+              --only-categories=performance,accessibility,best-practices,seo \
+              --output=json \
+              --output-path="lighthouse-results/mobile-$i.json" \
+              --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage"
+          done
+          for i in 1 2 3; do
+            npx --yes lighthouse@13.5.0 "$TARGET_URL" \
+              --preset=desktop \
+              --only-categories=performance,accessibility,best-practices,seo \
+              --output=json \
+              --output-path="lighthouse-results/desktop-$i.json" \
+              --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage"
+          done
+
+      - name: Summarize Lighthouse
+        run: |
+          node <<'NODE'
+          const fs = require("fs");
+          const files = fs.readdirSync("lighthouse-results").filter((f) => f.endsWith(".json")).sort();
+          const out = [];
+          for (const file of files) {
+            const r = JSON.parse(fs.readFileSync(`lighthouse-results/${file}`, "utf8"));
+            const c = r.categories;
+            const a = r.audits;
+            out.push({
+              file,
+              performance: Math.round(c.performance.score * 100),
+              accessibility: Math.round(c.accessibility.score * 100),
+              bestPractices: Math.round(c["best-practices"].score * 100),
+              seo: Math.round(c.seo.score * 100),
+              fcp: Math.round(a["first-contentful-paint"].numericValue),
+              lcp: Math.round(a["largest-contentful-paint"].numericValue),
+              tbt: Math.round(a["total-blocking-time"].numericValue),
+              cls: Number(a["cumulative-layout-shift"].numericValue.toFixed(4)),
+              speedIndex: Math.round(a["speed-index"].numericValue),
+              bytes: a["total-byte-weight"]?.numericValue ?? null,
+            });
+          }
+          console.log("LIGHTHOUSE_SUMMARY=" + JSON.stringify(out));
+          fs.writeFileSync("lighthouse-results/summary.json", JSON.stringify(out, null, 2));
+          NODE
+
+      - name: Upload Lighthouse reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-safe-closeout
+          path: lighthouse-results
+          retention-days: 3
