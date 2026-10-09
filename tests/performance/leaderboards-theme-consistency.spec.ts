@@ -27,7 +27,7 @@ test.describe("Leaderboard Theme Consistency & Flash Verification Gate", () => {
     page,
   }) => {
     // 1. Load Home page
-    await page.goto("/", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "load" });
     const homeMain = page.locator(".home-main");
     await expect(homeMain).toBeVisible();
 
