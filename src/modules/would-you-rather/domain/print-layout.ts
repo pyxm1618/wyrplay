@@ -69,7 +69,11 @@ export function createPrintLayout(
   let page: PrintPlacement[] = [];
   let y = format === "cards" ? 30 : 105;
   const maxPerPage =
-    options?.itemsPerPage && options.itemsPerPage > 0 ? options.itemsPerPage : isA4Cards ? 4 : null;
+    options?.itemsPerPage && options.itemsPerPage > 0
+      ? options.itemsPerPage
+      : isA4Cards
+        ? 4
+        : null;
 
   if (isA4Cards) {
     const marginX = 30;
