@@ -1,4 +1,5 @@
 name: Lighthouse Diagnostic
+# target-head: 5552eefab78d33e777152139ce164d4e56586857
 
 on:
   push:
