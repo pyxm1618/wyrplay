@@ -20,7 +20,7 @@ test.describe("SPA Client Navigation Gate", () => {
     page.on("pageerror", (err) => console.log("PAGE ERROR:", err));
 
     // 1. Initial load of Home page
-    await page.goto("/", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "load" });
     initialLoadComplete = true;
 
     const navSteps = [
