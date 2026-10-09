@@ -417,10 +417,7 @@ export async function createVectorPdf(
   const [
     { PDFDocument, rgb, pushGraphicsState, popGraphicsState, rectangle, clip, endPath },
     { default: fontkit },
-  ] = await Promise.all([
-    import("pdf-lib"),
-    import("@pdf-lib/fontkit"),
-  ]);
+  ] = await Promise.all([import("pdf-lib"), import("@pdf-lib/fontkit")]);
   const doc = await PDFDocument.create();
   doc.registerFontkit(fontkit);
 
