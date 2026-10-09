@@ -37,6 +37,7 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   allowedDevOrigins: ["127.0.0.1", "localhost"],
   experimental: {
+    inlineCss: true,
     globalNotFound: true,
     sri: {
       algorithm: "sha256",
@@ -44,6 +45,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"],
+    qualities: [60, 70, 75],
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
