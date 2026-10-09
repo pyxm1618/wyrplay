@@ -387,7 +387,7 @@ export function IllustratedHome({
                   width={724}
                   height={560}
                   sizes={highlightImageSizes}
-                  quality={50}
+                  quality={60}
                   className="highlight-image"
                   alt=""
                 />
