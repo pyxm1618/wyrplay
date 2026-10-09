@@ -16,6 +16,7 @@ describe("static CSP build architecture", () => {
   it("generates runtime hash artifacts without rewriting compiled TypeScript source", () => {
     const source = read("scripts/generate-static-csp-hashes.ts");
     expect(source).toContain(".runtime/static-inline-hashes.json");
+    expect(source).toContain("fs.mkdirSync(path.dirname(runtimeJsonPath), { recursive: true })");
     expect(source).not.toContain("src/platform/security/static-inline-hashes.ts");
   });
 
