@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+      <defs>
+        <linearGradient id="bgA3" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e0e7ff"/>
+          <stop offset="100%" stop-color="#c7d2fe"/>
+        </linearGradient>
+        <linearGradient id="bgB3" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#fef9c3"/>
+          <stop offset="100%" stop-color="#fde047"/>
+        </linearGradient>
+        <radialGradient id="bubbleGrad" cx="35%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+          <stop offset="60%" stop-color="#a5f3fc" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#f472b6" stop-opacity="0.7"/>
+        </radialGradient>
+      </defs>
+      <!-- Option A: Bubbles following (0 - 600) -->
+      <rect x="0" y="0" width="600" height="600" fill="url(#bgA3)"/>
+      <!-- Shimmering Soap Bubbles -->
+      <circle cx="280" cy="300" r="85" fill="url(#bubbleGrad)" stroke="#38bdf8" stroke-width="4"/>
+      <ellipse cx="255" cy="270" rx="20" ry="10" fill="#ffffff" opacity="0.8" transform="rotate(-30 255 270)"/>
+      <circle cx="160" cy="190" r="50" fill="url(#bubbleGrad)" stroke="#38bdf8" stroke-width="3"/>
+      <ellipse cx="145" cy="175" rx="12" ry="6" fill="#ffffff" opacity="0.8" transform="rotate(-30 145 175)"/>
+      <circle cx="420" cy="210" r="60" fill="url(#bubbleGrad)" stroke="#38bdf8" stroke-width="3"/>
+      <circle cx="150" cy="420" r="65" fill="url(#bubbleGrad)" stroke="#38bdf8" stroke-width="3"/>
+      <circle cx="390" cy="430" r="55" fill="url(#bubbleGrad)" stroke="#38bdf8" stroke-width="3"/>
+      <circle cx="250" cy="470" r="35" fill="url(#bubbleGrad)" stroke="#38bdf8" stroke-width="2"/>
+      <circle cx="330" cy="150" r="30" fill="url(#bubbleGrad)" stroke="#38bdf8" stroke-width="2"/>
+      <!-- Streamer path -->
+      <path d="M100 480 Q250 250 480 320" stroke="#818cf8" stroke-width="4" stroke-dasharray="8 6" fill="none"/>
+
+      <!-- Option B: Paper airplanes following (600 - 1200) -->
+      <rect x="600" y="0" width="600" height="600" fill="url(#bgB3)"/>
+      <!-- Big Sky Clouds -->
+      <ellipse cx="900" cy="180" rx="140" ry="60" fill="#ffffff" opacity="0.7"/>
+      <ellipse cx="800" cy="200" rx="90" ry="50" fill="#ffffff" opacity="0.7"/>
+      <ellipse cx="1020" cy="190" rx="100" ry="50" fill="#ffffff" opacity="0.7"/>
+      <!-- Main Paper Airplane -->
+      <g transform="translate(850, 240) rotate(-15)">
+        <polygon points="0,0 160,50 40,80" fill="#ffffff" stroke="#0284c7" stroke-width="3"/>
+        <polygon points="40,80 160,50 30,120" fill="#e0f2fe" stroke="#0284c7" stroke-width="3"/>
+        <polygon points="0,0 40,80 30,120" fill="#bae6fd"/>
+      </g>
+      <!-- Follower Plane 2 -->
+      <g transform="translate(720, 160) rotate(-25) scale(0.65)">
+        <polygon points="0,0 160,50 40,80" fill="#ffffff" stroke="#f43f5e" stroke-width="3"/>
+        <polygon points="40,80 160,50 30,120" fill="#ffe4e6" stroke="#f43f5e" stroke-width="3"/>
+      </g>
+      <!-- Follower Plane 3 -->
+      <g transform="translate(1010, 360) rotate(-5) scale(0.75)">
+        <polygon points="0,0 160,50 40,80" fill="#ffffff" stroke="#16a34a" stroke-width="3"/>
+        <polygon points="40,80 160,50 30,120" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+      </g>
+      <!-- Follower Plane 4 -->
+      <g transform="translate(730, 390) rotate(-10) scale(0.6)">
+        <polygon points="0,0 160,50 40,80" fill="#ffffff" stroke="#ea580c" stroke-width="3"/>
+        <polygon points="40,80 160,50 30,120" fill="#ffedd5" stroke="#ea580c" stroke-width="3"/>
+      </g>
+      <!-- Gliding flight trails -->
+      <path d="M680 430 Q780 320 860 270" stroke="#38bdf8" stroke-width="4" stroke-dasharray="10 8" fill="none"/>
+      <path d="M700 230 Q780 180 840 250" stroke="#f43f5e" stroke-width="4" stroke-dasharray="8 6" fill="none"/>
+    </svg>

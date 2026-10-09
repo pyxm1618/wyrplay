@@ -229,7 +229,12 @@ export function PresenterModal({
         </button>
       </header>
       <PlayHeading question={question.question} />
-      <OptionPanels a={question.optionA} b={question.optionB} />
+      <OptionPanels
+        a={question.optionA}
+        b={question.optionB}
+        questionId={question.id}
+        isPresenter={true}
+      />
       <nav className="presenter-controls" aria-label="Presentation questions">
         <button onClick={onPrev} disabled={isFirst}>
           <span aria-hidden="true">←</span>Previous

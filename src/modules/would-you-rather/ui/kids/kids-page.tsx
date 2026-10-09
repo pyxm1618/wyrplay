@@ -122,6 +122,7 @@ function KidsPresenter({
   onPrev,
   canNavigate,
   isExample,
+  questionId,
 }: {
   a: string;
   b: string;
@@ -130,6 +131,7 @@ function KidsPresenter({
   onPrev: () => void;
   canNavigate: boolean;
   isExample: boolean;
+  questionId?: string | undefined;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -165,7 +167,7 @@ function KidsPresenter({
         Close ×
       </button>
       <h2 id="kids-presenter-title">Would you rather…</h2>
-      <KidsChoicePanels a={a} b={b} />
+      <KidsChoicePanels a={a} b={b} questionId={questionId} />
       <p>
         {isExample
           ? "Example question · No vote is saved."
@@ -548,6 +550,7 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
           onPrev={previous}
           canNavigate={pool.length > 0}
           isExample={Boolean(example)}
+          questionId={active?.id ?? example?.id}
         />
       )}
     </div>

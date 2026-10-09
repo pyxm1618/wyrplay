@@ -23,10 +23,13 @@ import {
   getSheetPagePlayUrl,
   getQrDataUrl,
   getQrImage,
+  getVisualImage,
   PRINT_QR_CONFIG,
 } from "./print-renderer";
 import { PlayArtwork } from "./art";
 import { FinderIcon } from "../finder/icon";
+import { QuestionVisual } from "../question-visual";
+import { getQuestionVisual } from "../../data/question-visuals";
 
 const printThemes: readonly [FeaturedCollectionKey, string][] = [
   ["kids", "Kids"],
@@ -83,14 +86,18 @@ function PrintPageContent({
   const viewportRef = useRef<HTMLDivElement>(null);
   const [previewSize, setPreviewSize] = useState({ width: 0, height: 0 });
 
-  const [format, setFormat] = useState<PrintFormat>(
-    search.get("format") === "sheet" ? "sheet" : "cards",
-  );
-  const [paper, setPaper] = useState<PaperSize>("letter");
+  const initialFormat = search.get("format") === "sheet" ? "sheet" : "cards";
+  const requestedPaper = search.get("paper");
+  const initialPaper: PaperSize = requestedPaper === "a4" ? "a4" : "letter";
+
+  const [format, setFormat] = useState<PrintFormat>(initialFormat);
+  const [paper, setPaper] = useState<PaperSize>(initialPaper);
   const [marks, setMarks] = useState(true);
   const [showNumbers, setShowNumbers] = useState(true);
   const [qrCodeEnabled, setQrCodeEnabled] = useState(true);
-  const [itemsPerPage, setItemsPerPage] = useState<number>(format === "cards" ? 6 : 0);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(
+    initialFormat === "cards" ? (initialPaper === "a4" ? 4 : 6) : 0,
+  );
   const [page, setPage] = useState(0);
   const [zoom, setZoom] = useState(100);
 
@@ -110,7 +117,19 @@ function PrintPageContent({
   // 格式切换时重置合适的每页题数
   const handleFormatChange = (newFormat: PrintFormat) => {
     setFormat(newFormat);
-    setItemsPerPage(newFormat === "cards" ? 6 : 0);
+    if (newFormat === "cards") {
+      setItemsPerPage(paper === "a4" ? 4 : 6);
+    } else {
+      setItemsPerPage(0);
+    }
+    setPage(0);
+  };
+
+  const handlePaperChange = (newPaper: PaperSize) => {
+    setPaper(newPaper);
+    if (format === "cards") {
+      setItemsPerPage(newPaper === "a4" ? 4 : 6);
+    }
     setPage(0);
   };
 
@@ -197,6 +216,23 @@ function PrintPageContent({
         const currentPageIndex = Math.min(Math.max(0, page), totalPages - 1);
         const currentPlacements = layout.pages[currentPageIndex] ?? [];
         const qrImageMap = new Map<string, HTMLImageElement>();
+        const visualImageMap = new Map<string, HTMLImageElement>();
+
+        if (format === "cards" && currentPlacements.length > 0) {
+          await Promise.all(
+            currentPlacements.map(async (p) => {
+              const visual = getQuestionVisual(p.question.id);
+              if (visual) {
+                try {
+                  const img = await getVisualImage(visual.src);
+                  visualImageMap.set(p.question.id, img);
+                } catch (err) {
+                  console.warn("Failed to load visual image for preview", p.question.id, err);
+                }
+              }
+            }),
+          );
+        }
 
         if (qrCodeEnabled && currentPlacements.length > 0) {
           const origin = window.location.origin;
@@ -229,6 +265,7 @@ function PrintPageContent({
             siteUrl: window.location.origin,
           },
           qrImageMap,
+          visualImageMap,
         );
 
         if (!cancelled) {
@@ -312,6 +349,24 @@ function PrintPageContent({
       const currentPageIndex = Math.min(Math.max(0, page), totalPages - 1);
       const currentPlacements = layout.pages[currentPageIndex] ?? [];
       const qrImageMap = new Map<string, HTMLImageElement>();
+      const visualImageMap = new Map<string, HTMLImageElement>();
+
+      if (format === "cards" && currentPlacements.length > 0) {
+        await Promise.all(
+          currentPlacements.map(async (p) => {
+            const visual = getQuestionVisual(p.question.id);
+            if (visual) {
+              try {
+                const img = await getVisualImage(visual.src);
+                visualImageMap.set(p.question.id, img);
+              } catch (err) {
+                console.warn("Failed to load visual image for PNG", p.question.id, err);
+              }
+            }
+          }),
+        );
+      }
+
       if (qrCodeEnabled && currentPlacements.length > 0) {
         const origin = window.location.origin;
         if (format === "sheet") {
@@ -342,6 +397,7 @@ function PrintPageContent({
           siteUrl: window.location.origin,
         },
         qrImageMap,
+        visualImageMap,
       );
       canvas.toBlob((blob) => {
         if (!blob) {
@@ -406,7 +462,7 @@ function PrintPageContent({
       await document.fonts.ready;
       await Promise.all(
         Array.from(document.querySelectorAll<HTMLImageElement>(".print-document img")).map(
-          (image) => image.decode(),
+          (image) => image.decode().catch(() => {}),
         ),
       );
       window.print();
@@ -419,7 +475,7 @@ function PrintPageContent({
 
   return (
     <div className="print-page" data-format={format}>
-      <style>{`@page { size: ${paper === "a4" ? "A4" : "letter"}; margin: 0; }`}</style>
+      <style>{`@page { size: ${paper === "a4" && format === "cards" ? "A4 landscape" : paper === "a4" ? "A4" : "letter"}; margin: 0; }`}</style>
       <PlayArtwork />
       <div className="print-workspace">
         <section className="print-editor">
@@ -640,7 +696,7 @@ function PrintPageContent({
                     name="paper"
                     value="letter"
                     checked={paper === "letter"}
-                    onChange={() => setPaper("letter")}
+                    onChange={() => handlePaperChange("letter")}
                   />
                   US Letter (8.5 × 11 in)
                 </label>
@@ -650,7 +706,7 @@ function PrintPageContent({
                     name="paper"
                     value="a4"
                     checked={paper === "a4"}
-                    onChange={() => setPaper("a4")}
+                    onChange={() => handlePaperChange("a4")}
                   />
                   A4 (210 × 297 mm)
                 </label>
@@ -670,8 +726,8 @@ function PrintPageContent({
                     {format === "cards" ? (
                       <>
                         <option value={2}>2 cards per page</option>
-                        <option value={4}>4 cards per page</option>
-                        <option value={6}>6 cards per page (Default)</option>
+                        <option value={4}>4 cards per page (A4 2×2 Default)</option>
+                        <option value={6}>6 cards per page (Letter Default)</option>
                       </>
                     ) : (
                       <>
@@ -933,59 +989,164 @@ function PrintPageContent({
                             />
                           ) : null;
                         })()}
-                      <div style={{ textAlign: "center", marginBottom: "12pt" }}>
-                        <img src="/play-art/logo.png" alt="" style={{ height: "20pt" }} />
-                        <h3 style={{ fontFamily: "PlayHand", fontSize: "16pt", margin: "4pt 0 0" }}>
-                          Would you rather
-                        </h3>
-                        {showNumbers && (
-                          <span style={{ fontSize: "9pt", color: "#888", display: "block" }}>
-                            #{p.number}
-                          </span>
-                        )}
-                      </div>
-                      <div style={{ display: "flex", gap: "10pt", marginBottom: "10pt" }}>
-                        <span
-                          style={{
-                            background: "#ff3457",
-                            color: "white",
-                            borderRadius: "50%",
-                            width: "18pt",
-                            height: "18pt",
-                            display: "inline-grid",
-                            placeItems: "center",
-                            fontSize: "10pt",
-                            fontWeight: 700,
-                            flexShrink: 0,
-                          }}
-                        >
-                          A
-                        </span>
-                        <p style={{ margin: 0, fontSize: "11pt", lineHeight: 1.3 }}>
-                          {p.question.optionA}
-                        </p>
-                      </div>
-                      <div style={{ display: "flex", gap: "10pt" }}>
-                        <span
-                          style={{
-                            background: "#008cff",
-                            color: "white",
-                            borderRadius: "50%",
-                            width: "18pt",
-                            height: "18pt",
-                            display: "inline-grid",
-                            placeItems: "center",
-                            fontSize: "10pt",
-                            fontWeight: 700,
-                            flexShrink: 0,
-                          }}
-                        >
-                          B
-                        </span>
-                        <p style={{ margin: 0, fontSize: "11pt", lineHeight: 1.3 }}>
-                          {p.question.optionB}
-                        </p>
-                      </div>
+                      {(() => {
+                        const visualAsset = getQuestionVisual(p.question.id);
+                        if (visualAsset) {
+                          return (
+                            <>
+                              <div style={{ textAlign: "center", marginBottom: "8pt" }}>
+                                <img src="/play-art/logo.png" alt="" style={{ height: "18pt" }} />
+                                <h3 style={{ fontFamily: "PlayHand", fontSize: "15pt", margin: "2pt 0 0" }}>
+                                  Would you rather
+                                </h3>
+                                {showNumbers && (
+                                  <span style={{ fontSize: "8pt", color: "#888", display: "block" }}>
+                                    #{p.number}
+                                  </span>
+                                )}
+                              </div>
+                              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14pt", flex: 1, alignItems: "start" }}>
+                                <div>
+                                  <div style={{ aspectRatio: "1 / 1", border: "1pt solid #cbd5e1", borderRadius: "4pt", overflow: "hidden", marginBottom: "6pt", position: "relative" }}>
+                                    <img
+                                      src={visualAsset.src}
+                                      alt=""
+                                      loading="eager"
+                                      style={{
+                                        position: "absolute",
+                                        top: 0,
+                                        left: 0,
+                                        width: "200%",
+                                        height: "100%",
+                                        maxWidth: "none",
+                                        objectFit: "fill",
+                                      }}
+                                    />
+                                  </div>
+                                  <div style={{ display: "flex", gap: "6pt", alignItems: "flex-start" }}>
+                                    <span
+                                      style={{
+                                        background: "#ff3457",
+                                        color: "white",
+                                        borderRadius: "50%",
+                                        width: "15pt",
+                                        height: "15pt",
+                                        display: "inline-grid",
+                                        placeItems: "center",
+                                        fontSize: "9pt",
+                                        fontWeight: 700,
+                                        flexShrink: 0,
+                                      }}
+                                    >
+                                      A
+                                    </span>
+                                    <p style={{ margin: 0, fontSize: "10pt", lineHeight: 1.25 }}>
+                                      {p.question.optionA}
+                                    </p>
+                                  </div>
+                                </div>
+                                <div>
+                                  <div style={{ aspectRatio: "1 / 1", border: "1pt solid #cbd5e1", borderRadius: "4pt", overflow: "hidden", marginBottom: "6pt", position: "relative" }}>
+                                    <img
+                                      src={visualAsset.src}
+                                      alt=""
+                                      loading="eager"
+                                      style={{
+                                        position: "absolute",
+                                        top: 0,
+                                        left: "-100%",
+                                        width: "200%",
+                                        height: "100%",
+                                        maxWidth: "none",
+                                        objectFit: "fill",
+                                      }}
+                                    />
+                                  </div>
+                                  <div style={{ display: "flex", gap: "6pt", alignItems: "flex-start" }}>
+                                    <span
+                                      style={{
+                                        background: "#008cff",
+                                        color: "white",
+                                        borderRadius: "50%",
+                                        width: "15pt",
+                                        height: "15pt",
+                                        display: "inline-grid",
+                                        placeItems: "center",
+                                        fontSize: "9pt",
+                                        fontWeight: 700,
+                                        flexShrink: 0,
+                                      }}
+                                    >
+                                      B
+                                    </span>
+                                    <p style={{ margin: 0, fontSize: "10pt", lineHeight: 1.25 }}>
+                                      {p.question.optionB}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </>
+                          );
+                        }
+
+                        return (
+                          <>
+                            <div style={{ textAlign: "center", marginBottom: "12pt" }}>
+                              <img src="/play-art/logo.png" alt="" style={{ height: "20pt" }} />
+                              <h3 style={{ fontFamily: "PlayHand", fontSize: "16pt", margin: "4pt 0 0" }}>
+                                Would you rather
+                              </h3>
+                              {showNumbers && (
+                                <span style={{ fontSize: "9pt", color: "#888", display: "block" }}>
+                                  #{p.number}
+                                </span>
+                              )}
+                            </div>
+                            <div style={{ display: "flex", gap: "10pt", marginBottom: "10pt" }}>
+                              <span
+                                style={{
+                                  background: "#ff3457",
+                                  color: "white",
+                                  borderRadius: "50%",
+                                  width: "18pt",
+                                  height: "18pt",
+                                  display: "inline-grid",
+                                  placeItems: "center",
+                                  fontSize: "10pt",
+                                  fontWeight: 700,
+                                  flexShrink: 0,
+                                }}
+                              >
+                                A
+                              </span>
+                              <p style={{ margin: 0, fontSize: "11pt", lineHeight: 1.3 }}>
+                                {p.question.optionA}
+                              </p>
+                            </div>
+                            <div style={{ display: "flex", gap: "10pt" }}>
+                              <span
+                                style={{
+                                  background: "#008cff",
+                                  color: "white",
+                                  borderRadius: "50%",
+                                  width: "18pt",
+                                  height: "18pt",
+                                  display: "inline-grid",
+                                  placeItems: "center",
+                                  fontSize: "10pt",
+                                  fontWeight: 700,
+                                  flexShrink: 0,
+                                }}
+                              >
+                                B
+                              </span>
+                              <p style={{ margin: 0, fontSize: "11pt", lineHeight: 1.3 }}>
+                                {p.question.optionB}
+                              </p>
+                            </div>
+                          </>
+                        );
+                      })()}
                     </div>
                   ) : (
                     <div

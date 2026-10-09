@@ -62,13 +62,50 @@ export function createPrintLayout(
   measure: (text: string) => number,
   options?: PrintLayoutOptions,
 ): PrintLayout {
-  const width = paper === "a4" ? 595.28 : 612;
-  const height = paper === "a4" ? 841.89 : 792;
+  const isA4Cards = format === "cards" && paper === "a4";
+  const width = isA4Cards ? 841.89 : paper === "a4" ? 595.28 : 612;
+  const height = isA4Cards ? 595.28 : paper === "a4" ? 841.89 : 792;
   const pages: PrintPlacement[][] = [];
   let page: PrintPlacement[] = [];
   let y = format === "cards" ? 30 : 105;
   const maxPerPage =
-    options?.itemsPerPage && options.itemsPerPage > 0 ? options.itemsPerPage : null;
+    options?.itemsPerPage && options.itemsPerPage > 0
+      ? options.itemsPerPage
+      : isA4Cards
+        ? 4
+        : null;
+
+  if (isA4Cards) {
+    const marginX = 30;
+    const marginY = 30;
+    const gapX = 20;
+    const gapY = 16;
+    const cardWidth = (width - marginX * 2 - gapX) / 2;
+    const cardHeight = (height - marginY * 2 - gapY) / 2;
+
+    questions.forEach((question, index) => {
+      const pageIndex = page.length;
+      if (pageIndex >= (maxPerPage ?? 4)) {
+        pages.push(page);
+        page = [];
+      }
+      const col = page.length % 2;
+      const row = Math.floor(page.length / 2);
+      const cardX = marginX + col * (cardWidth + gapX);
+      const cardY = marginY + row * (cardHeight + gapY);
+
+      page.push({
+        question,
+        number: index + 1,
+        x: cardX,
+        y: cardY,
+        width: cardWidth,
+        height: cardHeight,
+      });
+    });
+    if (page.length) pages.push(page);
+    return { width, height, pages };
+  }
 
   questions.forEach((question, index) => {
     if (format === "cards") {

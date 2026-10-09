@@ -2748,6 +2748,48 @@
   color: #fff9f0;
   border-radius: 12px;
 }
+
+/* Question Visuals Integration Styles */
+.illustrated-home .home-choice-visual {
+  width: 100%;
+  max-width: 130px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  transition: transform 0.2s ease;
+}
+.illustrated-home .choice-card:hover .home-choice-visual {
+  transform: scale(1.03);
+}
+
+.finder-page .finder-question-visual {
+  width: 111px;
+  height: 83px;
+  border-radius: 12px;
+}
+@media (max-width: 700px) {
+  .finder-page .finder-question-visual {
+    width: 74px;
+    height: 55px;
+  }
+}
+
+.kids-choice .kids-choice-visual {
+  width: 100%;
+  max-width: 130px;
+  border-radius: 16px;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.play-option-visual {
+  width: 100%;
+  max-width: 160px;
+  border-radius: 18px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
 .illustrated-home #question-search .font-semibold {
   color: #07121a;
 }

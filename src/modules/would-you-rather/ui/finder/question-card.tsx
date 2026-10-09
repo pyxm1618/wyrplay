@@ -6,6 +6,8 @@ import { parseVoteStats } from "../../domain/finder";
 import { isKidsCollectionQuestion } from "../../domain/filter-questions";
 import type { Question, VoteStats } from "../../types";
 import { FinderIcon } from "./icon";
+import { getQuestionVisual } from "../../data/question-visuals";
+import { QuestionVisual } from "../question-visual";
 
 function QuestionVoteSummary({
   question,
@@ -119,14 +121,23 @@ export function FinderQuestionCard({
         </div>
         <QuestionVoteSummary question={question} revision={revision} />
       </div>
-      <Image
-        className="question-art"
-        src={artwork}
-        alt=""
-        width={111}
-        height={83}
-        sizes="(max-width: 700px) 74px, (max-width: 1099px) 90px, 111px"
-      />
+      {getQuestionVisual(question.id) ? (
+        <QuestionVisual
+          questionId={question.id}
+          mode="full"
+          className="question-art finder-question-visual"
+          sizes="(max-width: 700px) 110px, (max-width: 1099px) 140px, 160px"
+        />
+      ) : (
+        <Image
+          className="question-art"
+          src={artwork}
+          alt=""
+          width={111}
+          height={83}
+          sizes="(max-width: 700px) 74px, (max-width: 1099px) 90px, 111px"
+        />
+      )}
       <button
         className={`bookmark icon-button ${saved ? "saved" : ""}`}
         aria-label={`${saved ? "Unsave" : "Save"} question ${number}`}

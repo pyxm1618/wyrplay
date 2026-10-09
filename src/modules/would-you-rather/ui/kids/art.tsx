@@ -172,6 +172,9 @@ export function KidsBurst({ className = "" }: { className?: string }) {
   );
 }
 
+import { getQuestionVisual } from "../../data/question-visuals";
+import { QuestionVisual } from "../question-visual";
+
 export function KidsChoicePanels({
   a,
   b,
@@ -179,6 +182,7 @@ export function KidsChoicePanels({
   busy = false,
   onChoose,
   children,
+  questionId,
 }: {
   a: string;
   b: string;
@@ -186,8 +190,10 @@ export function KidsChoicePanels({
   busy?: boolean;
   onChoose?: (option: "A" | "B") => void;
   children?: ReactNode;
+  questionId?: string | undefined;
 }) {
   const gradientId = useId();
+  const visual = getQuestionVisual(questionId);
   return (
     <div className="kids-choices">
       {(["A", "B"] as const).map((option) => (
@@ -200,28 +206,37 @@ export function KidsChoicePanels({
           aria-label={`Choose option ${option}: ${option === "A" ? a : b}`}
           onClick={() => onChoose?.(option)}
         >
-          <svg
-            className="kids-choice-frame"
-            viewBox="0 0 290 180"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <defs>
-              <linearGradient id={`${gradientId}-${option}`} x1="0" y1="0" x2=".65" y2="1">
-                <stop stopColor={option === "A" ? "#ffe35a" : "#38e7ef"} />
-                <stop offset=".55" stopColor={option === "A" ? "#ffad27" : "#00c6ee"} />
-                <stop offset="1" stopColor={option === "A" ? "#ff5b22" : "#00a9f6"} />
-              </linearGradient>
-            </defs>
-            <path
-              d={
-                option === "A"
-                  ? "M29 7 268 1Q288 0 288 20L290 157Q292 174 274 175L19 180Q-1 180 2 160L16 24Q18 8 29 7Z"
-                  : "M17 1 259 5Q277 5 280 24L293 160Q296 180 275 180L18 175Q1 175 2 155L4 18Q4 1 17 1Z"
-              }
-              fill={`url(#${gradientId}-${option})`}
+          {visual ? (
+            <QuestionVisual
+              visual={visual}
+              mode={option === "A" ? "option-a" : "option-b"}
+              className="kids-choice-visual"
+              sizes="(max-width: 600px) 140px, 260px"
             />
-          </svg>
+          ) : (
+            <svg
+              className="kids-choice-frame"
+              viewBox="0 0 290 180"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id={`${gradientId}-${option}`} x1="0" y1="0" x2=".65" y2="1">
+                  <stop stopColor={option === "A" ? "#ffe35a" : "#38e7ef"} />
+                  <stop offset=".55" stopColor={option === "A" ? "#ffad27" : "#00c6ee"} />
+                  <stop offset="1" stopColor={option === "A" ? "#ff5b22" : "#00a9f6"} />
+                </linearGradient>
+              </defs>
+              <path
+                d={
+                  option === "A"
+                    ? "M29 7 268 1Q288 0 288 20L290 157Q292 174 274 175L19 180Q-1 180 2 160L16 24Q18 8 29 7Z"
+                    : "M17 1 259 5Q277 5 280 24L293 160Q296 180 275 180L18 175Q1 175 2 155L4 18Q4 1 17 1Z"
+                }
+                fill={`url(#${gradientId}-${option})`}
+              />
+            </svg>
+          )}
           <svg className="kids-choice-doodles" viewBox="0 0 290 180" aria-hidden="true">
             <g
               fill="none"

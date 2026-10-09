@@ -31,3 +31,7 @@ export { useSavedQuestions } from "./ui/use-saved-questions";
 
 export { KidsPage } from "./ui/kids/kids-page";
 export { TrendingListContent, TrendingListSkeleton } from "./ui/trending-list";
+
+export * from "./data/question-visuals";
+export { QuestionVisual } from "./ui/question-visual";
+export type { QuestionVisualMode, QuestionVisualProps } from "./ui/question-visual";

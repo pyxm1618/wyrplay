@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+      <defs>
+        <linearGradient id="bgA4" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ecfdf5"/>
+          <stop offset="100%" stop-color="#a7f3d0"/>
+        </linearGradient>
+        <linearGradient id="bgB4" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#fff1f2"/>
+          <stop offset="100%" stop-color="#fecdd3"/>
+        </linearGradient>
+      </defs>
+      <!-- Option A: Feed carrots to giraffe (0 - 600) -->
+      <rect x="0" y="0" width="600" height="600" fill="url(#bgA4)"/>
+      <circle cx="300" cy="400" r="220" fill="#6ee7b7" opacity="0.4"/>
+      <!-- Giraffe Long Neck & Head -->
+      <path d="M380 600 L320 220 L270 240 L300 600 Z" fill="#fcd34d"/>
+      <ellipse cx="260" cy="200" rx="60" ry="40" fill="#fcd34d" transform="rotate(-15 260 200)"/>
+      <polygon points="300,170 315,110 325,125" fill="#f59e0b"/>
+      <circle cx="315" cy="110" r="7" fill="#b45309"/>
+      <polygon points="275,160 280,105 292,120" fill="#f59e0b"/>
+      <circle cx="280" cy="105" r="7" fill="#b45309"/>
+      <!-- Giraffe Spots -->
+      <polygon points="330,300 360,320 350,350 320,330" fill="#b45309"/>
+      <polygon points="310,400 345,410 335,450 305,430" fill="#b45309"/>
+      <polygon points="325,500 365,515 350,560 315,540" fill="#b45309"/>
+      <circle cx="245" cy="190" r="8" fill="#1e293b"/>
+      <!-- Big Crunchy Carrot being offered -->
+      <polygon points="120,290 230,220 220,205 110,270" fill="#ea580c"/>
+      <polygon points="110,270 70,295 90,260" fill="#16a34a"/>
+      <polygon points="100,280 65,270 85,250" fill="#22c55e"/>
+
+      <!-- Option B: Feed apples to a gentle pony (600 - 1200) -->
+      <rect x="600" y="0" width="600" height="600" fill="url(#bgB4)"/>
+      <circle cx="900" cy="400" r="220" fill="#fda4af" opacity="0.3"/>
+      <!-- Sweet Pony Body & Mane -->
+      <ellipse cx="940" cy="440" rx="140" ry="110" fill="#d97706"/>
+      <path d="M880 430 L820 260 L890 240 L940 390 Z" fill="#d97706"/>
+      <ellipse cx="790" cy="270" rx="70" ry="45" fill="#d97706" transform="rotate(20 790 270)"/>
+      <!-- Pony Ears -->
+      <polygon points="840,230 855,160 880,210" fill="#b45309"/>
+      <!-- Pony Fluffy Mane -->
+      <path d="M860 190 Q920 220 900 320 Q950 360 930 420" stroke="#fef3c7" stroke-width="26" stroke-linecap="round" fill="none"/>
+      <!-- Pony Eye & Muzzle -->
+      <circle cx="810" cy="255" r="9" fill="#1e293b"/>
+      <ellipse cx="740" cy="285" rx="35" ry="30" fill="#fed7aa"/>
+      <circle cx="735" cy="285" r="5" fill="#78350f"/>
+      <!-- Juicy Red Apple -->
+      <circle cx="680" cy="330" r="38" fill="#dc2626"/>
+      <circle cx="665" cy="315" r="8" fill="#ffffff" opacity="0.6"/>
+      <path d="M680 292 Q690 270 698 265" stroke="#78350f" stroke-width="4" fill="none"/>
+      <ellipse cx="705" cy="275" rx="14" ry="7" fill="#16a34a" transform="rotate(-20 705 275)"/>
+    </svg>

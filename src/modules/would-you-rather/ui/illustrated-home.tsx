@@ -5,6 +5,8 @@ import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from 
 import { FEATURED_COLLECTIONS, QUESTIONS_DATABASE } from "../data/questions";
 import { Arrow, HomeArt } from "./home-art";
 import { rankLeaderboard, type LeaderboardResult } from "../domain/leaderboard";
+import { getQuestionVisual } from "../data/question-visuals";
+import { QuestionVisual } from "./question-visual";
 
 const categories = [
   {
@@ -382,15 +384,25 @@ export function IllustratedHome({
                 className="highlight-card"
                 onClick={() => play(question.id)}
               >
-                <Image
-                  src={`/home-art/highlights/scene-${index + 1}.webp`}
-                  width={724}
-                  height={560}
-                  sizes={highlightImageSizes}
-                  quality={60}
-                  className="highlight-image"
-                  alt=""
-                />
+                {getQuestionVisual(question.id) ? (
+                  <QuestionVisual
+                    questionId={question.id}
+                    mode="full"
+                    className="highlight-image"
+                    sizes={highlightImageSizes}
+                    quality={70}
+                  />
+                ) : (
+                  <Image
+                    src={`/home-art/highlights/scene-${index + 1}.webp`}
+                    width={724}
+                    height={560}
+                    sizes={highlightImageSizes}
+                    quality={60}
+                    className="highlight-image"
+                    alt=""
+                  />
+                )}
                 <span className="highlight-body">
                   <span className="highlight-title">{question.question}</span>
                   <span className="highlight-footer">

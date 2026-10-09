@@ -1,0 +1,56 @@
+/* ---------------------------------------------------------------------------
+   Question Visual Unified Component Styles
+   Supports:
+   - mode="full" (2:1 full illustration)
+   - mode="option-a" (strictly 50% left half, 1:1 ratio)
+   - mode="option-b" (strictly 50% right half, 1:1 ratio)
+--------------------------------------------------------------------------- */
+
+.question-visual-frame {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  user-select: none;
+}
+
+.question-visual-frame[data-mode="full"] {
+  aspect-ratio: 2 / 1;
+  width: 100%;
+}
+
+.question-visual-frame[data-mode="full"] .question-visual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.question-visual-frame[data-mode="option-a"],
+.question-visual-frame[data-mode="option-b"] {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+}
+
+.question-visual-frame[data-mode="option-a"] .question-visual-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200% !important;
+  max-width: none !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: left center;
+  display: block;
+}
+
+.question-visual-frame[data-mode="option-b"] .question-visual-img {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200% !important;
+  max-width: none !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: right center;
+  display: block;
+}

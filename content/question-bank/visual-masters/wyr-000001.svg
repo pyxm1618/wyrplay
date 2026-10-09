@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+      <defs>
+        <linearGradient id="bgA1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#fff5e6"/>
+          <stop offset="100%" stop-color="#fed7aa"/>
+        </linearGradient>
+        <linearGradient id="bgB1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ecfeff"/>
+          <stop offset="100%" stop-color="#bae6fd"/>
+        </linearGradient>
+        <radialGradient id="sun" cx="30%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#ffedd5"/>
+          <stop offset="100%" stop-color="#f97316" stop-opacity="0.1"/>
+        </radialGradient>
+      </defs>
+      <!-- Option A: Storytelling Squirrel (0 - 600) -->
+      <rect x="0" y="0" width="600" height="600" fill="url(#bgA1)"/>
+      <circle cx="300" cy="300" r="220" fill="url(#sun)"/>
+      <!-- Forest Floor -->
+      <path d="M0 480 Q150 450 300 480 T600 460 L600 600 L0 600 Z" fill="#bbf7d0"/>
+      <path d="M0 520 Q200 500 400 530 T600 510 L600 600 L0 600 Z" fill="#86efac"/>
+      <!-- Squirrel Tail -->
+      <path d="M190 420 C110 370 120 220 220 180 C270 160 300 200 280 260 C260 320 240 370 240 420 Z" fill="#ea580c"/>
+      <path d="M200 410 C140 360 150 240 230 200 C260 190 280 220 265 265 C250 310 230 360 230 410 Z" fill="#fdba74"/>
+      <!-- Squirrel Body -->
+      <ellipse cx="300" cy="390" rx="75" ry="95" fill="#f97316"/>
+      <ellipse cx="300" cy="400" rx="55" ry="75" fill="#ffedd5"/>
+      <!-- Squirrel Head -->
+      <circle cx="300" cy="275" r="55" fill="#f97316"/>
+      <polygon points="260,240 270,185 290,230" fill="#ea580c"/>
+      <polygon points="340,240 330,185 310,230" fill="#ea580c"/>
+      <ellipse cx="280" cy="265" rx="7" ry="10" fill="#1e293b"/>
+      <ellipse cx="320" cy="265" rx="7" ry="10" fill="#1e293b"/>
+      <polygon points="300,282 292,274 308,274" fill="#7c2d12"/>
+      <path d="M292 288 Q300 298 308 288" stroke="#7c2d12" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <!-- Story Book -->
+      <polygon points="240,430 300,410 360,430 360,480 300,460 240,480" fill="#3b82f6"/>
+      <polygon points="245,433 300,414 300,462 245,477" fill="#ffffff"/>
+      <polygon points="355,433 300,414 300,462 355,477" fill="#f8fafc"/>
+      <line x1="255" y1="438" x2="290" y2="427" stroke="#cbd5e1" stroke-width="3"/>
+      <line x1="255" y1="448" x2="290" y2="437" stroke="#cbd5e1" stroke-width="3"/>
+      <line x1="310" y1="427" x2="345" y2="438" stroke="#cbd5e1" stroke-width="3"/>
+      <line x1="310" y1="437" x2="345" y2="448" stroke="#cbd5e1" stroke-width="3"/>
+      <!-- Magical Story Sparkles -->
+      <circle cx="210" cy="240" r="5" fill="#f59e0b"/>
+      <circle cx="390" cy="270" r="7" fill="#f59e0b"/>
+      <circle cx="350" cy="200" r="6" fill="#fbbf24"/>
+
+      <!-- Option B: Joke Telling Turtle (600 - 1200) -->
+      <rect x="600" y="0" width="600" height="600" fill="url(#bgB1)"/>
+      <circle cx="900" cy="300" r="220" fill="#e0f2fe"/>
+      <!-- Stage Floor -->
+      <path d="M600 480 Q750 460 900 480 T1200 470 L1200 600 L600 600 Z" fill="#fed7aa"/>
+      <path d="M600 520 Q800 500 1000 525 T1200 515 L1200 600 L600 600 Z" fill="#fdba74"/>
+      <!-- Turtle Shell -->
+      <ellipse cx="900" cy="380" rx="110" ry="85" fill="#15803d"/>
+      <ellipse cx="900" cy="375" rx="90" ry="70" fill="#22c55e"/>
+      <polygon points="900,325 870,355 930,355" fill="#16a34a"/>
+      <polygon points="855,365 885,395 835,395" fill="#16a34a"/>
+      <polygon points="945,365 915,395 965,395" fill="#16a34a"/>
+      <!-- Turtle Head -->
+      <ellipse cx="900" cy="260" rx="48" ry="42" fill="#4ade80"/>
+      <circle cx="882" cy="250" r="6" fill="#0f172a"/>
+      <circle cx="918" cy="250" r="6" fill="#0f172a"/>
+      <!-- Big Laughing Smile -->
+      <path d="M876 270 Q900 300 924 270 Z" fill="#dc2626"/>
+      <!-- Party Joke Hat -->
+      <polygon points="875,225 900,165 925,225" fill="#f43f5e"/>
+      <circle cx="900" cy="160" r="8" fill="#fbbf24"/>
+      <!-- Vintage Microphone on Stand -->
+      <line x1="990" y1="280" x2="990" y2="470" stroke="#64748b" stroke-width="8"/>
+      <ellipse cx="990" cy="470" rx="28" ry="10" fill="#475569"/>
+      <rect x="975" y="250" width="30" height="42" rx="15" fill="#94a3b8"/>
+      <line x1="978" y1="262" x2="1002" y2="262" stroke="#475569" stroke-width="3"/>
+      <line x1="978" y1="272" x2="1002" y2="272" stroke="#475569" stroke-width="3"/>
+      <!-- Laugh notes -->
+      <text x="820" y="220" font-family="Arial, sans-serif" font-weight="bold" font-size="28" fill="#f59e0b">Haha!</text>
+      <text x="960" y="210" font-family="Arial, sans-serif" font-weight="bold" font-size="24" fill="#3b82f6">♪</text>
+    </svg>

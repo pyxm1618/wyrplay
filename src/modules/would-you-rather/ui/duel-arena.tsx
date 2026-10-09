@@ -7,6 +7,8 @@ import type { Question, VoteStats } from "../types";
 import { Arrow, ChoiceFrame } from "./home-art";
 import { PlayHeading, OptionPanels } from "./play/art";
 import { KidsChoicePanels } from "./kids/art";
+import { getQuestionVisual } from "../data/question-visuals";
+import { QuestionVisual } from "./question-visual";
 
 export interface DuelArenaProps {
   readonly appearance?: "default" | "illustrated-play" | "illustrated-home" | "illustrated-kids";
@@ -208,6 +210,7 @@ export function DuelArena({
   const currentErrorMessage = loadedQuestionId === currentQuestionId ? errorMessage : null;
   const hasVoted = Boolean(currentStats?.hasVoted);
   const userPick = currentStats?.selectedOption ?? null;
+  const questionVisual = question ? getQuestionVisual(question.id) : undefined;
 
   if (appearance === "illustrated-kids")
     return (
@@ -218,6 +221,7 @@ export function DuelArena({
           selected={userPick}
           busy={isSubmitting || (aggregateOnly && hasVoted)}
           onChoose={(option) => void handleVote(option)}
+          questionId={question.id}
         />
         <p role="status" className="kids-example-status">
           {isSubmitting
@@ -251,7 +255,16 @@ export function DuelArena({
               disabled={isSubmitting}
               onClick={() => void handleVote(option)}
             >
-              <ChoiceFrame variant={option === "A" ? "dog" : "cat"} />
+              {questionVisual ? (
+                <QuestionVisual
+                  visual={questionVisual}
+                  mode={option === "A" ? "option-a" : "option-b"}
+                  className="home-choice-visual"
+                  sizes="(max-width: 600px) 140px, 260px"
+                />
+              ) : (
+                <ChoiceFrame variant={option === "A" ? "dog" : "cat"} />
+              )}
               <span className="choice-label">Option {option}</span>
               <span className="choice-text">
                 {option === "A" ? question.optionA : question.optionB}
@@ -350,6 +363,7 @@ export function DuelArena({
           b={question.optionB}
           childrenA={choice("A")}
           childrenB={choice("B")}
+          questionId={question.id}
         />
       </section>
     );

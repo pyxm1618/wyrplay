@@ -3,6 +3,7 @@ import type { Question } from "../../types";
 import type { PrintLayout, PrintFormat } from "../../domain/print-layout";
 import { wrapPrintText } from "../../domain/print-layout";
 import { questionPoolUrl } from "../../domain/question-pool";
+import { getQuestionVisual } from "../../data/question-visuals";
 
 export const PRINT_QR_CONFIG = {
   margin: 4,
@@ -83,6 +84,33 @@ export type QrSource =
   | Map<string, HTMLImageElement>
   | ((question: Question, placementIndex: number) => HTMLImageElement | null | undefined);
 
+export type VisualSource =
+  | HTMLImageElement
+  | null
+  | undefined
+  | Map<string, HTMLImageElement>
+  | ((question: Question, placementIndex: number) => HTMLImageElement | null | undefined);
+
+const visualImageCache = new Map<string, HTMLImageElement>();
+export async function getVisualImage(src: string): Promise<HTMLImageElement> {
+  const cached = visualImageCache.get(src);
+  if (cached) return cached;
+  const img = new Image();
+  img.src = src;
+  await img.decode();
+  visualImageCache.set(src, img);
+  return img;
+}
+
+const visualBytesCache = new Map<string, ArrayBuffer>();
+export async function loadVisualBytes(src: string): Promise<ArrayBuffer> {
+  const cached = visualBytesCache.get(src);
+  if (cached) return cached;
+  const bytes = await fetchPrintAsset(src);
+  visualBytesCache.set(src, bytes);
+  return bytes;
+}
+
 export interface RenderPrintOptions {
   readonly showNumbers?: boolean | undefined;
   readonly qrCode?: boolean | undefined;
@@ -137,6 +165,7 @@ export function renderSinglePrintPage(
   logo: HTMLImageElement,
   options: RenderPrintOptions = {},
   qrSource?: QrSource,
+  visualSource?: VisualSource,
 ): HTMLCanvasElement {
   const placements = layout.pages[pageIndex] ?? [];
   const canvas = document.createElement("canvas");
@@ -233,27 +262,102 @@ export function renderSinglePrintPage(
         }
       }
 
-      const a = wrapPrintText(p.question.optionA, p.width - 55, (t) => {
-        ctx.font = "11px PlayBody";
-        return ctx.measureText(t).width;
-      });
-      const ay = p.y + 80;
-      const by = ay + a.length * 14 + 24;
-      [
-        ["A", ay, "#ff3457", p.question.optionA],
-        ["B", by, "#008cff", p.question.optionB],
-      ].forEach(([label, yPos, color, option]) => {
-        const yy = Number(yPos);
-        ctx.fillStyle = String(color);
+      let cardVisualImg: HTMLImageElement | null = null;
+      const visualAsset = getQuestionVisual(p.question.id);
+      if (visualAsset && visualSource) {
+        if (visualSource instanceof HTMLImageElement) {
+          cardVisualImg = visualSource;
+        } else if (visualSource instanceof Map) {
+          cardVisualImg =
+            visualSource.get(p.question.id) ?? visualSource.get(visualAsset.src) ?? null;
+        } else if (typeof visualSource === "function") {
+          cardVisualImg = visualSource(p.question, pIndex) ?? null;
+        }
+      }
+
+      if (cardVisualImg) {
+        const imgSize = Math.min(100, Math.floor(p.height * 0.42));
+        const imgAX = p.x + p.width / 2 - imgSize - 14;
+        const imgAY = p.y + 60;
+        const imgBX = p.x + p.width / 2 + 14;
+        const imgBY = p.y + 60;
+
+        // Option A (严格左半幅 50%)
+        ctx.drawImage(
+          cardVisualImg,
+          0,
+          0,
+          cardVisualImg.naturalWidth / 2,
+          cardVisualImg.naturalHeight,
+          imgAX,
+          imgAY,
+          imgSize,
+          imgSize,
+        );
+
+        // Option B (严格右半幅 50%)
+        ctx.drawImage(
+          cardVisualImg,
+          cardVisualImg.naturalWidth / 2,
+          0,
+          cardVisualImg.naturalWidth / 2,
+          cardVisualImg.naturalHeight,
+          imgBX,
+          imgBY,
+          imgSize,
+          imgSize,
+        );
+
+        ctx.strokeStyle = "#cbd5e1";
+        ctx.strokeRect(imgAX, imgAY, imgSize, imgSize);
+        ctx.strokeRect(imgBX, imgBY, imgSize, imgSize);
+
+        const textWidth = imgSize + 16;
+        const textAY = imgAY + imgSize + 16;
+        const textBY = imgBY + imgSize + 16;
+
+        ctx.fillStyle = "#ff3457";
         ctx.beginPath();
-        ctx.arc(p.x + 20, yy - 4, 10, 0, Math.PI * 2);
+        ctx.arc(imgAX + 8, textAY - 4, 8, 0, Math.PI * 2);
         ctx.fill();
         ctx.fillStyle = "white";
-        ctx.font = "bold 11px Arial";
-        ctx.fillText(String(label), p.x + 16, yy);
+        ctx.font = "bold 9px Arial";
+        ctx.fillText("A", imgAX + 5, textAY - 1);
         ctx.fillStyle = "#090e20";
-        text(String(option), p.x + 40, yy, p.width - 55);
-      });
+        text(p.question.optionA, imgAX + 20, textAY - 1, textWidth - 12, 10);
+
+        ctx.fillStyle = "#008cff";
+        ctx.beginPath();
+        ctx.arc(imgBX + 8, textBY - 4, 8, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = "white";
+        ctx.font = "bold 9px Arial";
+        ctx.fillText("B", imgBX + 5, textBY - 1);
+        ctx.fillStyle = "#090e20";
+        text(p.question.optionB, imgBX + 20, textBY - 1, textWidth - 12, 10);
+      } else {
+        const a = wrapPrintText(p.question.optionA, p.width - 55, (t) => {
+          ctx.font = "11px PlayBody";
+          return ctx.measureText(t).width;
+        });
+        const ay = p.y + 80;
+        const by = ay + a.length * 14 + 24;
+        [
+          ["A", ay, "#ff3457", p.question.optionA],
+          ["B", by, "#008cff", p.question.optionB],
+        ].forEach(([label, yPos, color, option]) => {
+          const yy = Number(yPos);
+          ctx.fillStyle = String(color);
+          ctx.beginPath();
+          ctx.arc(p.x + 20, yy - 4, 10, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = "white";
+          ctx.font = "bold 11px Arial";
+          ctx.fillText(String(label), p.x + 16, yy);
+          ctx.fillStyle = "#090e20";
+          text(String(option), p.x + 40, yy, p.width - 55);
+        });
+      }
     } else {
       ctx.fillStyle = "#090e20";
       if (showNumbers) {
@@ -293,8 +397,11 @@ export function renderPrintPages(
   marks: boolean,
   logo: HTMLImageElement,
   options: RenderPrintOptions = {},
+  visualSource?: VisualSource,
 ): HTMLCanvasElement[] {
-  return layout.pages.map((_, i) => renderSinglePrintPage(layout, i, format, marks, logo, options));
+  return layout.pages.map((_, i) =>
+    renderSinglePrintPage(layout, i, format, marks, logo, options, undefined, visualSource),
+  );
 }
 
 /**
@@ -307,7 +414,10 @@ export async function createVectorPdf(
   marks: boolean,
   options: RenderPrintOptions = {},
 ): Promise<Blob> {
-  const [{ PDFDocument, rgb }, { default: fontkit }] = await Promise.all([
+  const [
+    { PDFDocument, rgb, pushGraphicsState, popGraphicsState, rectangle, clip, endPath },
+    { default: fontkit },
+  ] = await Promise.all([
     import("pdf-lib"),
     import("@pdf-lib/fontkit"),
   ]);
@@ -319,6 +429,31 @@ export async function createVectorPdf(
   const playBodyFont = await doc.embedFont(fonts.playBody, { subset: true });
   const playBodyBoldFont = await doc.embedFont(fonts.playBodyBold, { subset: true });
   const embeddedLogo = await doc.embedPng(logoBytes);
+
+  const embeddedVisualMap = new Map<string, Awaited<ReturnType<typeof doc.embedPng>>>();
+  if (format === "cards") {
+    const visualSourcesToLoad = new Set<string>();
+    layout.pages.forEach((pagePlacements) => {
+      pagePlacements.forEach((p) => {
+        const visual = getQuestionVisual(p.question.id);
+        if (visual) {
+          visualSourcesToLoad.add(visual.src);
+        }
+      });
+    });
+
+    await Promise.all(
+      Array.from(visualSourcesToLoad).map(async (src) => {
+        try {
+          const bytes = await loadVisualBytes(src);
+          const embedded = await doc.embedPng(bytes);
+          embeddedVisualMap.set(src, embedded);
+        } catch (err) {
+          console.warn(`[createVectorPdf] Failed to embed visual ${src}:`, err);
+        }
+      }),
+    );
+  }
 
   const embeddedQrMap = new Map<string, Awaited<ReturnType<typeof doc.embedPng>>>();
   if (options.qrCode) {
@@ -469,63 +604,185 @@ export async function createVectorPdf(
           }
         }
 
-        // Options
-        const linesA = wrapPrintText(p.question.optionA, p.width - 55, (t) =>
-          playBodyFont.widthOfTextAtSize(t, 11),
-        );
-        const ay = p.y + 80;
-        const by = ay + linesA.length * 14 + 24;
+        const visualAsset = getQuestionVisual(p.question.id);
+        const embeddedVisual = visualAsset ? embeddedVisualMap.get(visualAsset.src) : undefined;
 
-        // Draw Option A Circle & Text
-        page.drawCircle({
-          x: p.x + 20,
-          y: height - (ay - 4),
-          size: 10,
-          color: colorA,
-        });
-        page.drawText("A", {
-          x: p.x + 16,
-          y: height - ay,
-          size: 11,
-          font: playBodyBoldFont,
-          color: rgb(1, 1, 1),
-        });
-        linesA.forEach((line, i) => {
-          page.drawText(line, {
-            x: p.x + 40,
-            y: height - (ay + i * 14),
-            size: 11,
-            font: playBodyFont,
-            color: inkColor,
-          });
-        });
+        if (embeddedVisual) {
+          const imgSize = Math.min(100, Math.floor(p.height * 0.42));
+          const imgAX = p.x + p.width / 2 - imgSize - 14;
+          const imgAY = p.y + 60;
+          const imgBX = p.x + p.width / 2 + 14;
+          const imgBY = p.y + 60;
 
-        // Draw Option B Circle & Text
-        const linesB = wrapPrintText(p.question.optionB, p.width - 55, (t) =>
-          playBodyFont.widthOfTextAtSize(t, 11),
-        );
-        page.drawCircle({
-          x: p.x + 20,
-          y: height - (by - 4),
-          size: 10,
-          color: colorB,
-        });
-        page.drawText("B", {
-          x: p.x + 16,
-          y: height - by,
-          size: 11,
-          font: playBodyBoldFont,
-          color: rgb(1, 1, 1),
-        });
-        linesB.forEach((line, i) => {
-          page.drawText(line, {
-            x: p.x + 40,
-            y: height - (by + i * 14),
-            size: 11,
-            font: playBodyFont,
-            color: inkColor,
+          // Option A (严格左半幅 50%)
+          const boxAX_pdf = imgAX;
+          const boxAY_pdf = height - (imgAY + imgSize);
+          page.pushOperators(
+            pushGraphicsState(),
+            rectangle(boxAX_pdf, boxAY_pdf, imgSize, imgSize),
+            clip(),
+            endPath(),
+          );
+          page.drawImage(embeddedVisual, {
+            x: boxAX_pdf,
+            y: boxAY_pdf,
+            width: 2 * imgSize,
+            height: imgSize,
           });
-        });
+          page.pushOperators(popGraphicsState());
+
+          // Option B (严格右半幅 50%)
+          const boxBX_pdf = imgBX;
+          const boxBY_pdf = height - (imgBY + imgSize);
+          page.pushOperators(
+            pushGraphicsState(),
+            rectangle(boxBX_pdf, boxBY_pdf, imgSize, imgSize),
+            clip(),
+            endPath(),
+          );
+          page.drawImage(embeddedVisual, {
+            x: boxBX_pdf - imgSize,
+            y: boxBY_pdf,
+            width: 2 * imgSize,
+            height: imgSize,
+          });
+          page.pushOperators(popGraphicsState());
+
+          // 线框
+          const cardBorderColor = rgb(203 / 255, 213 / 255, 225 / 255);
+          page.drawRectangle({
+            x: boxAX_pdf,
+            y: boxAY_pdf,
+            width: imgSize,
+            height: imgSize,
+            borderColor: cardBorderColor,
+            borderWidth: 0.8,
+          });
+          page.drawRectangle({
+            x: boxBX_pdf,
+            y: boxBY_pdf,
+            width: imgSize,
+            height: imgSize,
+            borderColor: cardBorderColor,
+            borderWidth: 0.8,
+          });
+
+          const textWidth = imgSize + 16;
+          const textAY = imgAY + imgSize + 16;
+          const textBY = imgBY + imgSize + 16;
+
+          // Option A 徽标与文字
+          page.drawCircle({
+            x: imgAX + 8,
+            y: height - (textAY - 4),
+            size: 7,
+            color: colorA,
+          });
+          page.drawText("A", {
+            x: imgAX + 5.5,
+            y: height - (textAY - 0.5),
+            size: 9,
+            font: playBodyBoldFont,
+            color: rgb(1, 1, 1),
+          });
+          const linesA = wrapPrintText(p.question.optionA, textWidth - 12, (t) =>
+            playBodyFont.widthOfTextAtSize(t, 10),
+          );
+          linesA.forEach((line, i) => {
+            page.drawText(line, {
+              x: imgAX + 20,
+              y: height - (textAY + i * 12),
+              size: 10,
+              font: playBodyFont,
+              color: inkColor,
+            });
+          });
+
+          // Option B 徽标与文字
+          page.drawCircle({
+            x: imgBX + 8,
+            y: height - (textBY - 4),
+            size: 7,
+            color: colorB,
+          });
+          page.drawText("B", {
+            x: imgBX + 5.5,
+            y: height - (textBY - 0.5),
+            size: 9,
+            font: playBodyBoldFont,
+            color: rgb(1, 1, 1),
+          });
+          const linesB = wrapPrintText(p.question.optionB, textWidth - 12, (t) =>
+            playBodyFont.widthOfTextAtSize(t, 10),
+          );
+          linesB.forEach((line, i) => {
+            page.drawText(line, {
+              x: imgBX + 20,
+              y: height - (textBY + i * 12),
+              size: 10,
+              font: playBodyFont,
+              color: inkColor,
+            });
+          });
+        } else {
+          // Options 文字 fallback
+          const linesA = wrapPrintText(p.question.optionA, p.width - 55, (t) =>
+            playBodyFont.widthOfTextAtSize(t, 11),
+          );
+          const ay = p.y + 80;
+          const by = ay + linesA.length * 14 + 24;
+
+          // Draw Option A Circle & Text
+          page.drawCircle({
+            x: p.x + 20,
+            y: height - (ay - 4),
+            size: 10,
+            color: colorA,
+          });
+          page.drawText("A", {
+            x: p.x + 16,
+            y: height - ay,
+            size: 11,
+            font: playBodyBoldFont,
+            color: rgb(1, 1, 1),
+          });
+          linesA.forEach((line, i) => {
+            page.drawText(line, {
+              x: p.x + 40,
+              y: height - (ay + i * 14),
+              size: 11,
+              font: playBodyFont,
+              color: inkColor,
+            });
+          });
+
+          // Draw Option B Circle & Text
+          const linesB = wrapPrintText(p.question.optionB, p.width - 55, (t) =>
+            playBodyFont.widthOfTextAtSize(t, 11),
+          );
+          page.drawCircle({
+            x: p.x + 20,
+            y: height - (by - 4),
+            size: 10,
+            color: colorB,
+          });
+          page.drawText("B", {
+            x: p.x + 16,
+            y: height - by,
+            size: 11,
+            font: playBodyBoldFont,
+            color: rgb(1, 1, 1),
+          });
+          linesB.forEach((line, i) => {
+            page.drawText(line, {
+              x: p.x + 40,
+              y: height - (by + i * 14),
+              size: 11,
+              font: playBodyFont,
+              color: inkColor,
+            });
+          });
+        }
       } else {
         // Sheet format
         if (showNumbers) {
