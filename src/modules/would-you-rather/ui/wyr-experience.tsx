@@ -263,9 +263,7 @@ export function WyrExperience({
 
   const homeDirectorySemanticMarkup = useMemo(
     () =>
-      appearance === "illustrated-home"
-        ? buildHomeDirectorySemanticMarkup(directoryQuestions)
-        : "",
+      appearance === "illustrated-home" ? buildHomeDirectorySemanticMarkup(directoryQuestions) : "",
     [appearance, directoryQuestions],
   );
 
