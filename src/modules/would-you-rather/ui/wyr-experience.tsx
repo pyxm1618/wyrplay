@@ -26,6 +26,39 @@ import { useHydrated } from "./use-hydrated";
 import { IllustratedHome } from "./illustrated-home";
 import { CategoryExplorer } from "./category-explorer";
 
+function ArenaHydrationGate({ children }: { readonly children: React.ReactNode }) {
+  const hydrated = useHydrated();
+  return (
+    <fieldset disabled={!hydrated} className="home-arena-controls">
+      {children}
+    </fieldset>
+  );
+}
+
+function ExperienceHydrationGate({
+  appearance,
+  children,
+}: {
+  readonly appearance: "default" | "illustrated-home";
+  readonly children: React.ReactNode;
+}) {
+  const hydrated = useHydrated();
+  return (
+    <fieldset
+      className="w-full min-w-0 space-y-12"
+      disabled={!hydrated}
+      data-home-ready={appearance === "default" ? hydrated : undefined}
+    >
+      {children}
+    </fieldset>
+  );
+}
+
+function HomeHydrationGate({ children }: { readonly children: React.ReactNode }) {
+  const hydrated = useHydrated();
+  return <div data-home-ready={hydrated}>{children}</div>;
+}
+
 export interface WyrExperienceProps {
   readonly leaderboard?: LeaderboardResult;
   readonly appearance?: "default" | "illustrated-home";
@@ -47,7 +80,6 @@ export function WyrExperience({
   allowUnreviewed = false,
   trendingSlot,
 }: WyrExperienceProps) {
-  const hydrated = useHydrated();
   // 1. 搜索与筛选状态
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedAgeGroup, setSelectedAgeGroup] = useState<AgeGroup | undefined>(undefined);
@@ -214,7 +246,7 @@ export function WyrExperience({
   );
 
   const arena = (
-    <fieldset disabled={!hydrated} className="home-arena-controls">
+    <ArenaHydrationGate>
       <DuelArena
         appearance={appearance === "illustrated-home" ? "illustrated-home" : "default"}
         presenterButtonRef={presenterTriggerRef}
@@ -229,15 +261,11 @@ export function WyrExperience({
           ? { onOpenPresenter: () => setIsPresenterOpen(true) }
           : {})}
       />
-    </fieldset>
+    </ArenaHydrationGate>
   );
 
   const experience = (
-    <fieldset
-      className="w-full min-w-0 space-y-12"
-      disabled={!hydrated}
-      data-home-ready={appearance === "default" ? hydrated : undefined}
-    >
+    <ExperienceHydrationGate appearance={appearance}>
       {/* 1. 核心 Live 对决 Arena */}
       {appearance !== "illustrated-home" && arena}
 
@@ -336,10 +364,10 @@ export function WyrExperience({
         currentIndex={currentIndex >= 0 ? currentIndex : 0}
         totalCount={playableQuestions.length}
       />
-    </fieldset>
+    </ExperienceHydrationGate>
   );
   return appearance === "illustrated-home" ? (
-    <div data-home-ready={hydrated}>
+    <HomeHydrationGate>
       <IllustratedHome
         arena={arena}
         leaderboard={leaderboard}
@@ -355,7 +383,7 @@ export function WyrExperience({
       >
         {experience}
       </IllustratedHome>
-    </div>
+    </HomeHydrationGate>
   ) : (
     experience
   );
