@@ -35,20 +35,49 @@ jobs:
           set -euo pipefail
           mkdir -p lighthouse-results
           npx --yes lighthouse@13.5.0 --version
+
+          run_slot() {
+            mode="$1"
+            slot="$2"
+            final="lighthouse-results/$mode-$slot.json"
+            for attempt in 1 2 3; do
+              tmp="lighthouse-results/$mode-$slot-attempt-$attempt.json"
+              rm -f "$tmp"
+              echo "Running $mode slot $slot, infrastructure attempt $attempt"
+              if [ "$mode" = "desktop" ]; then
+                if npx --yes lighthouse@13.5.0 "$TARGET_URL" \
+                  --quiet \
+                  --preset=desktop \
+                  --only-categories=performance,accessibility,best-practices,seo \
+                  --output=json \
+                  --output-path="$tmp" \
+                  --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage"; then
+                  mv "$tmp" "$final"
+                  return 0
+                fi
+              else
+                if npx --yes lighthouse@13.5.0 "$TARGET_URL" \
+                  --quiet \
+                  --only-categories=performance,accessibility,best-practices,seo \
+                  --output=json \
+                  --output-path="$tmp" \
+                  --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage"; then
+                  mv "$tmp" "$final"
+                  return 0
+                fi
+              fi
+              rm -f "$tmp"
+              echo "Infrastructure failure for $mode slot $slot attempt $attempt; retrying without accepting a score."
+            done
+            echo "No valid Lighthouse report for $mode slot $slot after 3 infrastructure attempts."
+            return 1
+          }
+
           for i in 1 2 3; do
-            npx --yes lighthouse@13.5.0 "$TARGET_URL" \
-              --only-categories=performance,accessibility,best-practices,seo \
-              --output=json \
-              --output-path="lighthouse-results/mobile-$i.json" \
-              --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage"
+            run_slot mobile "$i"
           done
           for i in 1 2 3; do
-            npx --yes lighthouse@13.5.0 "$TARGET_URL" \
-              --preset=desktop \
-              --only-categories=performance,accessibility,best-practices,seo \
-              --output=json \
-              --output-path="lighthouse-results/desktop-$i.json" \
-              --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage"
+            run_slot desktop "$i"
           done
 
       - name: Summarize Lighthouse
