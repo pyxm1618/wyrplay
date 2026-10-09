@@ -45,8 +45,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"],
-    imageSizes: [330, 420],
-    qualities: [50, 60, 70, 75],
+    qualities: [60, 70, 75],
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
