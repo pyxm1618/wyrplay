@@ -211,7 +211,6 @@ export function IllustratedHome({
             width={786}
             height={637}
             sizes="(max-width: 600px) 0px, (max-width: 1000px) 320px, 390px"
-            quality={60}
             className="hero-cloud-right"
           />
           <Image
@@ -252,9 +251,7 @@ export function IllustratedHome({
             width={790}
             height={793}
             sizes="(max-width: 600px) 110px, (max-width: 1000px) 280px, 350px"
-            quality={60}
             priority
-            fetchPriority="high"
             className="hero-boy"
           />
           <Image
@@ -286,7 +283,7 @@ export function IllustratedHome({
                 width={1662}
                 height={887}
                 sizes="(max-width: 600px) 330px, (max-width: 1000px) 330px, 420px"
-                quality={60}
+                quality={70}
                 priority
                 fetchPriority="high"
                 className="hero-title-img"
