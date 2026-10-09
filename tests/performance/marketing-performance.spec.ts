@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Route } from "@playwright/test";
+import { expect, test, type Page, type Route } from "@playwright/test";
 
 declare global {
   interface Window {
@@ -9,6 +9,17 @@ declare global {
       longTasks: { start: number; duration: number }[];
     };
   }
+}
+
+async function waitForInteractiveHome(page: Page) {
+  await expect(page.locator('[data-home-ready="true"]')).toBeVisible();
+  await page.waitForFunction(() => {
+    const image = document.querySelector<HTMLImageElement>(".hero-title-img");
+    return Boolean(image?.complete && image.naturalWidth > 0);
+  });
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+  });
 }
 
 const routes = ["/", "/would-you-rather-questions-for-kids"] as const;
