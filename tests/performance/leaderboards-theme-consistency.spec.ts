@@ -1,4 +1,15 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+
+async function waitForInteractiveHome(page: Page) {
+  await expect(page.locator(".home-main")).toBeVisible();
+  await page.waitForFunction(() => {
+    const image = document.querySelector<HTMLImageElement>(".hero-title-img");
+    return Boolean(image?.complete && image.naturalWidth > 0);
+  });
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+  });
+}
 
 test.describe("Leaderboard Theme Consistency & Flash Verification Gate", () => {
   test("Direct visit to /leaderboards renders light theme on first frame without theme flash", async ({
@@ -27,7 +38,8 @@ test.describe("Leaderboard Theme Consistency & Flash Verification Gate", () => {
     page,
   }) => {
     // 1. Load Home page
-    await page.goto("/", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "load" });
+    await waitForInteractiveHome(page);
     const homeMain = page.locator(".home-main");
     await expect(homeMain).toBeVisible();
 

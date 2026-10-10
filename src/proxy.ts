@@ -32,27 +32,38 @@ function isDynamicRoute(pathname: string): boolean {
 
 let cachedHashes: readonly string[] | null = null;
 
+function readRuntimeHashArtifact(filePath: string): readonly string[] | null {
+  try {
+    if (!fs.existsSync(filePath)) return null;
+    const raw = fs.readFileSync(filePath, "utf8");
+    const data = JSON.parse(raw) as { all?: unknown };
+    if (!Array.isArray(data.all)) return null;
+    const hashes = data.all.filter((hash): hash is string => typeof hash === "string");
+    return hashes.length > 0 ? hashes : null;
+  } catch {
+    return null;
+  }
+}
+
 function getStaticInlineHashes(): readonly string[] {
   if (cachedHashes) return cachedHashes;
-  const hashSet = new Set<string>(STATIC_INLINE_HASHES);
-  try {
-    const filePath = path.resolve(process.cwd(), ".next/static-inline-hashes.json");
-    if (fs.existsSync(filePath)) {
-      const raw = fs.readFileSync(filePath, "utf8");
-      const data = JSON.parse(raw);
-      if (Array.isArray(data.all)) {
-        for (const hash of data.all) {
-          if (typeof hash === "string") {
-            hashSet.add(hash);
-          }
-        }
-      }
+
+  const runtimePaths = [
+    path.resolve(process.cwd(), ".runtime/static-inline-hashes.json"),
+    path.resolve(process.cwd(), ".next/static-inline-hashes.json"),
+  ];
+
+  for (const filePath of runtimePaths) {
+    const runtimeHashes = readRuntimeHashArtifact(filePath);
+    if (runtimeHashes) {
+      cachedHashes = runtimeHashes;
+      return cachedHashes;
     }
-  } catch {
-    // In serverless environments where build artifacts are traced or read-only,
-    // STATIC_INLINE_HASHES compiled directly into the bundle guarantees coverage.
   }
-  cachedHashes = Array.from(hashSet);
+
+  // Safe fallback for environments that do not package the runtime artifact.
+  // The normal Vercel production path is the generated JSON above.
+  cachedHashes = STATIC_INLINE_HASHES;
   return cachedHashes;
 }
 
