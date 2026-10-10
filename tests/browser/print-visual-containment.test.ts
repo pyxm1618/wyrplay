@@ -45,6 +45,7 @@ it("keeps illustrated captions inside native A4 and Letter card cut lines", asyn
       await page.setContent(
         `<style>*{box-sizing:border-box}body{margin:0;font-family:Arial}h3,p{margin:0}img{display:block;max-width:100%}${styles}</style>${markup}`,
       );
+      expect(await page.locator('.print-document img[src^="data:image/svg+xml"]').count()).toBe(8);
       await page
         .locator('.print-document img[src^="data:image/svg+xml"]')
         .evaluateAll((images) =>
