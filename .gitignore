@@ -21,3 +21,4 @@ test-results
 **/report/verify-*.png
 **/measurement*/annotations.png
 .lighthouse-reports/
+.runtime/
