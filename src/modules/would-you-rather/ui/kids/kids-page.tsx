@@ -115,6 +115,7 @@ function topicMotif(question: Question) {
 }
 
 function KidsPresenter({
+  questionId,
   a,
   b,
   onClose,
@@ -123,6 +124,7 @@ function KidsPresenter({
   canNavigate,
   isExample,
 }: {
+  questionId?: string | undefined;
   a: string;
   b: string;
   onClose: () => void;
@@ -165,7 +167,7 @@ function KidsPresenter({
         Close ×
       </button>
       <h2 id="kids-presenter-title">Would you rather…</h2>
-      <KidsChoicePanels a={a} b={b} />
+      <KidsChoicePanels questionId={questionId} a={a} b={b} />
       <p>
         {isExample
           ? "Example question · No vote is saved."
@@ -301,7 +303,13 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
           </span>
           {example ? (
             <>
-              <KidsChoicePanels a={a} b={b} selected={examplePick} onChoose={setExamplePick} />
+              <KidsChoicePanels
+                questionId={example?.id}
+                a={a}
+                b={b}
+                selected={examplePick}
+                onChoose={setExamplePick}
+              />
               <p className="kids-example-status" role="status">
                 {examplePick
                   ? `You chose ${examplePick}. Why did you pick that? This is an example; no vote is saved.`
@@ -541,6 +549,7 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
 
       {presenting && (
         <KidsPresenter
+          questionId={active?.id ?? example?.id}
           a={a}
           b={b}
           onClose={() => setPresenting(false)}

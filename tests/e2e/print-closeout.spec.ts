@@ -64,9 +64,14 @@ for (const format of ["cards", "sheet"] as const) {
       });
       const browserPdf = await PDFDocument.load(browserBytes);
       expect(browserPdf.getPageCount()).toBe(expectedPages);
-      const size = browserPdf.getPage(0).getSize();
-      expect(size.width).toBeCloseTo(paper === "a4" ? 595.28 : 612, 0);
-      expect(size.height).toBeCloseTo(paper === "a4" ? 841.89 : 792, 0);
+      const isLandscape = format === "cards" && paper === "a4";
+      const expectedWidth = isLandscape ? 841.89 : paper === "a4" ? 595.28 : 612;
+      const expectedHeight = isLandscape ? 595.28 : paper === "a4" ? 841.89 : 792;
+      for (const browserPage of browserPdf.getPages()) {
+        const size = browserPage.getSize();
+        expect(size.width).toBeCloseTo(expectedWidth, 0);
+        expect(size.height).toBeCloseTo(expectedHeight, 0);
+      }
       await page.emulateMedia({ media: "screen" });
       const download = page.waitForEvent("download");
       await page.getByRole("button", { name: "Download PDF" }).click();
@@ -75,8 +80,8 @@ for (const format of ["cards", "sheet"] as const) {
       await output.saveAs(path);
       const pdf = await PDFDocument.load(await readFile(path));
       expect(pdf.getPageCount()).toBe(expectedPages);
-      expect(pdf.getPage(0).getWidth()).toBeCloseTo(paper === "a4" ? 595.28 : 612, 2);
-      expect(pdf.getPage(0).getHeight()).toBeCloseTo(paper === "a4" ? 841.89 : 792, 2);
+      expect(pdf.getPage(0).getWidth()).toBeCloseTo(expectedWidth, 2);
+      expect(pdf.getPage(0).getHeight()).toBeCloseTo(expectedHeight, 2);
     });
   }
 }

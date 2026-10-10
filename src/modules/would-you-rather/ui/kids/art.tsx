@@ -172,7 +172,11 @@ export function KidsBurst({ className = "" }: { className?: string }) {
   );
 }
 
+import { QuestionVisual } from "../question-visual";
+import { hasQuestionVisual } from "../../data/question-visuals";
+
 export function KidsChoicePanels({
+  questionId,
   a,
   b,
   selected,
@@ -180,6 +184,7 @@ export function KidsChoicePanels({
   onChoose,
   children,
 }: {
+  questionId?: string | undefined;
   a: string;
   b: string;
   selected?: "A" | "B" | null;
@@ -188,6 +193,8 @@ export function KidsChoicePanels({
   children?: ReactNode;
 }) {
   const gradientId = useId();
+  const hasVisual = Boolean(questionId && hasQuestionVisual(questionId));
+
   return (
     <div className="kids-choices">
       {(["A", "B"] as const).map((option) => (
@@ -222,29 +229,51 @@ export function KidsChoicePanels({
               fill={`url(#${gradientId}-${option})`}
             />
           </svg>
-          <svg className="kids-choice-doodles" viewBox="0 0 290 180" aria-hidden="true">
-            <g
-              fill="none"
-              stroke={option === "A" ? "#fff" : "#ffec30"}
-              strokeWidth="2.5"
-              strokeLinejoin="round"
+          {hasVisual && questionId ? (
+            <div
+              className="kids-choice-visual"
+              style={{
+                width: "100%",
+                maxWidth: "160px",
+                margin: "0 auto 8px",
+                borderRadius: "12px",
+                overflow: "hidden",
+              }}
             >
-              <path d="m42 22 3 8 9 1-7 6 2 9-8-5-8 4 2-9-6-6 9-1Z" />
-              <path d="m258 16 2 6 7 1-6 4 2 7-6-3-6 3 1-7-5-5 7-1Z" />
-              <path d="m252 137 3 8 9 1-7 6 2 9-8-5-8 4 2-9-6-6 9-1Z" />
-            </g>
-            <g
-              fill="none"
-              stroke={option === "A" ? "#ffde21" : "#fff"}
-              strokeWidth="2.5"
-              strokeLinecap="round"
-            >
-              <path d="M235 141q11-26 26 0m-10-11q13-17 22 3M30 151l4 4m-4 0 4-4" />
-            </g>
-            <g stroke="#fff" strokeWidth="1.5">
-              <path d="M25 114v12m-4-6h8M255 109v9m-3-4h6" />
-            </g>
-          </svg>
+              <QuestionVisual
+                questionId={questionId}
+                mode={option === "A" ? "option-a" : "option-b"}
+                alt={option === "A" ? a : b}
+                sizes="(max-width: 640px) 50vw, 320px"
+              />
+            </div>
+          ) : (
+            <>
+              <svg className="kids-choice-doodles" viewBox="0 0 290 180" aria-hidden="true">
+                <g
+                  fill="none"
+                  stroke={option === "A" ? "#fff" : "#ffec30"}
+                  strokeWidth="2.5"
+                  strokeLinejoin="round"
+                >
+                  <path d="m42 22 3 8 9 1-7 6 2 9-8-5-8 4 2-9-6-6 9-1Z" />
+                  <path d="m258 16 2 6 7 1-6 4 2 7-6-3-6 3 1-7-5-5 7-1Z" />
+                  <path d="m252 137 3 8 9 1-7 6 2 9-8-5-8 4 2-9-6-6 9-1Z" />
+                </g>
+                <g
+                  fill="none"
+                  stroke={option === "A" ? "#ffde21" : "#fff"}
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                >
+                  <path d="M235 141q11-26 26 0m-10-11q13-17 22 3M30 151l4 4m-4 0 4-4" />
+                </g>
+                <g stroke="#fff" strokeWidth="1.5">
+                  <path d="M25 114v12m-4-6h8M255 109v9m-3-4h6" />
+                </g>
+              </svg>
+            </>
+          )}
           <span className="kids-choice-text">{option === "A" ? a : b}</span>
           {selected === option && <span className="kids-choice-selected">Your choice ✓</span>}
         </button>

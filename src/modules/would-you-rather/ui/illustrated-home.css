@@ -2803,3 +2803,12 @@
     width: min(100%, clamp(720px, 48vw, 920px));
   }
 }
+
+.illustrated-home .home-choice-visual {
+  width: 100%;
+  max-width: 180px;
+  margin: 0 auto 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}

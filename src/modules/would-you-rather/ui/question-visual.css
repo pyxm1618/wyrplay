@@ -1,0 +1,54 @@
+/* Question Visual 统一展示样式 */
+
+.question-visual-frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  border-radius: inherit;
+}
+
+/* 完整 2:1 母版模式 */
+.question-visual-frame[data-mode="full"] {
+  aspect-ratio: 2 / 1;
+}
+
+.question-visual-frame[data-mode="full"] .question-visual-img {
+  position: relative;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  display: block;
+}
+
+/* Option A 模式：取母版精确左半幅 50% */
+.question-visual-frame[data-mode="option-a"] {
+  aspect-ratio: 1 / 1;
+}
+
+.question-visual-frame[data-mode="option-a"] .question-visual-img {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 200% !important;
+  max-width: none !important;
+  height: 100% !important;
+  object-fit: fill !important;
+  display: block;
+}
+
+/* Option B 模式：取母版精确右半幅 50% */
+.question-visual-frame[data-mode="option-b"] {
+  aspect-ratio: 1 / 1;
+}
+
+.question-visual-frame[data-mode="option-b"] .question-visual-img {
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 200% !important;
+  max-width: none !important;
+  height: 100% !important;
+  object-fit: fill !important;
+  display: block;
+}

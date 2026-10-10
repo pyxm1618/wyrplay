@@ -7,6 +7,8 @@ import type { Question, VoteStats } from "../types";
 import { Arrow, ChoiceFrame } from "./home-art";
 import { PlayHeading, OptionPanels } from "./play/art";
 import { KidsChoicePanels } from "./kids/art";
+import { QuestionVisual } from "./question-visual";
+import { hasQuestionVisual } from "../data/question-visuals";
 
 export interface DuelArenaProps {
   readonly appearance?: "default" | "illustrated-play" | "illustrated-home" | "illustrated-kids";
@@ -213,6 +215,7 @@ export function DuelArena({
     return (
       <div className="kids-vote-arena">
         <KidsChoicePanels
+          questionId={question.id}
           a={question.optionA}
           b={question.optionB}
           selected={userPick}
@@ -238,6 +241,7 @@ export function DuelArena({
     );
 
   if (appearance === "illustrated-home") {
+    const hasVisual = hasQuestionVisual(question.id);
     return (
       <section id="play" tabIndex={-1} className="home-hero-arena" aria-labelledby="hero-question">
         <h2 id="hero-question">{question.question}</h2>
@@ -251,7 +255,18 @@ export function DuelArena({
               disabled={isSubmitting}
               onClick={() => void handleVote(option)}
             >
-              <ChoiceFrame variant={option === "A" ? "dog" : "cat"} />
+              {hasVisual ? (
+                <div className="home-choice-visual">
+                  <QuestionVisual
+                    questionId={question.id}
+                    mode={option === "A" ? "option-a" : "option-b"}
+                    alt={option === "A" ? question.optionA : question.optionB}
+                    sizes="(max-width: 640px) 50vw, 320px"
+                  />
+                </div>
+              ) : (
+                <ChoiceFrame variant={option === "A" ? "dog" : "cat"} />
+              )}
               <span className="choice-label">Option {option}</span>
               <span className="choice-text">
                 {option === "A" ? question.optionA : question.optionB}
@@ -346,6 +361,7 @@ export function DuelArena({
           </p>
         )}
         <OptionPanels
+          questionId={question.id}
           a={question.optionA}
           b={question.optionB}
           childrenA={choice("A")}
