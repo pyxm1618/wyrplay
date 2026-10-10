@@ -726,7 +726,9 @@ function PrintPageContent({
                       <>
                         <option value={2}>2 cards per page</option>
                         <option value={4}>4 cards per page (A4 2×2 Default)</option>
-                        <option value={6}>6 cards per page (Letter Default)</option>
+                        {paper === "letter" && (
+                          <option value={6}>6 cards per page (Letter Default)</option>
+                        )}
                       </>
                     ) : (
                       <>
@@ -1006,7 +1008,13 @@ function PrintPageContent({
                                 </h3>
                                 {showNumbers && (
                                   <span
-                                    style={{ fontSize: "8pt", color: "#888", display: "block" }}
+                                    style={{
+                                      fontSize: "8pt",
+                                      color: "#888",
+                                      position: "absolute",
+                                      left: "12pt",
+                                      top: "8pt",
+                                    }}
                                   >
                                     #{p.number}
                                   </span>
@@ -1025,6 +1033,9 @@ function PrintPageContent({
                                   <div
                                     style={{
                                       aspectRatio: "1 / 1",
+                                      maxWidth: `${Math.min(100, Math.floor(p.height * 0.42))}pt`,
+                                      marginLeft: "auto",
+                                      marginRight: "auto",
                                       border: "1pt solid #cbd5e1",
                                       borderRadius: "4pt",
                                       overflow: "hidden",
@@ -1079,6 +1090,9 @@ function PrintPageContent({
                                   <div
                                     style={{
                                       aspectRatio: "1 / 1",
+                                      maxWidth: `${Math.min(100, Math.floor(p.height * 0.42))}pt`,
+                                      marginLeft: "auto",
+                                      marginRight: "auto",
                                       border: "1pt solid #cbd5e1",
                                       borderRadius: "4pt",
                                       overflow: "hidden",

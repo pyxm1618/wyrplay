@@ -67,8 +67,11 @@ for (const format of ["cards", "sheet"] as const) {
       const isLandscape = format === "cards" && paper === "a4";
       const expectedWidth = isLandscape ? 841.89 : paper === "a4" ? 595.28 : 612;
       const expectedHeight = isLandscape ? 595.28 : paper === "a4" ? 841.89 : 792;
-      expect(size.width).toBeCloseTo(expectedWidth, 0);
-      expect(size.height).toBeCloseTo(expectedHeight, 0);
+      for (const browserPage of browserPdf.getPages()) {
+        const size = browserPage.getSize();
+        expect(size.width).toBeCloseTo(expectedWidth, 0);
+        expect(size.height).toBeCloseTo(expectedHeight, 0);
+      }
       await page.emulateMedia({ media: "screen" });
       const download = page.waitForEvent("download");
       await page.getByRole("button", { name: "Download PDF" }).click();

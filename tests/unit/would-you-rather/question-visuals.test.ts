@@ -67,4 +67,33 @@ describe("Question Visuals Registry & Layout", () => {
       expect(row.width).toBeCloseTo(595.28 - 60, 1);
     });
   });
+
+  it("preserves every A4 card inside the page when a stale six-card setting is supplied", () => {
+    const questions = QUESTIONS_DATABASE.slice(0, 9);
+    const layout = createPrintLayout(questions, "cards", "a4", (t) => t.length * 6, {
+      itemsPerPage: 6,
+    });
+
+    expect(layout.pages.map((page) => page.length)).toEqual([4, 4, 1]);
+    expect(layout.pages.flat().map((card) => card.question.id)).toEqual(
+      questions.map((question) => question.id),
+    );
+    for (const card of layout.pages.flat()) {
+      expect(card.x + card.width).toBeLessThanOrEqual(layout.width);
+      expect(card.y + card.height).toBeLessThanOrEqual(layout.height);
+    }
+  });
+
+  it("retains the requested smaller A4 card page capacity", () => {
+    const layout = createPrintLayout(
+      QUESTIONS_DATABASE.slice(0, 5),
+      "cards",
+      "a4",
+      (t) => t.length * 6,
+      {
+        itemsPerPage: 2,
+      },
+    );
+    expect(layout.pages.map((page) => page.length)).toEqual([2, 2, 1]);
+  });
 });
