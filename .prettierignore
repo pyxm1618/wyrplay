@@ -16,3 +16,6 @@ leaderboard-reconstruction
 
 # Independent design prototypes have their own verification scripts.
 .artifacts
+
+.open-next
+.wrangler

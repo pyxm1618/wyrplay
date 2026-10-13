@@ -22,3 +22,9 @@ test-results
 **/measurement*/annotations.png
 .lighthouse-reports/
 .runtime/
+
+# Cloudflare build output, local runtime state, and private preview variables.
+.open-next/
+.wrangler/
+.dev.vars
+.dev.vars.*

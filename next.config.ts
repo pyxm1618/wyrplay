@@ -34,6 +34,8 @@ const nextConfig: NextConfig = {
   generateBuildId: async () => getBuildId(),
   poweredByHeader: false,
   reactStrictMode: true,
+  // Let the deployment adapter resolve Postgres.js for its target runtime.
+  serverExternalPackages: ["postgres"],
   trailingSlash: false,
   allowedDevOrigins: ["127.0.0.1", "localhost"],
   experimental: {

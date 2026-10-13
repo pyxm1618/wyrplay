@@ -36,6 +36,8 @@
     "auth-reconstruction",
     "home-reconstruction",
     "finder-reconstruction",
-    "leaderboard-reconstruction"
+    "leaderboard-reconstruction",
+    ".open-next",
+    ".wrangler"
   ]
 }
