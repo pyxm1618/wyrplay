@@ -1,5 +1,5 @@
 import { defineCloudflareConfig } from "@opennextjs/cloudflare";
-import r2IncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/r2-incremental-cache";
+import r2IncrementalCache from "./scripts/cloudflare-incremental-cache";
 
 const config = defineCloudflareConfig({
   // Preserve prerendered HTML and the existing writable 60-second fetch cache.
