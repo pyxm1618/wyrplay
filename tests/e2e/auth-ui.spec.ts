@@ -1,5 +1,65 @@
 import { expect, test, type Page } from "@playwright/test";
 
+test.afterEach(async ({ request }, testInfo) => {
+  if (
+    !process.env.CI ||
+    testInfo.retry !== 1 ||
+    testInfo.status === "passed" ||
+    !testInfo.title.startsWith("/sign-up preserves")
+  )
+    return;
+  console.log("Native image diagnostic runtime", {
+    node: process.versions.node,
+    bun: process.versions.bun,
+  });
+  for (const path of [
+    "/brand/auth/signup-hero.webp",
+    "/_next/image?url=%2Fbrand%2Fauth%2Fsignup-hero.webp&w=384&q=75",
+  ]) {
+    const started = Date.now();
+    try {
+      const response = await request.get(path, {
+        headers: { Accept: "image/avif,image/webp,image/*,*/*;q=0.8" },
+        timeout: 3000,
+      });
+      console.log("Native image HTTP diagnostic", {
+        path,
+        status: response.status(),
+        bytes: (await response.body()).length,
+        elapsed: Date.now() - started,
+      });
+    } catch (error) {
+      console.log("Native image HTTP diagnostic failed", {
+        path,
+        elapsed: Date.now() - started,
+        error: error instanceof Error ? error.message : String(error),
+      });
+    }
+  }
+  const started = Date.now();
+  try {
+    const { readFile } = await import("node:fs/promises");
+    const { optimizeImage } = await import("next/dist/server/image-optimizer");
+    const buffer = await readFile("public/brand/auth/signup-hero.webp");
+    const result = await optimizeImage({
+      buffer,
+      contentType: "image/avif",
+      quality: 75,
+      width: 384,
+      timeoutInSeconds: 7,
+    });
+    console.log("Native image direct optimizer diagnostic", {
+      bytes: result.length,
+      elapsed: Date.now() - started,
+    });
+  } catch (error) {
+    console.log("Native image direct optimizer diagnostic failed", {
+      elapsed: Date.now() - started,
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
+});
+
 async function installTurnstile(page: Page) {
   await page.addInitScript(() => {
     window.turnstile = {
