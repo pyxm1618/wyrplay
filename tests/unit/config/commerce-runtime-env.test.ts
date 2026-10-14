@@ -51,7 +51,6 @@ it("blocks deployed commerce until contract and production webhook key are expli
     loadRuntimeEnv(
       {
         APP_ENV: "staging",
-        VERCEL_ENV: "preview",
         ...baseCommerceEnv,
       },
       commerceFeatures,
@@ -62,8 +61,7 @@ it("blocks deployed commerce until contract and production webhook key are expli
     loadRuntimeEnv(
       {
         APP_ENV: "production",
-        VERCEL_ENV: "production",
-        ...baseCommerceEnv,
+          ...baseCommerceEnv,
         WAFFO_CONTRACT_VERIFIED: "1",
       },
       commerceFeatures,
@@ -73,7 +71,6 @@ it("blocks deployed commerce until contract and production webhook key are expli
   const env = loadRuntimeEnv(
     {
       APP_ENV: "production",
-      VERCEL_ENV: "production",
       ...baseCommerceEnv,
       WAFFO_WEBHOOK_PROD_PUBLIC_KEY: "prod-public-key",
       WAFFO_CONTRACT_VERIFIED: "1",
