@@ -52,14 +52,10 @@ if (featuresConfig.commerce.credits) {
   }
 }
 
-const vercel = JSON.parse(await readFile("vercel.json", "utf8")) as {
-  crons?: Array<{ path?: string }>;
-};
-if (
-  featuresConfig.commerce.credits &&
-  !vercel.crons?.some((cron) => cron.path === "/api/internal/jobs/credit-expiry")
-) {
-  throw new Error("credit recovery cron is required when credits are enabled");
+if (featuresConfig.commerce.credits) {
+  throw new Error(
+    "credit recovery schedule is required when credits are enabled, but scheduled job dispatch is not configured on Cloudflare",
+  );
 }
 
 console.log(
