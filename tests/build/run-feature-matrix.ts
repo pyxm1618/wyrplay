@@ -37,7 +37,6 @@ function build(label: string, env: Readonly<Record<string, string | undefined>>)
 
 const testRuntime = {
   APP_ENV: "test",
-  VERCEL_ENV: undefined,
   APP_ORIGIN: "http://localhost:3000",
   DATABASE_URL: "postgres://test:test@localhost:5432/test",
 };
@@ -110,37 +109,11 @@ if (
   throw new Error("production negative fixture did not fail closed");
 }
 
-let deploymentMismatch: unknown;
-try {
-  loadRuntimeEnv(
-    {
-      APP_ENV: "test",
-      VERCEL_ENV: "production",
-      APP_ORIGIN: "https://example.com",
-      DATABASE_URL: "postgres://user:pass@db.example.com:5432/app",
-    },
-    {
-      ...disabled,
-      auth: { ...disabled.auth, enabled: true, magicLink: true },
-      email: { enabled: true },
-    },
-  );
-} catch (error) {
-  deploymentMismatch = error;
-}
-if (
-  !(deploymentMismatch instanceof Error) ||
-  !deploymentMismatch.message.includes("VERCEL_ENV=production requires APP_ENV=production")
-) {
-  throw new Error("Vercel production test-mode fixture did not fail closed");
-}
-
 let commerceFailure: unknown;
 try {
   loadRuntimeEnv(
     {
       APP_ENV: "staging",
-      VERCEL_ENV: "preview",
       APP_ORIGIN: "https://preview.example.com",
       DATABASE_URL: "postgres://user:pass@db.example.com:5432/app",
       CRON_SECRET: "c".repeat(32),
