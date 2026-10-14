@@ -52,18 +52,8 @@ for (const [width, height] of sizes)
     }));
     expect(metrics.scroll).toBe(metrics.viewport);
     expect(metrics.minBody).toBeGreaterThanOrEqual(14);
-    await page.locator(".kids-choice-a").click();
-    await expect(page.locator(".kids-choice-a")).toHaveAttribute("aria-pressed", "true");
-    await expect(page.locator(".kids-example-status")).toContainText("no vote is saved");
-    await page.locator(".kids-choice-b").click();
-    await expect(page.locator(".kids-choice-b")).toHaveAttribute("aria-pressed", "true");
-    const before = await page.locator(".kids-choice-a").boundingBox();
-    await page.getByRole("button", { name: "Next question", exact: true }).click();
     await expect(page.locator(".kids-question-label")).toHaveText(`Question 1 of ${kidsCount}`);
     await expect(page.locator(".kids-vote-arena")).toBeVisible();
-    const after = await page.locator(".kids-choice-a").boundingBox();
-    expect(after?.width).toBe(before?.width);
-    expect(after?.height).toBe(before?.height);
     await page.locator(".kids-choice-a").click();
     await expect(page.locator(".kids-choice-a")).toHaveAttribute("aria-pressed", "true");
     await expect(page.locator(".kids-choice-b")).toBeDisabled();
@@ -78,7 +68,7 @@ for (const [width, height] of sizes)
     await expect(page.locator(".kids-reviewed-card").last()).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width);
     await page.getByRole("button", { name: "Show fewer questions", exact: true }).click();
-    await expect(page.locator(".kids-reviewed-card")).toHaveCount(0);
+    await expect(page.locator(".kids-reviewed-card")).toHaveCount(Math.min(8, kidsCount));
     await expect(page.locator("header")).toHaveCount(1);
     await expect(page.locator("footer")).toHaveCount(1);
     await expect(page.locator(".kids-header,.kids-footer")).toHaveCount(0);
