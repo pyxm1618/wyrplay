@@ -16,7 +16,7 @@ bun run db:verify               # Run migration chain validation
 ## Product Nature & Architecture
 
 - **Non-AI Social Product**: WYRPlay is **not** an AI product. The runtime does not invoke any Large Language Models, requires no AI APIs, does not auto-generate questions, and uses no algorithmic AI recommendations. All question curation and suitability tagging are strictly governed by human editorial and review processes.
-- **Data Contract & Content Authority**: Question database is maintained directly in code files ([`src/modules/would-you-rather/data/questions.ts`](src/modules/would-you-rather/data/questions.ts)) following the shared contract in [`docs/题库数据契约.md`](docs/题库数据契约.md).
+- **Data Contract & Content Authority**: Canonical question source: [`content/question-bank/questions.json`](content/question-bank/questions.json). `questions.ts` is a loader / adapter, not another formal question bank. It follows the shared contract in [`docs/题库数据契约.md`](docs/题库数据契约.md).
 - **PostgreSQL Database & Neon Compatibility**: WYRPlay 使用标准 PostgreSQL + Drizzle；代码完全兼容 Neon。当前自动化测试使用本地隔离 PostgreSQL。生产 Neon Project、真实 DATABASE_URL 和生产 migration 尚未执行，属于 Owner Action。
 - **Anonymous Voting**: Atomic upsert operations in table `wyr_votes`, keyed by `(question_id, anonymous_voter_id)` via first-party HttpOnly cookie `wyr_vid`. Unreviewed questions are rejected from voting. Real database counts are aggregated on the fly without fabricated metrics.
 - **SEO & Server-Side Rendering**: Core routes and question text are rendered server-side; client interactive state is isolated to interactive leaves.

@@ -28,6 +28,7 @@ async function HomepageTrendingAsync() {
         rank: entry.rank,
         id: entry.question.id,
         question: entry.question.question,
+        playableQuestion: entry.question,
         votes: entry.votes,
       }));
     return <TrendingListContent status="ready" items={items} />;

@@ -3,7 +3,6 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 
 import { filterQuestions } from "../domain/filter-questions";
-import { QUESTIONS_DATABASE } from "../data/questions";
 import type {
   AgeGroup,
   Difficulty,
@@ -25,49 +24,6 @@ import type { LeaderboardResult } from "../domain/leaderboard";
 import { useHydrated } from "./use-hydrated";
 import { IllustratedHome } from "./illustrated-home";
 import { CategoryExplorer } from "./category-explorer";
-
-function escapeSemanticHtml(value: string): string {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
-}
-
-function semanticDirectoryBadge(value: string | undefined): string {
-  if (!value) return "";
-  return [
-    '<span class="rounded-full bg-surface-muted px-2 py-0.5 text-[10px] font-semibold text-muted capitalize">',
-    escapeSemanticHtml(value),
-    "</span>",
-  ].join("");
-}
-
-function buildHomeDirectorySemanticMarkup(questions: readonly Question[]): string {
-  return questions
-    .map((item, idx) => {
-      const difficulty = semanticDirectoryBadge(item.difficulty);
-      const relationshipBadge = semanticDirectoryBadge(
-        item.relationships[0] ?? item.primaryCollection,
-      );
-
-      return [
-        '<li class="home-directory-semantic-item border-b border-border/30 pb-3"><article>',
-        '<div class="flex items-center gap-2 mb-1">',
-        `<span class="font-mono text-xs font-bold text-muted">#${String(idx + 1).padStart(2, "0")}</span>`,
-        difficulty,
-        relationshipBadge,
-        "</div>",
-        `<h3 class="font-serif text-sm font-bold text-foreground">${escapeSemanticHtml(item.question)}</h3>`,
-        '<div class="mt-1 flex flex-wrap gap-x-4 text-xs text-muted">',
-        `<span><strong>A:</strong> ${escapeSemanticHtml(item.optionA)}</span>`,
-        `<span><strong>B:</strong> ${escapeSemanticHtml(item.optionB)}</span>`,
-        "</div></article></li>",
-      ].join("");
-    })
-    .join("");
-}
 
 function ArenaHydrationGate({ children }: { readonly children: React.ReactNode }) {
   const hydrated = useHydrated();
@@ -105,7 +61,8 @@ function HomeHydrationGate({ children }: { readonly children: React.ReactNode })
 export interface WyrExperienceProps {
   readonly leaderboard?: LeaderboardResult;
   readonly appearance?: "default" | "illustrated-home";
-  readonly questions?: readonly Question[];
+  readonly questions: readonly Question[];
+  readonly approvedQuestionCount?: number;
   readonly categoryBadge?: string;
   readonly defaultCollection?: FeaturedCollectionKey;
   readonly showCategoryExplorer?: boolean;
@@ -116,13 +73,22 @@ export interface WyrExperienceProps {
 export function WyrExperience({
   appearance = "default",
   leaderboard = { status: "unavailable" },
-  questions = QUESTIONS_DATABASE,
+  questions: initialQuestions,
+  approvedQuestionCount,
   categoryBadge = "Live Dilemma Arena",
   defaultCollection,
   showCategoryExplorer = false,
   allowUnreviewed = false,
   trendingSlot,
 }: WyrExperienceProps) {
+  const [trendingQuestion, setTrendingQuestion] = useState<Question | null>(null);
+  const questions = useMemo(
+    () =>
+      trendingQuestion && !initialQuestions.some((q) => q.id === trendingQuestion.id)
+        ? [...initialQuestions, trendingQuestion]
+        : initialQuestions,
+    [initialQuestions, trendingQuestion],
+  );
   // 1. 搜索与筛选状态
   const [searchKeyword, setSearchKeyword] = useState("");
   const [selectedAgeGroup, setSelectedAgeGroup] = useState<AgeGroup | undefined>(undefined);
@@ -136,9 +102,6 @@ export function WyrExperience({
   // 2. Presenter Modal 状态
   const [isPresenterOpen, setIsPresenterOpen] = useState(false);
   const presenterTriggerRef = useRef<HTMLButtonElement>(null);
-
-  // 2.1 首页折叠目录懒展开状态（避免未展开时在初始 HTML 中一次性输出 1MB DOM 节点）
-  const [isDirectoryOpen, setIsDirectoryOpen] = useState(false);
 
   // 3. 计算当前有效题集
   // 3.1 可玩题集 (严格限定 reviewStatus === 'approved'，用于 Arena、Random、Presenter)
@@ -261,12 +224,6 @@ export function WyrExperience({
     selectedDifficulty,
   );
 
-  const homeDirectorySemanticMarkup = useMemo(
-    () =>
-      appearance === "illustrated-home" ? buildHomeDirectorySemanticMarkup(directoryQuestions) : "",
-    [appearance, directoryQuestions],
-  );
-
   const directory = (
     <QuestionDirectory
       questions={directoryQuestions}
@@ -347,27 +304,7 @@ export function WyrExperience({
       {showCategoryExplorer && appearance !== "illustrated-home" && <CategoryExplorer />}
 
       {/* 4. 目录展示 (仅展示 approved 题目；未审核题严格杜绝暴露在生产界面) */}
-      {appearance === "illustrated-home" ? (
-        <details
-          className="home-directory"
-          open={hasActiveFilters || isDirectoryOpen ? true : undefined}
-          onToggle={(e) => setIsDirectoryOpen((e.currentTarget as HTMLDetailsElement).open)}
-        >
-          <summary>Browse all {directoryQuestions.length} Would You Rather Questions</summary>
-          {hasActiveFilters || isDirectoryOpen ? (
-            directory
-          ) : (
-            <section id="questions">
-              <ol
-                className="home-directory-semantic-list space-y-3 p-4"
-                dangerouslySetInnerHTML={{ __html: homeDirectorySemanticMarkup }}
-              />
-            </section>
-          )}
-        </details>
-      ) : (
-        directory
-      )}
+      {appearance !== "illustrated-home" && directory}
 
       {/* 5. 共享有效题集的全屏 Presenter 模式 (仅限 approved 题) */}
       <PresenterModal
@@ -386,10 +323,15 @@ export function WyrExperience({
     <HomeHydrationGate>
       <IllustratedHome
         arena={arena}
+        questions={initialQuestions}
+        approvedQuestionCount={approvedQuestionCount ?? initialQuestions.length}
         leaderboard={leaderboard}
         trendingSlot={trendingSlot}
-        onPlayQuestion={(id) => {
+        onPlayQuestion={(id, question) => {
+          if (question?.id === id && question.reviewStatus === "approved")
+            setTrendingQuestion(question);
           if (
+            (question?.id === id && question.reviewStatus === "approved") ||
             questions.some((question) => question.id === id && question.reviewStatus === "approved")
           ) {
             handleClearFilters();

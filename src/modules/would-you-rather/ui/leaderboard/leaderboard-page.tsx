@@ -143,7 +143,7 @@ export function LeaderboardPage({ result }: { result: LeaderboardResult }) {
             <Art
               name="hero-art"
               className="hero-art"
-              alt="A player raising a golden trophy. Great questions by real people!"
+              alt="A player raising a golden trophy. Community question rankings!"
               width={260}
               height={230}
               sizes="(max-width: 600px) 180px, 260px"
@@ -348,8 +348,9 @@ export function LeaderboardPage({ result }: { result: LeaderboardResult }) {
                   {
                     icon: "people",
                     value: snapshot?.anonymousVoters,
-                    label: "All-time voters",
-                    title: "Distinct anonymous voter identities across all time.",
+                    label: "Voting identities",
+                    title:
+                      "Anonymous vote identities. Kids votes are recorded separately; this is not a unique-person count.",
                   },
                   {
                     icon: "question",
@@ -390,8 +391,9 @@ export function LeaderboardPage({ result }: { result: LeaderboardResult }) {
             </span>
           </section>
           <p className="ranking-method">
-            Votes count each anonymous voter once per question. Month and week use the first vote
-            time, in UTC. Changing A/B does not add a vote.
+            Votes are recorded responses, not unique people. Month and week use the first recorded
+            vote time, in UTC. Changing A/B on general questions updates the existing response. Kids
+            choices contribute anonymous aggregate votes.
           </p>
         </main>
         <dialog

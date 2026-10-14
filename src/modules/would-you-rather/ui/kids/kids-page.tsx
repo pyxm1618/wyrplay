@@ -2,96 +2,12 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { AgeGroup, Question } from "../../types";
-import { getPlayableQuestionsByCollection } from "../../data/questions";
+import { filterQuestions } from "../../domain/filter-questions";
 import { questionPoolUrl } from "../../domain/question-pool";
 import { DuelArena } from "../duel-arena";
 import { FinderIcon } from "../finder/icon";
 import { KidsArt, KidsBurst, KidsChoicePanels, KidsMotif, KidsArenaEdge } from "./art";
 
-type Example = {
-  id: string;
-  a: string;
-  b: string;
-  text: string;
-  age: AgeGroup;
-  art: number;
-  color: string;
-};
-const examples: readonly Example[] = [
-  {
-    id: "example-pets",
-    a: "Have a dog",
-    b: "Have a cat",
-    text: "Would you rather have a dog or a cat?",
-    age: "4-6",
-    art: 1,
-    color: "green",
-  },
-  {
-    id: "example-home",
-    a: "Live in a treehouse",
-    b: "Live in a castle",
-    text: "Would you rather live in a treehouse or a castle?",
-    age: "4-6",
-    art: 2,
-    color: "blue",
-  },
-  {
-    id: "example-food",
-    a: "Only eat pizza",
-    b: "Only eat burgers",
-    text: "Would you rather only eat pizza or only eat burgers?",
-    age: "7-9",
-    art: 3,
-    color: "orange",
-  },
-  {
-    id: "example-trip",
-    a: "Go to the beach",
-    b: "Go to the mountains",
-    text: "Would you rather go to the beach or the mountains?",
-    age: "7-9",
-    art: 4,
-    color: "purple",
-  },
-  {
-    id: "example-talents",
-    a: "Be a superhero",
-    b: "Be a super artist",
-    text: "Would you rather be a superhero or a super artist?",
-    age: "7-9",
-    art: 5,
-    color: "purple",
-  },
-  {
-    id: "example-explore",
-    a: "Travel to space",
-    b: "Travel to the bottom of the ocean",
-    text: "Would you rather travel to space or to the bottom of the ocean?",
-    age: "10-12",
-    art: 6,
-    color: "pink",
-  },
-  {
-    id: "example-hobbies",
-    a: "Give up video games for a year",
-    b: "Give up TV for a year",
-    text: "Would you rather give up video games or give up TV for a year?",
-    age: "10-12",
-    art: 7,
-    color: "orange",
-  },
-  {
-    id: "example-time",
-    a: "Go to the past",
-    b: "Go to the future",
-    text: "Would you rather go to the past or to the future?",
-    age: "10-12",
-    art: 8,
-    color: "pink",
-  },
-];
-const heroExample = { id: "example-dinosaur", a: "Have a pet dinosaur", b: "Ride a flying carpet" };
 const faq = [
   [
     "Are these Would You Rather questions for kids clean and age-appropriate?",
@@ -122,7 +38,6 @@ function KidsPresenter({
   onNext,
   onPrev,
   canNavigate,
-  isExample,
 }: {
   questionId?: string | undefined;
   a: string;
@@ -131,7 +46,6 @@ function KidsPresenter({
   onNext: () => void;
   onPrev: () => void;
   canNavigate: boolean;
-  isExample: boolean;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -168,11 +82,7 @@ function KidsPresenter({
       </button>
       <h2 id="kids-presenter-title">Would you rather…</h2>
       <KidsChoicePanels questionId={questionId} a={a} b={b} />
-      <p>
-        {isExample
-          ? "Example question · No vote is saved."
-          : "Discuss your choice. Close to vote in the arena."}
-      </p>
+      <p>Discuss your choice. Close to vote in the arena.</p>
       <div className="kids-presenter-controls">
         <button className="kids-pill" onClick={onPrev} disabled={!canNavigate}>
           ← Previous
@@ -186,29 +96,26 @@ function KidsPresenter({
 }
 
 export function KidsPage({ questions }: { questions: readonly Question[] }) {
-  const approved = getPlayableQuestionsByCollection("kids", questions);
+  const approved = filterQuestions(questions, { collection: "kids", onlyApproved: true });
   const [age, setAge] = useState<AgeGroup | undefined>();
-  const [activeId, setActiveId] = useState<string>(heroExample.id);
-  const [examplePick, setExamplePick] = useState<"A" | "B" | null>(null);
+  const [activeId, setActiveId] = useState<string>(approved[0]?.id ?? "");
   const [expanded, setExpanded] = useState(false);
   const [presenting, setPresenting] = useState(false);
   const pool = approved.filter((q) => !age || q.ageGroups.includes(age));
-  const example =
-    activeId === heroExample.id ? heroExample : examples.find((q) => q.id === activeId);
-  const active = pool.find((q) => q.id === activeId) ?? (!example ? pool[0] : undefined);
+  const active = (activeId ? pool.find((q) => q.id === activeId) : undefined) ?? pool[0];
   const index = active ? pool.findIndex((q) => q.id === active.id) : -1;
-  const shownExamples = examples.filter((q) => !age || q.age === age);
+  const visibleQuestions = expanded ? pool : pool.slice(0, 8);
   function select(id: string) {
     setActiveId(id);
-    setExamplePick(null);
   }
   function next() {
-    const q = pool[(index + 1) % pool.length];
+    if (pool.length === 0) return;
+    const nextIndex = index >= 0 ? (index + 1) % pool.length : 0;
+    const q = pool[nextIndex];
     if (q) select(q.id);
   }
   function previous() {
-    if (index <= 0) select(heroExample.id);
-    else {
+    if (index > 0) {
       const q = pool[index - 1];
       if (q) select(q.id);
     }
@@ -226,8 +133,8 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
     select(id);
     jumpToArena();
   }
-  const a = example?.a ?? active?.optionA ?? "";
-  const b = example?.b ?? active?.optionB ?? "";
+  const a = active?.optionA ?? "";
+  const b = active?.optionB ?? "";
   return (
     <div className="kids-page">
       <a className="kids-skip" href="#play">
@@ -295,42 +202,21 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
             <p>Pick A or B, then talk about why.</p>
           </div>
           <span className="kids-question-label">
-            {example
-              ? "Example question"
-              : active
-                ? `Question ${index + 1} of ${pool.length}`
-                : "No matching questions"}
+            {active ? `Question ${index + 1} of ${pool.length}` : "No matching questions"}
           </span>
-          {example ? (
-            <>
-              <KidsChoicePanels
-                questionId={example?.id}
-                a={a}
-                b={b}
-                selected={examplePick}
-                onChoose={setExamplePick}
-              />
-              <p className="kids-example-status" role="status">
-                {examplePick
-                  ? `You chose ${examplePick}. Why did you pick that? This is an example; no vote is saved.`
-                  : "Try A or B. This is an example; no vote is saved."}
-              </p>
-            </>
-          ) : (
-            <DuelArena
-              key={active?.id ?? "empty"}
-              appearance="illustrated-kids"
-              question={active}
-              currentIndex={index}
-              totalQuestions={pool.length}
-              onNext={next}
-              onRandom={next}
-              keyboardEnabled={!presenting}
-              hasActiveFilters={Boolean(age)}
-            />
-          )}
+          <DuelArena
+            key={active?.id ?? "empty"}
+            appearance="illustrated-kids"
+            question={active}
+            currentIndex={index}
+            totalQuestions={pool.length}
+            onNext={next}
+            onRandom={next}
+            keyboardEnabled={!presenting}
+            hasActiveFilters={Boolean(age)}
+          />
           <div className="kids-arena-controls">
-            <button className="kids-pill" onClick={previous} disabled={activeId === heroExample.id}>
+            <button className="kids-pill" onClick={previous} disabled={index <= 0}>
               <span className="kids-arrow-left">
                 <FinderIcon name="arrow" />
               </span>
@@ -372,7 +258,6 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
                 aria-pressed={age === value}
                 onClick={() => {
                   setAge(value);
-                  setExamplePick(null);
                 }}
               >
                 {value ? `Ages ${value.replace("-", "–")}` : "All"}
@@ -380,47 +265,25 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
             ))}
           </div>
           <div className="kids-question-grid">
-            {shownExamples.map((q) => (
-              <article className="kids-card" key={q.id}>
-                <span className={`kids-age-tag ${q.color}`}>Ages {q.age.replace("-", "–")}</span>
-                {q.art === 2 ? (
-                  <KidsMotif theme="home" />
-                ) : q.art === 4 ? (
-                  <KidsMotif theme="outdoors" />
-                ) : (
-                  <KidsArt name={`question-${q.art}`} />
-                )}
-                <h3>{q.text}</h3>
-                <button
-                  className="kids-pill"
-                  aria-label={`Play example: ${q.text}`}
-                  onClick={() => playQuestion(q.id)}
+            {visibleQuestions.map((q) => (
+              <article className="kids-card kids-reviewed-card" key={q.id}>
+                <span
+                  className={`kids-age-tag ${(age ?? q.primaryAgeBand) === "10-12" ? "pink" : (age ?? q.primaryAgeBand) === "7-9" ? "orange" : "green"}`}
                 >
+                  {age || q.primaryAgeBand
+                    ? `Ages ${(age ?? q.primaryAgeBand)!.replace("-", "–")}`
+                    : "Kids"}
+                </span>
+                <KidsMotif theme={topicMotif(q)} />
+                <h3>{q.question}</h3>
+                <button className="kids-pill" onClick={() => playQuestion(q.id)}>
                   Play this question
                   <FinderIcon name="arrow" />
                 </button>
               </article>
             ))}
-            {expanded &&
-              pool.map((q) => (
-                <article className="kids-card kids-reviewed-card" key={q.id}>
-                  <span
-                    className={`kids-age-tag ${(age ?? q.primaryAgeBand) === "10-12" ? "pink" : (age ?? q.primaryAgeBand) === "7-9" ? "orange" : "green"}`}
-                  >
-                    {age || q.primaryAgeBand
-                      ? `Ages ${(age ?? q.primaryAgeBand)!.replace("-", "–")}`
-                      : "Kids"}
-                  </span>
-                  <KidsMotif theme={topicMotif(q)} />
-                  <h3>{q.question}</h3>
-                  <button className="kids-pill" onClick={() => playQuestion(q.id)}>
-                    Play this question
-                    <FinderIcon name="arrow" />
-                  </button>
-                </article>
-              ))}
           </div>
-          {expanded && pool.length === 0 && (
+          {pool.length === 0 && (
             <p role="status" className="kids-empty">
               No reviewed questions match this age. Try another age group.
             </p>
@@ -440,10 +303,6 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
             </button>
             <KidsArt name="browse-spark" />
           </div>
-          <p className="kids-examples-note">
-            The first cards are examples with no saved votes. Browse more to play and vote on kids
-            questions.
-          </p>
         </section>
         <section className="kids-uses" aria-labelledby="kids-uses-title">
           <KidsArt name="uses-cloud" className="kids-uses-cloud" />
@@ -549,14 +408,13 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
 
       {presenting && (
         <KidsPresenter
-          questionId={active?.id ?? example?.id}
+          questionId={active?.id}
           a={a}
           b={b}
           onClose={() => setPresenting(false)}
           onNext={next}
           onPrev={previous}
           canNavigate={pool.length > 0}
-          isExample={Boolean(example)}
         />
       )}
     </div>

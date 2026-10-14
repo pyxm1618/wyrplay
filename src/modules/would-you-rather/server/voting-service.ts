@@ -1,6 +1,6 @@
 import "server-only";
 
-import { and, eq, sql } from "drizzle-orm";
+import { and, eq, inArray, sql } from "drizzle-orm";
 import type { db as defaultDb } from "@/platform/database/application-database";
 import { wyrVotes } from "@/platform/database/wyr-schema";
 
@@ -239,4 +239,51 @@ export async function recordAggregateOnlyVote(
     hasVoted: true,
     selectedOption: option,
   };
+}
+
+/** Public aggregate summaries for one Finder page; no voter identity lookup. */
+export async function getQuestionVoteStatsBatch(
+  questionIds: readonly string[],
+  options?: VotingServiceOptions,
+): Promise<Record<string, VoteStats>> {
+  const questions = options?.questions ?? QUESTIONS_DATABASE;
+  if (
+    questionIds.length < 1 ||
+    questionIds.length > 10 ||
+    new Set(questionIds).size !== questionIds.length ||
+    questionIds.some((id) => !isVotableQuestion(id, questions))
+  ) {
+    throw new Error("Invalid vote statistics question IDs");
+  }
+  const db = await resolveDb(options?.db);
+  const counts = await db
+    .select({
+      questionId: wyrVotes.questionId,
+      option: wyrVotes.selectedOption,
+      count: sql<number>`count(*)::int`,
+    })
+    .from(wyrVotes)
+    .where(inArray(wyrVotes.questionId, [...questionIds]))
+    .groupBy(wyrVotes.questionId, wyrVotes.selectedOption);
+  const result: Record<string, VoteStats> = {};
+  for (const id of questionIds) {
+    const votesA = Number(
+      counts.find((row) => row.questionId === id && row.option === "A")?.count ?? 0,
+    );
+    const votesB = Number(
+      counts.find((row) => row.questionId === id && row.option === "B")?.count ?? 0,
+    );
+    const total = votesA + votesB;
+    const percentageA = total === 0 ? 50 : Math.round((votesA / total) * 100);
+    result[id] = {
+      votesA,
+      votesB,
+      total,
+      percentageA,
+      percentageB: 100 - percentageA,
+      hasVoted: false,
+      selectedOption: null,
+    };
+  }
+  return result;
 }

@@ -49,6 +49,7 @@ export type HomepageTrendingItem = {
   readonly rank: number;
   readonly id: string;
   readonly question: string;
+  readonly playableQuestion: import("../types").Question;
   readonly votes: number;
 };
 
@@ -80,13 +81,14 @@ export function TrendingListContent(props: TrendingListContentProps) {
           rank: entry.rank,
           id: entry.question.id,
           question: entry.question.question,
+          playableQuestion: entry.question,
           votes: entry.votes,
         }));
     }
   }
 
-  const handleSelect = (id: string) => {
-    window.dispatchEvent(new CustomEvent("wyr:play-question", { detail: { id } }));
+  const handleSelect = (id: string, question: import("../types").Question) => {
+    window.dispatchEvent(new CustomEvent("wyr:play-question", { detail: { id, question } }));
   };
 
   if (status === "ready" && items.length > 0) {
@@ -97,7 +99,7 @@ export function TrendingListContent(props: TrendingListContentProps) {
             type="button"
             key={entry.id}
             className="trending-card"
-            onClick={() => handleSelect(entry.id)}
+            onClick={() => handleSelect(entry.id, entry.playableQuestion)}
           >
             <span className="ranking-number">#{entry.rank}</span>
             <span className="trending-body">

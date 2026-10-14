@@ -16,6 +16,7 @@ import { createDatabaseClient } from "@/platform/database/client";
 import { wyrVotes } from "@/platform/database/schema";
 import {
   getQuestionVoteStats,
+  getQuestionVoteStatsBatch,
   recordAggregateOnlyVote,
   recordVote,
   usesAggregateOnlyVoting,
@@ -314,4 +315,21 @@ describe("WYR Real Anonymous Voting Database Integration", () => {
     expect(reloaded.hasVoted).toBe(false);
     expect(reloaded.selectedOption).toBeNull();
   });
+});
+
+it("reads mixed Kids and General summaries with one grouped query and no identities", async () => {
+  const ids = ["test-001", "test-002", "test-003"];
+  const options = { db: database.db, questions: TEST_FIXTURE_QUESTIONS };
+  const expected = await Promise.all(ids.map((id) => getQuestionVoteStats(id, undefined, options)));
+  const query = vi.spyOn(database.db, "select");
+  const result = await getQuestionVoteStatsBatch(ids, options);
+  expect(query).toHaveBeenCalledTimes(1);
+  query.mockRestore();
+  expect(ids.map((id) => result[id])).toEqual(expected);
+  await expect(getQuestionVoteStatsBatch([], options)).rejects.toThrow("Invalid");
+  await expect(getQuestionVoteStatsBatch(Array(11).fill(ids[0]), options)).rejects.toThrow(
+    "Invalid",
+  );
+  await expect(getQuestionVoteStatsBatch([ids[0]!, ids[0]!], options)).rejects.toThrow("Invalid");
+  await expect(getQuestionVoteStatsBatch(["unknown"], options)).rejects.toThrow("Invalid");
 });

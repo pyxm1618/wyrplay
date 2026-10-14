@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AUDIENCE_CATEGORIES, OCCASION_CATEGORIES, STYLE_CATEGORIES } from "../data/questions";
+import { AUDIENCE_CATEGORIES, OCCASION_CATEGORIES, STYLE_CATEGORIES } from "../data/collections";
 
 export function CategoryExplorer() {
   return (

@@ -12,6 +12,8 @@ import { useRouter } from "next/navigation";
 import { finderSessionKey, parseFinderSession, questionPoolUrl } from "../../domain/play-session";
 import { useSavedQuestions } from "../use-saved-questions";
 
+import { usePageVoteStats } from "./use-page-vote-stats";
+
 import { FinderIcon } from "./icon";
 import { FinderFilters } from "./filters";
 import { FinderQuestionCard } from "./question-card";
@@ -80,6 +82,7 @@ export function FinderExperience({
 }) {
   const approved = useMemo(() => filterFinderQuestions(questions, {}), [questions]);
   const artworks = useMemo(() => questionArtworks(approved), [approved]);
+  const [statsReady, setStatsReady] = useState(false);
   const [query, setQuery] = useState("");
   const [keyword, setKeyword] = useState("");
   const [draft, setDraft] = useState<FinderCriteria>({});
@@ -139,6 +142,8 @@ export function FinderExperience({
       }
     }
 
+    startTransition(() => setStatsReady(true));
+
     // 3. Popstate listener for browser back / forward
     const handlePopState = () => {
       const popState = parseUrlParams(window.location.search);
@@ -172,6 +177,7 @@ export function FinderExperience({
   }, [reviewSelectedOnly, approved, selected, filtered]);
 
   const currentPage = questionPage(displayedPool, pageNumber);
+  const voteStats = usePageVoteStats(currentPage.questions, statsReady);
   const pool = selected.length ? approved.filter((q) => selected.includes(q.id)) : filtered;
   const activeFilters = Boolean(keyword || Object.keys(criteria).length);
   const browseTotalPages = Math.max(1, Math.ceil(filtered.length / 10));
@@ -383,7 +389,9 @@ export function FinderExperience({
                 saveDisabled={savedIds === null}
                 onSelect={() => toggleSelected(question.id)}
                 onSave={() => toggleSaved(question.id)}
-                revision={0}
+                stats={voteStats.stats?.[question.id]}
+                statsError={voteStats.error}
+                onRetryStats={voteStats.retry}
               />
             ))}
             {!displayedPool.length && (

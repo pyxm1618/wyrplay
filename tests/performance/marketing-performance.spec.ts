@@ -254,24 +254,32 @@ test("/find-questions stays within deterministic release budget and passes axe a
     }
   });
 
-  const fulfillEmptyVoteStats = async (route: Route) => {
+  let batchStatsRequests = 0;
+  await page.route("**/api/wyr/vote-stats?*", async (route) => {
+    batchStatsRequests += 1;
+    const ids = new URL(route.request().url()).searchParams.getAll("questionId");
+    expect(ids).toHaveLength(10);
     await route.fulfill({
       status: 200,
       contentType: "application/json",
-      body: JSON.stringify({
-        hasVoted: false,
-        selectedOption: null,
-        votesA: 0,
-        votesB: 0,
-        total: 0,
-        percentageA: 50,
-        percentageB: 50,
-      }),
+      body: JSON.stringify(
+        Object.fromEntries(
+          ids.map((id) => [
+            id,
+            {
+              hasVoted: false,
+              selectedOption: null,
+              votesA: 0,
+              votesB: 0,
+              total: 0,
+              percentageA: 50,
+              percentageB: 50,
+            },
+          ]),
+        ),
+      ),
     });
-  };
-
-  await page.route("**/api/wyr/vote?*", fulfillEmptyVoteStats);
-  await page.route("**/api/wyr/kids-vote?*", fulfillEmptyVoteStats);
+  });
 
   await page.addInitScript(() => {
     window.__cwv = { cls: 0, inp: 0, lcp: 0 };
@@ -335,6 +343,7 @@ test("/find-questions stays within deterministic release budget and passes axe a
     lcp: window.__cwv?.lcp ?? 0,
   }));
 
+  expect(batchStatsRequests).toBe(1);
   expect(serverErrors).toEqual([]);
   expect(consoleErrors).toEqual([]);
   expect(metrics.cls).toBeLessThanOrEqual(0.1);
