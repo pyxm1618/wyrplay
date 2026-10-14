@@ -1,5 +1,5 @@
 // Legacy fallback for environments that cannot access the runtime CSP hash artifact.
-// Production Vercel builds use .runtime/static-inline-hashes.json generated after the final build.
+// Production builds use .runtime/static-inline-hashes.json generated after the final build.
 
 export const STATIC_INLINE_HASHES: readonly string[] = [
   "+4yOhOk1jmvctixIWk4mKUhY4jPzVIR2acU7Y6bCAqc=",
