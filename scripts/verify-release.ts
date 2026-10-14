@@ -436,21 +436,20 @@ if (legalReleaseStatus === "draft" && !rejectedDraftLegalRelease) {
   throw new Error("production release gate must reject draft legal configuration");
 }
 
-const vercelConfig = JSON.parse(await readFile("vercel.json", "utf8")) as {
-  crons?: Array<{ path?: string }>;
-};
-const scheduledPaths = new Set(vercelConfig.crons?.map((cron) => cron.path) ?? []);
-if (featuresConfig.auth.enabled && !scheduledPaths.has("/api/internal/jobs/account-deletion")) {
-  throw new Error("required internal schedule is missing: /api/internal/jobs/account-deletion");
+if (featuresConfig.auth.enabled) {
+  throw new Error(
+    "auth is enabled but scheduled job dispatch (/api/internal/jobs/account-deletion) is not configured on Cloudflare",
+  );
 }
-if (featuresConfig.commerce.enabled && !scheduledPaths.has("/api/internal/jobs/reconcile")) {
-  throw new Error("required internal schedule is missing: /api/internal/jobs/reconcile");
+if (featuresConfig.commerce.enabled) {
+  throw new Error(
+    "commerce is enabled but durable scheduled jobs (/api/internal/jobs/commerce, /api/internal/jobs/reconcile) are not configured on Cloudflare",
+  );
 }
-if (featuresConfig.commerce.enabled && !scheduledPaths.has("/api/internal/jobs/commerce")) {
-  throw new Error("durable commerce recovery job is missing from vercel.json");
-}
-if (featuresConfig.commerce.credits && !scheduledPaths.has("/api/internal/jobs/credit-expiry")) {
-  throw new Error("durable credit expiry job is missing from vercel.json");
+if (featuresConfig.commerce.credits) {
+  throw new Error(
+    "credits are enabled but durable credit expiry job (/api/internal/jobs/credit-expiry) is not configured on Cloudflare",
+  );
 }
 
 await verifyCreditsReleaseArtifacts(".");
