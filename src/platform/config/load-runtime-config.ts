@@ -3,13 +3,11 @@ import { z } from "zod";
 import type { ProductConfig } from "./types";
 
 export type AppEnvironment = "local" | "test" | "staging" | "production";
-export type VercelEnvironment = "development" | "preview" | "production";
 export type EmailTransport = "disabled" | "test" | "resend";
 export type EnvironmentSource = Readonly<Record<string, string | undefined>>;
 
 export type RuntimeEnv = {
   readonly appEnv: AppEnvironment;
-  readonly vercelEnv: VercelEnvironment | undefined;
   readonly appOrigin: string;
   readonly databaseUrl: string;
   readonly betterAuthSecret: string | undefined;
@@ -38,7 +36,6 @@ export type RuntimeEnv = {
 
 const baseSchema = z.object({
   APP_ENV: z.enum(["local", "test", "staging", "production"]),
-  VERCEL_ENV: z.enum(["development", "preview", "production"]).optional(),
   APP_ORIGIN: z.url(),
   DATABASE_URL: z.string().min(1),
   BETTER_AUTH_SECRET: z.string().optional(),
@@ -93,21 +90,6 @@ function resolveIndexNowKey(parsed: z.infer<typeof baseSchema>): string | undefi
 
 function isTurnstileTestKey(value: string): boolean {
   return /^[123]x0{8,}/.test(value);
-}
-
-function assertDeploymentEnvironment(parsed: z.infer<typeof baseSchema>): void {
-  if (!parsed.VERCEL_ENV) return;
-  const expected: Record<VercelEnvironment, AppEnvironment> = {
-    development: "local",
-    preview: "staging",
-    production: "production",
-  };
-  if (parsed.APP_ENV !== expected[parsed.VERCEL_ENV]) {
-    throw new Error(
-      `VERCEL_ENV=${parsed.VERCEL_ENV} requires APP_ENV=${expected[parsed.VERCEL_ENV]}`,
-    );
-  }
-  if (parsed.APP_ENV === "test") throw new Error("APP_ENV=test is forbidden on Vercel deployments");
 }
 
 function resolveAuthSecret(
@@ -189,7 +171,6 @@ export function loadRuntimeEnv(
   features: ProductConfig["features"],
 ): RuntimeEnv {
   const parsed = baseSchema.parse(source);
-  assertDeploymentEnvironment(parsed);
   const origin = new URL(parsed.APP_ORIGIN);
 
   if (
@@ -287,7 +268,6 @@ export function loadRuntimeEnv(
 
   return {
     appEnv: parsed.APP_ENV,
-    vercelEnv: parsed.VERCEL_ENV,
     appOrigin: parsed.APP_ORIGIN,
     databaseUrl: parsed.DATABASE_URL,
     betterAuthSecret,
