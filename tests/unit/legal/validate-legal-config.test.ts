@@ -141,8 +141,8 @@ it("rejects the WYRPlay brand name as a reviewed production legal operator", () 
 it("verifies AdSense pre-review disclosure invariants", () => {
   if ((legalConfig as { releaseStatus: string }).releaseStatus !== "reviewed") return;
   const privacyDoc = legalConfig.documents.privacy as { version: string; effectiveDate: string };
-  expect(privacyDoc.version).toBe("1.1");
-  expect(privacyDoc.effectiveDate).toBe("2026-10-07");
+  expect(privacyDoc.version).toBe("1.2");
+  expect(privacyDoc.effectiveDate).toBe("2026-10-14");
 
   const processors = legalConfig.processors as ReadonlyArray<{ name: string; privacyUrl: string }>;
   const adsenseProcessor = processors.find((p) => p.name === "Google AdSense");
