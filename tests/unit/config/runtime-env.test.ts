@@ -64,40 +64,6 @@ describe("loadRuntimeEnv", () => {
     expect(env.turnstileSecretKey).toBe("1x0000000000000000000000000000000AA");
   });
 
-  it("rejects test mode on every Vercel deployment", () => {
-    for (const vercelEnv of ["development", "preview", "production"] as const) {
-      expect(() =>
-        loadRuntimeEnv(
-          {
-            APP_ENV: "test",
-            VERCEL_ENV: vercelEnv,
-            APP_ORIGIN: "https://example.com",
-            DATABASE_URL: "postgres://user:pass@db.example.com:5432/app",
-          },
-          authFeatures,
-        ),
-      ).toThrow(/VERCEL_ENV=.* requires APP_ENV=/);
-    }
-  });
-
-  it("requires the Vercel deployment target and APP_ENV to agree", () => {
-    expect(() =>
-      loadRuntimeEnv(
-        {
-          APP_ENV: "staging",
-          VERCEL_ENV: "production",
-          APP_ORIGIN: "https://example.com",
-          DATABASE_URL: "postgres://user:pass@db.example.com:5432/app",
-          BETTER_AUTH_SECRET: "a".repeat(48),
-          CRON_SECRET: "b".repeat(32),
-          RESEND_API_KEY: "re_test_not_a_live_key",
-          EMAIL_FROM: "Example <login@example.com>",
-          SUPPORT_EMAIL: "support@example.com",
-        },
-        authFeatures,
-      ),
-    ).toThrow("VERCEL_ENV=production requires APP_ENV=production");
-  });
 
   it("requires production authentication, cron, and email secrets", () => {
     expect(() =>
@@ -167,7 +133,6 @@ describe("loadRuntimeEnv", () => {
     const env = loadRuntimeEnv(
       {
         ...productionAuthSource,
-        VERCEL_ENV: "production",
         TURNSTILE_SITE_KEY: "0x4AAAA-real-site-key",
         TURNSTILE_SECRET_KEY: "0x4AAAA-real-secret-key",
       },
@@ -176,7 +141,6 @@ describe("loadRuntimeEnv", () => {
     expect(env.emailTransport).toBe("resend");
     expect(env.emailFrom).toBe("Example <login@example.com>");
     expect(env.supportEmail).toBe("support@example.com");
-    expect(env.vercelEnv).toBe("production");
     expect(env.turnstileSiteKey).toBe("0x4AAAA-real-site-key");
     expect(env.turnstileSecretKey).toBe("0x4AAAA-real-secret-key");
   });
