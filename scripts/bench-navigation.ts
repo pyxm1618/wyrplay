@@ -102,7 +102,9 @@ async function runSinglePass(page: import("@playwright/test").Page): Promise<Ste
     const onRequest = (req: Request) => {
       const url = req.url();
       const isRSC =
-        url.includes("_rsc") || req.headers()["rsc"] === "1" || req.headers()["next-router-prefetch"] === "1";
+        url.includes("_rsc") ||
+        req.headers()["rsc"] === "1" ||
+        req.headers()["next-router-prefetch"] === "1";
       const isDoc = req.resourceType() === "document";
       const isScript = req.resourceType() === "script" && url.includes("/_next/static/");
       if (isRSC || isDoc || isScript) {
@@ -118,7 +120,8 @@ async function runSinglePass(page: import("@playwright/test").Page): Promise<Ste
         const url = res.url();
         const isRSC = url.includes("_rsc") || res.request().headers()["rsc"] === "1";
         const isDoc = res.request().resourceType() === "document";
-        const isScript = res.request().resourceType() === "script" && url.includes("/_next/static/");
+        const isScript =
+          res.request().resourceType() === "script" && url.includes("/_next/static/");
         if (isRSC || isDoc || isScript) {
           ttfbTime = performance.now();
         }
@@ -209,24 +212,40 @@ async function main() {
   for (let s = 0; s < STEPS.length; s++) {
     const step = STEPS[s];
     if (!step) continue;
-    const measurements = allRuns.map((r) => r[s]).filter((m): m is StepMeasurement => Boolean(m));
+    const measurements = allRuns
+      .map((r) => r[s])
+      .filter((m): m is StepMeasurement => Boolean(m));
 
-    const clickToReqs = measurements.map((m) => m.clickToRequestMs).filter((v): v is number => v !== null);
-    const ttfbs = measurements.map((m) => m.ttfbMs).filter((v): v is number => v !== null);
+    const clickToReqs = measurements
+      .map((m) => m.clickToRequestMs)
+      .filter((v): v is number => v !== null);
+    const ttfbs = measurements
+      .map((m) => m.ttfbMs)
+      .filter((v): v is number => v !== null);
     const clickToUrls = measurements.map((m) => m.clickToUrlMs);
     const clickToVisibles = measurements.map((m) => m.clickToVisibleMs);
 
     console.log(`[Route] ${step.name} (${step.from} → ${step.to})`);
-    console.log(`  Network request triggered: ${measurements.filter((m) => m.hasNetworkRequest).length}/${measurements.length}`);
+    console.log(
+      `  Network request triggered: ${measurements.filter((m) => m.hasNetworkRequest).length}/${measurements.length}`,
+    );
     if (clickToReqs.length > 0) {
-      console.log(`  click → request:       P50 = ${percentile(clickToReqs, 50)}ms | P95 = ${percentile(clickToReqs, 95)}ms`);
-      console.log(`  navigation/RSC TTFB:   P50 = ${percentile(ttfbs, 50)}ms | P95 = ${percentile(ttfbs, 95)}ms`);
+      console.log(
+        `  click → request:       P50 = ${percentile(clickToReqs, 50)}ms | P95 = ${percentile(clickToReqs, 95)}ms`,
+      );
+      console.log(
+        `  navigation/RSC TTFB:   P50 = ${percentile(ttfbs, 50)}ms | P95 = ${percentile(ttfbs, 95)}ms`,
+      );
     } else {
       console.log(`  click → request:       (prefetched/client-cached - 0 network req)`);
       console.log(`  navigation/RSC TTFB:   (prefetched/client-cached - 0ms)`);
     }
-    console.log(`  click → URL changed:   P50 = ${percentile(clickToUrls, 50)}ms | P95 = ${percentile(clickToUrls, 95)}ms`);
-    console.log(`  click → visible:       P50 = ${percentile(clickToVisibles, 50)}ms | P95 = ${percentile(clickToVisibles, 95)}ms`);
+    console.log(
+      `  click → URL changed:   P50 = ${percentile(clickToUrls, 50)}ms | P95 = ${percentile(clickToUrls, 95)}ms`,
+    );
+    console.log(
+      `  click → visible:       P50 = ${percentile(clickToVisibles, 50)}ms | P95 = ${percentile(clickToVisibles, 95)}ms`,
+    );
     console.log("");
   }
 }
