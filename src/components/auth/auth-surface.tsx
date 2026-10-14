@@ -75,10 +75,10 @@ export function AuthSurface({ mode, children }: Readonly<{ mode: AuthMode; child
             className="hero-art"
             src={`/brand/auth/${signup ? "signup" : "login"}-hero.webp`}
             alt=""
-            width={1106}
-            height={1422}
+            width={signup ? 1108 : 1106}
+            height={signup ? 1419 : 1422}
             preload
-            fetchPriority="high"
+            unoptimized
             sizes="(max-width: 767px) 180px, (max-height: 850px) 290px, (max-width: 1023px) 260px, 360px"
           />
         </section>
