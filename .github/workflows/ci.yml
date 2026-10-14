@@ -175,7 +175,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ui-responsive-evidence
-          path: test-results/**/*.png
+          path: |
+            test-results/**/*.png
+            test-results/**/trace.zip
           if-no-files-found: ignore
           retention-days: 14
       - name: Production-mode canonical and security output
