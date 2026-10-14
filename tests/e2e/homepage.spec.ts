@@ -124,18 +124,13 @@ for (const [width, height] of homeViewports) {
   });
 }
 
-test("highlights and browse select the single hero arena", async ({ page }) => {
+test("highlights select the single hero arena", async ({ page }) => {
   await page.goto("/");
   const heading = page.locator("#play h2");
   const highlight = page.locator(".highlight-card").nth(1);
   const title = await highlight.locator(".highlight-title").textContent();
   await highlight.click();
   await expect(heading).toHaveText(title!);
-  await page.locator(".home-directory summary").click();
-  const card = page.locator("#questions article").nth(2);
-  const question = await card.locator("h3").textContent();
-  await card.getByRole("button").click();
-  await expect(heading).toHaveText(question!);
   await expect(page.locator("#play")).toHaveCount(1);
 });
 
@@ -270,22 +265,6 @@ test("question selection moves and keeps keyboard focus on the mounted hero aren
   const highlightTitle = await highlight.locator(".highlight-title").textContent();
   await highlight.click();
   await expect(heading).toHaveText(highlightTitle!);
-  await expect
-    .poll(async () => {
-      return page.evaluate(() => {
-        const active = document.activeElement;
-        const play = document.getElementById("play");
-        return active !== null && (active === play || play?.contains(active));
-      });
-    })
-    .toBe(true);
-
-  // 2. Directory 点击测试
-  await page.locator(".home-directory summary").click();
-  const directoryCard = page.locator("#questions article").first();
-  const directoryTitle = await directoryCard.locator("h3").textContent();
-  await directoryCard.getByRole("button").click();
-  await expect(heading).toHaveText(directoryTitle!);
   await expect
     .poll(async () => {
       return page.evaluate(() => {

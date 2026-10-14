@@ -1,5 +1,8 @@
 export {
   getQuestionVoteStats,
+  getQuestionVoteStatsBatch,
+  isVotableQuestion,
+  isValidQuestion,
   recordAggregateOnlyVote,
   recordVote,
   usesAggregateOnlyVoting,

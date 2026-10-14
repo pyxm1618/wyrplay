@@ -1,70 +1,32 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- The sub-1KB vote icon stays native; question artwork uses next/image. */
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { parseVoteStats } from "../../domain/finder";
-import { isKidsCollectionQuestion } from "../../domain/filter-questions";
 import type { Question, VoteStats } from "../../types";
 import { hasQuestionVisual } from "../../data/question-visuals";
 import { QuestionVisual } from "../question-visual";
 import { FinderIcon } from "./icon";
 
 function QuestionVoteSummary({
-  question,
-  revision,
+  stats,
+  error,
+  onRetry,
 }: {
-  readonly question: Question;
-  readonly revision: number;
+  stats?: VoteStats | undefined;
+  error?: string | undefined;
+  onRetry: () => void;
 }) {
-  const [result, setResult] = useState<{
-    readonly id: string;
-    readonly stats?: VoteStats;
-    readonly error?: string;
-  } | null>(null);
-  const [retry, setRetry] = useState(0);
-  const id = question.id;
-  const endpoint = isKidsCollectionQuestion(question) ? "/api/wyr/kids-vote" : "/api/wyr/vote";
-
-  useEffect(() => {
-    const controller = new AbortController();
-    void fetch(`${endpoint}?questionId=${encodeURIComponent(id)}`, {
-      cache: "no-store",
-      signal: controller.signal,
-    })
-      .then(async (response) => {
-        if (!response.ok) throw new Error(`Vote statistics HTTP ${response.status}`);
-        return parseVoteStats(await response.json());
-      })
-      .then((stats) => {
-        if (!controller.signal.aborted) setResult({ id, stats });
-      })
-      .catch((error: unknown) => {
-        if (!controller.signal.aborted)
-          setResult({
-            id,
-            error: error instanceof Error ? error.message : "Could not load vote statistics",
-          });
-      });
-    return () => controller.abort();
-  }, [endpoint, id, revision, retry]);
-
-  const current = result?.id === id ? result : null;
   return (
     <p className="question-stats">
       <img src="/finder/assets/people.png" alt="" />
-      {current?.error ? (
-        <button
-          className="stats-retry"
-          title={current.error}
-          onClick={() => setRetry((n) => n + 1)}
-        >
+      {error ? (
+        <button className="stats-retry" title={error} onClick={onRetry}>
           Stats unavailable · Retry
         </button>
-      ) : current?.stats ? (
-        current.stats.total === 0 ? (
+      ) : stats ? (
+        stats.total === 0 ? (
           "No votes yet"
         ) : (
-          `${new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 }).format(current.stats.total)} ${current.stats.total === 1 ? "vote" : "votes"} · ${current.stats.percentageA}% choose A`
+          `${new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 }).format(stats.total)} ${stats.total === 1 ? "vote" : "votes"} · ${stats.percentageA}% choose A`
         )
       ) : (
         "Loading vote stats…"
@@ -82,7 +44,9 @@ export function FinderQuestionCard({
   saveDisabled,
   onSelect,
   onSave,
-  revision,
+  stats,
+  statsError,
+  onRetryStats,
 }: {
   readonly question: Question;
   readonly artwork: string;
@@ -92,7 +56,9 @@ export function FinderQuestionCard({
   readonly saveDisabled: boolean;
   readonly onSelect: () => void;
   readonly onSave: () => void;
-  readonly revision: number;
+  readonly stats: VoteStats | undefined;
+  readonly statsError: string | undefined;
+  readonly onRetryStats: () => void;
 }) {
   const tags = [
     ...question.tones,
@@ -119,7 +85,7 @@ export function FinderQuestionCard({
             </span>
           ))}
         </div>
-        <QuestionVoteSummary question={question} revision={revision} />
+        <QuestionVoteSummary stats={stats} error={statsError} onRetry={onRetryStats} />
       </div>
       {hasQuestionVisual(question.id) ? (
         <QuestionVisual

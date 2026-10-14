@@ -13,7 +13,9 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
   });
 
   test.describe("1. Production Formal Question Bank (512 Approved Dilemmas)", () => {
-    test("production 首页与 5 个 SEO 落地页真实消费 512 道正式题库", async ({ page }) => {
+    test("production 首页消费精选正式题池，5 个 SEO 落地页保持正式 collection", async ({
+      page,
+    }) => {
       // 1.1 检查首页生产行为
       await page.goto("/");
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
@@ -31,16 +33,10 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await expect(page.getByRole("button", { name: /Presenter Mode/i })).toBeVisible();
 
       // 统计栏展示全部 512 道已审核可玩题目
-      const counterText = page.getByText(/512 playable dilemmas/i);
+      const counterText = page.getByText(/12 playable dilemmas/i);
       await expect(counterText).toBeVisible();
 
-      // 题目长目录正常渲染题目卡片
-      const questionCards = page.locator("#questions article");
-      const cardCount = await questionCards.count();
-      expect(cardCount).toBeGreaterThan(0);
-
-      // 页面绝无任何 "Under Review" 提示
-      await expect(page.locator("#questions").getByText("Under Review")).toHaveCount(0);
+      await expect(page.locator("#questions article,.home-directory")).toHaveCount(0);
 
       // 1.2 检查 5 个核心 SEO 专题落地页全部有且仅有对应分类的正式题目（精确题数）
       const seoRoutes = [
@@ -62,7 +58,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
             .getByRole("button", { name: "Browse more kids questions", exact: true })
             .click();
           await expect(page.locator(".kids-reviewed-card")).toHaveCount(expectedCount);
-          await expect(page.locator("#questions article:not(.kids-reviewed-card)")).toHaveCount(8);
+          await expect(page.locator("#questions article:not(.kids-reviewed-card)")).toHaveCount(0);
         } else {
           await expect(page.locator("#questions article")).toHaveCount(expectedCount);
         }
@@ -79,8 +75,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       // 关键词搜索
       await searchInput.fill("hear");
       await page.waitForTimeout(150);
-      const matchCount = await page.locator("#questions article").count();
-      expect(matchCount).toBe(16);
+      await expect(page.getByText(/2 of 12 playable dilemmas/i)).toBeVisible();
 
       // 难度筛选
       const hardBtn = page.getByRole("button", { name: "hard", exact: true });
@@ -99,7 +94,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await page.waitForTimeout(150);
 
       // 恢复全部 512 道题展示
-      await expect(page.getByText(/512 playable dilemmas/i)).toBeVisible();
+      await expect(page.getByText(/12 playable dilemmas/i)).toBeVisible();
     });
 
     test("正式题库 A/B 投票、改票与刷新恢复 (A/B voting, switch A->B & B->A, refresh persistence)", async ({

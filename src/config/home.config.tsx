@@ -2,6 +2,14 @@ import type { ReactNode } from "react";
 import type { LandingSection } from "@/components/landing/landing-page";
 import type { LeaderboardResult } from "@/modules/would-you-rather";
 import { WyrExperience } from "@/modules/would-you-rather";
+import {
+  getHomepageQuestions,
+  getPlayableQuestions,
+  rankLeaderboard,
+} from "@/modules/would-you-rather";
+
+const homepageQuestions = getHomepageQuestions(12);
+const approvedQuestionCount = getPlayableQuestions().length;
 
 import { routeRegistry } from "./routes.config";
 
@@ -24,13 +32,25 @@ export const homeConfig = {
 };
 
 function homeSurface(leaderboard: LeaderboardResult) {
+  const homepageLeaderboard: LeaderboardResult =
+    leaderboard.status === "ready"
+      ? {
+          status: "ready",
+          snapshot: {
+            ...leaderboard.snapshot,
+            entries: rankLeaderboard(leaderboard.snapshot.entries, "all").slice(0, 3),
+          },
+        }
+      : leaderboard;
   return (
     <>
       <WyrExperience
         appearance="illustrated-home"
+        questions={homepageQuestions}
+        approvedQuestionCount={approvedQuestionCount}
         categoryBadge="Curated Would You Rather Questions"
         showCategoryExplorer={true}
-        leaderboard={leaderboard}
+        leaderboard={homepageLeaderboard}
       />
     </>
   );
@@ -46,6 +66,8 @@ export function homeConfigWithTrendingSlot(trendingSlot: ReactNode) {
             surface: (
               <WyrExperience
                 appearance="illustrated-home"
+                questions={homepageQuestions}
+                approvedQuestionCount={approvedQuestionCount}
                 categoryBadge="Curated Would You Rather Questions"
                 showCategoryExplorer={true}
                 trendingSlot={trendingSlot}

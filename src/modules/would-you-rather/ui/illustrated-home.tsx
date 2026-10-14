@@ -2,7 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
-import { FEATURED_COLLECTIONS, QUESTIONS_DATABASE } from "../data/questions";
+import { FEATURED_COLLECTIONS } from "../data/collections";
+import type { Question } from "../types";
 import { hasQuestionVisual } from "../data/question-visuals";
 import { Arrow, HomeArt } from "./home-art";
 import { QuestionVisual } from "./question-visual";
@@ -136,21 +137,24 @@ export function IllustratedHome({
   onPlayQuestion,
   leaderboard,
   trendingSlot,
+  questions,
+  approvedQuestionCount,
 }: {
   leaderboard?: LeaderboardResult;
   children: ReactNode;
   arena: ReactNode;
-  onPlayQuestion: (id: string) => void;
+  onPlayQuestion: (id: string, question?: Question) => void;
+  questions: readonly Question[];
+  approvedQuestionCount: number;
   trendingSlot?: ReactNode;
 }) {
-  const approved = QUESTIONS_DATABASE.filter((question) => question.reviewStatus === "approved");
-  const highlights = approved.slice(0, 3);
+  const highlights = questions.slice(0, 3);
   const rankings =
     leaderboard && leaderboard.status === "ready"
       ? rankLeaderboard(leaderboard.snapshot.entries, "all").slice(0, 3)
       : [];
-  const play = (id: string) => {
-    onPlayQuestion(id);
+  const play = (id: string, question?: Question) => {
+    onPlayQuestion(id, question);
     const focusArena = () => {
       const arenaEl = document.getElementById("play");
       if (arenaEl) {
@@ -164,9 +168,9 @@ export function IllustratedHome({
 
   useEffect(() => {
     const handler = (event: Event) => {
-      const custom = event as CustomEvent<{ id: string }>;
+      const custom = event as CustomEvent<{ id: string; question?: Question }>;
       if (custom.detail?.id) {
-        play(custom.detail.id);
+        play(custom.detail.id, custom.detail.question);
       }
     };
     window.addEventListener("wyr:play-question", handler);
@@ -304,15 +308,15 @@ export function IllustratedHome({
         <div className="hero-bottom">
           <div className="join-players">
             <p>
-              <strong>{approved.length} curated questions</strong>
+              <strong>{approvedQuestionCount} curated questions</strong>
               <br />
               Ready for your next game night
             </p>
           </div>
           <p className="hero-note">
-            Real people
+            Community votes
             <br />
-            Real answers
+            Community results
             <br />
             Surprisingly fun!
           </p>
@@ -335,7 +339,9 @@ export function IllustratedHome({
               return (
                 <Link
                   key={category.title}
-                  href={collection?.route ?? ("href" in category ? category.href : "/#questions")}
+                  href={
+                    collection?.route ?? ("href" in category ? category.href : "/find-questions")
+                  }
                   className={`category-card ${category.color}`}
                   prefetch={false}
                 >
@@ -372,7 +378,7 @@ export function IllustratedHome({
         aria-label="Today's highlights"
       >
         <div className="home-container">
-          <Heading title="Today’s Would You Rather Questions" href="#questions" />
+          <Heading title="Today’s Would You Rather Questions" href="/find-questions" />
           <div className="highlight-grid">
             {highlights.map((question, index) => (
               <button
@@ -469,7 +475,7 @@ export function IllustratedHome({
                       type="button"
                       key={entry.question.id}
                       className="trending-card"
-                      onClick={() => play(entry.question.id)}
+                      onClick={() => play(entry.question.id, entry.question)}
                     >
                       <span className="ranking-number">#{entry.rank}</span>
                       <span className="trending-body">
@@ -547,7 +553,7 @@ export function IllustratedHome({
               sizes="(max-width: 600px) 48px, (max-width: 1244.8px) 6.169666vw, 76.8px"
             />
             <p>
-              <strong>{approved.length}</strong>
+              <strong>{approvedQuestionCount}</strong>
               <span>Would You Rather Questions</span>
             </p>
           </div>
@@ -628,6 +634,10 @@ export function IllustratedHome({
           <h2 id="tool-demo-title">Find More Would You Rather Questions</h2>
           <p>Search by keyword and filter by audience, occasion, tone or difficulty.</p>
           {children}
+          <Link className="section-link" href="/find-questions" prefetch={false}>
+            Browse all questions
+            <Arrow />
+          </Link>
         </div>
       </div>
       <HomeFaq />

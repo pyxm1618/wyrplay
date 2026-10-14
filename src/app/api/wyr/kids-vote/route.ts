@@ -2,6 +2,8 @@ import { type NextRequest, NextResponse } from "next/server";
 
 import {
   getQuestionVoteStats,
+  isValidQuestion,
+  isVotableQuestion,
   recordAggregateOnlyVote,
   usesAggregateOnlyVoting,
 } from "@/modules/would-you-rather/server";
@@ -36,6 +38,10 @@ export async function GET(request: NextRequest) {
     if (!questionId || questionId.trim() === "") {
       return NextResponse.json({ error: "Missing 'questionId' query parameter" }, { status: 400 });
     }
+    if (!isValidQuestion(questionId)) {
+      return NextResponse.json({ error: "Invalid question ID" }, { status: 400 });
+    }
+
     if (!usesAggregateOnlyVoting(questionId)) {
       return NextResponse.json(
         { error: "Question does not use aggregate-only voting" },
@@ -45,9 +51,8 @@ export async function GET(request: NextRequest) {
 
     return noStore(NextResponse.json(await getQuestionVoteStats(questionId)));
   } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : "Failed to load vote stats";
-    const status = message.includes("Invalid question ID") ? 400 : 500;
-    return NextResponse.json({ error: message }, { status });
+    console.error("Vote API failed", error);
+    return NextResponse.json({ error: "Failed to load vote stats" }, { status: 500 });
   }
 }
 
@@ -65,6 +70,10 @@ export async function POST(request: NextRequest) {
     if (option !== "A" && option !== "B") {
       return NextResponse.json({ error: "Invalid 'option', must be 'A' or 'B'" }, { status: 400 });
     }
+    if (!isVotableQuestion(questionId)) {
+      return NextResponse.json({ error: "Question is not approved for voting" }, { status: 400 });
+    }
+
     if (!usesAggregateOnlyVoting(questionId)) {
       return NextResponse.json(
         { error: "Question does not use aggregate-only voting" },
@@ -81,14 +90,7 @@ export async function POST(request: NextRequest) {
       ),
     );
   } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : "Failed to record vote";
-    const status =
-      message.includes("Invalid question ID") ||
-      message.includes("Invalid option") ||
-      message.includes("not approved for voting") ||
-      message.includes("does not use aggregate-only voting")
-        ? 400
-        : 500;
-    return NextResponse.json({ error: message }, { status });
+    console.error("Vote API failed", error);
+    return NextResponse.json({ error: "Failed to record vote" }, { status: 500 });
   }
 }

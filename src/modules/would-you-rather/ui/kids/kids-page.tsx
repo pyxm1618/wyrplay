@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { AgeGroup, Question } from "../../types";
-import { getPlayableQuestionsByCollection } from "../../data/questions";
+import { filterQuestions } from "../../domain/filter-questions";
 import { questionPoolUrl } from "../../domain/question-pool";
 import { DuelArena } from "../duel-arena";
 import { FinderIcon } from "../finder/icon";
@@ -96,7 +96,7 @@ function KidsPresenter({
 }
 
 export function KidsPage({ questions }: { questions: readonly Question[] }) {
-  const approved = getPlayableQuestionsByCollection("kids", questions);
+  const approved = filterQuestions(questions, { collection: "kids", onlyApproved: true });
   const [age, setAge] = useState<AgeGroup | undefined>();
   const [activeId, setActiveId] = useState<string>(approved[0]?.id ?? "");
   const [expanded, setExpanded] = useState(false);

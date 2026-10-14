@@ -21,7 +21,7 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     expect(initialUrl.hash).toBe("");
 
     await expect(page.locator("#play")).toBeAttached();
-    await expect(page.locator("#questions")).toBeAttached();
+    await expect(page.locator(".home-directory")).toHaveCount(0);
     await expect(page.locator("#categories")).toBeAttached();
 
     const primary = page.getByRole("navigation", { name: "Primary navigation" });
@@ -42,11 +42,10 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     await expect(page).toHaveURL(/\/play$/);
 
     await page.goto("/");
-    const localQuestionsLink = page.locator('a[href="#questions"], a[href="/#questions"]').first();
-    await expect(localQuestionsLink).toBeVisible();
-    await localQuestionsLink.click();
-    await expect.poll(() => new URL(page.url()).hash).toBe("#questions");
-    await expect(page.locator("#questions")).toBeInViewport();
+    const finderLink = page.locator('.home-live-experience a[href="/find-questions"]');
+    await expect(finderLink).toBeVisible();
+    await finderLink.click();
+    await expect(page).toHaveURL(/\/find-questions$/);
   });
 
   test("7. 全站同源链接、Hash 锚点目标与公共面无死链爬取门禁 (Crawl Gate)", async ({ page }) => {

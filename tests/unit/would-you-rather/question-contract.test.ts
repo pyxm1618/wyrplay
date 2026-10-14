@@ -20,6 +20,10 @@ describe("Would You Rather Question Data Contract", () => {
     expect(QUESTIONS_DATABASE.filter((q) => q.reviewStatus === "unreviewed")).toHaveLength(0);
   });
 
+  it("has no duplicate canonical IDs", () => {
+    expect(new Set(QUESTIONS_DATABASE.map((q) => q.id)).size).toBe(QUESTIONS_DATABASE.length);
+  });
+
   it("passes comprehensive schema validation for all 512 question records", () => {
     const result = validateQuestionDatabase(QUESTIONS_DATABASE);
     expect(result.valid).toBe(true);

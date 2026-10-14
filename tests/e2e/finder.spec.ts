@@ -1,6 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { QUESTIONS_DATABASE } from "../../src/modules/would-you-rather/data/questions";
-import { isKidsCollectionQuestion } from "../../src/modules/would-you-rather/domain/filter-questions";
 
 async function openFinder(page: import("@playwright/test").Page, url: string) {
   await page.goto(url, { waitUntil: "domcontentloaded" });
@@ -115,7 +113,7 @@ test("finder retains actual A/B voting, changing choices, keyboard shortcuts and
 test("finder presents only selected questions, handles unavailable stats honestly and fits narrow screens", async ({
   page,
 }) => {
-  await page.route(/\/api\/wyr\/(?:kids-)?vote\?/, (route) =>
+  await page.route(/\/api\/wyr\/vote-stats\?/, (route) =>
     route.fulfill({
       status: 503,
       contentType: "application/json",
@@ -272,124 +270,29 @@ test("finder restore keeps back and forward synchronized after new history state
   expect(await visibleQuestionIds()).toEqual(forwardStateIds);
 });
 
-test("finder real network sanity uses one live vote-stat request per visible question", async ({
-  page,
-}) => {
-  const requests: Array<{ endpoint: string; questionId: string }> = [];
-  const responses: Array<{ endpoint: string; questionId: string; status: number }> = [];
-
-  page.on("request", (request) => {
-    const url = new URL(request.url());
-    if (url.pathname !== "/api/wyr/vote" && url.pathname !== "/api/wyr/kids-vote") return;
-    const questionId = url.searchParams.get("questionId");
-    if (questionId) requests.push({ endpoint: url.pathname, questionId });
-  });
-  page.on("response", (response) => {
-    const url = new URL(response.url());
-    if (url.pathname !== "/api/wyr/vote" && url.pathname !== "/api/wyr/kids-vote") return;
-    const questionId = url.searchParams.get("questionId");
-    if (questionId) {
-      responses.push({ endpoint: url.pathname, questionId, status: response.status() });
-    }
-  });
-
-  await openFinder(page, "/find-questions");
-  await expect(page.locator(".question-card")).toHaveCount(10);
-  await expect
-    .poll(async () =>
-      page
-        .locator(".question-stats")
-        .evaluateAll((nodes) => nodes.every((node) => !node.textContent?.includes("Loading"))),
-    )
-    .toBe(true);
-  await expect(page.locator(".stats-retry")).toHaveCount(0);
-
-  expect(requests).toHaveLength(10);
-  expect(new Set(requests.map(({ questionId }) => questionId)).size).toBe(10);
-  expect(responses).toHaveLength(10);
-  expect(responses.filter(({ status }) => status >= 200 && status < 300)).toHaveLength(10);
-
-  const kidsRequests = requests.filter(({ endpoint }) => endpoint === "/api/wyr/kids-vote");
-  const generalRequests = requests.filter(({ endpoint }) => endpoint === "/api/wyr/vote");
-  expect(kidsRequests.length + generalRequests.length).toBe(10);
-  const visibleIds = await page
-    .locator(".question-card")
-    .evaluateAll((cards) => cards.map((card) => card.getAttribute("data-question-id")));
-  expect(requests.map(({ questionId }) => questionId).sort()).toEqual(visibleIds.sort());
-  console.log("real-network-sanity", {
-    total: requests.length,
-    kids: kidsRequests.length,
-    general: generalRequests.length,
-    unique: new Set(requests.map(({ questionId }) => questionId)).size,
-    successful: responses.filter(({ status }) => status >= 200 && status < 300).length,
-    duplicates: requests.length - new Set(requests.map(({ questionId }) => questionId)).size,
-    retryUI: await page.locator(".stats-retry").count(),
-  });
-});
-
-test("finder card stats preserve the Kids aggregate-only privacy boundary", async ({
+test("Finder batch stats preserve aggregate privacy for Kids and General pages", async ({
   page,
   context,
 }) => {
-  await context.clearCookies();
-  await context.addCookies([
-    {
-      name: "wyr_vid",
-      value: "legacy-root-voter",
-      url: "http://127.0.0.1:3000",
-    },
-  ]);
-
-  const observed: Array<{ endpoint: string; questionId: string; status: number }> = [];
-  page.on("response", (response) => {
-    const url = new URL(response.url());
-    if (url.pathname !== "/api/wyr/vote" && url.pathname !== "/api/wyr/kids-vote") return;
-    const questionId = url.searchParams.get("questionId");
-    if (questionId) {
-      observed.push({ endpoint: url.pathname, questionId, status: response.status() });
-    }
-  });
-
-  await openFinder(page, "/find-questions");
-  await expect(page.locator('[data-question-id="wyr-000001"]')).toBeVisible();
-  await expect
-    .poll(() =>
-      observed.some(
-        ({ endpoint, questionId, status }) =>
-          endpoint === "/api/wyr/kids-vote" &&
-          questionId === "wyr-000001" &&
-          status >= 200 &&
-          status < 300,
-      ),
-    )
-    .toBe(true);
-  expect(
-    observed.some(
-      ({ endpoint, questionId }) => endpoint === "/api/wyr/vote" && questionId === "wyr-000001",
-    ),
-  ).toBe(false);
+  for (const pageNumber of [1, 6]) {
+    const responsePromise = page.waitForResponse(
+      (response) => new URL(response.url()).pathname === "/api/wyr/vote-stats",
+    );
+    await openFinder(page, `/find-questions?page=${pageNumber}`);
+    const response = await responsePromise;
+    expect(response.ok()).toBe(true);
+    const ids = await page
+      .locator(".question-card")
+      .evaluateAll((cards) => cards.map((card) => card.getAttribute("data-question-id")));
+    const summaries = await response.json();
+    expect(Object.keys(summaries).sort()).toEqual(ids.sort());
+    for (const stats of Object.values(summaries))
+      expect(stats).toMatchObject({ hasVoted: false, selectedOption: null });
+    expect((await response.request().allHeaders()).cookie ?? "").not.toContain("wyr_vid=");
+    expect((await response.allHeaders())["set-cookie"]).toBeUndefined();
+    await expect(page.locator(".stats-retry")).toHaveCount(0);
+  }
   expect((await context.cookies()).some((cookie) => cookie.name === "wyr_vid")).toBe(false);
-
-  observed.length = 0;
-  await openFinder(page, "/find-questions?page=6");
-  await expect(page.locator('[data-question-id="wyr-000059"]')).toBeVisible();
-  await expect
-    .poll(() =>
-      observed.some(
-        ({ endpoint, questionId, status }) =>
-          endpoint === "/api/wyr/vote" &&
-          questionId === "wyr-000059" &&
-          status >= 200 &&
-          status < 300,
-      ),
-    )
-    .toBe(true);
-  expect(
-    observed.some(
-      ({ endpoint, questionId }) =>
-        endpoint === "/api/wyr/kids-vote" && questionId === "wyr-000059",
-    ),
-  ).toBe(false);
 });
 
 for (const exitAction of ["Clear selected", "Unselect question 1"] as const) {
@@ -445,62 +348,4 @@ test("review restores a valid page when the incoming browse page exceeds the fil
   await page.getByRole("button", { name: "Back to browsing", exact: true }).click();
   await expect(page.locator(".pagination [aria-current=page]")).toHaveText("1");
   expect(new URL(page.url()).searchParams.has("page")).toBe(false);
-});
-
-test("random Finder Kids and General cards use their real privacy endpoints", async ({
-  page,
-  context,
-}) => {
-  const approved = QUESTIONS_DATABASE.filter((question) => question.reviewStatus === "approved");
-  const observed: Array<{ endpoint: string; questionId: string }> = [];
-  page.on("request", (request) => {
-    const url = new URL(request.url());
-    if (url.pathname === "/api/wyr/vote" || url.pathname === "/api/wyr/kids-vote") {
-      observed.push({
-        endpoint: url.pathname,
-        questionId: url.searchParams.get("questionId") ?? "",
-      });
-    }
-  });
-  // Visit General first so the subsequent Kids request must respect its cookie scope.
-  for (const kids of [false, true]) {
-    const candidates = approved.filter((question) => isKidsCollectionQuestion(question) === kids);
-    expect(candidates.length).toBeGreaterThan(0);
-    const question = candidates[Math.floor(Math.random() * candidates.length)]!;
-    const browsePage = Math.floor(approved.findIndex((entry) => entry.id === question.id) / 10) + 1;
-    const endpoint = kids ? "/api/wyr/kids-vote" : "/api/wyr/vote";
-    const targetResponse = page.waitForResponse((response) => {
-      const url = new URL(response.url());
-      return url.pathname === endpoint && url.searchParams.get("questionId") === question.id;
-    });
-    await openFinder(page, `/find-questions?page=${browsePage}`);
-    const response = await targetResponse;
-    expect(response.ok()).toBe(true);
-    const card = page.locator(`[data-question-id="${question.id}"]`);
-    await expect(card).toBeVisible();
-    await expect(card.locator(".question-stats")).not.toContainText("Loading");
-    await expect(card.locator(".stats-retry")).toHaveCount(0);
-    expect(
-      observed
-        .filter((request) => request.questionId === question.id)
-        .every((request) => request.endpoint === endpoint),
-    ).toBe(true);
-    if (kids) {
-      expect(await response.json()).toMatchObject({ hasVoted: false, selectedOption: null });
-      expect((await response.request().allHeaders()).cookie ?? "").not.toContain("wyr_vid=");
-      const cookieHeader = (await response.allHeaders())["set-cookie"] ?? "";
-      expect(cookieHeader).toContain("Max-Age=0");
-      expect(cookieHeader).not.toMatch(/wyr_vid=[^;]/);
-    }
-    expect(
-      (await context.cookies())
-        .filter((cookie) => cookie.name === "wyr_vid")
-        .every((cookie) => cookie.path === "/api/wyr/vote"),
-    ).toBe(true);
-    console.log("random-privacy-boundary", {
-      questionId: question.id,
-      endpoint,
-      status: response.status(),
-    });
-  }
 });
