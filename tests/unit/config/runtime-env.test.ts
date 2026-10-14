@@ -64,7 +64,6 @@ describe("loadRuntimeEnv", () => {
     expect(env.turnstileSecretKey).toBe("1x0000000000000000000000000000000AA");
   });
 
-
   it("requires production authentication, cron, and email secrets", () => {
     expect(() =>
       loadRuntimeEnv(
