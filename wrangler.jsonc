@@ -1,0 +1,53 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "wyrplay",
+  "main": "worker.ts",
+  "compatibility_date": "2026-10-13",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "workers_dev": true,
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "wyrplay",
+    },
+  ],
+  "vars": {
+    "APP_ENV": "production",
+    "APP_ORIGIN": "https://www.wyrplay.com",
+    "NEXTJS_ENV": "production",
+  },
+  "observability": {
+    "enabled": true,
+  },
+  "base_dir": ".open-next",
+  "find_additional_modules": true,
+  "preserve_file_names": true,
+  "rules": [
+    {
+      "type": "Text",
+      "globs": [".runtime/static-inline-hashes.json"],
+      "fallthrough": true,
+    },
+  ],
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "44fb429f825b4b13913280af4c6b7539",
+    },
+  ],
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "wyrplay-next-cache",
+      "preview_bucket_name": "wyrplay-next-cache",
+    },
+  ],
+  "images": {
+    "binding": "IMAGES",
+  },
+}
