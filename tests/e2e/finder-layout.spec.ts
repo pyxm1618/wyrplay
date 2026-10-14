@@ -113,8 +113,7 @@ test("Finder long copy and statistics errors grow cards without collisions", asy
       ? R
       : never,
   ) => route.fulfill({ status: 503, json: { error: "Controlled unavailable statistics" } });
-  await page.route("**/api/wyr/vote?*", mockUnavailableStats);
-  await page.route("**/api/wyr/kids-vote?*", mockUnavailableStats);
+  await page.route("**/api/wyr/vote-stats?*", mockUnavailableStats);
   await page.goto("/find-questions");
   await expect(page.locator(".stats-retry")).toHaveCount(10);
   // Stress the component beyond the current bank's longest title without changing source content.
@@ -266,22 +265,25 @@ test("Finder vote summary renders real stats and recovers from an explicit API e
   await expect(page.locator(".question-stats").first()).not.toContainText("Loading");
   await expect(page.locator(".stats-retry")).toHaveCount(0);
   let failed = true;
+  let batchRequests = 0;
   const mockRetry = async (
     route: Parameters<typeof page.route>[1] extends (r: infer R, ...args: never[]) => unknown
       ? R
       : never,
   ) => {
+    batchRequests += 1;
     if (failed) await route.fulfill({ status: 503, json: { error: "Controlled test failure" } });
     else await route.continue();
   };
-  await page.route("**/api/wyr/vote?*", mockRetry);
-  await page.route("**/api/wyr/kids-vote?*", mockRetry);
+  await page.route("**/api/wyr/vote-stats?*", mockRetry);
   await page.reload();
   await expect(page.locator(".stats-retry")).toHaveCount(10);
   failed = false;
   await page.locator(".stats-retry").first().click();
   await expect(page.locator(".question-stats").first()).not.toContainText("unavailable");
   await expect(page.locator(".question-stats").first()).not.toContainText("Loading");
+  await expect(page.locator(".stats-retry")).toHaveCount(0);
+  expect(batchRequests).toBe(2);
 });
 
 test("Finder privacy and analytics banner safe positioning across profiles", async ({ page }) => {
