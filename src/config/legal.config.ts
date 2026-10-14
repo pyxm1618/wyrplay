@@ -20,6 +20,12 @@ export const legalConfig = {
   authMethods: [],
   processors: [
     {
+      name: "Cloudflare",
+      purpose:
+        "Hosting, CDN, Workers runtime, security, image delivery, caching, and operational observability",
+      privacyUrl: "https://www.cloudflare.com/privacypolicy/",
+    },
+    {
       name: "Resend",
       purpose: "Transactional email delivery for account or support communications",
       privacyUrl: "https://resend.com/legal/privacy-policy",
@@ -68,7 +74,7 @@ export const legalConfig = {
     {
       category: "Kids request and runtime log metadata",
       period:
-        "under the current Vercel Hobby plan, Vercel Runtime Logs are retained for no more than one hour; the Kids voting route does not write separate application logs containing the vote request",
+        "Cloudflare may temporarily process request and Workers runtime metadata needed to deliver, secure, and diagnose the service; WYRPlay does not use provider request logs as a persistent Kids voting identifier, and the Kids voting route does not write separate application logs containing the vote request",
       basis: "temporary service operation, security, reliability, and abuse investigation",
     },
     {
@@ -116,7 +122,7 @@ export const legalConfig = {
   internationalTransfers:
     "WYRPlay is operated by Wang Yufei, an individual operator in China, and is available globally. Service providers such as hosting, database, and infrastructure vendors may process data in the United States or other locations where they operate. When applicable law requires safeguards for international data transfers, WYRPlay implements appropriate legal mechanisms.",
   documents: {
-    privacy: { version: "1.1", effectiveDate: "2026-10-07", reviewStatus: "reviewed" },
+    privacy: { version: "1.2", effectiveDate: "2026-10-14", reviewStatus: "reviewed" },
     terms: { version: "1.0", effectiveDate: "2026-10-04", reviewStatus: "reviewed" },
     acceptable_use: { version: "1.0", effectiveDate: "2026-10-04", reviewStatus: "reviewed" },
     refund_policy: { version: "1.0", effectiveDate: "2026-10-04", reviewStatus: "reviewed" },
@@ -213,7 +219,7 @@ export const legalConfig = {
         heading: "Data Retention",
         paragraphs: [
           "For Kids voting, the application database stores the question identifier, A/B choice, timestamps, and a server-generated one-time record token. The token is not returned to the browser, is not reused to recognize a child or browser, and is not stored with a persistent Kids voter identifier. These vote contributions may be retained indefinitely for aggregate results after request-level metadata is no longer retained.",
-          "The Kids voting route does not write separate application logs containing the vote request. Vercel may temporarily process request and runtime metadata needed to deliver and secure the request; under WYRPlay's current Vercel Hobby plan, Vercel Runtime Logs are retained for no more than one hour. After that provider log window, WYRPlay does not retain a reusable child/browser identifier with the Kids A/B choice. Aggregate or de-identified statistics that cannot reasonably identify an individual may be retained indefinitely.",
+          "The Kids voting route does not write separate application logs containing the vote request. Cloudflare Workers and related Cloudflare infrastructure may temporarily process request and runtime metadata needed to deliver, secure, monitor, and diagnose the service. WYRPlay does not rely on provider request logs as a persistent Kids voting identifier. The application does not retain a reusable child/browser identifier with the Kids A/B choice. Aggregate or de-identified statistics that cannot reasonably identify an individual may be retained indefinitely.",
           "Account data is maintained while an account is active and during the account-deletion workflow once account functionality is opened. Other operational, security, commerce, support, and diagnostic records are retained only as described by the applicable operational or legal purpose.",
         ],
       },
