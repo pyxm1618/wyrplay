@@ -1,3 +1,4 @@
+import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -384,47 +385,39 @@ if (productionRelease) {
   }
 }
 
-let rejectedVercelTestMode = false;
-try {
-  loadRuntimeEnv(
-    {
-      APP_ENV: "test",
-      VERCEL_ENV: "production",
-      APP_ORIGIN: "https://example.com",
-      DATABASE_URL: "postgres://user:pass@db.example.com:5432/app",
-    },
-    featuresConfig,
-  );
-} catch {
-  rejectedVercelTestMode = true;
-}
-if (!rejectedVercelTestMode) {
-  throw new Error("production safety gate must reject APP_ENV=test on Vercel");
-}
-
-let rejectedProductionTestMailbox = false;
-try {
-  loadRuntimeEnv(
-    {
-      APP_ENV: "production",
-      VERCEL_ENV: "production",
-      APP_ORIGIN: "https://example.com",
-      DATABASE_URL: "postgres://user:pass@db.example.com:5432/app",
-      BETTER_AUTH_SECRET: "a".repeat(48),
-      CRON_SECRET: "b".repeat(32),
-      RESEND_API_KEY: "re_release_fixture",
-      EMAIL_FROM: "Example <login@example.com>",
-      SUPPORT_EMAIL: "support@example.com",
-      TEST_EMAIL_DIR: "/tmp/forbidden-production-mailbox",
-    },
-    featuresConfig,
-  );
-} catch {
-  rejectedProductionTestMailbox = true;
-}
-if (!rejectedProductionTestMailbox) {
-  throw new Error("production safety gate must reject test mailbox configuration");
-}
+const productionRuntimeFixture = {
+  APP_ENV: "production",
+  APP_ORIGIN: "https://example.com",
+  DATABASE_URL: "postgres://user:pass@db.example.com:5432/app",
+  BETTER_AUTH_SECRET: "a".repeat(48),
+  CRON_SECRET: "b".repeat(32),
+  RESEND_API_KEY: "re_release_fixture",
+  EMAIL_FROM: "Example <login@example.com>",
+  SUPPORT_EMAIL: "support@example.com",
+};
+const productionEmailFeatures = { ...featuresConfig, email: { enabled: true } };
+assert.equal(
+  loadRuntimeEnv(productionRuntimeFixture, productionEmailFeatures).emailTransport,
+  "resend",
+);
+assert.throws(
+  () =>
+    loadRuntimeEnv(
+      { ...productionRuntimeFixture, EMAIL_TRANSPORT: "test" },
+      productionEmailFeatures,
+    ),
+  { message: "staging and production email transport must use Resend" },
+  "production safety gate must reject test email transport",
+);
+assert.throws(
+  () =>
+    loadRuntimeEnv(
+      { ...productionRuntimeFixture, TEST_EMAIL_DIR: "/tmp/forbidden-production-mailbox" },
+      productionEmailFeatures,
+    ),
+  { message: "TEST_EMAIL_DIR is forbidden outside local and test environments" },
+  "production safety gate must reject test mailbox configuration",
+);
 
 let rejectedDraftLegalRelease = false;
 try {
@@ -494,7 +487,8 @@ console.log(
     commerceEnabled: featuresConfig.commerce.enabled,
     seoStatus: seoReleaseStatus,
     legalStatus: legalReleaseStatus,
-    productionTestModeRejected: true,
+    productionTestEmailTransportRejected: true,
+    productionTestMailboxRejected: true,
     productionDraftLegalRejected: true,
   }),
 );
