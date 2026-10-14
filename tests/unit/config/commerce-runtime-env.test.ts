@@ -61,7 +61,7 @@ it("blocks deployed commerce until contract and production webhook key are expli
     loadRuntimeEnv(
       {
         APP_ENV: "production",
-          ...baseCommerceEnv,
+        ...baseCommerceEnv,
         WAFFO_CONTRACT_VERIFIED: "1",
       },
       commerceFeatures,
