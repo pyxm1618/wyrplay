@@ -89,7 +89,7 @@
 }
 /* Approved artwork can contain very light regions. Keep the existing white
    option labels readable without masking more of the illustration than needed. */
-.kids-choice:has(.kids-choice-visual) .kids-choice-text {
+.kids-choice-visual + .kids-choice-text {
   width: fit-content;
   max-width: 100%;
   justify-self: center;
