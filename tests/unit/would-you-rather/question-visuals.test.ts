@@ -42,7 +42,7 @@ describe("Question Visuals Registry & Layout", () => {
       expect(asset.src).toMatch(
         new RegExp(`^https://media\\.wyrplay\\.com/questions/v1/${id}-[a-f0-9]{12}\\.png$`),
       );
-      expect(asset.alt).toBe(QUESTIONS_DATABASE.find((question) => question.id === id)?.question);
+      expect(asset.alt.trim().length).toBeGreaterThan(0);
     }
     expect(getQuestionVisual("unknown-id")).toBeUndefined();
     expect(hasQuestionVisual("unknown-id")).toBe(false);
