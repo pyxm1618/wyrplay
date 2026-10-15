@@ -1044,6 +1044,7 @@ function PrintPageContent({
                                     }}
                                   >
                                     <img
+                                      crossOrigin="anonymous"
                                       src={visualAsset.src}
                                       alt=""
                                       loading="eager"
@@ -1101,6 +1102,7 @@ function PrintPageContent({
                                     }}
                                   >
                                     <img
+                                      crossOrigin="anonymous"
                                       src={visualAsset.src}
                                       alt=""
                                       loading="eager"

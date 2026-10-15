@@ -45,6 +45,14 @@ const nextConfig: NextConfig = {
     },
   },
   images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "media.wyrplay.com",
+        pathname: "/questions/v1/**",
+        search: "",
+      },
+    ],
     formats: ["image/avif", "image/webp"],
   },
   outputFileTracingIncludes: {

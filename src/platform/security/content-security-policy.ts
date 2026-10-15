@@ -26,6 +26,7 @@ export function buildContentSecurityPolicy(input: ContentSecurityPolicyInput): s
   ];
   const connectSources = [
     "'self'",
+    "https://media.wyrplay.com",
     ...(input.analytics.ga4
       ? ["https://www.google-analytics.com", "https://region1.google-analytics.com"]
       : []),
@@ -34,6 +35,7 @@ export function buildContentSecurityPolicy(input: ContentSecurityPolicyInput): s
   ];
   const imageSources = [
     "'self'",
+    "https://media.wyrplay.com",
     "data:",
     "blob:",
     ...(input.analytics.ga4 ? ["https://www.google-analytics.com"] : []),
