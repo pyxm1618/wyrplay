@@ -201,7 +201,7 @@ export function KidsChoicePanels({
         <button
           key={option}
           type="button"
-          className={`kids-choice kids-choice-${option.toLowerCase()}`}
+          className={`kids-choice kids-choice-${option.toLowerCase()}${hasVisual ? " kids-choice-illustrated" : ""}`}
           disabled={busy || !onChoose}
           aria-pressed={selected === option}
           aria-label={`Choose option ${option}: ${option === "A" ? a : b}`}
@@ -230,21 +230,12 @@ export function KidsChoicePanels({
             />
           </svg>
           {hasVisual && questionId ? (
-            <div
-              className="kids-choice-visual"
-              style={{
-                width: "100%",
-                maxWidth: "160px",
-                margin: "0 auto 8px",
-                borderRadius: "12px",
-                overflow: "hidden",
-              }}
-            >
+            <div className="kids-choice-visual">
               <QuestionVisual
                 questionId={questionId}
                 mode={option === "A" ? "option-a" : "option-b"}
                 alt={option === "A" ? a : b}
-                sizes="(max-width: 640px) 50vw, 320px"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1400px"
               />
             </div>
           ) : (

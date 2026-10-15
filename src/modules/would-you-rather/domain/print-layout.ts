@@ -159,3 +159,41 @@ export function createPrintLayout(
   if (page.length) pages.push(page);
   return { width, height, pages };
 }
+
+/** Shared point geometry for Canvas, vector PDF and native browser print. */
+export function getPrintVisualGeometry(p: PrintPlacement) {
+  const inset = 12;
+  const gap = 10;
+  // Header includes the existing logo, title, number and 34pt QR with clearance.
+  const header = 50;
+  const lineHeight = 12;
+  const fontSize = 10;
+  const columnWidth = (p.width - inset * 2 - gap) / 2;
+  // Caption columns retain their width when unusually long text needs more height.
+  // This avoids a feedback loop where shrinking art also narrows and grows its caption.
+  const measure = (value: string) =>
+    [...value].reduce(
+      (width, char) => width + (/\s/.test(char) ? 3 : /[MWmw]/.test(char) ? 9 : 6),
+      0,
+    );
+  const linesA = wrapPrintText(p.question.optionA, columnWidth - 16, measure);
+  const linesB = wrapPrintText(p.question.optionB, columnWidth - 16, measure);
+  const captionHeight = Math.max(linesA.length, linesB.length) * lineHeight + 8;
+  const size = Math.min(columnWidth, p.height - header - inset - captionHeight - 4);
+  if (size <= 0) throw new Error(`Print caption exceeds card ${p.question.id}`);
+  return {
+    size,
+    xA: p.x + inset + (columnWidth - size) / 2,
+    xB: p.x + inset + columnWidth + gap + (columnWidth - size) / 2,
+    captionXA: p.x + inset,
+    captionXB: p.x + inset + columnWidth + gap,
+    captionWidth: columnWidth,
+    y: p.y + header,
+    captionY: p.y + header + size + 4,
+    captionHeight,
+    fontSize,
+    lineHeight,
+    linesA,
+    linesB,
+  };
+}

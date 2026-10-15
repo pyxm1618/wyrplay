@@ -2524,7 +2524,7 @@
 }
 .illustrated-home .home-choice-visual {
   width: 100%;
-  max-width: 180px;
+  max-width: 320px;
   margin: 0 auto 12px;
   border-radius: 12px;
   overflow: hidden;
@@ -2557,7 +2557,7 @@
     gap: 4px;
   }
   .illustrated-home .home-choice-visual {
-    max-width: 80px;
+    max-width: min(100%, 320px, calc(100dvh - 540px));
     margin: 0 auto 2px;
   }
   .illustrated-home .home-vote-status,
@@ -2828,5 +2828,46 @@
   }
   .illustrated-home .home-hero-arena {
     width: min(100%, clamp(720px, 48vw, 920px));
+  }
+}
+
+.illustrated-home .home-hero-arena .choice-card:has(.home-choice-visual) {
+  padding: 6px;
+  gap: 0;
+  border-radius: 18px;
+  background: #ffdeeb;
+  overflow: hidden;
+}
+.illustrated-home .home-hero-arena .cat-card:has(.home-choice-visual) {
+  background: #cceeff;
+}
+.illustrated-home .home-hero-arena .choice-card:has(.home-choice-visual)::before {
+  display: none;
+}
+.illustrated-home .home-hero-arena .choice-card:has(.home-choice-visual) > span {
+  color: #172640;
+  text-shadow: none;
+  padding-inline: 8px;
+}
+.illustrated-home .home-hero-arena .choice-card:has(.home-choice-visual) .choice-label {
+  margin-top: 4px;
+}
+.illustrated-home .home-hero-arena .choice-card:has(.home-choice-visual) .choice-text {
+  padding-block: 4px;
+}
+.illustrated-home .home-hero-arena .choice-card:has(.home-choice-visual) .choice-feedback {
+  padding-bottom: 4px;
+}
+
+@media (min-width: 1024px) and (min-height: 801px) and (max-height: 900px) {
+  .illustrated-home .home-choice-visual {
+    max-width: min(100%, calc(100dvh - 620px));
+  }
+}
+
+/* Keep the existing title-height cap when large artwork shares the desktop fold. */
+@media (min-width: 1024px) and (min-height: 901px) and (max-height: 1100px) {
+  .illustrated-home:has(.home-choice-visual) .hero-title-img {
+    width: min(calc(var(--home-unit) * 250), 24vh);
   }
 }

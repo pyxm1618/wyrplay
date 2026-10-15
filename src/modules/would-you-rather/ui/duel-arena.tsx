@@ -261,7 +261,7 @@ export function DuelArena({
                     questionId={question.id}
                     mode={option === "A" ? "option-a" : "option-b"}
                     alt={option === "A" ? question.optionA : question.optionB}
-                    sizes="(max-width: 640px) 50vw, 320px"
+                    sizes="(max-width: 640px) 100vw, 640px"
                   />
                 </div>
               ) : (
