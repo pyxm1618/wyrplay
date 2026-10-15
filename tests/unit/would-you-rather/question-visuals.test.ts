@@ -7,13 +7,45 @@ import { createPrintLayout } from "@/modules/would-you-rather/domain/print-layou
 import { QUESTIONS_DATABASE } from "@/modules/would-you-rather/data/questions";
 
 describe("Question Visuals Registry & Layout", () => {
-  it("keeps registry empty until master artworks are explicitly approved by user", () => {
-    // 验证当前没有任何未经审核的假图片被挂载
-    const testIds = ["wyr-000001", "wyr-000002", "wyr-000003", "wyr-000004", "unknown-id"];
-    testIds.forEach((id) => {
-      expect(hasQuestionVisual(id)).toBe(false);
-      expect(getQuestionVisual(id)).toBeUndefined();
-    });
+  it("registers exactly the 21 approved masters and preserves fallback for other questions", () => {
+    const approvedIds = [
+      "wyr-000001",
+      "wyr-000002",
+      "wyr-000003",
+      "wyr-000004",
+      "wyr-000005",
+      "wyr-000006",
+      "wyr-000007",
+      "wyr-000008",
+      "wyr-000009",
+      "wyr-000010",
+      "wyr-000018",
+      "wyr-000019",
+      "wyr-000020",
+      "wyr-000021",
+      "wyr-000022",
+      "wyr-000023",
+      "wyr-000024",
+      "wyr-000025",
+      "wyr-000026",
+      "wyr-000027",
+      "wyr-000037",
+    ];
+    const registeredIds = QUESTIONS_DATABASE.filter((question) => hasQuestionVisual(question.id))
+      .map((question) => question.id)
+      .sort();
+    expect(registeredIds).toEqual(approvedIds);
+    for (const id of approvedIds) {
+      const asset = getQuestionVisual(id)!;
+      expect(asset.width).toBe(1774);
+      expect(asset.height).toBe(887);
+      expect(asset.src).toMatch(
+        new RegExp(`^https://media\\.wyrplay\\.com/questions/v1/${id}-[a-f0-9]{12}\\.png$`),
+      );
+      expect(asset.alt.trim().length).toBeGreaterThan(0);
+    }
+    expect(getQuestionVisual("unknown-id")).toBeUndefined();
+    expect(hasQuestionVisual("unknown-id")).toBe(false);
   });
 
   it("calculates A4 Landscape 2x2 layout for Cut-out Cards", () => {

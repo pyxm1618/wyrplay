@@ -147,7 +147,10 @@ test("Finder artwork stays stable through search, pagination and reload", async 
       .evaluateAll((cards) =>
         cards.map((card) => [
           card.getAttribute("data-question-id"),
-          card.querySelector(".question-art")!.getAttribute("src"),
+          (
+            card.querySelector(".question-art img, img.question-art") ??
+            card.querySelector(".question-art")
+          )?.getAttribute("src"),
         ]),
       );
   const initial = await artwork();
@@ -363,7 +366,7 @@ test("Finder DPR 1 and DPR 2 asset rendering across representative viewports", a
       expect(brokenImages).toEqual([]);
 
       await expect(page.locator(".hero-character")).toHaveAttribute("src", /\/_next\/image\?/);
-      await expect(page.locator(".question-art").first()).toHaveAttribute(
+      await expect(page.locator(".question-art img, img.question-art").first()).toHaveAttribute(
         "src",
         /\/_next\/image\?/,
       );
@@ -397,7 +400,10 @@ test("Finder image delivery skips mobile-only decorations and uses optimized con
   await expect(page.locator(".question-art").first()).toBeVisible();
 
   await expect(page.locator(".hero-character")).toHaveAttribute("src", /\/_next\/image\?/);
-  await expect(page.locator(".question-art").first()).toHaveAttribute("src", /\/_next\/image\?/);
+  await expect(page.locator(".question-art img, img.question-art").first()).toHaveAttribute(
+    "src",
+    /\/_next\/image\?/,
+  );
 
   for (const file of [
     "search-left.png",

@@ -96,6 +96,7 @@ export async function getVisualImage(src: string): Promise<HTMLImageElement> {
   const cached = visualImageCache.get(src);
   if (cached) return cached;
   const img = new Image();
+  img.crossOrigin = "anonymous";
   img.src = src;
   await img.decode();
   visualImageCache.set(src, img);

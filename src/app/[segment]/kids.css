@@ -733,6 +733,17 @@
 .kids-choice-b .kids-choice-text {
   text-shadow: 0 2px 2px #0042774d;
 }
+/* Approved artwork can contain very light regions. Back only the option label
+   so the illustration stays visible while white text keeps stable contrast. */
+.kids-choice-visual + .kids-choice-text {
+  width: fit-content;
+  max-width: 100%;
+  justify-self: center;
+  padding: 0.12em 0.32em;
+  border-radius: 0.32em;
+  background: #29446b;
+  text-shadow: none;
+}
 .kids-choice[aria-pressed="true"] .kids-choice-frame {
   filter: drop-shadow(0 0 4px #07111d);
 }
