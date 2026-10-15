@@ -54,6 +54,7 @@ const nextConfig: NextConfig = {
       },
     ],
     formats: ["image/avif", "image/webp"],
+    ...(process.env.APP_ENV === "test" ? { dangerouslyAllowLocalIP: true } : {}),
   },
   outputFileTracingIncludes: {
     "/*": ["./.runtime/static-inline-hashes.json"],

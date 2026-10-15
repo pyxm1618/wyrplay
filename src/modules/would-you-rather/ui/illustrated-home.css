@@ -2442,28 +2442,6 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
 }
-@media (min-width: 1024px) and (max-height: 760px) {
-  .illustrated-home .hero {
-    padding-top: 4px;
-    padding-bottom: 10px;
-  }
-  .illustrated-home .hero h1 {
-    margin-bottom: 4px;
-  }
-  .illustrated-home .hero-title-img {
-    width: min(calc(var(--home-unit) * 310), 38vh);
-  }
-  .illustrated-home .home-hero-arena {
-    margin-top: 4px;
-  }
-  .illustrated-home .home-hero-arena > h2 {
-    margin-bottom: 4px;
-  }
-  .illustrated-home .home-hero-arena .choice-card {
-    min-height: 145px;
-    padding-block: 14px;
-  }
-}
 .illustrated-home .home-hero-arena .choice-card {
   cursor: pointer;
   min-width: 0;
@@ -2543,6 +2521,46 @@
 }
 .illustrated-home .hero-note {
   display: none;
+}
+@media (min-width: 1024px) and (max-height: 900px) {
+  .illustrated-home .hero {
+    height: auto;
+    min-height: calc(var(--home-unit) * 510);
+    padding-top: 4px;
+    padding-bottom: 6px;
+  }
+  .illustrated-home .hero h1 {
+    margin-bottom: 2px;
+  }
+  .illustrated-home .hero-title-img {
+    width: min(calc(var(--home-unit) * 250), 24vh);
+  }
+  .illustrated-home .home-hero-arena {
+    margin-top: 2px;
+  }
+  .illustrated-home .home-hero-arena > h2 {
+    margin-bottom: 2px;
+    font-size: clamp(16px, 2vh, 22px);
+  }
+  .illustrated-home .home-hero-arena .choice-card {
+    min-height: 105px;
+    padding: 8px 16px;
+    gap: 4px;
+  }
+  .illustrated-home .home-choice-visual {
+    max-width: 80px;
+    margin: 0 auto 2px;
+  }
+  .illustrated-home .home-vote-status,
+  .illustrated-home .home-vote-error {
+    margin: 2px auto;
+    font-size: 13px;
+  }
+  .illustrated-home .home-play-actions .choice-cta {
+    min-height: 36px;
+    padding: 4px 14px;
+    font-size: 15px;
+  }
 }
 .illustrated-home .join-players p {
   font-size: 14px;
@@ -2806,8 +2824,8 @@
 
 .illustrated-home .home-choice-visual {
   width: 100%;
-  max-width: 180px;
-  margin: 0 auto 12px;
+  max-width: 120px;
+  margin: 0 auto 6px;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);

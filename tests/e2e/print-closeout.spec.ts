@@ -3,6 +3,10 @@ import { PDFDocument } from "pdf-lib";
 import sharp from "sharp";
 import { readFile } from "node:fs/promises";
 
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem("creat-web:analytics-consent:v1", "denied"));
+});
+
 for (const format of ["cards", "sheet"] as const) {
   for (const paper of ["letter", "a4"] as const) {
     test(`actual browser print and vector PDF preserve ${format}/${paper} pages`, async ({

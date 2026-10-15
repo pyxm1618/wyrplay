@@ -17,6 +17,36 @@ export interface QuestionVisualAsset {
   readonly alt: string;
 }
 
+let titlesCache: Map<string, string> | undefined;
+
+function getApprovedMasterAlt(questionId: string, fallback: string): string {
+  if (typeof window === "undefined") {
+    if (!titlesCache) {
+      try {
+        // 仅在 Node.js / 测试运行时动态读取题库，避免向客户端 Bundle 打包非当前页面题干
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        const fs = typeof require !== "undefined" ? require("node:fs") : null;
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        const path = typeof require !== "undefined" ? require("node:path") : null;
+        if (fs && path) {
+          const filePath = path.resolve(process.cwd(), "content/question-bank/questions.json");
+          if (fs.existsSync(filePath)) {
+            const raw = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+            titlesCache = new Map(
+              (raw as Array<{ id: string; question: string }>).map((q) => [q.id, q.question]),
+            );
+          }
+        }
+      } catch {
+        titlesCache = new Map();
+      }
+    }
+    const found = titlesCache?.get(questionId);
+    if (found) return found;
+  }
+  return fallback;
+}
+
 /**
  * 已批准的 21 张 2:1 母版；永久存于独立媒体 R2，文件名包含内容哈希。
  */
@@ -85,67 +115,89 @@ const questionVisualRegistry: Readonly<Record<string, QuestionVisualAsset>> = {
     src: "https://media.wyrplay.com/questions/v1/wyr-000018-eae810e2eade.png",
     width: 1774,
     height: 887,
-    alt: "Would you rather spend recess inventing a new game or spend recess learning a new trick?",
+    get alt() {
+      return getApprovedMasterAlt("wyr-000018", "Would you rather question illustration");
+    },
   },
   "wyr-000019": {
     src: "https://media.wyrplay.com/questions/v1/wyr-000019-91966b314ce7.png",
     width: 1774,
     height: 887,
-    alt: "Would you rather explore a cave with glowing walls or explore a forest where leaves change color when touched?",
+    get alt() {
+      return getApprovedMasterAlt("wyr-000019", "Would you rather question illustration");
+    },
   },
   "wyr-000020": {
     src: "https://media.wyrplay.com/questions/v1/wyr-000020-0494f0de0d62.png",
     width: 1774,
     height: 887,
-    alt: "Would you rather lead a team treasure hunt or solve clues as the team detective?",
+    get alt() {
+      return getApprovedMasterAlt("wyr-000020", "Would you rather question illustration");
+    },
   },
   "wyr-000021": {
     src: "https://media.wyrplay.com/questions/v1/wyr-000021-04fefe864b4b.png",
     width: 1774,
     height: 887,
-    alt: "Would you rather build anything you want from cardboard boxes or build anything you want from building bricks?",
+    get alt() {
+      return getApprovedMasterAlt("wyr-000021", "Would you rather question illustration");
+    },
   },
   "wyr-000022": {
     src: "https://media.wyrplay.com/questions/v1/wyr-000022-b82dedc68f65.png",
     width: 1774,
     height: 887,
-    alt: "Would you rather do one longer homework task you can finish anytime this week or do three short homework tasks on set days?",
+    get alt() {
+      return getApprovedMasterAlt("wyr-000022", "Would you rather question illustration");
+    },
   },
   "wyr-000023": {
     src: "https://media.wyrplay.com/questions/v1/wyr-000023-d330f63c1630.png",
     width: 1774,
     height: 887,
-    alt: "Would you rather give a short talk about your favorite hobby or teach the class how to do part of it?",
+    get alt() {
+      return getApprovedMasterAlt("wyr-000023", "Would you rather question illustration");
+    },
   },
   "wyr-000024": {
     src: "https://media.wyrplay.com/questions/v1/wyr-000024-80f844e2b6e7.png",
     width: 1774,
     height: 887,
-    alt: "Would you rather always know the best route or always pack exactly what you need?",
+    get alt() {
+      return getApprovedMasterAlt("wyr-000024", "Would you rather question illustration");
+    },
   },
   "wyr-000025": {
     src: "https://media.wyrplay.com/questions/v1/wyr-000025-a9d783593e61.png",
     width: 1774,
     height: 887,
-    alt: "Would you rather have a robot that sorts your stuff or have a robot that finds lost things?",
+    get alt() {
+      return getApprovedMasterAlt("wyr-000025", "Would you rather question illustration");
+    },
   },
   "wyr-000026": {
     src: "https://media.wyrplay.com/questions/v1/wyr-000026-5c997ea9dfd3.png",
     width: 1774,
     height: 887,
-    alt: "Would you rather learn one magic trick perfectly or learn one dance routine perfectly?",
+    get alt() {
+      return getApprovedMasterAlt("wyr-000026", "Would you rather question illustration");
+    },
   },
   "wyr-000027": {
     src: "https://media.wyrplay.com/questions/v1/wyr-000027-35709fe372df.png",
     width: 1774,
     height: 887,
-    alt: "Would you rather discover a new kind of bird or discover a new kind of flower?",
+    get alt() {
+      return getApprovedMasterAlt("wyr-000027", "Would you rather question illustration");
+    },
   },
   "wyr-000037": {
     src: "https://media.wyrplay.com/questions/v1/wyr-000037-852a1b7a5308.png",
     width: 1774,
     height: 887,
-    alt: "Would you rather be excellent at starting projects or be excellent at finishing them?",
+    get alt() {
+      return getApprovedMasterAlt("wyr-000037", "Would you rather question illustration");
+    },
   },
 };
 
