@@ -45,6 +45,29 @@ test("homepage does not overflow a 375px viewport", async ({ page }) => {
   expect(overflow).toBe(false);
 });
 
+test("compact desktop artwork keeps a readable minimum and the primary action in the fold", async ({
+  page,
+}, info) => {
+  await page.setViewportSize({ width: 1024, height: 576 });
+  await page.goto("/");
+  await expect(page.locator("[data-home-ready=true]")).toBeVisible();
+  await page.evaluate(() => document.fonts.ready);
+  const visuals = page.locator(".home-choice-visual");
+  await expect(visuals).toHaveCount(2);
+  for (const visual of await visuals.all()) {
+    const box = await visual.boundingBox();
+    expect(box).not.toBeNull();
+    expect(box!.width).toBeGreaterThanOrEqual(120);
+    expect(box!.height).toBeCloseTo(box!.width, 0);
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(1024);
+  const action = await page.locator(".home-play-actions .choice-cta").boundingBox();
+  expect(action).not.toBeNull();
+  expect(action!.y).toBeGreaterThanOrEqual(0);
+  expect(action!.y + action!.height).toBeLessThanOrEqual(576);
+  await page.screenshot({ path: info.outputPath("home-1024x576.png") });
+});
+
 const homeViewports = [
   [375, 812],
   [390, 844],

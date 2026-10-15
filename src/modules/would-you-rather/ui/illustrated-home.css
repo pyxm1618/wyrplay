@@ -2557,7 +2557,7 @@
     gap: 4px;
   }
   .illustrated-home .home-choice-visual {
-    max-width: min(100%, 320px, calc(100dvh - 540px));
+    max-width: min(100%, 320px, max(120px, calc(100dvh - 540px)));
     margin: 0 auto 2px;
   }
   .illustrated-home .home-vote-status,
