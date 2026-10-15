@@ -11,6 +11,7 @@ import { type FinderAge } from "../../domain/finder";
 import { filterPrintQuestions, type PrintQuestionCriteria } from "../../domain/print-question-pool";
 import {
   createPrintLayout,
+  getPrintVisualGeometry,
   type PrintFormat,
   type PaperSize,
   type PrintLayout,
@@ -993,159 +994,111 @@ function PrintPageContent({
                       {(() => {
                         const visualAsset = getQuestionVisual(p.question.id);
                         if (visualAsset) {
+                          const g = getPrintVisualGeometry(p);
                           return (
                             <>
-                              <div style={{ textAlign: "center", marginBottom: "8pt" }}>
-                                <img src="/play-art/logo.png" alt="" style={{ height: "18pt" }} />
-                                <h3
-                                  style={{
-                                    fontFamily: "PlayHand",
-                                    fontSize: "15pt",
-                                    margin: "2pt 0 0",
-                                  }}
-                                >
-                                  Would you rather
-                                </h3>
-                                {showNumbers && (
-                                  <span
-                                    style={{
-                                      fontSize: "8pt",
-                                      color: "#888",
-                                      position: "absolute",
-                                      left: "12pt",
-                                      top: "8pt",
-                                    }}
-                                  >
-                                    #{p.number}
-                                  </span>
-                                )}
-                              </div>
-                              <div
+                              <img
+                                src="/play-art/logo.png"
+                                alt=""
                                 style={{
-                                  display: "grid",
-                                  gridTemplateColumns: "1fr 1fr",
-                                  gap: "14pt",
-                                  flex: 1,
-                                  alignItems: "start",
+                                  position: "absolute",
+                                  left: `${p.width / 2 - 28}pt`,
+                                  top: "8pt",
+                                  width: "56pt",
+                                  height: "18pt",
+                                }}
+                              />
+                              <h3
+                                style={{
+                                  position: "absolute",
+                                  top: "24pt",
+                                  left: 0,
+                                  width: "100%",
+                                  textAlign: "center",
+                                  fontFamily: "PlayHand, Arial, sans-serif",
+                                  fontSize: "19pt",
+                                  lineHeight: "19pt",
+                                  margin: 0,
                                 }}
                               >
-                                <div>
-                                  <div
-                                    style={{
-                                      aspectRatio: "1 / 1",
-                                      maxWidth: `${Math.min(100, Math.floor(p.height * 0.42))}pt`,
-                                      marginLeft: "auto",
-                                      marginRight: "auto",
-                                      border: "1pt solid #cbd5e1",
-                                      borderRadius: "4pt",
-                                      overflow: "hidden",
-                                      marginBottom: "6pt",
-                                      position: "relative",
-                                    }}
-                                  >
-                                    <img
-                                      crossOrigin="anonymous"
-                                      src={visualAsset.src}
-                                      alt=""
-                                      loading="eager"
+                                Would you rather
+                              </h3>
+                              {showNumbers && (
+                                <span
+                                  style={{
+                                    position: "absolute",
+                                    top: "11pt",
+                                    left: "12pt",
+                                    fontSize: "9pt",
+                                    color: "#9ba3af",
+                                  }}
+                                >
+                                  #{p.number}
+                                </span>
+                              )}
+                              {(["A", "B"] as const).map((option) => {
+                                const x = (option === "A" ? g.xA : g.xB) - p.x;
+                                const lines = option === "A" ? g.linesA : g.linesB;
+                                const captionX = (option === "A" ? g.captionXA : g.captionXB) - p.x;
+                                return (
+                                  <div key={option}>
+                                    <div
                                       style={{
                                         position: "absolute",
-                                        top: 0,
-                                        left: 0,
-                                        width: "200%",
-                                        height: "100%",
-                                        maxWidth: "none",
-                                        objectFit: "fill",
-                                      }}
-                                    />
-                                  </div>
-                                  <div
-                                    style={{
-                                      display: "flex",
-                                      gap: "6pt",
-                                      alignItems: "flex-start",
-                                    }}
-                                  >
-                                    <span
-                                      style={{
-                                        background: "#ff3457",
-                                        color: "white",
-                                        borderRadius: "50%",
-                                        width: "15pt",
-                                        height: "15pt",
-                                        display: "inline-grid",
-                                        placeItems: "center",
-                                        fontSize: "9pt",
-                                        fontWeight: 700,
-                                        flexShrink: 0,
+                                        left: `${x}pt`,
+                                        top: `${g.y - p.y}pt`,
+                                        width: `${g.size}pt`,
+                                        height: `${g.size}pt`,
+                                        overflow: "hidden",
+                                        outline: "0.8pt solid #cbd5e1",
                                       }}
                                     >
-                                      A
-                                    </span>
-                                    <p style={{ margin: 0, fontSize: "10pt", lineHeight: 1.25 }}>
-                                      {p.question.optionA}
-                                    </p>
-                                  </div>
-                                </div>
-                                <div>
-                                  <div
-                                    style={{
-                                      aspectRatio: "1 / 1",
-                                      maxWidth: `${Math.min(100, Math.floor(p.height * 0.42))}pt`,
-                                      marginLeft: "auto",
-                                      marginRight: "auto",
-                                      border: "1pt solid #cbd5e1",
-                                      borderRadius: "4pt",
-                                      overflow: "hidden",
-                                      marginBottom: "6pt",
-                                      position: "relative",
-                                    }}
-                                  >
-                                    <img
-                                      crossOrigin="anonymous"
-                                      src={visualAsset.src}
-                                      alt=""
-                                      loading="eager"
+                                      <img
+                                        crossOrigin="anonymous"
+                                        src={visualAsset.src}
+                                        alt=""
+                                        loading="eager"
+                                        style={{
+                                          position: "absolute",
+                                          top: 0,
+                                          left: option === "A" ? 0 : "-100%",
+                                          width: "200%",
+                                          height: "100%",
+                                          maxWidth: "none",
+                                          objectFit: "fill",
+                                        }}
+                                      />
+                                    </div>
+                                    <p
                                       style={{
                                         position: "absolute",
-                                        top: 0,
-                                        left: "-100%",
-                                        width: "200%",
-                                        height: "100%",
-                                        maxWidth: "none",
-                                        objectFit: "fill",
-                                      }}
-                                    />
-                                  </div>
-                                  <div
-                                    style={{
-                                      display: "flex",
-                                      gap: "6pt",
-                                      alignItems: "flex-start",
-                                    }}
-                                  >
-                                    <span
-                                      style={{
-                                        background: "#008cff",
-                                        color: "white",
-                                        borderRadius: "50%",
-                                        width: "15pt",
-                                        height: "15pt",
-                                        display: "inline-grid",
-                                        placeItems: "center",
-                                        fontSize: "9pt",
-                                        fontWeight: 700,
-                                        flexShrink: 0,
+                                        left: `${captionX}pt`,
+                                        top: `${g.captionY - p.y}pt`,
+                                        width: `${g.captionWidth}pt`,
+                                        height: `${g.captionHeight}pt`,
+                                        padding: "4pt 8pt",
+                                        margin: 0,
+                                        fontFamily: "PlayBody, Arial, sans-serif",
+                                        fontSize: `${g.fontSize}pt`,
+                                        lineHeight: `${g.lineHeight}pt`,
+                                        textAlign: "center",
+                                        color: "#090e20",
+                                        background: option === "A" ? "#ffdeeb" : "#cceeff",
                                       }}
                                     >
-                                      B
-                                    </span>
-                                    <p style={{ margin: 0, fontSize: "10pt", lineHeight: 1.25 }}>
-                                      {p.question.optionB}
+                                      {lines.map((line, index) => (
+                                        <span
+                                          key={index}
+                                          style={{ display: "block", whiteSpace: "pre" }}
+                                        >
+                                          {line}
+                                          {index < lines.length - 1 ? " " : ""}
+                                        </span>
+                                      ))}
                                     </p>
                                   </div>
-                                </div>
-                              </div>
+                                );
+                              })}
                             </>
                           );
                         }

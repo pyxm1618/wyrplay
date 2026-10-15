@@ -1,7 +1,7 @@
 import QRCode from "qrcode";
 import type { Question } from "../../types";
 import type { PrintLayout, PrintFormat } from "../../domain/print-layout";
-import { wrapPrintText } from "../../domain/print-layout";
+import { getPrintVisualGeometry, wrapPrintText } from "../../domain/print-layout";
 import { questionPoolUrl } from "../../domain/question-pool";
 import { getQuestionVisual } from "../../data/question-visuals";
 
@@ -232,11 +232,18 @@ export function renderSinglePrintPage(
         ctx.fillStyle = "#68544b";
         ctx.fillText("✂", p.x - 4, p.y);
       }
-      ctx.drawImage(logo, p.x + p.width / 2 - 40, p.y + 10, 80, 26);
+      const illustrated = Boolean(getQuestionVisual(p.question.id));
+      ctx.drawImage(
+        logo,
+        p.x + p.width / 2 - (illustrated ? 28 : 40),
+        p.y + (illustrated ? 8 : 10),
+        illustrated ? 56 : 80,
+        illustrated ? 18 : 26,
+      );
       ctx.fillStyle = "#090e20";
       ctx.font = "19px PlayHand";
       ctx.textAlign = "center";
-      ctx.fillText("Would you rather", p.x + p.width / 2, p.y + 57);
+      ctx.fillText("Would you rather", p.x + p.width / 2, p.y + (illustrated ? 43 : 57));
       ctx.textAlign = "left";
 
       if (showNumbers) {
@@ -277,11 +284,9 @@ export function renderSinglePrintPage(
       }
 
       if (cardVisualImg) {
-        const imgSize = Math.min(100, Math.floor(p.height * 0.42));
-        const imgAX = p.x + p.width / 2 - imgSize - 14;
-        const imgAY = p.y + 60;
-        const imgBX = p.x + p.width / 2 + 14;
-        const imgBY = p.y + 60;
+        const g = getPrintVisualGeometry(p);
+        const { size: imgSize, xA: imgAX, xB: imgBX, y: imgAY } = g;
+        const imgBY = imgAY;
 
         // Option A (严格左半幅 50%)
         ctx.drawImage(
@@ -313,29 +318,24 @@ export function renderSinglePrintPage(
         ctx.strokeRect(imgAX, imgAY, imgSize, imgSize);
         ctx.strokeRect(imgBX, imgBY, imgSize, imgSize);
 
-        const textWidth = imgSize + 16;
-        const textAY = imgAY + imgSize + 16;
-        const textBY = imgBY + imgSize + 16;
-
-        ctx.fillStyle = "#ff3457";
-        ctx.beginPath();
-        ctx.arc(imgAX + 8, textAY - 4, 8, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = "white";
-        ctx.font = "bold 9px Arial";
-        ctx.fillText("A", imgAX + 5, textAY - 1);
-        ctx.fillStyle = "#090e20";
-        text(p.question.optionA, imgAX + 20, textAY - 1, textWidth - 12, 10);
-
-        ctx.fillStyle = "#008cff";
-        ctx.beginPath();
-        ctx.arc(imgBX + 8, textBY - 4, 8, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = "white";
-        ctx.font = "bold 9px Arial";
-        ctx.fillText("B", imgBX + 5, textBY - 1);
-        ctx.fillStyle = "#090e20";
-        text(p.question.optionB, imgBX + 20, textBY - 1, textWidth - 12, 10);
+        for (const [x, lines, fill] of [
+          [g.captionXA, g.linesA, "#ffdeeb"],
+          [g.captionXB, g.linesB, "#cceeff"],
+        ] as const) {
+          ctx.fillStyle = fill;
+          ctx.fillRect(x, g.captionY, g.captionWidth, g.captionHeight);
+          ctx.fillStyle = "#090e20";
+          ctx.font = `${g.fontSize}px PlayBody, Arial`;
+          ctx.textAlign = "center";
+          lines.forEach((line, index) =>
+            ctx.fillText(
+              line,
+              x + g.captionWidth / 2,
+              g.captionY + 4 + g.fontSize + index * g.lineHeight,
+            ),
+          );
+          ctx.textAlign = "left";
+        }
       } else {
         const a = wrapPrintText(p.question.optionA, p.width - 55, (t) => {
           ctx.font = "11px PlayBody";
@@ -557,11 +557,12 @@ export async function createVectorPdf(
         }
 
         // Logo
+        const illustrated = Boolean(getQuestionVisual(p.question.id));
         page.drawImage(embeddedLogo, {
-          x: p.x + p.width / 2 - 40,
-          y: height - (p.y + 10) - 26,
-          width: 80,
-          height: 26,
+          x: p.x + p.width / 2 - (illustrated ? 28 : 40),
+          y: height - (p.y + (illustrated ? 8 : 10)) - (illustrated ? 18 : 26),
+          width: illustrated ? 56 : 80,
+          height: illustrated ? 18 : 26,
         });
 
         // "Would you rather"
@@ -569,7 +570,7 @@ export async function createVectorPdf(
         const titleWidth = playHandFont.widthOfTextAtSize(titleText, 19);
         page.drawText(titleText, {
           x: p.x + p.width / 2 - titleWidth / 2,
-          y: height - (p.y + 57),
+          y: height - (p.y + (illustrated ? 43 : 57)),
           size: 19,
           font: playHandFont,
           color: inkColor,
@@ -606,11 +607,9 @@ export async function createVectorPdf(
         const embeddedVisual = visualAsset ? embeddedVisualMap.get(visualAsset.src) : undefined;
 
         if (embeddedVisual) {
-          const imgSize = Math.min(100, Math.floor(p.height * 0.42));
-          const imgAX = p.x + p.width / 2 - imgSize - 14;
-          const imgAY = p.y + 60;
-          const imgBX = p.x + p.width / 2 + 14;
-          const imgBY = p.y + 60;
+          const g = getPrintVisualGeometry(p);
+          const { size: imgSize, xA: imgAX, xB: imgBX, y: imgAY } = g;
+          const imgBY = imgAY;
 
           // Option A (严格左半幅 50%)
           const boxAX_pdf = imgAX;
@@ -665,63 +664,27 @@ export async function createVectorPdf(
             borderWidth: 0.8,
           });
 
-          const textWidth = imgSize + 16;
-          const textAY = imgAY + imgSize + 16;
-          const textBY = imgBY + imgSize + 16;
-
-          // Option A 徽标与文字
-          page.drawCircle({
-            x: imgAX + 8,
-            y: height - (textAY - 4),
-            size: 7,
-            color: colorA,
-          });
-          page.drawText("A", {
-            x: imgAX + 5.5,
-            y: height - (textAY - 0.5),
-            size: 9,
-            font: playBodyBoldFont,
-            color: rgb(1, 1, 1),
-          });
-          const linesA = wrapPrintText(p.question.optionA, textWidth - 12, (t) =>
-            playBodyFont.widthOfTextAtSize(t, 10),
-          );
-          linesA.forEach((line, i) => {
-            page.drawText(line, {
-              x: imgAX + 20,
-              y: height - (textAY + i * 12),
-              size: 10,
-              font: playBodyFont,
-              color: inkColor,
+          for (const [x, lines, color] of [
+            [g.captionXA, g.linesA, rgb(1, 222 / 255, 235 / 255)],
+            [g.captionXB, g.linesB, rgb(204 / 255, 238 / 255, 1)],
+          ] as const) {
+            page.drawRectangle({
+              x,
+              y: height - g.captionY - g.captionHeight,
+              width: g.captionWidth,
+              height: g.captionHeight,
+              color,
             });
-          });
-
-          // Option B 徽标与文字
-          page.drawCircle({
-            x: imgBX + 8,
-            y: height - (textBY - 4),
-            size: 7,
-            color: colorB,
-          });
-          page.drawText("B", {
-            x: imgBX + 5.5,
-            y: height - (textBY - 0.5),
-            size: 9,
-            font: playBodyBoldFont,
-            color: rgb(1, 1, 1),
-          });
-          const linesB = wrapPrintText(p.question.optionB, textWidth - 12, (t) =>
-            playBodyFont.widthOfTextAtSize(t, 10),
-          );
-          linesB.forEach((line, i) => {
-            page.drawText(line, {
-              x: imgBX + 20,
-              y: height - (textBY + i * 12),
-              size: 10,
-              font: playBodyFont,
-              color: inkColor,
-            });
-          });
+            lines.forEach((line, index) =>
+              page.drawText(line, {
+                x: x + (g.captionWidth - playBodyFont.widthOfTextAtSize(line, g.fontSize)) / 2,
+                y: height - (g.captionY + 4 + g.fontSize + index * g.lineHeight),
+                size: g.fontSize,
+                font: playBodyFont,
+                color: inkColor,
+              }),
+            );
+          }
         } else {
           // Options 文字 fallback
           const linesA = wrapPrintText(p.question.optionA, p.width - 55, (t) =>
