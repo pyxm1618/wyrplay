@@ -8,12 +8,13 @@ import { Arrow, ChoiceFrame } from "./home-art";
 import { PlayHeading, OptionPanels } from "./play/art";
 import { KidsChoicePanels } from "./kids/art";
 import { QuestionVisual } from "./question-visual";
-import { hasQuestionVisual } from "../data/question-visuals";
+import { getQuestionVisual, hasQuestionVisual } from "../data/question-visuals";
 
 export interface DuelArenaProps {
   readonly appearance?: "default" | "illustrated-play" | "illustrated-home" | "illustrated-kids";
   readonly keyboardEnabled?: boolean;
   readonly question: Question | undefined;
+  readonly nextQuestionId?: string | undefined;
   readonly currentIndex: number;
   readonly totalQuestions: number;
   readonly categoryBadge?: string;
@@ -28,6 +29,7 @@ export function DuelArena({
   appearance = "default",
   keyboardEnabled = true,
   question,
+  nextQuestionId,
   currentIndex,
   totalQuestions,
   categoryBadge = "Live Dilemma Arena",
@@ -43,6 +45,22 @@ export function DuelArena({
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [refreshCount, setRefreshCount] = useState(0);
   const activeRequestIdRef = useRef(0);
+
+  // 单张轻量预取下一题优化插画（精准匹配 Next.js 640px AVIF 缓存 URL，不产生额外原始图片流量）
+  useEffect(() => {
+    if (!nextQuestionId || typeof window === "undefined") return;
+    const nextVisual = getQuestionVisual(nextQuestionId);
+    if (!nextVisual) return;
+
+    const nextOptimizedUrl = `/_next/image?url=${encodeURIComponent(nextVisual.src)}&w=640&q=75`;
+    if (document.querySelector(`link[rel="prefetch"][href="${nextOptimizedUrl}"]`)) return;
+
+    const link = document.createElement("link");
+    link.rel = "prefetch";
+    link.as = "image";
+    link.href = nextOptimizedUrl;
+    document.head.appendChild(link);
+  }, [nextQuestionId]);
   const voteReadControllerRef = useRef<AbortController | null>(null);
 
   const currentQuestionId = question?.id;

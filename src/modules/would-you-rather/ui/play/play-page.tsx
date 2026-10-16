@@ -97,6 +97,7 @@ function PlaySession({
           key={question?.id}
           appearance="illustrated-play"
           question={question}
+          nextQuestionId={pool[Math.min(index + 1, pool.length - 1)]?.id}
           currentIndex={index}
           totalQuestions={pool.length}
           onNext={() => move(Math.min(index + 1, pool.length - 1))}

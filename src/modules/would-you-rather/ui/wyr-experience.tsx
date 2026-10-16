@@ -251,12 +251,18 @@ export function WyrExperience({
     />
   );
 
+  const nextQuestion =
+    playableQuestions.length > 1
+      ? playableQuestions[(currentIndex + 1) % playableQuestions.length]
+      : undefined;
+
   const arena = (
     <ArenaHydrationGate>
       <DuelArena
         appearance={appearance === "illustrated-home" ? "illustrated-home" : "default"}
         presenterButtonRef={presenterTriggerRef}
         question={resolvedActiveQuestion}
+        nextQuestionId={nextQuestion?.id}
         currentIndex={currentIndex >= 0 ? currentIndex : 0}
         totalQuestions={playableQuestions.length}
         categoryBadge={categoryBadge}
