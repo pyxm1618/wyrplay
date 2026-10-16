@@ -46,13 +46,22 @@ export function DuelArena({
   const [refreshCount, setRefreshCount] = useState(0);
   const activeRequestIdRef = useRef(0);
 
-  // 单张轻量预取下一题优化插画（精准匹配 Next.js 640px AVIF 缓存 URL，不产生额外原始图片流量）
+  // 单张轻量预取下一题优化插画（动态对齐当前已渲染插画的真实尺寸参数，防止不同 DPR/viewport 导致缓存未命中与重复下载）
   useEffect(() => {
     if (!nextQuestionId || typeof window === "undefined") return;
     const nextVisual = getQuestionVisual(nextQuestionId);
     if (!nextVisual) return;
 
-    const nextOptimizedUrl = `/_next/image?url=${encodeURIComponent(nextVisual.src)}&w=640&q=75`;
+    let targetWidth = 640;
+    const currentImg = document.querySelector(".question-visual-img") as HTMLImageElement | null;
+    if (currentImg?.currentSrc) {
+      const match = currentImg.currentSrc.match(/[?&]w=(\d+)/);
+      if (match?.[1]) {
+        targetWidth = Number.parseInt(match[1], 10);
+      }
+    }
+
+    const nextOptimizedUrl = `/_next/image?url=${encodeURIComponent(nextVisual.src)}&w=${targetWidth}&q=75`;
     if (document.querySelector(`link[rel="prefetch"][href="${nextOptimizedUrl}"]`)) return;
 
     const link = document.createElement("link");
