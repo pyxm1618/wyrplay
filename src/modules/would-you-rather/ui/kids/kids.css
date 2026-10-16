@@ -236,12 +236,12 @@
 .kids-hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px;
   margin-top: 24px;
 }
 .kids-hero-actions .kids-pill {
   min-height: 48px;
-  padding-inline: 16px;
+  padding-inline: 14px;
   font-size: 15px;
 }
 .kids-hero-art {

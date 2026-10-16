@@ -123,9 +123,12 @@
   .kids-hero-copy > p br {
     display: none;
   }
+  .kids-hero-actions {
+    gap: 8px;
+  }
   .kids-hero-actions .kids-pill {
-    padding-inline: 16px;
-    font-size: 15px;
+    padding-inline: 12px;
+    font-size: 14px;
   }
   .kids-hero-art {
     width: min(100%, 370px);
