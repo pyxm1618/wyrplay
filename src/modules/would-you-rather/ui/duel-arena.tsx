@@ -8,12 +8,13 @@ import { Arrow, ChoiceFrame } from "./home-art";
 import { PlayHeading, OptionPanels } from "./play/art";
 import { KidsChoicePanels } from "./kids/art";
 import { QuestionVisual } from "./question-visual";
-import { hasQuestionVisual } from "../data/question-visuals";
+import { getQuestionVisual, hasQuestionVisual } from "../data/question-visuals";
 
 export interface DuelArenaProps {
   readonly appearance?: "default" | "illustrated-play" | "illustrated-home" | "illustrated-kids";
   readonly keyboardEnabled?: boolean;
   readonly question: Question | undefined;
+  readonly nextQuestionId?: string | undefined;
   readonly currentIndex: number;
   readonly totalQuestions: number;
   readonly categoryBadge?: string;
@@ -28,6 +29,7 @@ export function DuelArena({
   appearance = "default",
   keyboardEnabled = true,
   question,
+  nextQuestionId,
   currentIndex,
   totalQuestions,
   categoryBadge = "Live Dilemma Arena",
@@ -43,6 +45,31 @@ export function DuelArena({
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [refreshCount, setRefreshCount] = useState(0);
   const activeRequestIdRef = useRef(0);
+
+  // 单张轻量预取下一题优化插画（动态对齐当前已渲染插画的真实尺寸参数，防止不同 DPR/viewport 导致缓存未命中与重复下载）
+  useEffect(() => {
+    if (!nextQuestionId || typeof window === "undefined") return;
+    const nextVisual = getQuestionVisual(nextQuestionId);
+    if (!nextVisual) return;
+
+    let targetWidth = 640;
+    const currentImg = document.querySelector(".question-visual-img") as HTMLImageElement | null;
+    if (currentImg?.currentSrc) {
+      const match = currentImg.currentSrc.match(/[?&]w=(\d+)/);
+      if (match?.[1]) {
+        targetWidth = Number.parseInt(match[1], 10);
+      }
+    }
+
+    const nextOptimizedUrl = `/_next/image?url=${encodeURIComponent(nextVisual.src)}&w=${targetWidth}&q=75`;
+    if (document.querySelector(`link[rel="prefetch"][href="${nextOptimizedUrl}"]`)) return;
+
+    const link = document.createElement("link");
+    link.rel = "prefetch";
+    link.as = "image";
+    link.href = nextOptimizedUrl;
+    document.head.appendChild(link);
+  }, [nextQuestionId]);
   const voteReadControllerRef = useRef<AbortController | null>(null);
 
   const currentQuestionId = question?.id;

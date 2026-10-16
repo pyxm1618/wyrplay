@@ -208,6 +208,7 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
             key={active?.id ?? "empty"}
             appearance="illustrated-kids"
             question={active}
+            nextQuestionId={pool[(index + 1) % pool.length]?.id}
             currentIndex={index}
             totalQuestions={pool.length}
             onNext={next}

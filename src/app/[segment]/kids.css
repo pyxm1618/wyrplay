@@ -236,11 +236,13 @@
 .kids-hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px;
   margin-top: 24px;
 }
 .kids-hero-actions .kids-pill {
   min-height: 48px;
+  padding-inline: 14px;
+  font-size: 15px;
 }
 .kids-hero-art {
   position: relative;
@@ -990,9 +992,12 @@
   .kids-hero-copy > p br {
     display: none;
   }
+  .kids-hero-actions {
+    gap: 8px;
+  }
   .kids-hero-actions .kids-pill {
-    padding-inline: 16px;
-    font-size: 15px;
+    padding-inline: 12px;
+    font-size: 14px;
   }
   .kids-hero-art {
     width: min(100%, 370px);

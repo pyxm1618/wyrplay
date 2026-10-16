@@ -224,7 +224,8 @@ function PrintPageContent({
               const visual = getQuestionVisual(p.question.id);
               if (visual) {
                 try {
-                  const img = await getVisualImage(visual.src);
+                  const previewSrc = `/_next/image?url=${encodeURIComponent(visual.src)}&w=640&q=75`;
+                  const img = await getVisualImage(previewSrc);
                   visualImageMap.set(p.question.id, img);
                 } catch (err) {
                   console.warn("Failed to load visual image for preview", p.question.id, err);
