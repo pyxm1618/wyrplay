@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { AdSenseDocumentBoundary } from "@/components/advertising/adsense-site-code";
 import { siteConfig } from "@/config/site.config";
 import { rootMetadata } from "@/platform/seo/root-metadata";
 
@@ -14,7 +15,10 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
       <head>
         <meta name="google-adsense-account" content="ca-pub-2804737462866511" />
       </head>
-      <body>{children}</body>
+      <body>
+        <AdSenseDocumentBoundary />
+        {children}
+      </body>
     </html>
   );
 }

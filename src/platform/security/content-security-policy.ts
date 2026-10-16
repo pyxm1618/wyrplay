@@ -5,6 +5,7 @@ export type ContentSecurityPolicyInput = Readonly<{
   production: boolean;
   analytics: Readonly<{ ga4: boolean; clarity: boolean }>;
   turnstile: boolean;
+  adsense?: boolean;
 }>;
 
 export function buildContentSecurityPolicy(input: ContentSecurityPolicyInput): string {
@@ -13,8 +14,19 @@ export function buildContentSecurityPolicy(input: ContentSecurityPolicyInput): s
   }
 
   const turnstileOrigin = "https://challenges.cloudflare.com";
+  const adOrigins = input.adsense
+    ? [
+        "https://pagead2.googlesyndication.com",
+        "https://googleads.g.doubleclick.net",
+        "https://tpc.googlesyndication.com",
+        "https://ep1.adtrafficquality.google",
+        "https://ep2.adtrafficquality.google",
+        "https://fundingchoicesmessages.google.com",
+      ]
+    : [];
   const scriptSources = [
     "'self'",
+    ...adOrigins,
     ...(input.nonce ? [`'nonce-${input.nonce}'`] : []),
     ...(input.hashes && input.hashes.length > 0
       ? input.hashes.map((hash) => `'sha256-${hash}'`)
@@ -25,6 +37,7 @@ export function buildContentSecurityPolicy(input: ContentSecurityPolicyInput): s
     ...(input.turnstile ? [turnstileOrigin] : []),
   ];
   const connectSources = [
+    ...adOrigins,
     "'self'",
     "https://media.wyrplay.com",
     ...(input.analytics.ga4
@@ -34,6 +47,7 @@ export function buildContentSecurityPolicy(input: ContentSecurityPolicyInput): s
     ...(input.turnstile ? [turnstileOrigin] : []),
   ];
   const imageSources = [
+    ...adOrigins,
     "'self'",
     "https://media.wyrplay.com",
     "data:",
@@ -41,7 +55,12 @@ export function buildContentSecurityPolicy(input: ContentSecurityPolicyInput): s
     ...(input.analytics.ga4 ? ["https://www.google-analytics.com"] : []),
     ...(input.analytics.clarity ? ["https://*.clarity.ms"] : []),
   ];
-  const frameSources = ["'self'", ...(input.turnstile ? [turnstileOrigin] : [])];
+  const frameSources = [
+    "'self'",
+    ...adOrigins,
+    ...(input.adsense ? ["https://www.google.com"] : []),
+    ...(input.turnstile ? [turnstileOrigin] : []),
+  ];
 
   return [
     "default-src 'self'",

@@ -185,8 +185,8 @@ export const legalConfig = {
       {
         heading: "Advertising and Google AdSense",
         paragraphs: [
-          "WYRPlay is preparing to use Google AdSense to serve advertising on eligible pages of the service. Google AdSense ad serving is not currently enabled in production, and no advertisements are currently served or displayed.",
-          "When advertising is enabled in the future, third-party vendors, including Google, may use cookies to serve ads based on prior visits to WYRPlay or other websites. Third parties (including Google and its advertising partners) may place and read cookies in users' browsers, or use web beacons and similar technologies to collect information in connection with ad serving.",
+          "WYRPlay may use Google AdSense to serve advertising on eligible general-audience pages of the service. Advertising and personalization are subject to applicable consent and privacy requirements.",
+          "On eligible pages where advertising is enabled, third-party vendors, including Google, may use cookies to serve ads based on prior visits to WYRPlay or other websites. Third parties (including Google and its advertising partners) may place and read cookies in users' browsers, or use web beacons and similar technologies to collect information in connection with ad serving.",
           "Processed information may include IP addresses, browser and device identifiers, request timestamps, and ad interaction information where applicable. This information may be used for ad serving, fraud prevention, measurement, and, where legally permitted and appropriately consented, personalized advertising.",
           "Users may manage or opt out of personalized advertising by visiting Google Ads Settings at https://adssettings.google.com. You can also review how Google uses information from sites that use its services at https://policies.google.com/technologies/partner-sites.",
         ],
@@ -203,14 +203,14 @@ export const legalConfig = {
         paragraphs: [
           "We disclose information to third-party service providers performing essential functions on our behalf, including hosting, transactional email delivery (Resend), security and anti-abuse verification (Cloudflare Turnstile), payment and subscription processing (Waffo), site measurement (Google Analytics 4), and advertising delivery and measurement (Google AdSense, when advertising is enabled on eligible pages). Service providers receive only the data reasonably needed to perform their services.",
           "We may disclose information where required by law, to respond to valid legal process, or when reasonably necessary to protect the safety, security, and integrity of WYRPlay, its users, or the public.",
-          "WYRPlay does not sell personal information for money. WYRPlay is preparing to use Google AdSense to serve advertising on eligible pages. Google AdSense ad serving is not currently enabled in production, and no advertisements are currently displayed. When advertising is enabled, Google and its advertising partners may process information required for ad serving and measurement. WYRPlay will configure advertising in accordance with applicable privacy and child-directed requirements before actual ad serving.",
+          "WYRPlay does not sell personal information for money. WYRPlay may use Google AdSense on eligible general-audience pages. Google and its advertising partners may process the information described in this notice for advertising delivery and measurement, with personalization subject to applicable consent and privacy requirements.",
         ],
       },
       {
         heading: "Children's Privacy",
         paragraphs: [
           "The WYRPlay Kids collection is specifically designed for children, families, and educators. WYRPlay treats that area as a child-directed portion of the service for privacy-design purposes.",
-          "WYRPlay strictly prohibits children under 13 from creating accounts, submitting personal information, or purchasing subscriptions. We do not use personal information from children under 13 for behavioral advertising or profiling. Google AdSense ad serving is not currently enabled in production. Before any Google advertising is enabled in any child-directed area, WYRPlay will apply the required child-directed treatment and advertising restrictions.",
+          "WYRPlay strictly prohibits children under 13 from creating accounts, submitting personal information, or purchasing subscriptions. We do not use personal information from children under 13 for behavioral advertising or profiling. The Kids collection does not load or serve Google AdSense advertising.",
           "For voting on questions in the Kids collection, WYRPlay does not create or read the persistent voter cookie. Each stored Kids vote receives a server-generated one-time record token that is not returned to the browser and is not reused to recognize the same child or browser over time. Legacy Kids vote records were sanitized by replacing former reusable voter identifiers with one-time record tokens while preserving aggregate A/B counts.",
           "WYRPlay does not use Kids voting data for behavioral advertising or profiling. Kids voting data is used only for aggregate results, service operation, security, and abuse prevention.",
         ],
@@ -235,7 +235,7 @@ export const legalConfig = {
         heading: "California and State Privacy Disclosures",
         paragraphs: [
           "Under the California Online Privacy Protection Act (CalOPPA) and related laws, commercial websites collecting personally identifiable information from California consumers must disclose information practices. This notice provides those required disclosures.",
-          "WYRPlay does not currently respond to browser Do Not Track signals as a separate technical toggle. In the current production deployment, Google Analytics 4 is disabled, and Microsoft Clarity is not used. Google AdSense ad serving is not currently active in production; when advertising is enabled on eligible pages, advertising and personalization choices can be managed through Google Ads Settings as described in this notice.",
+          "WYRPlay does not currently respond to browser Do Not Track signals as a separate technical toggle. In the current production deployment, Google Analytics 4 is disabled, and Microsoft Clarity is not used. Where Google AdSense advertising is enabled on eligible general-audience pages, advertising and personalization choices can be managed through Google Ads Settings as described in this notice.",
           "The California Consumer Privacy Act (CCPA) applies where statutory coverage criteria are met; nothing in this notice represents that WYRPlay is a covered CCPA business if statutory thresholds are not satisfied.",
         ],
       },

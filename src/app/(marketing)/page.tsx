@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
+import { AdSenseSiteCode } from "@/components/advertising/adsense-site-code";
 import { LandingPage } from "@/components/landing/landing-page";
 import { JsonLd } from "@/components/seo/json-ld";
 import { homeConfigWithTrendingSlot } from "@/config/home.config";
@@ -51,6 +52,7 @@ export default async function HomePage() {
 
   return (
     <main className="home-main">
+      <AdSenseSiteCode />
       <JsonLd
         value={websiteJsonLd({
           name: routeRegistry.site.siteName,
