@@ -6,20 +6,24 @@ export type ConsentSnapshot = Readonly<{
   advertising: ConsentState;
 }>;
 
-export type GoogleConsentModeValue =
-  | "GRANTED"
-  | "DENIED"
-  | "NOT_APPLICABLE"
-  | "NOT_CONFIGURED"
-  | "UNKNOWN";
+export const ConsentModePurposeStatusEnum = {
+  UNKNOWN: 0,
+  GRANTED: 1,
+  DENIED: 2,
+  NOT_APPLICABLE: 3,
+  NOT_CONFIGURED: 4,
+} as const;
 
-export type GoogleConsentModeValues = {
-  ad_storage?: GoogleConsentModeValue;
-  analytics_storage?: GoogleConsentModeValue;
-  ad_user_data?: GoogleConsentModeValue;
-  ad_personalization?: GoogleConsentModeValue;
+export type ConsentModePurposeStatus =
+  (typeof ConsentModePurposeStatusEnum)[keyof typeof ConsentModePurposeStatusEnum];
+
+export interface GoogleFcConsentModeUserStatus {
+  adStoragePurposeConsentStatus: number;
+  adUserDataPurposeConsentStatus: number;
+  adPersonalizationPurposeConsentStatus: number;
+  analyticsStoragePurposeConsentStatus: number;
   [key: string]: unknown;
-};
+}
 
 const DEFAULT_CONSENT: ConsentSnapshot = {
   essential: "granted",
@@ -34,7 +38,8 @@ declare global {
     googlefc?: {
       showRevocationMessage?: () => void;
       callbackQueue?: unknown[];
-      getGoogleConsentModeValues?: () => GoogleConsentModeValues | Record<string, unknown>;
+      getGoogleConsentModeValues?: () => GoogleFcConsentModeUserStatus | Record<string, unknown>;
+      ConsentModePurposeStatusEnum?: typeof ConsentModePurposeStatusEnum;
       [key: string]: unknown;
     };
   }
@@ -63,23 +68,54 @@ function notifyListeners(): void {
   }
 }
 
-function mapConsentValue(value: unknown): ConsentState {
-  // Fail-closed: only explicit GRANTED confers consent
-  return value === "GRANTED" ? "granted" : "denied";
-}
-
 function readGoogleConsentMode(): void {
   if (typeof window === "undefined" || !window.googlefc) return;
   if (typeof window.googlefc.getGoogleConsentModeValues !== "function") return;
 
   try {
-    const values = window.googlefc.getGoogleConsentModeValues() as
-      | GoogleConsentModeValues
+    const status = window.googlefc.getGoogleConsentModeValues() as
+      | GoogleFcConsentModeUserStatus
       | undefined;
-    if (!values || typeof values !== "object") return;
+    if (!status || typeof status !== "object") return;
 
-    const nextAnalytics = mapConsentValue(values.analytics_storage);
-    const nextAdvertising = mapConsentValue(values.ad_storage);
+    // Analytics gating: strictly uses analyticsStoragePurposeConsentStatus
+    const nextAnalytics: ConsentState =
+      status.analyticsStoragePurposeConsentStatus === ConsentModePurposeStatusEnum.GRANTED
+        ? "granted"
+        : "denied";
+
+    // Advertising gating: evaluates all official Ads consent purposes
+    // (adStoragePurposeConsentStatus, adUserDataPurposeConsentStatus, adPersonalizationPurposeConsentStatus)
+    const adsPurposes = [
+      status.adStoragePurposeConsentStatus,
+      status.adUserDataPurposeConsentStatus,
+      status.adPersonalizationPurposeConsentStatus,
+    ];
+
+    const hasDeniedAds = adsPurposes.some((s) => s === ConsentModePurposeStatusEnum.DENIED);
+    const hasUnreadyOrUnconfigured = adsPurposes.some(
+      (s) =>
+        s === ConsentModePurposeStatusEnum.UNKNOWN ||
+        s === ConsentModePurposeStatusEnum.NOT_CONFIGURED ||
+        typeof s !== "number",
+    );
+
+    const isAdStorageGranted =
+      status.adStoragePurposeConsentStatus === ConsentModePurposeStatusEnum.GRANTED;
+
+    const areAllAdsGrantedOrNotApplicable = adsPurposes.every(
+      (s) =>
+        s === ConsentModePurposeStatusEnum.GRANTED ||
+        s === ConsentModePurposeStatusEnum.NOT_APPLICABLE,
+    );
+
+    const nextAdvertising: ConsentState =
+      !hasDeniedAds &&
+      !hasUnreadyOrUnconfigured &&
+      isAdStorageGranted &&
+      areAllAdsGrantedOrNotApplicable
+        ? "granted"
+        : "denied";
 
     if (
       nextAnalytics === currentConsent.analytics &&
@@ -162,7 +198,7 @@ function handleAutoReopenParam(): void {
 }
 
 export function initConsentAdapter(): void {
-  if (initialized || typeof window === "undefined") return;
+  if (typeof window === "undefined" || initialized) return;
   initialized = true;
 
   cleanLegacyStorage();
@@ -170,10 +206,12 @@ export function initConsentAdapter(): void {
   handleAutoReopenParam();
 }
 
+// Auto initialize in browser context
+if (typeof window !== "undefined") {
+  initConsentAdapter();
+}
+
 export function getConsentSnapshot(): ConsentSnapshot {
-  if (!initialized && typeof window !== "undefined") {
-    initConsentAdapter();
-  }
   return currentConsent;
 }
 
@@ -182,62 +220,55 @@ export function getServerConsentSnapshot(): ConsentSnapshot {
 }
 
 export function subscribeConsent(listener: () => void): () => void {
-  if (!initialized && typeof window !== "undefined") {
-    initConsentAdapter();
-  }
   listeners.add(listener);
   return () => {
     listeners.delete(listener);
   };
 }
 
-/**
- * Reopen Google CMP privacy message.
- * Strictly uses official Google mechanism: googlefc.callbackQueue.push(googlefc.showRevocationMessage).
- * If on a route without Google CMP runtime, navigates to the CMP host route to ensure site-wide accessibility.
- */
 export function showPrivacySettings(): void {
   if (typeof window === "undefined") return;
 
-  if (window.googlefc && typeof window.googlefc.showRevocationMessage === "function") {
-    window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
-    window.googlefc.callbackQueue.push(window.googlefc.showRevocationMessage);
+  // If Google CMP runtime is present on the current page, queue revocation message directly
+  if (window.googlefc?.showRevocationMessage) {
+    const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
+    queue.push(window.googlefc.showRevocationMessage);
     return;
   }
 
-  // If already on the CMP host route (/), queue on callbackQueue so it triggers when CMP loads
-  if (window.location.pathname === "/") {
-    window.googlefc = window.googlefc || {};
-    window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
-    window.googlefc.callbackQueue.push(() => {
-      if (typeof window.googlefc?.showRevocationMessage === "function") {
-        window.googlefc.callbackQueue?.push(window.googlefc.showRevocationMessage);
-      }
-    });
-    return;
+  // If CMP runtime is not loaded on this route (e.g. non-ad routes), safely navigate to CMP host route
+  try {
+    const target = new URL("/", window.location.origin);
+    target.searchParams.set("open-privacy-settings", "1");
+    window.location.assign(target.toString());
+  } catch {
+    // Fallback assignment
+    window.location.href = "/?open-privacy-settings=1";
   }
-
-  // If on another route, navigate to the CMP host route (/)
-  const targetUrl = new URL("/", window.location.origin);
-  targetUrl.searchParams.set("open-privacy-settings", "1");
-  window.location.assign(targetUrl.toString());
 }
 
-// Helper for testing to simulate official googlefc consent mode values and trigger update
-export function mockGoogleConsentModeForTesting(values: GoogleConsentModeValues): void {
+export function resetConsentForTesting(): void {
+  currentConsent = DEFAULT_CONSENT;
+  listeners.clear();
+  initialized = false;
+}
+
+export function mockGoogleConsentModeForTesting(
+  values: Partial<GoogleFcConsentModeUserStatus>,
+): void {
   if (typeof window === "undefined") return;
   window.googlefc = window.googlefc || {};
-  window.googlefc.getGoogleConsentModeValues = () => values;
+  window.googlefc.ConsentModePurposeStatusEnum = ConsentModePurposeStatusEnum;
+  window.googlefc.getGoogleConsentModeValues = () => ({
+    adStoragePurposeConsentStatus:
+      values.adStoragePurposeConsentStatus ?? ConsentModePurposeStatusEnum.DENIED,
+    adUserDataPurposeConsentStatus:
+      values.adUserDataPurposeConsentStatus ?? ConsentModePurposeStatusEnum.DENIED,
+    adPersonalizationPurposeConsentStatus:
+      values.adPersonalizationPurposeConsentStatus ?? ConsentModePurposeStatusEnum.DENIED,
+    analyticsStoragePurposeConsentStatus:
+      values.analyticsStoragePurposeConsentStatus ?? ConsentModePurposeStatusEnum.DENIED,
+    ...values,
+  });
   readGoogleConsentMode();
-}
-
-// Reset state for tests
-export function resetConsentForTesting(): void {
-  initialized = false;
-  currentConsent = DEFAULT_CONSENT;
-  notifyListeners();
-}
-
-if (typeof window !== "undefined") {
-  initConsentAdapter();
 }

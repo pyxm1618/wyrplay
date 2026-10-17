@@ -194,8 +194,7 @@ test("AdSense site code gates ad serving on Advertising consent via pauseAdReque
       async () =>
         await page.evaluate(
           () =>
-            (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
-              ?.pauseAdRequests,
+            (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
         ),
     )
     .toBe(1);
@@ -203,9 +202,18 @@ test("AdSense site code gates ad serving on Advertising consent via pauseAdReque
   // When Advertising consent signal is granted by official CMP
   await page.evaluate(() => {
     window.googlefc = window.googlefc || {};
+    window.googlefc.ConsentModePurposeStatusEnum = {
+      UNKNOWN: 0,
+      GRANTED: 1,
+      DENIED: 2,
+      NOT_APPLICABLE: 3,
+      NOT_CONFIGURED: 4,
+    };
     window.googlefc.getGoogleConsentModeValues = () => ({
-      ad_storage: "GRANTED",
-      analytics_storage: "DENIED",
+      adStoragePurposeConsentStatus: 1,
+      adUserDataPurposeConsentStatus: 1,
+      adPersonalizationPurposeConsentStatus: 1,
+      analyticsStoragePurposeConsentStatus: 2,
     });
     const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
     for (const item of queue) {
@@ -218,9 +226,7 @@ test("AdSense site code gates ad serving on Advertising consent via pauseAdReque
   await expect
     .poll(() =>
       page.evaluate(
-        () =>
-          (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
-            ?.pauseAdRequests,
+        () => (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
       ),
     )
     .toBe(0);
@@ -228,8 +234,10 @@ test("AdSense site code gates ad serving on Advertising consent via pauseAdReque
   // When Advertising consent is withdrawn
   await page.evaluate(() => {
     window.googlefc!.getGoogleConsentModeValues = () => ({
-      ad_storage: "DENIED",
-      analytics_storage: "DENIED",
+      adStoragePurposeConsentStatus: 2,
+      adUserDataPurposeConsentStatus: 2,
+      adPersonalizationPurposeConsentStatus: 2,
+      analyticsStoragePurposeConsentStatus: 2,
     });
     const queue = window.googlefc!.callbackQueue as Array<{
       CONSENT_MODE_DATA_READY?: () => void;
@@ -242,9 +250,7 @@ test("AdSense site code gates ad serving on Advertising consent via pauseAdReque
   await expect
     .poll(() =>
       page.evaluate(
-        () =>
-          (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
-            ?.pauseAdRequests,
+        () => (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
       ),
     )
     .toBe(1);
@@ -260,17 +266,25 @@ test("Kids page AdSense site code gates ad serving on Advertising consent via pa
       async () =>
         await page.evaluate(
           () =>
-            (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
-              ?.pauseAdRequests,
+            (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
         ),
     )
     .toBe(1);
 
   await page.evaluate(() => {
     window.googlefc = window.googlefc || {};
+    window.googlefc.ConsentModePurposeStatusEnum = {
+      UNKNOWN: 0,
+      GRANTED: 1,
+      DENIED: 2,
+      NOT_APPLICABLE: 3,
+      NOT_CONFIGURED: 4,
+    };
     window.googlefc.getGoogleConsentModeValues = () => ({
-      ad_storage: "GRANTED",
-      analytics_storage: "DENIED",
+      adStoragePurposeConsentStatus: 1,
+      adUserDataPurposeConsentStatus: 1,
+      adPersonalizationPurposeConsentStatus: 1,
+      analyticsStoragePurposeConsentStatus: 2,
     });
     const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
     for (const item of queue) {
@@ -283,9 +297,7 @@ test("Kids page AdSense site code gates ad serving on Advertising consent via pa
   await expect
     .poll(() =>
       page.evaluate(
-        () =>
-          (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
-            ?.pauseAdRequests,
+        () => (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
       ),
     )
     .toBe(0);

@@ -61,9 +61,18 @@ test("official Google Privacy & messaging CMP signal enables GA4 and Clarity", a
   // Simulate official Google Privacy & messaging CMP: CONSENT_MODE_DATA_READY + getGoogleConsentModeValues()
   await page.evaluate(() => {
     window.googlefc = window.googlefc || {};
+    window.googlefc.ConsentModePurposeStatusEnum = {
+      UNKNOWN: 0,
+      GRANTED: 1,
+      DENIED: 2,
+      NOT_APPLICABLE: 3,
+      NOT_CONFIGURED: 4,
+    };
     window.googlefc.getGoogleConsentModeValues = () => ({
-      analytics_storage: "GRANTED",
-      ad_storage: "GRANTED",
+      analyticsStoragePurposeConsentStatus: 1,
+      adStoragePurposeConsentStatus: 1,
+      adUserDataPurposeConsentStatus: 1,
+      adPersonalizationPurposeConsentStatus: 1,
     });
     const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
     for (const item of queue) {
@@ -95,9 +104,18 @@ test("granted analytics can be withdrawn via CMP and ceases tracking while clean
   await page.goto("/");
   await page.evaluate(() => {
     window.googlefc = window.googlefc || {};
+    window.googlefc.ConsentModePurposeStatusEnum = {
+      UNKNOWN: 0,
+      GRANTED: 1,
+      DENIED: 2,
+      NOT_APPLICABLE: 3,
+      NOT_CONFIGURED: 4,
+    };
     window.googlefc.getGoogleConsentModeValues = () => ({
-      analytics_storage: "GRANTED",
-      ad_storage: "GRANTED",
+      analyticsStoragePurposeConsentStatus: 1,
+      adStoragePurposeConsentStatus: 1,
+      adUserDataPurposeConsentStatus: 1,
+      adPersonalizationPurposeConsentStatus: 1,
     });
     const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
     for (const item of queue) {
@@ -114,8 +132,10 @@ test("granted analytics can be withdrawn via CMP and ceases tracking while clean
   // Withdraw analytics consent via official Google CMP signal
   await page.evaluate(() => {
     window.googlefc!.getGoogleConsentModeValues = () => ({
-      analytics_storage: "DENIED",
-      ad_storage: "DENIED",
+      analyticsStoragePurposeConsentStatus: 2,
+      adStoragePurposeConsentStatus: 2,
+      adUserDataPurposeConsentStatus: 2,
+      adPersonalizationPurposeConsentStatus: 2,
     });
     const queue = window.googlefc!.callbackQueue as Array<{
       CONSENT_MODE_DATA_READY?: () => void;
@@ -144,9 +164,18 @@ test("sensitive sign-in surface does not load analytics even if CMP granted cons
 
   await page.addInitScript(() => {
     window.googlefc = {
+      ConsentModePurposeStatusEnum: {
+        UNKNOWN: 0,
+        GRANTED: 1,
+        DENIED: 2,
+        NOT_APPLICABLE: 3,
+        NOT_CONFIGURED: 4,
+      },
       getGoogleConsentModeValues: () => ({
-        analytics_storage: "GRANTED",
-        ad_storage: "GRANTED",
+        analyticsStoragePurposeConsentStatus: 1,
+        adStoragePurposeConsentStatus: 1,
+        adUserDataPurposeConsentStatus: 1,
+        adPersonalizationPurposeConsentStatus: 1,
       }),
       callbackQueue: [],
     };
