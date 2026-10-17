@@ -4,7 +4,7 @@ const productionFeaturesConfig = {
   auth: { enabled: false, google: false, magicLink: false, password: false },
   email: { enabled: false },
   commerce: { enabled: false, oneTime: false, subscriptions: false, credits: false },
-  analytics: { enabled: true, ga4: true, clarity: false, consentRequired: true },
+  analytics: { enabled: true, ga4: true, clarity: true, consentRequired: true },
 } as const satisfies ProductConfig["features"];
 
 const enabledTestFeaturesConfig = {

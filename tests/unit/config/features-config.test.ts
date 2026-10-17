@@ -16,7 +16,7 @@ describe("featuresConfig production profile selection", () => {
     expect(featuresConfig.analytics).toEqual({
       enabled: true,
       ga4: true,
-      clarity: false,
+      clarity: true,
       consentRequired: true,
     });
 
