@@ -22,10 +22,26 @@ declare global {
   }
 }
 
+let currentAdPauseState = 1;
+
 export function setAdSensePauseState(paused: boolean): void {
   if (typeof window === "undefined") return;
+  currentAdPauseState = paused ? 1 : 0;
   const queue = (window.adsbygoogle = (window.adsbygoogle ?? []) as AdSenseQueue);
-  queue.pauseAdRequests = paused ? 1 : 0;
+  try {
+    Object.defineProperty(queue, "pauseAdRequests", {
+      configurable: true,
+      enumerable: true,
+      get() {
+        return currentAdPauseState;
+      },
+      set(val: number) {
+        currentAdPauseState = val;
+      },
+    });
+  } catch {
+    queue.pauseAdRequests = currentAdPauseState;
+  }
 }
 
 // Immediately synchronize pause state whenever consent adapter notifies outside React cycle
