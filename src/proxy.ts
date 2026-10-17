@@ -2,10 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
 
-import {
-  isAdSenseRoute,
-  isAdSenseRuntimeEnabled,
-} from "@/platform/advertising/adsense-routes";
+import { isAdSenseRoute, isAdSenseRuntimeEnabled } from "@/platform/advertising/adsense-routes";
 import { featuresConfig } from "@/config/features.config";
 import { buildContentSecurityPolicy } from "@/platform/security/content-security-policy";
 import { STATIC_INLINE_HASHES } from "@/platform/security/static-inline-hashes";

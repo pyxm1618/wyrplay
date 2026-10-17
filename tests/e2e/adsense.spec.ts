@@ -37,9 +37,7 @@ test("/ loads the real AdSense site script under nonce-based strict CSP", async 
   expect(csp).toContain("'unsafe-inline'");
   expect(csp).toContain("'unsafe-eval'");
   expect(csp).toMatch(/script-src[^;]*'nonce-[^']+'/);
-  expect(csp).not.toMatch(
-    /googlesyndication|doubleclick|adtrafficquality|fundingchoicesmessages/,
-  );
+  expect(csp).not.toMatch(/googlesyndication|doubleclick|adtrafficquality|fundingchoicesmessages/);
 
   expect((await loaded).status()).toBe(200);
   await expect(page.locator(scriptSelector)).toHaveCount(1);
