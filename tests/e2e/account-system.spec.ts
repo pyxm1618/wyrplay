@@ -162,7 +162,6 @@ test("account favorites survive a second device, removal, logout and failed impo
     await device.goto("/account?view=saved");
     await expect(device.locator(".library-row")).toHaveCount(1);
     await device.goto("/play?set=wyr-000002");
-    await device.getByRole("button", { name: "Decline", exact: true }).click();
     await device.getByRole("button", { name: "Save", exact: true }).click();
     await expect(device.getByRole("button", { name: "Saved", exact: true })).toBeVisible();
     await page.reload();
@@ -253,7 +252,6 @@ test("anonymous guards and guest favorites keep their independent storage", asyn
   await page.goto("/account/deleted");
   await expect(page.getByRole("heading", { name: "Account deletion submitted" })).toBeVisible();
   await page.goto("/play?set=wyr-000001");
-  await page.getByRole("button", { name: "Decline", exact: true }).click();
   await page.getByRole("button", { name: "Save", exact: true }).click();
   await expect(page.getByRole("button", { name: "Saved", exact: true })).toBeVisible();
   expect(
