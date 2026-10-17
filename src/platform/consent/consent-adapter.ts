@@ -108,6 +108,24 @@ function attachGoogleFcListener(): void {
   if (typeof window === "undefined") return;
 
   window.googlefc = window.googlefc || {};
+
+  let currentGetValues = window.googlefc.getGoogleConsentModeValues;
+  try {
+    Object.defineProperty(window.googlefc, "getGoogleConsentModeValues", {
+      configurable: true,
+      enumerable: true,
+      get() {
+        return currentGetValues;
+      },
+      set(fn) {
+        currentGetValues = fn;
+        readGoogleConsentMode();
+      },
+    });
+  } catch {
+    // If not configurable, proceed with callback queue
+  }
+
   window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
 
   // Official Google Privacy & messaging API: CONSENT_MODE_DATA_READY callback
@@ -118,7 +136,7 @@ function attachGoogleFcListener(): void {
   });
 
   // If googlefc.getGoogleConsentModeValues is already available at attach time, read immediately
-  if (typeof window.googlefc.getGoogleConsentModeValues === "function") {
+  if (typeof currentGetValues === "function") {
     readGoogleConsentMode();
   }
 }

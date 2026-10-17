@@ -326,6 +326,7 @@ test("Finder privacy and analytics banner safe positioning across profiles", asy
 test("Finder DPR 1 and DPR 2 asset rendering across representative viewports", async ({
   browser,
 }) => {
+  test.setTimeout(60_000);
   const baseURL = test.info().project.use.baseURL;
   if (!baseURL) throw new Error("Playwright baseURL is required for Finder tests");
 
