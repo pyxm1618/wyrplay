@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
 
+import { isAdSenseRoute, isAdSenseRuntimeEnabled } from "@/platform/advertising/adsense-routes";
 import { featuresConfig } from "@/config/features.config";
 import { buildContentSecurityPolicy } from "@/platform/security/content-security-policy";
 import { STATIC_INLINE_HASHES } from "@/platform/security/static-inline-hashes";
@@ -69,6 +70,7 @@ function getStaticInlineHashes(): readonly string[] {
 
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+  const adsense = isAdSenseRuntimeEnabled() && isAdSenseRoute(pathname);
   const isDynamic = isDynamicRoute(pathname);
   const nonce = isDynamic ? createNonce() : undefined;
   const hashes = !isDynamic ? getStaticInlineHashes() : undefined;
@@ -76,6 +78,7 @@ export function proxy(request: NextRequest) {
   const contentSecurityPolicy = buildContentSecurityPolicy({
     nonce,
     hashes,
+    adsense,
     development: isDevelopment,
     production: isProduction,
     analytics: {

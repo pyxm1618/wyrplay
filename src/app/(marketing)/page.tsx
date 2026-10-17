@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
+import { AdSenseSiteCode } from "@/components/advertising/adsense-site-code";
 import { LandingPage } from "@/components/landing/landing-page";
 import { JsonLd } from "@/components/seo/json-ld";
 import { homeConfigWithTrendingSlot } from "@/config/home.config";
@@ -11,6 +12,7 @@ import {
   TrendingListSkeleton,
 } from "@/modules/would-you-rather";
 import { loadHomepageLeaderboard } from "@/modules/would-you-rather/server";
+import { isAdSenseRuntimeEnabled } from "@/platform/advertising/adsense-routes";
 import { currentSeoEnvironment } from "@/platform/seo/environment-policy";
 import { metadataForRoute } from "@/platform/seo/metadata";
 import { webApplicationJsonLd, websiteJsonLd } from "@/platform/seo/structured-data";
@@ -51,6 +53,7 @@ export default async function HomePage() {
 
   return (
     <main className="home-main">
+      {isAdSenseRuntimeEnabled() && <AdSenseSiteCode />}
       <JsonLd
         value={websiteJsonLd({
           name: routeRegistry.site.siteName,
