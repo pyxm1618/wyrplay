@@ -6,6 +6,21 @@ export type ConsentSnapshot = Readonly<{
   advertising: ConsentState;
 }>;
 
+export type GoogleConsentModeValue =
+  | "GRANTED"
+  | "DENIED"
+  | "NOT_APPLICABLE"
+  | "NOT_CONFIGURED"
+  | "UNKNOWN";
+
+export type GoogleConsentModeValues = {
+  ad_storage?: GoogleConsentModeValue;
+  analytics_storage?: GoogleConsentModeValue;
+  ad_user_data?: GoogleConsentModeValue;
+  ad_personalization?: GoogleConsentModeValue;
+  [key: string]: unknown;
+};
+
 const DEFAULT_CONSENT: ConsentSnapshot = {
   essential: "granted",
   analytics: "denied",
@@ -16,19 +31,12 @@ const LEGACY_STORAGE_KEY = "creat-web:analytics-consent:v1";
 
 declare global {
   interface Window {
-    dataLayer?: unknown[];
-    gtag?: (...args: unknown[]) => void;
     googlefc?: {
       showRevocationMessage?: () => void;
       callbackQueue?: unknown[];
-      getConsentStatus?: () => unknown;
+      getGoogleConsentModeValues?: () => GoogleConsentModeValues | Record<string, unknown>;
+      [key: string]: unknown;
     };
-    __tcfapi?: (
-      command: string,
-      version: number,
-      callback: (tcData: unknown, success: boolean) => void,
-      parameter?: unknown,
-    ) => void;
   }
 }
 
@@ -55,133 +63,43 @@ function notifyListeners(): void {
   }
 }
 
-function parseConsentUpdate(args: unknown[]): {
-  analytics?: ConsentState | undefined;
-  advertising?: ConsentState | undefined;
-} | null {
-  if (args.length < 3) return null;
-  const [command, subcommand, params] = args;
-  if (command !== "consent" || subcommand !== "update" || typeof params !== "object" || !params) {
-    return null;
-  }
-
-  const record = params as Record<string, unknown>;
-  let analytics: ConsentState | undefined;
-  let advertising: ConsentState | undefined;
-
-  if (record.analytics_storage === "granted") {
-    analytics = "granted";
-  } else if (record.analytics_storage === "denied") {
-    analytics = "denied";
-  }
-
-  if (record.ad_storage === "granted") {
-    advertising = "granted";
-  } else if (record.ad_storage === "denied") {
-    advertising = "denied";
-  }
-
-  if (analytics === undefined && advertising === undefined) return null;
-  return { analytics, advertising };
+function mapConsentValue(value: unknown): ConsentState {
+  // Fail-closed: only explicit GRANTED confers consent
+  return value === "GRANTED" ? "granted" : "denied";
 }
 
-function updateConsent(updates: {
-  analytics?: ConsentState | undefined;
-  advertising?: ConsentState | undefined;
-}): void {
-  const nextAnalytics = updates.analytics ?? currentConsent.analytics;
-  const nextAdvertising = updates.advertising ?? currentConsent.advertising;
+function readGoogleConsentMode(): void {
+  if (typeof window === "undefined" || !window.googlefc) return;
+  if (typeof window.googlefc.getGoogleConsentModeValues !== "function") return;
 
-  if (
-    nextAnalytics === currentConsent.analytics &&
-    nextAdvertising === currentConsent.advertising
-  ) {
-    return;
-  }
+  try {
+    const values = window.googlefc.getGoogleConsentModeValues() as
+      | GoogleConsentModeValues
+      | undefined;
+    if (!values || typeof values !== "object") return;
 
-  currentConsent = {
-    essential: "granted",
-    analytics: nextAnalytics,
-    advertising: nextAdvertising,
-  };
+    const nextAnalytics = mapConsentValue(values.analytics_storage);
+    const nextAdvertising = mapConsentValue(values.ad_storage);
 
-  notifyListeners();
-}
-
-function inspectDataLayer(): void {
-  if (typeof window === "undefined" || !Array.isArray(window.dataLayer)) return;
-  for (const item of window.dataLayer) {
-    let args: unknown[] | null = null;
-    if (Array.isArray(item)) {
-      args = item;
-    } else if (item && typeof item === "object") {
-      args = Array.prototype.slice.call(item as unknown[]);
+    if (
+      nextAnalytics === currentConsent.analytics &&
+      nextAdvertising === currentConsent.advertising
+    ) {
+      return;
     }
-    if (args) {
-      const updates = parseConsentUpdate(args);
-      if (updates) updateConsent(updates);
-    }
-  }
-}
 
-function attachGtagInterceptor(): void {
-  if (typeof window === "undefined") return;
-
-  window.dataLayer = window.dataLayer ?? [];
-
-  if (typeof window.gtag !== "function") {
-    window.gtag = function gtag() {
-      // eslint-disable-next-line prefer-rest-params
-      window.dataLayer?.push(arguments);
+    currentConsent = {
+      essential: "granted",
+      analytics: nextAnalytics,
+      advertising: nextAdvertising,
     };
-  }
 
-  const originalPush = window.dataLayer.push.bind(window.dataLayer);
-
-  window.dataLayer.push = function (...items: unknown[]) {
-    const result = originalPush(...items);
-    for (const item of items) {
-      let args: unknown[] | null = null;
-      if (Array.isArray(item)) {
-        args = item;
-      } else if (item && typeof item === "object") {
-        args = Array.prototype.slice.call(item as unknown[]);
-      }
-      if (args) {
-        const updates = parseConsentUpdate(args);
-        if (updates) updateConsent(updates);
-      }
-    }
-    return result;
-  };
-
-  // Inspect existing records in dataLayer
-  inspectDataLayer();
-
-  // Also support custom event dispatch for signals
-  window.addEventListener("wyrplay:consent-signal", ((event: CustomEvent) => {
-    if (event.detail && typeof event.detail === "object") {
-      const { analytics, advertising } = event.detail as {
-        analytics?: ConsentState;
-        advertising?: ConsentState;
-      };
-      updateConsent({ analytics, advertising });
-    }
-  }) as EventListener);
-}
-
-function attachTcfListener(): void {
-  if (typeof window === "undefined") return;
-
-  // Use Google-supported IAB TCF API version (v2 standard)
-  if (typeof window.__tcfapi === "function") {
-    try {
-      window.__tcfapi("addEventListener", 2, (tcData, success) => {
-        if (!success || !tcData || typeof tcData !== "object") return;
-        inspectDataLayer();
-      });
-    } catch {
-      // Ignore if CMP is in unsupported state
+    notifyListeners();
+  } catch {
+    // In case of CMP runtime errors, maintain fail-closed
+    if (currentConsent.analytics !== "denied" || currentConsent.advertising !== "denied") {
+      currentConsent = DEFAULT_CONSENT;
+      notifyListeners();
     }
   }
 }
@@ -189,13 +107,39 @@ function attachTcfListener(): void {
 function attachGoogleFcListener(): void {
   if (typeof window === "undefined") return;
 
-  if (window.googlefc) {
-    window.googlefc.callbackQueue = window.googlefc.callbackQueue ?? [];
-    window.googlefc.callbackQueue.push({
-      CONSENT_DATA_READY: () => {
-        inspectDataLayer();
-      },
-    });
+  window.googlefc = window.googlefc || {};
+  window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+
+  // Official Google Privacy & messaging API: CONSENT_MODE_DATA_READY callback
+  window.googlefc.callbackQueue.push({
+    CONSENT_MODE_DATA_READY: () => {
+      readGoogleConsentMode();
+    },
+  });
+
+  // If googlefc.getGoogleConsentModeValues is already available at attach time, read immediately
+  if (typeof window.googlefc.getGoogleConsentModeValues === "function") {
+    readGoogleConsentMode();
+  }
+}
+
+function handleAutoReopenParam(): void {
+  if (typeof window === "undefined") return;
+  try {
+    const url = new URL(window.location.href);
+    if (url.searchParams.get("open-privacy-settings") === "1") {
+      url.searchParams.delete("open-privacy-settings");
+      window.history.replaceState({}, "", url.pathname + (url.search ? url.search : "") + url.hash);
+      window.googlefc = window.googlefc || {};
+      window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+      window.googlefc.callbackQueue.push(() => {
+        if (typeof window.googlefc?.showRevocationMessage === "function") {
+          window.googlefc.callbackQueue?.push(window.googlefc.showRevocationMessage);
+        }
+      });
+    }
+  } catch {
+    // Ignore URL parse errors
   }
 }
 
@@ -204,9 +148,8 @@ export function initConsentAdapter(): void {
   initialized = true;
 
   cleanLegacyStorage();
-  attachGtagInterceptor();
-  attachTcfListener();
   attachGoogleFcListener();
+  handleAutoReopenParam();
 }
 
 export function getConsentSnapshot(): ConsentSnapshot {
@@ -230,29 +173,44 @@ export function subscribeConsent(listener: () => void): () => void {
   };
 }
 
+/**
+ * Reopen Google CMP privacy message.
+ * Strictly uses official Google mechanism: googlefc.callbackQueue.push(googlefc.showRevocationMessage).
+ * If on a route without Google CMP runtime, navigates to the CMP host route to ensure site-wide accessibility.
+ */
 export function showPrivacySettings(): void {
   if (typeof window === "undefined") return;
 
-  if (typeof window.googlefc?.showRevocationMessage === "function") {
-    window.googlefc.showRevocationMessage();
+  if (window.googlefc && typeof window.googlefc.showRevocationMessage === "function") {
+    window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+    window.googlefc.callbackQueue.push(window.googlefc.showRevocationMessage);
     return;
   }
 
-  if (window.googlefc && Array.isArray(window.googlefc.callbackQueue)) {
-    window.googlefc.callbackQueue.push({
-      CONSENT_DATA_READY: () => {
-        window.googlefc?.showRevocationMessage?.();
-      },
+  // If already on the CMP host route (/), queue on callbackQueue so it triggers when CMP loads
+  if (window.location.pathname === "/") {
+    window.googlefc = window.googlefc || {};
+    window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+    window.googlefc.callbackQueue.push(() => {
+      if (typeof window.googlefc?.showRevocationMessage === "function") {
+        window.googlefc.callbackQueue?.push(window.googlefc.showRevocationMessage);
+      }
     });
+    return;
   }
+
+  // If on another route, navigate to the CMP host route (/)
+  const targetUrl = new URL("/", window.location.origin);
+  targetUrl.searchParams.set("open-privacy-settings", "1");
+  window.location.assign(targetUrl.toString());
 }
 
-// Helper for tests to update consent without foreign popup UI
-export function setConsentForTesting(updates: {
-  analytics?: ConsentState | undefined;
-  advertising?: ConsentState | undefined;
-}): void {
-  updateConsent(updates);
+// Helper for testing to simulate official googlefc consent mode values and trigger update
+export function mockGoogleConsentModeForTesting(values: GoogleConsentModeValues): void {
+  if (typeof window === "undefined") return;
+  window.googlefc = window.googlefc || {};
+  window.googlefc.getGoogleConsentModeValues = () => values;
+  readGoogleConsentMode();
 }
 
 // Reset state for tests

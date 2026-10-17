@@ -196,9 +196,19 @@ test("AdSense site code gates ad serving on Advertising consent via pauseAdReque
     ),
   ).toBe(1);
 
-  // When Advertising consent signal is granted by CMP
+  // When Advertising consent signal is granted by official CMP
   await page.evaluate(() => {
-    window.gtag?.("consent", "update", { ad_storage: "granted" });
+    window.googlefc = window.googlefc || {};
+    window.googlefc.getGoogleConsentModeValues = () => ({
+      ad_storage: "GRANTED",
+      analytics_storage: "DENIED",
+    });
+    const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
+    for (const item of queue) {
+      if (item && typeof item === "object" && "CONSENT_MODE_DATA_READY" in item) {
+        (item as { CONSENT_MODE_DATA_READY: () => void }).CONSENT_MODE_DATA_READY();
+      }
+    }
   });
 
   await expect
@@ -215,7 +225,16 @@ test("AdSense site code gates ad serving on Advertising consent via pauseAdReque
 
   // When Advertising consent is withdrawn
   await page.evaluate(() => {
-    window.gtag?.("consent", "update", { ad_storage: "denied" });
+    window.googlefc!.getGoogleConsentModeValues = () => ({
+      ad_storage: "DENIED",
+      analytics_storage: "DENIED",
+    });
+    const queue = window.googlefc!.callbackQueue as Array<{
+      CONSENT_MODE_DATA_READY?: () => void;
+    }>;
+    for (const item of queue) {
+      item?.CONSENT_MODE_DATA_READY?.();
+    }
   });
 
   await expect
@@ -244,7 +263,17 @@ test("Kids page AdSense site code gates ad serving on Advertising consent via pa
   ).toBe(1);
 
   await page.evaluate(() => {
-    window.gtag?.("consent", "update", { ad_storage: "granted" });
+    window.googlefc = window.googlefc || {};
+    window.googlefc.getGoogleConsentModeValues = () => ({
+      ad_storage: "GRANTED",
+      analytics_storage: "DENIED",
+    });
+    const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
+    for (const item of queue) {
+      if (item && typeof item === "object" && "CONSENT_MODE_DATA_READY" in item) {
+        (item as { CONSENT_MODE_DATA_READY: () => void }).CONSENT_MODE_DATA_READY();
+      }
+    }
   });
 
   await expect

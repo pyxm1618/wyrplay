@@ -42,7 +42,7 @@ test("analytics makes zero third-party requests before consent (fail-closed) and
   await expect(page.getByRole("complementary", { name: "Analytics consent" })).toHaveCount(0);
 });
 
-test("CMP official Consent Mode signal enables GA4 and Clarity", async ({ page }) => {
+test("official Google Privacy & messaging CMP signal enables GA4 and Clarity", async ({ page }) => {
   const requests: string[] = [];
   await page.route("**/*", async (route) => {
     const url = route.request().url();
@@ -58,9 +58,19 @@ test("CMP official Consent Mode signal enables GA4 and Clarity", async ({ page }
   await page.waitForTimeout(300);
   expect(requests).toEqual([]);
 
-  // Simulate official Google Privacy & messaging / Consent Mode update signal
+  // Simulate official Google Privacy & messaging CMP: CONSENT_MODE_DATA_READY + getGoogleConsentModeValues()
   await page.evaluate(() => {
-    window.gtag?.("consent", "update", { analytics_storage: "granted" });
+    window.googlefc = window.googlefc || {};
+    window.googlefc.getGoogleConsentModeValues = () => ({
+      analytics_storage: "GRANTED",
+      ad_storage: "GRANTED",
+    });
+    const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
+    for (const item of queue) {
+      if (item && typeof item === "object" && "CONSENT_MODE_DATA_READY" in item) {
+        (item as { CONSENT_MODE_DATA_READY: () => void }).CONSENT_MODE_DATA_READY();
+      }
+    }
   });
 
   await expect.poll(() => requests.length).toBeGreaterThan(0);
@@ -68,7 +78,7 @@ test("CMP official Consent Mode signal enables GA4 and Clarity", async ({ page }
   await expect(page.locator("#creat-web-clarity")).toHaveCount(1);
 });
 
-test("granted analytics can be withdrawn and ceases tracking while cleaning up injected scripts", async ({
+test("granted analytics can be withdrawn via CMP and ceases tracking while cleaning up injected scripts", async ({
   page,
 }) => {
   const requests: string[] = [];
@@ -84,16 +94,35 @@ test("granted analytics can be withdrawn and ceases tracking while cleaning up i
 
   await page.goto("/");
   await page.evaluate(() => {
-    window.gtag?.("consent", "update", { analytics_storage: "granted" });
+    window.googlefc = window.googlefc || {};
+    window.googlefc.getGoogleConsentModeValues = () => ({
+      analytics_storage: "GRANTED",
+      ad_storage: "GRANTED",
+    });
+    const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
+    for (const item of queue) {
+      if (item && typeof item === "object" && "CONSENT_MODE_DATA_READY" in item) {
+        (item as { CONSENT_MODE_DATA_READY: () => void }).CONSENT_MODE_DATA_READY();
+      }
+    }
   });
 
   await expect.poll(() => requests.length).toBeGreaterThan(0);
   await expect(page.locator("#creat-web-ga4")).toHaveCount(1);
   await expect(page.locator("#creat-web-clarity")).toHaveCount(1);
 
-  // Withdraw analytics consent via CMP signal
+  // Withdraw analytics consent via official Google CMP signal
   await page.evaluate(() => {
-    window.gtag?.("consent", "update", { analytics_storage: "denied" });
+    window.googlefc!.getGoogleConsentModeValues = () => ({
+      analytics_storage: "DENIED",
+      ad_storage: "DENIED",
+    });
+    const queue = window.googlefc!.callbackQueue as Array<{
+      CONSENT_MODE_DATA_READY?: () => void;
+    }>;
+    for (const item of queue) {
+      item?.CONSENT_MODE_DATA_READY?.();
+    }
   });
 
   await expect(page.locator("#creat-web-ga4")).toHaveCount(0);
@@ -105,7 +134,7 @@ test("granted analytics can be withdrawn and ceases tracking while cleaning up i
   expect(requests).toEqual([]);
 });
 
-test("sensitive sign-in surface does not load analytics even if consent signal was provided", async ({
+test("sensitive sign-in surface does not load analytics even if CMP granted consent", async ({
   page,
 }) => {
   const requests: string[] = [];
@@ -114,8 +143,13 @@ test("sensitive sign-in surface does not load analytics even if consent signal w
   });
 
   await page.addInitScript(() => {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(["consent", "update", { analytics_storage: "granted" }]);
+    window.googlefc = {
+      getGoogleConsentModeValues: () => ({
+        analytics_storage: "GRANTED",
+        ad_storage: "GRANTED",
+      }),
+      callbackQueue: [],
+    };
   });
 
   await page.goto("/sign-in");
@@ -125,14 +159,13 @@ test("sensitive sign-in surface does not load analytics even if consent signal w
   await expect(page.locator("#creat-web-clarity")).toHaveCount(0);
 });
 
-test("footer includes Privacy & cookie settings that triggers CMP revocation mechanism", async ({
+test("footer includes Privacy & cookie settings that triggers CMP revocation mechanism via callbackQueue", async ({
   page,
 }) => {
   await page.addInitScript(() => {
-    (window as unknown as { __revocationCalled?: boolean }).__revocationCalled = false;
-    window.googlefc = window.googlefc || {};
-    window.googlefc.showRevocationMessage = () => {
-      (window as unknown as { __revocationCalled: boolean }).__revocationCalled = true;
+    window.googlefc = {
+      showRevocationMessage: () => {},
+      callbackQueue: [],
     };
   });
 
@@ -141,10 +174,23 @@ test("footer includes Privacy & cookie settings that triggers CMP revocation mec
   await expect(footerButton).toBeVisible();
 
   await footerButton.click();
-  const called = await page.evaluate(
-    () => (window as unknown as { __revocationCalled?: boolean }).__revocationCalled,
-  );
-  expect(called).toBe(true);
+  const hasRevocation = await page.evaluate(() => {
+    const queue = window.googlefc?.callbackQueue as unknown[];
+    return queue?.includes(window.googlefc?.showRevocationMessage);
+  });
+  expect(hasRevocation).toBe(true);
+});
+
+test("footer settings on non-ad page navigates to CMP host route without expanding CSP", async ({
+  page,
+}) => {
+  await page.goto("/questions");
+  const footerButton = page.getByRole("button", { name: "Privacy & cookie settings" });
+  await expect(footerButton).toBeVisible();
+
+  await footerButton.click();
+  await page.waitForURL((url) => url.pathname === "/");
+  expect(page.url()).toContain("http://127.0.0.1:3000/");
 });
 
 test("legacy consent key in localStorage is safely cleaned and does not authorize analytics", async ({
