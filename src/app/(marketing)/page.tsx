@@ -12,6 +12,7 @@ import {
   TrendingListSkeleton,
 } from "@/modules/would-you-rather";
 import { loadHomepageLeaderboard } from "@/modules/would-you-rather/server";
+import { isAdSenseRuntimeEnabled } from "@/platform/advertising/adsense-routes";
 import { currentSeoEnvironment } from "@/platform/seo/environment-policy";
 import { metadataForRoute } from "@/platform/seo/metadata";
 import { webApplicationJsonLd, websiteJsonLd } from "@/platform/seo/structured-data";
@@ -52,7 +53,7 @@ export default async function HomePage() {
 
   return (
     <main className="home-main">
-      <AdSenseSiteCode />
+      {isAdSenseRuntimeEnabled() && <AdSenseSiteCode />}
       <JsonLd
         value={websiteJsonLd({
           name: routeRegistry.site.siteName,

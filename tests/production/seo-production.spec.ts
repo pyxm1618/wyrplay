@@ -189,7 +189,7 @@ test("production AdSense pre-review readiness verification", async ({ page, requ
   await expect(page.locator("text=Advertising and Google AdSense")).toBeVisible();
   const privacyContent = await page.textContent("main");
   expect(privacyContent).toContain("Google AdSense");
-  expect(privacyContent).toContain("not currently enabled in production");
+  expect(privacyContent).toContain("eligible general-audience pages");
   expect(privacyContent).toContain("https://adssettings.google.com");
   expect(privacyContent).not.toContain("currently serves Google ads");
 

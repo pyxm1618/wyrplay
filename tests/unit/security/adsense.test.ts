@@ -1,20 +1,16 @@
 import { describe, expect, it } from "vitest";
-import { NextRequest } from "next/server";
 
+import { legalConfig } from "@/config/legal.config";
 import { isAdSenseRoute } from "@/platform/advertising/adsense-routes";
 import { buildContentSecurityPolicy } from "@/platform/security/content-security-policy";
-import { legalConfig } from "@/config/legal.config";
-import { proxy } from "@/proxy";
 
-const enabled = [
-  "/",
+const enabled = ["/"];
+const excluded = [
   "/questions",
   "/funny-would-you-rather-questions",
   "/hard-would-you-rather-questions",
   "/would-you-rather-questions-for-friends",
   "/would-you-rather-questions-for-couples",
-];
-const excluded = [
   "/would-you-rather-questions-for-kids",
   "/privacy",
   "/terms",
@@ -44,7 +40,7 @@ describe("AdSense activation boundary", () => {
   it.each(enabled)("enables exactly %s", (route) => expect(isAdSenseRoute(route)).toBe(true));
   it.each(excluded)("excludes %s", (route) => expect(isAdSenseRoute(route)).toBe(false));
 
-  it("adds script trust only to the opt-in policy", () => {
+  it("uses nonce-based strict CSP only for the opt-in policy", () => {
     const baseline = {
       development: false,
       production: true,
@@ -54,21 +50,34 @@ describe("AdSense activation boundary", () => {
     };
     const original = buildContentSecurityPolicy(baseline);
     expect(buildContentSecurityPolicy({ ...baseline, adsense: false })).toBe(original);
+
     const advertising = buildContentSecurityPolicy({ ...baseline, adsense: true });
-    expect(advertising).toContain("https://pagead2.googlesyndication.com");
-    expect(advertising.match(/script-src ([^;]+)/)?.[1]).not.toMatch(
-      /unsafe-inline|unsafe-eval|\*/,
+    expect(advertising).toContain(
+      "script-src 'self' 'nonce-test' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:",
     );
+    expect(advertising).toContain("connect-src 'self' https:");
+    expect(advertising).toContain("frame-src 'self' https:");
+    expect(advertising).toContain("base-uri 'none'");
+    expect(advertising).not.toMatch(
+      /googlesyndication|doubleclick|adtrafficquality|fundingchoicesmessages/,
+    );
+    expect(advertising).not.toContain("*");
     expect(original).not.toMatch(
       /strict-dynamic|googlesyndication|doubleclick|adtrafficquality|fundingchoicesmessages/,
     );
   });
 
-  it.each([...enabled, ...excluded])("scopes the response CSP for %s", (route) => {
-    const csp = proxy(new NextRequest(`https://www.wyrplay.com${route}`)).headers.get(
-      "content-security-policy",
-    );
-    expect(csp?.includes("https://pagead2.googlesyndication.com")).toBe(enabled.includes(route));
+  it("rejects AdSense CSP without a per-request nonce", () => {
+    expect(() =>
+      buildContentSecurityPolicy({
+        development: false,
+        production: true,
+        hashes: ["static-hash"],
+        analytics: { ga4: false, clarity: false },
+        turnstile: false,
+        adsense: true,
+      }),
+    ).toThrow("AdSense strict CSP requires a nonce");
   });
 
   it("keeps AdSense and Kids disclosures without obsolete activation claims", () => {

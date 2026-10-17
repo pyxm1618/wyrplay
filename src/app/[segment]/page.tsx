@@ -4,8 +4,6 @@ import { notFound } from "next/navigation";
 import { KidsPage, getQuestionsByCollection } from "@/modules/would-you-rather";
 import "./kids.css";
 
-import { AdSenseSiteCode } from "@/components/advertising/adsense-site-code";
-import { isAdSenseRoute } from "@/platform/advertising/adsense-routes";
 import { LandingPage } from "@/components/landing/landing-page";
 import { JsonLd } from "@/components/seo/json-ld";
 import { localeBundle } from "@/config/locales.config";
@@ -96,7 +94,6 @@ export default async function SegmentPage({ params }: SegmentPageProps) {
 
   return (
     <>
-      {isAdSenseRoute(route) && <AdSenseSiteCode />}
       <JsonLd value={structuredData} />
       {route === "/would-you-rather-questions-for-kids" ? (
         <KidsPage questions={getQuestionsByCollection("kids")} />
