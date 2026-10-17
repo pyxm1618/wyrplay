@@ -182,3 +182,80 @@ test("other internal navigations remain SPA-based without document reload", asyn
 
   expect(documentRequests).toEqual([]);
 });
+
+test("AdSense site code gates ad serving on Advertising consent via pauseAdRequests", async ({
+  page,
+}) => {
+  await page.goto("/");
+  // Without consent signal, AdSense ad serving must be paused (fail-closed)
+  expect(
+    await page.evaluate(
+      () =>
+        (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
+          ?.pauseAdRequests,
+    ),
+  ).toBe(1);
+
+  // When Advertising consent signal is granted by CMP
+  await page.evaluate(() => {
+    window.gtag?.("consent", "update", { ad_storage: "granted" });
+  });
+
+  await expect
+    .poll(
+      () =>
+        page.evaluate(
+          () =>
+            (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
+              ?.pauseAdRequests,
+        ),
+      { timeout: 3000 },
+    )
+    .toBe(0);
+
+  // When Advertising consent is withdrawn
+  await page.evaluate(() => {
+    window.gtag?.("consent", "update", { ad_storage: "denied" });
+  });
+
+  await expect
+    .poll(
+      () =>
+        page.evaluate(
+          () =>
+            (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
+              ?.pauseAdRequests,
+        ),
+      { timeout: 3000 },
+    )
+    .toBe(1);
+});
+
+test("Kids page AdSense site code gates ad serving on Advertising consent via pauseAdRequests", async ({
+  page,
+}) => {
+  await page.goto("/would-you-rather-questions-for-kids");
+  expect(
+    await page.evaluate(
+      () =>
+        (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
+          ?.pauseAdRequests,
+    ),
+  ).toBe(1);
+
+  await page.evaluate(() => {
+    window.gtag?.("consent", "update", { ad_storage: "granted" });
+  });
+
+  await expect
+    .poll(
+      () =>
+        page.evaluate(
+          () =>
+            (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
+              ?.pauseAdRequests,
+        ),
+      { timeout: 3000 },
+    )
+    .toBe(0);
+});

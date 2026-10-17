@@ -1,16 +1,56 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useSyncExternalStore } from "react";
+
+import {
+  getConsentSnapshot,
+  getServerConsentSnapshot,
+  subscribeConsent,
+} from "@/platform/consent/consent-adapter";
 
 const siteCodeUrl =
   "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2804737462866511";
 
+type AdSenseQueue = unknown[] & {
+  pauseAdRequests?: number;
+  requestNonPersonalizedAds?: number;
+};
+
+declare global {
+  interface Window {
+    adsbygoogle?: AdSenseQueue;
+  }
+}
+
+function setAdSensePauseState(paused: boolean): void {
+  if (typeof window === "undefined") return;
+  const queue = (window.adsbygoogle = (window.adsbygoogle ?? []) as AdSenseQueue);
+  queue.pauseAdRequests = paused ? 1 : 0;
+}
+
 export function AdSenseSiteCode() {
+  const consent = useSyncExternalStore(
+    subscribeConsent,
+    getConsentSnapshot,
+    getServerConsentSnapshot,
+  );
+
+  // Synchronize AdSense ad-request pause state with advertising consent
+  useEffect(() => {
+    setAdSensePauseState(consent.advertising !== "granted");
+  }, [consent.advertising]);
+
+  // Bootstrap AdSense site script so Google Privacy & messaging / CMP can operate
   useEffect(() => {
     if (document.querySelector(`script[src="${siteCodeUrl}"]`)) return;
 
     const nonce = document.querySelector<HTMLScriptElement>("script[nonce]")?.nonce;
     if (!nonce) return;
+
+    // Ensure ad requests are paused before script boots if consent is not granted
+    if (getConsentSnapshot().advertising !== "granted") {
+      setAdSensePauseState(true);
+    }
 
     const script = document.createElement("script");
     script.nonce = nonce;
