@@ -22,10 +22,41 @@ declare global {
   }
 }
 
+let currentPauseState = 1;
+let isInterceptorInstalled = false;
+
+function setupAdSensePropertyInterceptor(): void {
+  if (typeof window === "undefined" || isInterceptorInstalled) return;
+  isInterceptorInstalled = true;
+
+  let internalQueue: AdSenseQueue = (window.adsbygoogle ?? []) as AdSenseQueue;
+  internalQueue.pauseAdRequests = currentPauseState;
+
+  try {
+    Object.defineProperty(window, "adsbygoogle", {
+      configurable: true,
+      enumerable: true,
+      get() {
+        return internalQueue;
+      },
+      set(val: AdSenseQueue) {
+        internalQueue = val;
+        if (internalQueue && typeof internalQueue === "object") {
+          internalQueue.pauseAdRequests = currentPauseState;
+        }
+      },
+    });
+  } catch {
+    // If window.adsbygoogle is non-configurable, fallback to direct assignment
+  }
+}
+
 function setAdSensePauseState(paused: boolean): void {
   if (typeof window === "undefined") return;
+  currentPauseState = paused ? 1 : 0;
+  setupAdSensePropertyInterceptor();
   const queue = (window.adsbygoogle = (window.adsbygoogle ?? []) as AdSenseQueue);
-  queue.pauseAdRequests = paused ? 1 : 0;
+  queue.pauseAdRequests = currentPauseState;
 }
 
 export function AdSenseSiteCode() {
