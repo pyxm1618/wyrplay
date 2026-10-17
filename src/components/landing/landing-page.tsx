@@ -16,6 +16,13 @@ import {
   sectionTitle,
 } from "@/components/ui/styles";
 
+function isKidsRouteHref(href: string): boolean {
+  return (
+    href === "/would-you-rather-questions-for-kids" ||
+    href.startsWith("/would-you-rather-questions-for-kids#")
+  );
+}
+
 export type LandingSection =
   | {
       readonly type: "hero";
@@ -130,13 +137,25 @@ function HeroSection(props: Extract<LandingSection, { type: "hero" }>) {
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{props.lead}</p>
         <div className="mt-9 flex flex-wrap gap-3">
-          <Link className={buttonPrimaryLarge} href={props.primaryCta.href}>
-            {props.primaryCta.label}
-          </Link>
-          {props.secondaryCta ? (
-            <Link className={buttonSecondaryLarge} href={props.secondaryCta.href}>
-              {props.secondaryCta.label}
+          {isKidsRouteHref(props.primaryCta.href) ? (
+            <a className={buttonPrimaryLarge} href={props.primaryCta.href}>
+              {props.primaryCta.label}
+            </a>
+          ) : (
+            <Link className={buttonPrimaryLarge} href={props.primaryCta.href}>
+              {props.primaryCta.label}
             </Link>
+          )}
+          {props.secondaryCta ? (
+            isKidsRouteHref(props.secondaryCta.href) ? (
+              <a className={buttonSecondaryLarge} href={props.secondaryCta.href}>
+                {props.secondaryCta.label}
+              </a>
+            ) : (
+              <Link className={buttonSecondaryLarge} href={props.secondaryCta.href}>
+                {props.secondaryCta.label}
+              </Link>
+            )
           ) : null}
         </div>
       </div>
@@ -166,9 +185,15 @@ function UseCasesSection(props: Extract<LandingSection, { type: "use-cases" }>) 
               <h3 className={cardTitle}>{item.title}</h3>
               <p className={`mt-3 flex-1 ${bodyText}`}>{item.body}</p>
               {item.href ? (
-                <Link href={item.href} className={`mt-4 ${inlineLink}`}>
-                  Explore {item.title}
-                </Link>
+                isKidsRouteHref(item.href) ? (
+                  <a href={item.href} className={`mt-4 ${inlineLink}`}>
+                    Explore {item.title}
+                  </a>
+                ) : (
+                  <Link href={item.href} className={`mt-4 ${inlineLink}`}>
+                    Explore {item.title}
+                  </Link>
+                )
               ) : null}
             </article>
           ))}
@@ -319,9 +344,15 @@ function RelatedResourcesSection(props: Extract<LandingSection, { type: "related
         <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {props.links.map((link) => (
             <li key={link.href} className={card}>
-              <Link href={link.href} className={`${cardTitle} hover:text-accent`}>
-                {link.label}
-              </Link>
+              {isKidsRouteHref(link.href) ? (
+                <a href={link.href} className={`${cardTitle} hover:text-accent`}>
+                  {link.label}
+                </a>
+              ) : (
+                <Link href={link.href} className={`${cardTitle} hover:text-accent`}>
+                  {link.label}
+                </Link>
+              )}
               {link.description ? <p className={`mt-2 ${bodyText}`}>{link.description}</p> : null}
             </li>
           ))}
@@ -344,9 +375,15 @@ function FinalCtaSection(props: Extract<LandingSection, { type: "final-cta" }>) 
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-inverse-foreground/70">
           {props.body}
         </p>
-        <Link className={`${buttonOnInverse} mt-8`} href={props.cta.href}>
-          {props.cta.label}
-        </Link>
+        {isKidsRouteHref(props.cta.href) ? (
+          <a className={`${buttonOnInverse} mt-8`} href={props.cta.href}>
+            {props.cta.label}
+          </a>
+        ) : (
+          <Link className={`${buttonOnInverse} mt-8`} href={props.cta.href}>
+            {props.cta.label}
+          </Link>
+        )}
       </div>
     </section>
   );

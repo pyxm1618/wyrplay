@@ -16,16 +16,24 @@ function FooterColumn({
     <section>
       <h2 className="text-xs font-bold uppercase tracking-[0.16em] text-foreground">{title}</h2>
       <ul className="mt-4 space-y-2.5">
-        {links.map((item) => (
-          <li key={item.href}>
-            <Link
-              href={item.href}
-              className="text-sm leading-relaxed text-muted transition-colors hover:text-foreground"
-            >
-              {item.label}
-            </Link>
-          </li>
-        ))}
+        {links.map((item) => {
+          const isKids = item.href === "/would-you-rather-questions-for-kids";
+          const className =
+            "text-sm leading-relaxed text-muted transition-colors hover:text-foreground";
+          return (
+            <li key={item.href}>
+              {isKids ? (
+                <a href={item.href} className={className}>
+                  {item.label}
+                </a>
+              ) : (
+                <Link href={item.href} className={className}>
+                  {item.label}
+                </Link>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
