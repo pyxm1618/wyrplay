@@ -81,7 +81,9 @@ test("client navigation stays SPA-based without attempting to unload the AdSense
 
   const documentRequests: string[] = [];
   page.on("request", (request) => {
-    if (request.resourceType() === "document") documentRequests.push(request.url());
+    if (request.resourceType() === "document" && request.frame() === page.mainFrame()) {
+      documentRequests.push(request.url());
+    }
   });
 
   await page.locator('a[href="/would-you-rather-questions-for-kids"]').first().click();
