@@ -82,15 +82,15 @@ export function QuestionFilterBar({
         </div>
 
         {/* 维度筛选组 */}
-        <div className="flex flex-col gap-3 text-xs">
+        <div className="flex flex-col gap-3.5 text-xs">
           {/* 年龄维度 */}
-          <div className="flex flex-wrap items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-1.5">
             <span className="w-16 font-semibold text-black/80 dark:text-white/80">Age:</span>
             <button
               type="button"
               onClick={() => onAgeGroupChange(undefined)}
               aria-pressed={!selectedAgeGroup}
-              className={`rounded-full px-2.5 py-1 font-medium transition ${
+              className={`relative rounded-full px-3 py-1.5 font-medium transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
                 !selectedAgeGroup
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                   : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -104,7 +104,7 @@ export function QuestionFilterBar({
                 type="button"
                 onClick={() => onAgeGroupChange(selectedAgeGroup === age ? undefined : age)}
                 aria-pressed={selectedAgeGroup === age}
-                className={`rounded-full px-2.5 py-1 font-medium transition ${
+                className={`relative rounded-full px-3 py-1.5 font-medium transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
                   selectedAgeGroup === age
                     ? "bg-[#e27d32] text-white"
                     : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -116,13 +116,13 @@ export function QuestionFilterBar({
           </div>
 
           {/* 参与关系维度 */}
-          <div className="flex flex-wrap items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-1.5">
             <span className="w-16 font-semibold text-black/80 dark:text-white/80">Group:</span>
             <button
               type="button"
               onClick={() => onRelationshipChange(undefined)}
               aria-pressed={!selectedRelationship}
-              className={`rounded-full px-2.5 py-1 font-medium transition ${
+              className={`relative rounded-full px-3 py-1.5 font-medium transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
                 !selectedRelationship
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                   : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -136,7 +136,7 @@ export function QuestionFilterBar({
                 type="button"
                 onClick={() => onRelationshipChange(selectedRelationship === rel ? undefined : rel)}
                 aria-pressed={selectedRelationship === rel}
-                className={`rounded-full px-2.5 py-1 font-medium capitalize transition ${
+                className={`relative rounded-full px-3 py-1.5 font-medium capitalize transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
                   selectedRelationship === rel
                     ? "bg-[#19a4b8] text-white"
                     : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -148,13 +148,13 @@ export function QuestionFilterBar({
           </div>
 
           {/* 场景与气氛维度 */}
-          <div className="flex flex-wrap items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-1.5">
             <span className="w-16 font-semibold text-black/80 dark:text-white/80">Scene:</span>
             <button
               type="button"
               onClick={() => onOccasionChange(undefined)}
               aria-pressed={!selectedOccasion}
-              className={`rounded-full px-2.5 py-1 font-medium transition ${
+              className={`relative rounded-full px-3 py-1.5 font-medium transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
                 !selectedOccasion
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                   : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -168,7 +168,7 @@ export function QuestionFilterBar({
                 type="button"
                 onClick={() => onOccasionChange(selectedOccasion === occ ? undefined : occ)}
                 aria-pressed={selectedOccasion === occ}
-                className={`rounded-full px-2.5 py-1 font-medium capitalize transition ${
+                className={`relative rounded-full px-3 py-1.5 font-medium capitalize transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
                   selectedOccasion === occ
                     ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                     : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -180,13 +180,13 @@ export function QuestionFilterBar({
           </div>
 
           {/* 气氛基调维度 */}
-          <div className="flex flex-wrap items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-1.5">
             <span className="w-16 font-semibold text-black/80 dark:text-white/80">Tone:</span>
             <button
               type="button"
               onClick={() => onToneChange(undefined)}
               aria-pressed={!selectedTone}
-              className={`rounded-full px-2.5 py-1 font-medium transition ${
+              className={`relative rounded-full px-3 py-1.5 font-medium transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
                 !selectedTone
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                   : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -200,7 +200,7 @@ export function QuestionFilterBar({
                 type="button"
                 onClick={() => onToneChange(selectedTone === tone ? undefined : tone)}
                 aria-pressed={selectedTone === tone}
-                className={`rounded-full px-2.5 py-1 font-medium capitalize transition ${
+                className={`relative rounded-full px-3 py-1.5 font-medium capitalize transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
                   selectedTone === tone
                     ? "bg-[#e27d32] text-white"
                     : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -212,13 +212,13 @@ export function QuestionFilterBar({
           </div>
 
           {/* 难度维度 */}
-          <div className="flex flex-wrap items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-1.5">
             <span className="w-16 font-semibold text-black/80 dark:text-white/80">Difficulty:</span>
             <button
               type="button"
               onClick={() => onDifficultyChange(undefined)}
               aria-pressed={!selectedDifficulty}
-              className={`rounded-full px-2.5 py-1 font-medium transition ${
+              className={`relative rounded-full px-3 py-1.5 font-medium transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
                 !selectedDifficulty
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                   : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -232,7 +232,7 @@ export function QuestionFilterBar({
                 type="button"
                 onClick={() => onDifficultyChange(selectedDifficulty === diff ? undefined : diff)}
                 aria-pressed={selectedDifficulty === diff}
-                className={`rounded-full px-2.5 py-1 font-medium capitalize transition ${
+                className={`relative rounded-full px-3 py-1.5 font-medium capitalize transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
                   selectedDifficulty === diff
                     ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                     : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -260,7 +260,7 @@ export function QuestionFilterBar({
             <button
               type="button"
               onClick={onClearFilters}
-              className="font-semibold text-[#e27d32] underline-offset-2 transition hover:underline"
+              className="relative inline-flex items-center py-1.5 px-2 font-semibold text-[#e27d32] underline-offset-2 transition hover:underline after:absolute after:-inset-1.5 after:content-['']"
             >
               Clear all filters
             </button>
