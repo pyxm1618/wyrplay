@@ -32,12 +32,21 @@ export function CategoryExplorer() {
               {AUDIENCE_CATEGORIES.map((item) => (
                 <div key={item.id} className="group flex items-start justify-between gap-2">
                   {item.href ? (
-                    <Link
-                      href={item.href}
-                      className="text-sm font-semibold text-foreground underline-offset-4 transition hover:text-[#9c4307] dark:hover:text-[#f0893f] hover:underline"
-                    >
-                      {item.name} →
-                    </Link>
+                    item.href === "/would-you-rather-questions-for-kids" ? (
+                      <a
+                        href={item.href}
+                        className="text-sm font-semibold text-foreground underline-offset-4 transition hover:text-[#9c4307] dark:hover:text-[#f0893f] hover:underline"
+                      >
+                        {item.name} →
+                      </a>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="text-sm font-semibold text-foreground underline-offset-4 transition hover:text-[#9c4307] dark:hover:text-[#f0893f] hover:underline"
+                      >
+                        {item.name} →
+                      </Link>
+                    )
                   ) : (
                     <span className="text-sm font-medium text-foreground">{item.name}</span>
                   )}

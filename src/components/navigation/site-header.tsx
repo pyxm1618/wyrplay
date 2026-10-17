@@ -80,12 +80,26 @@ function SiteHeaderContent({
         >
           {navigationConfig.header.primary.map((item) => {
             const active = isActive(pathname, item);
+            const targetHref = toLocaleHref(item.href);
+            const className = `${desktopLink} ${active ? "bg-surface text-foreground" : ""}`;
+            if (item.href === "/would-you-rather-questions-for-kids") {
+              return (
+                <a
+                  key={item.href}
+                  href={targetHref}
+                  aria-current={active ? "page" : undefined}
+                  className={className}
+                >
+                  {item.label}
+                </a>
+              );
+            }
             return (
               <Link
                 key={item.href}
-                href={toLocaleHref(item.href)}
+                href={targetHref}
                 aria-current={active ? "page" : undefined}
-                className={`${desktopLink} ${active ? "bg-surface text-foreground" : ""}`}
+                className={className}
               >
                 {item.label}
               </Link>
@@ -140,12 +154,27 @@ function SiteHeaderContent({
           >
             {navigationConfig.header.primary.map((item) => {
               const active = isActive(pathname, item);
+              const targetHref = toLocaleHref(item.href);
+              const className = `${mobileLink} ${active ? "bg-surface-muted" : ""}`;
+              if (item.href === "/would-you-rather-questions-for-kids") {
+                return (
+                  <a
+                    key={item.href}
+                    href={targetHref}
+                    aria-current={active ? "page" : undefined}
+                    className={className}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
               return (
                 <Link
                   key={item.href}
-                  href={toLocaleHref(item.href)}
+                  href={targetHref}
                   aria-current={active ? "page" : undefined}
-                  className={`${mobileLink} ${active ? "bg-surface-muted" : ""}`}
+                  className={className}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.label}

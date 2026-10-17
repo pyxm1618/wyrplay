@@ -9,7 +9,6 @@ const excluded = [
   "/hard-would-you-rather-questions",
   "/would-you-rather-questions-for-friends",
   "/would-you-rather-questions-for-couples",
-  "/would-you-rather-questions-for-kids",
   "/privacy",
   "/play",
   "/print",
@@ -30,6 +29,44 @@ test("/ loads the real AdSense site script under nonce-based strict CSP", async 
 
   const loaded = page.waitForResponse((response) => response.url() === siteCodeUrl);
   const response = await page.goto("/");
+  expect(response?.status()).toBe(200);
+
+  const csp = response?.headers()["content-security-policy"] ?? "";
+  expect(csp).toContain("'strict-dynamic'");
+  expect(csp).toContain("'unsafe-inline'");
+  expect(csp).toContain("'unsafe-eval'");
+  expect(csp).toMatch(/script-src[^;]*'nonce-[^']+'/);
+  expect(csp).not.toMatch(/googlesyndication|doubleclick|adtrafficquality|fundingchoicesmessages/);
+
+  expect((await loaded).status()).toBe(200);
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
+  await expect(page.locator(scriptSelector)).toHaveAttribute("async", "");
+  await expect(page.locator(scriptSelector)).toHaveAttribute("crossorigin", "anonymous");
+  expect(
+    await page.locator(scriptSelector).evaluate((script: HTMLScriptElement) => script.nonce),
+  ).not.toBe("");
+
+  await page.waitForTimeout(2500);
+  expect(violations).toEqual([]);
+});
+
+test("/would-you-rather-questions-for-kids loads the real AdSense site script under nonce-based strict CSP", async ({
+  page,
+}) => {
+  const violations: string[] = [];
+  await page.exposeFunction("recordAdCspViolationKids", (message: string) =>
+    violations.push(message),
+  );
+  await page.addInitScript(() => {
+    document.addEventListener("securitypolicyviolation", (event) => {
+      (
+        window as unknown as { recordAdCspViolationKids: (message: string) => void }
+      ).recordAdCspViolationKids(`${event.effectiveDirective}: ${event.blockedURI}`);
+    });
+  });
+
+  const loaded = page.waitForResponse((response) => response.url() === siteCodeUrl);
+  const response = await page.goto("/would-you-rather-questions-for-kids");
   expect(response?.status()).toBe(200);
 
   const csp = response?.headers()["content-security-policy"] ?? "";
@@ -73,11 +110,24 @@ for (const route of excluded) {
   });
 }
 
-test("client navigation stays SPA-based without attempting to unload the AdSense runtime", async ({
+test("navigating from static /questions to Kids performs document navigation with fresh nonce-based CSP and loads AdSense", async ({
   page,
 }) => {
-  await page.goto("/");
-  await expect(page.locator(scriptSelector)).toHaveCount(1);
+  const violations: string[] = [];
+  await page.exposeFunction("recordQuestionsToKidsCspViolation", (message: string) =>
+    violations.push(message),
+  );
+  await page.addInitScript(() => {
+    document.addEventListener("securitypolicyviolation", (event) => {
+      (
+        window as unknown as { recordQuestionsToKidsCspViolation: (message: string) => void }
+      ).recordQuestionsToKidsCspViolation(`${event.effectiveDirective}: ${event.blockedURI}`);
+    });
+  });
+
+  const response = await page.goto("/questions");
+  expect(response?.status()).toBe(200);
+  await expect(page.locator(scriptSelector)).toHaveCount(0);
 
   const documentRequests: string[] = [];
   page.on("request", (request) => {
@@ -86,13 +136,49 @@ test("client navigation stays SPA-based without attempting to unload the AdSense
     }
   });
 
-  await page.locator('a[href="/would-you-rather-questions-for-kids"]').first().click();
+  const [kidsResponse] = await Promise.all([
+    page.waitForResponse(
+      (res) =>
+        res.url().includes("/would-you-rather-questions-for-kids") &&
+        res.request().resourceType() === "document",
+    ),
+    page.locator('a[href="/would-you-rather-questions-for-kids"]').first().click(),
+  ]);
+
   await page.waitForURL((url) => url.pathname === "/would-you-rather-questions-for-kids");
+  expect(kidsResponse.status()).toBe(200);
+  expect(documentRequests.length).toBeGreaterThanOrEqual(1);
+
+  const csp = kidsResponse.headers()["content-security-policy"] ?? "";
+  expect(csp).toContain("'strict-dynamic'");
+  expect(csp).toContain("'unsafe-inline'");
+  expect(csp).toContain("'unsafe-eval'");
+  expect(csp).toMatch(/script-src[^;]*'nonce-[^']+'/);
+  expect(csp).not.toMatch(/googlesyndication|doubleclick|adtrafficquality|fundingchoicesmessages/);
+
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
+  await expect(page.locator(scriptSelector)).toHaveAttribute("async", "");
+  await expect(page.locator(scriptSelector)).toHaveAttribute("crossorigin", "anonymous");
+  expect(
+    await page.locator(scriptSelector).evaluate((script: HTMLScriptElement) => script.nonce),
+  ).not.toBe("");
+
+  await page.waitForTimeout(2500);
+  expect(violations).toEqual([]);
+});
+
+test("other internal navigations remain SPA-based without document reload", async ({ page }) => {
+  await page.goto("/questions");
+
+  const documentRequests: string[] = [];
+  page.on("request", (request) => {
+    if (request.resourceType() === "document" && request.frame() === page.mainFrame()) {
+      documentRequests.push(request.url());
+    }
+  });
+
+  await page.locator('a[href="/funny-would-you-rather-questions"]').first().click();
+  await page.waitForURL((url) => url.pathname === "/funny-would-you-rather-questions");
 
   expect(documentRequests).toEqual([]);
-  await expect(page.locator(scriptSelector)).toHaveCount(1);
-
-  await page.reload();
-  await expect(page.locator(scriptSelector)).toHaveCount(0);
-  await expect(page.locator("ins.adsbygoogle")).toHaveCount(0);
 });

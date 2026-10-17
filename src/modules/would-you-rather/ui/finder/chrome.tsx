@@ -78,11 +78,18 @@ export function FinderCategories() {
           ["Hard", "/hard-would-you-rather-questions"],
           ["Friends", "/would-you-rather-questions-for-friends"],
           ["Couples", "/would-you-rather-questions-for-couples"],
-        ].map(([label, href]) => (
-          <Link href={href!} key={href}>
-            {label} questions <FinderIcon name="arrow" size={14} />
-          </Link>
-        ))}
+        ].map(([label, href]) => {
+          const isKids = href === "/would-you-rather-questions-for-kids";
+          return isKids ? (
+            <a href={href!} key={href}>
+              {label} questions <FinderIcon name="arrow" size={14} />
+            </a>
+          ) : (
+            <Link href={href!} key={href}>
+              {label} questions <FinderIcon name="arrow" size={14} />
+            </Link>
+          );
+        })}
       </div>
     </section>
   );

@@ -4,14 +4,13 @@ import { legalConfig } from "@/config/legal.config";
 import { isAdSenseRoute } from "@/platform/advertising/adsense-routes";
 import { buildContentSecurityPolicy } from "@/platform/security/content-security-policy";
 
-const enabled = ["/"];
+const enabled = ["/", "/would-you-rather-questions-for-kids"];
 const excluded = [
   "/questions",
   "/funny-would-you-rather-questions",
   "/hard-would-you-rather-questions",
   "/would-you-rather-questions-for-friends",
   "/would-you-rather-questions-for-couples",
-  "/would-you-rather-questions-for-kids",
   "/privacy",
   "/terms",
   "/acceptable-use",
@@ -94,7 +93,8 @@ describe("AdSense activation boundary", () => {
       "https://policies.google.com/technologies/partner-sites",
       "Children's Privacy",
       "does not use Kids voting data for behavioral advertising or profiling",
-      "does not load or serve Google AdSense advertising",
+      "The Kids collection may serve Google AdSense advertising subject to child-directed age treatment",
+      "personalized advertising and remarketing are not used for Kids",
     ])
       expect(privacy).toContain(disclosure);
   });

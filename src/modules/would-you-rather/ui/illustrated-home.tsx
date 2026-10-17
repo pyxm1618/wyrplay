@@ -336,15 +336,11 @@ export function IllustratedHome({
           <div className="category-grid">
             {categories.map((category) => {
               const collection = "key" in category ? FEATURED_COLLECTIONS[category.key] : null;
-              return (
-                <Link
-                  key={category.title}
-                  href={
-                    collection?.route ?? ("href" in category ? category.href : "/find-questions")
-                  }
-                  className={`category-card ${category.color}`}
-                  prefetch={false}
-                >
+              const targetHref =
+                collection?.route ?? ("href" in category ? category.href : "/find-questions");
+              const isKids = targetHref === "/would-you-rather-questions-for-kids";
+              const content = (
+                <>
                   {category.color === "popular" ||
                   category.color === "hard" ||
                   category.color === "kids" ? (
@@ -367,6 +363,27 @@ export function IllustratedHome({
                     />
                   )}
                   <span className="category-title">{category.title}</span>
+                </>
+              );
+              if (isKids) {
+                return (
+                  <a
+                    key={category.title}
+                    href={targetHref}
+                    className={`category-card ${category.color}`}
+                  >
+                    {content}
+                  </a>
+                );
+              }
+              return (
+                <Link
+                  key={category.title}
+                  href={targetHref}
+                  className={`category-card ${category.color}`}
+                  prefetch={false}
+                >
+                  {content}
                 </Link>
               );
             })}
@@ -607,25 +624,40 @@ export function IllustratedHome({
             screen.
           </p>
           <div className="occasion-grid">
-            {occasions.map((occasion) => (
-              <Link
-                key={occasion.title}
-                href={occasion.href}
-                className="occasion-card"
-                prefetch={false}
-              >
-                <HomeArt
-                  src={`icons/occasion-${occasion.art}`}
-                  width={occasion.crop[2]}
-                  height={occasion.crop[3]}
-                  sizes="(max-width: 600px) 29px, (max-width: 1244.8px) 3.727506vw, 46.4px"
-                />
-                <span>
-                  <strong>{occasion.title}</strong>
-                  <span>{occasion.description}</span>
-                </span>
-              </Link>
-            ))}
+            {occasions.map((occasion) => {
+              const isKids = occasion.href.startsWith("/would-you-rather-questions-for-kids");
+              const content = (
+                <>
+                  <HomeArt
+                    src={`icons/occasion-${occasion.art}`}
+                    width={occasion.crop[2]}
+                    height={occasion.crop[3]}
+                    sizes="(max-width: 600px) 29px, (max-width: 1244.8px) 3.727506vw, 46.4px"
+                  />
+                  <span>
+                    <strong>{occasion.title}</strong>
+                    <span>{occasion.description}</span>
+                  </span>
+                </>
+              );
+              if (isKids) {
+                return (
+                  <a key={occasion.title} href={occasion.href} className="occasion-card">
+                    {content}
+                  </a>
+                );
+              }
+              return (
+                <Link
+                  key={occasion.title}
+                  href={occasion.href}
+                  className="occasion-card"
+                  prefetch={false}
+                >
+                  {content}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
