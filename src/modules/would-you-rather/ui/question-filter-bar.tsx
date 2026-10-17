@@ -46,6 +46,9 @@ export function QuestionFilterBar({
     selectedDifficulty,
   );
 
+  const filterBtnBase =
+    "inline-flex items-center justify-center min-h-9 min-w-9 px-3.5 py-2 rounded-full text-xs font-medium transition select-none";
+
   return (
     <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
       <div className="rounded-2xl border border-border bg-surface p-4 shadow-sm sm:p-6">
@@ -73,7 +76,7 @@ export function QuestionFilterBar({
             <button
               type="button"
               onClick={() => onSearchChange("")}
-              className="absolute inset-y-0 right-0 flex items-center pr-3 text-xs text-muted hover:text-foreground"
+              className="absolute inset-y-0 right-0 flex w-10 items-center justify-center text-xs text-muted hover:text-foreground"
               aria-label="Clear search keyword"
             >
               ✕
@@ -84,13 +87,15 @@ export function QuestionFilterBar({
         {/* 维度筛选组 */}
         <div className="flex flex-col gap-3.5 text-xs">
           {/* 年龄维度 */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-1.5">
-            <span className="w-16 font-semibold text-black/80 dark:text-white/80">Age:</span>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-2.5">
+            <span className="w-16 shrink-0 font-semibold text-black/80 dark:text-white/80">
+              Age:
+            </span>
             <button
               type="button"
               onClick={() => onAgeGroupChange(undefined)}
               aria-pressed={!selectedAgeGroup}
-              className={`relative rounded-full px-3 py-1.5 font-medium transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
+              className={`${filterBtnBase} ${
                 !selectedAgeGroup
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                   : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -104,7 +109,7 @@ export function QuestionFilterBar({
                 type="button"
                 onClick={() => onAgeGroupChange(selectedAgeGroup === age ? undefined : age)}
                 aria-pressed={selectedAgeGroup === age}
-                className={`relative rounded-full px-3 py-1.5 font-medium transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
+                className={`${filterBtnBase} ${
                   selectedAgeGroup === age
                     ? "bg-[#e27d32] text-white"
                     : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -116,13 +121,15 @@ export function QuestionFilterBar({
           </div>
 
           {/* 参与关系维度 */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-1.5">
-            <span className="w-16 font-semibold text-black/80 dark:text-white/80">Group:</span>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-2.5">
+            <span className="w-16 shrink-0 font-semibold text-black/80 dark:text-white/80">
+              Group:
+            </span>
             <button
               type="button"
               onClick={() => onRelationshipChange(undefined)}
               aria-pressed={!selectedRelationship}
-              className={`relative rounded-full px-3 py-1.5 font-medium transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
+              className={`${filterBtnBase} ${
                 !selectedRelationship
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                   : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -136,7 +143,7 @@ export function QuestionFilterBar({
                 type="button"
                 onClick={() => onRelationshipChange(selectedRelationship === rel ? undefined : rel)}
                 aria-pressed={selectedRelationship === rel}
-                className={`relative rounded-full px-3 py-1.5 font-medium capitalize transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
+                className={`${filterBtnBase} capitalize ${
                   selectedRelationship === rel
                     ? "bg-[#19a4b8] text-white"
                     : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -148,13 +155,15 @@ export function QuestionFilterBar({
           </div>
 
           {/* 场景与气氛维度 */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-1.5">
-            <span className="w-16 font-semibold text-black/80 dark:text-white/80">Scene:</span>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-2.5">
+            <span className="w-16 shrink-0 font-semibold text-black/80 dark:text-white/80">
+              Scene:
+            </span>
             <button
               type="button"
               onClick={() => onOccasionChange(undefined)}
               aria-pressed={!selectedOccasion}
-              className={`relative rounded-full px-3 py-1.5 font-medium transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
+              className={`${filterBtnBase} ${
                 !selectedOccasion
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                   : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -168,7 +177,7 @@ export function QuestionFilterBar({
                 type="button"
                 onClick={() => onOccasionChange(selectedOccasion === occ ? undefined : occ)}
                 aria-pressed={selectedOccasion === occ}
-                className={`relative rounded-full px-3 py-1.5 font-medium capitalize transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
+                className={`${filterBtnBase} capitalize ${
                   selectedOccasion === occ
                     ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                     : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -180,13 +189,15 @@ export function QuestionFilterBar({
           </div>
 
           {/* 气氛基调维度 */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-1.5">
-            <span className="w-16 font-semibold text-black/80 dark:text-white/80">Tone:</span>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-2.5">
+            <span className="w-16 shrink-0 font-semibold text-black/80 dark:text-white/80">
+              Tone:
+            </span>
             <button
               type="button"
               onClick={() => onToneChange(undefined)}
               aria-pressed={!selectedTone}
-              className={`relative rounded-full px-3 py-1.5 font-medium transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
+              className={`${filterBtnBase} ${
                 !selectedTone
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                   : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -200,7 +211,7 @@ export function QuestionFilterBar({
                 type="button"
                 onClick={() => onToneChange(selectedTone === tone ? undefined : tone)}
                 aria-pressed={selectedTone === tone}
-                className={`relative rounded-full px-3 py-1.5 font-medium capitalize transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
+                className={`${filterBtnBase} capitalize ${
                   selectedTone === tone
                     ? "bg-[#e27d32] text-white"
                     : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -212,13 +223,15 @@ export function QuestionFilterBar({
           </div>
 
           {/* 难度维度 */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-1.5">
-            <span className="w-16 font-semibold text-black/80 dark:text-white/80">Difficulty:</span>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-2.5">
+            <span className="w-16 shrink-0 font-semibold text-black/80 dark:text-white/80">
+              Difficulty:
+            </span>
             <button
               type="button"
               onClick={() => onDifficultyChange(undefined)}
               aria-pressed={!selectedDifficulty}
-              className={`relative rounded-full px-3 py-1.5 font-medium transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
+              className={`${filterBtnBase} ${
                 !selectedDifficulty
                   ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                   : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -232,7 +245,7 @@ export function QuestionFilterBar({
                 type="button"
                 onClick={() => onDifficultyChange(selectedDifficulty === diff ? undefined : diff)}
                 aria-pressed={selectedDifficulty === diff}
-                className={`relative rounded-full px-3 py-1.5 font-medium capitalize transition after:absolute after:-inset-y-1.5 after:-inset-x-1 after:content-[''] ${
+                className={`${filterBtnBase} capitalize ${
                   selectedDifficulty === diff
                     ? "bg-[#121418] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
                     : "border border-border bg-surface text-black dark:text-white hover:border-foreground/40"
@@ -245,7 +258,7 @@ export function QuestionFilterBar({
         </div>
 
         {/* 结果统计与清除栏 */}
-        <div className="mt-4 flex items-center justify-between border-t border-border pt-3 text-xs">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3 text-xs">
           <span className="font-medium text-muted">
             {totalCount === 0 ? (
               <span>0 playable dilemmas (questions undergoing editorial review)</span>
@@ -260,7 +273,7 @@ export function QuestionFilterBar({
             <button
               type="button"
               onClick={onClearFilters}
-              className="relative inline-flex items-center py-1.5 px-2 font-semibold text-[#e27d32] underline-offset-2 transition hover:underline after:absolute after:-inset-1.5 after:content-['']"
+              className="inline-flex min-h-9 min-w-9 items-center justify-center rounded-lg px-3 py-2 font-semibold text-[#e27d32] underline-offset-2 transition hover:bg-[#e27d32]/10 hover:underline"
             >
               Clear all filters
             </button>
