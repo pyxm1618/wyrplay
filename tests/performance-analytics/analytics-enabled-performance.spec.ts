@@ -5,12 +5,6 @@ declare global {
     __analyticsPerf?: { cls: number; inp: number; lcp: number };
     __gaStubLoaded?: boolean;
     __clarityStubLoaded?: boolean;
-    googlefc?: {
-      getGoogleConsentModeValues?: () => Record<string, unknown>;
-      callbackQueue?: unknown[];
-      ConsentModePurposeStatusEnum?: Record<string, number>;
-      [key: string]: unknown;
-    };
   }
 }
 
@@ -57,22 +51,7 @@ test("analytics-enabled homepage stays within release budgets", async ({ page })
   });
 
   await page.addInitScript(() => {
-    (window as unknown as { googlefc: unknown }).googlefc = {
-      ConsentModePurposeStatusEnum: {
-        UNKNOWN: 0,
-        GRANTED: 1,
-        DENIED: 2,
-        NOT_APPLICABLE: 3,
-        NOT_CONFIGURED: 4,
-      },
-      getGoogleConsentModeValues: () => ({
-        analyticsStoragePurposeConsentStatus: 1,
-        adStoragePurposeConsentStatus: 1,
-        adUserDataPurposeConsentStatus: 1,
-        adPersonalizationPurposeConsentStatus: 1,
-      }),
-      callbackQueue: [],
-    };
+    localStorage.setItem("creat-web:analytics-consent:v1", "granted");
     window.__analyticsPerf = { cls: 0, inp: 0, lcp: 0 };
     new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
@@ -111,7 +90,7 @@ test("analytics-enabled homepage stays within release budgets", async ({ page })
 
   await page.waitForFunction(() => window.__gaStubLoaded === true);
   await page.waitForFunction(() => window.__clarityStubLoaded === true);
-  await expect(page.getByRole("button", { name: "Privacy & cookie settings" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Analytics settings" })).toBeVisible();
 
   const firstLink = page.locator('a[href^="/"]').first();
   await firstLink.evaluate((element) => {
