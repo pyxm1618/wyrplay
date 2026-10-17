@@ -113,14 +113,17 @@ test.describe("Analytics and Privacy banner non-occlusion verification", () => {
       }) => {
         await page.setViewportSize({ width, height });
         await page.addInitScript((state) => {
-          try {
-            if (state === "not-decided") {
-              localStorage.removeItem("creat-web:analytics-consent:v1");
-            } else {
-              localStorage.setItem("creat-web:analytics-consent:v1", state);
-            }
-          } catch {
-            // ignore
+          if (state !== "not-decided") {
+            const consentVal = state === "granted" ? "GRANTED" : "DENIED";
+            (window as unknown as { googlefc?: unknown }).googlefc = {
+              callbackQueue: [],
+              getGoogleConsentModeValues: () => ({
+                analytics_storage: consentVal,
+                ad_storage: consentVal,
+                ad_user_data: consentVal,
+                ad_personalization: consentVal,
+              }),
+            };
           }
         }, consentState);
 
@@ -165,18 +168,14 @@ test.describe("Analytics and Privacy banner non-occlusion verification", () => {
           await applyBtn.click();
         }
 
-        // 5. In granted or denied state, verify persistent Privacy settings control is non-occluding
+        // 5. In granted or denied state, verify persistent floating Privacy settings is gone,
+        // and footer has the standard "Privacy & cookie settings" entry
         if (consentState !== "not-decided") {
-          const privacySettingsBtn = page.getByRole("button", {
-            name: "Analytics settings",
-            exact: true,
+          await expect(page.getByRole("button", { name: "Analytics settings" })).toHaveCount(0);
+          const footerSettingsBtn = page.getByRole("button", {
+            name: "Privacy & cookie settings",
           });
-          await expect(privacySettingsBtn).toBeVisible();
-          await privacySettingsBtn.click();
-          const panel = page.getByLabel("Analytics settings panel");
-          await expect(panel).toBeVisible();
-          await panel.getByRole("button", { name: "Close" }).click();
-          await expect(panel).toBeHidden();
+          await expect(footerSettingsBtn).toBeVisible();
         }
       });
     }

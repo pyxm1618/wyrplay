@@ -188,13 +188,16 @@ test("AdSense site code gates ad serving on Advertising consent via pauseAdReque
 }) => {
   await page.goto("/");
   // Without consent signal, AdSense ad serving must be paused (fail-closed)
-  expect(
-    await page.evaluate(
-      () =>
-        (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
-          ?.pauseAdRequests,
-    ),
-  ).toBe(1);
+  await expect
+    .poll(
+      async () =>
+        await page.evaluate(
+          () =>
+            (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
+              ?.pauseAdRequests,
+        ),
+    )
+    .toBe(1);
 
   // When Advertising consent signal is granted by official CMP
   await page.evaluate(() => {
