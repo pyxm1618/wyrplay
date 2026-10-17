@@ -25,12 +25,30 @@ declare global {
 let currentPauseState = 1;
 let isInterceptorInstalled = false;
 
+function ensurePauseProperty(target: unknown): void {
+  if (!target || (typeof target !== "object" && typeof target !== "function")) return;
+  try {
+    Object.defineProperty(target, "pauseAdRequests", {
+      configurable: true,
+      enumerable: true,
+      get() {
+        return currentPauseState;
+      },
+      set(val: number) {
+        currentPauseState = val;
+      },
+    });
+  } catch {
+    (target as { pauseAdRequests?: number }).pauseAdRequests = currentPauseState;
+  }
+}
+
 function setupAdSensePropertyInterceptor(): void {
   if (typeof window === "undefined" || isInterceptorInstalled) return;
   isInterceptorInstalled = true;
 
-  let internalQueue: AdSenseQueue = (window.adsbygoogle ?? []) as AdSenseQueue;
-  internalQueue.pauseAdRequests = currentPauseState;
+  let internalQueue = (window.adsbygoogle ?? []) as AdSenseQueue;
+  ensurePauseProperty(internalQueue);
 
   try {
     Object.defineProperty(window, "adsbygoogle", {
@@ -41,9 +59,7 @@ function setupAdSensePropertyInterceptor(): void {
       },
       set(val: AdSenseQueue) {
         internalQueue = val;
-        if (internalQueue && typeof internalQueue === "object") {
-          internalQueue.pauseAdRequests = currentPauseState;
-        }
+        ensurePauseProperty(internalQueue);
       },
     });
   } catch {
@@ -55,8 +71,9 @@ function setAdSensePauseState(paused: boolean): void {
   if (typeof window === "undefined") return;
   currentPauseState = paused ? 1 : 0;
   setupAdSensePropertyInterceptor();
-  const queue = (window.adsbygoogle = (window.adsbygoogle ?? []) as AdSenseQueue);
-  queue.pauseAdRequests = currentPauseState;
+  if (window.adsbygoogle) {
+    ensurePauseProperty(window.adsbygoogle);
+  }
 }
 
 function getScriptNonce(): string | undefined {
