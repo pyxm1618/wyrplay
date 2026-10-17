@@ -59,6 +59,14 @@ function setAdSensePauseState(paused: boolean): void {
   queue.pauseAdRequests = currentPauseState;
 }
 
+function getScriptNonce(): string | undefined {
+  if (typeof document === "undefined") return undefined;
+  for (const s of Array.from(document.scripts)) {
+    if (s.nonce) return s.nonce;
+  }
+  return document.querySelector<HTMLScriptElement>("script[nonce]")?.nonce;
+}
+
 export function AdSenseSiteCode() {
   const consent = useSyncExternalStore(
     subscribeConsent,
@@ -73,15 +81,12 @@ export function AdSenseSiteCode() {
 
   // Bootstrap AdSense site script so Google Privacy & messaging / CMP can operate
   useEffect(() => {
+    setAdSensePauseState(getConsentSnapshot().advertising !== "granted");
+
     if (document.querySelector(`script[src="${siteCodeUrl}"]`)) return;
 
-    const nonce = document.querySelector<HTMLScriptElement>("script[nonce]")?.nonce;
+    const nonce = getScriptNonce();
     if (!nonce) return;
-
-    // Ensure ad requests are paused before script boots if consent is not granted
-    if (getConsentSnapshot().advertising !== "granted") {
-      setAdSensePauseState(true);
-    }
 
     const script = document.createElement("script");
     script.nonce = nonce;

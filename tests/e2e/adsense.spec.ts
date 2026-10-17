@@ -187,6 +187,7 @@ test("AdSense site code gates ad serving on Advertising consent via pauseAdReque
   page,
 }) => {
   await page.goto("/");
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
   // Without consent signal, AdSense ad serving must be paused (fail-closed)
   await expect
     .poll(
@@ -257,13 +258,17 @@ test("Kids page AdSense site code gates ad serving on Advertising consent via pa
   page,
 }) => {
   await page.goto("/would-you-rather-questions-for-kids");
-  expect(
-    await page.evaluate(
-      () =>
-        (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
-          ?.pauseAdRequests,
-    ),
-  ).toBe(1);
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
+  await expect
+    .poll(
+      async () =>
+        await page.evaluate(
+          () =>
+            (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
+              ?.pauseAdRequests,
+        ),
+    )
+    .toBe(1);
 
   await page.evaluate(() => {
     window.googlefc = window.googlefc || {};
