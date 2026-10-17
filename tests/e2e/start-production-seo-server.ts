@@ -16,6 +16,8 @@ const env: NodeJS.ProcessEnv = {
   APP_ENV: "production",
   APP_ORIGIN: "https://example.com",
   DATABASE_URL: process.env.DATABASE_URL ?? "postgres://test:test@127.0.0.1:5432/test",
+  GA4_MEASUREMENT_ID: process.env.GA4_MEASUREMENT_ID ?? "G-TESTONLY000",
+  CLARITY_PROJECT_ID: process.env.CLARITY_PROJECT_ID ?? "test-only-clarity",
 };
 
 const build = spawn("bun", ["run", "build"], { stdio: "inherit", env });

@@ -32,9 +32,13 @@ export const legalConfig = {
     },
     {
       name: "Google Analytics",
-      purpose:
-        "Site measurement and product analytics (designated provider; not enabled in the current production deployment)",
+      purpose: "Consent-gated site measurement and product analytics",
       privacyUrl: "https://policies.google.com/privacy",
+    },
+    {
+      name: "Microsoft Clarity",
+      purpose: "Consent-gated session interaction measurement, heatmaps, and product analytics",
+      privacyUrl: "https://privacy.microsoft.com/privacystatement",
     },
     {
       name: "Google AdSense",
@@ -122,7 +126,7 @@ export const legalConfig = {
   internationalTransfers:
     "WYRPlay is operated by Wang Yufei, an individual operator in China, and is available globally. Service providers such as hosting, database, and infrastructure vendors may process data in the United States or other locations where they operate. When applicable law requires safeguards for international data transfers, WYRPlay implements appropriate legal mechanisms.",
   documents: {
-    privacy: { version: "1.2", effectiveDate: "2026-10-14", reviewStatus: "reviewed" },
+    privacy: { version: "1.3", effectiveDate: "2026-10-17", reviewStatus: "reviewed" },
     terms: { version: "1.0", effectiveDate: "2026-10-04", reviewStatus: "reviewed" },
     acceptable_use: { version: "1.0", effectiveDate: "2026-10-04", reviewStatus: "reviewed" },
     refund_policy: { version: "1.0", effectiveDate: "2026-10-04", reviewStatus: "reviewed" },
@@ -178,8 +182,8 @@ export const legalConfig = {
       {
         heading: "Site Measurement and Analytics",
         paragraphs: [
-          "Google Analytics 4 is WYRPlay's designated analytics provider. Microsoft Clarity is not used.",
-          "In the current production deployment, Google Analytics 4 is not enabled, and no analytics data is collected from production visitors. When analytics is enabled in a deployment, it is loaded only after any required consent is granted, and it is configured to avoid collecting email addresses or unnecessary user-entered content as event properties.",
+          "WYRPlay uses Google Analytics 4 and Microsoft Clarity for site measurement and product analytics in the current production deployment. These analytics providers are loaded only after any required analytics consent is granted.",
+          "Google Analytics 4 is used for page and product-usage measurement. Microsoft Clarity is used for session interaction measurement, including features such as heatmaps and session replay. WYRPlay does not intentionally send email addresses or unnecessary user-entered content as custom analytics event properties, and users can withdraw analytics consent at any time through the available privacy settings.",
         ],
       },
       {
@@ -201,7 +205,7 @@ export const legalConfig = {
       {
         heading: "How We Disclose Information",
         paragraphs: [
-          "We disclose information to third-party service providers performing essential functions on our behalf, including hosting, transactional email delivery (Resend), security and anti-abuse verification (Cloudflare Turnstile), payment and subscription processing (Waffo), site measurement (Google Analytics 4), and advertising delivery and measurement (Google AdSense, when advertising is enabled on eligible pages). Service providers receive only the data reasonably needed to perform their services.",
+          "We disclose information to third-party service providers performing essential functions on our behalf, including hosting, transactional email delivery (Resend), security and anti-abuse verification (Cloudflare Turnstile), payment and subscription processing (Waffo), site measurement and interaction analytics (Google Analytics 4 and Microsoft Clarity), and advertising delivery and measurement (Google AdSense, when advertising is enabled on eligible pages). Service providers receive only the data reasonably needed to perform their services.",
           "We may disclose information where required by law, to respond to valid legal process, or when reasonably necessary to protect the safety, security, and integrity of WYRPlay, its users, or the public.",
           "WYRPlay does not sell personal information for money. WYRPlay may use Google AdSense on eligible general-audience pages. Google and its advertising partners may process the information described in this notice for advertising delivery and measurement, with personalization subject to applicable consent and privacy requirements.",
         ],
@@ -235,7 +239,7 @@ export const legalConfig = {
         heading: "California and State Privacy Disclosures",
         paragraphs: [
           "Under the California Online Privacy Protection Act (CalOPPA) and related laws, commercial websites collecting personally identifiable information from California consumers must disclose information practices. This notice provides those required disclosures.",
-          "WYRPlay does not currently respond to browser Do Not Track signals as a separate technical toggle. In the current production deployment, Google Analytics 4 is disabled, and Microsoft Clarity is not used. Where Google AdSense advertising is enabled on eligible general-audience pages, advertising and personalization choices can be managed through Google Ads Settings as described in this notice.",
+          "WYRPlay does not currently respond to browser Do Not Track signals as a separate technical toggle. In the current production deployment, Google Analytics 4 and Microsoft Clarity are used only after any required analytics consent is granted, and analytics consent can be withdrawn through the available privacy settings. Where Google AdSense advertising is enabled on eligible general-audience pages, advertising and personalization choices can be managed through Google Ads Settings as described in this notice.",
           "The California Consumer Privacy Act (CCPA) applies where statutory coverage criteria are met; nothing in this notice represents that WYRPlay is a covered CCPA business if statutory thresholds are not satisfied.",
         ],
       },
@@ -341,7 +345,7 @@ export const legalConfig = {
       {
         heading: "Third-Party Services",
         paragraphs: [
-          "WYRPlay utilizes third-party infrastructure and service providers for hosting, transactional email delivery (Resend), security challenges (Cloudflare Turnstile), payments (Waffo), and measurement (Google Analytics 4). Such providers operate under their own applicable terms and policies.",
+          "WYRPlay utilizes third-party infrastructure and service providers for hosting, transactional email delivery (Resend), security challenges (Cloudflare Turnstile), payments (Waffo), and measurement (Google Analytics 4 and Microsoft Clarity). Such providers operate under their own applicable terms and policies.",
         ],
       },
       {

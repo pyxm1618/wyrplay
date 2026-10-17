@@ -1,5 +1,12 @@
 import type { ProductConfig } from "@/platform/config/types";
 
+const productionFeaturesConfig = {
+  auth: { enabled: false, google: false, magicLink: false, password: false },
+  email: { enabled: false },
+  commerce: { enabled: false, oneTime: false, subscriptions: false, credits: false },
+  analytics: { enabled: true, ga4: true, clarity: true, consentRequired: true },
+} as const satisfies ProductConfig["features"];
+
 const enabledTestFeaturesConfig = {
   auth: { enabled: true, google: false, magicLink: true, password: false },
   email: { enabled: true },
@@ -26,6 +33,7 @@ const neutralFeaturesConfig = {
   analytics: { enabled: false, ga4: false, clarity: false, consentRequired: false },
 } as const satisfies ProductConfig["features"];
 
+const isProduction = process.env.APP_ENV === "production";
 const useEnabledTestProfile =
   process.env.APP_ENV === "test" && process.env.CREAT_WEB_E2E_ENABLED_FEATURES === "1";
 const useCommerceEnabledTestProfile =
@@ -33,10 +41,12 @@ const useCommerceEnabledTestProfile =
 const useAnalyticsEnabledPerformanceProfile =
   process.env.APP_ENV === "test" && process.env.CREAT_WEB_PERFORMANCE_ANALYTICS === "1";
 
-export const featuresConfig = useCommerceEnabledTestProfile
-  ? commerceEnabledTestFeaturesConfig
-  : useEnabledTestProfile
-    ? enabledTestFeaturesConfig
-    : useAnalyticsEnabledPerformanceProfile
-      ? analyticsEnabledPerformanceFeaturesConfig
-      : neutralFeaturesConfig;
+export const featuresConfig = isProduction
+  ? productionFeaturesConfig
+  : useCommerceEnabledTestProfile
+    ? commerceEnabledTestFeaturesConfig
+    : useEnabledTestProfile
+      ? enabledTestFeaturesConfig
+      : useAnalyticsEnabledPerformanceProfile
+        ? analyticsEnabledPerformanceFeaturesConfig
+        : neutralFeaturesConfig;
