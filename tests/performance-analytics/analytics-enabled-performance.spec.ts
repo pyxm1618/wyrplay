@@ -51,10 +51,19 @@ test("analytics-enabled homepage stays within release budgets", async ({ page })
   });
 
   await page.addInitScript(() => {
-    window.googlefc = {
+    (window as unknown as { googlefc: unknown }).googlefc = {
+      ConsentModePurposeStatusEnum: {
+        UNKNOWN: 0,
+        GRANTED: 1,
+        DENIED: 2,
+        NOT_APPLICABLE: 3,
+        NOT_CONFIGURED: 4,
+      },
       getGoogleConsentModeValues: () => ({
-        analytics_storage: "GRANTED",
-        ad_storage: "GRANTED",
+        analyticsStoragePurposeConsentStatus: 1,
+        adStoragePurposeConsentStatus: 1,
+        adUserDataPurposeConsentStatus: 1,
+        adPersonalizationPurposeConsentStatus: 1,
       }),
       callbackQueue: [],
     };
