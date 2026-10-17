@@ -9,7 +9,6 @@ const excluded = [
   "/hard-would-you-rather-questions",
   "/would-you-rather-questions-for-friends",
   "/would-you-rather-questions-for-couples",
-  "/would-you-rather-questions-for-kids",
   "/privacy",
   "/play",
   "/print",
@@ -30,6 +29,44 @@ test("/ loads the real AdSense site script under nonce-based strict CSP", async 
 
   const loaded = page.waitForResponse((response) => response.url() === siteCodeUrl);
   const response = await page.goto("/");
+  expect(response?.status()).toBe(200);
+
+  const csp = response?.headers()["content-security-policy"] ?? "";
+  expect(csp).toContain("'strict-dynamic'");
+  expect(csp).toContain("'unsafe-inline'");
+  expect(csp).toContain("'unsafe-eval'");
+  expect(csp).toMatch(/script-src[^;]*'nonce-[^']+'/);
+  expect(csp).not.toMatch(/googlesyndication|doubleclick|adtrafficquality|fundingchoicesmessages/);
+
+  expect((await loaded).status()).toBe(200);
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
+  await expect(page.locator(scriptSelector)).toHaveAttribute("async", "");
+  await expect(page.locator(scriptSelector)).toHaveAttribute("crossorigin", "anonymous");
+  expect(
+    await page.locator(scriptSelector).evaluate((script: HTMLScriptElement) => script.nonce),
+  ).not.toBe("");
+
+  await page.waitForTimeout(2500);
+  expect(violations).toEqual([]);
+});
+
+test("/would-you-rather-questions-for-kids loads the real AdSense site script under nonce-based strict CSP", async ({
+  page,
+}) => {
+  const violations: string[] = [];
+  await page.exposeFunction("recordAdCspViolationKids", (message: string) =>
+    violations.push(message),
+  );
+  await page.addInitScript(() => {
+    document.addEventListener("securitypolicyviolation", (event) => {
+      (
+        window as unknown as { recordAdCspViolationKids: (message: string) => void }
+      ).recordAdCspViolationKids(`${event.effectiveDirective}: ${event.blockedURI}`);
+    });
+  });
+
+  const loaded = page.waitForResponse((response) => response.url() === siteCodeUrl);
+  const response = await page.goto("/would-you-rather-questions-for-kids");
   expect(response?.status()).toBe(200);
 
   const csp = response?.headers()["content-security-policy"] ?? "";
@@ -89,6 +126,15 @@ test("client navigation stays SPA-based without attempting to unload the AdSense
   await page.locator('a[href="/would-you-rather-questions-for-kids"]').first().click();
   await page.waitForURL((url) => url.pathname === "/would-you-rather-questions-for-kids");
 
+  expect(documentRequests).toEqual([]);
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
+
+  await page.reload();
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
+  documentRequests.length = 0;
+
+  await page.locator('a[href="/questions"]').first().click();
+  await page.waitForURL((url) => url.pathname === "/questions");
   expect(documentRequests).toEqual([]);
   await expect(page.locator(scriptSelector)).toHaveCount(1);
 

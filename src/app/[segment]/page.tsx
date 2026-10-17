@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { connection } from "next/server";
 
 import { KidsPage, getQuestionsByCollection } from "@/modules/would-you-rather";
 import "./kids.css";
 
+import { AdSenseSiteCode } from "@/components/advertising/adsense-site-code";
 import { LandingPage } from "@/components/landing/landing-page";
 import { JsonLd } from "@/components/seo/json-ld";
 import { localeBundle } from "@/config/locales.config";
@@ -12,6 +14,7 @@ import { seoLandingForRoute } from "@/config/seo-landings.config";
 import { siteConfig } from "@/config/site.config";
 import { localizeLandingSections } from "@/platform/i18n/landing-sections";
 import { isSupportedLocale, localePath } from "@/platform/i18n/routing";
+import { isAdSenseRuntimeEnabled } from "@/platform/advertising/adsense-routes";
 import { currentSeoEnvironment } from "@/platform/seo/environment-policy";
 import { metadataForLocalizedRoute, metadataForRoute } from "@/platform/seo/metadata";
 import { articleJsonLd, webApplicationJsonLd, websiteJsonLd } from "@/platform/seo/structured-data";
@@ -92,11 +95,18 @@ export default async function SegmentPage({ params }: SegmentPageProps) {
           description: definition.description,
         });
 
+  if (route === "/would-you-rather-questions-for-kids") {
+    await connection();
+  }
+
   return (
     <>
       <JsonLd value={structuredData} />
       {route === "/would-you-rather-questions-for-kids" ? (
-        <KidsPage questions={getQuestionsByCollection("kids")} />
+        <>
+          {isAdSenseRuntimeEnabled() && <AdSenseSiteCode />}
+          <KidsPage questions={getQuestionsByCollection("kids")} />
+        </>
       ) : (
         <main>
           <LandingPage sections={landing.sections} />

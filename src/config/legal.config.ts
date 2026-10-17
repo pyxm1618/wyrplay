@@ -210,7 +210,7 @@ export const legalConfig = {
         heading: "Children's Privacy",
         paragraphs: [
           "The WYRPlay Kids collection is specifically designed for children, families, and educators. WYRPlay treats that area as a child-directed portion of the service for privacy-design purposes.",
-          "WYRPlay strictly prohibits children under 13 from creating accounts, submitting personal information, or purchasing subscriptions. We do not use personal information from children under 13 for behavioral advertising or profiling. The Kids collection does not load or serve Google AdSense advertising.",
+          "WYRPlay strictly prohibits children under 13 from creating accounts, submitting personal information, or purchasing subscriptions. We do not use personal information from children under 13 for behavioral advertising or profiling. The Kids collection may serve Google AdSense advertising subject to child-directed age treatment; personalized advertising and remarketing are not used for Kids.",
           "For voting on questions in the Kids collection, WYRPlay does not create or read the persistent voter cookie. Each stored Kids vote receives a server-generated one-time record token that is not returned to the browser and is not reused to recognize the same child or browser over time. Legacy Kids vote records were sanitized by replacing former reusable voter identifiers with one-time record tokens while preserving aggregate A/B counts.",
           "WYRPlay does not use Kids voting data for behavioral advertising or profiling. Kids voting data is used only for aggregate results, service operation, security, and abuse prevention.",
         ],

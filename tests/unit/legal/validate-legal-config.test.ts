@@ -167,6 +167,9 @@ it("verifies AdSense activation disclosure invariants", () => {
   const childrenSection = privacySections.find((s) => s.heading === "Children's Privacy");
   expect(childrenSection).toBeDefined();
   const childrenText = childrenSection?.paragraphs.join(" ") ?? "";
-  expect(childrenText).toContain("does not load or serve Google AdSense advertising");
+  expect(childrenText).toContain(
+    "The Kids collection may serve Google AdSense advertising subject to child-directed age treatment",
+  );
+  expect(childrenText).toContain("personalized advertising and remarketing are not used for Kids");
   expect(childrenText).not.toContain("TFAT");
 });

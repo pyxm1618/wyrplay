@@ -1,6 +1,6 @@
 import { siteConfig } from "@/config/site.config";
 
-const adsenseRoutes = new Set(["/"]);
+const adsenseRoutes = new Set(["/", "/would-you-rather-questions-for-kids"]);
 
 function normalizedOrigin(value: string | undefined): string | undefined {
   return value?.replace(/\/+$/, "");
