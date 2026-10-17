@@ -216,14 +216,12 @@ test("AdSense site code gates ad serving on Advertising consent via pauseAdReque
   });
 
   await expect
-    .poll(
-      () =>
-        page.evaluate(
-          () =>
-            (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
-              ?.pauseAdRequests,
-        ),
-      { timeout: 3000 },
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
+            ?.pauseAdRequests,
+      ),
     )
     .toBe(0);
 
@@ -242,14 +240,12 @@ test("AdSense site code gates ad serving on Advertising consent via pauseAdReque
   });
 
   await expect
-    .poll(
-      () =>
-        page.evaluate(
-          () =>
-            (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
-              ?.pauseAdRequests,
-        ),
-      { timeout: 3000 },
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
+            ?.pauseAdRequests,
+      ),
     )
     .toBe(1);
 });
@@ -285,14 +281,12 @@ test("Kids page AdSense site code gates ad serving on Advertising consent via pa
   });
 
   await expect
-    .poll(
-      () =>
-        page.evaluate(
-          () =>
-            (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
-              ?.pauseAdRequests,
-        ),
-      { timeout: 3000 },
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as unknown as { adsbygoogle?: { pauseAdRequests?: number } }).adsbygoogle
+            ?.pauseAdRequests,
+      ),
     )
     .toBe(0);
 });

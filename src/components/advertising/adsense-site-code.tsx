@@ -22,10 +22,17 @@ declare global {
   }
 }
 
-function setAdSensePauseState(paused: boolean): void {
+export function setAdSensePauseState(paused: boolean): void {
   if (typeof window === "undefined") return;
   const queue = (window.adsbygoogle = (window.adsbygoogle ?? []) as AdSenseQueue);
   queue.pauseAdRequests = paused ? 1 : 0;
+}
+
+// Immediately synchronize pause state whenever consent adapter notifies outside React cycle
+if (typeof window !== "undefined") {
+  subscribeConsent(() => {
+    setAdSensePauseState(getConsentSnapshot().advertising !== "granted");
+  });
 }
 
 function getScriptNonce(): string | undefined {
