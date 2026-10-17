@@ -19,6 +19,7 @@
   "vars": {
     "APP_ENV": "production",
     "APP_ORIGIN": "https://www.wyrplay.com",
+    "GA4_MEASUREMENT_ID": "G-MZM90QN1VJ",
     "NEXTJS_ENV": "production",
   },
   "observability": {
