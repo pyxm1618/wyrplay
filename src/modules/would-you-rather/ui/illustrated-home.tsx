@@ -254,8 +254,9 @@ export function IllustratedHome({
             alt=""
             width={790}
             height={793}
-            sizes="(max-width: 600px) 110px, (max-width: 1000px) 280px, 350px"
+            sizes="(max-width: 600px) clamp(100px, 26vw, 130px), (max-width: 1240px) 35.48vw, 442px"
             priority
+            fetchPriority="high"
             className="hero-boy"
           />
           <Image
@@ -286,7 +287,7 @@ export function IllustratedHome({
                 aria-hidden="true"
                 width={1662}
                 height={887}
-                sizes="(max-width: 600px) 330px, (max-width: 1000px) 330px, 420px"
+                sizes="(max-width: 600px) min(290px, 76vw), (max-width: 1240px) 42.42vw, 528px"
                 quality={70}
                 priority
                 fetchPriority="high"

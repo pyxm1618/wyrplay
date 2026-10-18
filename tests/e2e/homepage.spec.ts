@@ -333,3 +333,63 @@ test("presenter modal retains return focus to live trigger after cycling questio
     })
     .toBe(true);
 });
+
+test("mobile question filter bar buttons satisfy touch target bounding box and spacing requirements", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(page.locator("#question-search")).toBeVisible();
+
+  const filterContainer = page.locator("#question-search");
+  await filterContainer.scrollIntoViewIfNeeded();
+
+  const filterButtons = filterContainer.locator("button");
+  const count = await filterButtons.count();
+  expect(count).toBeGreaterThan(15);
+
+  for (let i = 0; i < count; i++) {
+    const btn = filterButtons.nth(i);
+    const box = await btn.boundingBox();
+    expect(box, `Button ${i} should have a bounding box`).not.toBeNull();
+    expect(
+      box!.height,
+      `Button ${i} height (${box!.height}px) should be at least 36px`,
+    ).toBeGreaterThanOrEqual(36);
+    expect(
+      box!.width,
+      `Button ${i} width (${box!.width}px) should be at least 36px`,
+    ).toBeGreaterThanOrEqual(36);
+  }
+
+  // 记录代表性按钮物理测量尺寸
+  const sampleAge = await filterContainer.getByRole("button", { name: "Kids 10-12" }).boundingBox();
+  const sampleAdult = await filterContainer
+    .getByRole("button", { name: "Adults 18+" })
+    .boundingBox();
+  console.info(`[TOUCH-TARGET-AUDIT] "Kids 10-12" box: ${sampleAge?.width}x${sampleAge?.height}px`);
+  console.info(
+    `[TOUCH-TARGET-AUDIT] "Adults 18+" box: ${sampleAdult?.width}x${sampleAdult?.height}px`,
+  );
+
+  // 点击一个具体筛选（例如 "Teens 13–17"）触发筛选激活状态
+  const teenBtn = filterContainer.getByRole("button", { name: "Teens 13–17" });
+  await teenBtn.click();
+  await expect(teenBtn).toHaveAttribute("aria-pressed", "true");
+
+  // 验证 Clear all filters 按钮同样拥有合规的真实 bounding box
+  const clearBtn = filterContainer.getByRole("button", { name: "Clear all filters" });
+  await expect(clearBtn).toBeVisible();
+  const clearBox = await clearBtn.boundingBox();
+  expect(clearBox).not.toBeNull();
+  expect(clearBox!.height).toBeGreaterThanOrEqual(36);
+  expect(clearBox!.width).toBeGreaterThanOrEqual(36);
+  console.info(
+    `[TOUCH-TARGET-AUDIT] "Clear all filters" box: ${clearBox?.width}x${clearBox?.height}px`,
+  );
+
+  // 点击清空，验证筛选状态重置
+  await clearBtn.click();
+  await expect(teenBtn).toHaveAttribute("aria-pressed", "false");
+  await expect(clearBtn).toBeHidden();
+});

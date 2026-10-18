@@ -45,6 +45,7 @@ const nextConfig: NextConfig = {
     },
   },
   images: {
+    minimumCacheTTL: 2678400,
     remotePatterns: [
       {
         protocol: "https",
@@ -84,6 +85,24 @@ const nextConfig: NextConfig = {
       {
         source: "/kids-art/optimized/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      },
+      {
+        source: "/home-art/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=2678400, stale-while-revalidate=86400",
+          },
+        ],
+      },
+      {
+        source: "/home-fonts/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=2678400, stale-while-revalidate=86400",
+          },
+        ],
       },
       ...[
         "/account/:path*",
