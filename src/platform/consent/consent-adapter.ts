@@ -68,6 +68,14 @@ function notifyListeners(): void {
   }
 }
 
+function isPurposePermitted(status: unknown): boolean {
+  return (
+    status === ConsentModePurposeStatusEnum.GRANTED ||
+    status === ConsentModePurposeStatusEnum.NOT_APPLICABLE ||
+    status === ConsentModePurposeStatusEnum.NOT_CONFIGURED
+  );
+}
+
 function readGoogleConsentMode(): void {
   if (typeof window === "undefined" || !window.googlefc) return;
   if (typeof window.googlefc.getGoogleConsentModeValues !== "function") return;
@@ -78,44 +86,24 @@ function readGoogleConsentMode(): void {
       | undefined;
     if (!status || typeof status !== "object") return;
 
-    // Analytics gating: strictly uses analyticsStoragePurposeConsentStatus
-    const nextAnalytics: ConsentState =
-      status.analyticsStoragePurposeConsentStatus === ConsentModePurposeStatusEnum.GRANTED
-        ? "granted"
-        : "denied";
+    // Analytics gating: GRANTED, NOT_APPLICABLE, NOT_CONFIGURED permit analytics; DENIED, UNKNOWN block it
+    const nextAnalytics: ConsentState = isPurposePermitted(
+      status.analyticsStoragePurposeConsentStatus,
+    )
+      ? "granted"
+      : "denied";
 
-    // Advertising gating: evaluates all official Ads consent purposes
-    // (adStoragePurposeConsentStatus, adUserDataPurposeConsentStatus, adPersonalizationPurposeConsentStatus)
+    // Advertising gating: all 3 Ads purposes must be permitted (GRANTED, NOT_APPLICABLE, or NOT_CONFIGURED);
+    // any DENIED or UNKNOWN blocks advertising (paused).
     const adsPurposes = [
       status.adStoragePurposeConsentStatus,
       status.adUserDataPurposeConsentStatus,
       status.adPersonalizationPurposeConsentStatus,
     ];
 
-    const hasDeniedAds = adsPurposes.some((s) => s === ConsentModePurposeStatusEnum.DENIED);
-    const hasUnreadyOrUnconfigured = adsPurposes.some(
-      (s) =>
-        s === ConsentModePurposeStatusEnum.UNKNOWN ||
-        s === ConsentModePurposeStatusEnum.NOT_CONFIGURED ||
-        typeof s !== "number",
-    );
-
-    const isAdStorageGranted =
-      status.adStoragePurposeConsentStatus === ConsentModePurposeStatusEnum.GRANTED;
-
-    const areAllAdsGrantedOrNotApplicable = adsPurposes.every(
-      (s) =>
-        s === ConsentModePurposeStatusEnum.GRANTED ||
-        s === ConsentModePurposeStatusEnum.NOT_APPLICABLE,
-    );
-
-    const nextAdvertising: ConsentState =
-      !hasDeniedAds &&
-      !hasUnreadyOrUnconfigured &&
-      isAdStorageGranted &&
-      areAllAdsGrantedOrNotApplicable
-        ? "granted"
-        : "denied";
+    const nextAdvertising: ConsentState = adsPurposes.every(isPurposePermitted)
+      ? "granted"
+      : "denied";
 
     if (
       nextAnalytics === currentConsent.analytics &&

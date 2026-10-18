@@ -74,7 +74,7 @@ describe("consent adapter with Google Privacy & messaging API", () => {
   });
 
   it("correctly maps official Google Consent Mode values using purpose enums", () => {
-    // 1. All GRANTED (Enum = 1)
+    // 1. All GRANTED (Enum = 1) -> allow
     mockGoogleConsentModeForTesting({
       analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
       adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
@@ -84,35 +84,89 @@ describe("consent adapter with Google Privacy & messaging API", () => {
     expect(getConsentSnapshot().analytics).toBe("granted");
     expect(getConsentSnapshot().advertising).toBe("granted");
 
-    // 2. Only Analytics GRANTED, Ads DENIED (Enum = 2)
+    // 2. All NOT_APPLICABLE (Enum = 3) -> allow
+    mockGoogleConsentModeForTesting({
+      analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_APPLICABLE,
+      adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_APPLICABLE,
+      adUserDataPurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_APPLICABLE,
+      adPersonalizationPurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_APPLICABLE,
+    });
+    expect(getConsentSnapshot().analytics).toBe("granted");
+    expect(getConsentSnapshot().advertising).toBe("granted");
+
+    // 3. Relevant NOT_CONFIGURED (Enum = 4) -> allow
+    // Case 3a: all NOT_CONFIGURED -> allow
+    mockGoogleConsentModeForTesting({
+      analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_CONFIGURED,
+      adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_CONFIGURED,
+      adUserDataPurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_CONFIGURED,
+      adPersonalizationPurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_CONFIGURED,
+    });
+    expect(getConsentSnapshot().analytics).toBe("granted");
+    expect(getConsentSnapshot().advertising).toBe("granted");
+
+    // Case 3b: Analytics NOT_CONFIGURED with Ads GRANTED -> allow both
+    mockGoogleConsentModeForTesting({
+      analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_CONFIGURED,
+      adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
+      adUserDataPurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
+      adPersonalizationPurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
+    });
+    expect(getConsentSnapshot().analytics).toBe("granted");
+    expect(getConsentSnapshot().advertising).toBe("granted");
+
+    // Case 3c: Ads NOT_CONFIGURED with Analytics GRANTED -> allow both
+    mockGoogleConsentModeForTesting({
+      analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
+      adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_CONFIGURED,
+      adUserDataPurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_CONFIGURED,
+      adPersonalizationPurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_CONFIGURED,
+    });
+    expect(getConsentSnapshot().analytics).toBe("granted");
+    expect(getConsentSnapshot().advertising).toBe("granted");
+
+    // 4. Any DENIED (Enum = 2) -> deny
+    // Case 4a: Analytics DENIED with Ads GRANTED
+    mockGoogleConsentModeForTesting({
+      analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.DENIED,
+      adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
+      adUserDataPurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
+      adPersonalizationPurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
+    });
+    expect(getConsentSnapshot().analytics).toBe("denied");
+    expect(getConsentSnapshot().advertising).toBe("granted");
+
+    // Case 4b: adStorage DENIED with others GRANTED
     mockGoogleConsentModeForTesting({
       analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
       adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.DENIED,
-      adUserDataPurposeConsentStatus: ConsentModePurposeStatusEnum.DENIED,
-      adPersonalizationPurposeConsentStatus: ConsentModePurposeStatusEnum.DENIED,
+      adUserDataPurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
+      adPersonalizationPurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
     });
     expect(getConsentSnapshot().analytics).toBe("granted");
     expect(getConsentSnapshot().advertising).toBe("denied");
 
-    // 3. AdStorage GRANTED but adUserData DENIED -> Advertising must be denied
+    // Case 4c: adUserData DENIED with others GRANTED
     mockGoogleConsentModeForTesting({
       analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
       adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
       adUserDataPurposeConsentStatus: ConsentModePurposeStatusEnum.DENIED,
       adPersonalizationPurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
     });
+    expect(getConsentSnapshot().analytics).toBe("granted");
     expect(getConsentSnapshot().advertising).toBe("denied");
 
-    // 4. AdStorage GRANTED but adPersonalization DENIED -> Advertising must be denied
+    // Case 4d: adPersonalization DENIED with others GRANTED
     mockGoogleConsentModeForTesting({
       analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
       adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
       adUserDataPurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
       adPersonalizationPurposeConsentStatus: ConsentModePurposeStatusEnum.DENIED,
     });
+    expect(getConsentSnapshot().analytics).toBe("granted");
     expect(getConsentSnapshot().advertising).toBe("denied");
 
-    // 5. All DENIED (Enum = 2)
+    // Case 4e: all DENIED
     mockGoogleConsentModeForTesting({
       analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.DENIED,
       adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.DENIED,
@@ -122,17 +176,28 @@ describe("consent adapter with Google Privacy & messaging API", () => {
     expect(getConsentSnapshot().analytics).toBe("denied");
     expect(getConsentSnapshot().advertising).toBe("denied");
 
-    // 6. NOT_CONFIGURED (Enum = 4) -> Fail closed
+    // 5. Any UNKNOWN (Enum = 0) -> deny / fail-closed
+    // Case 5a: Analytics UNKNOWN with Ads GRANTED
     mockGoogleConsentModeForTesting({
-      analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_CONFIGURED,
-      adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_CONFIGURED,
-      adUserDataPurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_CONFIGURED,
-      adPersonalizationPurposeConsentStatus: ConsentModePurposeStatusEnum.NOT_CONFIGURED,
+      analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.UNKNOWN,
+      adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
+      adUserDataPurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
+      adPersonalizationPurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
     });
     expect(getConsentSnapshot().analytics).toBe("denied");
+    expect(getConsentSnapshot().advertising).toBe("granted");
+
+    // Case 5b: adStorage UNKNOWN with others GRANTED
+    mockGoogleConsentModeForTesting({
+      analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
+      adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.UNKNOWN,
+      adUserDataPurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
+      adPersonalizationPurposeConsentStatus: ConsentModePurposeStatusEnum.GRANTED,
+    });
+    expect(getConsentSnapshot().analytics).toBe("granted");
     expect(getConsentSnapshot().advertising).toBe("denied");
 
-    // 7. UNKNOWN (Enum = 0) -> Fail closed
+    // Case 5c: all UNKNOWN -> fail-closed
     mockGoogleConsentModeForTesting({
       analyticsStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.UNKNOWN,
       adStoragePurposeConsentStatus: ConsentModePurposeStatusEnum.UNKNOWN,

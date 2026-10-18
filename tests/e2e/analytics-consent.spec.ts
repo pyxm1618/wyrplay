@@ -243,3 +243,80 @@ test("legacy consent key in localStorage is safely cleaned and does not authoriz
     await page.evaluate(() => localStorage.getItem("creat-web:analytics-consent:v1")),
   ).toBeNull();
 });
+
+test("analytics gating accurately handles all Consent Mode purpose states (GRANTED, NOT_APPLICABLE, NOT_CONFIGURED, DENIED, UNKNOWN)", async ({
+  page,
+}) => {
+  const requests: string[] = [];
+  await page.route("**/*", async (route) => {
+    const url = route.request().url();
+    if (isAnalytics(url)) {
+      requests.push(url);
+      await route.abort();
+      return;
+    }
+    await route.continue();
+  });
+
+  await page.goto("/");
+  await page.waitForTimeout(300);
+  expect(requests).toEqual([]);
+
+  const setConsent = async (analyticsStatus: number) => {
+    await page.evaluate((s) => {
+      window.googlefc = window.googlefc || {};
+      window.googlefc.ConsentModePurposeStatusEnum = {
+        UNKNOWN: 0,
+        GRANTED: 1,
+        DENIED: 2,
+        NOT_APPLICABLE: 3,
+        NOT_CONFIGURED: 4,
+      };
+      window.googlefc.getGoogleConsentModeValues = () => ({
+        analyticsStoragePurposeConsentStatus: s,
+        adStoragePurposeConsentStatus: 2,
+        adUserDataPurposeConsentStatus: 2,
+        adPersonalizationPurposeConsentStatus: 2,
+      });
+      const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
+      for (const item of queue) {
+        if (item && typeof item === "object" && "CONSENT_MODE_DATA_READY" in item) {
+          (item as { CONSENT_MODE_DATA_READY: () => void }).CONSENT_MODE_DATA_READY();
+        }
+      }
+    }, analyticsStatus);
+  };
+
+  // 1. UNKNOWN (0) -> denied, no scripts injected
+  await setConsent(0);
+  await page.waitForTimeout(200);
+  expect(requests).toEqual([]);
+  await expect(page.locator("#creat-web-ga4")).toHaveCount(0);
+
+  // 2. DENIED (2) -> denied, no scripts injected
+  await setConsent(2);
+  await page.waitForTimeout(200);
+  expect(requests).toEqual([]);
+  await expect(page.locator("#creat-web-ga4")).toHaveCount(0);
+
+  // 3. NOT_APPLICABLE (3) -> allowed, injects scripts and fires requests
+  await setConsent(3);
+  await expect.poll(() => requests.length).toBeGreaterThan(0);
+  await expect(page.locator("#creat-web-ga4")).toHaveCount(1);
+  await expect(page.locator("#creat-web-clarity")).toHaveCount(1);
+
+  // Withdraw via DENIED (2)
+  await setConsent(2);
+  await expect(page.locator("#creat-web-ga4")).toHaveCount(0);
+  await expect(page.locator("#creat-web-clarity")).toHaveCount(0);
+
+  // 4. NOT_CONFIGURED (4) -> allowed, injects scripts
+  await setConsent(4);
+  await expect(page.locator("#creat-web-ga4")).toHaveCount(1);
+  await expect(page.locator("#creat-web-clarity")).toHaveCount(1);
+
+  // 5. Withdraw via UNKNOWN (0) -> clean up
+  await setConsent(0);
+  await expect(page.locator("#creat-web-ga4")).toHaveCount(0);
+  await expect(page.locator("#creat-web-clarity")).toHaveCount(0);
+});
