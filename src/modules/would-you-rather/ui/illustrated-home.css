@@ -30,7 +30,7 @@
 }
 /* Metric-compatible fallbacks calculated from exact physical glyph measurements of Roboto Condensed vs Arial */
 @font-face {
-  font-family: "WyrCondensedFallbackBold";
+  font-family: "WyrCondensedFallback";
   src: local("Arial");
   ascent-override: 106.1%;
   descent-override: 27.9%;
@@ -39,7 +39,7 @@
   font-weight: 700 900;
 }
 @font-face {
-  font-family: "WyrCondensedFallbackRegular";
+  font-family: "WyrCondensedFallback";
   src: local("Arial");
   ascent-override: 108.7%;
   descent-override: 28.6%;
@@ -68,8 +68,7 @@
   color: var(--ink);
   font:
     400 calc(var(--home-unit) * 14)/1.3 WyrCondensed,
-    WyrCondensedFallbackBold,
-    WyrCondensedFallbackRegular,
+    WyrCondensedFallback,
     Arial,
     sans-serif;
 }
@@ -1814,8 +1813,7 @@
   padding: 40px clamp(16px, 4vw, 50px);
   font:
     400 16px/1.5 WyrCondensed,
-    WyrCondensedFallbackBold,
-    WyrCondensedFallbackRegular,
+    WyrCondensedFallback,
     Arial,
     sans-serif;
   color: var(--ink, #070d12);
@@ -1937,8 +1935,7 @@
   }
 }
 .home-main {
-  font-family:
-    WyrCondensed, WyrCondensedFallbackBold, WyrCondensedFallbackRegular, Arial, sans-serif;
+  font-family: WyrCondensed, WyrCondensedFallback, Arial, sans-serif;
 }
 .home-main > :is(section, nav):not(.illustrated-home) {
   width: 100%;
@@ -2354,8 +2351,7 @@
 .site-footer-illustrated {
   font:
     400 16px/1.5 WyrCondensed,
-    WyrCondensedFallbackBold,
-    WyrCondensedFallbackRegular,
+    WyrCondensedFallback,
     Arial,
     sans-serif;
   background: #fff2e4;
@@ -2382,8 +2378,7 @@
   margin-left: 0;
   font:
     600 clamp(14px, 1.1vw, 16px)/1.4 WyrCondensed,
-    WyrCondensedFallbackBold,
-    WyrCondensedFallbackRegular,
+    WyrCondensedFallback,
     Arial,
     sans-serif;
   gap: clamp(12px, 1.7vw, 24px);
@@ -2649,8 +2644,7 @@
 }
 .illustrated-home .home-live-experience h2,
 .illustrated-home .home-live-experience h3 {
-  font-family:
-    WyrCondensed, WyrCondensedFallbackBold, WyrCondensedFallbackRegular, Arial, sans-serif;
+  font-family: WyrCondensed, WyrCondensedFallback, Arial, sans-serif;
 }
 .illustrated-home .home-faq {
   padding-block: 28px 48px;

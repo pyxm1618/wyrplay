@@ -12,13 +12,6 @@ export const metadata: Metadata = rootMetadata();
 export default function MarketingLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <>
-      <link
-        rel="preload"
-        href="/home-fonts/roboto-condensed-bold.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin="anonymous"
-      />
       <SiteShell>{children}</SiteShell>
       <AnalyticsBoundary />
     </>
