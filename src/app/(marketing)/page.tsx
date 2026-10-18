@@ -53,13 +53,6 @@ export default async function HomePage() {
 
   return (
     <main className="home-main">
-      <link
-        rel="preload"
-        href="/home-fonts/roboto-condensed-bold.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin="anonymous"
-      />
       {isAdSenseRuntimeEnabled() && <AdSenseSiteCode />}
       <JsonLd
         value={websiteJsonLd({

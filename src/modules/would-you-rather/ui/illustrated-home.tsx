@@ -287,7 +287,7 @@ export function IllustratedHome({
                 aria-hidden="true"
                 width={1662}
                 height={887}
-                sizes="(max-width: 600px) min(290px, 76vw), (max-width: 1240px) 42.42vw, 528px"
+                sizes="(max-width: 600px) min(290px, 76vw), (min-width: 1024px) and (max-height: 1100px) min(400px, 24vh), (max-width: 1240px) 42.42vw, 528px"
                 quality={70}
                 priority
                 fetchPriority="high"
