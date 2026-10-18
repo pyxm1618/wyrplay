@@ -182,3 +182,193 @@ test("other internal navigations remain SPA-based without document reload", asyn
 
   expect(documentRequests).toEqual([]);
 });
+
+test("AdSense site code gates ad serving on Advertising consent via pauseAdRequests", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
+  // Without consent signal, AdSense ad serving must be paused (fail-closed)
+  await expect
+    .poll(
+      async () =>
+        await page.evaluate(
+          () =>
+            (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
+        ),
+    )
+    .toBe(1);
+
+  // When Advertising consent signal is granted by official CMP
+  await page.evaluate(() => {
+    window.googlefc = window.googlefc || {};
+    window.googlefc.ConsentModePurposeStatusEnum = {
+      UNKNOWN: 0,
+      GRANTED: 1,
+      DENIED: 2,
+      NOT_APPLICABLE: 3,
+      NOT_CONFIGURED: 4,
+    };
+    window.googlefc.getGoogleConsentModeValues = () => ({
+      adStoragePurposeConsentStatus: 1,
+      adUserDataPurposeConsentStatus: 1,
+      adPersonalizationPurposeConsentStatus: 1,
+      analyticsStoragePurposeConsentStatus: 2,
+    });
+    const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
+    for (const item of queue) {
+      if (item && typeof item === "object" && "CONSENT_MODE_DATA_READY" in item) {
+        (item as { CONSENT_MODE_DATA_READY: () => void }).CONSENT_MODE_DATA_READY();
+      }
+    }
+  });
+
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
+      ),
+    )
+    .toBe(0);
+
+  // When Advertising consent is withdrawn
+  await page.evaluate(() => {
+    window.googlefc!.getGoogleConsentModeValues = () => ({
+      adStoragePurposeConsentStatus: 2,
+      adUserDataPurposeConsentStatus: 2,
+      adPersonalizationPurposeConsentStatus: 2,
+      analyticsStoragePurposeConsentStatus: 2,
+    });
+    const queue = window.googlefc!.callbackQueue as Array<{
+      CONSENT_MODE_DATA_READY?: () => void;
+    }>;
+    for (const item of queue) {
+      item?.CONSENT_MODE_DATA_READY?.();
+    }
+  });
+
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
+      ),
+    )
+    .toBe(1);
+});
+
+test("Kids page AdSense site code gates ad serving on Advertising consent via pauseAdRequests", async ({
+  page,
+}) => {
+  await page.goto("/would-you-rather-questions-for-kids");
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
+  await expect
+    .poll(
+      async () =>
+        await page.evaluate(
+          () =>
+            (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
+        ),
+    )
+    .toBe(1);
+
+  await page.evaluate(() => {
+    window.googlefc = window.googlefc || {};
+    window.googlefc.ConsentModePurposeStatusEnum = {
+      UNKNOWN: 0,
+      GRANTED: 1,
+      DENIED: 2,
+      NOT_APPLICABLE: 3,
+      NOT_CONFIGURED: 4,
+    };
+    window.googlefc.getGoogleConsentModeValues = () => ({
+      adStoragePurposeConsentStatus: 1,
+      adUserDataPurposeConsentStatus: 1,
+      adPersonalizationPurposeConsentStatus: 1,
+      analyticsStoragePurposeConsentStatus: 2,
+    });
+    const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
+    for (const item of queue) {
+      if (item && typeof item === "object" && "CONSENT_MODE_DATA_READY" in item) {
+        (item as { CONSENT_MODE_DATA_READY: () => void }).CONSENT_MODE_DATA_READY();
+      }
+    }
+  });
+
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
+      ),
+    )
+    .toBe(0);
+});
+
+test("AdSense pauseAdRequests accurately reflects all Consent Mode purpose states (GRANTED, NOT_APPLICABLE, NOT_CONFIGURED, DENIED, UNKNOWN)", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
+  // Default fail-closed: pauseAdRequests = 1
+  await expect
+    .poll(async () =>
+      page.evaluate(
+        () => (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
+      ),
+    )
+    .toBe(1);
+
+  const updateConsent = async (values: {
+    adStorage: number;
+    adUserData: number;
+    adPersonalization: number;
+    analyticsStorage: number;
+  }) => {
+    await page.evaluate((v) => {
+      window.googlefc = window.googlefc || {};
+      window.googlefc.ConsentModePurposeStatusEnum = {
+        UNKNOWN: 0,
+        GRANTED: 1,
+        DENIED: 2,
+        NOT_APPLICABLE: 3,
+        NOT_CONFIGURED: 4,
+      };
+      window.googlefc.getGoogleConsentModeValues = () => ({
+        adStoragePurposeConsentStatus: v.adStorage,
+        adUserDataPurposeConsentStatus: v.adUserData,
+        adPersonalizationPurposeConsentStatus: v.adPersonalization,
+        analyticsStoragePurposeConsentStatus: v.analyticsStorage,
+      });
+      const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
+      for (const item of queue) {
+        if (item && typeof item === "object" && "CONSENT_MODE_DATA_READY" in item) {
+          (item as { CONSENT_MODE_DATA_READY: () => void }).CONSENT_MODE_DATA_READY();
+        }
+      }
+    }, values);
+  };
+
+  const getPauseState = () =>
+    page.evaluate(
+      () => (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
+    );
+
+  // 1. all GRANTED -> allow (pause = 0)
+  await updateConsent({ adStorage: 1, adUserData: 1, adPersonalization: 1, analyticsStorage: 1 });
+  await expect.poll(getPauseState).toBe(0);
+
+  // 2. all NOT_APPLICABLE -> allow (pause = 0)
+  await updateConsent({ adStorage: 3, adUserData: 3, adPersonalization: 3, analyticsStorage: 3 });
+  await expect.poll(getPauseState).toBe(0);
+
+  // 3. relevant NOT_CONFIGURED -> allow (pause = 0)
+  await updateConsent({ adStorage: 1, adUserData: 4, adPersonalization: 4, analyticsStorage: 2 });
+  await expect.poll(getPauseState).toBe(0);
+
+  // 4. any DENIED -> deny (pause = 1)
+  await updateConsent({ adStorage: 1, adUserData: 2, adPersonalization: 1, analyticsStorage: 1 });
+  await expect.poll(getPauseState).toBe(1);
+
+  // 5. any UNKNOWN -> deny (pause = 1)
+  await updateConsent({ adStorage: 1, adUserData: 1, adPersonalization: 0, analyticsStorage: 1 });
+  await expect.poll(getPauseState).toBe(1);
+});

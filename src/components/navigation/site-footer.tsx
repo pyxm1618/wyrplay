@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { PrivacySettingsButton } from "./privacy-settings-button";
 import { SiteBrand } from "./site-brand";
 
 import { navigationConfig } from "@/config/navigation.config";
@@ -8,9 +9,11 @@ import { siteConfig } from "@/config/site.config";
 function FooterColumn({
   title,
   links,
+  extra,
 }: Readonly<{
   title: string;
   links: readonly { readonly label: string; readonly href: string }[];
+  extra?: React.ReactNode;
 }>) {
   return (
     <section>
@@ -34,6 +37,7 @@ function FooterColumn({
             </li>
           );
         })}
+        {extra}
       </ul>
     </section>
   );
@@ -64,7 +68,11 @@ export function SiteFooter() {
         <FooterColumn title="Explore" links={navigationConfig.footer.explore} />
         <FooterColumn title="Question Categories" links={categoryLinks} />
         <FooterColumn title="Support" links={navigationConfig.footer.support} />
-        <FooterColumn title="Legal" links={navigationConfig.footer.legal} />
+        <FooterColumn
+          title="Legal"
+          links={navigationConfig.footer.legal}
+          extra={<PrivacySettingsButton />}
+        />
       </div>
     </footer>
   );
