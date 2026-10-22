@@ -35,7 +35,7 @@ bun run verify:browser
 
 浏览器验证覆盖 778、1280、390px，真实字体渲染、图片加载、弹窗、键盘关闭、本地搜索、创建预览、无横向溢出和零 API 请求，并检查 DPR 2 的 Logo、灯泡边缘及深浅底透明度。每次默认验证写入新的 `evidence/browser-check-*` 目录，保留历史记录。
 
-原图测量、标注、逐轮截图、DOM 采集、几何报告和素材来源保存于 `evidence/`。最终校准证据见 `evidence/round-07/`，实际截图见 `evidence/round-07/candidate.png`。
+原图测量数据、DOM 采集、几何报告和素材来源继续保存在 `evidence/`。为控制仓库体积，历史 `round-*` / `viewports` / measurement annotation 二进制截图不再保留在 Git 中；如需复核，可重新运行浏览器验证生成。
 
 ## 视觉差异
 

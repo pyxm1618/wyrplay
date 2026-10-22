@@ -30,7 +30,7 @@ bun run verify:browser -- round-04
 
 参考图为 868 × 1812px。校准基线为 868 × 900 CSS 视口、DPR 1、完整长页截图。390 / 768 / 1280px 为另行设计的响应式延展，参考图没有提供这些设备的布局。
 
-`evidence/regions.json`、`measurement-01/` 保存测量基线；`round-01` 至 `round-04` 保存迭代截图、真实浏览器采集和偏差报告。`assets.json` 保存每件图片的裁切坐标、来源和覆盖台账。
+`evidence/regions.json`、measurement JSON 保存测量基线；`round-01` 至 `round-04` 保留真实浏览器采集元数据和偏差报告。为控制仓库体积，生成的 candidate/viewport/annotation 二进制截图不再保留在 Git 中，可通过验证脚本重新生成。`assets.json` 保存每件图片的裁切坐标、来源和覆盖台账。
 
 Logo、人物、奖杯、灯泡、题目插画和边缘装饰来自原稿裁切。奖牌通过边缘连通背景分离获得 alpha；底部奖杯使用人工轮廓蒙版。它们不是原始矢量素材，也没有经 AI 高清重绘。高 DPR 或放大显示的素材锐度仍受参考图分辨率限制。
 

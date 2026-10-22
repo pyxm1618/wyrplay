@@ -17,7 +17,7 @@ The current workspace reuses the existing home prototype's dependencies through 
 
 ## Scope
 
-Both supplied 1024×1536 screenshots are the visual baselines at a 1024 CSS px viewport, DPR 1. The screenshots are desktop long-page compositions. Layout, copy, controls, ordinary icons, crown and speech text are editable HTML/CSS/SVG. Logo, characters, decorative clouds, and benefit illustrations are independent reference crops. No entire screenshot is used as the page background. Masking removes screenshot UI from the character assets. Original crops and subsequent versions are retained for evidence.
+Both supplied 1024×1536 screenshots are the visual baselines at a 1024 CSS px viewport, DPR 1. The screenshots are desktop long-page compositions. Layout, copy, controls, ordinary icons, crown and speech text are editable HTML/CSS/SVG. Logo, characters, decorative clouds, and benefit illustrations are independent reference crops. No entire screenshot is used as the page background. Masking removes screenshot UI from the character assets. Source crops and provenance ledgers are retained; generated round/viewport/annotation screenshots are not retained in Git and can be regenerated.
 
 No backend, login provider, email sender, account creation or persistence is connected. Google displays the preview boundary. Magic Link validates a local email input and explicitly says no email was sent. Search filters three hardcoded demo questions. Main navigation explains the standalone scope. Registration/sign-in links open the corresponding pages. Dialogs support close, Escape and keyboard focus.
 
@@ -25,7 +25,7 @@ No backend, login provider, email sender, account creation or persistence is con
 
 Final `bun run verify` passed typecheck, lint, and production static build. `bun run verify:browser round-04` passed both routes, image loading, actual Chewy heading-font rendering, demo forms and dialogs, local search and empty results, route switching, and widths 390 / 700 / 1280 in addition to the 1024 screenshot baseline. No runtime errors, failed resources, or API/XHR/fetch requests were observed.
 
-The draw-ui measurement and capture scripts produced geometry reports and image comparisons under `evidence/{login,signup}/round-04/report/`. Both card containers match the measured baseline. This verifies geometry and capture conditions, not an exact font match or zero visual differences. Earlier rounds are intermediate results; browser round 01 failed while attempting to close a native search input with one Escape, and round 02 failed on Next client navigation requests aborted during route switching. The final page uses ordinary static links and explicit dialog closure; round 04 passes.
+The draw-ui measurement and capture scripts produced geometry reports and browser metadata under `evidence/{login,signup}/round-04/report/`. Generated candidate/viewport images have been pruned from Git to keep the repository lean; the reports remain reproducible. Both card containers match the measured baseline. This verifies geometry and capture conditions, not an exact font match or zero visual differences. Earlier rounds are intermediate results; browser round 01 failed while attempting to close a native search input with one Escape, and round 02 failed on Next client navigation requests aborted during route switching. The final page uses ordinary static links and explicit dialog closure; round 04 passes.
 
 ## Fidelity limits and assets
 
