@@ -40,6 +40,7 @@
     {
       "binding": "HYPERDRIVE",
       "id": "44fb429f825b4b13913280af4c6b7539",
+      "localConnectionString": "postgres://postgres:postgres@localhost:5432/creat_web_local",
     },
   ],
   "r2_buckets": [
