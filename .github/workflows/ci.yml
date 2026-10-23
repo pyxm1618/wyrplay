@@ -228,7 +228,8 @@ jobs:
       - name: Build for Cloudflare
         run: bun run build:cloudflare
       - name: Verify Hyperdrive platform proxy
-        run: bun -e 'import { getPlatformProxy } from "wrangler"; const proxy = await getPlatformProxy({ envFiles: [] }); await proxy.dispose();'
+        run: |
+          bun -e 'import { getPlatformProxy } from "wrangler"; const proxy = await getPlatformProxy({ envFiles: [] }); await proxy.dispose();'
 
   deploy:
     name: Production Deploy
