@@ -87,6 +87,93 @@ test("official Google Privacy & messaging CMP signal enables GA4 and Clarity", a
   await expect(page.locator("#creat-web-clarity")).toHaveCount(1);
 });
 
+test("Kids enables GA4 only after analytics consent and never loads Clarity", async ({ page }) => {
+  const ga4Requests: string[] = [];
+  const clarityRequests: string[] = [];
+  await page.route("**/*", async (route) => {
+    const url = new URL(route.request().url());
+    const isGa4 =
+      (url.hostname === "www.googletagmanager.com" && url.pathname === "/gtag/js") ||
+      url.hostname === "www.google-analytics.com" ||
+      url.hostname === "region1.google-analytics.com";
+    const isClarity = url.hostname === "www.clarity.ms" || url.hostname.endsWith(".clarity.ms");
+    if (isGa4) ga4Requests.push(url.href);
+    if (isClarity) clarityRequests.push(url.href);
+    if (isGa4 || isClarity) {
+      await route.abort();
+      return;
+    }
+    await route.continue();
+  });
+
+  await page.goto("/would-you-rather-questions-for-kids");
+  await expect(page.locator("#creat-web-ga4")).toHaveCount(0);
+  await expect(page.locator("#creat-web-clarity")).toHaveCount(0);
+  expect(ga4Requests).toEqual([]);
+  expect(clarityRequests).toEqual([]);
+
+  await page.evaluate(() => {
+    window.googlefc = window.googlefc || {};
+    window.googlefc.ConsentModePurposeStatusEnum = {
+      UNKNOWN: 0,
+      GRANTED: 1,
+      DENIED: 2,
+      NOT_APPLICABLE: 3,
+      NOT_CONFIGURED: 4,
+    };
+    window.googlefc.getGoogleConsentModeValues = () => ({
+      analyticsStoragePurposeConsentStatus: 1,
+      adStoragePurposeConsentStatus: 1,
+      adUserDataPurposeConsentStatus: 1,
+      adPersonalizationPurposeConsentStatus: 1,
+    });
+    const queue = (window.googlefc.callbackQueue = window.googlefc.callbackQueue || []);
+    for (const item of queue) {
+      if (item && typeof item === "object" && "CONSENT_MODE_DATA_READY" in item) {
+        (item as { CONSENT_MODE_DATA_READY: () => void }).CONSENT_MODE_DATA_READY();
+      }
+    }
+  });
+
+  await expect(page.locator("#creat-web-ga4")).toHaveCount(1);
+  await expect(page.locator("#creat-web-clarity")).toHaveCount(0);
+  await expect.poll(() => ga4Requests.length).toBeGreaterThan(0);
+  expect(clarityRequests).toEqual([]);
+
+  const ga4Config = await page.evaluate(() => {
+    for (const entry of window.dataLayer ?? []) {
+      const args = Array.from(entry as ArrayLike<unknown>);
+      if (args[0] === "config") return args[2] as Record<string, unknown>;
+    }
+    return null;
+  });
+  expect(ga4Config).toMatchObject({
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+  });
+
+  await page.evaluate(() => {
+    document.cookie = "_ga=kids-withdrawal-check; Path=/; SameSite=Lax";
+    window.googlefc!.getGoogleConsentModeValues = () => ({
+      analyticsStoragePurposeConsentStatus: 2,
+      adStoragePurposeConsentStatus: 2,
+      adUserDataPurposeConsentStatus: 2,
+      adPersonalizationPurposeConsentStatus: 2,
+    });
+    const queue = window.googlefc!.callbackQueue as Array<{
+      CONSENT_MODE_DATA_READY?: () => void;
+    }>;
+    for (const item of queue) item?.CONSENT_MODE_DATA_READY?.();
+  });
+
+  await expect(page.locator("#creat-web-ga4")).toHaveCount(0);
+  await expect(page.locator("#creat-web-clarity")).toHaveCount(0);
+  await expect
+    .poll(() => page.evaluate(() => document.cookie.includes("_ga=kids-withdrawal-check")))
+    .toBe(false);
+  expect(clarityRequests).toEqual([]);
+});
+
 test("granted analytics can be withdrawn via CMP and ceases tracking while cleaning up injected scripts", async ({
   page,
 }) => {

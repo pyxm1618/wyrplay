@@ -3,7 +3,7 @@ import { env } from "@/platform/config/env";
 
 import { AnalyticsClient } from "./analytics-client";
 
-export function AnalyticsBoundary() {
+export function AnalyticsBoundary({ clarity = true }: Readonly<{ clarity?: boolean }>) {
   if (!featuresConfig.analytics.enabled) return null;
 
   return (
@@ -12,7 +12,7 @@ export function AnalyticsBoundary() {
       {...(featuresConfig.analytics.ga4 && env.ga4MeasurementId
         ? { ga4MeasurementId: env.ga4MeasurementId }
         : {})}
-      {...(featuresConfig.analytics.clarity && env.clarityProjectId
+      {...(featuresConfig.analytics.clarity && clarity && env.clarityProjectId
         ? { clarityProjectId: env.clarityProjectId }
         : {})}
     />

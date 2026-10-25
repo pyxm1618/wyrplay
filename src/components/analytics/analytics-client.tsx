@@ -144,13 +144,7 @@ export function AnalyticsClient({
   const consentResolved = useSyncExternalStore(subscribeConsent, isConsentResolved, () => false);
   const consent: ConsentState = consentRequired ? consentSnapshot.analytics : "granted";
   const pathname = usePathname();
-  const childDirected = pathname === "/would-you-rather-questions-for-kids";
-
   useEffect(() => {
-    if (childDirected) {
-      stopAnalytics();
-      return;
-    }
     // A fail-closed initial snapshot is not a CMP decision to withdraw consent.
     if (consentRequired && !consentResolved) return;
     if (consent !== "granted") {
@@ -173,17 +167,10 @@ export function AnalyticsClient({
     if (clarityProjectId) startClarity(clarityProjectId);
 
     return () => stopAnalytics(false);
-  }, [
-    childDirected,
-    clarityProjectId,
-    consent,
-    consentRequired,
-    consentResolved,
-    ga4MeasurementId,
-  ]);
+  }, [clarityProjectId, consent, consentRequired, consentResolved, ga4MeasurementId]);
 
   useEffect(() => {
-    if (childDirected || (consentRequired && !consentResolved) || consent !== "granted") return;
+    if ((consentRequired && !consentResolved) || consent !== "granted") return;
 
     if (
       !isAnalyticsLocationSafe({
@@ -204,7 +191,7 @@ export function AnalyticsClient({
         },
       }),
     );
-  }, [childDirected, consent, consentRequired, consentResolved, pathname]);
+  }, [consent, consentRequired, consentResolved, pathname]);
 
   return null;
 }
