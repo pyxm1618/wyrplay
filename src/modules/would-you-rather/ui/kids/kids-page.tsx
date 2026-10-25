@@ -195,7 +195,7 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
           <KidsArenaEdge side="right" />
           <div className="kids-arena-heading">
             <div className="kids-eyebrow">
-              Clean Children&apos;s Would You Rather Deck
+              Clean &amp; Kid-Friendly Questions
               <KidsBurst />
             </div>
             <h2 id="kids-arena-title">Play Would You Rather Questions for Kids</h2>
