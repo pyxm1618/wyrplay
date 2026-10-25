@@ -27,9 +27,9 @@ for (const format of ["cards", "sheet"] as const) {
         (await page.locator(".print-preview header p").textContent())?.match(/of (\d+)/)?.[1],
       );
       expect(expectedPages).toBeGreaterThan(1);
-      await expect(page.locator(".print-document .print-page-sheet")).toHaveCount(expectedPages);
+      await expect(page.locator(".print-document")).toHaveCount(0);
 
-      // 点击 Print 之前，Browser Print DOM 中尚未预生成 QR
+      // 点击 Print 之前，Browser Print DOM 尚未挂载，因此也没有预生成 QR
       expect(await page.locator('.print-document img[alt="Play this set QR code"]').count()).toBe(
         0,
       );
@@ -41,6 +41,7 @@ for (const format of ["cards", "sheet"] as const) {
           page.evaluate(() => (window as unknown as { __printCalled?: boolean }).__printCalled),
         )
         .toBe(true);
+      await expect(page.locator(".print-document .print-page-sheet")).toHaveCount(expectedPages);
 
       const qr = page.locator('.print-document img[alt="Play this set QR code"]').first();
       const url = new URL((await qr.getAttribute("data-play-url"))!);

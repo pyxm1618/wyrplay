@@ -79,8 +79,12 @@ test("real A/B writes, switching does not add a vote, keyboard, Next, Random and
     const response = page.waitForResponse(
       (r) => r.url().endsWith("/api/wyr/vote") && r.request().method() === "POST",
     );
-    if (keyboard) await page.keyboard.press(option.toLowerCase());
-    else await page.getByRole("button", { name: `Choose option ${option}`, exact: true }).click();
+    if (keyboard) {
+      await page.getByRole("button", { name: "Choose option A", exact: true }).focus();
+      await page.keyboard.press(option.toLowerCase());
+    } else {
+      await page.getByRole("button", { name: `Choose option ${option}`, exact: true }).click();
+    }
     const result = await response;
     expect(result.ok()).toBeTruthy();
     const body = await result.json();

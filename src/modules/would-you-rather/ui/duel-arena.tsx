@@ -45,6 +45,7 @@ export function DuelArena({
   const [errorQuestionId, setErrorQuestionId] = useState<string | null>(null);
   const [refreshCount, setRefreshCount] = useState(0);
   const activeRequestIdRef = useRef(0);
+  const arenaRef = useRef<HTMLElement | null>(null);
 
   // 单张轻量预取下一题优化插画（动态对齐当前已渲染插画的真实尺寸参数，防止不同 DPR/viewport 导致缓存未命中与重复下载）
   useEffect(() => {
@@ -171,13 +172,16 @@ export function DuelArena({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!keyboardEnabled) return;
       const target = e.target as HTMLElement | null;
-      if (!document.getElementById("play")?.contains(target)) return;
-      if (
-        appearance === "illustrated-kids" &&
-        (target?.closest("a,summary") ||
-          (target?.closest("button") && !target.closest(".kids-choice")))
-      )
+      if (appearance === "illustrated-kids") {
+        if (
+          !document.getElementById("play")?.contains(target) ||
+          target?.closest("a,summary") ||
+          (target?.closest("button") && !target.closest(".kids-choice"))
+        )
+          return;
+      } else if (!arenaRef.current?.contains(target)) {
         return;
+      }
       if (document.querySelector(".presenter-page")) return;
       if (
         e.target instanceof HTMLInputElement ||
@@ -275,7 +279,13 @@ export function DuelArena({
   if (appearance === "illustrated-home") {
     const hasVisual = hasQuestionVisual(question.id);
     return (
-      <section id="play" tabIndex={-1} className="home-hero-arena" aria-labelledby="hero-question">
+      <section
+        ref={arenaRef}
+        id="play"
+        tabIndex={-1}
+        className="home-hero-arena"
+        aria-labelledby="hero-question"
+      >
         <h2 id="hero-question">{question.question}</h2>
         <div className="choice-grid">
           {(["A", "B"] as const).map((option) => (
@@ -384,7 +394,7 @@ export function DuelArena({
       </>
     );
     return (
-      <section id="play" className="illustrated-arena">
+      <section ref={arenaRef} id="play" className="illustrated-arena">
         <PlayHeading question={question.question} />
         {currentErrorMessage && (
           <p className="play-error" role="alert">
@@ -405,6 +415,7 @@ export function DuelArena({
 
   return (
     <section
+      ref={arenaRef}
       id="play"
       tabIndex={-1}
       className="relative mx-auto w-full max-w-5xl px-4 py-8 outline-none sm:px-6"
