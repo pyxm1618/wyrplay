@@ -5,12 +5,14 @@ import { connection } from "next/server";
 import { KidsPage, getQuestionsByCollection } from "@/modules/would-you-rather";
 import "./kids.css";
 
+import { AdSenseSiteCode } from "@/components/advertising/adsense-site-code";
 import { LandingPage } from "@/components/landing/landing-page";
 import { JsonLd } from "@/components/seo/json-ld";
 import { localeBundle } from "@/config/locales.config";
 import { routeRegistry } from "@/config/routes.config";
 import { seoLandingForRoute } from "@/config/seo-landings.config";
 import { siteConfig } from "@/config/site.config";
+import { isAdSenseRuntimeEnabled } from "@/platform/advertising/adsense-routes";
 import { localizeLandingSections } from "@/platform/i18n/landing-sections";
 import { isSupportedLocale, localePath } from "@/platform/i18n/routing";
 import { currentSeoEnvironment } from "@/platform/seo/environment-policy";
@@ -102,7 +104,7 @@ export default async function SegmentPage({ params }: SegmentPageProps) {
       <JsonLd value={structuredData} />
       {route === "/would-you-rather-questions-for-kids" ? (
         <>
-          {/* Auto Ads has no verified TFAT bootstrap in this integration. Keep Kids ad-free until configured. */}
+          {isAdSenseRuntimeEnabled() && <AdSenseSiteCode />}
           <KidsPage questions={getQuestionsByCollection("kids")} />
         </>
       ) : (
