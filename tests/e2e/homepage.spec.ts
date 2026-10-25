@@ -121,7 +121,7 @@ for (const [width, height] of homeViewports) {
       /brand\/logo.svg/,
     );
     await expect(page.locator("h1 image")).toHaveCount(0);
-    await expect(page.getByRole("button", { name: "Toggle theme" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Toggle theme" })).toHaveCount(0);
     await expect(page.getByText("Crafted for Genuine Social Play")).toHaveCount(0);
     for (const href of [
       "/would-you-rather-questions-for-kids",
@@ -225,14 +225,17 @@ test("homepage stays warm under a saved dark preference without changing other p
   await page.emulateMedia({ colorScheme: "dark" });
   await page.addInitScript(() => localStorage.setItem("wyr-theme", "dark"));
   await page.goto("/");
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  expect(await page.evaluate(() => localStorage.getItem("wyr-theme"))).toBe("dark");
   const background = await page
     .locator(".illustrated-home")
     .first()
     .evaluate((element) => getComputedStyle(element).backgroundColor);
   expect(background).toBe("rgb(255, 249, 240)");
-  await expect(page.getByRole("button", { name: "Toggle theme" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Toggle theme" })).toHaveCount(0);
   await page.goto("/funny-would-you-rather-questions");
   await expect(page.getByRole("button", { name: "Toggle theme" })).toBeVisible();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 });
 
 test("a first vote before the initial read finishes keeps its anonymous identity", async ({

@@ -233,7 +233,7 @@ test("Finder completes age/tone, save/unsave, selected pool, restore and mobile 
   );
   await page.getByRole("button", { name: "Clear all", exact: true }).click();
   const filterButtons = page.locator(".filter-options button");
-  await expect(filterButtons).toHaveCount(19);
+  await expect(filterButtons).toHaveCount(22);
   for (let index = 0; index < (await filterButtons.count()); index++) {
     await filterButtons.nth(index).click();
     await expect(filterButtons.nth(index)).toHaveAttribute("aria-pressed", "true");

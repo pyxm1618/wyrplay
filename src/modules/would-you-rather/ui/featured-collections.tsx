@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { DocumentBoundaryLink as Link } from "@/components/navigation/document-boundary-link";
 import { FEATURED_COLLECTIONS, getQuestionsByCollection } from "../data/questions";
 import type { FeaturedCollectionKey } from "../types";
 

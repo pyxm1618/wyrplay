@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { DocumentBoundaryLink as Link } from "@/components/navigation/document-boundary-link";
 import type { ReactNode } from "react";
 
 import {
@@ -124,7 +124,7 @@ const grid = "mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3";
 
 function HeroSection(props: Extract<LandingSection, { type: "hero" }>) {
   if (props.presentation === "full-bleed" && props.surface)
-    return <div className="illustrated-home homepage">{props.surface}</div>;
+    return <div className="illustrated-home homepage homepage-brand-theme">{props.surface}</div>;
   return (
     <section className="border-b border-border bg-surface-muted" aria-labelledby="page-title">
       <div className={`${container} py-20 sm:py-28`}>
@@ -165,7 +165,10 @@ function HeroSection(props: Extract<LandingSection, { type: "hero" }>) {
 
 function ToolDemoSection(props: Extract<LandingSection, { type: "tool-demo" }>) {
   return (
-    <section className="illustrated-home homepage" aria-labelledby="tool-demo-title">
+    <section
+      className="illustrated-home homepage homepage-brand-theme"
+      aria-labelledby="tool-demo-title"
+    >
       {props.surface}
     </section>
   );

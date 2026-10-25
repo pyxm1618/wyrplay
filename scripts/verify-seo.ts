@@ -1,4 +1,10 @@
 import "./verify-indexnow";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { ImageConfigContext } from "next/dist/shared/lib/image-config-context.shared-runtime";
+import { imageConfigDefault } from "next/dist/shared/lib/image-config";
+import nextConfig from "../next.config";
+import { KidsPage, getQuestionsByCollection } from "@/modules/would-you-rather";
 
 import type { LandingSection } from "@/components/landing/landing-page";
 import { homeConfig } from "@/config/home.config";
@@ -67,14 +73,41 @@ for (const route of indexable) {
 
   const sections = contentByRoute.get(route.route);
   if (!sections) throw new Error(`missing landing content for indexable route: ${route.route}`);
-  const heroes = sections.filter((section) => section.enabled !== false && section.type === "hero");
-  if (heroes.length !== 1) {
-    throw new Error(`indexable route must render exactly one primary hero/H1: ${route.route}`);
+  let links: { label: string; href: string }[];
+  if (route.route === "/would-you-rather-questions-for-kids") {
+    const html = renderToStaticMarkup(
+      createElement(
+        ImageConfigContext.Provider,
+        { value: { ...imageConfigDefault, ...nextConfig.images } },
+        createElement(KidsPage, { questions: getQuestionsByCollection("kids") }),
+      ),
+    );
+    const headings = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)];
+    const text = (markup: string) =>
+      markup
+        .replace(/<[^>]+>/g, " ")
+        .replace(/&nbsp;/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    if (headings.length !== 1 || text(headings[0]![1]!) !== route.h1.trim())
+      throw new Error(`route/H1 content drift: ${route.route}`);
+    links = [...html.matchAll(/<a\b[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/g)].map((match) => ({
+      href: match[1]!,
+      label: text(match[2]!),
+    }));
+  } else {
+    const heroes = sections.filter(
+      (section) => section.enabled !== false && section.type === "hero",
+    );
+    if (heroes.length !== 1)
+      throw new Error(`indexable route must render exactly one primary hero/H1: ${route.route}`);
+    const hero = heroes[0]! as Extract<LandingSection, { type: "hero" }>;
+    if (hero.h1.trim() !== route.h1.trim())
+      throw new Error(`route/H1 content drift: ${route.route}`);
+    links = internalLinks(sections);
   }
-  const hero = heroes[0]! as Extract<LandingSection, { type: "hero" }>;
-  if (hero.h1.trim() !== route.h1.trim()) throw new Error(`route/H1 content drift: ${route.route}`);
 
-  for (const link of internalLinks(sections)) {
+  for (const link of links) {
     if (GENERIC_ANCHOR.test(link.label.trim())) {
       throw new Error(`generic internal anchor: ${route.route} -> ${link.href}`);
     }

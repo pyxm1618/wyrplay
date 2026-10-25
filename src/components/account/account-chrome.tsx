@@ -1,6 +1,6 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- Authenticated avatar and existing local artwork. */
-import Link from "next/link";
+import { DocumentBoundaryLink as Link } from "@/components/navigation/document-boundary-link";
 import { useEffect, useRef, useState } from "react";
 import { AccountBrand } from "./account-brand";
 import { AccountIcon } from "./account-icons";

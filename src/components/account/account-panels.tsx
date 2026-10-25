@@ -13,7 +13,7 @@ const categories = [
   ["👥 Friends", "friends"],
   ["🏔️ Nature", "nature"],
   ["🤖 Future", "future"],
-  ["🎮 Superpower", "superpower"],
+  ["🎮 Superpower", "superpowers"],
 ] as const;
 function poolUrl(path: string, questions: readonly Question[]) {
   return `${path}?${new URLSearchParams({ set: questions.map((q) => q.id).join(",") })}`;
@@ -43,7 +43,9 @@ export function SavedLibrary({
         .join(" ")
         .toLowerCase()
         .includes(search.trim().toLowerCase()) &&
-      (!category || [...q.topics, ...q.tones].includes(category)),
+      (!category ||
+        [...q.topics, ...q.tones, ...q.relationships].includes(category) ||
+        (category === "superpowers" && q.topics.includes("fantasy-superpowers"))),
   );
   const pages = Math.ceil(filtered.length / 10);
   const current = Math.min(page, Math.max(1, pages));

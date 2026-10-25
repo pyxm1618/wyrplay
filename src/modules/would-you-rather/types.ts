@@ -10,7 +10,15 @@ export type AgeGroup = "4-6" | "7-9" | "10-12" | "13-17" | "18+";
 export type Relationship = "friends" | "family" | "couples" | "coworkers";
 
 /** 使用场景标识 */
-export type Occasion = "classroom" | "party" | "road-trip" | "dinner" | "date-night";
+export type Occasion =
+  | "classroom"
+  | "party"
+  | "road-trip"
+  | "dinner"
+  | "date-night"
+  | "sleepover"
+  | "icebreakers"
+  | "birthday-party";
 
 /** 气氛基调标识 */
 export type Tone = "funny" | "weird" | "deep";

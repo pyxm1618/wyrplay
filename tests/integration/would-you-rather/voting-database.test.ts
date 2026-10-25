@@ -270,20 +270,24 @@ describe("WYR Real Anonymous Voting Database Integration", () => {
     expect(queried.selectedOption).toBe("B");
   });
 
+  it("allows a Kids-safe question to change A to B in a general experience", async () => {
+    const params = {
+      questionId: "test-001",
+      option: "A" as const,
+      anonymousVoterId: "general-kids-safe-voter",
+    };
+    const first = await recordVote(params, votingOptions);
+    expect(first.selectedOption).toBe("A");
+    const changed = await recordVote({ ...params, option: "B" }, votingOptions);
+    expect(changed.selectedOption).toBe("B");
+    expect(changed.total).toBe(first.total);
+    expect(changed.votesA).toBe(first.votesA - 1);
+    expect(changed.votesB).toBe(first.votesB + 1);
+  });
+
   it("uses aggregate-only voting for Kids questions without a reusable voter identifier", async () => {
     const questionId = "test-001";
     expect(usesAggregateOnlyVoting(questionId, TEST_FIXTURE_QUESTIONS)).toBe(true);
-
-    await expect(
-      recordVote(
-        {
-          questionId,
-          option: "A",
-          anonymousVoterId: "persistent-kids-voter",
-        },
-        votingOptions,
-      ),
-    ).rejects.toThrow(/requires aggregate-only voting/i);
 
     const before = await database.db
       .select()

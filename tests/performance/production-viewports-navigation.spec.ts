@@ -134,6 +134,8 @@ for (const vp of viewports) {
       // and all other subsequent navigations remain strictly client-side SPA.
       expect(documentRequests).toEqual([
         "GET http://127.0.0.1:3000/would-you-rather-questions-for-kids",
+        "GET http://127.0.0.1:3000/find-questions",
+        "GET http://127.0.0.1:3000/",
       ]);
       console.log(
         `[PROD-VP ${vp.name}] Successfully verified navigation chain with intentional Kids document request!`,

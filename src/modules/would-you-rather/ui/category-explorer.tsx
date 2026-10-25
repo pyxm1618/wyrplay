@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { DocumentBoundaryLink as Link } from "@/components/navigation/document-boundary-link";
 import { AUDIENCE_CATEGORIES, OCCASION_CATEGORIES, STYLE_CATEGORIES } from "../data/collections";
 
 export function CategoryExplorer() {
@@ -48,10 +48,15 @@ export function CategoryExplorer() {
                       </Link>
                     )
                   ) : (
-                    <span className="text-sm font-medium text-foreground">{item.name}</span>
+                    <Link
+                      href={`/find-questions?${new URLSearchParams({ [["teens", "adults"].includes(item.id) ? "age" : "relationship"]: item.id })}`}
+                      className="text-sm font-medium text-foreground"
+                    >
+                      {item.name} →
+                    </Link>
                   )}
-                  <span className="text-right text-[11px] text-muted">
-                    {item.description.slice(0, 32)}...
+                  <span className="line-clamp-2 text-right text-[11px] text-muted">
+                    {item.description}
                   </span>
                 </div>
               ))}
@@ -72,9 +77,14 @@ export function CategoryExplorer() {
             <div className="space-y-2.5">
               {OCCASION_CATEGORIES.map((item) => (
                 <div key={item.id} className="flex items-start justify-between gap-2">
-                  <span className="text-sm font-medium text-foreground">{item.name}</span>
-                  <span className="text-right text-[11px] text-muted">
-                    {item.description.slice(0, 32)}...
+                  <Link
+                    href={`/find-questions?${new URLSearchParams({ occasion: item.id === "icebreaker" ? "icebreakers" : item.id })}`}
+                    className="text-sm font-medium text-foreground"
+                  >
+                    {item.name} →
+                  </Link>
+                  <span className="line-clamp-2 text-right text-[11px] text-muted">
+                    {item.description}
                   </span>
                 </div>
               ))}
@@ -102,11 +112,18 @@ export function CategoryExplorer() {
                     >
                       {item.name} →
                     </Link>
-                  ) : (
+                  ) : item.id === "clean" ? (
                     <span className="text-sm font-medium text-foreground">{item.name}</span>
+                  ) : (
+                    <Link
+                      href={`/find-questions?${new URLSearchParams({ [item.id === "easy" ? "difficulty" : "tone"]: item.id })}`}
+                      className="text-sm font-medium text-foreground"
+                    >
+                      {item.name} →
+                    </Link>
                   )}
-                  <span className="text-right text-[11px] text-muted">
-                    {item.description.slice(0, 32)}...
+                  <span className="line-clamp-2 text-right text-[11px] text-muted">
+                    {item.description}
                   </span>
                 </div>
               ))}

@@ -68,6 +68,16 @@ describe("one-query leaderboard against PostgreSQL", () => {
     expect(snapshot.totalVotes).toBe(4);
     expect(snapshot.entries[0]).toMatchObject({ total: 3, month: 1, week: 2 });
   });
+  it("includes aggregate votes in counts but excludes per-vote tokens from identities", async () => {
+    const before = await getLeaderboardSnapshot({ db: database.db, questions, now });
+    await database.db.execute(
+      sql`insert into ${table} values (${crypto.randomUUID()},${q1.id},${`aggregate:${crypto.randomUUID()}`},'B',${now.toISOString()}::timestamptz,${now.toISOString()}::timestamptz)`,
+    );
+    const after = await getLeaderboardSnapshot({ db: database.db, questions, now });
+    expect(after.totalVotes).toBe(before.totalVotes + 1);
+    expect(after.entries[0]!.total).toBe(before.entries[0]!.total + 1);
+    expect(after.anonymousVoters).toBe(before.anonymousVoters);
+  });
   it("a successful aggregate with no matching votes is a confirmed zero, not an outage", async () => {
     const snapshot = await getLeaderboardSnapshot({ db: database.db, questions: [q3], now });
     expect(snapshot.totalVotes).toBe(0);

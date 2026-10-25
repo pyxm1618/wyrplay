@@ -320,3 +320,182 @@ test("analytics gating accurately handles all Consent Mode purpose states (GRANT
   await expect(page.locator("#creat-web-ga4")).toHaveCount(0);
   await expect(page.locator("#creat-web-clarity")).toHaveCount(0);
 });
+
+test("fresh non-ad entry preserves analytics cookies while CMP is unresolved", async ({
+  page,
+  context,
+}) => {
+  await context.addCookies([
+    { name: "_ga", value: "existing-consented-cookie", url: "http://127.0.0.1:3000" },
+  ]);
+  await page.goto("/questions");
+  await expect(page.locator("main")).toBeVisible();
+  await expect(page.locator("#creat-web-ga4, #creat-web-clarity")).toHaveCount(0);
+  expect((await context.cookies()).find((cookie) => cookie.name === "_ga")?.value).toBe(
+    "existing-consented-cookie",
+  );
+});
+
+test("existing Google consent remains usable on a non-ad route", async ({ page }) => {
+  await page.route("**/*", async (route) => {
+    if (isAnalytics(route.request().url())) await route.abort();
+    else await route.continue();
+  });
+  await page.addInitScript(() => {
+    window.googlefc = {
+      getGoogleConsentModeValues: () => ({
+        analyticsStoragePurposeConsentStatus: 1,
+        adStoragePurposeConsentStatus: 2,
+        adUserDataPurposeConsentStatus: 2,
+        adPersonalizationPurposeConsentStatus: 2,
+      }),
+      callbackQueue: [],
+    };
+  });
+  await page.goto("/questions");
+  await expect(page.locator("#creat-web-ga4")).toHaveCount(1);
+  await expect(page.locator("#creat-web-clarity")).toHaveCount(1);
+});
+
+test("withdrawal preserves queued Clarity stop for a late script and re-grant loads no duplicate", async ({
+  page,
+}) => {
+  let releaseClarity: () => void = () => {};
+  const clarityResponse = new Promise<void>((resolve) => {
+    releaseClarity = resolve;
+  });
+  let clarityRequests = 0;
+  await page.route("**/*", async (route) => {
+    const url = route.request().url();
+    if (url.startsWith("https://www.clarity.ms/tag/")) {
+      clarityRequests += 1;
+      await clarityResponse;
+      await route.fulfill({
+        contentType: "application/javascript",
+        // Model the official queue drain/stop/start contract, including denied's delayed restart.
+        body: `(() => {
+          window.__lateClarityQueue = (window.clarity?.q ?? []).map((command) => Array.from(command));
+          let active = false;
+          let consent = "granted";
+          const dispatch = (method, ...args) => {
+            if (method === "start") {
+              if (active) return;
+              active = window.__clarityRunning = true;
+              if (args[0]) window.__clarityProject = args[0].projectId;
+            } else if (method === "stop") {
+              active = window.__clarityRunning = false;
+              window.clarity = (...command) => {
+                const queue = window.clarity.q = window.clarity.q || [];
+                queue.push(command);
+                if (command[0] === "start") {
+                  queue.unshift(queue.pop());
+                  drain();
+                }
+              };
+            } else if (method === "consentv2" && active) {
+              const next = args[0].analytics_Storage;
+              if (next === "denied" && consent !== "denied") {
+                consent = next;
+                dispatch("stop");
+                setTimeout(() => {
+                  if (!active) { dispatch("start"); drain(); }
+                }, 0);
+              } else consent = next;
+            }
+          };
+          function drain() {
+            const queue = window.clarity?.q || [];
+            window.clarity = dispatch;
+            while (queue.length) window.clarity(...queue.shift());
+          }
+          drain();
+        })();`,
+      });
+    } else if (isAnalytics(url)) await route.abort();
+    else await route.continue();
+  });
+  await page.addInitScript(() => {
+    window.googlefc = {
+      getGoogleConsentModeValues: () => ({
+        analyticsStoragePurposeConsentStatus: 1,
+        adStoragePurposeConsentStatus: 2,
+        adUserDataPurposeConsentStatus: 2,
+        adPersonalizationPurposeConsentStatus: 2,
+      }),
+      callbackQueue: [],
+    };
+  });
+  try {
+    await page.goto("/questions");
+    await expect.poll(() => clarityRequests).toBe(1);
+    // The real tag places configured start first before loading the SDK bundle.
+    await page.evaluate(() => {
+      window.clarity!.q!.unshift(["start", { projectId: "pending-project" }]);
+    });
+    const updateConsent = async (status: number) => {
+      await page.evaluate((value) => {
+        window.googlefc!.getGoogleConsentModeValues = () => ({
+          analyticsStoragePurposeConsentStatus: value,
+          adStoragePurposeConsentStatus: 2,
+          adUserDataPurposeConsentStatus: 2,
+          adPersonalizationPurposeConsentStatus: 2,
+        });
+        for (const item of window.googlefc!.callbackQueue as Array<{
+          CONSENT_MODE_DATA_READY?: () => void;
+        }>)
+          item?.CONSENT_MODE_DATA_READY?.();
+      }, status);
+    };
+    await updateConsent(2);
+    await expect(page.locator("#creat-web-ga4, #creat-web-clarity")).toHaveCount(0);
+    // Official Clarity queue.process() reads window.clarity.q when the vendor arrives.
+    expect(await page.evaluate(() => window.clarity?.q?.map((command) => command[0]))).toContain(
+      "stop",
+    );
+    await updateConsent(1);
+    await expect
+      .poll(() =>
+        page.evaluate(
+          () =>
+            window.clarity?.q?.some((command) => command[0] === "start" && command.length === 2) &&
+            !window.clarity.q.some((command) => command[0] === "stop"),
+        ),
+      )
+      .toBe(true);
+    await updateConsent(2);
+    await expect
+      .poll(() => page.evaluate(() => window.clarity?.q?.some((command) => command[0] === "stop")))
+      .toBe(true);
+    releaseClarity();
+    await expect
+      .poll(() =>
+        page.evaluate(
+          () =>
+            (window as Window & { __lateClarityQueue?: unknown[][] }).__lateClarityQueue?.map(
+              (command) => command[0],
+            ) ?? [],
+        ),
+      )
+      .toContain("stop");
+    await expect
+      .poll(() =>
+        page.evaluate(() => (window as Window & { __clarityRunning?: boolean }).__clarityRunning),
+      )
+      .toBe(false);
+    expect(
+      await page.evaluate(
+        () => (window as Window & { __clarityProject?: string }).__clarityProject,
+      ),
+    ).toBe("pending-project");
+    await updateConsent(1);
+    await expect
+      .poll(() =>
+        page.evaluate(() => (window as Window & { __clarityRunning?: boolean }).__clarityRunning),
+      )
+      .toBe(true);
+    expect(clarityRequests).toBe(1);
+  } finally {
+    releaseClarity();
+    await page.unrouteAll({ behavior: "wait" });
+  }
+});

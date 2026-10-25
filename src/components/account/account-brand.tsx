@@ -1,5 +1,5 @@
+import { DocumentBoundaryLink as Link } from "@/components/navigation/document-boundary-link";
 import Image from "next/image";
-import Link from "next/link";
 /** Official homepage brand composition: vector icon and wordmark, never stretched artwork. */
 export function AccountBrand() {
   return (

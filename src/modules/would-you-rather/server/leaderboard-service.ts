@@ -48,7 +48,7 @@ export async function getLeaderboardSnapshot(
       count(*)::int as total,
       (count(*) filter (where ${wyrVotes.createdAt} >= ${starts.month.toISOString()}::timestamptz))::int as month,
       (count(*) filter (where ${wyrVotes.createdAt} >= ${starts.week.toISOString()}::timestamptz))::int as week,
-      count(distinct ${wyrVotes.anonymousVoterId})::int as voters
+      (count(distinct ${wyrVotes.anonymousVoterId}) filter (where ${wyrVotes.anonymousVoterId} not like 'aggregate:%'))::int as voters
     from ${wyrVotes}
     where ${inArray(wyrVotes.questionId, ids)}
       and ${wyrVotes.createdAt} <= ${now.toISOString()}::timestamptz

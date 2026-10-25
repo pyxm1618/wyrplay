@@ -34,6 +34,11 @@ describe("buildContentSecurityPolicy", () => {
     expect(csp).toContain("https://region1.google-analytics.com");
     expect(csp).toContain("https://www.clarity.ms");
     expect(csp).toContain("https://*.clarity.ms");
+    for (const directive of ["script-src", "connect-src", "img-src"]) {
+      const sources = csp.split("; ").find((part) => part.startsWith(`${directive} `));
+      expect(sources).toContain("https://*.clarity.ms");
+      if (directive !== "script-src") expect(sources).toContain("https://c.bing.com");
+    }
     expect(csp).toContain("https://challenges.cloudflare.com");
     expect(csp).toContain("'unsafe-eval'");
     expect(csp).not.toContain("upgrade-insecure-requests");

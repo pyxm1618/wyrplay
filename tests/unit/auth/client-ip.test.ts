@@ -9,15 +9,20 @@ describe("trusted client IP extraction", () => {
     expect(extractTrustedClientIp(headers, "production")).toBe("unknown");
   });
 
-  it("accepts the first platform-forwarded address when Vercel marks the request", () => {
+  it("accepts the Cloudflare client IP in production", () => {
     const headers = new Headers({
-      "x-vercel-id": "sin1::abc",
-      "x-forwarded-for": "198.51.100.4, 10.0.0.1",
+      "cf-connecting-ip": "198.51.100.4",
     });
     expect(extractTrustedClientIp(headers, "production")).toBe("198.51.100.4");
   });
 
   it("rejects malformed or untrusted forwarded values", () => {
+    expect(
+      extractTrustedClientIp(
+        new Headers({ "x-vercel-id": "fake", "x-forwarded-for": "198.51.100.4" }),
+        "production",
+      ),
+    ).toBe("unknown");
     expect(
       extractTrustedClientIp(new Headers({ "x-forwarded-for": "198.51.100.4" }), "production"),
     ).toBe("unknown");

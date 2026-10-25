@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { validateQuestionDatabase } from "../domain/validation";
 import { filterQuestions } from "../domain/filter-questions";
 import type {
   AgeGroup,
@@ -81,6 +82,41 @@ export function WyrExperience({
   allowUnreviewed = false,
   trendingSlot,
 }: WyrExperienceProps) {
+  const [finderQuestions, setFinderQuestions] = useState<readonly Question[] | null>(null);
+  const [finderLoadError, setFinderLoadError] = useState<string | null>(null);
+  const finderRef = useRef<HTMLDivElement>(null);
+  const finderLoad = useRef<Promise<void> | null>(null);
+  const loadFinder = useCallback(() => {
+    if (appearance !== "illustrated-home" || finderLoad.current) return;
+    finderLoad.current = fetch("/api/wyr/questions")
+      .then(async (response) => {
+        if (!response.ok) throw new Error("Question database unavailable");
+        const bank: unknown = await response.json();
+        if (
+          !Array.isArray(bank) ||
+          !validateQuestionDatabase(bank).valid ||
+          !bank.every((question: Question) => question.reviewStatus === "approved")
+        )
+          throw new Error("Invalid approved question database");
+        setFinderQuestions(bank as Question[]);
+        setFinderLoadError(null);
+      })
+      .catch(() => {
+        setFinderLoadError("Could not load the question database. Please retry.");
+        finderLoad.current = null;
+      });
+  }, [appearance]);
+  useEffect(() => {
+    if (appearance !== "illustrated-home" || !finderRef.current) return;
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        loadFinder();
+        observer.disconnect();
+      }
+    });
+    observer.observe(finderRef.current);
+    return () => observer.disconnect();
+  }, [appearance, loadFinder]);
   const [trendingQuestion, setTrendingQuestion] = useState<Question | null>(null);
   const questions = useMemo(
     () =>
@@ -106,6 +142,8 @@ export function WyrExperience({
   // 3. 计算当前有效题集
   // 3.1 可玩题集 (严格限定 reviewStatus === 'approved'，用于 Arena、Random、Presenter)
   const playableQuestions = useMemo(() => {
+    if (appearance === "illustrated-home")
+      return filterQuestions(questions, { onlyApproved: true });
     return filterQuestions(questions, {
       ...(searchKeyword.trim() !== "" ? { searchKeyword } : {}),
       ...(selectedAgeGroup ? { ageGroup: selectedAgeGroup } : {}),
@@ -117,6 +155,7 @@ export function WyrExperience({
       onlyApproved: true,
     });
   }, [
+    appearance,
     questions,
     searchKeyword,
     selectedAgeGroup,
@@ -129,18 +168,23 @@ export function WyrExperience({
 
   // 3.2 目录浏览题集 (仅当 allowUnreviewed 显式为 true 时展示未审核题，生产默认严格仅包含 approved 题目)
   const directoryQuestions = useMemo(() => {
-    return filterQuestions(questions, {
-      ...(searchKeyword.trim() !== "" ? { searchKeyword } : {}),
-      ...(selectedAgeGroup ? { ageGroup: selectedAgeGroup } : {}),
-      ...(selectedRelationship ? { relationship: selectedRelationship } : {}),
-      ...(selectedOccasion ? { occasion: selectedOccasion } : {}),
-      ...(selectedTone ? { tone: selectedTone } : {}),
-      ...(selectedDifficulty ? { difficulty: selectedDifficulty } : {}),
-      ...(defaultCollection ? { collection: defaultCollection } : {}),
-      onlyApproved: !allowUnreviewed,
-    });
+    return filterQuestions(
+      appearance === "illustrated-home" ? (finderQuestions ?? []) : questions,
+      {
+        ...(searchKeyword.trim() !== "" ? { searchKeyword } : {}),
+        ...(selectedAgeGroup ? { ageGroup: selectedAgeGroup } : {}),
+        ...(selectedRelationship ? { relationship: selectedRelationship } : {}),
+        ...(selectedOccasion ? { occasion: selectedOccasion } : {}),
+        ...(selectedTone ? { tone: selectedTone } : {}),
+        ...(selectedDifficulty ? { difficulty: selectedDifficulty } : {}),
+        ...(defaultCollection ? { collection: defaultCollection } : {}),
+        onlyApproved: !allowUnreviewed,
+      },
+    );
   }, [
     questions,
+    finderQuestions,
+    appearance,
     searchKeyword,
     selectedAgeGroup,
     selectedRelationship,
@@ -168,12 +212,20 @@ export function WyrExperience({
   // 5. 游玩交互动作
   const handleSelectQuestion = useCallback(
     (id: string) => {
+      if (appearance === "illustrated-home") {
+        const selected = finderQuestions?.find((q) => q.id === id && q.reviewStatus === "approved");
+        if (selected) {
+          setTrendingQuestion(selected);
+          setActiveQuestionId(id);
+          return;
+        }
+      }
       const isPlayable = playableQuestions.some((q) => q.id === id);
       if (isPlayable) {
         setActiveQuestionId(id);
       }
     },
-    [playableQuestions],
+    [playableQuestions, appearance, finderQuestions],
   );
 
   const handleNext = useCallback(() => {
@@ -282,7 +334,12 @@ export function WyrExperience({
       {appearance !== "illustrated-home" && arena}
 
       {/* 2. 搜索与筛选控制栏 (放置于长目录前面) */}
-      <div id="question-search">
+      <div
+        id="question-search"
+        ref={finderRef}
+        onFocusCapture={loadFinder}
+        onPointerDownCapture={loadFinder}
+      >
         <QuestionFilterBar
           searchKeyword={searchKeyword}
           onSearchChange={setSearchKeyword}
@@ -296,11 +353,14 @@ export function WyrExperience({
           onToneChange={setSelectedTone}
           selectedDifficulty={selectedDifficulty}
           onDifficultyChange={setSelectedDifficulty}
+          loading={appearance === "illustrated-home" && finderQuestions === null}
           matchedCount={directoryQuestions.length}
           totalCount={
             allowUnreviewed
               ? questions.length
-              : questions.filter((q) => q.reviewStatus === "approved").length
+              : appearance === "illustrated-home"
+                ? (approvedQuestionCount ?? 0)
+                : questions.filter((q) => q.reviewStatus === "approved").length
           }
           onClearFilters={handleClearFilters}
         />
@@ -310,7 +370,18 @@ export function WyrExperience({
       {showCategoryExplorer && appearance !== "illustrated-home" && <CategoryExplorer />}
 
       {/* 4. 目录展示 (仅展示 approved 题目；未审核题严格杜绝暴露在生产界面) */}
-      {appearance !== "illustrated-home" && directory}
+      {appearance === "illustrated-home" && finderQuestions === null ? (
+        <p role={finderLoadError ? "alert" : "status"}>
+          {finderLoadError ?? "Loading approved question database…"}
+          {finderLoadError && (
+            <button type="button" onClick={loadFinder}>
+              Retry loading questions
+            </button>
+          )}
+        </p>
+      ) : (
+        directory
+      )}
 
       {/* 5. 共享有效题集的全屏 Presenter 模式 (仅限 approved 题) */}
       <PresenterModal
@@ -328,6 +399,26 @@ export function WyrExperience({
   return appearance === "illustrated-home" ? (
     <HomeHydrationGate>
       <IllustratedHome
+        browseHref={(() => {
+          const params = new URLSearchParams();
+          if (searchKeyword.trim()) params.set("q", searchKeyword.trim());
+          if (selectedAgeGroup)
+            params.set(
+              "age",
+              selectedAgeGroup === "18+"
+                ? "adults"
+                : selectedAgeGroup === "13-17"
+                  ? "teens"
+                  : selectedAgeGroup === "4-6"
+                    ? "kids"
+                    : selectedAgeGroup,
+            );
+          if (selectedRelationship) params.set("relationship", selectedRelationship);
+          if (selectedOccasion) params.set("occasion", selectedOccasion);
+          if (selectedTone) params.set("tone", selectedTone);
+          if (selectedDifficulty) params.set("difficulty", selectedDifficulty);
+          return `/find-questions${params.size ? `?${params}` : ""}`;
+        })()}
         arena={arena}
         questions={initialQuestions}
         approvedQuestionCount={approvedQuestionCount ?? initialQuestions.length}

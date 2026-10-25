@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 import { openAccount } from "./account-test-helper";
 
-test("saved library selects a real pool, filters, paginates and preserves unknown IDs", async ({
+test("saved library rejects unknown imports atomically, then selects and filters a valid pool", async ({
   browser,
   request,
   baseURL,
@@ -20,6 +20,18 @@ test("saved library selects a real pool, filters, paginates and preserves unknow
       ids,
     );
     await page.goto("/account?view=saved");
+    await expect(page.locator(".account-notice")).toContainText("stored data has not been changed");
+    expect((await (await context.request.get("/api/account/saved-questions")).json()).ids).toEqual(
+      [],
+    );
+    expect(
+      await page.evaluate(() => JSON.parse(localStorage.getItem("wyrplay:saved-questions:v1")!)),
+    ).toEqual([...ids, "future-unavailable-id"]);
+    await page.evaluate(
+      (ids) => localStorage.setItem("wyrplay:saved-questions:v1", JSON.stringify(ids)),
+      ids,
+    );
+    await page.reload();
     await expect(page.locator(".library-row")).toHaveCount(10);
     await expect(page.locator(".library-toolbar")).toContainText("saved 12 questions");
     await page.locator(".library-row input").first().check();
@@ -50,7 +62,7 @@ test("saved library selects a real pool, filters, paginates and preserves unknow
       ),
     ).toEqual([]);
     expect((await (await context.request.get("/api/account/saved-questions")).json()).ids).toEqual(
-      expect.arrayContaining([...ids.slice(1), "future-unavailable-id"]),
+      expect.arrayContaining(ids.slice(1)),
     );
     await expect(
       page.getByRole("button", { name: "▶ Play Selected (0)", exact: true }),

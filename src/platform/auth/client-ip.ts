@@ -9,10 +9,10 @@ function validIp(value: string | null): string | null {
 
 export function extractTrustedClientIp(headers: Headers, environment: AppEnvironment): string {
   if (environment === "local" || environment === "test") {
-    return validIp(headers.get("x-real-ip")) ?? "unknown";
+    return (
+      validIp(headers.get("cf-connecting-ip")) ?? validIp(headers.get("x-real-ip")) ?? "unknown"
+    );
   }
 
-  if (!headers.get("x-vercel-id")) return "unknown";
-  const forwarded = headers.get("x-forwarded-for")?.split(",")[0] ?? null;
-  return validIp(forwarded) ?? "unknown";
+  return validIp(headers.get("cf-connecting-ip")) ?? "unknown";
 }

@@ -104,6 +104,15 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      ...["/finder/fonts/:path*", "/leaderboard-fonts/:path*"].map((source) => ({
+        source,
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=2678400, stale-while-revalidate=86400",
+          },
+        ],
+      })),
       ...[
         "/account/:path*",
         "/sign-in",

@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { DocumentBoundaryLink as Link } from "@/components/navigation/document-boundary-link";
 import { useEffect, useRef, useState } from "react";
 import type { AgeGroup, Question } from "../../types";
 import { filterQuestions } from "../../domain/filter-questions";

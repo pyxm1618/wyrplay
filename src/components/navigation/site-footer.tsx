@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { DocumentBoundaryLink as Link } from "@/components/navigation/document-boundary-link";
 
 import { PrivacySettingsButton } from "./privacy-settings-button";
 import { SiteBrand } from "./site-brand";

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
+import { DocumentBoundaryLink as Link } from "@/components/navigation/document-boundary-link";
 import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
 import { FEATURED_COLLECTIONS } from "../data/collections";
 import type { Question } from "../types";
@@ -139,6 +139,7 @@ export function IllustratedHome({
   trendingSlot,
   questions,
   approvedQuestionCount,
+  browseHref = "/find-questions",
 }: {
   leaderboard?: LeaderboardResult;
   children: ReactNode;
@@ -146,6 +147,7 @@ export function IllustratedHome({
   onPlayQuestion: (id: string, question?: Question) => void;
   questions: readonly Question[];
   approvedQuestionCount: number;
+  browseHref?: string;
   trendingSlot?: ReactNode;
 }) {
   const highlights = questions.slice(0, 3);
@@ -667,7 +669,7 @@ export function IllustratedHome({
           <h2 id="tool-demo-title">Find More Would You Rather Questions</h2>
           <p>Search by keyword and filter by audience, occasion, tone or difficulty.</p>
           {children}
-          <Link className="section-link" href="/find-questions" prefetch={false}>
+          <Link className="section-link" href={browseHref} prefetch={false}>
             Browse all questions
             <Arrow />
           </Link>

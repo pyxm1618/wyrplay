@@ -109,11 +109,11 @@ test.describe("SPA Client Navigation Gate", () => {
       await expect(page.locator("header[data-site-header]")).toBeVisible();
     }
 
-    // Assert that the only document navigation is the intentional transition to the Kids route
-    // (which requires a fresh document to receive dynamic nonce-based AdSense CSP),
-    // and all other subsequent navigations remain strictly client-side SPA.
+    // Cross-document policy boundaries reload; the ordinary Finder/Print/Leaderboard steps remain SPA.
     expect(documentRequests).toEqual([
       "GET http://127.0.0.1:3000/would-you-rather-questions-for-kids",
+      "GET http://127.0.0.1:3000/find-questions",
+      "GET http://127.0.0.1:3000/",
     ]);
   });
 });

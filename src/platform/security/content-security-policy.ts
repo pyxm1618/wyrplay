@@ -35,7 +35,7 @@ export function buildContentSecurityPolicy(input: ContentSecurityPolicyInput): s
           : []),
         ...(input.development ? ["'unsafe-eval'"] : []),
         ...(input.analytics.ga4 ? ["https://www.googletagmanager.com"] : []),
-        ...(input.analytics.clarity ? ["https://www.clarity.ms"] : []),
+        ...(input.analytics.clarity ? ["https://www.clarity.ms", "https://*.clarity.ms"] : []),
         ...(input.turnstile ? [turnstileOrigin] : []),
       ];
   const styleSources = ["'self'", "'unsafe-inline'", ...(input.adsense ? ["https:"] : [])];
@@ -47,7 +47,7 @@ export function buildContentSecurityPolicy(input: ContentSecurityPolicyInput): s
         ...(input.analytics.ga4
           ? ["https://www.google-analytics.com", "https://region1.google-analytics.com"]
           : []),
-        ...(input.analytics.clarity ? ["https://*.clarity.ms"] : []),
+        ...(input.analytics.clarity ? ["https://*.clarity.ms", "https://c.bing.com"] : []),
         ...(input.turnstile ? [turnstileOrigin] : []),
       ];
   const imageSources = input.adsense
@@ -58,7 +58,7 @@ export function buildContentSecurityPolicy(input: ContentSecurityPolicyInput): s
         "data:",
         "blob:",
         ...(input.analytics.ga4 ? ["https://www.google-analytics.com"] : []),
-        ...(input.analytics.clarity ? ["https://*.clarity.ms"] : []),
+        ...(input.analytics.clarity ? ["https://*.clarity.ms", "https://c.bing.com"] : []),
       ];
   const fontSources = ["'self'", "data:", ...(input.adsense ? ["https:"] : [])];
   const frameSources = input.adsense

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { DocumentBoundaryLink as Link } from "@/components/navigation/document-boundary-link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -87,7 +87,7 @@ function SiteHeaderContent({
                 <a
                   key={item.href}
                   href={targetHref}
-                  aria-current={active ? "page" : undefined}
+                  aria-current={pathname === targetHref ? "page" : undefined}
                   className={className}
                 >
                   {item.label}
@@ -98,7 +98,7 @@ function SiteHeaderContent({
               <Link
                 key={item.href}
                 href={targetHref}
-                aria-current={active ? "page" : undefined}
+                aria-current={pathname === targetHref ? "page" : undefined}
                 className={className}
               >
                 {item.label}
@@ -108,7 +108,16 @@ function SiteHeaderContent({
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
-          <ThemeToggle />
+          <ThemeToggle
+            fixedLight={[
+              "/",
+              "/find-questions",
+              "/play",
+              "/print",
+              "/leaderboards",
+              "/would-you-rather-questions-for-kids",
+            ].includes(pathname)}
+          />
           {authEnabled ? (
             <>
               <Link
@@ -161,7 +170,7 @@ function SiteHeaderContent({
                   <a
                     key={item.href}
                     href={targetHref}
-                    aria-current={active ? "page" : undefined}
+                    aria-current={pathname === targetHref ? "page" : undefined}
                     className={className}
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -173,7 +182,7 @@ function SiteHeaderContent({
                 <Link
                   key={item.href}
                   href={targetHref}
-                  aria-current={active ? "page" : undefined}
+                  aria-current={pathname === targetHref ? "page" : undefined}
                   className={className}
                   onClick={() => setMobileMenuOpen(false)}
                 >

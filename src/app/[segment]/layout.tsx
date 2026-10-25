@@ -33,7 +33,7 @@ export default async function SegmentLayout({ children, params }: SegmentLayoutP
   return (
     <>
       <SiteShell locale={locale}>{children}</SiteShell>
-      <AnalyticsBoundary />
+      {segment !== "would-you-rather-questions-for-kids" && <AnalyticsBoundary />}
     </>
   );
 }

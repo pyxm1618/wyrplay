@@ -3,7 +3,7 @@ import {
   accountProductName,
   formatAccountDateTime,
 } from "@/components/account/account-record-display";
-import { productDefinitions } from "@/config/products.config";
+import type { ProductDefinition } from "@/platform/commerce/domain/product";
 
 describe("Account record display", () => {
   it("formats UTC dates without exposing ISO serialization", () => {
@@ -12,7 +12,18 @@ describe("Account record display", () => {
     );
   });
   it("uses the configured name only for the matching product version", () => {
-    const definition = { ...productDefinitions[0], displayName: "  Named test purchase  " };
+    const definition: ProductDefinition = {
+      key: "named-test-purchase",
+      version: 1,
+      enabled: false,
+      displayName: "  Named test purchase  ",
+      commercialModel: "one_time",
+      currency: "USD",
+      expectedPrice: "1.88",
+      providerProductIdByEnvironment: {},
+      fulfillmentKey: "named-test-fulfillment",
+      refundPolicyKey: "standard",
+    };
     const product = { key: definition.key, version: 1, model: "one_time", billingInterval: null };
     expect(accountProductName(product, [definition])).toBe("Named test purchase");
     expect(accountProductName({ ...product, version: 2 }, [definition])).toBe("One-time purchase");

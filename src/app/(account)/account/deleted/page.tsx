@@ -1,5 +1,5 @@
+import { DocumentBoundaryLink as Link } from "@/components/navigation/document-boundary-link";
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { AccountShell } from "@/components/account/account-shell";
 import { bodyText, inlineLink } from "@/components/ui/styles";
