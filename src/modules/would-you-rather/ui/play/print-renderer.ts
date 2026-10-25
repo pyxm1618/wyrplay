@@ -778,10 +778,8 @@ export async function createVectorPdf(
         const maxTextWidth = p.width - (showNumbers ? 110 : 70);
         const contentX = p.x + textOffsetX;
         const row = getPrintSheetRowContent(p.question);
-        const qLines = wrapPrintText(
-          row.question,
-          maxTextWidth,
-          (t) => playBodyFont.widthOfTextAtSize(t, 11),
+        const qLines = wrapPrintText(row.question, maxTextWidth, (t) =>
+          playBodyFont.widthOfTextAtSize(t, 11),
         );
         qLines.forEach((line, i) => {
           page.drawText(line, {
@@ -800,10 +798,8 @@ export async function createVectorPdf(
           [contentX, row.optionA],
           [contentX + optionWidth + optionGap, row.optionB],
         ] as const) {
-          const lines = wrapPrintText(
-            value,
-            optionWidth,
-            (text) => playBodyFont.widthOfTextAtSize(text, 10),
+          const lines = wrapPrintText(value, optionWidth, (text) =>
+            playBodyFont.widthOfTextAtSize(text, 10),
           );
           lines.forEach((line, i) => {
             page.drawText(line, {

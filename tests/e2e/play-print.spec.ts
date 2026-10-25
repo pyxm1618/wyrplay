@@ -348,9 +348,7 @@ test("DuelArena cleans up the image prefetch link it created when the question c
   page,
 }) => {
   await page.goto("/play?set=1,2,3");
-  const prefetches = page.locator(
-    'link[rel="prefetch"][as="image"][href^="/_next/image?url="]',
-  );
+  const prefetches = page.locator('link[rel="prefetch"][as="image"][href^="/_next/image?url="]');
   await expect(prefetches).toHaveCount(1);
   const firstHref = await prefetches.first().getAttribute("href");
   expect(firstHref).toBeTruthy();

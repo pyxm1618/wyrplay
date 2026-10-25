@@ -46,9 +46,7 @@ it("aligns dark utilities with the root manual theme", () => {
 it("projects only client-required question fields without changing interactive filtering", () => {
   const projected = projectQuestionsForClient(QUESTIONS_DATABASE);
   expect(projected).toHaveLength(QUESTIONS_DATABASE.length);
-  expect(JSON.stringify(projected).length).toBeLessThan(
-    JSON.stringify(QUESTIONS_DATABASE).length,
-  );
+  expect(JSON.stringify(projected).length).toBeLessThan(JSON.stringify(QUESTIONS_DATABASE).length);
 
   for (const omitted of [
     "reviewNotes",
