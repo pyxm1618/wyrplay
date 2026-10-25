@@ -160,8 +160,8 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
               <span className="kids-blue">Kids</span>
             </h1>
             <p>
-              Fun, imaginative Would You Rather questions
-              <br /> for kids, classrooms, family time, and road trips.
+              Fun, imaginative kids Would You Rather questions
+              <br /> for school classrooms, family time, and road trips.
             </p>
             <div className="kids-hero-actions">
               <button
@@ -195,7 +195,7 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
           <KidsArenaEdge side="right" />
           <div className="kids-arena-heading">
             <div className="kids-eyebrow">
-              Would You Rather Questions for Kids
+              Clean Children&apos;s Would You Rather Deck
               <KidsBurst />
             </div>
             <h2 id="kids-arena-title">Play Would You Rather Questions for Kids</h2>
@@ -244,7 +244,7 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
         <section id="questions" className="kids-browse" aria-labelledby="kids-browse-title">
           <h2 id="kids-browse-title">
             <KidsBurst />
-            Browse Would You Rather Questions for Kids
+            Browse Kids Would You Rather Questions by Age
             <KidsBurst />
           </h2>
           <p className="kids-browse-intro">
@@ -297,9 +297,7 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
               aria-label={expanded ? "Show fewer questions" : "Browse more kids questions"}
               onClick={() => setExpanded(!expanded)}
             >
-              {expanded
-                ? "Show fewer questions"
-                : "Browse More Would You Rather Questions for Kids"}
+              {expanded ? "Show fewer questions" : "Browse More Would You Rather for Kids"}
               <FinderIcon name="arrow" />
             </button>
             <KidsArt name="browse-spark" />

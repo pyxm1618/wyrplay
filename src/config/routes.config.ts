@@ -82,9 +82,9 @@ export const routeDefinitions = [
       "find clean, engaging Would You Rather questions suitable for kids and classrooms",
     primaryKeyword: "would you rather questions for kids",
     secondaryKeywords: [
-      "fun questions for kids",
-      "clean would you rather",
-      "classroom icebreakers for students",
+      "would you rather for kids",
+      "kids would you rather questions",
+      "children's would you rather",
     ],
     title: "Would You Rather Questions for Kids – Fun & Clean Dilemmas",
     description:
@@ -96,9 +96,9 @@ export const routeDefinitions = [
       "/funny-would-you-rather-questions",
       "/would-you-rather-questions-for-friends",
     ],
-    lastModified: "2026-09-29",
+    lastModified: "2026-10-25",
     reviewStatus: "reviewed",
-    reviewFingerprint: "1b3c62995db5f268b77082ce6b4dca5e8346d26e10637f512c1eb025842c78d7",
+    reviewFingerprint: "3aab064e016d8fd45a62862ed4959a0389014689bce38c1ae6982a65a98d3d2d",
   },
   {
     route: "/funny-would-you-rather-questions",
@@ -106,9 +106,9 @@ export const routeDefinitions = [
     searchIntent: "browse hilarious and ridiculous Would You Rather questions for entertainment",
     primaryKeyword: "funny would you rather questions",
     secondaryKeywords: [
-      "hilarious would you rather",
-      "weird would you rather questions",
-      "silly party questions",
+      "funny would you rather",
+      "funniest would you rather",
+      "silly would you rather questions",
     ],
     title: "Funny Would You Rather Questions – Hilarious & Absurd Scenarios",
     description:
@@ -120,9 +120,9 @@ export const routeDefinitions = [
       "/hard-would-you-rather-questions",
       "/would-you-rather-questions-for-friends",
     ],
-    lastModified: "2026-09-29",
+    lastModified: "2026-10-25",
     reviewStatus: "reviewed",
-    reviewFingerprint: "960089f2b523e71bc8ef96ce4467088ac5c5ab34401783fec2156f9f6fb5956d",
+    reviewFingerprint: "d4dfaace853c0266777bc9fc35e54d1f8a27d72d9830f908ec7c0c8f0f9892ca",
   },
   {
     route: "/hard-would-you-rather-questions",
@@ -130,11 +130,7 @@ export const routeDefinitions = [
     searchIntent:
       "find challenging, thought-provoking Would You Rather questions for deep discussions",
     primaryKeyword: "hard would you rather questions",
-    secondaryKeywords: [
-      "impossible would you rather",
-      "tough moral questions",
-      "deep dilemmas to debate",
-    ],
+    secondaryKeywords: ["hardest would you rather questions", "tough would you rather questions"],
     title: "Hard Would You Rather Questions – Impossible & Deep Dilemmas",
     description:
       "Tackle the toughest, mind-bending Would You Rather questions designed to spark fierce debates, moral dilemmas, and late-night philosophical discussions.",
@@ -145,9 +141,9 @@ export const routeDefinitions = [
       "/funny-would-you-rather-questions",
       "/would-you-rather-questions-for-couples",
     ],
-    lastModified: "2026-09-29",
+    lastModified: "2026-10-25",
     reviewStatus: "reviewed",
-    reviewFingerprint: "000fe484e3473c838f082d8e7e061c88f4bac0f6cd78971f303ddacbf3077fcf",
+    reviewFingerprint: "8dc9607facf38396e4949864fa61750fa3943a81dc8920d8730ece64c4c1b736",
   },
   {
     route: "/would-you-rather-questions-for-friends",
@@ -176,9 +172,9 @@ export const routeDefinitions = [
       "find romantic and thought-provoking Would You Rather questions for partners and couples",
     primaryKeyword: "would you rather questions for couples",
     secondaryKeywords: [
-      "date night questions",
-      "questions for relationships",
-      "couples conversation starters",
+      "would you rather for couples",
+      "would you rather couple questions",
+      "couples would you rather questions",
     ],
     title: "Would You Rather Questions for Couples – Romantic Date Night",
     description:
@@ -190,9 +186,9 @@ export const routeDefinitions = [
       "/hard-would-you-rather-questions",
       "/would-you-rather-questions-for-friends",
     ],
-    lastModified: "2026-09-29",
+    lastModified: "2026-10-25",
     reviewStatus: "reviewed",
-    reviewFingerprint: "fc11b306cb9487acf532a5c20ec47758ad5cc25b7ee3d6781dca7eabf3f83760",
+    reviewFingerprint: "e4c6883a8664856f5d6111e400b31f2fbd75fe473edef17cbb26d5c9e00f8613",
   },
   {
     route: "/privacy",
