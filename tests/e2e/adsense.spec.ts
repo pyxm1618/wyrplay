@@ -50,21 +50,51 @@ test("/ loads the real AdSense site script under nonce-based strict CSP", async 
   expect(violations).toEqual([]);
 });
 
-test("Kids stays ad-free until this integration supports verified TFAT treatment", async ({
+test("Kids loads the existing AdSense site script under nonce-based strict CSP", async ({
   page,
 }) => {
-  const requests: string[] = [];
-  page.on("request", (request) => {
-    if (/googlesyndication|googletagmanager|google-analytics|clarity\.ms/.test(request.url()))
-      requests.push(request.url());
+  const violations: string[] = [];
+  await page.exposeFunction("recordAdCspViolationKids", (message: string) =>
+    violations.push(message),
+  );
+  await page.addInitScript(() => {
+    document.addEventListener("securitypolicyviolation", (event) => {
+      (
+        window as unknown as { recordAdCspViolationKids: (message: string) => void }
+      ).recordAdCspViolationKids(`${event.effectiveDirective}: ${event.blockedURI}`);
+    });
   });
+
+  const loaded = page.waitForResponse((response) => response.url() === siteCodeUrl);
   const response = await page.goto("/would-you-rather-questions-for-kids");
   expect(response?.status()).toBe(200);
-  await expect(page.locator("main")).toBeVisible();
-  await expect(page.locator(scriptSelector)).toHaveCount(0);
-  await expect(page.locator("ins.adsbygoogle")).toHaveCount(0);
+
+  const csp = response?.headers()["content-security-policy"] ?? "";
+  expect(csp).toContain("'strict-dynamic'");
+  expect(csp).toContain("'unsafe-inline'");
+  expect(csp).toContain("'unsafe-eval'");
+  expect(csp).toMatch(/script-src[^;]*'nonce-[^']+'/);
+  expect(csp).not.toMatch(/googlesyndication|doubleclick|adtrafficquality|fundingchoicesmessages/);
+
+  expect((await loaded).status()).toBe(200);
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
+  await expect(page.locator(scriptSelector)).toHaveAttribute("async", "");
+  await expect(page.locator(scriptSelector)).toHaveAttribute("crossorigin", "anonymous");
+  expect(
+    await page.locator(scriptSelector).evaluate((script: HTMLScriptElement) => script.nonce),
+  ).not.toBe("");
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
+      ),
+    )
+    .toBe(1);
   await expect(page.locator("#creat-web-ga4, #creat-web-clarity")).toHaveCount(0);
-  expect(requests).toEqual([]);
+
+  await page.waitForTimeout(2500);
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
+  expect(violations).toEqual([]);
 });
 
 for (const route of excluded) {
@@ -89,7 +119,7 @@ for (const route of excluded) {
   });
 }
 
-test("navigating from static /questions to Kids performs document navigation with fresh nonce-based CSP and preserves Kids privacy", async ({
+test("navigating from static /questions to Kids performs document navigation with fresh nonce-based AdSense CSP", async ({
   page,
 }) => {
   const violations: string[] = [];
@@ -135,7 +165,7 @@ test("navigating from static /questions to Kids performs document navigation wit
   expect(csp).toMatch(/script-src[^;]*'nonce-[^']+'/);
   expect(csp).not.toMatch(/googlesyndication|doubleclick|adtrafficquality|fundingchoicesmessages/);
 
-  await expect(page.locator(scriptSelector)).toHaveCount(0);
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
   await expect(page.locator("#creat-web-ga4, #creat-web-clarity")).toHaveCount(0);
 
   await page.waitForTimeout(2500);
@@ -231,10 +261,18 @@ test("AdSense site code gates ad serving on Advertising consent via pauseAdReque
     .toBe(1);
 });
 
-test("Kids does not bootstrap ads or analytics even when Google CMP grants consent", async ({
+test("Kids AdSense site code remains consent-gated and pauses again after withdrawal", async ({
   page,
 }) => {
   await page.goto("/would-you-rather-questions-for-kids");
+  await expect(page.locator(scriptSelector)).toHaveCount(1);
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
+      ),
+    )
+    .toBe(1);
 
   await page.evaluate(() => {
     window.googlefc = window.googlefc || {};
@@ -259,9 +297,35 @@ test("Kids does not bootstrap ads or analytics even when Google CMP grants conse
     }
   });
 
-  await expect(page.locator(scriptSelector)).toHaveCount(0);
-  await expect(page.locator("ins.adsbygoogle")).toHaveCount(0);
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
+      ),
+    )
+    .toBe(0);
   await expect(page.locator("#creat-web-ga4, #creat-web-clarity")).toHaveCount(0);
+
+  await page.evaluate(() => {
+    window.googlefc!.getGoogleConsentModeValues = () => ({
+      adStoragePurposeConsentStatus: 2,
+      adUserDataPurposeConsentStatus: 2,
+      adPersonalizationPurposeConsentStatus: 2,
+      analyticsStoragePurposeConsentStatus: 2,
+    });
+    const queue = window.googlefc!.callbackQueue as Array<{
+      CONSENT_MODE_DATA_READY?: () => void;
+    }>;
+    for (const item of queue) item?.CONSENT_MODE_DATA_READY?.();
+  });
+
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __wyrplay_ad_pause_state?: number }).__wyrplay_ad_pause_state,
+      ),
+    )
+    .toBe(1);
 });
 
 test("AdSense pauseAdRequests accurately reflects all Consent Mode purpose states (GRANTED, NOT_APPLICABLE, NOT_CONFIGURED, DENIED, UNKNOWN)", async ({
