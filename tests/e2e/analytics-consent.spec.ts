@@ -87,9 +87,7 @@ test("official Google Privacy & messaging CMP signal enables GA4 and Clarity", a
   await expect(page.locator("#creat-web-clarity")).toHaveCount(1);
 });
 
-test("Kids enables GA4 only after analytics consent and never loads Clarity", async ({
-  page,
-}) => {
+test("Kids enables GA4 only after analytics consent and never loads Clarity", async ({ page }) => {
   const ga4Requests: string[] = [];
   const clarityRequests: string[] = [];
   await page.route("**/*", async (route) => {
