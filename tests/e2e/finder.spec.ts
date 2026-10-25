@@ -94,6 +94,7 @@ test("finder retains actual A/B voting, changing choices, keyboard shortcuts and
   await page.reload();
   await page.getByRole("button", { name: "Play these questions" }).click();
   await expect(b).toHaveAttribute("aria-pressed", "true");
+  await b.focus();
   await page.keyboard.press("KeyA");
   await expect(a).toHaveAttribute("aria-pressed", "true");
   await page.route("**/api/wyr/vote", (route) =>

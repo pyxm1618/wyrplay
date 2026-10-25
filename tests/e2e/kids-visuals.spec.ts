@@ -36,6 +36,12 @@ test("approved artwork loads in Normal Kids and Present at mobile and desktop si
 });
 
 test("R2 masters survive A4 2x2 browser print, PNG and vector PDF export", async ({ page }) => {
+  await page.addInitScript(() => {
+    (window as unknown as { __printCalled?: boolean }).__printCalled = false;
+    window.print = () => {
+      (window as unknown as { __printCalled?: boolean }).__printCalled = true;
+    };
+  });
   const warnings: string[] = [];
   page.on("console", (message) => {
     if (message.type() === "warning" || message.type() === "error") warnings.push(message.text());
@@ -43,6 +49,13 @@ test("R2 masters survive A4 2x2 browser print, PNG and vector PDF export", async
   await page.goto("/print?format=cards&set=wyr-000001,wyr-000002,wyr-000003,wyr-000004");
   await page.getByRole("radio", { name: "A4" }).check();
   await expect(page.getByRole("img", { name: "Print preview page 1" })).toBeVisible();
+  await expect(page.locator(".print-document")).toHaveCount(0);
+  await page.getByRole("button", { name: "Print", exact: true }).click();
+  await expect
+    .poll(() =>
+      page.evaluate(() => (window as unknown as { __printCalled?: boolean }).__printCalled),
+    )
+    .toBe(true);
   await expect(page.locator(".print-document .print-page-sheet")).toHaveCount(1);
   const masters = page.locator('.print-document img[src^="https://media.wyrplay.com/"]');
   await expect(masters).toHaveCount(8);

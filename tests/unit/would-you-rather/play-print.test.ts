@@ -1,4 +1,6 @@
-import { describe, it, expect } from "vitest";
+import { readFileSync } from "node:fs";
+import { PDFPage } from "pdf-lib";
+import { describe, it, expect, vi } from "vitest";
 import QRCode from "qrcode";
 import type { Question } from "@/modules/would-you-rather/types";
 import { QUESTIONS_DATABASE } from "@/modules/would-you-rather";
@@ -12,6 +14,7 @@ import {
   getCardPlayUrl,
   getSheetPagePlayUrl,
   calculateQrModuleSizeMm,
+  createVectorPdf,
   PRINT_QR_CONFIG,
 } from "@/modules/would-you-rather/ui/play/print-renderer";
 describe("play and print sets", () => {
@@ -84,6 +87,39 @@ describe("play and print sets", () => {
     expect(resultSheet10.pages[1]).toHaveLength(10);
     expect(resultSheet10.pages[2]).toHaveLength(5);
   });
+  it("writes Option A and Option B text into the vector PDF sheet", async () => {
+    const question = QUESTIONS_DATABASE[0]!;
+    const layout = createPrintLayout([question], "sheet", "a4", (text) => text.length * 6, {
+      itemsPerPage: 1,
+    });
+    const drawText = vi.spyOn(PDFPage.prototype, "drawText");
+    vi.stubGlobal("fetch", async (input: string | URL | Request) => {
+      const value =
+        typeof input === "string"
+          ? input
+          : input instanceof URL
+            ? input.pathname
+            : new URL(input.url).pathname;
+      const bytes = readFileSync(`public${value}`);
+      const body = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength);
+      return {
+        ok: true,
+        status: 200,
+        arrayBuffer: async () => body,
+      } as Response;
+    });
+
+    try {
+      await createVectorPdf(layout, "sheet", false, { qrCode: false });
+      const text = drawText.mock.calls.map(([value]) => value).join(" ");
+      expect(text).toContain(`A: ${question.optionA}`);
+      expect(text).toContain(`B: ${question.optionB}`);
+    } finally {
+      vi.restoreAllMocks();
+      vi.unstubAllGlobals();
+    }
+  });
+
   it("stress test: handles extremely long text without breaking layout bounds", () => {
     const pool = resolveQuestionPool(QUESTIONS_DATABASE, null);
     const extremeQuestion = {

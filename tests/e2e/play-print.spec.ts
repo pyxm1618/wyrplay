@@ -56,6 +56,7 @@ test("selected set survives play, voting, presentation and return", async ({ pag
 test("both print formats produce a PDF with matching pages and paper size", async ({ page }) => {
   await page.goto("/print");
   await expect(page.locator(".preview-paper")).toBeVisible();
+  await expect(page.locator(".print-document")).toHaveCount(0);
   await expect(page.locator(".print-preview")).toContainText("512 questions");
   await page.getByRole("button", { name: "Question Sheet", exact: false }).click();
   await expect(page.locator(".print-preview h2")).toContainText("Question Sheet");
@@ -73,6 +74,8 @@ test("both print formats produce a PDF with matching pages and paper size", asyn
   const cards = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download PDF" }).click();
   await (await cards).saveAs(".artifacts/play-migration/cards-output.pdf");
+  await page.evaluate(() => window.dispatchEvent(new Event("beforeprint")));
+  await expect(page.locator(".print-document")).toHaveCount(1);
   await page.emulateMedia({ media: "print" });
   await expect(page.locator(".print-workspace")).not.toBeVisible();
   await expect(page.locator(".print-output")).toHaveCount(0);
@@ -81,7 +84,62 @@ test("both print formats produce a PDF with matching pages and paper size", asyn
   await expect(page.locator(".print-document .print-page-sheet:visible")).toHaveCount(
     expectedPages,
   );
+  await page.evaluate(() => window.dispatchEvent(new Event("afterprint")));
+  await expect(page.locator(".print-document")).toHaveCount(0);
 });
+
+test("question sheet renders A/B text in canvas and only mounts native print DOM for printing", async ({
+  page,
+}) => {
+  const question = QUESTIONS_DATABASE[0]!;
+  await page.goto(`/print?set=${question.id}`);
+  await expect(page.locator(".preview-paper")).toBeVisible();
+  await expect(page.locator(".print-document")).toHaveCount(0);
+
+  await page.evaluate(() => {
+    const original = CanvasRenderingContext2D.prototype.fillText;
+    const target = window as Window & { __sheetCanvasText?: string[] };
+    target.__sheetCanvasText = [];
+    CanvasRenderingContext2D.prototype.fillText = function (
+      this: CanvasRenderingContext2D,
+      text: string,
+      x: number,
+      y: number,
+      maxWidth?: number,
+    ) {
+      target.__sheetCanvasText?.push(text);
+      if (maxWidth === undefined) return original.call(this, text, x, y);
+      return original.call(this, text, x, y, maxWidth);
+    };
+  });
+
+  await page.getByRole("button", { name: "Question Sheet", exact: false }).click();
+  await expect(page.locator(".print-preview h2")).toContainText("Question Sheet");
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as Window & { __sheetCanvasText?: string[] }).__sheetCanvasText ?? [],
+      ),
+    )
+    .toContain(`A: ${question.optionA}`);
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as Window & { __sheetCanvasText?: string[] }).__sheetCanvasText ?? [],
+      ),
+    )
+    .toContain(`B: ${question.optionB}`);
+
+  await page.evaluate(() => window.dispatchEvent(new Event("beforeprint")));
+  const nativeDocument = page.locator(".print-document");
+  await expect(nativeDocument).toHaveCount(1);
+  await expect(nativeDocument).toContainText(`A: ${question.optionA}`);
+  await expect(nativeDocument).toContainText(`B: ${question.optionB}`);
+
+  await page.evaluate(() => window.dispatchEvent(new Event("afterprint")));
+  await expect(page.locator(".print-document")).toHaveCount(0);
+});
+
 test("direct print entry builds a set by theme, audience and scenario", async ({ page }) => {
   const funnyCount = filterPrintQuestions(QUESTIONS_DATABASE, { collection: "funny" }).length;
   const kidsCount = filterPrintQuestions(QUESTIONS_DATABASE, { age: "kids" }).length;
@@ -284,4 +342,28 @@ test("print and play pages expose privacy footer during normal browsing", async 
   await page.goto("/play");
   await expect(page.locator(".play-page")).toBeVisible();
   await expect(siteFooter).toBeVisible();
+});
+
+test("DuelArena cleans up the image prefetch link it created when the question changes", async ({
+  page,
+}) => {
+  await page.goto("/play?set=1,2,3");
+  const prefetches = page.locator('link[rel="prefetch"][as="image"][href^="/_next/image?url="]');
+  await expect(prefetches).toHaveCount(1);
+  const firstHref = await prefetches.first().getAttribute("href");
+  expect(firstHref).toBeTruthy();
+
+  await page.getByRole("button", { name: "Next question", exact: true }).click();
+  await expect
+    .poll(() =>
+      page
+        .locator('link[rel="prefetch"][as="image"][href^="/_next/image?url="]')
+        .evaluateAll((links) =>
+          links.map((link) => (link as HTMLLinkElement).getAttribute("href")),
+        ),
+    )
+    .not.toContain(firstHref);
+  await expect(
+    page.locator('link[rel="prefetch"][as="image"][href^="/_next/image?url="]'),
+  ).toHaveCount(1);
 });
