@@ -11,6 +11,7 @@ import { type FinderAge } from "../../domain/finder";
 import { filterPrintQuestions, type PrintQuestionCriteria } from "../../domain/print-question-pool";
 import {
   createPrintLayout,
+  getPrintSheetRowContent,
   getPrintVisualGeometry,
   type PrintFormat,
   type PaperSize,
@@ -83,6 +84,7 @@ function PrintPageContent({
   );
   const [logo, setLogo] = useState<HTMLImageElement | null>(null);
   const [printQrData, setPrintQrData] = useState<Map<string, string>>(new Map());
+  const [nativePrintReady, setNativePrintReady] = useState(false);
   const viewportRef = useRef<HTMLDivElement>(null);
   const [previewSize, setPreviewSize] = useState({ width: 0, height: 0 });
 
@@ -305,6 +307,17 @@ function PrintPageContent({
     }
   }, [qrCodeEnabled]);
 
+  useEffect(() => {
+    const handleBeforePrint = () => flushSync(() => setNativePrintReady(true));
+    const handleAfterPrint = () => setNativePrintReady(false);
+    window.addEventListener("beforeprint", handleBeforePrint);
+    window.addEventListener("afterprint", handleAfterPrint);
+    return () => {
+      window.removeEventListener("beforeprint", handleBeforePrint);
+      window.removeEventListener("afterprint", handleAfterPrint);
+    };
+  }, []);
+
   // 组件卸载时释放当前 Blob URL；替换与空状态失效由 previewUrlRef 单点管理。
   useEffect(() => {
     return () => {
@@ -459,6 +472,7 @@ function PrintPageContent({
           });
         }
       }
+      flushSync(() => setNativePrintReady(true));
       await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
       await document.fonts.ready;
       await Promise.all(
@@ -468,6 +482,7 @@ function PrintPageContent({
       );
       window.print();
     } catch (err) {
+      setNativePrintReady(false);
       setError(
         `Print preparation failed. ${err instanceof Error ? err.message : "Please try again."}`,
       );
@@ -885,7 +900,7 @@ function PrintPageContent({
       </div>
 
       {/* 浏览器真实打印 HTML/CSS 矢量 DOM */}
-      {layout && (
+      {layout && nativePrintReady && (
         <div className="print-document" aria-hidden="true">
           {layout.pages.map((placements, pIdx) => (
             <div
@@ -1170,44 +1185,75 @@ function PrintPageContent({
                       })()}
                     </div>
                   ) : (
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        height: "100%",
-                        borderBottom: "1pt solid #eee",
-                        paddingBottom: "4pt",
-                      }}
-                    >
-                      {showNumbers && (
-                        <strong style={{ width: "32pt", fontSize: "11pt" }}>
-                          {String(p.number).padStart(2, "0")}
-                        </strong>
-                      )}
-                      <p style={{ flex: 1, margin: 0, fontSize: "11pt" }}>{p.question.question}</p>
-                      {marks && (
-                        <div style={{ display: "flex", gap: "16pt", paddingLeft: "10pt" }}>
-                          <span
-                            style={{
-                              border: "1pt solid #a9b8cf",
-                              borderRadius: "50%",
-                              width: "12pt",
-                              height: "12pt",
-                              display: "inline-block",
-                            }}
-                          />
-                          <span
-                            style={{
-                              border: "1pt solid #a9b8cf",
-                              borderRadius: "50%",
-                              width: "12pt",
-                              height: "12pt",
-                              display: "inline-block",
-                            }}
-                          />
+                    (() => {
+                      const row = getPrintSheetRowContent(p.question);
+                      return (
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "flex-start",
+                            height: "100%",
+                            borderBottom: "1pt solid #eee",
+                            paddingBottom: "4pt",
+                          }}
+                        >
+                          {showNumbers && (
+                            <strong style={{ width: "32pt", fontSize: "11pt", flexShrink: 0 }}>
+                              {String(p.number).padStart(2, "0")}
+                            </strong>
+                          )}
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <p style={{ margin: 0, fontSize: "11pt", lineHeight: 1.25 }}>
+                              {row.question}
+                            </p>
+                            <div
+                              style={{
+                                display: "grid",
+                                gridTemplateColumns: "1fr 1fr",
+                                gap: "12pt",
+                                marginTop: "4pt",
+                              }}
+                            >
+                              <p style={{ margin: 0, fontSize: "10pt", lineHeight: 1.25 }}>
+                                {row.optionA}
+                              </p>
+                              <p style={{ margin: 0, fontSize: "10pt", lineHeight: 1.25 }}>
+                                {row.optionB}
+                              </p>
+                            </div>
+                          </div>
+                          {marks && (
+                            <div
+                              style={{
+                                display: "flex",
+                                gap: "16pt",
+                                paddingLeft: "10pt",
+                                paddingTop: "1pt",
+                              }}
+                            >
+                              <span
+                                style={{
+                                  border: "1pt solid #a9b8cf",
+                                  borderRadius: "50%",
+                                  width: "12pt",
+                                  height: "12pt",
+                                  display: "inline-block",
+                                }}
+                              />
+                              <span
+                                style={{
+                                  border: "1pt solid #a9b8cf",
+                                  borderRadius: "50%",
+                                  width: "12pt",
+                                  height: "12pt",
+                                  display: "inline-block",
+                                }}
+                              />
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
+                      );
+                    })()
                   )}
                 </div>
               ))}

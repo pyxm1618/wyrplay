@@ -7,7 +7,6 @@ import type {
   ReviewStatus,
   SuitabilityRating,
   Tone,
-  Topic,
 } from "../types";
 
 export const VALID_AGE_GROUPS: readonly AgeGroup[] = ["4-6", "7-9", "10-12", "13-17", "18+"];
@@ -29,16 +28,6 @@ export const VALID_OCCASIONS: readonly Occasion[] = [
 ];
 export const VALID_TONES: readonly Tone[] = ["funny", "weird", "deep"];
 export const VALID_DIFFICULTIES: readonly Difficulty[] = ["easy", "hard"];
-export const VALID_TOPICS: readonly Topic[] = [
-  "animals-nature",
-  "food-everyday",
-  "fantasy-superpowers",
-  "school-learning",
-  "travel-adventure",
-  "hobbies-entertainment",
-  "relationships-values",
-  "work-money",
-];
 export const VALID_SUITABILITY_RATINGS: readonly SuitabilityRating[] = [
   "suitable",
   "unsuitable",

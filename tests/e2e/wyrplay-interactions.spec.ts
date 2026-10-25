@@ -248,14 +248,43 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await expect(presenterBtn).toBeFocused();
     });
 
-    test("keyboard/focus (keyboard shortcut KeyA votes & focus management)", async ({ page }) => {
+    test("keyboard/focus (arena-scoped shortcuts vote without hijacking outside focus)", async ({
+      page,
+    }) => {
       await page.goto("/");
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
-      // 按键盘 KeyA 进行投票
-      await page.keyboard.press("KeyA");
-
       const optionA = page.locator("#play button:has-text('Option A')").first();
+      const optionB = page.locator("#play button:has-text('Option B')").first();
+      await expect(optionA).toHaveAttribute("aria-pressed", "false");
+      await expect(optionB).toHaveAttribute("aria-pressed", "false");
+
+      await page.locator("footer a").first().focus();
+      await page.keyboard.press("ArrowRight");
+      await expect(optionB).toHaveAttribute("aria-pressed", "false");
+
+      await page.locator("#play").evaluate((arena) => {
+        const input = document.createElement("input");
+        input.id = "keyboard-scope-input";
+        const textarea = document.createElement("textarea");
+        textarea.id = "keyboard-scope-textarea";
+        const editable = document.createElement("div");
+        editable.id = "keyboard-scope-editable";
+        editable.contentEditable = "true";
+        arena.append(input, textarea, editable);
+      });
+      for (const selector of [
+        "#keyboard-scope-input",
+        "#keyboard-scope-textarea",
+        "#keyboard-scope-editable",
+      ]) {
+        await page.locator(selector).focus();
+        await page.keyboard.press("ArrowRight");
+        await expect(optionB).toHaveAttribute("aria-pressed", "false");
+      }
+
+      await page.locator("#play").focus();
+      await page.keyboard.press("KeyA");
       await expect(optionA).toHaveAttribute("aria-pressed", "true");
       await expect(optionA.locator("text=Your Choice")).toBeVisible();
     });

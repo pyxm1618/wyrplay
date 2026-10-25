@@ -69,6 +69,7 @@ export function DuelArena({
     link.as = "image";
     link.href = nextOptimizedUrl;
     document.head.appendChild(link);
+    return () => link.remove();
   }, [nextQuestionId]);
   const voteReadControllerRef = useRef<AbortController | null>(null);
 
@@ -169,15 +170,14 @@ export function DuelArena({
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!keyboardEnabled) return;
-      if (appearance === "illustrated-kids") {
-        const target = e.target as HTMLElement | null;
-        if (
-          !document.getElementById("play")?.contains(target) ||
-          target?.closest("a,summary") ||
-          (target?.closest("button") && !target.closest(".kids-choice"))
-        )
-          return;
-      }
+      const target = e.target as HTMLElement | null;
+      if (!document.getElementById("play")?.contains(target)) return;
+      if (
+        appearance === "illustrated-kids" &&
+        (target?.closest("a,summary") ||
+          (target?.closest("button") && !target.closest(".kids-choice")))
+      )
+        return;
       if (document.querySelector(".presenter-page")) return;
       if (
         e.target instanceof HTMLInputElement ||

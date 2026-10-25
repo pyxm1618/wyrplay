@@ -23,6 +23,14 @@ export interface PrintLayoutOptions {
   readonly showNumbers?: boolean | undefined;
 }
 
+export function getPrintSheetRowContent(question: Question) {
+  return {
+    question: question.question,
+    optionA: `A: ${question.optionA}`,
+    optionB: `B: ${question.optionB}`,
+  } as const;
+}
+
 // Points (72/inch). Text wraps into these measured boxes in preview, print and PDF.
 export function wrapPrintText(
   text: string,
@@ -142,10 +150,16 @@ export function createPrintLayout(
       if (col) y = nextY + Math.max(last!.height, cardHeight) + 12;
       else y = nextY;
     } else {
-      const rowHeight = Math.max(
-        52,
-        wrapPrintText(question.question, width - 170, measure).length * 14 + 16,
+      const content = getPrintSheetRowContent(question);
+      const contentWidth = width - 170;
+      const optionGap = 12;
+      const optionWidth = (contentWidth - optionGap) / 2;
+      const questionLines = wrapPrintText(content.question, contentWidth, measure).length;
+      const optionLines = Math.max(
+        wrapPrintText(content.optionA, optionWidth, measure).length,
+        wrapPrintText(content.optionB, optionWidth, measure).length,
       );
+      const rowHeight = Math.max(72, questionLines * 14 + optionLines * 14 + 24);
       const reachedPageLimit = maxPerPage !== null && page.length >= maxPerPage;
       if (reachedPageLimit || y + rowHeight > height - 30) {
         if (page.length) pages.push(page);

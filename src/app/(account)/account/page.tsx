@@ -4,7 +4,10 @@ import { AccountOverview } from "@/components/account/account-overview";
 import { featuresConfig } from "@/config/features.config";
 import { getLeaderboardSnapshot } from "@/modules/would-you-rather/server";
 import type { LeaderboardResult } from "@/modules/would-you-rather";
-import { QUESTIONS_DATABASE } from "@/modules/would-you-rather";
+import {
+  projectQuestionsForClient,
+  QUESTIONS_DATABASE,
+} from "@/modules/would-you-rather";
 import { getAccountContext } from "@/platform/auth/account-context";
 
 export default async function AccountPage({
@@ -34,7 +37,9 @@ export default async function AccountPage({
         image: context.user.image ?? null,
         joined,
       }}
-      questions={QUESTIONS_DATABASE.filter((question) => question.reviewStatus === "approved")}
+      questions={projectQuestionsForClient(
+        QUESTIONS_DATABASE.filter((question) => question.reviewStatus === "approved"),
+      )}
       votes={votes}
       initialTab={
         view === "saved"

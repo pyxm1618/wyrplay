@@ -157,12 +157,23 @@ it("verifies AdSense activation disclosure invariants", () => {
   expect(adsSection).toBeDefined();
   const adsText = adsSection?.paragraphs.join(" ") ?? "";
   expect(adsText).toContain("Google AdSense");
-  expect(adsText).toContain("eligible general-audience pages");
+  expect(adsText).toContain("eligible WYRPlay pages");
+  expect(adsText).toContain("child-directed age treatment");
+  expect(adsText).toContain("personalized advertising and remarketing are not used for Kids");
+  expect(adsText).not.toContain("eligible general-audience pages");
   expect(adsText).toContain("applicable consent and privacy requirements");
   expect(adsText).toContain("cookies");
   expect(adsText).toContain("web beacons");
   expect(adsText).toContain("https://adssettings.google.com");
   expect(adsText).not.toContain("currently serves Google ads");
+
+  const analyticsSection = privacySections.find(
+    (s) => s.heading === "Site Measurement and Analytics",
+  );
+  const analyticsText = analyticsSection?.paragraphs.join(" ") ?? "";
+  expect(analyticsText).toContain("GA4 remains subject to required analytics consent");
+  expect(analyticsText).toContain("Microsoft Clarity");
+  expect(analyticsText).toContain("is not used on the Kids collection");
 
   const childrenSection = privacySections.find((s) => s.heading === "Children's Privacy");
   expect(childrenSection).toBeDefined();

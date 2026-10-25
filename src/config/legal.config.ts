@@ -182,14 +182,14 @@ export const legalConfig = {
       {
         heading: "Site Measurement and Analytics",
         paragraphs: [
-          "WYRPlay uses Google Analytics 4 and Microsoft Clarity for site measurement and product analytics in the current production deployment. These analytics providers are loaded only after any required analytics consent is granted.",
-          "Google Analytics 4 is used for page and product-usage measurement. Microsoft Clarity is used for session interaction measurement, including features such as heatmaps and session replay. WYRPlay does not intentionally send email addresses or unnecessary user-entered content as custom analytics event properties, and users can withdraw analytics consent at any time through the available privacy settings.",
+          "WYRPlay uses Google Analytics 4 for site measurement and product analytics, and Microsoft Clarity on eligible non-Kids pages, in the current production deployment. These analytics providers are loaded only after any required analytics consent is granted.",
+          "Google Analytics 4 is used for page and product-usage measurement. On the Kids collection, GA4 remains subject to required analytics consent and existing data-minimization controls. Microsoft Clarity is used for session interaction measurement, including features such as heatmaps and session replay, but is not used on the Kids collection. WYRPlay does not intentionally send email addresses or unnecessary user-entered content as custom analytics event properties, and users can withdraw analytics consent at any time through the available privacy settings.",
         ],
       },
       {
         heading: "Advertising and Google AdSense",
         paragraphs: [
-          "WYRPlay may use Google AdSense to serve advertising on eligible general-audience pages of the service. Advertising and personalization are subject to applicable consent and privacy requirements.",
+          "WYRPlay may use Google AdSense to serve advertising on eligible WYRPlay pages. The Kids collection may display Google AdSense under child-directed age treatment; personalized advertising and remarketing are not used for Kids. Advertising and personalization are subject to applicable consent and privacy requirements.",
           "On eligible pages where advertising is enabled, third-party vendors, including Google, may use cookies to serve ads based on prior visits to WYRPlay or other websites. Third parties (including Google and its advertising partners) may place and read cookies in users' browsers, or use web beacons and similar technologies to collect information in connection with ad serving.",
           "Processed information may include IP addresses, browser and device identifiers, request timestamps, and ad interaction information where applicable. This information may be used for ad serving, fraud prevention, measurement, and, where legally permitted and appropriately consented, personalized advertising.",
           "Users may manage or opt out of personalized advertising by visiting Google Ads Settings at https://adssettings.google.com. You can also review how Google uses information from sites that use its services at https://policies.google.com/technologies/partner-sites.",
@@ -207,7 +207,7 @@ export const legalConfig = {
         paragraphs: [
           "We disclose information to third-party service providers performing essential functions on our behalf, including hosting, transactional email delivery (Resend), security and anti-abuse verification (Cloudflare Turnstile), payment and subscription processing (Waffo), site measurement and interaction analytics (Google Analytics 4 and Microsoft Clarity), and advertising delivery and measurement (Google AdSense, when advertising is enabled on eligible pages). Service providers receive only the data reasonably needed to perform their services.",
           "We may disclose information where required by law, to respond to valid legal process, or when reasonably necessary to protect the safety, security, and integrity of WYRPlay, its users, or the public.",
-          "WYRPlay does not sell personal information for money. WYRPlay may use Google AdSense on eligible general-audience pages. Google and its advertising partners may process the information described in this notice for advertising delivery and measurement, with personalization subject to applicable consent and privacy requirements.",
+          "WYRPlay does not sell personal information for money. WYRPlay may use Google AdSense on eligible WYRPlay pages, including the Kids collection under child-directed age treatment. Personalized advertising and remarketing are not used for Kids. Google and its advertising partners may process the information described in this notice for advertising delivery and measurement, with personalization subject to applicable consent and privacy requirements.",
         ],
       },
       {

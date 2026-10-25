@@ -1,7 +1,11 @@
 import QRCode from "qrcode";
 import type { Question } from "../../types";
 import type { PrintLayout, PrintFormat } from "../../domain/print-layout";
-import { getPrintVisualGeometry, wrapPrintText } from "../../domain/print-layout";
+import {
+  getPrintSheetRowContent,
+  getPrintVisualGeometry,
+  wrapPrintText,
+} from "../../domain/print-layout";
 import { questionPoolUrl } from "../../domain/question-pool";
 import { getQuestionVisual } from "../../data/question-visuals";
 
@@ -366,7 +370,19 @@ export function renderSinglePrintPage(
         ctx.fillText(String(p.number).padStart(2, "0"), p.x, p.y + 15);
       }
       const textOffset = showNumbers ? 40 : 0;
-      text(p.question.question, p.x + textOffset, p.y + 15, p.width - (showNumbers ? 110 : 70));
+      const maxTextWidth = p.width - (showNumbers ? 110 : 70);
+      const contentX = p.x + textOffset;
+      const row = getPrintSheetRowContent(p.question);
+      ctx.font = "11px PlayBody, Arial";
+      const questionLines = wrapPrintText(row.question, maxTextWidth, (value) =>
+        ctx.measureText(value).width,
+      );
+      text(row.question, contentX, p.y + 15, maxTextWidth);
+      const optionY = p.y + 19 + questionLines.length * 14;
+      const optionGap = 12;
+      const optionWidth = (maxTextWidth - optionGap) / 2;
+      text(row.optionA, contentX, optionY, optionWidth, 10);
+      text(row.optionB, contentX + optionWidth + optionGap, optionY, optionWidth, 10);
       if (marks) {
         ["A", "B"].forEach((option, i) => {
           ctx.strokeStyle = "#a9b8cf";
@@ -758,18 +774,41 @@ export async function createVectorPdf(
 
         const textOffsetX = showNumbers ? 40 : 0;
         const maxTextWidth = p.width - (showNumbers ? 110 : 70);
-        const qLines = wrapPrintText(p.question.question, maxTextWidth, (t) =>
+        const contentX = p.x + textOffsetX;
+        const row = getPrintSheetRowContent(p.question);
+        const qLines = wrapPrintText(row.question, maxTextWidth, (t) =>
           playBodyFont.widthOfTextAtSize(t, 11),
         );
         qLines.forEach((line, i) => {
           page.drawText(line, {
-            x: p.x + textOffsetX,
+            x: contentX,
             y: height - (p.y + 15 + i * 14),
             size: 11,
             font: playBodyFont,
             color: inkColor,
           });
         });
+
+        const optionY = p.y + 19 + qLines.length * 14;
+        const optionGap = 12;
+        const optionWidth = (maxTextWidth - optionGap) / 2;
+        for (const [x, value] of [
+          [contentX, row.optionA],
+          [contentX + optionWidth + optionGap, row.optionB],
+        ] as const) {
+          const lines = wrapPrintText(value, optionWidth, (text) =>
+            playBodyFont.widthOfTextAtSize(text, 10),
+          );
+          lines.forEach((line, i) => {
+            page.drawText(line, {
+              x,
+              y: height - (optionY + i * 14),
+              size: 10,
+              font: playBodyFont,
+              color: inkColor,
+            });
+          });
+        }
 
         if (marks) {
           ["A", "B"].forEach((optionLabel, i) => {

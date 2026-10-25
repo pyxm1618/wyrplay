@@ -260,6 +260,32 @@ export function getHomepageQuestions(
 }
 
 /**
+ * RSC -> Client boundary projection.
+ * Keep only fields used by the interactive Finder / Play / Print / Account consumers.
+ */
+export function projectQuestionsForClient(questions: readonly Question[]): readonly Question[] {
+  return questions.map((question) => ({
+    id: question.id,
+    question: question.question,
+    optionA: question.optionA,
+    optionB: question.optionB,
+    ageGroups: question.ageGroups,
+    relationships: question.relationships,
+    occasions: question.occasions,
+    tones: question.tones,
+    difficulty: question.difficulty,
+    topics: question.topics,
+    suitability: question.suitability,
+    reviewStatus: question.reviewStatus,
+    primaryCollection: question.primaryCollection,
+    ageBands: question.ageBands,
+    moods: question.moods,
+    safety: question.safety,
+    tags: question.tags,
+  }));
+}
+
+/**
  * QUESTIONS_DATABASE 导出供调用方兼容
  */
 export const QUESTIONS_DATABASE: readonly Question[] = LOADED_QUESTIONS;
