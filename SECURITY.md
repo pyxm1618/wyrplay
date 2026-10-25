@@ -1,28 +1,41 @@
-# Security policy
+# WYRPlay security policy
 
-## Supported versions
+## Scope
 
-| Starter version            | Security fixes             |
-| -------------------------- | -------------------------- |
-| 0.1.x                      | Supported                  |
-| Earlier/unversioned copies | Manual assessment required |
+This policy applies to the production WYRPlay application and its supporting repository.
 
-Owned products are independent codebases. A fix in this starter does not automatically patch an already-created product; maintainers must follow `docs/参考/扩展与升级.md`.
+Production origin: `https://www.wyrplay.com`.
 
 ## Private reporting
 
-Do not open a public issue for a suspected vulnerability. Use this repository's private GitHub security-advisory reporting path and include affected commit/version, impact, reproduction conditions, and any evidence needed to validate the issue. If private vulnerability reporting is not enabled for the repository, contact the repository owner through an already-approved private organizational channel rather than publishing exploit details.
+Do not open a public issue for a suspected vulnerability. Use GitHub private vulnerability reporting when available, or another approved private channel to the repository owner.
 
-Do not include real credentials, production webhook bodies, payment data, private user content, database dumps, or unnecessary personal data in a report.
+Include the affected commit or route, impact, reproduction conditions, and the minimum evidence needed to validate the issue.
 
-## Triage and handling
+Never include real credentials, database dumps, private user data, payment data, webhook payloads, or unnecessary personal information in a report.
 
-- **Critical:** exploitable authentication/authorization bypass, credential disclosure, arbitrary payment/credit mutation, remote code execution, or broad private-data exposure. Stop affected release/rollout, rotate exposed credentials where relevant, and prioritize containment and patch verification.
-- **High:** material integrity/confidentiality failures with realistic exploitation but narrower impact. Block release until patched or explicitly mitigated.
-- **Medium/Low:** bounded defense-in-depth or reliability issues. Track with an owner and verification plan; do not mislabel them as resolved before tests and affected owned projects are assessed.
+## Severity
 
-For every security/platform fix, record affected modules/files, migrations, environment/provider changes, verification commands, rollback considerations, and whether owned products require a manual port or cherry-pick. Update `CHANGELOG.md` when the starter version changes.
+- **Critical:** exploitable authentication/authorization bypass, credential disclosure, remote code execution, broad private-data exposure, or unauthorized payment/credit mutation.
+- **High:** material confidentiality or integrity failure with realistic exploitation and narrower impact.
+- **Medium/Low:** bounded reliability or defense-in-depth issues.
 
-## Disclosure
+Critical and High findings block release until patched or explicitly contained.
 
-This repository does not promise a fixed public-disclosure deadline. Coordinate disclosure only after the issue is validated, affected maintainers have a practical remediation path, and disclosure will not unnecessarily increase user risk.
+## Current production boundary
+
+Production auth, email, commerce, subscriptions, and credits are currently disabled by `src/config/features.config.ts`. Analytics is enabled behind consent.
+
+Dormant platform code is still security-sensitive because it is exercised by tests and may be activated later. Do not weaken its verification merely because the production feature flag is off.
+
+## Handling
+
+For a security fix, record:
+
+- affected modules and routes;
+- migrations or runtime configuration changes;
+- verification commands;
+- rollback/containment considerations;
+- whether credentials must be rotated.
+
+Do not mark an issue resolved until the relevant automated gates and targeted reproduction pass.
