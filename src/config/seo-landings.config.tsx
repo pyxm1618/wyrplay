@@ -154,7 +154,7 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         type: "how-it-works",
         enabled: true,
         order: 30,
-        heading: "Best Scenarios for Funny Would You Rather",
+        heading: "Best Times to Play Funny Would You Rather Questions",
         steps: [
           {
             title: "Party icebreakers",
@@ -215,8 +215,8 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         type: "final-cta",
         enabled: true,
         order: 60,
-        heading: "Ready for the Funniest Would You Rather?",
-        body: "Pick from these funny Would You Rather questions, then try another funny Would You Rather choice.",
+        heading: "Try Our Funniest Would You Rather Questions",
+        body: "Try these funny Would You Rather questions, then keep laughing with another funny Would You Rather prompt.",
         cta: { label: "Play funny dilemmas now", href: "/funny-would-you-rather-questions#play" },
       },
     ],
@@ -474,7 +474,7 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
           },
           {
             title: "Unpack the history",
-            body: "Use these Would You Rather couple questions as doorways into personal memories, past experiences, and future hopes.",
+            body: "Use these Would You Rather questions for couples as doorways into personal memories, past experiences, and future hopes.",
           },
           {
             title: "Keep it fun and light",
