@@ -129,9 +129,9 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         order: 10,
         eyebrow: "Absurd & Laugh-Out-Loud",
         h1: funnyRoute.h1,
-        lead: "A wildly hilarious collection of bizarre superpowers, embarrassing mishaps, and utterly ridiculous trade-offs that guarantee laughter.",
+        lead: "These funny Would You Rather questions mix bizarre superpowers, embarrassing mishaps, and ridiculous trade-offs that keep the group laughing.",
         primaryCta: {
-          label: "Play funny dilemmas",
+          label: "Play funny Would You Rather",
           href: "/funny-would-you-rather-questions#play",
         },
         secondaryCta: { label: "Return to home page", href: "/" },
@@ -154,11 +154,11 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         type: "how-it-works",
         enabled: true,
         order: 30,
-        heading: "Best Scenarios for Funny Dilemmas",
+        heading: "Best Scenarios for Funny Would You Rather",
         steps: [
           {
             title: "Party icebreakers",
-            body: "Break through social awkwardness in seconds by forcing guests to choose between two absurd penalties.",
+            body: "Use funny Would You Rather questions as quick party icebreakers when the room needs an easy laugh.",
           },
           {
             title: "Group chat debates",
@@ -166,7 +166,7 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
           },
           {
             title: "Weekend sleepovers",
-            body: "Keep the room laughing into the early hours with ridiculous hypothetical questions.",
+            body: "The funniest Would You Rather prompts keep the room laughing into the early hours without turning the game serious.",
           },
         ],
       },
@@ -179,7 +179,7 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
           {
             question: "Why do funny Would You Rather questions work so well?",
             answer:
-              "Comedy in Would You Rather comes from forced commitment to absurdity. When both choices are ridiculous, watching friends earnestly defend their logic produces spontaneous comedy.",
+              "Silly Would You Rather questions work because both choices invite people to defend ridiculous logic, which creates spontaneous comedy.",
           },
           {
             question: "Can I use keyboard shortcuts on mobile?",
@@ -215,8 +215,8 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         type: "final-cta",
         enabled: true,
         order: 60,
-        heading: "Ready for Nonstop Laughs?",
-        body: "Step into the arena and make your first ridiculous choice.",
+        heading: "Ready for the Funniest Would You Rather?",
+        body: "Pick from these funny Would You Rather questions, then try another funny Would You Rather choice.",
         cta: { label: "Play funny dilemmas now", href: "/funny-would-you-rather-questions#play" },
       },
     ],
@@ -232,8 +232,11 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         order: 10,
         eyebrow: "Deep & Mind-Bending",
         h1: hardRoute.h1,
-        lead: "The most agonizing moral crossroads, philosophical trade-offs, and existential dilemmas designed to provoke deep debates and test personal ethics.",
-        primaryCta: { label: "Play hard dilemmas", href: "/hard-would-you-rather-questions#play" },
+        lead: "These hard Would You Rather questions focus on moral crossroads, philosophical trade-offs, and difficult choices that provoke debate and test personal values.",
+        primaryCta: {
+          label: "Play hard Would You Rather questions",
+          href: "/hard-would-you-rather-questions#play",
+        },
         secondaryCta: { label: "Return to home page", href: "/" },
       },
       {
@@ -254,15 +257,15 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         type: "how-it-works",
         enabled: true,
         order: 30,
-        heading: "How to Debate Hard Dilemmas",
+        heading: "How to Debate Hard Would You Rather Questions",
         steps: [
           {
             title: "Examine core values",
-            body: "Look past surface preferences and determine whether you prioritize safety, freedom, truth, or loyalty.",
+            body: "The hardest Would You Rather questions force you to decide whether you value safety, freedom, truth, or loyalty more.",
           },
           {
             title: "No middle ground",
-            body: "Resist the urge to bargain or create a compromise scenario. The psychological power lies in the binary choice.",
+            body: "Tough Would You Rather questions work best when you resist bargaining and commit to one of the two choices.",
           },
           {
             title: "Respect opposing logic",
@@ -274,17 +277,17 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         type: "faq",
         enabled: true,
         order: 40,
-        heading: "Hard Dilemmas FAQ",
+        heading: "Hard Would You Rather Questions FAQ",
         items: [
           {
-            question: "What makes a dilemma truly 'hard'?",
+            question: "What makes hard Would You Rather questions genuinely difficult?",
             answer:
-              "A dilemma is genuinely hard when both outcomes inflict a meaningful loss or both grant an irreconcilable privilege, forcing a painful hierarchy of values.",
+              "The hardest Would You Rather questions make both outcomes costly or appealing, forcing a real hierarchy of values.",
           },
           {
             question: "Are these questions suitable for dinner parties?",
             answer:
-              "Yes! They are exceptional for intimate dinners, philosophy discussions, and late-night campfire talks where people want substance over superficial chit-chat.",
+              "Yes. Tough Would You Rather questions can work well for intimate dinners, philosophy discussions, and late-night conversations when people want substance over small talk.",
           },
         ],
       },
@@ -316,7 +319,7 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         enabled: true,
         order: 60,
         heading: "Test Your Personal Principles",
-        body: "Enter the hard dilemma arena and see where you truly stand.",
+        body: "Try the hardest Would You Rather questions and see where you truly stand.",
         cta: { label: "Tackle a hard dilemma", href: "/hard-would-you-rather-questions#play" },
       },
     ],
@@ -438,9 +441,9 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         order: 10,
         eyebrow: "Date Night & Relationship Bonding",
         h1: couplesRoute.h1,
-        lead: "Sweet, insightful, and intriguing conversation starters crafted to deepen intimacy, spark shared laughter, and uncover hidden perspectives.",
+        lead: "These Would You Rather questions for couples mix playful choices with relationship-focused prompts that can spark laughter, reveal preferences, and start better conversations.",
         primaryCta: {
-          label: "Play couples dilemmas",
+          label: "Play Would You Rather for couples",
           href: "/would-you-rather-questions-for-couples#play",
         },
         secondaryCta: { label: "Return to home page", href: "/" },
@@ -463,15 +466,15 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         type: "how-it-works",
         enabled: true,
         order: 30,
-        heading: "Date Night Inspiration",
+        heading: "Ways to Play Would You Rather for Couples",
         steps: [
           {
             title: "Simultaneous reveal",
-            body: "Count down '3, 2, 1' and say your choices out loud at the exact same moment to see if you match.",
+            body: "Couples Would You Rather questions are more fun when you count down '3, 2, 1' and reveal your choices at the same time.",
           },
           {
             title: "Unpack the history",
-            body: "Use the questions as doorways into personal memories, past experiences, and future hopes.",
+            body: "Use these Would You Rather couple questions as doorways into personal memories, past experiences, and future hopes.",
           },
           {
             title: "Keep it fun and light",
@@ -483,15 +486,16 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         type: "faq",
         enabled: true,
         order: 40,
-        heading: "Couples Questions FAQ",
+        heading: "Would You Rather Questions for Couples FAQ",
         items: [
           {
-            question: "Are these questions appropriate for new couples as well as married couples?",
+            question:
+              "Are these Would You Rather questions for couples appropriate for new relationships as well as married couples?",
             answer:
-              "Absolutely. The questions range from playful date-night icebreakers to meaningful life and retirement questions suitable for any stage of a relationship.",
+              "Yes. These couples Would You Rather questions range from playful date-night icebreakers to meaningful choices that suit different stages of a relationship.",
           },
           {
-            question: "Can we play this on a road trip?",
+            question: "Can we play these Would You Rather questions for couples on a road trip?",
             answer:
               "Yes! One partner can read questions from their phone while the other drives, making hours fly by effortlessly.",
           },
@@ -524,8 +528,8 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
         type: "final-cta",
         enabled: true,
         order: 60,
-        heading: "Spark Tonight's Conversation",
-        body: "Pour a drink, get comfortable, and discover something new about your partner.",
+        heading: "Keep Playing Would You Rather Questions for Couples",
+        body: "Pick a few Would You Rather questions for couples and discover something new about your partner.",
         cta: {
           label: "Play couples questions now",
           href: "/would-you-rather-questions-for-couples#play",
