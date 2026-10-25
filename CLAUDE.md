@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-Toolchain is pinned: **Bun 1.3.14**, PostgreSQL 16, exact dependency versions (no ranges). Always install with `bun install --frozen-lockfile`.
+Toolchain is pinned: **Bun 1.4.4**, PostgreSQL 16, exact dependency versions (no ranges). Always install with `bun install --frozen-lockfile`.
 
 ### Dev and build
 
