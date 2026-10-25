@@ -83,7 +83,7 @@ function adaptRawQuestion(raw: RawQuestionSchema): Question {
   for (const mood of raw.moods ?? []) {
     if (mood === "funny" || mood === "weird") {
       tones.push(mood);
-    } else if (mood === "thoughtful") {
+    } else if (mood === "thoughtful" || mood === "deep") {
       tones.push("deep");
     }
   }
@@ -95,7 +95,10 @@ function adaptRawQuestion(raw: RawQuestionSchema): Question {
       s === "party" ||
       s === "road-trip" ||
       s === "dinner" ||
-      s === "date-night"
+      s === "date-night" ||
+      s === "sleepover" ||
+      s === "icebreakers" ||
+      s === "birthday-party"
     ) {
       occasions.push(s);
     }
@@ -121,7 +124,7 @@ function adaptRawQuestion(raw: RawQuestionSchema): Question {
     ageGroups,
     relationships,
     occasions,
-    tones,
+    tones: [...new Set(tones)],
     difficulty,
     topics,
     suitability: {

@@ -8,6 +8,8 @@ import {
   usesAggregateOnlyVoting,
 } from "@/modules/would-you-rather/server";
 
+import { consumeVoteLimit, validateVoteRequest } from "@/platform/security/vote-request";
+
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -58,7 +60,9 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json().catch(() => null);
+    const parsed = await validateVoteRequest(request);
+    if (parsed instanceof Response) return parsed;
+    const body = parsed.body;
     if (!body || typeof body !== "object") {
       return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
     }
@@ -80,6 +84,9 @@ export async function POST(request: NextRequest) {
         { status: 400 },
       );
     }
+
+    const limited = await consumeVoteLimit(request);
+    if (limited) return limited;
 
     return noStore(
       NextResponse.json(

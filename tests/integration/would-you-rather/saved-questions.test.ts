@@ -37,7 +37,7 @@ it("merges concurrent imports idempotently and isolates each account", async () 
     Array.from({ length: 6 }, () =>
       changeSavedQuestions(database.db, first, {
         action: "import",
-        ids: ["wyr-000001", "future-unavailable-id", "wyr-000001"],
+        ids: ["wyr-000001", "wyr-000002", "wyr-000001"],
       }),
     ),
   );
@@ -45,8 +45,26 @@ it("merges concurrent imports idempotently and isolates each account", async () 
   expect(await listSavedQuestions(database.db, secondId)).toEqual([]);
   await changeSavedQuestions(database.db, second, { action: "save", id: "wyr-000001" });
   await changeSavedQuestions(database.db, first, { action: "remove", id: "wyr-000001" });
-  expect(await listSavedQuestions(database.db, firstId)).toEqual(["future-unavailable-id"]);
+  expect(await listSavedQuestions(database.db, firstId)).toEqual(["wyr-000002"]);
   expect(await listSavedQuestions(database.db, secondId)).toEqual(["wyr-000001"]);
+});
+it("atomically rejects unavailable imports and total capacity overflow", async () => {
+  await expect(
+    changeSavedQuestions(database.db, first, {
+      action: "import",
+      ids: ["wyr-000003", "missing-id"],
+    }),
+  ).rejects.toThrow("question_unavailable");
+  expect(await listSavedQuestions(database.db, firstId)).toEqual(["wyr-000002"]);
+  const ids = Array.from({ length: 500 }, (_, i) => `wyr-${String(i + 1).padStart(6, "0")}`);
+  await changeSavedQuestions(database.db, first, { action: "import", ids });
+  await expect(
+    changeSavedQuestions(database.db, first, {
+      action: "import",
+      ids: ["wyr-000501", "wyr-000502"],
+    }),
+  ).rejects.toThrow("saved_question_limit_exceeded");
+  expect(await listSavedQuestions(database.db, firstId)).toHaveLength(500);
 });
 it("blocks writes once account deletion begins and cascades favorites with identity deletion", async () => {
   await database.db

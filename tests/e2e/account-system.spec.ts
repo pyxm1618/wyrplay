@@ -155,6 +155,12 @@ test("account favorites survive a second device, removal, logout and failed impo
       ),
     );
     await page.reload();
+    await expect(page.locator(".account-notice")).toContainText("stored data has not been changed");
+    expect((await (await context.request.get("/api/account/saved-questions")).json()).ids).toEqual(
+      [],
+    );
+    await page.evaluate(() => localStorage.setItem("wyrplay:saved-questions:v1", '["wyr-000001"]'));
+    await page.reload();
     await expect(page.locator(".account-saved-card")).toHaveCount(1);
     expect(await page.evaluate(() => localStorage.getItem("wyrplay:saved-questions:v1"))).toBe(
       "[]",
@@ -175,7 +181,7 @@ test("account favorites survive a second device, removal, logout and failed impo
     await expect(page.locator(".account-saved-card")).toHaveCount(1);
     expect(
       (await (await context.request.get("/api/account/saved-questions")).json()).ids,
-    ).toContain("future-unavailable-id");
+    ).not.toContain("future-unavailable-id");
     await page.evaluate(() => localStorage.setItem("wyrplay:saved-questions:v1", '["wyr-000003"]'));
     await page.route("**/api/account/saved-questions", (route) =>
       route.request().method() === "POST"

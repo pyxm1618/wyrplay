@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { Question } from "../types";
 
 export interface QuestionDirectoryProps {
@@ -17,6 +18,12 @@ export function QuestionDirectory({
   hasActiveFilters = false,
   onPlayQuestion,
 }: QuestionDirectoryProps) {
+  const [visibleCount, setVisibleCount] = useState(20);
+  const [previousQuestions, setPreviousQuestions] = useState(questions);
+  if (previousQuestions !== questions) {
+    setPreviousQuestions(questions);
+    setVisibleCount(20);
+  }
   const handlePlayQuestion = (questionId: string) => {
     if (onPlayQuestion) {
       onPlayQuestion(questionId);
@@ -66,7 +73,7 @@ export function QuestionDirectory({
       ) : (
         /* Questions Stack */
         <div className="space-y-3.5">
-          {questions.map((item, idx) => (
+          {questions.slice(0, visibleCount).map((item, idx) => (
             <article
               key={item.id}
               className="group flex flex-col justify-between gap-4 rounded-xl border border-border bg-surface p-5 transition-all hover:border-foreground/20 hover:shadow-md sm:flex-row sm:items-center sm:p-6"
@@ -149,6 +156,15 @@ export function QuestionDirectory({
             </article>
           ))}
         </div>
+      )}
+      {visibleCount < questions.length && (
+        <button
+          type="button"
+          className="mt-6 rounded-full border border-border px-5 py-2 font-semibold"
+          onClick={() => setVisibleCount((count) => count + 20)}
+        >
+          Show more ({questions.length - visibleCount} remaining)
+        </button>
       )}
     </section>
   );

@@ -7,7 +7,7 @@ export const metadata = rootMetadata();
 
 export default function LeaderboardLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <div className="leaderboard-body min-h-screen" data-theme="light">
+    <div className="leaderboard-body min-h-screen">
       <SiteShell>{children}</SiteShell>
       <AnalyticsBoundary />
     </div>

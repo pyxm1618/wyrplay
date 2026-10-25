@@ -20,3 +20,9 @@ export function isAdSenseRuntimeEnabled(): boolean {
     normalizedOrigin(process.env.APP_ORIGIN) === normalizedOrigin(siteConfig.canonicalOrigin)
   );
 }
+
+export function crossesDocumentBoundary(pathname: string, href: string): boolean {
+  if (!href.startsWith("/") || href.startsWith("//")) return false;
+  const target = href.split(/[?#]/)[0] || "/";
+  return target !== pathname && (isAdSenseRoute(pathname) || isAdSenseRoute(target));
+}

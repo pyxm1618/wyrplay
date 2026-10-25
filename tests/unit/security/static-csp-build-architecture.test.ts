@@ -20,6 +20,11 @@ describe("static CSP build architecture", () => {
     expect(source).not.toContain("src/platform/security/static-inline-hashes.ts");
   });
 
+  it("does not let spoofed prefetch headers bypass document security policy", () => {
+    const source = read("src/proxy.ts");
+    expect(source).not.toContain("missing:");
+  });
+
   it("loads static-page CSP hashes from the runtime artifact before falling back", () => {
     const source = read("src/proxy.ts");
     expect(source).toContain(".runtime/static-inline-hashes.json");

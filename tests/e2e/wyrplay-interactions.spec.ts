@@ -16,6 +16,8 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
     test("production 首页消费精选正式题池，5 个 SEO 落地页保持正式 collection", async ({
       page,
     }) => {
+      // Progressive batches add real interactions for every question; keep full-count coverage.
+      test.setTimeout(90_000);
       // 1.1 检查首页生产行为
       await page.goto("/");
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
@@ -33,10 +35,11 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await expect(page.getByRole("button", { name: /Presenter Mode/i })).toBeVisible();
 
       // 统计栏展示全部 512 道已审核可玩题目
-      const counterText = page.getByText(/12 playable dilemmas/i);
+      const counterText = page.getByText(/512 playable dilemmas/i);
       await expect(counterText).toBeVisible();
 
-      await expect(page.locator("#questions article,.home-directory")).toHaveCount(0);
+      await page.locator("#question-search").scrollIntoViewIfNeeded();
+      await expect(page.locator("#questions article,.home-directory")).toHaveCount(20);
 
       // 1.2 检查 5 个核心 SEO 专题落地页全部有且仅有对应分类的正式题目（精确题数）
       const seoRoutes = [
@@ -60,6 +63,9 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
           await expect(page.locator(".kids-reviewed-card")).toHaveCount(expectedCount);
           await expect(page.locator("#questions article:not(.kids-reviewed-card)")).toHaveCount(0);
         } else {
+          await expect(page.locator("#questions article")).toHaveCount(20);
+          while (await page.getByRole("button", { name: /^Show more/ }).count())
+            await page.getByRole("button", { name: /^Show more/ }).click();
           await expect(page.locator("#questions article")).toHaveCount(expectedCount);
         }
       }
@@ -75,7 +81,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       // 关键词搜索
       await searchInput.fill("hear");
       await page.waitForTimeout(150);
-      await expect(page.getByText(/2 of 12 playable dilemmas/i)).toBeVisible();
+      await expect(page.getByText(/16 of 512 playable dilemmas/i)).toBeVisible();
 
       // 难度筛选
       const hardBtn = page.getByRole("button", { name: "hard", exact: true });
@@ -85,7 +91,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       // 极端无效关键词导致 0 结果
       await searchInput.fill("xyznonexistentkeyword123456789");
       await page.waitForTimeout(150);
-      await expect(page.getByText("No dilemma matches your active filters")).toBeVisible();
+      await expect(page.locator("#questions").getByText("No questions found")).toBeVisible();
 
       // 清除筛选按钮
       const clearBtn = page.getByRole("button", { name: /Clear all filters/i });
@@ -94,7 +100,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await page.waitForTimeout(150);
 
       // 恢复全部 512 道题展示
-      await expect(page.getByText(/12 playable dilemmas/i)).toBeVisible();
+      await expect(page.getByText(/512 playable dilemmas/i)).toBeVisible();
     });
 
     test("正式题库 A/B 投票、改票与刷新恢复 (A/B voting, switch A->B & B->A, refresh persistence)", async ({
@@ -195,7 +201,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
       // 拦截投票 API 并模拟 500 故障
-      await page.route("**/api/wyr/kids-vote", async (route) => {
+      await page.route("**/api/wyr/vote", async (route) => {
         await route.fulfill({
           status: 500,
           contentType: "application/json",

@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
-import { isKidsCollectionQuestion } from "../domain/filter-questions";
 import { parseVoteStats } from "../domain/finder";
 import type { Question, VoteStats } from "../types";
 import { Arrow, ChoiceFrame } from "./home-art";
@@ -41,8 +40,9 @@ export function DuelArena({
 }: DuelArenaProps) {
   const [voteStats, setVoteStats] = useState<VoteStats | null>(null);
   const [loadedQuestionId, setLoadedQuestionId] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittingQuestionId, setSubmittingQuestionId] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [errorQuestionId, setErrorQuestionId] = useState<string | null>(null);
   const [refreshCount, setRefreshCount] = useState(0);
   const activeRequestIdRef = useRef(0);
 
@@ -73,14 +73,15 @@ export function DuelArena({
   const voteReadControllerRef = useRef<AbortController | null>(null);
 
   const currentQuestionId = question?.id;
-  const aggregateOnly = Boolean(question && isKidsCollectionQuestion(question));
+  const isSubmitting = submittingQuestionId !== null && submittingQuestionId === currentQuestionId;
+  const aggregateOnly = appearance === "illustrated-kids";
   const voteEndpoint = aggregateOnly ? "/api/wyr/kids-vote" : "/api/wyr/vote";
   // 1. 读取当前题目的投票状态 (标准异步 fetch，带 AbortController 与 ignore 清理函数)
   useEffect(() => {
     if (!currentQuestionId) return;
 
     let ignore = false;
-    const voteRevision = activeRequestIdRef.current;
+    const voteRevision = ++activeRequestIdRef.current;
     const controller = new AbortController();
     voteReadControllerRef.current = controller;
 
@@ -98,6 +99,7 @@ export function DuelArena({
         if (!ignore && voteRevision === activeRequestIdRef.current) {
           setVoteStats(parseVoteStats(data));
           setLoadedQuestionId(currentQuestionId);
+          setSubmittingQuestionId(null);
           setErrorMessage(null);
         }
       })
@@ -107,6 +109,8 @@ export function DuelArena({
           voteRevision === activeRequestIdRef.current &&
           (err as { name?: string })?.name !== "AbortError"
         ) {
+          setSubmittingQuestionId(null);
+          setErrorQuestionId(currentQuestionId);
           setErrorMessage("Voting is unavailable. You can still browse questions or try again.");
         }
       });
@@ -126,7 +130,7 @@ export function DuelArena({
 
       // A pending first read can set a different anonymous cookie after a quick vote.
       voteReadControllerRef.current?.abort();
-      setIsSubmitting(true);
+      setSubmittingQuestionId(currentQuestionId);
       setErrorMessage(null);
       const requestId = ++activeRequestIdRef.current;
 
@@ -147,12 +151,13 @@ export function DuelArena({
         if (requestId === activeRequestIdRef.current) {
           setVoteStats(parseVoteStats(data));
           setLoadedQuestionId(currentQuestionId);
-          setIsSubmitting(false);
+          setSubmittingQuestionId(null);
         }
       } catch (err: unknown) {
         if (requestId === activeRequestIdRef.current) {
-          setIsSubmitting(false);
+          setSubmittingQuestionId(null);
           const msg = err instanceof Error ? err.message : "Vote submission failed";
+          setErrorQuestionId(currentQuestionId);
           setErrorMessage(msg);
         }
       }
@@ -234,7 +239,7 @@ export function DuelArena({
   }
 
   const currentStats = loadedQuestionId === currentQuestionId ? voteStats : null;
-  const currentErrorMessage = loadedQuestionId === currentQuestionId ? errorMessage : null;
+  const currentErrorMessage = errorQuestionId === currentQuestionId ? errorMessage : null;
   const hasVoted = Boolean(currentStats?.hasVoted);
   const userPick = currentStats?.selectedOption ?? null;
 
@@ -256,9 +261,9 @@ export function DuelArena({
               ? `Thanks for voting! A: ${currentStats.percentageA}% · ${currentStats.votesA} votes | B: ${currentStats.percentageB}% · ${currentStats.votesB} votes. Only totals are saved, not your identity.`
               : "Choose A or B to add to the totals. No personal voting history is saved."}
         </p>
-        {errorMessage && (
+        {currentErrorMessage && (
           <p className="kids-vote-error" role="alert">
-            {errorMessage}{" "}
+            {currentErrorMessage}{" "}
             <button type="button" onClick={() => setRefreshCount((count) => count + 1)}>
               Retry
             </button>

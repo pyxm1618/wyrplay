@@ -23,6 +23,9 @@ export const VALID_OCCASIONS: readonly Occasion[] = [
   "road-trip",
   "dinner",
   "date-night",
+  "sleepover",
+  "icebreakers",
+  "birthday-party",
 ];
 export const VALID_TONES: readonly Tone[] = ["funny", "weird", "deep"];
 export const VALID_DIFFICULTIES: readonly Difficulty[] = ["easy", "hard"];

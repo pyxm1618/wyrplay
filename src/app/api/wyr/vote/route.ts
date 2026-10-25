@@ -5,8 +5,13 @@ import {
   isValidQuestion,
   isVotableQuestion,
   recordVote,
-  usesAggregateOnlyVoting,
 } from "@/modules/would-you-rather/server";
+
+import {
+  consumeVoteLimit,
+  resolveVoterCookie,
+  validateVoteRequest,
+} from "@/platform/security/vote-request";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -18,11 +23,7 @@ function resolveVoterId(cookieStore: Awaited<ReturnType<typeof cookies>>): {
   voterId: string;
   isNew: boolean;
 } {
-  const existing = cookieStore.get(VOTER_COOKIE_NAME)?.value;
-  if (existing && existing.trim().length > 0) {
-    return { voterId: existing, isNew: false };
-  }
-  return { voterId: crypto.randomUUID(), isNew: true };
+  return resolveVoterCookie(cookieStore.get(VOTER_COOKIE_NAME)?.value);
 }
 
 function applyNoStore(response: NextResponse): NextResponse {
@@ -59,13 +60,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Invalid question ID" }, { status: 400 });
     }
 
-    if (usesAggregateOnlyVoting(questionId)) {
-      return NextResponse.json(
-        { error: "Kids questions use the aggregate-only voting endpoint" },
-        { status: 400 },
-      );
-    }
-
     const cookieStore = await cookies();
     const { voterId, isNew } = resolveVoterId(cookieStore);
 
@@ -80,7 +74,9 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json().catch(() => null);
+    const parsed = await validateVoteRequest(request);
+    if (parsed instanceof Response) return parsed;
+    const body = parsed.body;
     if (!body || typeof body !== "object") {
       return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
     }
@@ -99,12 +95,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Question is not approved for voting" }, { status: 400 });
     }
 
-    if (usesAggregateOnlyVoting(questionId)) {
-      return NextResponse.json(
-        { error: "Kids questions use the aggregate-only voting endpoint" },
-        { status: 400 },
-      );
-    }
+    const limited = await consumeVoteLimit(request);
+    if (limited) return limited;
 
     const cookieStore = await cookies();
     const { voterId, isNew } = resolveVoterId(cookieStore);

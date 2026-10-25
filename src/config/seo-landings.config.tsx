@@ -16,14 +16,12 @@ function indexableRoute(route: string) {
   return definition;
 }
 
-const kidsRoute = indexableRoute("/would-you-rather-questions-for-kids");
 const funnyRoute = indexableRoute("/funny-would-you-rather-questions");
 const hardRoute = indexableRoute("/hard-would-you-rather-questions");
 const friendsRoute = indexableRoute("/would-you-rather-questions-for-friends");
 const couplesRoute = indexableRoute("/would-you-rather-questions-for-couples");
 const questionsRoute = indexableRoute("/questions");
 
-const kidsQuestions = getQuestionsByCollection("kids");
 const funnyQuestions = getQuestionsByCollection("funny");
 const hardQuestions = getQuestionsByCollection("hard");
 const friendsQuestions = getQuestionsByCollection("friends");
@@ -118,138 +116,8 @@ export const seoLandingPages: readonly SeoLandingConfig[] = [
     ],
   },
 
-  // 1. Kids
-  {
-    route: "/would-you-rather-questions-for-kids",
-    sections: [
-      {
-        type: "hero",
-        enabled: true,
-        order: 10,
-        eyebrow: "Clean & Classroom Friendly",
-        h1: kidsRoute.h1,
-        lead: "A clean, imaginative collection of would you rather questions for kids, built for family road trips, classroom warmups, and playful conversations.",
-        primaryCta: {
-          label: "Play kids dilemmas",
-          href: "/would-you-rather-questions-for-kids#play",
-        },
-        secondaryCta: { label: "Privacy for Kids & Families", href: "/privacy" },
-      },
-      {
-        type: "tool-demo",
-        enabled: true,
-        order: 20,
-        heading: "Interactive Kids Arena",
-        body: "Tap A or B to choose, or use Presenter Mode for morning meetings, smartboard activities, and family game nights.",
-        surface: (
-          <WyrExperience
-            questions={kidsQuestions}
-            defaultCollection="kids"
-            categoryBadge="Would You Rather Questions for Kids"
-          />
-        ),
-      },
-      {
-        type: "how-it-works",
-        enabled: true,
-        order: 30,
-        heading: "Ways to Use Would You Rather Questions for Kids",
-        steps: [
-          {
-            title: "Morning classroom meetings",
-            body: "Teachers can use would you rather questions for kids as quick icebreakers: read one prompt, let everyone choose, then invite a few students to explain why.",
-          },
-          {
-            title: "Long family road trips",
-            body: "Pass the miles with screen-free choices that give parents, siblings, and children something easy to laugh about and discuss.",
-          },
-          {
-            title: "Dinner table conversations",
-            body: "At dinner, would you rather questions for kids can turn routine check-ins into stories, reasons, and friendly disagreements for the whole table.",
-          },
-        ],
-      },
-      {
-        type: "seo-content",
-        enabled: true,
-        order: 35,
-        heading: "Make Each Round More Useful",
-        paragraphs: [
-          "Use would you rather questions for kids when you want a quick choice that invites children to speak without a long setup.",
-          "Read both options aloud, let everyone choose, then ask one or two players to explain the reason behind their pick.",
-          "In class, would you rather questions for kids can warm up a morning meeting, start a speaking activity, or reset attention between lessons.",
-          "At home or on the road, keep the pace light and let children skip a prompt that does not suit the group.",
-          "The best would you rather questions for kids lead to a reason, a story, or a friendly disagreement instead of a one-word vote.",
-        ],
-      },
-      {
-        type: "faq",
-        enabled: true,
-        order: 40,
-        heading: "Kids Questions FAQ",
-        items: [
-          {
-            question: "Are these would you rather questions for kids family-friendly?",
-            answer:
-              "The kids deck is curated around clean, playful prompts for family and classroom settings. Adults can skip any prompt that does not fit their group.",
-          },
-          {
-            question: "What age group works best with this collection?",
-            answer:
-              "The collection is intended for kids, but reading level, humor, and comfort vary. Parents and teachers can choose the prompts that best fit their group.",
-          },
-          {
-            question: "How can teachers use would you rather questions for kids in class?",
-            answer:
-              "Try one prompt during a morning meeting, a speaking warmup, or a short brain break, then ask a few students to explain their choices.",
-          },
-          {
-            question: "Do these questions work well on road trips?",
-            answer:
-              "Yes. One passenger can read the options aloud while everyone else chooses and explains an answer, so no extra setup is needed.",
-          },
-          {
-            question: "Do I need any equipment for would you rather questions for kids?",
-            answer:
-              "No special equipment is required. You can browse and vote on the questions from a phone, tablet, computer, or classroom display.",
-          },
-        ],
-      },
-      {
-        type: "related-resources",
-        enabled: true,
-        order: 50,
-        heading: "More Popular Dilemma Decks",
-        links: [
-          {
-            label: "Browse funny dilemmas",
-            href: "/funny-would-you-rather-questions",
-            description:
-              "After a round of would you rather questions for kids, switch to sillier prompts when your group wants bigger laughs.",
-          },
-          {
-            label: "See friends questions",
-            href: "/would-you-rather-questions-for-friends",
-            description: "Try the friends deck when you want a more hangout-focused round.",
-          },
-          {
-            label: "Return to home page",
-            href: "/",
-            description:
-              "Return to the main directory to browse would you rather questions for kids alongside other playable categories.",
-          },
-        ],
-      },
-      {
-        type: "final-cta",
-        enabled: true,
-        order: 60,
-        heading: "Ready for the Next Choice?",
-        body: "Scroll up to play would you rather questions for kids in the live arena, or put them on a larger screen for your group.",
-        cta: { label: "Jump to kids arena", href: "/would-you-rather-questions-for-kids#play" },
-      },
-    ],
-  },
+  // KidsPage owns its rendered content; retain only route registration here.
+  { route: "/would-you-rather-questions-for-kids", sections: [] },
 
   // 2. Funny
   {

@@ -5,7 +5,11 @@ import {
 } from "@/platform/accounts/account-subject-commerce-fence";
 import type { DatabaseClient, DatabaseTransaction } from "@/platform/database/client";
 import { savedQuestions } from "@/platform/database/schema";
+import { QUESTIONS_DATABASE } from "../data/questions";
 import { savedQuestionCommand, type SavedQuestionCommand } from "../domain/saved-questions";
+
+export const MAX_SAVED_QUESTIONS = 500;
+export class SavedQuestionValidationError extends Error {}
 
 export async function listSavedQuestions(
   database: DatabaseClient | DatabaseTransaction,
@@ -39,6 +43,17 @@ export async function changeSavedQuestions(
         );
     } else {
       const ids = validated.action === "save" ? [validated.id] : [...new Set(validated.ids)];
+      if (
+        ids.some(
+          (id) => !QUESTIONS_DATABASE.some((q) => q.id === id && q.reviewStatus === "approved"),
+        )
+      ) {
+        throw new SavedQuestionValidationError("question_unavailable");
+      }
+      const existing = await listSavedQuestions(transaction, account.userId);
+      if (new Set([...existing, ...ids]).size > MAX_SAVED_QUESTIONS) {
+        throw new SavedQuestionValidationError("saved_question_limit_exceeded");
+      }
       if (ids.length)
         await transaction
           .insert(savedQuestions)

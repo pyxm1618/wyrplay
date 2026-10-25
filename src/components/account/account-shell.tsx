@@ -25,7 +25,7 @@ export function AccountShell({
   commerceEnabled?: boolean;
 }>) {
   return (
-    <div className="account-overview account-system" data-theme="light">
+    <div className="account-overview account-system">
       <div className="account-cloud account-cloud-bottom" aria-hidden="true" />
       <div className="account-page">
         {profile ? (

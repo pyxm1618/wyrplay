@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   ConsentModePurposeStatusEnum,
   getConsentSnapshot,
+  isConsentResolved,
   getServerConsentSnapshot,
   initConsentAdapter,
   mockGoogleConsentModeForTesting,
@@ -56,6 +57,16 @@ describe("consent adapter with Google Privacy & messaging API", () => {
       analytics: "denied",
       advertising: "denied",
     });
+  });
+
+  it("distinguishes an unresolved snapshot from a real CMP denial", () => {
+    expect(isConsentResolved()).toBe(false);
+    const listener = vi.fn();
+    subscribeConsent(listener);
+    mockGoogleConsentModeForTesting({ analyticsStoragePurposeConsentStatus: 2 });
+    expect(isConsentResolved()).toBe(true);
+    expect(listener).toHaveBeenCalledTimes(1);
+    expect(getConsentSnapshot().analytics).toBe("denied");
   });
 
   it("returns default consent for server snapshot", () => {
@@ -251,6 +262,30 @@ describe("consent adapter with Google Privacy & messaging API", () => {
     expect(queue).toHaveLength(1);
     const item = queue[0] as { CONSENT_MODE_DATA_READY?: () => void };
     expect(typeof item.CONSENT_MODE_DATA_READY).toBe("function");
+  });
+
+  it("rereads Google consent values after a TCF consent change", () => {
+    let analytics = 1;
+    let onConsentChange: (() => void) | undefined;
+    window.googlefc = {
+      callbackQueue: [],
+      getGoogleConsentModeValues: () => ({
+        analyticsStoragePurposeConsentStatus: analytics,
+        adStoragePurposeConsentStatus: 2,
+        adUserDataPurposeConsentStatus: 2,
+        adPersonalizationPurposeConsentStatus: 2,
+      }),
+    };
+    window.__tcfapi = (_command, _version, callback) => {
+      onConsentChange = () => callback({ eventStatus: "useractioncomplete" }, true);
+    };
+    initConsentAdapter();
+    const queue = window.googlefc.callbackQueue as Array<{ CONSENT_MODE_DATA_READY?: () => void }>;
+    queue[0]?.CONSENT_MODE_DATA_READY?.();
+    expect(getConsentSnapshot().analytics).toBe("granted");
+    analytics = 2;
+    onConsentChange?.();
+    expect(getConsentSnapshot().analytics).toBe("denied");
   });
 
   it("strictly uses googlefc.callbackQueue.push(googlefc.showRevocationMessage)", () => {

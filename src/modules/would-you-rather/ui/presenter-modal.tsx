@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, type RefObject } from "react";
 import { PlayHeading, OptionPanels, PlayArtwork } from "./play/art";
 import type { Question } from "../types";
+import "./presenter.css";
 
 export interface PresenterModalProps {
   readonly returnFocusRef?: RefObject<HTMLButtonElement | null>;

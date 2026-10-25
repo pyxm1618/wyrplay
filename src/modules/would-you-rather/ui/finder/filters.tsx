@@ -37,6 +37,9 @@ const groups = [
       ["road-trip", "Road Trip"],
       ["date-night", "Date Night"],
       ["dinner", "Dinner"],
+      ["sleepover", "Sleepover"],
+      ["icebreakers", "Icebreakers"],
+      ["birthday-party", "Birthday Party"],
     ],
   },
   {

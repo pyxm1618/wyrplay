@@ -7,6 +7,7 @@ import {
   getConsentSnapshot,
   getServerConsentSnapshot,
   subscribeConsent,
+  isConsentResolved,
   type ConsentState,
 } from "@/platform/consent/consent-adapter";
 
@@ -17,6 +18,8 @@ import {
 } from "@/platform/analytics/events";
 
 const SCRIPT_IDS = ["creat-web-ga4", "creat-web-clarity"] as const;
+let activeMeasurementId: string | undefined;
+let clarityScriptRequested = false;
 const ANALYTICS_COOKIE_PREFIXES = ["_ga", "_clck", "_clsk"] as const;
 
 declare global {
@@ -27,13 +30,14 @@ declare global {
   }
 }
 
-function loadScript(id: string, src: string): void {
+function loadScript(id: string, src: string): HTMLScriptElement | undefined {
   if (document.getElementById(id)) return;
   const script = document.createElement("script");
   script.id = id;
   script.async = true;
   script.src = src;
   document.head.append(script);
+  return script;
 }
 
 function emitAnalyticsEvent(event: SanitizedAnalyticsEvent): void {
@@ -42,6 +46,8 @@ function emitAnalyticsEvent(event: SanitizedAnalyticsEvent): void {
 }
 
 function startGa4(measurementId: string): void {
+  activeMeasurementId = measurementId;
+  (window as unknown as Record<string, unknown>)[`ga-disable-${measurementId}`] = false;
   window.dataLayer = window.dataLayer ?? [];
   if (typeof window.gtag !== "function") {
     window.gtag = function gtag() {
@@ -50,7 +56,7 @@ function startGa4(measurementId: string): void {
     };
   }
   window.gtag("js", new Date());
-  window.gtag("consent", "default", { analytics_storage: "granted" });
+  window.gtag("consent", "update", { analytics_storage: "granted" });
   window.gtag("config", measurementId, {
     anonymize_ip: true,
     send_page_view: false,
@@ -69,25 +75,55 @@ function startClarity(projectId: string): void {
     clarity.q.push(args);
   }) as NonNullable<Window["clarity"]>;
   window.clarity = window.clarity ?? clarity;
+  // A new grant supersedes queued lifecycle decisions, but keeps vendor project setup.
+  if (window.clarity.q) {
+    window.clarity.q = window.clarity.q.filter(
+      (command) =>
+        command[0] !== "stop" &&
+        command[0] !== "consentv2" &&
+        !(command[0] === "start" && command.length === 1),
+    );
+  }
+  window.clarity("start");
   window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "granted" });
-  loadScript("creat-web-clarity", `https://www.clarity.ms/tag/${encodeURIComponent(projectId)}`);
+  if (!clarityScriptRequested) {
+    clarityScriptRequested = true;
+    document.getElementById("creat-web-clarity")?.remove();
+    const script = loadScript(
+      "creat-web-clarity",
+      `https://www.clarity.ms/tag/${encodeURIComponent(projectId)}`,
+    );
+    script?.addEventListener("error", () => {
+      clarityScriptRequested = false;
+    });
+  }
 }
 
 function clearAnalyticsCookies(): void {
   for (const cookie of document.cookie.split(";")) {
     const name = cookie.split("=", 1)[0]?.trim();
     if (!name || !ANALYTICS_COOKIE_PREFIXES.some((prefix) => name.startsWith(prefix))) continue;
-    document.cookie = `${name}=; Max-Age=0; Path=/; SameSite=Lax`;
+    const expiration = `${name}=; Max-Age=0; Path=/; SameSite=Lax`;
+    document.cookie = expiration;
+    // GA4's default cookie domain can be a parent of the current hostname.
+    const labels = window.location.hostname.split(".");
+    for (let index = 0; index < labels.length - 1; index += 1) {
+      document.cookie = `${expiration}; Domain=${labels.slice(index).join(".")}`;
+    }
   }
 }
 
-function stopAnalytics(): void {
+function stopAnalytics(clearCookies = true): void {
+  if (activeMeasurementId) {
+    (window as unknown as Record<string, unknown>)[`ga-disable-${activeMeasurementId}`] = true;
+  }
   window.gtag?.("consent", "update", { analytics_storage: "denied" });
   window.clarity?.("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
+  window.clarity?.("stop");
   for (const scriptId of SCRIPT_IDS) document.getElementById(scriptId)?.remove();
-  clearAnalyticsCookies();
+  if (clearCookies) clearAnalyticsCookies();
   if (window.dataLayer) window.dataLayer.length = 0;
-  delete window.clarity;
+  // A prepared vendor script may still arrive after removal; keep its denied/stop queue.
 }
 
 export function AnalyticsClient({
@@ -105,10 +141,18 @@ export function AnalyticsClient({
     getServerConsentSnapshot,
   );
 
+  const consentResolved = useSyncExternalStore(subscribeConsent, isConsentResolved, () => false);
   const consent: ConsentState = consentRequired ? consentSnapshot.analytics : "granted";
   const pathname = usePathname();
+  const childDirected = pathname === "/would-you-rather-questions-for-kids";
 
   useEffect(() => {
+    if (childDirected) {
+      stopAnalytics();
+      return;
+    }
+    // A fail-closed initial snapshot is not a CMP decision to withdraw consent.
+    if (consentRequired && !consentResolved) return;
     if (consent !== "granted") {
       stopAnalytics();
       return;
@@ -128,11 +172,18 @@ export function AnalyticsClient({
     if (ga4MeasurementId) startGa4(ga4MeasurementId);
     if (clarityProjectId) startClarity(clarityProjectId);
 
-    return stopAnalytics;
-  }, [clarityProjectId, consent, ga4MeasurementId]);
+    return () => stopAnalytics(false);
+  }, [
+    childDirected,
+    clarityProjectId,
+    consent,
+    consentRequired,
+    consentResolved,
+    ga4MeasurementId,
+  ]);
 
   useEffect(() => {
-    if (consent !== "granted") return;
+    if (childDirected || (consentRequired && !consentResolved) || consent !== "granted") return;
 
     if (
       !isAnalyticsLocationSafe({
@@ -153,7 +204,7 @@ export function AnalyticsClient({
         },
       }),
     );
-  }, [consent, pathname]);
+  }, [childDirected, consent, consentRequired, consentResolved, pathname]);
 
   return null;
 }

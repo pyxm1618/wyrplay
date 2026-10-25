@@ -6,7 +6,18 @@ export const savedQuestionsKey = "wyrplay:saved-questions:v1";
 const criteriaSchema = z.object({
   age: z.enum(["kids", "teens", "adults", "7-9", "10-12"]).optional(),
   relationship: z.enum(["friends", "family", "couples", "coworkers"]).optional(),
-  occasion: z.enum(["classroom", "party", "road-trip", "dinner", "date-night"]).optional(),
+  occasion: z
+    .enum([
+      "classroom",
+      "party",
+      "road-trip",
+      "dinner",
+      "date-night",
+      "sleepover",
+      "icebreakers",
+      "birthday-party",
+    ])
+    .optional(),
   tone: z.enum(["funny", "weird", "deep"]).optional(),
   difficulty: z.enum(["easy", "hard"]).optional(),
 });

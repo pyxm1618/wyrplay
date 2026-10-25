@@ -32,7 +32,16 @@ const popularSearches = [
 
 const VALID_AGES = new Set(["kids", "teens", "adults", "7-9", "10-12"]);
 const VALID_RELATIONSHIPS = new Set(["friends", "couples", "family", "coworkers"]);
-const VALID_OCCASIONS = new Set(["classroom", "party", "road-trip", "dinner", "date-night"]);
+const VALID_OCCASIONS = new Set([
+  "classroom",
+  "party",
+  "road-trip",
+  "dinner",
+  "date-night",
+  "sleepover",
+  "icebreakers",
+  "birthday-party",
+]);
 const VALID_TONES = new Set(["funny", "weird", "deep"]);
 const VALID_DIFFICULTIES = new Set(["easy", "hard"]);
 
@@ -285,7 +294,7 @@ export function FinderExperience({
   }
 
   return (
-    <div className="finder-page" data-theme="light">
+    <div className="finder-page">
       <FinderDecoration />
       <FinderHero />
       <div className="search-area" id="search">

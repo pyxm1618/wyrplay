@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(html[data-theme="dark"], html[data-theme="dark"] *));
 
 /* ---------------------------------------------------------------------------
    Design Tokens & Foundations (Editorial Dilemma Tension System)

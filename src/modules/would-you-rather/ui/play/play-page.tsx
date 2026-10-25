@@ -78,6 +78,7 @@ function PlaySession({
           </button>
           <b>
             {pool.length ? index + 1 : 0} / {pool.length}
+            {question && index === pool.length - 1 ? " — Last question" : ""}
           </b>
           <button
             aria-label="Next question"

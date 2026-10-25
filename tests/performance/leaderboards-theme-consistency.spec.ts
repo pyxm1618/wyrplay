@@ -18,10 +18,11 @@ test.describe("Leaderboard Theme Consistency & Flash Verification Gate", () => {
     // 1. Initial direct load to /leaderboards
     await page.goto("/leaderboards", { waitUntil: "domcontentloaded" });
 
-    // The container is scoped with data-theme="light" and .leaderboard-body in SSR markup
+    // Fixed light experience synchronizes the root theme without an inner override.
     const container = page.locator("div.leaderboard-body");
     await expect(container).toBeVisible();
-    await expect(container).toHaveAttribute("data-theme", "light");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+    await expect(container).not.toHaveAttribute("data-theme");
 
     // Verify computed background color is the intended light paper tone (#fffcf6 = rgb(255, 252, 246))
     const bgColor = await container.evaluate((el) => window.getComputedStyle(el).backgroundColor);
@@ -64,7 +65,8 @@ test.describe("Leaderboard Theme Consistency & Flash Verification Gate", () => {
     // Verify transition to light theme on the leaderboard scoped container
     const container = page.locator("div.leaderboard-body");
     await expect(container).toBeVisible();
-    await expect(container).toHaveAttribute("data-theme", "light");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+    await expect(container).not.toHaveAttribute("data-theme");
 
     const bgColor = await container.evaluate((el) => window.getComputedStyle(el).backgroundColor);
     expect(bgColor).toBe("rgb(255, 252, 246)");

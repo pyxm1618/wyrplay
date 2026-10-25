@@ -3,6 +3,7 @@
 import type { AgeGroup, Difficulty, Occasion, Relationship, Tone } from "../types";
 
 export interface QuestionFilterBarProps {
+  readonly loading?: boolean;
   readonly searchKeyword: string;
   readonly onSearchChange: (keyword: string) => void;
   readonly selectedAgeGroup: AgeGroup | undefined;
@@ -21,6 +22,7 @@ export interface QuestionFilterBarProps {
 }
 
 export function QuestionFilterBar({
+  loading = false,
   searchKeyword,
   onSearchChange,
   selectedAgeGroup,
@@ -171,7 +173,18 @@ export function QuestionFilterBar({
             >
               All Scenes
             </button>
-            {(["classroom", "party", "road-trip", "dinner", "date-night"] as const).map((occ) => (
+            {(
+              [
+                "classroom",
+                "party",
+                "road-trip",
+                "dinner",
+                "date-night",
+                "sleepover",
+                "icebreakers",
+                "birthday-party",
+              ] as const
+            ).map((occ) => (
               <button
                 key={occ}
                 type="button"
@@ -264,8 +277,9 @@ export function QuestionFilterBar({
               <span>0 playable dilemmas (questions undergoing editorial review)</span>
             ) : (
               <span>
-                Showing <strong className="text-foreground">{matchedCount}</strong> of {totalCount}{" "}
-                playable dilemmas
+                Showing{" "}
+                <strong className="text-foreground">{loading ? "Loading" : matchedCount}</strong> of{" "}
+                {totalCount} playable dilemmas
               </span>
             )}
           </span>

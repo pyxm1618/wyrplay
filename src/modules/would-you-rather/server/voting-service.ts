@@ -64,8 +64,8 @@ export function isVotableQuestion(
 }
 
 /**
- * Questions that can appear in the child-directed Kids collection never retain
- * a reusable browser/user identifier alongside the user's A/B choice.
+ * Eligibility for the Kids endpoint only. General experiences may use the same
+ * question with ordinary anonymous voting and vote changes.
  */
 export function usesAggregateOnlyVoting(
   questionId: string,
@@ -158,10 +158,6 @@ export async function recordVote(
 
   if (!isVotableQuestion(questionId, questions)) {
     throw new Error(`Question '${questionId}' is not approved for voting`);
-  }
-
-  if (usesAggregateOnlyVoting(questionId, questions)) {
-    throw new Error(`Question '${questionId}' requires aggregate-only voting`);
   }
 
   const now = new Date();

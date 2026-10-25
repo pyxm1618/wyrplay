@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { QUESTIONS_DATABASE } from "@/modules/would-you-rather";
-import { changeSavedQuestions, listSavedQuestions } from "@/modules/would-you-rather/server";
+import {
+  changeSavedQuestions,
+  listSavedQuestions,
+  SavedQuestionValidationError,
+} from "@/modules/would-you-rather/server";
 import { getAccountContext } from "@/platform/auth/account-context";
 import { env } from "@/platform/config/env";
 import { db } from "@/platform/database/application-database";
@@ -60,10 +64,16 @@ export async function POST(request: NextRequest) {
       { error: "question_unavailable" },
       { status: 400, headers: privateHeaders },
     );
-  const ids = await changeSavedQuestions(
-    db,
-    { userId: account.user.id, subjectId: account.subject.id },
-    command.data,
-  );
-  return NextResponse.json({ ids }, { headers: privateHeaders });
+  try {
+    const ids = await changeSavedQuestions(
+      db,
+      { userId: account.user.id, subjectId: account.subject.id },
+      command.data,
+    );
+    return NextResponse.json({ ids }, { headers: privateHeaders });
+  } catch (error) {
+    if (error instanceof SavedQuestionValidationError)
+      return NextResponse.json({ error: error.message }, { status: 400, headers: privateHeaders });
+    throw error;
+  }
 }

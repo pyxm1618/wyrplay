@@ -35,6 +35,7 @@ test.beforeAll(async ({ request }, info) => {
   for (const question of questions) {
     const endpoint = isKidsCollectionQuestion(question) ? "/api/wyr/kids-vote" : "/api/wyr/vote";
     const response = await request.post(endpoint, {
+      headers: { Origin: origin.origin },
       data: { questionId: question.id, option: "A" },
     });
     expect(response.ok()).toBeTruthy();

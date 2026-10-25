@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useSyncExternalStore } from "react";
+import { useLayoutEffect, useSyncExternalStore } from "react";
 
 function safeGetStorageTheme(): "dark" | "light" | null {
   try {
@@ -54,14 +54,25 @@ function subscribeTheme(callback: () => void) {
   };
 }
 
-export function ThemeToggle() {
-  const theme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerSnapshot);
+export function ThemeToggle({ fixedLight = false }: { readonly fixedLight?: boolean }) {
+  const preferredTheme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerSnapshot);
+  const theme = fixedLight ? "light" : preferredTheme;
 
   // 挂载与主题变更时，确保真实 DOM 根节点的 data-theme 属性与当前状态严格同步
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.documentElement.setAttribute("data-theme", theme);
-    }
+  useLayoutEffect(() => {
+    if (typeof document === "undefined" || document.documentElement.dataset.theme === theme) return;
+    // Initial root synchronization must not animate text through unreadable intermediate colors.
+    // Explicit user toggles already update the root before this effect runs.
+    const transitionGuard = document.createElement("style");
+    transitionGuard.textContent = "*,*::before,*::after{transition:none!important}";
+    document.head.append(transitionGuard);
+    document.documentElement.setAttribute("data-theme", theme);
+    void getComputedStyle(document.body).color;
+    const timer = window.setTimeout(() => transitionGuard.remove(), 1);
+    return () => {
+      window.clearTimeout(timer);
+      transitionGuard.remove();
+    };
   }, [theme]);
 
   const toggle = () => {
@@ -74,6 +85,8 @@ export function ThemeToggle() {
       window.dispatchEvent(new Event("storage"));
     }
   };
+
+  if (fixedLight) return null;
 
   return (
     <button

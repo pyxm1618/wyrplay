@@ -22,35 +22,50 @@ if (headers.get("cross-origin-opener-policy") !== "same-origin-allow-popups") {
   throw new Error("COOP must preserve OAuth popups without disabling opener isolation");
 }
 
-const csp = buildContentSecurityPolicy({
-  nonce: "verification-nonce",
-  development: process.env.NODE_ENV === "development",
-  production: process.env.APP_ENV === "production",
-  analytics: {
-    ga4: featuresConfig.analytics.enabled && featuresConfig.analytics.ga4,
-    clarity: featuresConfig.analytics.enabled && featuresConfig.analytics.clarity,
-  },
-  turnstile: featuresConfig.auth.enabled && featuresConfig.auth.magicLink,
-});
-for (const directive of [
-  "default-src 'self'",
-  "object-src 'none'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  "frame-ancestors 'none'",
-]) {
-  if (!csp.includes(directive)) throw new Error(`CSP missing directive: ${directive}`);
-}
-const scriptDirective = csp.match(/(?:^|; )script-src ([^;]+)/)?.[1] ?? "";
-if (!scriptDirective) throw new Error("CSP script-src is required");
-if (!scriptDirective.includes("'nonce-verification-nonce'")) {
-  throw new Error("script-src must authorize a per-request nonce");
-}
-if (scriptDirective.includes("'unsafe-inline'")) {
-  throw new Error("script-src must not depend on unsafe-inline");
-}
-if (/script-src[^;]*\s\*/.test(csp) || /connect-src[^;]*\s\*/.test(csp)) {
-  throw new Error("CSP must not use wildcard script/connect sources");
+for (const adsense of [false, true]) {
+  const csp = buildContentSecurityPolicy({
+    nonce: "verification-nonce",
+    adsense,
+    development: process.env.NODE_ENV === "development",
+    production: process.env.APP_ENV === "production",
+    analytics: {
+      ga4: featuresConfig.analytics.enabled && featuresConfig.analytics.ga4,
+      clarity: featuresConfig.analytics.enabled && featuresConfig.analytics.clarity,
+    },
+    turnstile: featuresConfig.auth.enabled && featuresConfig.auth.magicLink,
+  });
+  for (const directive of [
+    "default-src 'self'",
+    "object-src 'none'",
+    adsense ? "base-uri 'none'" : "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+  ]) {
+    if (!csp.includes(directive)) throw new Error(`CSP missing directive: ${directive}`);
+  }
+  const scriptDirective = csp.match(/(?:^|; )script-src ([^;]+)/)?.[1] ?? "";
+  if (!scriptDirective) throw new Error("CSP script-src is required");
+  if (!scriptDirective.includes("'nonce-verification-nonce'")) {
+    throw new Error("script-src must authorize a per-request nonce");
+  }
+  if (!adsense && scriptDirective.includes("'unsafe-inline'")) {
+    throw new Error("script-src must not depend on unsafe-inline");
+  }
+  if (/script-src[^;]*\s\*/.test(csp) || /connect-src[^;]*\s\*/.test(csp)) {
+    throw new Error("CSP must not use wildcard script/connect sources");
+  }
+
+  if (adsense) {
+    for (const source of ["'strict-dynamic'", "'unsafe-eval'", "https:", "http:"]) {
+      if (!scriptDirective.includes(source))
+        throw new Error(`AdSense CSP missing required source: ${source}`);
+    }
+    for (const directive of ["connect-src", "frame-src", "img-src"]) {
+      const sources = csp.split("; ").find((part) => part.startsWith(`${directive} `));
+      if (!sources?.includes("https:"))
+        throw new Error(`AdSense ${directive} must permit Google ad resources`);
+    }
+  }
 }
 
 if (process.env.APP_ENV === "production") {

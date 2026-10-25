@@ -1,0 +1,220 @@
+.play-heading {
+  position: relative;
+  text-align: center;
+  max-width: 1160px;
+  margin: 34px auto 32px;
+}
+.play-heading h1 {
+  font: 400 clamp(58px, 7.2vw, 112px)/1.1 PlayHand;
+  margin: 0;
+  letter-spacing: -3px;
+  white-space: nowrap;
+}
+.word-rather {
+  color: #009aff;
+}
+.word-rather i {
+  color: #ff542e;
+  font-style: normal;
+}
+.play-heading p {
+  font-size: 29px;
+  font-weight: 700;
+  margin: 6px 0 0;
+}
+.heading-crown {
+  position: absolute;
+  width: 85px;
+  height: 70px;
+  object-fit: contain;
+  top: -44px;
+  left: 29%;
+}
+.play-options {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 68px;
+  max-width: 1096px;
+  margin: auto;
+}
+.option-panel {
+  border: 3px solid white;
+  border-radius: 38px;
+  min-height: 404px;
+  background:
+    radial-gradient(circle at 0 42%, #ffe9cf 0 15%, transparent 15.2%),
+    radial-gradient(circle at 100% 24%, #ffe9cf 0 8%, transparent 8.2%),
+    linear-gradient(120deg, #fff5e4, #fff7e7);
+  padding: 28px 40px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 36px #ffc35418;
+}
+.option-b {
+  background:
+    radial-gradient(circle at 0 30%, #d3f0ff 0 17%, transparent 17.2%),
+    radial-gradient(circle at 100% 70%, #d3f0ff 0 12%, transparent 12.2%),
+    linear-gradient(120deg, #e2f6ff, #e4f7ff);
+  box-shadow: 0 10px 36px #60d2ff18;
+}
+.option-panel h2 {
+  font: 400 50px/1.05 PlayHand;
+  max-width: 400px;
+  margin: 14px 0 24px;
+}
+.option-symbol {
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  width: 87px;
+  height: 87px;
+  font-size: 58px;
+  flex-shrink: 0;
+}
+.option-b .option-symbol {
+  background: #009fff;
+}
+.or-disc {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%) rotate(-7deg);
+  width: 104px;
+  height: 104px;
+  background: #041123;
+  color: white;
+  font: 400 55px/104px PlayHand;
+  text-align: center;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 0 2px #fff;
+}
+.play-art {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.play-art .blob {
+  position: absolute;
+  border-radius: 48% 52% 65% 35%;
+  opacity: 0.65;
+}
+.play-art .yellow {
+  background: #ffe6a0;
+  width: 280px;
+  height: 350px;
+  left: -170px;
+  top: 140px;
+  transform: rotate(25deg);
+}
+.play-art .blue {
+  background: #b4e7ff;
+  width: 350px;
+  height: 230px;
+  right: -160px;
+  top: 115px;
+  transform: rotate(-30deg);
+}
+.play-art .pink {
+  background: #ffdaea;
+  width: 350px;
+  height: 280px;
+  right: -200px;
+  top: 520px;
+  transform: rotate(-35deg);
+}
+.play-art .blue-bottom {
+  background: #a6e1ff;
+  width: 280px;
+  height: 240px;
+  left: -160px;
+  bottom: 80px;
+}
+.play-art .yellow-bottom {
+  background: #ffe9af;
+  width: 400px;
+  height: 250px;
+  right: -90px;
+  bottom: -60px;
+}
+.play-art .art-star {
+  position: absolute;
+  top: 42%;
+  left: 5%;
+  font-size: 100px;
+  color: #ffca08;
+  transform: rotate(-14deg);
+}
+.play-art .art-question {
+  position: absolute;
+  right: 5%;
+  top: 36%;
+  font: 140px PlayHand;
+  color: #0eb4f4;
+  transform: rotate(9deg);
+}
+@media (max-width: 1100px) {
+  .play-options {
+    margin: 0 30px;
+    gap: 45px;
+  }
+  .play-heading p {
+    font-size: 23px;
+    padding: 0 20px;
+  }
+}
+@media (max-width: 700px) {
+  .play-heading {
+    margin: 32px 12px 22px;
+  }
+  .play-heading h1 {
+    font-size: clamp(32px, 9vw, 64px);
+    letter-spacing: -1px;
+  }
+  .play-heading p {
+    font-size: 18px;
+  }
+  .heading-crown {
+    width: 50px;
+    height: 40px;
+    top: -27px;
+  }
+  .play-options {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    margin: 0 20px;
+  }
+  .option-panel {
+    min-height: 260px;
+    padding: 22px;
+  }
+  .option-panel h2 {
+    font-size: 36px;
+    max-width: none;
+    margin: 12px 0 20px;
+  }
+  .option-symbol {
+    width: 50px;
+    height: 50px;
+    font-size: 34px;
+  }
+  .or-disc {
+    top: 50%;
+    width: 65px;
+    height: 65px;
+    font-size: 36px;
+    line-height: 65px;
+  }
+}
+.option-symbol {
+  object-fit: contain;
+  background: none;
+}

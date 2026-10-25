@@ -1,24 +1,24 @@
 @font-face {
   font-family: AccountCondensed;
-  src: url("/leaderboard-fonts/roboto-condensed-bold.ttf");
+  src: url("/leaderboard-fonts/roboto-condensed-bold.woff2");
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: AccountChewy;
-  src: url("/leaderboard-fonts/chewy.ttf");
+  src: url("/leaderboard-fonts/chewy.woff2");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: AccountBody;
-  src: url("/leaderboard-fonts/roboto-400.ttf");
+  src: url("/leaderboard-fonts/roboto-400.woff2");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: AccountBody;
-  src: url("/leaderboard-fonts/roboto-700.ttf");
+  src: url("/leaderboard-fonts/roboto-700.woff2");
   font-weight: 700;
   font-display: swap;
 }

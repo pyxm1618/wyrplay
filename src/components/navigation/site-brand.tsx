@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { DocumentBoundaryLink as Link } from "@/components/navigation/document-boundary-link";
 
 import { siteConfig } from "@/config/site.config";
 

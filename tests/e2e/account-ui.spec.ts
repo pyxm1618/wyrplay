@@ -47,6 +47,17 @@ test("account reads finder favorites and removes only the selected stored ID", a
       ),
     );
     await page.reload();
+    await expect(page.locator(".account-notice")).toContainText("stored data has not been changed");
+    expect((await (await context.request.get("/api/account/saved-questions")).json()).ids).toEqual(
+      [],
+    );
+    expect(
+      await page.evaluate(() => JSON.parse(localStorage.getItem("wyrplay:saved-questions:v1")!)),
+    ).toEqual(["wyr-000001", "wyr-000002", "future-unavailable-id"]);
+    await page.evaluate(() =>
+      localStorage.setItem("wyrplay:saved-questions:v1", '["wyr-000001","wyr-000002"]'),
+    );
+    await page.reload();
     await expect(page.locator(".account-saved-card")).toHaveCount(2);
     await page.locator(".account-saved-card").first().locator("summary").click();
     await page.getByRole("button", { name: "Remove from saved", exact: true }).click();
@@ -57,7 +68,6 @@ test("account reads finder favorites and removes only the selected stored ID", a
       ),
     ).toEqual([]);
     expect((await (await context.request.get("/api/account/saved-questions")).json()).ids).toEqual([
-      "future-unavailable-id",
       "wyr-000002",
     ]);
     await page.locator(".account-question-title").click();

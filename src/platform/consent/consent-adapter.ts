@@ -35,6 +35,11 @@ const LEGACY_STORAGE_KEY = "creat-web:analytics-consent:v1";
 
 declare global {
   interface Window {
+    __tcfapi?: (
+      command: "addEventListener",
+      version: number,
+      callback: (data: { eventStatus?: string }, success: boolean) => void,
+    ) => void;
     googlefc?: {
       showRevocationMessage?: () => void;
       callbackQueue?: unknown[];
@@ -48,6 +53,8 @@ declare global {
 let currentConsent: ConsentSnapshot = DEFAULT_CONSENT;
 const listeners = new Set<() => void>();
 let initialized = false;
+let consentResolved = false;
+let tcfListenerAttached = false;
 
 function cleanLegacyStorage(): void {
   if (typeof window === "undefined") return;
@@ -105,7 +112,10 @@ function readGoogleConsentMode(): void {
       ? "granted"
       : "denied";
 
+    const wasResolved = consentResolved;
+    consentResolved = true;
     if (
+      wasResolved &&
       nextAnalytics === currentConsent.analytics &&
       nextAdvertising === currentConsent.advertising
     ) {
@@ -156,6 +166,17 @@ function attachGoogleFcListener(): void {
   window.googlefc.callbackQueue.push({
     CONSENT_MODE_DATA_READY: () => {
       readGoogleConsentMode();
+      if (!tcfListenerAttached && typeof window.__tcfapi === "function") {
+        tcfListenerAttached = true;
+        window.__tcfapi("addEventListener", 2, (data, success) => {
+          if (
+            success &&
+            (data.eventStatus === "tcloaded" || data.eventStatus === "useractioncomplete")
+          ) {
+            readGoogleConsentMode();
+          }
+        });
+      }
     },
   });
 
@@ -199,6 +220,10 @@ if (typeof window !== "undefined") {
   initConsentAdapter();
 }
 
+export function isConsentResolved(): boolean {
+  return consentResolved;
+}
+
 export function getConsentSnapshot(): ConsentSnapshot {
   return currentConsent;
 }
@@ -239,6 +264,8 @@ export function resetConsentForTesting(): void {
   currentConsent = DEFAULT_CONSENT;
   listeners.clear();
   initialized = false;
+  consentResolved = false;
+  tcfListenerAttached = false;
 }
 
 export function mockGoogleConsentModeForTesting(
