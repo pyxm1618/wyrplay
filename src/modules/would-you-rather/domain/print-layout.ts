@@ -159,7 +159,7 @@ export function createPrintLayout(
         wrapPrintText(content.optionA, optionWidth, measure).length,
         wrapPrintText(content.optionB, optionWidth, measure).length,
       );
-      const rowHeight = Math.max(72, questionLines * 14 + optionLines * 14 + 24);
+      const rowHeight = Math.max(60, questionLines * 14 + optionLines * 14 + 12);
       const reachedPageLimit = maxPerPage !== null && page.length >= maxPerPage;
       if (reachedPageLimit || y + rowHeight > height - 30) {
         if (page.length) pages.push(page);
