@@ -91,6 +91,61 @@ for (const format of ["cards", "sheet"] as const) {
   }
 }
 
+
+test("Ctrl/Cmd+P uses the prepared native print path with QR and cleans up after printing", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    const state = window as unknown as {
+      __printCalled?: boolean;
+      __printShortcutPrevented?: boolean;
+    };
+    state.__printCalled = false;
+    window.print = () => {
+      state.__printCalled = true;
+    };
+  });
+
+  await page.goto("/print?set=1");
+  await expect(page.getByRole("button", { name: "Download PDF" })).toBeEnabled();
+  await expect(page.locator(".print-document")).toHaveCount(0);
+
+  await page.evaluate(() => {
+    const event = new KeyboardEvent("keydown", {
+      key: "p",
+      code: "KeyP",
+      ctrlKey: true,
+      bubbles: true,
+      cancelable: true,
+    });
+    window.dispatchEvent(event);
+    (window as unknown as { __printShortcutPrevented?: boolean }).__printShortcutPrevented =
+      event.defaultPrevented;
+  });
+
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __printShortcutPrevented?: boolean }).__printShortcutPrevented,
+      ),
+    )
+    .toBe(true);
+  await expect
+    .poll(() =>
+      page.evaluate(() => (window as unknown as { __printCalled?: boolean }).__printCalled),
+    )
+    .toBe(true);
+
+  const nativeDocument = page.locator(".print-document");
+  await expect(nativeDocument).toHaveCount(1);
+  const qr = nativeDocument.locator('img[alt="Play this set QR code"]').first();
+  await expect(qr).toHaveAttribute("src", /^data:image\/png;base64,/);
+  await expect(nativeDocument.locator('img[src^="https://media.wyrplay.com/"]')).not.toHaveCount(0);
+
+  await page.evaluate(() => window.dispatchEvent(new Event("afterprint")));
+  await expect(page.locator(".print-document")).toHaveCount(0);
+});
+
 test("failed PDF asset download reports failure and never downloads a partial PDF", async ({
   page,
 }) => {
