@@ -125,7 +125,8 @@ test("Ctrl/Cmd+P uses the prepared native print path with QR and cleans up after
   await expect
     .poll(() =>
       page.evaluate(
-        () => (window as unknown as { __printShortcutPrevented?: boolean }).__printShortcutPrevented,
+        () =>
+          (window as unknown as { __printShortcutPrevented?: boolean }).__printShortcutPrevented,
       ),
     )
     .toBe(true);
@@ -139,9 +140,7 @@ test("Ctrl/Cmd+P uses the prepared native print path with QR and cleans up after
   await expect(nativeDocument).toHaveCount(1);
   const qr = nativeDocument.locator('img[alt="Play this set QR code"]').first();
   await expect(qr).toHaveAttribute("src", /^data:image\/png;base64,/);
-  await expect(
-    nativeDocument.locator('img[src^="https://media.wyrplay.com/"]'),
-  ).not.toHaveCount(0);
+  await expect(nativeDocument.locator('img[src^="https://media.wyrplay.com/"]')).not.toHaveCount(0);
 
   await page.evaluate(() => window.dispatchEvent(new Event("afterprint")));
   await expect(page.locator(".print-document")).toHaveCount(0);
