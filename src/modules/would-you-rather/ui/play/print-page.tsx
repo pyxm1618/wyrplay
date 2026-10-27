@@ -1,7 +1,15 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- Canvas previews and original local logo. */
 
-import { Suspense, useCallback, useEffect, useState, startTransition, useMemo, useRef } from "react";
+import {
+  Suspense,
+  useCallback,
+  useEffect,
+  useState,
+  startTransition,
+  useMemo,
+  useRef,
+} from "react";
 import { flushSync } from "react-dom";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
