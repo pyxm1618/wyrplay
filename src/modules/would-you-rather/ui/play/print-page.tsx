@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- Canvas previews and original local logo. */
 
-import { Suspense, useEffect, useState, startTransition, useMemo, useRef } from "react";
+import { Suspense, useCallback, useEffect, useState, startTransition, useMemo, useRef } from "react";
 import { flushSync } from "react-dom";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -440,7 +440,7 @@ function PrintPageContent({
   }
 
   // 触发浏览器原生打印
-  async function handlePrint() {
+  const handlePrint = useCallback(async () => {
     if (!layout || !totalPages || !currentCanvas || !logo) return;
     try {
       if (qrCodeEnabled && layout) {
@@ -487,7 +487,19 @@ function PrintPageContent({
         `Print preparation failed. ${err instanceof Error ? err.message : "Please try again."}`,
       );
     }
-  }
+  }, [currentCanvas, format, layout, logo, printQrData, qrCodeEnabled, totalPages]);
+
+  useEffect(() => {
+    const handlePrintShortcut = (event: KeyboardEvent) => {
+      if (event.repeat || event.altKey || event.shiftKey) return;
+      if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== "p") return;
+      event.preventDefault();
+      void handlePrint();
+    };
+
+    window.addEventListener("keydown", handlePrintShortcut, true);
+    return () => window.removeEventListener("keydown", handlePrintShortcut, true);
+  }, [handlePrint]);
 
   return (
     <div className="print-page" data-format={format}>
