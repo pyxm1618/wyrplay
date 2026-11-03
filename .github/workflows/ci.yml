@@ -50,9 +50,29 @@ jobs:
       - name: Formatting
         run: bun run format:check
       - name: Diff whitespace check
+        env:
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PUSH_BEFORE_SHA: ${{ github.event.before }}
+          PUSH_HEAD_SHA: ${{ github.sha }}
         run: |
-          git fetch origin main --depth=1
-          git diff --check origin/main HEAD
+          set -euo pipefail
+          zero_sha="0000000000000000000000000000000000000000"
+          if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+            base_sha="$PR_BASE_SHA"
+            head_sha="$PR_HEAD_SHA"
+          else
+            base_sha="$PUSH_BEFORE_SHA"
+            head_sha="$PUSH_HEAD_SHA"
+          fi
+
+          if [ -z "$base_sha" ] || [ -z "$head_sha" ] || [ "$base_sha" = "$zero_sha" ]; then
+            echo "::notice::No stable comparison SHA is available for this event; skipping diff whitespace check."
+            exit 0
+          fi
+
+          git fetch --no-tags --depth=1 origin "$base_sha" "$head_sha"
+          git diff --check "$base_sha" "$head_sha"
       - name: Lint
         run: bun run lint
       - name: Typecheck
@@ -131,6 +151,21 @@ jobs:
         run: bunx playwright install --with-deps chromium
       - name: Real-page performance budgets
         run: bun run verify:performance
+
+  browser:
+    name: Browser regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with: { bun-version: 1.4.4 }
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Install Chromium
+        run: bunx playwright install --with-deps chromium
+      - name: Browser regression tests
+        run: bun run test:browser
 
   e2e:
     runs-on: ubuntu-latest
@@ -234,7 +269,7 @@ jobs:
   deploy:
     name: Production Deploy
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: [quality, performance, e2e, clean-setup]
+    needs: [quality, performance, browser, e2e, clean-setup]
     runs-on: ubuntu-latest
     environment: production
     concurrency:
@@ -247,21 +282,29 @@ jobs:
       CLARITY_PROJECT_ID: yywwognjg1
     steps:
       - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-        with: { bun-version: 1.4.4 }
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-      - name: Build for Cloudflare
-        run: bun run build:cloudflare
-      - name: Refuse stale main deployment
+      - name: Determine deployment freshness
+        id: freshness
         shell: bash
         run: |
           set -euo pipefail
           remote_main_sha="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
           test -n "$remote_main_sha"
           if [ "$GITHUB_SHA" != "$remote_main_sha" ]; then
-            echo "::error::Refusing stale deployment: workflow SHA $GITHUB_SHA is not current main $remote_main_sha"
-            exit 1
+            echo "current=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Skipping superseded deployment: workflow SHA $GITHUB_SHA is no longer current main $remote_main_sha"
+            echo "Superseded by current main `$remote_main_sha`; production deployment skipped safely." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "current=true" >> "$GITHUB_OUTPUT"
           fi
+      - uses: oven-sh/setup-bun@v2
+        if: steps.freshness.outputs.current == 'true'
+        with: { bun-version: 1.4.4 }
+      - name: Install dependencies
+        if: steps.freshness.outputs.current == 'true'
+        run: bun install --frozen-lockfile
+      - name: Build for Cloudflare
+        if: steps.freshness.outputs.current == 'true'
+        run: bun run build:cloudflare
       - name: Deploy to Production
+        if: steps.freshness.outputs.current == 'true'
         run: bun run deploy:cloudflare
