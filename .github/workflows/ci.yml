@@ -13,6 +13,23 @@ permissions:
   contents: read
 
 jobs:
+  lockfile-refresh-probe:
+    name: Lockfile refresh probe
+    if: github.event_name == 'pull_request' && github.head_ref == 'fix/ci-gate-correctness-closeout'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with: { bun-version: 1.4.4 }
+      - name: Resolve patched dependency lock
+        run: bun install --lockfile-only
+      - name: Emit generated lock for repository update
+        run: |
+          echo "LOCKFILE_B64_BEGIN"
+          base64 -w 0 bun.lock
+          echo
+          echo "LOCKFILE_B64_END"
+
   quality:
     runs-on: ubuntu-latest
     timeout-minutes: 55
@@ -44,7 +61,7 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Verify Better Auth schema generation
         run: |
-          bunx auth@1.6.25 generate --config src/platform/auth/auth-cli.ts --output /tmp/auth-schema.ts --yes
+          bunx auth@1.7.15 generate --config src/platform/auth/auth-cli.ts --output /tmp/auth-schema.ts --yes
           bunx prettier --config .prettierrc.json --write /tmp/auth-schema.ts
           diff -u src/platform/database/auth-schema.ts /tmp/auth-schema.ts
       - name: Formatting
