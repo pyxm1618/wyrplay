@@ -6,7 +6,7 @@ on:
   pull_request:
 
 concurrency:
-  group: ci-${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  group: wyrplay-ci-${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
 
 permissions:
@@ -23,12 +23,13 @@ jobs:
         with: { bun-version: 1.4.4 }
       - name: Resolve patched dependency lock
         run: bun install --lockfile-only
-      - name: Emit generated lock for repository update
-        run: |
-          echo "LOCKFILE_B64_BEGIN"
-          base64 -w 3000 bun.lock
-          echo
-          echo "LOCKFILE_B64_END"
+      - name: Upload generated lock for repository update
+        uses: actions/upload-artifact@v4
+        with:
+          name: patched-bun-lock
+          path: bun.lock
+          if-no-files-found: error
+          retention-days: 1
 
   quality:
     runs-on: ubuntu-latest
