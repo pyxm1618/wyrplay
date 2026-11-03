@@ -26,7 +26,7 @@ jobs:
       - name: Emit generated lock for repository update
         run: |
           echo "LOCKFILE_B64_BEGIN"
-          base64 -w 0 bun.lock
+          base64 -w 3000 bun.lock
           echo
           echo "LOCKFILE_B64_END"
 
