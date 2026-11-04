@@ -34,16 +34,17 @@
     "verify:credit-races": "bun scripts/verify-credit-races.ts",
     "verify:supply-chain": "bun install --frozen-lockfile --lockfile-only && bun audit --registry https://registry.npmjs.org --audit-level=high --ignore=GHSA-vfj7-8cjw-p6xm --ignore=GHSA-cjq9-62q9-8jv4",
     "verify:release": "bun scripts/verify-release.ts",
-    "verify": "bun run format:check && bun run lint && bun run typecheck && bun run test:unit && bun run test:integration && bun run test:contract && bun run db:verify && bun run test:build-matrix && bun run verify:architecture && bun run verify:secrets && bun run verify:seo && bun run verify:i18n && bun run verify:security && bun run verify:subscription && bun run verify:commerce && bun run verify:credits && bun run verify:supply-chain && bun run verify:release && bun run verify:performance",
+    "verify": "bun run format:check && bun run lint && bun run typecheck && bun run test:unit && bun run test:integration && bun run test:contract && bun run test:browser && bun run db:verify && bun run test:build-matrix && bun run verify:architecture && bun run verify:secrets && bun run verify:seo && bun run verify:i18n && bun run verify:security && bun run verify:subscription && bun run verify:commerce && bun run verify:credits && bun run verify:supply-chain && bun run verify:release && bun run verify:performance",
     "build:cloudflare": "opennextjs-cloudflare build && bun scripts/package-cloudflare-csp.ts",
     "preview:cloudflare": "opennextjs-cloudflare preview",
-    "deploy:cloudflare": "opennextjs-cloudflare deploy"
+    "deploy:cloudflare": "opennextjs-cloudflare deploy",
+    "test:browser": "vitest run --config vitest.browser.config.ts"
   },
   "dependencies": {
-    "@better-auth/drizzle-adapter": "1.6.25",
+    "@better-auth/drizzle-adapter": "1.7.15",
     "@pdf-lib/fontkit": "1.1.1",
     "@waffo/pancake-ts": "0.18.0",
-    "better-auth": "1.6.25",
+    "better-auth": "1.7.15",
     "drizzle-orm": "0.45.2",
     "next": "16.4.1",
     "pdf-lib": "1.17.1",

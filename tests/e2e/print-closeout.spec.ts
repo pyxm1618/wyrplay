@@ -43,6 +43,39 @@ for (const format of ["cards", "sheet"] as const) {
         .toBe(true);
       await expect(page.locator(".print-document .print-page-sheet")).toHaveCount(expectedPages);
 
+      if (format === "cards") {
+        const cards = await page
+          .locator(".print-document .print-page-sheet")
+          .evaluateAll((sheets) =>
+            sheets.flatMap((sheet) =>
+              Array.from(sheet.children).map((placement) => {
+                const card = placement.firstElementChild;
+                if (!card) throw new Error("Print placement has no card content");
+                return {
+                  bottom: card.getBoundingClientRect().bottom,
+                  captions: Array.from(card.querySelectorAll("p")).map((caption) => ({
+                    text: caption.textContent,
+                    bottom: caption.getBoundingClientRect().bottom,
+                  })),
+                };
+              }),
+            ),
+          );
+        expect(cards).toHaveLength(24);
+        for (const [index, card] of cards.entries()) {
+          expect(
+            card.captions.length,
+            `${paper} card ${index + 1} has no captions`,
+          ).toBeGreaterThan(0);
+          for (const caption of card.captions) {
+            expect(
+              caption.bottom,
+              `${paper} card ${index + 1}: ${JSON.stringify(caption.text)}`,
+            ).toBeLessThanOrEqual(card.bottom + 0.5);
+          }
+        }
+      }
+
       const qr = page.locator('.print-document img[alt="Play this set QR code"]').first();
       const url = new URL((await qr.getAttribute("data-play-url"))!);
       expect(url.pathname).toBe("/play");
