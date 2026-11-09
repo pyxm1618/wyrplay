@@ -135,7 +135,7 @@ jobs:
         run: bun run verify:release --mode=test
 
   performance:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
       APP_ENV: test
@@ -154,7 +154,7 @@ jobs:
 
   browser:
     name: Browser regression
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
@@ -168,7 +168,7 @@ jobs:
         run: bun run test:browser
 
   e2e:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 50
     services:
       postgres:
@@ -219,7 +219,7 @@ jobs:
         run: bun run verify:seo:production
 
   clean-setup:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 55
     services:
       postgres:
