@@ -45,7 +45,6 @@ test("homepage does not overflow a 375px viewport", async ({ page }) => {
   expect(overflow).toBe(false);
 });
 
-
 test("homepage preserves the approved 778px design geometry", async ({ page }, info) => {
   await page.setViewportSize({ width: 778, height: 900 });
   await page.goto("/");
