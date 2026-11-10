@@ -1,3 +1,32 @@
+type Crop = readonly [number, number, number, number];
+
+export function ArtCrop({
+  box,
+  className = "",
+  label,
+}: {
+  box: Crop;
+  className?: string;
+  label?: string;
+}) {
+  const [x, y, width, height] = box;
+  return (
+    <svg
+      className={`art-crop ${className}`}
+      viewBox={`${x} ${y} ${width} ${height}`}
+      width={width}
+      height={height}
+      role={label ? "img" : undefined}
+      aria-label={label}
+      aria-hidden={label ? undefined : true}
+      focusable="false"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <image href="/home-art/reference-art.png" width="778" height="2021" />
+    </svg>
+  );
+}
+
 import Image from "next/image";
 
 /** Small lossless crops retain the original pixels without another lossy encoding. */
