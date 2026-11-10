@@ -756,6 +756,16 @@ export function IllustratedHome({
         className="community-section dark-section"
         aria-label="Community choices"
       >
+        <Image
+          src="/home-art/community/top-wave.png"
+          alt=""
+          aria-hidden="true"
+          width={778}
+          height={24}
+          sizes="(max-width: 1244.8px) 100vw, 1244.8px"
+          unoptimized
+          className="community-top-wave"
+        />
         <div className="community-reference-details" aria-hidden="true">
           <HomeArt
             src="community/decor-left"
