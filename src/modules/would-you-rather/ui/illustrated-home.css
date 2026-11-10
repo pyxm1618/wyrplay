@@ -2887,6 +2887,47 @@
 
 
 /* Homepage pixel-fidelity contract: preserve the approved 778×2021 composition. */
+.illustrated-home .avatar-stack {
+  display: flex;
+}
+.illustrated-home .avatar-stack .art-crop {
+  width: calc(var(--home-unit) * 29);
+  height: calc(var(--home-unit) * 30);
+  border-radius: 50%;
+  margin-left: calc(var(--home-unit) * -1);
+}
+.illustrated-home .dog-percent {
+  color: #ff3417;
+}
+.illustrated-home .cat-percent {
+  color: #008bde;
+}
+.illustrated-home .vote-middle {
+  width: calc(var(--home-unit) * 276);
+}
+.illustrated-home .vote-bar {
+  height: calc(var(--home-unit) * 12);
+  border-radius: calc(var(--home-unit) * 20);
+  background: #009ce7;
+  overflow: hidden;
+  margin-top: calc(var(--home-unit) * 1);
+}
+.illustrated-home .vote-bar span {
+  display: block;
+  height: 100%;
+  border-radius: calc(var(--home-unit) * 20);
+  background: linear-gradient(90deg, #ff5937, #ff903c);
+  clip-path: polygon(0 0, 98% 0, 100% 50%, 98% 100%, 0 100%);
+}
+.illustrated-home .vote-count {
+  display: block;
+  font-size: calc(var(--home-unit) * 12);
+  font-weight: 600;
+  line-height: calc(var(--home-unit) * 17);
+  margin-top: calc(var(--home-unit) * 3);
+}
+
+
 body:has(.home-main) {
   background: #fff9f0;
   color: #07121a;
