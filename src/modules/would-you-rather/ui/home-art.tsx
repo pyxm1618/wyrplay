@@ -1,18 +1,20 @@
 import Image from "next/image";
 
-/** Small lossless crops retain the original pixels without another lossy encoding. */
+/** Source-derived WebP crops are served directly; the files are already size-tuned for their UI role. */
 export function HomeArt({
   src,
   width,
   height,
   className = "",
   sizes,
+  loading,
 }: {
   src: string;
   width: number;
   height: number;
   className?: string;
   sizes: string;
+  loading?: "eager" | "lazy";
 }) {
   return (
     <Image
@@ -22,6 +24,7 @@ export function HomeArt({
       sizes={sizes}
       alt=""
       className={`art-crop ${className}`}
+      loading={loading}
       unoptimized
     />
   );
