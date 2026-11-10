@@ -397,6 +397,11 @@ export function IllustratedHome({
         {arena}
         <div className="hero-bottom">
           <div className="join-players">
+            <div className="avatar-stack" aria-hidden="true">
+              {[262, 290, 318, 346].map((x) => (
+                <ArtCrop key={x} box={[x, 584, 29, 30]} />
+              ))}
+            </div>
             <p>
               <strong>{approvedQuestionCount} curated questions</strong>
               <br />
