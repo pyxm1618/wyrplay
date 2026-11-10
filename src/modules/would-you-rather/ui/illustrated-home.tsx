@@ -126,10 +126,10 @@ export function IllustratedHomeHeader({ authEnabled = false }: { authEnabled?: b
   const [menuOpen, setMenuOpen] = useState(false);
   const links = [
     { label: "Home", href: "/" },
-    { label: "Find Questions", href: "/find-questions" },
+    { label: "Questions", href: "/find-questions" },
     { label: "Categories", href: "/#categories" },
     { label: "Leaderboard", href: "/leaderboards" },
-    { label: "Kids", href: "/would-you-rather-questions-for-kids" },
+    { label: "Create", href: "/#trending" },
   ];
   return (
     <>
@@ -137,13 +137,17 @@ export function IllustratedHomeHeader({ authEnabled = false }: { authEnabled?: b
         Skip to play
       </a>
       <header data-site-header className="site-header">
-        <Link href="/" className="brand" aria-label="WYRPlay Home" prefetch={false}>
-          <Image src="/brand/logo.svg" alt="" width={40} height={40} priority />
-          <span>WYRPLAY</span>
+        <Link href="/" className="brand active" aria-label="WYRPlay Home" prefetch={false}>
+          <ArtCrop box={[54, 7, 120, 43]} label="WYRPLAY" />
         </Link>
         <nav aria-label="Primary navigation">
           {links.map((link) => (
-            <Link key={link.label} href={link.href} prefetch={false}>
+            <Link
+              key={link.label}
+              href={link.href}
+              className={link.label === "Home" ? "active" : undefined}
+              prefetch={false}
+            >
               {link.label}
             </Link>
           ))}
@@ -155,7 +159,15 @@ export function IllustratedHomeHeader({ authEnabled = false }: { authEnabled?: b
             aria-label="Search questions"
             prefetch={false}
           >
-            ⌕
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.3" stroke="currentColor" strokeWidth="2" />
+              <path
+                d="m15.2 15.2 4.5 4.5"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
           </Link>
           {authEnabled ? (
             <>
