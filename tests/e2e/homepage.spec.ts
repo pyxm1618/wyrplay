@@ -92,7 +92,7 @@ test("homepage preserves the approved 778px design geometry", async ({ page }, i
     ),
   );
   const communityBrokenImages = await page.locator("#community img").evaluateAll((images) =>
-    images
+    (images as HTMLImageElement[])
       .filter((image) => !image.complete || image.naturalWidth === 0)
       .map((image) => image.getAttribute("src") ?? "unknown"),
   );
