@@ -789,7 +789,7 @@ export function IllustratedHome({
           ))}
         </div>
         <HomeArt
-          src="community/planet-clouds"
+          src="community/planet"
           width={778}
           height={112}
           sizes="(max-width: 600px) 160vw, (max-width: 1244.8px) 100vw, 1244.8px"
