@@ -443,6 +443,7 @@ export function IllustratedHome({
                 width={113}
                 height={30}
                 sizes="(max-width: 600px) 96px, (max-width: 1244.8px) 14.524422vw, 180.8px"
+                loading="eager"
                 className="hero-avatar-strip"
               />
             </div>
