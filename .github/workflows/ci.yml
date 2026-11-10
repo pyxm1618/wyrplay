@@ -48,7 +48,12 @@ jobs:
           bunx prettier --config .prettierrc.json --write /tmp/auth-schema.ts
           diff -u src/platform/database/auth-schema.ts /tmp/auth-schema.ts
       - name: Formatting
-        run: bun run format:check
+        run: |
+          if ! bun run format:check; then
+            bunx prettier --config .prettierrc.json --write src/modules/would-you-rather/ui/illustrated-home.css src/modules/would-you-rather/ui/illustrated-home.tsx
+            git diff -- src/modules/would-you-rather/ui/illustrated-home.css src/modules/would-you-rather/ui/illustrated-home.tsx
+            exit 1
+          fi
       - name: Diff whitespace check
         env:
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
