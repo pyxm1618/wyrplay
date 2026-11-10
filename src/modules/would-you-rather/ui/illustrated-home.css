@@ -2900,7 +2900,6 @@ body:has(.home-main) {
   min-inline-size: 0;
 }
 
-
 @media (min-width: 601px) {
   .illustrated-home {
     --home-unit: clamp(1px, calc(100vw / 778), 1.6px);
@@ -3112,7 +3111,8 @@ body:has(.home-main) {
     text-align: left;
   }
 
-  .illustrated-home :is(.home-container, .how-container, .statistics-container, .together-container) {
+  .illustrated-home
+    :is(.home-container, .how-container, .statistics-container, .together-container) {
     display: contents;
   }
   .illustrated-home .categories-section {
@@ -3213,7 +3213,19 @@ body:has(.home-main) {
     top: calc(var(--home-unit) * -22);
     height: calc(var(--home-unit) * 24);
     background: #fff8ee;
-    clip-path: polygon(0 0, 100% 0, 100% 32%, 93% 80%, 78% 92%, 67% 52%, 47% 92%, 28% 63%, 16% 100%, 6% 52%, 0 20%);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 32%,
+      93% 80%,
+      78% 92%,
+      67% 52%,
+      47% 92%,
+      28% 63%,
+      16% 100%,
+      6% 52%,
+      0 20%
+    );
   }
   .illustrated-home .community-section h2 {
     margin: 0;
@@ -3285,7 +3297,9 @@ body:has(.home-main) {
   }
   .illustrated-home .quote-grid p {
     margin: 0;
-    font: 400 calc(var(--home-unit) * 10) / calc(var(--home-unit) * 13) Arial, sans-serif;
+    font:
+      400 calc(var(--home-unit) * 10) / calc(var(--home-unit) * 13) Arial,
+      sans-serif;
     letter-spacing: calc(var(--home-unit) * -0.25);
   }
   .illustrated-home .community-reference-details {
