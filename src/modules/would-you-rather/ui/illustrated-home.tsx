@@ -696,9 +696,25 @@ export function IllustratedHome({
       <section
         id="statistics"
         className="statistics home-real-statistics"
-        aria-label="Question library"
+        aria-label="Live site statistics"
       >
         <div className="home-container statistics-container">
+          <div className="statistic">
+            <HomeArt
+              src="icons/players-statistic"
+              width={48}
+              height={47}
+              sizes="(max-width: 600px) 48px, (max-width: 1244.8px) 6.169666vw, 76.8px"
+            />
+            <p>
+              <strong>
+                {leaderboard?.status === "ready"
+                  ? leaderboard.snapshot.anonymousVoters.toLocaleString()
+                  : "—"}
+              </strong>
+              <span>Players</span>
+            </p>
+          </div>
           <div className="statistic">
             <HomeArt
               src="icons/question-statistic"
@@ -707,8 +723,8 @@ export function IllustratedHome({
               sizes="(max-width: 600px) 48px, (max-width: 1244.8px) 6.169666vw, 76.8px"
             />
             <p>
-              <strong>{approvedQuestionCount}</strong>
-              <span>Would You Rather Questions</span>
+              <strong>{approvedQuestionCount.toLocaleString()}</strong>
+              <span>Questions</span>
             </p>
           </div>
           <div className="statistic">
@@ -720,31 +736,23 @@ export function IllustratedHome({
             />
             <p>
               <strong>{Object.keys(FEATURED_COLLECTIONS).length}</strong>
-              <span>Collections</span>
+              <span>Categories</span>
             </p>
           </div>
           <div className="statistic">
             <HomeArt
-              src="icons/question-statistic"
+              src="icons/community-votes-statistic"
               width={48}
               height={47}
               sizes="(max-width: 600px) 48px, (max-width: 1244.8px) 6.169666vw, 76.8px"
             />
             <p>
-              <strong>3</strong>
-              <span>Ways to Play</span>
-            </p>
-          </div>
-          <div className="statistic">
-            <HomeArt
-              src="icons/collection-statistic"
-              width={48}
-              height={47}
-              sizes="(max-width: 600px) 48px, (max-width: 1244.8px) 6.169666vw, 76.8px"
-            />
-            <p>
-              <strong>A/B</strong>
-              <span>Choice Format</span>
+              <strong>
+                {leaderboard?.status === "ready"
+                  ? leaderboard.snapshot.totalVotes.toLocaleString()
+                  : "—"}
+              </strong>
+              <span>Community Votes</span>
             </p>
           </div>
         </div>

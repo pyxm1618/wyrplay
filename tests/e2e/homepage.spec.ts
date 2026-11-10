@@ -127,6 +127,13 @@ test("homepage preserves the approved 778px design geometry", async ({ page }, i
     "Great for discussion",
     "Challenge your mind",
   ]);
+  await expect(page.locator("#statistics .statistic")).toHaveCount(4);
+  await expect(page.locator("#statistics .statistic p span")).toHaveText([
+    "Players",
+    "Questions",
+    "Categories",
+    "Community Votes",
+  ]);
   await expect(page.locator('img[src*="reference-art"], image[href*="reference-art"]')).toHaveCount(
     0,
   );
