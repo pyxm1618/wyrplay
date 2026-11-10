@@ -11,6 +11,7 @@ export { FeaturedCollectionsSection } from "./ui/featured-collections";
 export { EditorialGuideSection } from "./ui/editorial-guide";
 export { QuestionFilterBar } from "./ui/question-filter-bar";
 export { WyrExperience } from "./ui/wyr-experience";
+export { IllustratedHomeHeader } from "./ui/illustrated-home";
 export { TEST_FIXTURE_QUESTIONS } from "./testing/test-fixtures";
 
 export { FinderExperience } from "./ui/finder/finder-experience";
