@@ -111,6 +111,22 @@ test("homepage preserves the approved 778px design geometry", async ({ page }, i
     clip: { x: 0, y: 0, width: 778, height: 2021 },
   });
   await expect(page.getByRole("heading", { name: "See What Others Think" })).toBeVisible();
+  await expect(page.locator("#categories .category-title")).toHaveText([
+    "Popular",
+    "Funny",
+    "For Friends",
+    "For Couples",
+    "Classroom",
+    "Hard Questions",
+  ]);
+  await expect(page.locator("#categories .category-description")).toHaveText([
+    "Most voted",
+    "Lighten the mood",
+    "Perfect for groups",
+    "Better conversations",
+    "Great for discussion",
+    "Challenge your mind",
+  ]);
   await expect(page.locator('img[src*="reference-art"], image[href*="reference-art"]')).toHaveCount(
     0,
   );

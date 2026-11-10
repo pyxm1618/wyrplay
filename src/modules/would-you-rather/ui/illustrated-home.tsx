@@ -13,22 +13,18 @@ import { useHydrated } from "./use-hydrated";
 const categories = [
   {
     title: "Popular",
+    description: "Most voted",
     crop: [33, 686, 106, 87],
     color: "popular",
+    art: "popular-source",
     href: "/leaderboards",
-  },
-  {
-    title: "For Kids",
-    description: "Clean & imaginative",
-    crop: [514, 686, 115, 87],
-    color: "kids",
-    key: "kids",
   },
   {
     title: "Funny",
     description: "Lighten the mood",
     crop: [144, 686, 112, 87],
     color: "funny",
+    art: "funny",
     key: "funny",
   },
   {
@@ -36,6 +32,7 @@ const categories = [
     description: "Perfect for groups",
     crop: [261, 686, 123, 87],
     color: "friends",
+    art: "friends",
     key: "friends",
   },
   {
@@ -43,12 +40,23 @@ const categories = [
     description: "Better conversations",
     crop: [389, 686, 120, 87],
     color: "couples",
+    art: "couples",
     key: "couples",
   },
   {
+    title: "Classroom",
+    description: "Great for discussion",
+    crop: [514, 686, 115, 87],
+    color: "classroom",
+    art: "classroom",
+    key: "kids",
+  },
+  {
     title: "Hard Questions",
+    description: "Challenge your mind",
     crop: [634, 686, 116, 87],
     color: "hard",
+    art: "hard-source",
     key: "hard",
   },
 ] as const;
@@ -477,28 +485,16 @@ export function IllustratedHome({
               const isKids = targetHref === "/would-you-rather-questions-for-kids";
               const content = (
                 <>
-                  {category.color === "popular" ||
-                  category.color === "hard" ||
-                  category.color === "kids" ? (
-                    <Image
-                      src={`/home-art/categories/${category.color}-no-subtitle.webp`}
-                      alt=""
-                      width={1061}
-                      height={1330}
-                      className="category-art-card"
-                      sizes={categoryImageSizes(category.crop[2])}
-                    />
-                  ) : (
-                    <Image
-                      src={`/home-art/categories/${category.color}.webp`}
-                      alt=""
-                      width={category.crop[2]}
-                      height={category.crop[3]}
-                      sizes={categoryImageSizes(category.crop[2])}
-                      className="art-crop category-art"
-                    />
-                  )}
+                  <Image
+                    src={`/home-art/categories/${category.art}.webp`}
+                    alt=""
+                    width={category.crop[2]}
+                    height={category.crop[3]}
+                    sizes={categoryImageSizes(category.crop[2])}
+                    className="art-crop category-art"
+                  />
                   <span className="category-title">{category.title}</span>
+                  <span className="category-description">{category.description}</span>
                 </>
               );
               if (isKids) {
