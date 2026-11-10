@@ -61,9 +61,9 @@ const categories = [
   },
 ] as const;
 const steps = [
-  { title: "Explore", description: "Find your audience, occasion and mood", color: "#009eff" },
+  { title: "Explore", description: "Browse or get a random question", color: "#009eff" },
   { title: "Choose", description: "Pick the option you prefer", color: "#ff782f" },
-  { title: "See Results", description: "Real votes, never invented percentages", color: "#00b849" },
+  { title: "See Results", description: "Instantly see what others chose", color: "#00b849" },
   { title: "Discuss", description: "Share and debate with friends", color: "#7645ff" },
 ];
 const occasions = [
