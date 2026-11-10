@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from 
 import { FEATURED_COLLECTIONS } from "../data/collections";
 import type { Question } from "../types";
 import { hasQuestionVisual } from "../data/question-visuals";
-import { Arrow, ArtCrop, HomeArt } from "./home-art";
+import { Arrow, HomeArt } from "./home-art";
 import { QuestionVisual } from "./question-visual";
 import { rankLeaderboard, type LeaderboardResult } from "../domain/leaderboard";
 import { useHydrated } from "./use-hydrated";
@@ -97,18 +97,29 @@ const occasions = [
 ] as const;
 
 const communityNotes = [
-  { text: "Pick a side, then explain why.", crop: [48, 1704, 25, 25] as const },
   {
-    text: "See the real vote split after you choose.",
-    crop: [217, 1708, 25, 26] as const,
+    text: "I never expected this to be so close!",
+    asset: "community/avatar-1",
+    width: 25,
+    height: 25,
   },
   {
-    text: "Change your vote if another argument wins you over.",
-    crop: [425, 1701, 25, 25] as const,
+    text: "I can’t believe 68% chose this option!",
+    asset: "community/avatar-2",
+    width: 25,
+    height: 26,
   },
   {
-    text: "Use the question to start a better conversation.",
-    crop: [619, 1706, 26, 26] as const,
+    text: "This question sparked an amazing discussion! ❤️",
+    asset: "community/avatar-3",
+    width: 25,
+    height: 25,
+  },
+  {
+    text: "Totally changed my perspectives.",
+    asset: "community/avatar-4",
+    width: 26,
+    height: 26,
   },
 ] as const;
 
@@ -145,7 +156,7 @@ export function IllustratedHomeHeader({ authEnabled = false }: { authEnabled?: b
             height={43}
             sizes="120px"
             priority
-            className="art-crop"
+            className="home-wordmark"
           />
         </Link>
         <nav aria-label="Primary navigation">
@@ -427,9 +438,13 @@ export function IllustratedHome({
         <div className="hero-bottom">
           <div className="join-players">
             <div className="avatar-stack" aria-hidden="true">
-              {[262, 290, 318, 346].map((x) => (
-                <ArtCrop key={x} box={[x, 584, 29, 30]} />
-              ))}
+              <HomeArt
+                src="hero/hero-avatar-strip"
+                width={113}
+                height={30}
+                sizes="(max-width: 600px) 96px, (max-width: 1244.8px) 14.524422vw, 180.8px"
+                className="hero-avatar-strip"
+              />
             </div>
             <p>
               <strong>{approvedQuestionCount} curated questions</strong>
@@ -742,22 +757,44 @@ export function IllustratedHome({
         aria-label="Community choices"
       >
         <div className="community-reference-details" aria-hidden="true">
-          <ArtCrop box={[0, 1593, 245, 88]} className="community-decoration-left" />
-          <ArtCrop box={[525, 1593, 253, 88]} className="community-decoration-right" />
+          <HomeArt
+            src="community/decor-left"
+            width={245}
+            height={88}
+            sizes="(max-width: 600px) 0px, (max-width: 1244.8px) 31.491003vw, 392px"
+            className="community-decoration-left"
+          />
+          <HomeArt
+            src="community/decor-right"
+            width={253}
+            height={88}
+            sizes="(max-width: 600px) 0px, (max-width: 1244.8px) 32.519280vw, 404.8px"
+            className="community-decoration-right"
+          />
         </div>
-        <h2>See How Others Think</h2>
-        <p className="community-subtitle">
-          Real community vote totals appear after you make a choice.
-        </p>
+        <h2>See What Others Think</h2>
+        <p className="community-subtitle">Real votes from real people around the world.</p>
         <div className="quote-grid">
           {communityNotes.map((note) => (
             <blockquote key={note.text}>
-              <ArtCrop box={note.crop} />
+              <HomeArt
+                src={note.asset}
+                width={note.width}
+                height={note.height}
+                sizes="(max-width: 600px) 25px, (max-width: 1244.8px) 3.213368vw, 40px"
+                className="community-avatar"
+              />
               <p>{note.text}</p>
             </blockquote>
           ))}
         </div>
-        <ArtCrop box={[0, 1754, 778, 112]} className="planet-art" />
+        <HomeArt
+          src="community/planet-clouds"
+          width={778}
+          height={112}
+          sizes="(max-width: 600px) 160vw, (max-width: 1244.8px) 100vw, 1244.8px"
+          className="planet-art"
+        />
       </section>
       <section id="play-together" className="together-section" aria-label="Play together anywhere">
         <HomeArt
