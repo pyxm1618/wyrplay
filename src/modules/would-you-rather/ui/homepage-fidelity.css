@@ -65,6 +65,30 @@ body:has(.home-main) {
     background: radial-gradient(ellipse at 50% 100%, #053d5b, #030e25 45%, #030919 85%);
   }
 
+
+  .illustrated-home .community-section::before {
+    display: none;
+  }
+  .illustrated-home .community-top-wave {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: calc(var(--home-unit) * 778);
+    height: calc(var(--home-unit) * 24);
+    pointer-events: none;
+    object-fit: fill;
+  }
+
+  .illustrated-home .community-top-wave {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+  }
   .illustrated-home .community-section h2 {
     position: relative;
     z-index: 2;
