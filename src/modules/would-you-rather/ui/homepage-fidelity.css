@@ -52,7 +52,6 @@ body:has(.home-main) {
   min-inline-size: 0;
 }
 
-
 @media (max-width: 600px) {
   .illustrated-home .community-section {
     position: relative;
@@ -64,7 +63,6 @@ body:has(.home-main) {
     color: #fff;
     background: radial-gradient(ellipse at 50% 100%, #053d5b, #030e25 45%, #030919 85%);
   }
-
 
   .illustrated-home .community-section::before {
     display: none;
