@@ -9,7 +9,7 @@
     "build:test": "APP_ENV=test next build --webpack && bun scripts/generate-static-csp-hashes.ts",
     "start": "next start",
     "format": "prettier --write .",
-    "format:check": "prettier --write src/modules/would-you-rather/ui/homepage-fidelity.css tests/e2e/homepage.spec.ts && echo __CSS_B64__ && base64 -w0 src/modules/would-you-rather/ui/homepage-fidelity.css && echo && echo __E2E_B64__ && base64 -w0 tests/e2e/homepage.spec.ts && echo && exit 1",
+    "format:check": "prettier --check .",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test:unit": "vitest run --config vitest.config.ts",

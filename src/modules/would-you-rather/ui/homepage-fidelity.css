@@ -152,7 +152,9 @@ body:has(.home-main) {
   .illustrated-home .quote-grid p {
     min-width: 0;
     margin: 0;
-    font: 600 10px/1.25 Arial, sans-serif;
+    font:
+      600 10px/1.25 Arial,
+      sans-serif;
   }
 
   .illustrated-home .planet-art {

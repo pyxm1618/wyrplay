@@ -91,11 +91,13 @@ test("homepage preserves the approved 778px design geometry", async ({ page }, i
       (image) => image.complete && image.naturalWidth > 0,
     ),
   );
-  const communityBrokenImages = await page.locator("#community img").evaluateAll((images) =>
-    (images as HTMLImageElement[])
-      .filter((image) => !image.complete || image.naturalWidth === 0)
-      .map((image) => image.getAttribute("src") ?? "unknown"),
-  );
+  const communityBrokenImages = await page
+    .locator("#community img")
+    .evaluateAll((images) =>
+      (images as HTMLImageElement[])
+        .filter((image) => !image.complete || image.naturalWidth === 0)
+        .map((image) => image.getAttribute("src") ?? "unknown"),
+    );
   expect(communityBrokenImages).toEqual([]);
   expect(
     await page.evaluate(() =>
@@ -109,9 +111,9 @@ test("homepage preserves the approved 778px design geometry", async ({ page }, i
     clip: { x: 0, y: 0, width: 778, height: 2021 },
   });
   await expect(page.getByRole("heading", { name: "See What Others Think" })).toBeVisible();
-  await expect(
-    page.locator('img[src*="reference-art"], image[href*="reference-art"]'),
-  ).toHaveCount(0);
+  await expect(page.locator('img[src*="reference-art"], image[href*="reference-art"]')).toHaveCount(
+    0,
+  );
 });
 test("compact desktop artwork keeps a readable minimum and the primary action in the fold", async ({
   page,
