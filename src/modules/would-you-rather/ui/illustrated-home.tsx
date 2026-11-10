@@ -98,9 +98,18 @@ const occasions = [
 
 const communityNotes = [
   { text: "Pick a side, then explain why.", crop: [48, 1704, 25, 25] as const },
-  { text: "See the real vote split after you choose.", crop: [217, 1708, 25, 26] as const },
-  { text: "Change your vote if another argument wins you over.", crop: [425, 1701, 25, 25] as const },
-  { text: "Use the question to start a better conversation.", crop: [619, 1706, 26, 26] as const },
+  {
+    text: "See the real vote split after you choose.",
+    crop: [217, 1708, 25, 26] as const,
+  },
+  {
+    text: "Change your vote if another argument wins you over.",
+    crop: [425, 1701, 25, 25] as const,
+  },
+  {
+    text: "Use the question to start a better conversation.",
+    crop: [619, 1706, 26, 26] as const,
+  },
 ] as const;
 
 // Container gutters, grid gaps and column weights mirror illustrated-home.css.
@@ -655,7 +664,11 @@ export function IllustratedHome({
           </div>
         </div>
       </section>
-      <section id="statistics" className="statistics home-real-statistics" aria-label="Question library">
+      <section
+        id="statistics"
+        className="statistics home-real-statistics"
+        aria-label="Question library"
+      >
         <div className="home-container statistics-container">
           <div className="statistic">
             <HomeArt
@@ -717,7 +730,9 @@ export function IllustratedHome({
           <ArtCrop box={[525, 1593, 253, 88]} className="community-decoration-right" />
         </div>
         <h2>See How Others Think</h2>
-        <p className="community-subtitle">Real community vote totals appear after you make a choice.</p>
+        <p className="community-subtitle">
+          Real community vote totals appear after you make a choice.
+        </p>
         <div className="quote-grid">
           {communityNotes.map((note) => (
             <blockquote key={note.text}>
