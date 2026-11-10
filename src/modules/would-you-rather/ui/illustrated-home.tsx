@@ -432,11 +432,7 @@ export function IllustratedHome({
         aria-label="Popular categories"
       >
         <div className="home-container">
-          <Heading
-            title="Popular Categories"
-            href="#question-search"
-            label="Explore categories"
-          />
+          <Heading title="Popular Categories" href="#question-search" label="Explore categories" />
           <div className="category-grid">
             {categories.map((category) => {
               const collection = "key" in category ? FEATURED_COLLECTIONS[category.key] : null;
@@ -774,9 +770,7 @@ export function IllustratedHome({
         />
         <div className="home-container together-container">
           <h2>Play Together, Anywhere</h2>
-          <p>
-            Perfect for friends, families, classrooms or just curious minds.
-          </p>
+          <p>Perfect for friends, families, classrooms or just curious minds.</p>
           <div className="occasion-grid">
             {occasions.map((occasion) => {
               const isKids = occasion.href.startsWith("/would-you-rather-questions-for-kids");
