@@ -8,7 +8,7 @@ import { SiteBrand } from "./site-brand";
 
 import { navigationConfig, type NavigationItem } from "@/config/navigation.config";
 import { siteConfig } from "@/config/site.config";
-import { ThemeToggle } from "@/modules/would-you-rather";
+import { IllustratedHomeHeader, ThemeToggle } from "@/modules/would-you-rather";
 import { localePath } from "@/platform/i18n/routing";
 
 const desktopLink =
@@ -53,6 +53,14 @@ function SiteHeaderContent({
   }
   const homeHref = localePath(siteConfig, locale, "/");
   const toLocaleHref = (href: string) => localePath(siteConfig, locale, href);
+
+  if (pathname === homeHref) {
+    return (
+      <div className="illustrated-home homepage homepage-brand-theme">
+        <IllustratedHomeHeader authEnabled={authEnabled} />
+      </div>
+    );
+  }
 
   return (
     <header
