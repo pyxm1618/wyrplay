@@ -424,7 +424,7 @@ export function IllustratedHome({
       >
         <div className="home-container">
           <Heading
-            title="Popular Would You Rather Questions"
+            title="Popular Categories"
             href="#question-search"
             label="Explore categories"
           />
@@ -490,7 +490,7 @@ export function IllustratedHome({
         aria-label="Today's highlights"
       >
         <div className="home-container">
-          <Heading title="Today’s Would You Rather Questions" href="/find-questions" />
+          <Heading title="Today’s Highlights" href="/find-questions" />
           <div className="highlight-grid">
             {highlights.map((question, index) => (
               <button
@@ -557,7 +557,7 @@ export function IllustratedHome({
               className="art-crop step-ribbon-blue"
             />
           </div>
-          <h2>How to Play Would You Rather Questions</h2>
+          <h2>How It Works</h2>
           <ol className="steps-grid">
             {steps.map((step, index) => (
               <li key={step.title} style={{ "--step-color": step.color } as CSSProperties}>
@@ -577,7 +577,7 @@ export function IllustratedHome({
         aria-label="Question rankings"
       >
         <div className="home-container">
-          <Heading title="Trending Would You Rather Questions" href="/leaderboards" />
+          <Heading title="Trending Questions" href="/leaderboards" />
           <div className="trending-grid">
             <div className="trending-list">
               {trendingSlot ??
@@ -681,6 +681,30 @@ export function IllustratedHome({
               <span>Collections</span>
             </p>
           </div>
+          <div className="statistic">
+            <HomeArt
+              src="icons/question-statistic"
+              width={48}
+              height={47}
+              sizes="(max-width: 600px) 48px, (max-width: 1244.8px) 6.169666vw, 76.8px"
+            />
+            <p>
+              <strong>3</strong>
+              <span>Ways to Play</span>
+            </p>
+          </div>
+          <div className="statistic">
+            <HomeArt
+              src="icons/collection-statistic"
+              width={48}
+              height={47}
+              sizes="(max-width: 600px) 48px, (max-width: 1244.8px) 6.169666vw, 76.8px"
+            />
+            <p>
+              <strong>A/B</strong>
+              <span>Choice Format</span>
+            </p>
+          </div>
         </div>
       </section>
       <section
@@ -734,10 +758,9 @@ export function IllustratedHome({
           className="together-flourish flourish-right"
         />
         <div className="home-container together-container">
-          <h2>Play Together with Would You Rather Questions</h2>
+          <h2>Play Together, Anywhere</h2>
           <p>
-            Bring a few would you rather questions to game night, or use Presenter Mode on a shared
-            screen.
+            Perfect for friends, families, classrooms or just curious minds.
           </p>
           <div className="occasion-grid">
             {occasions.map((occasion) => {
