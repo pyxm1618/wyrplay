@@ -261,10 +261,7 @@ test("late initial statistics cannot overwrite a recorded hero choice", async ({
   await expect(choice).toHaveAttribute("aria-pressed", "true");
   const summary = page.locator(".vote-summary");
   await expect(summary).toContainText("100%");
-  await expect(summary).toHaveAttribute(
-    "aria-label",
-    /100% chose A and 0% chose B, 1 total votes/,
-  );
+  await expect(summary).toHaveAttribute("aria-label", /100% chose A and 0% chose B, 1 total votes/);
 });
 
 test("homepage stays warm under a saved dark preference without changing other pages", async ({
