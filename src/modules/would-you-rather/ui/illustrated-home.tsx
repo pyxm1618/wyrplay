@@ -671,16 +671,17 @@ export function IllustratedHome({
                   className="dark-button create-button"
                   onClick={handleCreateClick}
                 >
-                  <span aria-hidden="true">＋</span>Coming soon
+                  <span aria-hidden="true">＋</span>Create
                 </button>
               </div>
               <Image
-                src="/home-art/bulb-hand.png"
-                width={1122}
-                height={1402}
+                src="/home-art/create/source-right.webp"
+                width={156}
+                height={191}
                 alt=""
                 className="bulb-art"
-                sizes="(max-width: 600px) 160px, (max-width: 1244.8px) 20.5656vw, 256px"
+                sizes="(max-width: 600px) 160px, (max-width: 1244.8px) 20.051414vw, 249.6px"
+                unoptimized
               />
               <span className="create-doodle doodle-one" aria-hidden="true">
                 ✚
