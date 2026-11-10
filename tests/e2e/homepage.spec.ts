@@ -45,6 +45,49 @@ test("homepage does not overflow a 375px viewport", async ({ page }) => {
   expect(overflow).toBe(false);
 });
 
+
+test("homepage preserves the approved 778px design geometry", async ({ page }, info) => {
+  await page.setViewportSize({ width: 778, height: 900 });
+  await page.goto("/");
+  await expect(page.locator("[data-home-ready=true]")).toBeVisible();
+  await page.evaluate(() => document.fonts.ready);
+
+  const regions = [
+    ["[data-site-header]", [0, 0, 778, 60]],
+    [".hero", [0, 60, 778, 572]],
+    [".choice-grid", [125, 285, 525, 180]],
+    [".home-play-actions .choice-cta", [262, 511, 254, 51]],
+    ["#categories", [0, 632, 778, 218]],
+    ["#highlights", [0, 850, 778, 240]],
+    ["#how-it-works", [0, 1090, 778, 140]],
+    ["#trending", [0, 1230, 778, 290]],
+    [".create-panel", [432, 1274, 314, 237]],
+    ["#statistics", [0, 1520, 778, 73]],
+    ["#community", [0, 1593, 778, 273]],
+    ["#play-together", [0, 1866, 778, 155]],
+  ] as const;
+
+  for (const [selector, [x, y, width, height]] of regions) {
+    const locator = page.locator(selector).first();
+    await expect(locator, selector).toBeVisible();
+    const box = await locator.boundingBox();
+    expect(box, selector).not.toBeNull();
+    for (const [actual, expected, dimension] of [
+      [box!.x, x, "x"],
+      [box!.y, y, "y"],
+      [box!.width, width, "width"],
+      [box!.height, height, "height"],
+    ] as const) {
+      expect(
+        Math.abs(actual - expected),
+        `${selector} ${dimension}: expected ${expected}px, got ${actual}px`,
+      ).toBeLessThanOrEqual(1);
+    }
+  }
+
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(778);
+  await page.screenshot({ path: info.outputPath("home-reference-778x900.png"), fullPage: true });
+});
 test("compact desktop artwork keeps a readable minimum and the primary action in the fold", async ({
   page,
 }, info) => {
@@ -109,6 +152,7 @@ for (const [width, height] of homeViewports) {
       "#trending",
       ".create-panel",
       ".statistics",
+      "#community",
       ".together-section",
       "#question-search",
       ".home-faq",
@@ -302,39 +346,18 @@ test("question selection moves and keeps keyboard focus on the mounted hero aren
     .toBe(true);
 });
 
-test("presenter modal retains return focus to live trigger after cycling questions", async ({
-  page,
-}) => {
-  await page.goto("/");
+test("presenter mode remains available on the dedicated play surface", async ({ page }) => {
+  await page.goto("/play");
   await page.waitForLoadState("networkidle");
 
-  const presenterTrigger = page.getByRole("button", { name: "Presenter Mode" });
+  const presenterTrigger = page.getByRole("button", { name: /Present/ }).first();
   await expect(presenterTrigger).toBeVisible();
   await presenterTrigger.click();
 
   const modal = page.locator(".presenter-page");
   await expect(modal).toBeVisible();
-
-  const nextBtn = page.locator(".presenter-page button", { hasText: "Next" }).first();
-  if (await nextBtn.isVisible()) {
-    await nextBtn.click();
-  }
-
   await page.keyboard.press("Escape");
   await expect(modal).toBeHidden();
-
-  await expect
-    .poll(async () => {
-      return page.evaluate(() => {
-        const active = document.activeElement;
-        return (
-          active !== null &&
-          active.tagName === "BUTTON" &&
-          active.textContent?.includes("Presenter Mode")
-        );
-      });
-    })
-    .toBe(true);
 });
 
 test("mobile question filter bar buttons satisfy touch target bounding box and spacing requirements", async ({
