@@ -844,11 +844,12 @@ body:has(.home-main) {
     gap: calc(var(--home-unit) * 6);
   }
   .illustrated-home .bulb-art {
-    bottom: calc(var(--home-unit) * -5);
-    right: calc(var(--home-unit) * -32);
-    width: calc(var(--home-unit) * 180);
-    height: calc(var(--home-unit) * 180);
-    mask-image: linear-gradient(90deg, transparent, #000 8%);
+    right: 0;
+    bottom: 0;
+    width: calc(var(--home-unit) * 156);
+    height: calc(var(--home-unit) * 191);
+    object-fit: contain;
+    mask-image: none;
   }
 
   .illustrated-home .statistic {

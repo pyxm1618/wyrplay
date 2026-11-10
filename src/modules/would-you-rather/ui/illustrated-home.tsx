@@ -462,9 +462,9 @@ export function IllustratedHome({
             </p>
           </div>
           <p className="hero-note">
-            Community votes
+            Real people
             <br />
-            Community results
+            Real answers
             <br />
             Surprisingly fun!
           </p>
@@ -476,7 +476,7 @@ export function IllustratedHome({
         aria-label="Popular categories"
       >
         <div className="home-container">
-          <Heading title="Popular Categories" href="#question-search" label="Explore categories" />
+          <Heading title="Popular Categories" href="#question-search" label="See all categories" />
           <div className="category-grid">
             {categories.map((category) => {
               const collection = "key" in category ? FEATURED_COLLECTIONS[category.key] : null;
