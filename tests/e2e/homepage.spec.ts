@@ -89,6 +89,8 @@ test("homepage preserves the approved 778px design geometry", async ({ page }, i
     path: info.outputPath("home-reference-canvas-778x2021.png"),
     clip: { x: 0, y: 0, width: 778, height: 2021 },
   });
+  await expect(page.getByRole("heading", { name: "See What Others Think" })).toBeVisible();
+  await expect(page.locator('img[src*="reference-art"], image[href*="reference-art"]')).toHaveCount(0);
 });
 test("compact desktop artwork keeps a readable minimum and the primary action in the fold", async ({
   page,
@@ -164,7 +166,7 @@ for (const [width, height] of homeViewports) {
     }
     await expect(page.locator("[data-site-header] img").first()).toHaveAttribute(
       "src",
-      /brand\/logo.svg/,
+      /finder(?:%2F|\/)assets(?:%2F|\/)logo\.png/,
     );
     await expect(page.locator("h1 image")).toHaveCount(0);
     await expect(page.getByRole("button", { name: "Toggle theme" })).toHaveCount(0);
