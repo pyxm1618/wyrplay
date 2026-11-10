@@ -332,11 +332,30 @@ export function DuelArena({
             OR
           </span>
         </div>
-        <p className="home-vote-status" aria-live="polite">
-          {hasVoted && currentStats
-            ? `Total of ${currentStats.total.toLocaleString()} votes received. Choose the other side to change your vote.`
-            : "Pick A or B to play. Real votes. Real results."}
-        </p>
+        {hasVoted && currentStats ? (
+          <div
+            className="vote-summary"
+            role="status"
+            aria-label={`${currentStats.percentageA}% chose A and ${currentStats.percentageB}% chose B, ${currentStats.total.toLocaleString()} total votes`}
+          >
+            <strong className="dog-percent">{currentStats.percentageA}%</strong>
+            <div className="vote-middle">
+              <div
+                className="vote-bar"
+                role="img"
+                aria-label={`${currentStats.percentageA}% option A, ${currentStats.percentageB}% option B`}
+              >
+                <span style={{ width: `${currentStats.percentageA}%` }} />
+              </div>
+              <span className="vote-count">{currentStats.total.toLocaleString()} votes</span>
+            </div>
+            <strong className="cat-percent">{currentStats.percentageB}%</strong>
+          </div>
+        ) : (
+          <p className="home-vote-status" aria-live="polite">
+            Pick A or B to play. Real votes. Real results.
+          </p>
+        )}
         {currentErrorMessage && (
           <p className="home-vote-error" role="alert">
             {currentErrorMessage}{" "}
