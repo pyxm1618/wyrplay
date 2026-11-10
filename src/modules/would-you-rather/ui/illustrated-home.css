@@ -2926,7 +2926,6 @@
   margin-top: calc(var(--home-unit) * 3);
 }
 
-
 body:has(.home-main) {
   background: #fff9f0;
   color: #07121a;
@@ -3403,7 +3402,6 @@ body:has(.home-main) {
   }
 }
 
-
 /* Homepage internal pixel-fidelity contract: lock design details after production overrides. */
 @media (min-width: 601px) {
   .illustrated-home .section-heading {
@@ -3450,8 +3448,7 @@ body:has(.home-main) {
     font-size: calc(var(--home-unit) * 13);
     line-height: calc(var(--home-unit) * 15);
     transform: rotate(-16deg);
-    padding: calc(var(--home-unit) * 16) calc(var(--home-unit) * 12)
-      calc(var(--home-unit) * 15);
+    padding: calc(var(--home-unit) * 16) calc(var(--home-unit) * 12) calc(var(--home-unit) * 15);
     box-shadow: calc(var(--home-unit) * -3) calc(var(--home-unit) * -4) 0 #ffe5a1;
   }
 
@@ -3502,8 +3499,7 @@ body:has(.home-main) {
   .illustrated-home .highlight-body {
     height: calc(var(--home-unit) * 84);
     min-height: 0;
-    padding: calc(var(--home-unit) * 9) calc(var(--home-unit) * 14)
-      calc(var(--home-unit) * 8);
+    padding: calc(var(--home-unit) * 9) calc(var(--home-unit) * 14) calc(var(--home-unit) * 8);
   }
   .illustrated-home .highlight-title {
     white-space: pre-line;
