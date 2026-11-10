@@ -5,9 +5,10 @@ import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from 
 import { FEATURED_COLLECTIONS } from "../data/collections";
 import type { Question } from "../types";
 import { hasQuestionVisual } from "../data/question-visuals";
-import { Arrow, HomeArt } from "./home-art";
+import { Arrow, ArtCrop, HomeArt } from "./home-art";
 import { QuestionVisual } from "./question-visual";
 import { rankLeaderboard, type LeaderboardResult } from "../domain/leaderboard";
+import { useHydrated } from "./use-hydrated";
 
 const categories = [
   {
@@ -95,6 +96,13 @@ const occasions = [
   },
 ] as const;
 
+const communityNotes = [
+  { text: "Pick a side, then explain why.", crop: [48, 1704, 25, 25] as const },
+  { text: "See the real vote split after you choose.", crop: [217, 1708, 25, 26] as const },
+  { text: "Change your vote if another argument wins you over.", crop: [425, 1701, 25, 25] as const },
+  { text: "Use the question to start a better conversation.", crop: [619, 1706, 26, 26] as const },
+] as const;
+
 // Container gutters, grid gaps and column weights mirror illustrated-home.css.
 function categoryImageSizes(artWidth: number) {
   const columnRatio = 692 / artWidth;
@@ -103,6 +111,85 @@ function categoryImageSizes(artWidth: number) {
 
 const highlightImageSizes =
   "(min-width: 1441px) 512px, (max-width: 900px) calc(100vw - clamp(32px, 7vw, 80px) - 2px), (max-width: 1240px) calc((100vw - clamp(32px, 7vw, 80px) - clamp(28px, 3.599vw, 44.8px)) / 2.9646 - 2px), 375px";
+
+export function IllustratedHomeHeader({ authEnabled = false }: { authEnabled?: boolean }) {
+  const hydrated = useHydrated();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const links = [
+    { label: "Home", href: "/" },
+    { label: "Find Questions", href: "/find-questions" },
+    { label: "Categories", href: "/#categories" },
+    { label: "Leaderboard", href: "/leaderboards" },
+    { label: "Kids", href: "/would-you-rather-questions-for-kids" },
+  ];
+  return (
+    <>
+      <a href="#play" className="home-skip-link sr-only">
+        Skip to play
+      </a>
+      <header data-site-header className="site-header">
+        <Link href="/" className="brand" aria-label="WYRPlay Home" prefetch={false}>
+          <Image src="/brand/logo.svg" alt="" width={40} height={40} priority />
+          <span>WYRPLAY</span>
+        </Link>
+        <nav aria-label="Primary navigation">
+          {links.map((link) => (
+            <Link key={link.label} href={link.href} prefetch={false}>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+        <fieldset disabled={!hydrated} className="header-actions">
+          <Link
+            href="/find-questions"
+            className="search-button"
+            aria-label="Search questions"
+            prefetch={false}
+          >
+            ⌕
+          </Link>
+          {authEnabled ? (
+            <>
+              <Link className="login-button home-login" href="/sign-in" prefetch={false}>
+                Log in
+              </Link>
+              <Link className="signup-button home-login" href="/sign-up" prefetch={false}>
+                Sign up
+              </Link>
+            </>
+          ) : (
+            <Link className="signup-button home-login" href="/#play" prefetch={false}>
+              Play now
+            </Link>
+          )}
+          <button
+            type="button"
+            className="home-menu"
+            aria-label={menuOpen ? "Close mobile menu" : "Open mobile menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? "×" : "☰"}
+          </button>
+        </fieldset>
+      </header>
+      {menuOpen ? (
+        <nav className="home-mobile-nav" aria-label="Mobile navigation">
+          {links.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              prefetch={false}
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      ) : null}
+    </>
+  );
+}
 
 function Heading({
   title,
@@ -439,7 +526,7 @@ export function IllustratedHome({
           </div>
         </div>
       </section>
-      <section className="how-section section-shell" aria-label="How it works">
+      <section id="how-it-works" className="how-section section-shell" aria-label="How it works">
         <div className="home-container how-container">
           <div className="steps-decoration" aria-hidden="true">
             <HomeArt
@@ -563,7 +650,7 @@ export function IllustratedHome({
           </div>
         </div>
       </section>
-      <section className="statistics home-real-statistics" aria-label="Question library">
+      <section id="statistics" className="statistics home-real-statistics" aria-label="Question library">
         <div className="home-container statistics-container">
           <div className="statistic">
             <HomeArt
@@ -591,7 +678,28 @@ export function IllustratedHome({
           </div>
         </div>
       </section>
-      <section className="together-section" aria-label="Play together anywhere">
+      <section
+        id="community"
+        className="community-section dark-section"
+        aria-label="Community choices"
+      >
+        <div className="community-reference-details" aria-hidden="true">
+          <ArtCrop box={[0, 1593, 245, 88]} className="community-decoration-left" />
+          <ArtCrop box={[525, 1593, 253, 88]} className="community-decoration-right" />
+        </div>
+        <h2>See How Others Think</h2>
+        <p className="community-subtitle">Real community vote totals appear after you make a choice.</p>
+        <div className="quote-grid">
+          {communityNotes.map((note) => (
+            <blockquote key={note.text}>
+              <ArtCrop box={note.crop} />
+              <p>{note.text}</p>
+            </blockquote>
+          ))}
+        </div>
+        <ArtCrop box={[0, 1754, 778, 112]} className="planet-art" />
+      </section>
+      <section id="play-together" className="together-section" aria-label="Play together anywhere">
         <HomeArt
           src="decorations/together-edge-left"
           width={62}
