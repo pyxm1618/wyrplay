@@ -138,7 +138,15 @@ export function IllustratedHomeHeader({ authEnabled = false }: { authEnabled?: b
       </a>
       <header data-site-header className="site-header">
         <Link href="/" className="brand active" aria-label="WYRPlay Home" prefetch={false}>
-          <ArtCrop box={[54, 7, 120, 43]} label="WYRPLAY" />
+          <Image
+            src="/finder/assets/logo.png"
+            alt="WYRPLAY"
+            width={120}
+            height={43}
+            sizes="120px"
+            priority
+            className="art-crop"
+          />
         </Link>
         <nav aria-label="Primary navigation">
           {links.map((link) => (
