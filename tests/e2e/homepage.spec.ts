@@ -85,6 +85,25 @@ test("homepage preserves the approved 778px design geometry", async ({ page }, i
   }
 
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(778);
+  await page.locator("#community").scrollIntoViewIfNeeded();
+  await page.waitForFunction(() =>
+    [...document.querySelectorAll<HTMLImageElement>("#community img")].every(
+      (image) => image.complete && image.naturalWidth > 0,
+    ),
+  );
+  const communityBrokenImages = await page.locator("#community img").evaluateAll((images) =>
+    images
+      .filter((image) => !image.complete || image.naturalWidth === 0)
+      .map((image) => image.getAttribute("src") ?? "unknown"),
+  );
+  expect(communityBrokenImages).toEqual([]);
+  expect(
+    await page.evaluate(() =>
+      performance
+        .getEntriesByType("resource")
+        .some((entry) => entry.name.includes("/home-art/reference-art.png")),
+    ),
+  ).toBe(false);
   await page.screenshot({
     path: info.outputPath("home-reference-canvas-778x2021.png"),
     clip: { x: 0, y: 0, width: 778, height: 2021 },
