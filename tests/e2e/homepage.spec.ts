@@ -85,7 +85,10 @@ test("homepage preserves the approved 778px design geometry", async ({ page }, i
   }
 
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(778);
-  await page.screenshot({ path: info.outputPath("home-reference-778x900.png"), fullPage: true });
+  await page.screenshot({
+    path: info.outputPath("home-reference-canvas-778x2021.png"),
+    clip: { x: 0, y: 0, width: 778, height: 2021 },
+  });
 });
 test("compact desktop artwork keeps a readable minimum and the primary action in the fold", async ({
   page,
