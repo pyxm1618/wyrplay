@@ -1,12 +1,23 @@
 # WYRPlay
 
-WYRPlay is the production application at https://www.wyrplay.com for browsing, playing, presenting, printing, and voting on reviewed Would You Rather questions.
+WYRPlay is a production **Would You Rather** application for browsing reviewed questions, playing online, presenting questions to groups, printing question sets, and viewing community voting results.
+
+**Live website:** https://www.wyrplay.com
+
+## What WYRPlay does
+
+- Browse reviewed Would You Rather questions and category collections.
+- Find questions by audience, occasion, tone, difficulty, and other editorial filters.
+- Play questions online, including Presenter mode for groups and classrooms.
+- Build printable question sets.
+- Vote anonymously and view stored aggregate results.
+- Explore leaderboards and public question collections.
 
 ## Current product
 
 - Canonical question source: `content/question-bank/questions.json`.
 - Current formal pool: 512 questions; the current contract test requires all 512 to be `approved`.
-- Core product surfaces: home, Find Questions, Play, Print, Presenter, Leaderboards, and the five public SEO collections.
+- Core public surfaces: Home, Find Questions, Play (including Presenter mode), Print, Leaderboards, All Categories (`/questions`), and five public SEO collections.
 - Anonymous voting is persisted in PostgreSQL. Kids voting uses the stricter child-directed privacy path implemented by the product.
 - Production analytics uses consent-gated GA4 and Microsoft Clarity.
 - Production auth, email, commerce, subscriptions, and credits are disabled by `src/config/features.config.ts`. Their platform code remains in the repository for tests and future activation.
@@ -19,14 +30,21 @@ WYRPlay is the production application at https://www.wyrplay.com for browsing, p
 - Next.js 16.4.1
 - React 19.2.8
 - PostgreSQL / Drizzle ORM
-- Better Auth 1.6.25
-- OpenNext Cloudflare 1.20.10
+- Better Auth 1.7.15
+- OpenNext Cloudflare 1.20.12
 - Wrangler 4.150.0
 
-Install and verify:
+## Local development and verification
+
+Install dependencies:
 
 ```bash
 bun install --frozen-lockfile
+```
+
+Common verification commands:
+
+```bash
 bun run format:check
 bun run lint
 bun run typecheck
@@ -36,7 +54,7 @@ bun run test:contract
 bun run build
 ```
 
-The full release gate is `bun run verify`. CI also runs database restore, browser E2E, performance, clean-setup, Cloudflare production build, and Hyperdrive proxy checks.
+The full release gate is `bun run verify`. CI also runs database restore, browser regression and E2E coverage, performance checks, clean-setup verification, a Cloudflare production build, and Hyperdrive proxy checks.
 
 ## Sources of truth
 
@@ -50,6 +68,18 @@ The full release gate is `bun run verify`. CI also runs database restore, browse
 - Legal facts: `src/config/legal.config.ts`
 - Production runtime: `wrangler.jsonc`
 - Release workflow: `.github/workflows/ci.yml`
+
+## Security
+
+Security reporting and current production security boundaries are documented in [`SECURITY.md`](SECURITY.md).
+
+Do not open a public issue containing credentials, private user data, payment data, or other sensitive security material.
+
+## License
+
+This repository does not currently grant an open-source license for the WYRPlay application source code or first-party project assets.
+
+Third-party components and assets remain subject to their respective licenses and notices.
 
 ## Documentation policy
 
