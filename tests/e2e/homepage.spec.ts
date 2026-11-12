@@ -57,8 +57,10 @@ function decodePng(png: Buffer): DecodedPng {
   let sourceOffset = 0;
   for (let y = 0; y < height; y += 1) {
     const filter = inflated[sourceOffset++];
+    if (filter === undefined) throw new Error("Unexpected end of PNG scanline data");
     for (let x = 0; x < stride; x += 1) {
       const raw = inflated[sourceOffset++];
+      if (raw === undefined) throw new Error("Unexpected end of PNG pixel data");
       const left = x >= channels ? data[y * stride + x - channels]! : 0;
       const up = y > 0 ? data[(y - 1) * stride + x]! : 0;
       const upperLeft = y > 0 && x >= channels ? data[(y - 1) * stride + x - channels]! : 0;
