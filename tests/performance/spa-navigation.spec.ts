@@ -13,9 +13,7 @@ async function clickFormalNavigation(page: Page, targetHref: string) {
     return;
   }
 
-  const mobileMenuToggle = header.locator(
-    'button[aria-controls="site-mobile-navigation"]:visible',
-  );
+  const mobileMenuToggle = header.locator('button[aria-controls="site-mobile-navigation"]:visible');
   if (await mobileMenuToggle.isVisible()) {
     await mobileMenuToggle.click();
     const targetLink = page
