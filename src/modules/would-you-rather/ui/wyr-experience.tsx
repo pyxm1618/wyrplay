@@ -421,26 +421,6 @@ export function WyrExperience({
     <HomeHydrationGate>
       <IllustratedHome
         authEnabled={authEnabled}
-        browseHref={(() => {
-          const params = new URLSearchParams();
-          if (searchKeyword.trim()) params.set("q", searchKeyword.trim());
-          if (selectedAgeGroup)
-            params.set(
-              "age",
-              selectedAgeGroup === "18+"
-                ? "adults"
-                : selectedAgeGroup === "13-17"
-                  ? "teens"
-                  : selectedAgeGroup === "4-6"
-                    ? "kids"
-                    : selectedAgeGroup,
-            );
-          if (selectedRelationship) params.set("relationship", selectedRelationship);
-          if (selectedOccasion) params.set("occasion", selectedOccasion);
-          if (selectedTone) params.set("tone", selectedTone);
-          if (selectedDifficulty) params.set("difficulty", selectedDifficulty);
-          return `/find-questions${params.size ? `?${params}` : ""}`;
-        })()}
         arena={arena}
         questions={initialQuestions}
         approvedQuestionCount={approvedQuestionCount ?? initialQuestions.length}
@@ -457,9 +437,7 @@ export function WyrExperience({
             setActiveQuestionId(id);
           }
         }}
-      >
-        {experience}
-      </IllustratedHome>
+      />
     </HomeHydrationGate>
   ) : (
     experience

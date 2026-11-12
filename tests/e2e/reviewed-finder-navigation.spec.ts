@@ -1,27 +1,24 @@
 import { expect, test } from "@playwright/test";
 
-test("home Finder uses the approved bank independently of its hero and retains URL filters", async ({
+test("homepage hands off to the dedicated Finder and Finder retains URL filters", async ({
   page,
 }) => {
   await page.goto("/");
-  await expect(page.locator("[data-home-ready=true]")).toBeVisible();
-  const hero = await page.locator("#play h2").first().innerText();
-  const finder = page.locator(".home-live-experience");
-  await finder.getByRole("button", { name: "Adults 18+", exact: true }).click();
-  await finder.getByRole("button", { name: "couples", exact: true }).click();
-  await expect(finder.locator("#questions article").first()).toBeVisible();
-  await expect(page.locator("#play h2").first()).toHaveText(hero);
-  await expect(finder.getByRole("link", { name: "Browse all questions" })).toHaveAttribute(
-    "href",
-    "/find-questions?age=adults&relationship=couples",
-  );
-  await finder
-    .getByRole("textbox", { name: "Search questions by keyword" })
-    .fill("xyznonexistentkeyword123456789");
-  await expect(finder.getByText("No questions found", { exact: true })).toBeVisible();
-  await expect(page.locator("#play h2").first()).toHaveText(hero);
-});
+  await page.getByRole("link", { name: "See all categories", exact: true }).click();
+  await expect(page).toHaveURL(/\/find-questions$/);
 
+  const filters = page.locator('aside[aria-label="Question filters"]');
+  await filters.getByRole("button", { name: "Adults", exact: true }).click();
+  await filters.getByRole("button", { name: "Couples", exact: true }).click();
+  await filters.getByRole("button", { name: "Apply Filters" }).click();
+  await expect(page).toHaveURL(/\/find-questions\?age=adults&relationship=couples$/);
+  await expect(page.locator("#questions .question-card").first()).toBeVisible();
+
+  const search = page.getByRole("searchbox", { name: "Search questions" });
+  await search.fill("xyznonexistentkeyword123456789");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await expect(page.getByText("No questions found", { exact: true })).toBeVisible();
+});
 test("document boundaries reload while ordinary routes retain SPA navigation", async ({ page }) => {
   await page.goto("/find-questions");
   await page.evaluate(() => {

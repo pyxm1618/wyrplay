@@ -16,33 +16,28 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
     test("production 首页消费精选正式题池，5 个 SEO 落地页保持正式 collection", async ({
       page,
     }) => {
-      // Progressive batches add real interactions for every question; keep full-count coverage.
       test.setTimeout(90_000);
-      // 1.1 检查首页生产行为
+
       await page.goto("/");
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
-      // Arena 正常展示第一道正式题目，绝非审核中空状态
       await expect(page.getByText("Dilemmas are Currently Under Editorial Review")).toHaveCount(0);
       const arenaHeading = page.locator("#play h2").first();
       await expect(arenaHeading).toHaveClass(/sr-only/);
-      const headingText = await arenaHeading.innerText();
-      expect(headingText.length).toBeGreaterThan(10);
+      expect((await arenaHeading.innerText()).length).toBeGreaterThan(10);
       await expect(page.locator(".hero #play button[aria-pressed]")).toHaveCount(2);
 
-      // Arena 切题按钮正常渲染
-      await expect(page.getByRole("button", { name: /Next Question/i })).toBeVisible();
-      await expect(page.getByRole("button", { name: /^Random$/i })).toBeVisible();
-      await expect(page.getByRole("button", { name: /Presenter Mode/i })).toBeVisible();
+      // The Homepage Authority ends at 2021 and intentionally does not own
+      // Finder / multi-question / Presenter controls.
+      await expect(page.getByRole("button", { name: /Next Question/i })).toHaveCount(0);
+      await expect(page.getByRole("button", { name: /^Random$/i })).toHaveCount(0);
+      await expect(page.getByRole("button", { name: /Presenter Mode/i })).toHaveCount(0);
+      await expect(page.locator(".home-live-experience")).toHaveCount(0);
 
-      // 统计栏展示全部 512 道已审核可玩题目
-      const counterText = page.getByText(/512 playable dilemmas/i);
-      await expect(counterText).toBeVisible();
+      const questionStat = page.locator("#statistics .statistic").filter({ hasText: "Questions" });
+      await expect(questionStat).toHaveCount(1);
+      await expect(questionStat).toContainText("512");
 
-      await page.locator("#question-search").scrollIntoViewIfNeeded();
-      await expect(page.locator("#questions article,.home-directory")).toHaveCount(20);
-
-      // 1.2 检查 5 个核心 SEO 专题落地页全部有且仅有对应分类的正式题目（精确题数）
       const seoRoutes = [
         { route: "/would-you-rather-questions-for-kids", expectedCount: 318 },
         { route: "/funny-would-you-rather-questions", expectedCount: 145 },
@@ -73,35 +68,29 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
     });
 
     test("正式题库搜索与多维度筛选 (Search, Filters, Clear, No Results)", async ({ page }) => {
-      await page.goto("/");
-      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
+      await page.goto("/find-questions");
 
-      const searchInput = page.getByPlaceholder(/Search dilemmas by keyword/i);
+      const searchInput = page.getByRole("searchbox", { name: "Search questions" });
       await expect(searchInput).toBeVisible();
 
-      // 关键词搜索
       await searchInput.fill("hear");
-      await page.waitForTimeout(150);
-      await expect(page.getByText(/16 of 512 playable dilemmas/i)).toBeVisible();
+      await page.getByRole("button", { name: "Search", exact: true }).click();
+      await expect(page).toHaveURL(/\/find-questions\?q=hear$/);
+      await expect(page.locator(".panel-heading p")).toContainText("matching questions");
+      expect(await page.locator("#questions .question-card").count()).toBeGreaterThan(0);
 
-      // 难度筛选
-      const hardBtn = page.getByRole("button", { name: "hard", exact: true });
-      await hardBtn.click();
-      await page.waitForTimeout(150);
+      const filters = page.locator('aside[aria-label="Question filters"]');
+      await filters.getByRole("button", { name: "Hard", exact: true }).click();
+      await filters.getByRole("button", { name: "Apply Filters" }).click();
+      await expect(page).toHaveURL(/q=hear&difficulty=hard$/);
 
-      // 极端无效关键词导致 0 结果
       await searchInput.fill("xyznonexistentkeyword123456789");
-      await page.waitForTimeout(150);
-      await expect(page.locator("#questions").getByText("No questions found")).toBeVisible();
+      await page.getByRole("button", { name: "Search", exact: true }).click();
+      await expect(page.getByText("No questions found", { exact: true })).toBeVisible();
 
-      // 清除筛选按钮
-      const clearBtn = page.getByRole("button", { name: /Clear all filters/i });
-      await expect(clearBtn).toBeVisible();
-      await clearBtn.click();
-      await page.waitForTimeout(150);
-
-      // 恢复全部 512 道题展示
-      await expect(page.getByText(/512 playable dilemmas/i)).toBeVisible();
+      await filters.getByRole("button", { name: "Clear all", exact: true }).click();
+      await expect(page.getByRole("searchbox", { name: "Search questions" })).toHaveValue("");
+      await expect(page).toHaveURL(/\/find-questions$/);
     });
 
     test("正式题库 A/B 投票、改票与刷新恢复 (A/B voting, switch A->B & B->A, refresh persistence)", async ({
@@ -173,27 +162,23 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       expect((await context.cookies()).some((cookie) => cookie.name === "wyr_vid")).toBe(false);
     });
 
-    test("Next/Random 切题有效性与状态隔离", async ({ page }) => {
-      await page.goto("/");
-      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
+    test("dedicated play route next-question navigation keeps question state isolated", async ({
+      page,
+    }) => {
+      await page.goto("/play?set=1,2,3");
 
-      const arenaHeading = page.locator("#play h2").first();
-      const firstHeading = await arenaHeading.innerText();
+      const heading = page.locator(".play-heading > p");
+      const firstHeading = await heading.innerText();
 
-      // 点击 Next 切题
-      const nextBtn = page.getByRole("button", { name: /Next Question/i });
+      const nextBtn = page.getByRole("button", { name: "Next question", exact: true });
       await nextBtn.click();
-      await page.waitForTimeout(200);
-
-      const secondHeading = await arenaHeading.innerText();
+      await expect(page.locator(".question-navigation")).toContainText("2 / 3");
+      const secondHeading = await heading.innerText();
       expect(secondHeading).not.toBe(firstHeading);
 
-      // 点击 Random 切题
-      const randomBtn = page.getByRole("button", { name: /^Random$/i });
-      await randomBtn.click();
-      await page.waitForTimeout(200);
-
-      const thirdHeading = await arenaHeading.innerText();
+      await nextBtn.click();
+      await expect(page.locator(".question-navigation")).toContainText("3 / 3");
+      const thirdHeading = await heading.innerText();
       expect(thirdHeading).not.toBe(secondHeading);
     });
 
@@ -217,35 +202,26 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await expect(page.locator("text=Simulated voting failure")).toBeVisible();
     });
 
-    test("Presenter 模式 (opens, disables prev on first, navigates next, closes with escape, restores focus)", async ({
-      page,
-    }) => {
-      await page.goto("/");
-      await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
+    test("Presenter 模式在 dedicated play route 保持可用并恢复焦点", async ({ page }) => {
+      await page.goto("/play?set=1,2");
 
-      const presenterBtn = page.getByRole("button", { name: /Presenter Mode/i });
+      const presenterBtn = page.getByRole("button", { name: "Present", exact: true });
       await expect(presenterBtn).toBeVisible();
       await presenterBtn.click();
 
-      // 弹窗可见
-      const modal = page.locator("div[role='dialog']");
+      const modal = page.getByRole("dialog");
       await expect(modal).toBeVisible();
 
-      // 首题 Previous 禁用
-      const prevBtn = modal.getByRole("button", { name: /Previous/i });
+      const prevBtn = modal.getByRole("button", { name: "Previous", exact: true });
       await expect(prevBtn).toBeDisabled();
 
-      // Next 可用并翻页
-      const nextModalBtn = modal.getByRole("button", { name: /Next/i });
+      const nextModalBtn = modal.getByRole("button", { name: "Next", exact: true });
       await expect(nextModalBtn).toBeEnabled();
       await nextModalBtn.click();
-
-      // 翻页后 Previous 变为可用
       await expect(prevBtn).toBeEnabled();
 
-      // Escape 退出弹窗并恢复焦点
       await page.keyboard.press("Escape");
-      await expect(modal).not.toBeVisible();
+      await expect(modal).toHaveCount(0);
       await expect(presenterBtn).toBeFocused();
     });
 

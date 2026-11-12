@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Arrow } from "./home-art";
 import { rankLeaderboard, type LeaderboardResult } from "../domain/leaderboard";
+import { hasQuestionVisual } from "../data/question-visuals";
+import { QuestionVisual } from "./question-visual";
 
 export function TrendingListSkeleton() {
   return (
@@ -101,7 +103,18 @@ export function TrendingListContent(props: TrendingListContentProps) {
             className="trending-card"
             onClick={() => handleSelect(entry.id, entry.playableQuestion)}
           >
-            <span className="ranking-number">#{entry.rank}</span>
+            {hasQuestionVisual(entry.id) ? (
+              <QuestionVisual
+                questionId={entry.id}
+                mode="full"
+                alt=""
+                sizes="103px"
+                quality={60}
+                className="trending-image"
+              />
+            ) : (
+              <span className="trending-rank-visual">#{entry.rank}</span>
+            )}
             <span className="trending-body">
               <span className="trending-title">{entry.question}</span>
               <span className="trending-meta">{entry.votes.toLocaleString()} votes</span>

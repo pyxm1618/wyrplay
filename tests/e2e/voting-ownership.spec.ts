@@ -53,17 +53,17 @@ test("GET errors belong to the current question, retry works and switching clear
       fail ? { status: 500, json: { error: "Unavailable" } } : { json: emptyStats },
     );
   });
-  await page.goto("/");
+  await page.goto("/play?set=1,2,3");
   const alert = page.locator("#play [role=alert]");
   await expect(alert).toContainText("Voting is unavailable");
   fail = false;
   await alert.getByRole("button", { name: "Retry" }).click();
   await expect(alert).toHaveCount(0);
   fail = true;
-  await page.getByRole("button", { name: "Next Question", exact: true }).click();
+  await page.getByRole("button", { name: "Next question", exact: true }).click();
   await expect(alert).toContainText("Voting is unavailable");
   fail = false;
-  await page.getByRole("button", { name: "Next Question", exact: true }).click();
+  await page.getByRole("button", { name: "Next question", exact: true }).click();
   await expect(alert).toHaveCount(0);
 });
 
@@ -83,12 +83,13 @@ test("a late POST error cannot leak into the next question", async ({ page }) =>
       await route.fulfill({ status: 500, json: { error: "Late previous question failure" } });
     } else await route.fulfill({ json: emptyStats });
   });
-  await page.goto("/");
-  await expect(page.locator("[data-home-ready=true]")).toBeVisible();
-  await page.locator("#play .choice-card").first().click();
+  await page.goto("/play?set=1,2");
+  const optionA = page.getByRole("button", { name: "Choose option A", exact: true });
+  await expect(optionA).toBeVisible();
+  await optionA.click();
   await posted;
-  await page.getByRole("button", { name: "Next Question", exact: true }).click();
+  await page.getByRole("button", { name: "Next question", exact: true }).click();
   finish?.();
   await expect(page.locator("#play [role=alert]")).toHaveCount(0);
-  await expect(page.locator("#play .choice-card").first()).toBeEnabled();
+  await expect(page.getByRole("button", { name: "Choose option A", exact: true })).toBeEnabled();
 });

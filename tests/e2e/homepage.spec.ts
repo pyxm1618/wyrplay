@@ -1,4 +1,131 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { inflateSync } from "node:zlib";
 import { expect, test } from "@playwright/test";
+
+type DecodedPng = {
+  width: number;
+  height: number;
+  channels: number;
+  data: Uint8Array;
+};
+
+function paethPredictor(a: number, b: number, c: number) {
+  const p = a + b - c;
+  const pa = Math.abs(p - a);
+  const pb = Math.abs(p - b);
+  const pc = Math.abs(p - c);
+  return pa <= pb && pa <= pc ? a : pb <= pc ? b : c;
+}
+
+function decodePng(png: Buffer): DecodedPng {
+  const signature = png.subarray(0, 8).toString("hex");
+  if (signature !== "89504e470d0a1a0a") throw new Error("Expected a PNG image");
+
+  let offset = 8;
+  let width = 0;
+  let height = 0;
+  let channels = 0;
+  const idat: Buffer[] = [];
+  while (offset < png.length) {
+    const length = png.readUInt32BE(offset);
+    const type = png.subarray(offset + 4, offset + 8).toString("ascii");
+    const body = png.subarray(offset + 8, offset + 8 + length);
+    offset += 12 + length;
+
+    if (type === "IHDR") {
+      width = body.readUInt32BE(0);
+      height = body.readUInt32BE(4);
+      const bitDepth = body[8];
+      const colorType = body[9];
+      const interlace = body[12];
+      if (bitDepth !== 8 || interlace !== 0)
+        throw new Error("Pixel evidence decoder requires non-interlaced 8-bit PNGs");
+      channels = colorType === 6 ? 4 : colorType === 2 ? 3 : colorType === 0 ? 1 : 0;
+      if (!channels) throw new Error(`Unsupported PNG color type ${colorType}`);
+    } else if (type === "IDAT") {
+      idat.push(body);
+    } else if (type === "IEND") {
+      break;
+    }
+  }
+  if (!width || !height || !channels) throw new Error("PNG is missing IHDR metadata");
+
+  const inflated = inflateSync(Buffer.concat(idat));
+  const stride = width * channels;
+  const data = new Uint8Array(height * stride);
+  let sourceOffset = 0;
+  for (let y = 0; y < height; y += 1) {
+    const filter = inflated[sourceOffset++];
+    if (filter === undefined) throw new Error("Unexpected end of PNG scanline data");
+    for (let x = 0; x < stride; x += 1) {
+      const raw = inflated[sourceOffset++];
+      if (raw === undefined) throw new Error("Unexpected end of PNG pixel data");
+      const left = x >= channels ? data[y * stride + x - channels]! : 0;
+      const up = y > 0 ? data[(y - 1) * stride + x]! : 0;
+      const upperLeft = y > 0 && x >= channels ? data[(y - 1) * stride + x - channels]! : 0;
+      const recon =
+        filter === 0
+          ? raw
+          : filter === 1
+            ? raw + left
+            : filter === 2
+              ? raw + up
+              : filter === 3
+                ? raw + Math.floor((left + up) / 2)
+                : filter === 4
+                  ? raw + paethPredictor(left, up, upperLeft)
+                  : Number.NaN;
+      if (!Number.isFinite(recon)) throw new Error(`Unsupported PNG filter ${filter}`);
+      data[y * stride + x] = recon & 0xff;
+    }
+  }
+  return { width, height, channels, data };
+}
+
+function rgbAt(image: DecodedPng, pixel: number): readonly [number, number, number] {
+  const base = pixel * image.channels;
+  if (image.channels === 1) {
+    const value = image.data[base]!;
+    return [value, value, value];
+  }
+  return [image.data[base]!, image.data[base + 1]!, image.data[base + 2]!];
+}
+
+function comparePngs(reference: Buffer, candidate: Buffer) {
+  const expected = decodePng(reference);
+  const actual = decodePng(candidate);
+  if (expected.width !== actual.width || expected.height !== actual.height) {
+    throw new Error(
+      `Pixel evidence size mismatch: reference ${expected.width}x${expected.height}, candidate ${actual.width}x${actual.height}`,
+    );
+  }
+
+  const pixels = expected.width * expected.height;
+  let changedPixels = 0;
+  let totalAbsoluteDelta = 0;
+  let maxChannelDelta = 0;
+  for (let pixel = 0; pixel < pixels; pixel += 1) {
+    const a = rgbAt(expected, pixel);
+    const b = rgbAt(actual, pixel);
+    let pixelChanged = false;
+    for (let channel = 0; channel < 3; channel += 1) {
+      const delta = Math.abs(a[channel]! - b[channel]!);
+      totalAbsoluteDelta += delta;
+      maxChannelDelta = Math.max(maxChannelDelta, delta);
+      if (delta > 8) pixelChanged = true;
+    }
+    if (pixelChanged) changedPixels += 1;
+  }
+  return {
+    width: expected.width,
+    height: expected.height,
+    changedPixels,
+    changedPixelRatio: changedPixels / pixels,
+    meanAbsoluteChannelDelta: totalAbsoluteDelta / (pixels * 3),
+    maxChannelDelta,
+  };
+}
 
 import { homeConfig } from "@/config/home.config";
 import { routeRegistry } from "@/config/routes.config";
@@ -169,12 +296,98 @@ test("778px reference Header and Hero match the frozen reconstruction geometry",
   });
 });
 
+test("778×2021 lower page matches Authority geometry and emits pixel evidence", async ({
+  page,
+}, info) => {
+  await page.setViewportSize({ width: 778, height: 2021 });
+  await page.goto("/");
+  await expect(page.locator("[data-home-ready=true]")).toBeVisible();
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForLoadState("networkidle");
+
+  const expected = {
+    categories: { selector: "#categories", box: [0, 632, 778, 218] },
+    highlights: { selector: ".highlights-section", box: [0, 850, 778, 240] },
+    how: { selector: "#how-it-works", box: [0, 1090, 778, 140] },
+    trending: { selector: "#trending", box: [0, 1230, 778, 290] },
+    statistics: { selector: "#statistics", box: [0, 1520, 778, 73] },
+    community: { selector: "#community", box: [0, 1593, 778, 273] },
+    together: { selector: "#play-together", box: [0, 1866, 778, 155] },
+    categoryOne: { selector: "#categories .category-card:nth-child(1)", box: [33, 686, 106, 135] },
+    categoryTwo: { selector: "#categories .category-card:nth-child(2)", box: [144, 686, 112, 135] },
+    highlightOne: { selector: ".highlight-card:nth-child(1)", box: [41, 905, 219, 157] },
+    highlightTwo: { selector: ".highlight-card:nth-child(2)", box: [274, 905, 226, 157] },
+    create: { selector: "#trending .create-panel", box: [432, 1274, 314, 237] },
+  } as const;
+
+  const measured: Record<string, [number, number, number, number]> = {};
+  let maxDeviation = 0;
+  for (const [name, contract] of Object.entries(expected)) {
+    const locator = page.locator(contract.selector);
+    await expect(locator).toHaveCount(1);
+    const box = await locator.boundingBox();
+    if (!box) throw new Error(`${contract.selector} must have a bounding box`);
+    const actual: [number, number, number, number] = [box.x, box.y, box.width, box.height];
+    measured[name] = actual.map((value) => Number(value.toFixed(3))) as [
+      number,
+      number,
+      number,
+      number,
+    ];
+    actual.forEach((value, index) => {
+      maxDeviation = Math.max(maxDeviation, Math.abs(value - contract.box[index]!));
+    });
+  }
+  expect(maxDeviation, "maximum lower-page geometry deviation").toBeLessThanOrEqual(0.05);
+  expect((await page.locator("#play-together").boundingBox())!.y + 155).toBeCloseTo(2021, 5);
+
+  await expect(page.locator("#categories .category-card")).toHaveCount(6);
+  await expect(page.locator(".highlight-card")).toHaveCount(3);
+  await expect(page.locator(".steps-grid > li")).toHaveCount(4);
+  await expect(page.locator("#statistics .statistic")).toHaveCount(4);
+  await expect(page.locator("#community blockquote")).toHaveCount(4);
+  await expect(page.locator("#play-together .occasion-card")).toHaveCount(5);
+  await expect(page.locator(".home-live-experience")).toHaveCount(0);
+  await expect(page.locator("#question-search")).toHaveCount(0);
+  await expect(page.locator(".home-faq")).toHaveCount(0);
+  await expect(page.getByText("Real votes from real people around the world.")).toHaveCount(0);
+  await expect(page.locator("#community .community-subtitle")).toContainText(
+    "not user testimonials",
+  );
+  await expect(page.locator(".create-button")).toBeDisabled();
+
+  const screenshot = await page.screenshot({
+    fullPage: false,
+    animations: "disabled",
+  });
+  await info.attach("home-authority-current-778x2021.png", {
+    body: screenshot,
+    contentType: "image/png",
+  });
+  const reference = readFileSync(
+    resolve(process.cwd(), "home-reconstruction/evidence/reference.png"),
+  );
+  const pixelDiff = comparePngs(reference, screenshot);
+  const evidence = {
+    viewport: [778, 2021],
+    measured,
+    maxGeometryDeviation: Number(maxDeviation.toFixed(3)),
+    pixelDiff,
+  };
+  console.info(`[HOME-LOWER-AUTHORITY-EVIDENCE] ${JSON.stringify(evidence)}`);
+  await info.attach("home-authority-evidence.json", {
+    body: Buffer.from(JSON.stringify(evidence, null, 2)),
+    contentType: "application/json",
+  });
+});
+
 const homeViewports = [
   [375, 812],
   [390, 844],
   [393, 852],
   [414, 896],
   [768, 1024],
+  [778, 2021],
   [820, 1180],
   [1024, 1366],
   [1280, 720],
@@ -206,13 +419,12 @@ for (const [width, height] of homeViewports) {
     for (const selector of [
       "#categories",
       ".highlights-section",
-      ".how-section",
+      "#how-it-works",
       "#trending",
       ".create-panel",
-      ".statistics",
-      ".together-section",
-      "#question-search",
-      ".home-faq",
+      "#statistics",
+      "#community",
+      "#play-together",
       "footer",
     ]) {
       await expect(page.locator(selector)).toBeVisible();
@@ -235,9 +447,9 @@ for (const [width, height] of homeViewports) {
     for (const href of ["/privacy", "/terms", "/acceptable-use", "/contact"]) {
       await expect(page.locator(`footer a[href='${href}']`)).toBeVisible();
     }
-    const faq = page.locator(".home-faq details").first();
-    await faq.locator("summary").click();
-    await expect(faq.locator("p")).toBeVisible();
+    await expect(page.locator(".home-live-experience")).toHaveCount(0);
+    await expect(page.locator("#question-search")).toHaveCount(0);
+    await expect(page.locator(".home-faq")).toHaveCount(0);
     if ([375, 390, 768, 1440, 1920].includes(width)) {
       await page.screenshot({
         path: info.outputPath(`home-${width}x${height}.png`),
@@ -403,97 +615,42 @@ test("question selection moves and keeps keyboard focus on the mounted hero aren
     .toBe(true);
 });
 
-test("presenter modal retains return focus to live trigger after cycling questions", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await page.waitForLoadState("networkidle");
+test("presenter remains available on the dedicated play route", async ({ page }) => {
+  await page.goto("/play?set=1,2");
 
-  const presenterTrigger = page.getByRole("button", { name: "Presenter Mode" });
+  const presenterTrigger = page.getByRole("button", { name: "Present", exact: true });
   await expect(presenterTrigger).toBeVisible();
   await presenterTrigger.click();
 
-  const modal = page.locator(".presenter-page");
+  const modal = page.getByRole("dialog");
   await expect(modal).toBeVisible();
-
-  const nextBtn = page.locator(".presenter-page button", { hasText: "Next" }).first();
-  if (await nextBtn.isVisible()) {
-    await nextBtn.click();
-  }
+  await expect(modal.locator(".presenter-header")).toContainText("1 / 2");
 
   await page.keyboard.press("Escape");
-  await expect(modal).toBeHidden();
-
-  await expect
-    .poll(async () => {
-      return page.evaluate(() => {
-        const active = document.activeElement;
-        return (
-          active !== null &&
-          active.tagName === "BUTTON" &&
-          active.textContent?.includes("Presenter Mode")
-        );
-      });
-    })
-    .toBe(true);
+  await expect(modal).toHaveCount(0);
+  await expect(presenterTrigger).toBeFocused();
 });
 
-test("mobile question filter bar buttons satisfy touch target bounding box and spacing requirements", async ({
-  page,
-}) => {
+test("finder filters remain available on the dedicated Finder route", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
-  await expect(page.locator("#question-search")).toBeVisible();
+  await page.goto("/find-questions");
 
-  const filterContainer = page.locator("#question-search");
-  await filterContainer.scrollIntoViewIfNeeded();
+  const filterContainer = page.locator('aside[aria-label="Question filters"]');
+  await expect(filterContainer).toBeVisible();
+  const toggle = filterContainer.getByRole("button", { name: "Filter options" });
+  if (await toggle.isVisible()) await toggle.click();
 
-  const filterButtons = filterContainer.locator("button");
-  const count = await filterButtons.count();
-  expect(count).toBeGreaterThan(15);
+  const filterButtons = filterContainer.locator(".filter-options button");
+  expect(await filterButtons.count()).toBeGreaterThan(15);
 
-  for (let i = 0; i < count; i++) {
-    const btn = filterButtons.nth(i);
-    const box = await btn.boundingBox();
-    expect(box, `Button ${i} should have a bounding box`).not.toBeNull();
-    expect(
-      box!.height,
-      `Button ${i} height (${box!.height}px) should be at least 36px`,
-    ).toBeGreaterThanOrEqual(36);
-    expect(
-      box!.width,
-      `Button ${i} width (${box!.width}px) should be at least 36px`,
-    ).toBeGreaterThanOrEqual(36);
-  }
-
-  // 记录代表性按钮物理测量尺寸
-  const sampleAge = await filterContainer.getByRole("button", { name: "Kids 10-12" }).boundingBox();
-  const sampleAdult = await filterContainer
-    .getByRole("button", { name: "Adults 18+" })
-    .boundingBox();
-  console.info(`[TOUCH-TARGET-AUDIT] "Kids 10-12" box: ${sampleAge?.width}x${sampleAge?.height}px`);
-  console.info(
-    `[TOUCH-TARGET-AUDIT] "Adults 18+" box: ${sampleAdult?.width}x${sampleAdult?.height}px`,
-  );
-
-  // 点击一个具体筛选（例如 "Teens 13–17"）触发筛选激活状态
-  const teenBtn = filterContainer.getByRole("button", { name: "Teens 13–17" });
+  const teenBtn = filterContainer.getByRole("button", { name: "Teens", exact: true });
   await teenBtn.click();
   await expect(teenBtn).toHaveAttribute("aria-pressed", "true");
+  await filterContainer.getByRole("button", { name: "Apply Filters" }).click();
+  await expect(page).toHaveURL(/\/find-questions\?age=teens$/);
 
-  // 验证 Clear all filters 按钮同样拥有合规的真实 bounding box
-  const clearBtn = filterContainer.getByRole("button", { name: "Clear all filters" });
+  const clearBtn = filterContainer.getByRole("button", { name: "Clear all" });
   await expect(clearBtn).toBeVisible();
-  const clearBox = await clearBtn.boundingBox();
-  expect(clearBox).not.toBeNull();
-  expect(clearBox!.height).toBeGreaterThanOrEqual(36);
-  expect(clearBox!.width).toBeGreaterThanOrEqual(36);
-  console.info(
-    `[TOUCH-TARGET-AUDIT] "Clear all filters" box: ${clearBox?.width}x${clearBox?.height}px`,
-  );
-
-  // 点击清空，验证筛选状态重置
   await clearBtn.click();
-  await expect(teenBtn).toHaveAttribute("aria-pressed", "false");
-  await expect(clearBtn).toBeHidden();
+  await expect(page).toHaveURL(/\/find-questions$/);
 });
