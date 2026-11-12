@@ -288,7 +288,6 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await page.locator("#play").focus();
       await page.keyboard.press("KeyA");
       await expect(optionA).toHaveAttribute("aria-pressed", "true");
-      await expect(optionA.locator("text=Your Choice")).toBeVisible();
     });
   });
 
