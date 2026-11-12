@@ -335,7 +335,9 @@ export function DuelArena({
         </div>
 
         <div className="vote-summary" aria-live="polite">
-          <strong className="dog-percent">{percentageA === undefined ? "—" : `${percentageA}%`}</strong>
+          <strong className="dog-percent">
+            {percentageA === undefined ? "—" : `${percentageA}%`}
+          </strong>
           <div className="vote-middle">
             <div
               className="vote-bar"
@@ -347,7 +349,9 @@ export function DuelArena({
               }
             >
               {percentageA !== undefined && (
-                <span style={{ width: `${Math.max(0, Math.min(100, percentageA))}%` }} />
+                <span
+                  style={{ width: `${Math.max(0, Math.min(100, percentageA))}%` }}
+                />
               )}
             </div>
             <span className="vote-count">
@@ -358,7 +362,9 @@ export function DuelArena({
                   : `${totalVotes.toLocaleString()} votes`}
             </span>
           </div>
-          <strong className="cat-percent">{percentageB === undefined ? "—" : `${percentageB}%`}</strong>
+          <strong className="cat-percent">
+            {percentageB === undefined ? "—" : `${percentageB}%`}
+          </strong>
         </div>
 
         {currentErrorMessage && (
@@ -373,7 +379,9 @@ export function DuelArena({
         <button
           type="button"
           className="choice-cta dark-button"
-          onClick={() => arenaRef.current?.querySelector<HTMLButtonElement>(".choice-card")?.focus()}
+          onClick={() =>
+            arenaRef.current?.querySelector<HTMLButtonElement>(".choice-card")?.focus()
+          }
         >
           Make Your Choice
           <Arrow />
