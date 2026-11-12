@@ -45,6 +45,29 @@ test("homepage does not overflow a 375px viewport", async ({ page }) => {
   expect(overflow).toBe(false);
 });
 
+test("homepage logo runtime never requests the frozen reference artwork", async ({ page }) => {
+  const requestedPaths: string[] = [];
+
+  page.on("request", (request) => {
+    requestedPaths.push(new URL(request.url()).pathname);
+  });
+
+  await page.goto("/");
+  const logo = page.locator("[data-home-design-header] .home-brand-mark");
+  await expect(logo).toBeVisible();
+  await page.waitForLoadState("networkidle");
+
+  const resourcePaths = await page.evaluate(() =>
+    (performance.getEntriesByType("resource") as PerformanceResourceTiming[]).map(
+      (entry) => new URL(entry.name).pathname,
+    ),
+  );
+
+  const runtimePaths = [...requestedPaths, ...resourcePaths];
+  expect(runtimePaths.filter((path) => path === "/home-art/reference-art.png")).toEqual([]);
+  expect(runtimePaths.some((path) => path === "/home-art/home-logo.webp")).toBe(true);
+});
+
 test("compact desktop artwork keeps a readable minimum and the primary action in the fold", async ({
   page,
 }, info) => {

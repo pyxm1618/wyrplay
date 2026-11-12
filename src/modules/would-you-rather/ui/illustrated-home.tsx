@@ -135,15 +135,14 @@ function Heading({
 
 function HomeBrandMark() {
   return (
-    <svg
+    <Image
       className="art-crop home-brand-mark"
-      viewBox="54 7 120 43"
-      role="img"
-      aria-label="WYRPLAY"
-      preserveAspectRatio="xMidYMid slice"
-    >
-      <image href="/home-art/reference-art.png" width="778" height="2021" />
-    </svg>
+      src="/home-art/home-logo.webp"
+      alt="WYRPLAY"
+      width={120}
+      height={43}
+      unoptimized
+    />
   );
 }
 
