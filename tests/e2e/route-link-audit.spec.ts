@@ -41,8 +41,9 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     await expect(page).toHaveURL(/\/play$/);
 
     await page.goto("/");
-    const finderLink = page.locator('.home-live-experience a[href="/find-questions"]');
+    const finderLink = page.getByRole("link", { name: "See all categories", exact: true });
     await expect(finderLink).toBeVisible();
+    await expect(finderLink).toHaveAttribute("href", "/find-questions");
     await finderLink.click();
     await expect(page).toHaveURL(/\/find-questions$/);
   });
@@ -194,7 +195,7 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     }
   });
 
-  test("11. 首页 Create CTA 保持为 Coming soon 且点击弹出无障碍 Toast 不发生导航", async ({
+  test("11. 首页 Create CTA 保持 Authority 外观但明确 disabled / Coming soon", async ({
     page,
   }) => {
     await page.goto("/");
@@ -202,15 +203,10 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
 
     const createButton = page.locator("button.create-button");
     await expect(createButton).toBeVisible();
-    await expect(createButton).toContainText("Coming soon");
-
-    // 点击按钮，验证 URL 未变化，且出现 toast
-    const currentUrl = page.url();
-    await createButton.click();
-    expect(page.url()).toBe(currentUrl);
-
-    const toast = page.locator('.create-toast[role="status"]');
-    await expect(toast).toBeVisible();
-    await expect(toast).toHaveText("Coming soon — question creation is on the way.");
+    await expect(createButton).toContainText("Create");
+    await expect(createButton).toBeDisabled();
+    await expect(createButton).toHaveAttribute("aria-label", "Create (coming soon)");
+    await expect(createButton).toHaveAttribute("title", "Coming soon");
+    await expect(page.locator('.create-toast[role="status"]')).toHaveCount(0);
   });
 });
