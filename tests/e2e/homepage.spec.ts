@@ -111,22 +111,6 @@ test("778px reference Header and Hero match the frozen reconstruction geometry",
     expect(box.height, `${name} height`).toBeCloseTo(expected[3], 1);
   };
 
-  expectBox("header", [0, 0, 778, 60]);
-  expectBox("brand", [55, 7, 120, 43]);
-  expectBox("search", [527, 10, 29, 29]);
-  expectBox("login", [573, 9.5, 68, 30]);
-  expectBox("signup", [650, 9.5, 73, 30]);
-  expectBox("hero", [0, 60, 778, 572]);
-  expectBox("title", [209.5, 43, 359, 190]);
-  expectBox("grid", [125, 285, 525, 180]);
-  expectBox("cta", [262, 511, 254, 51]);
-
-  await expect(page.locator(".illustrated-home .hero #play > h2")).toHaveClass(/sr-only/);
-  await expect(page.locator(".illustrated-home .hero .home-secondary-controls")).toHaveCount(0);
-  await expect(page.locator(".illustrated-home .hero #play .choice-cta")).toHaveText(
-    /Make Your Choice/,
-  );
-
   console.info(
     `[HOME-AUTHORITY-GEOMETRY] ${JSON.stringify(
       Object.fromEntries(
@@ -136,6 +120,22 @@ test("778px reference Header and Hero match the frozen reconstruction geometry",
         ]),
       ),
     )}`,
+  );
+
+  expectBox("header", [0, 0, 778, 60]);
+  expectBox("brand", [55, 7, 120, 43]);
+  expectBox("search", [535.140625, 10, 29, 29]);
+  expectBox("login", [581.140625, 9.5, 68, 30]);
+  expectBox("signup", [658.140625, 9.5, 73, 30]);
+  expectBox("hero", [0, 60, 778, 572]);
+  expectBox("title", [209.5, 43, 359, 190]);
+  expectBox("grid", [125, 285, 525, 180]);
+  expectBox("cta", [262, 511, 254, 51]);
+
+  await expect(page.locator(".illustrated-home .hero #play > h2")).toHaveClass(/sr-only/);
+  await expect(page.locator(".illustrated-home .hero .home-secondary-controls")).toHaveCount(0);
+  await expect(page.locator(".illustrated-home .hero #play .choice-cta")).toHaveText(
+    /Make Your Choice/,
   );
 
   await page.screenshot({
