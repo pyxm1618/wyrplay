@@ -7,6 +7,7 @@ import type { Question } from "../types";
 import { hasQuestionVisual } from "../data/question-visuals";
 import { Arrow, HomeArt } from "./home-art";
 import { QuestionVisual } from "./question-visual";
+import { ThemeToggle } from "./theme-toggle";
 import { rankLeaderboard, type LeaderboardResult } from "../domain/leaderboard";
 
 const categories = [
@@ -227,6 +228,13 @@ export function IllustratedHome({
   }, []);
   return (
     <>
+      <ThemeToggle fixedLight />
+      <a
+        href="#play"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
+      >
+        Skip to play
+      </a>
       <header className="site-header" data-home-design-header>
         <Link href="/" aria-label="WYRPLAY home" className="brand" prefetch={false}>
           <HomeBrandMark />

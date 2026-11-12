@@ -290,8 +290,8 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
     });
   });
 
-  test.describe("2. Mobile 375px Viewport & Mobile Menu", () => {
-    test("375px 视口无横向溢出且 mobile menu 可交互点击", async ({ page }) => {
+  test.describe("2. Mobile 375px Viewport & Page-Owned Header", () => {
+    test("375px 视口无横向溢出且 page-owned Header 保持可用", async ({ page }) => {
       await page.setViewportSize({ width: 375, height: 812 });
       await page.goto("/");
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
@@ -300,19 +300,13 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       const innerWidth = await page.evaluate(() => window.innerWidth);
       expect(scrollWidth).toBeLessThanOrEqual(innerWidth);
 
-      const menuButton = page.locator("button[aria-label='Open mobile menu']");
-      await expect(menuButton).toBeVisible();
-      await menuButton.click();
-      await page.waitForTimeout(200);
-
-      const mobileFindQuestionsLink = page.locator(
-        "nav[aria-label='Mobile navigation'] a[href='/find-questions']",
-      );
-      await expect(mobileFindQuestionsLink).toBeVisible();
-      const mobileKidsLink = page.locator(
-        "nav[aria-label='Mobile navigation'] a[href='/would-you-rather-questions-for-kids']",
-      );
-      await expect(mobileKidsLink).toBeVisible();
+      await expect(page.locator("[data-home-design-header]")).toBeVisible();
+      await expect(page.locator("[data-site-header]")).toHaveCount(0);
+      await expect(page.locator("button[aria-label='Open mobile menu']")).toHaveCount(0);
+      await expect(page.locator("[data-home-design-header] .home-brand-mark")).toBeVisible();
+      await expect(
+        page.locator("[data-home-design-header] a[aria-label='Search questions']"),
+      ).toBeVisible();
     });
   });
 

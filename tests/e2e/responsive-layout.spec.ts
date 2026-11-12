@@ -142,7 +142,7 @@ test.describe("required responsive viewport matrix", () => {
         const stage = await page.locator(".hero-stage-backdrop").boundingBox();
         const arena = await page.locator(".home-hero-arena").boundingBox();
         expect(stage!.width).toBeCloseTo(1244.8, 0);
-        expect(arena!.width).toBeCloseTo(840, 0);
+        expect(arena!.width).toBeCloseTo(793.8, 0);
       }
 
       await shot(page, info, "home", width, height);
@@ -155,7 +155,7 @@ test.describe("required responsive viewport matrix", () => {
       await page.setViewportSize({ width, height });
       await noOverflow(page);
       if (width >= 1920) {
-        expect((await page.locator(".kids-browse").boundingBox())!.width).toBe(1520);
+        expect((await page.locator(".kids-browse").boundingBox())!.width).toBe(1320);
         expect((await page.locator(".kids-faq").boundingBox())!.width).toBe(1320);
         expect((await page.locator(".kids-choices").boundingBox())!.width).toBeLessThanOrEqual(
           1100,

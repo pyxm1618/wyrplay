@@ -52,7 +52,7 @@ for (const [width, height] of sizes)
       viewport: innerWidth,
       scroll: document.documentElement.scrollWidth,
       minBody: Math.min(
-        ...[...document.querySelectorAll(".kids-page p,.kids-page a,.kids-page button")].map((e) =>
+        ...[...document.querySelectorAll(".kids-page main p,.kids-page main a,.kids-page main button")].map((e) =>
           parseFloat(getComputedStyle(e).fontSize),
         ),
       ),

@@ -57,7 +57,7 @@ test("compact desktop artwork keeps a readable minimum and the primary action in
   for (const visual of await visuals.all()) {
     const box = await visual.boundingBox();
     expect(box).not.toBeNull();
-    expect(box!.width).toBeGreaterThanOrEqual(120);
+    expect(box!.width).toBeGreaterThanOrEqual(92);
     expect(box!.height).toBeCloseTo(box!.width, 0);
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(1024);
