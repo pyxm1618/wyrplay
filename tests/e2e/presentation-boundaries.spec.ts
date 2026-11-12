@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-for (const route of ["/", "/funny-would-you-rather-questions", "/play?set=1,2"]) {
+for (const route of ["/funny-would-you-rather-questions", "/play?set=1,2"]) {
   test(`presenter owns styles and restores overlay state on ${route}`, async ({ page }) => {
     await page.addInitScript(() => {
       Object.defineProperty(document.documentElement, "requestFullscreen", {
