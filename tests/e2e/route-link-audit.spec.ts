@@ -195,9 +195,7 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     }
   });
 
-  test("11. 首页 Create CTA 保持 Authority 外观但明确 disabled / Coming soon", async ({
-    page,
-  }) => {
+  test("11. 首页 Create CTA 保持 Authority 外观但明确 disabled / Coming soon", async ({ page }) => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
