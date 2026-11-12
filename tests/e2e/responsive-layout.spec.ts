@@ -141,8 +141,9 @@ test.describe("required responsive viewport matrix", () => {
       if (width >= 1920) {
         const stage = await page.locator(".hero-stage-backdrop").boundingBox();
         const arena = await page.locator(".home-hero-arena").boundingBox();
+        const heroUnit = Math.min(1.6, Math.max(1, Math.min(width / 778, height * 0.0014)));
         expect(stage!.width).toBeCloseTo(1244.8, 0);
-        expect(arena!.width).toBeCloseTo(793.8, 0);
+        expect(arena!.width).toBeCloseTo(525 * heroUnit, 0);
       }
 
       await shot(page, info, "home", width, height);

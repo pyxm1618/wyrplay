@@ -36,9 +36,8 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     }
     await expect(page.locator("[data-site-header]")).toHaveCount(0);
 
-    const playLink = page.getByRole("link", { name: "Play Now", exact: true }).first();
-    await expect(playLink).toHaveAttribute("href", "/play");
-    await playLink.click();
+    const createLink = primary.getByRole("link", { name: "Create", exact: true });
+    await createLink.click();
     await expect(page).toHaveURL(/\/play$/);
 
     await page.goto("/");
