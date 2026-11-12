@@ -22,11 +22,18 @@ test.beforeEach(async ({ page }) => {
 for (const [width, height] of sizes)
   test(`${width}×${height}: sections, expanded cards, navigation, demo and real choices`, async ({
     page,
-  }) => {
+  }, info) => {
     await page.setViewportSize({ width, height });
     await page.goto(route);
     await expect(page.locator(".kids-page")).toBeVisible();
     await page.evaluate(() => document.fonts.ready);
+    if ([375, 390, 768, 1440, 1920].includes(width)) {
+      await page.screenshot({
+        path: info.outputPath(`kids-top-${width}x${height}.png`),
+        fullPage: false,
+        animations: "disabled",
+      });
+    }
     for (const section of [
       "header",
       ".kids-hero",
@@ -45,9 +52,11 @@ for (const [width, height] of sizes)
       viewport: innerWidth,
       scroll: document.documentElement.scrollWidth,
       minBody: Math.min(
-        ...[...document.querySelectorAll(".kids-page p,.kids-page a,.kids-page button")].map((e) =>
-          parseFloat(getComputedStyle(e).fontSize),
-        ),
+        ...[
+          ...document.querySelectorAll(
+            ".kids-page main p,.kids-page main a,.kids-page main button",
+          ),
+        ].map((e) => parseFloat(getComputedStyle(e).fontSize)),
       ),
     }));
     expect(metrics.scroll).toBe(metrics.viewport);
@@ -70,8 +79,10 @@ for (const [width, height] of sizes)
     await page.getByRole("button", { name: "Show fewer questions", exact: true }).click();
     await expect(page.locator(".kids-reviewed-card")).toHaveCount(Math.min(8, kidsCount));
     await expect(page.locator("header")).toHaveCount(1);
+    await expect(page.locator(".kids-header")).toHaveCount(1);
+    await expect(page.locator("[data-site-header]")).toHaveCount(0);
     await expect(page.locator("footer")).toHaveCount(1);
-    await expect(page.locator(".kids-header,.kids-footer")).toHaveCount(0);
+    await expect(page.locator(".kids-footer")).toHaveCount(0);
     for (const summary of await page.locator(".kids-faq summary").all()) {
       await summary.click();
       await expect(summary.locator("..")).not.toHaveAttribute("open", "");

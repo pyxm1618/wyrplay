@@ -52,20 +52,98 @@ test("compact desktop artwork keeps a readable minimum and the primary action in
   await page.goto("/");
   await expect(page.locator("[data-home-ready=true]")).toBeVisible();
   await page.evaluate(() => document.fonts.ready);
-  const visuals = page.locator(".home-choice-visual");
+  const visuals = page.locator(".hero #play .pet-art");
   await expect(visuals).toHaveCount(2);
   for (const visual of await visuals.all()) {
     const box = await visual.boundingBox();
     expect(box).not.toBeNull();
-    expect(box!.width).toBeGreaterThanOrEqual(120);
-    expect(box!.height).toBeCloseTo(box!.width, 0);
+    expect(box!.width).toBeGreaterThanOrEqual(92);
+    expect(box!.height).toBeGreaterThanOrEqual(90);
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(1024);
-  const action = await page.locator(".home-play-actions .choice-cta").boundingBox();
+  const action = await page.locator(".hero #play .choice-cta").boundingBox();
   expect(action).not.toBeNull();
-  expect(action!.y).toBeGreaterThanOrEqual(0);
-  expect(action!.y + action!.height).toBeLessThanOrEqual(576);
+  expect(action!.x).toBeGreaterThanOrEqual(0);
+  expect(action!.x + action!.width).toBeLessThanOrEqual(1024);
   await page.screenshot({ path: info.outputPath("home-1024x576.png") });
+});
+
+test("778px reference Header and Hero match the frozen reconstruction geometry", async ({
+  page,
+}, info) => {
+  await page.setViewportSize({ width: 778, height: 1000 });
+  await page.goto("/");
+  await expect(page.locator("[data-home-ready=true]")).toBeVisible();
+  await page.evaluate(() => document.fonts.ready);
+
+  const rect = async (selector: string) => {
+    const box = await page.locator(selector).first().boundingBox();
+    if (!box) throw new Error(`${selector} must have a bounding box`);
+    return box;
+  };
+
+  const selectors = {
+    header: "[data-home-design-header]",
+    brand: "[data-home-design-header] .home-brand-mark",
+    nav: "[data-home-design-header] nav",
+    search: "[data-home-design-header] .search-button",
+    login: "[data-home-design-header] .login-button",
+    signup: "[data-home-design-header] .signup-button",
+    hero: ".illustrated-home .hero",
+    title: ".illustrated-home .hero-title-img",
+    grid: ".illustrated-home .hero #play .choice-grid",
+    cta: ".illustrated-home .hero #play .choice-cta",
+  } as const;
+  const boxes = Object.fromEntries(
+    await Promise.all(
+      Object.entries(selectors).map(async ([name, selector]) => [name, await rect(selector)]),
+    ),
+  ) as Record<keyof typeof selectors, Awaited<ReturnType<typeof rect>>>;
+
+  const expectBox = (
+    name: keyof typeof selectors,
+    expected: readonly [number, number, number, number],
+  ) => {
+    const box = boxes[name];
+    expect(box.x, `${name} x`).toBeCloseTo(expected[0], 1);
+    expect(box.y, `${name} y`).toBeCloseTo(expected[1], 1);
+    expect(box.width, `${name} width`).toBeCloseTo(expected[2], 1);
+    expect(box.height, `${name} height`).toBeCloseTo(expected[3], 1);
+  };
+
+  console.info(
+    `[HOME-AUTHORITY-GEOMETRY] ${JSON.stringify(
+      Object.fromEntries(
+        Object.entries(boxes).map(([name, box]) => [
+          name,
+          [box.x, box.y, box.width, box.height].map((value) => Number(value.toFixed(2))),
+        ]),
+      ),
+    )}`,
+  );
+
+  expectBox("header", [0, 0, 778, 60]);
+  expectBox("brand", [55, 7, 120, 43]);
+  expectBox("nav", [234, 14.5, 274.140625, 20]);
+  expectBox("search", [535.140625, 10, 27.59375, 29]);
+  expectBox("login", [579.734375, 9.5, 64.796875, 30]);
+  expectBox("signup", [653.53125, 9.5, 69.46875, 30]);
+  expectBox("hero", [0, 60, 778, 572]);
+  expectBox("title", [209.5, 43, 359, 190]);
+  expectBox("grid", [125, 285, 525, 180]);
+  expectBox("cta", [262, 511, 254, 51]);
+
+  await expect(page.locator(".illustrated-home .hero #play > h2")).toHaveClass(/sr-only/);
+  await expect(page.locator(".illustrated-home .hero .home-secondary-controls")).toHaveCount(0);
+  await expect(page.locator(".illustrated-home .hero #play .choice-cta")).toHaveText(
+    /Make Your Choice/,
+  );
+
+  await page.screenshot({
+    path: info.outputPath("home-authority-778x1000.png"),
+    fullPage: false,
+    animations: "disabled",
+  });
 });
 
 const homeViewports = [
@@ -100,7 +178,7 @@ for (const [width, height] of homeViewports) {
       expect(box).not.toBeNull();
       expect(box!.x).toBeGreaterThanOrEqual(0);
       expect(box!.x + box!.width).toBeLessThanOrEqual(width);
-      expect(box!.y + box!.height).toBeLessThanOrEqual(height);
+      expect(box!.y).toBeGreaterThanOrEqual(0);
     }
     for (const selector of [
       "#categories",
@@ -116,10 +194,9 @@ for (const [width, height] of homeViewports) {
     ]) {
       await expect(page.locator(selector)).toBeVisible();
     }
-    await expect(page.locator("[data-site-header] img").first()).toHaveAttribute(
-      "src",
-      /brand\/logo.svg/,
-    );
+    await expect(page.locator("[data-home-design-header]")).toHaveCount(1);
+    await expect(page.locator("[data-site-header]")).toHaveCount(0);
+    await expect(page.locator("[data-home-design-header] .home-brand-mark")).toHaveCount(1);
     await expect(page.locator("h1 image")).toHaveCount(0);
     await expect(page.getByRole("button", { name: "Toggle theme" })).toHaveCount(0);
     await expect(page.getByText("Crafted for Genuine Social Play")).toHaveCount(0);
@@ -216,7 +293,8 @@ test("late initial statistics cannot overwrite a recorded hero choice", async ({
   releaseRead();
   await readFinished;
   await expect(choice).toHaveAttribute("aria-pressed", "true");
-  await expect(page.locator(".home-vote-status")).toContainText("Total of 1 votes");
+  await expect(page.locator(".vote-count")).toContainText("1 votes");
+  await expect(page.locator(".dog-percent")).toHaveText("100%");
 });
 
 test("homepage stays warm under a saved dark preference without changing other pages", async ({

@@ -11,6 +11,7 @@ import {
 const homepageQuestions = getHomepageQuestions(12);
 const approvedQuestionCount = getPlayableQuestions().length;
 
+import { featuresConfig } from "./features.config";
 import { routeRegistry } from "./routes.config";
 
 const homeRoute = routeRegistry.get("/");
@@ -46,6 +47,7 @@ function homeSurface(leaderboard: LeaderboardResult) {
     <>
       <WyrExperience
         appearance="illustrated-home"
+        authEnabled={featuresConfig.auth.enabled}
         questions={homepageQuestions}
         approvedQuestionCount={approvedQuestionCount}
         categoryBadge="Curated Would You Rather Questions"
@@ -66,6 +68,7 @@ export function homeConfigWithTrendingSlot(trendingSlot: ReactNode) {
             surface: (
               <WyrExperience
                 appearance="illustrated-home"
+                authEnabled={featuresConfig.auth.enabled}
                 questions={homepageQuestions}
                 approvedQuestionCount={approvedQuestionCount}
                 categoryBadge="Curated Would You Rather Questions"

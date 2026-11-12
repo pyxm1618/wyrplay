@@ -62,6 +62,7 @@ function HomeHydrationGate({ children }: { readonly children: React.ReactNode })
 export interface WyrExperienceProps {
   readonly leaderboard?: LeaderboardResult;
   readonly appearance?: "default" | "illustrated-home";
+  readonly authEnabled?: boolean;
   readonly questions: readonly Question[];
   readonly approvedQuestionCount?: number;
   readonly categoryBadge?: string;
@@ -73,6 +74,7 @@ export interface WyrExperienceProps {
 
 export function WyrExperience({
   appearance = "default",
+  authEnabled = false,
   leaderboard = { status: "unavailable" },
   questions: initialQuestions,
   approvedQuestionCount,
@@ -333,6 +335,25 @@ export function WyrExperience({
       {/* 1. 核心 Live 对决 Arena */}
       {appearance !== "illustrated-home" && arena}
 
+      {appearance === "illustrated-home" && playableQuestions.length > 0 && (
+        <div className="home-secondary-controls" aria-label="Question controls">
+          <button type="button" className="section-link" onClick={handleNext}>
+            Next Question
+          </button>
+          <button type="button" className="section-link" onClick={handleRandom}>
+            Random
+          </button>
+          <button
+            ref={presenterTriggerRef}
+            type="button"
+            className="section-link"
+            onClick={() => setIsPresenterOpen(true)}
+          >
+            Presenter Mode
+          </button>
+        </div>
+      )}
+
       {/* 2. 搜索与筛选控制栏 (放置于长目录前面) */}
       <div
         id="question-search"
@@ -399,6 +420,7 @@ export function WyrExperience({
   return appearance === "illustrated-home" ? (
     <HomeHydrationGate>
       <IllustratedHome
+        authEnabled={authEnabled}
         browseHref={(() => {
           const params = new URLSearchParams();
           if (searchKeyword.trim()) params.set("q", searchKeyword.trim());

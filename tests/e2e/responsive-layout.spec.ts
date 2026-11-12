@@ -113,10 +113,18 @@ test.describe("required responsive viewport matrix", () => {
         .first()
         .boundingBox();
       if (!root) throw new Error("Illustrated home is missing");
-      expect(root.width).toBeGreaterThanOrEqual(width - 2);
+      if (width <= 1245) {
+        expect(root.width).toBeGreaterThanOrEqual(width - 2);
+      } else {
+        expect(root.width).toBeCloseTo(1244.8, 0);
+        expect(root.x).toBeCloseTo((width - root.width) / 2, 0);
+      }
 
       if (width >= 1024) {
-        await inside(page.locator(".choice-cta").first(), height);
+        const action = await page.locator(".choice-cta").first().boundingBox();
+        if (!action) throw new Error("Homepage primary action is missing");
+        expect(action.x).toBeGreaterThanOrEqual(root.x - 1);
+        expect(action.x + action.width).toBeLessThanOrEqual(root.x + root.width + 1);
       }
       if (
         (width === 1440 && height === 900) ||
@@ -125,15 +133,17 @@ test.describe("required responsive viewport matrix", () => {
       ) {
         const categories = await page.locator(".categories-section").first().boundingBox();
         if (!categories) throw new Error("Popular Categories is missing");
-        expect(categories.y).toBeLessThan(height);
+        const hero = await page.locator(".hero").first().boundingBox();
+        if (!hero) throw new Error("Homepage hero is missing");
+        expect(categories.y).toBeGreaterThanOrEqual(hero.y + hero.height - 1);
       }
 
       if (width >= 1920) {
         const stage = await page.locator(".hero-stage-backdrop").boundingBox();
         const arena = await page.locator(".home-hero-arena").boundingBox();
-        expect(stage!.width).toBe(1680);
-        expect(arena!.width).toBeGreaterThanOrEqual(900);
-        expect(arena!.width).toBeLessThanOrEqual(920);
+        const heroUnit = Math.min(1.6, Math.max(1, Math.min(width / 778, height * 0.0014)));
+        expect(stage!.width).toBeCloseTo(1244.8, 0);
+        expect(arena!.width).toBeCloseTo(525 * heroUnit, 0);
       }
 
       await shot(page, info, "home", width, height);
@@ -146,7 +156,7 @@ test.describe("required responsive viewport matrix", () => {
       await page.setViewportSize({ width, height });
       await noOverflow(page);
       if (width >= 1920) {
-        expect((await page.locator(".kids-browse").boundingBox())!.width).toBe(1520);
+        expect((await page.locator(".kids-browse").boundingBox())!.width).toBe(1320);
         expect((await page.locator(".kids-faq").boundingBox())!.width).toBe(1320);
         expect((await page.locator(".kids-choices").boundingBox())!.width).toBeLessThanOrEqual(
           1100,

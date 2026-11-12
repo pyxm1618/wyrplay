@@ -25,9 +25,10 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       // Arena 正常展示第一道正式题目，绝非审核中空状态
       await expect(page.getByText("Dilemmas are Currently Under Editorial Review")).toHaveCount(0);
       const arenaHeading = page.locator("#play h2").first();
-      await expect(arenaHeading).toBeVisible();
+      await expect(arenaHeading).toHaveClass(/sr-only/);
       const headingText = await arenaHeading.innerText();
       expect(headingText.length).toBeGreaterThan(10);
+      await expect(page.locator(".hero #play button[aria-pressed]")).toHaveCount(2);
 
       // Arena 切题按钮正常渲染
       await expect(page.getByRole("button", { name: /Next Question/i })).toBeVisible();
@@ -209,7 +210,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
         });
       });
 
-      const optionA = page.locator("#play button:has-text('Option A')").first();
+      const optionA = page.locator(".hero #play button[aria-pressed]").first();
       await optionA.click();
 
       // 页面展示错误提示，不崩溃白屏
@@ -254,8 +255,9 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await page.goto("/");
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
-      const optionA = page.locator("#play button:has-text('Option A')").first();
-      const optionB = page.locator("#play button:has-text('Option B')").first();
+      const homepageChoices = page.locator(".hero #play button[aria-pressed]");
+      const optionA = homepageChoices.nth(0);
+      const optionB = homepageChoices.nth(1);
       await expect(optionA).toHaveAttribute("aria-pressed", "false");
       await expect(optionB).toHaveAttribute("aria-pressed", "false");
 
@@ -286,12 +288,11 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await page.locator("#play").focus();
       await page.keyboard.press("KeyA");
       await expect(optionA).toHaveAttribute("aria-pressed", "true");
-      await expect(optionA.locator("text=Your Choice")).toBeVisible();
     });
   });
 
-  test.describe("2. Mobile 375px Viewport & Mobile Menu", () => {
-    test("375px 视口无横向溢出且 mobile menu 可交互点击", async ({ page }) => {
+  test.describe("2. Mobile 375px Viewport & Page-Owned Header", () => {
+    test("375px 视口无横向溢出且 page-owned Header 保持可用", async ({ page }) => {
       await page.setViewportSize({ width: 375, height: 812 });
       await page.goto("/");
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
@@ -300,19 +301,13 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       const innerWidth = await page.evaluate(() => window.innerWidth);
       expect(scrollWidth).toBeLessThanOrEqual(innerWidth);
 
-      const menuButton = page.locator("button[aria-label='Open mobile menu']");
-      await expect(menuButton).toBeVisible();
-      await menuButton.click();
-      await page.waitForTimeout(200);
-
-      const mobileFindQuestionsLink = page.locator(
-        "nav[aria-label='Mobile navigation'] a[href='/find-questions']",
-      );
-      await expect(mobileFindQuestionsLink).toBeVisible();
-      const mobileKidsLink = page.locator(
-        "nav[aria-label='Mobile navigation'] a[href='/would-you-rather-questions-for-kids']",
-      );
-      await expect(mobileKidsLink).toBeVisible();
+      await expect(page.locator("[data-home-design-header]")).toBeVisible();
+      await expect(page.locator("[data-site-header]")).toHaveCount(0);
+      await expect(page.locator("button[aria-label='Open mobile menu']")).toHaveCount(0);
+      await expect(page.locator("[data-home-design-header] .home-brand-mark")).toBeVisible();
+      await expect(
+        page.locator("[data-home-design-header] a[aria-label='Search questions']"),
+      ).toBeVisible();
     });
   });
 

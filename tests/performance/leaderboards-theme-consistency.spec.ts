@@ -44,22 +44,10 @@ test.describe("Leaderboard Theme Consistency & Flash Verification Gate", () => {
     const homeMain = page.locator(".home-main");
     await expect(homeMain).toBeVisible();
 
-    // 2. Navigate to /leaderboards
-    const header = page.locator("header[data-site-header]");
-    const mobileMenuToggle = header.locator('button[aria-controls="site-mobile-navigation"]');
-    const isMobile = await mobileMenuToggle.isVisible();
-
-    if (isMobile) {
-      await mobileMenuToggle.click();
-      const mobileDrawer = page.locator("#site-mobile-navigation");
-      await expect(mobileDrawer).toBeVisible();
-      const targetLink = mobileDrawer.locator('a[href="/leaderboards"]').first();
-      await expect(targetLink).toBeVisible();
-      await targetLink.click();
-    } else {
-      const navLink = header.locator('a[href="/leaderboards"]').first();
-      await navLink.click();
-    }
+    // 2. Navigate to /leaderboards from the active Homepage authority.
+    const leaderboardLink = page.locator('a[href="/leaderboards"]:visible').first();
+    await expect(leaderboardLink).toBeVisible();
+    await leaderboardLink.click();
     await page.waitForURL(/\/leaderboards$/);
 
     // Verify transition to light theme on the leaderboard scoped container
@@ -71,8 +59,9 @@ test.describe("Leaderboard Theme Consistency & Flash Verification Gate", () => {
     const bgColor = await container.evaluate((el) => window.getComputedStyle(el).backgroundColor);
     expect(bgColor).toBe("rgb(255, 252, 246)");
 
-    // 3. Return to Home page
-    const brandLink = header.locator('a[href="/"]').first();
+    // 3. Return to Home page through the shared header used by Leaderboards.
+    const brandLink = page.locator('header[data-site-header] a[href="/"]').first();
+    await expect(brandLink).toBeVisible();
     await brandLink.click();
     await page.waitForURL(/\/$/);
 

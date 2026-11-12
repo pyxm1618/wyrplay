@@ -1,5 +1,34 @@
 import { expect, test, type Page, type Request } from "@playwright/test";
 
+const formalHeaderSelector =
+  "header[data-site-header]:visible, header[data-home-design-header]:visible, header[data-kids-design-header]:visible";
+
+async function clickFormalNavigation(page: Page, targetHref: string) {
+  const header = page.locator(formalHeaderSelector).first();
+  await expect(header).toBeVisible();
+
+  const directLink = header.locator(`a[href="${targetHref}"]:visible`).first();
+  if (await directLink.isVisible()) {
+    await directLink.click();
+    return;
+  }
+
+  const mobileMenuToggle = header.locator('button[aria-controls="site-mobile-navigation"]:visible');
+  if (await mobileMenuToggle.isVisible()) {
+    await mobileMenuToggle.click();
+    const targetLink = page
+      .locator(`#site-mobile-navigation a[href="${targetHref}"]:visible`)
+      .first();
+    await expect(targetLink).toBeVisible();
+    await targetLink.click();
+    return;
+  }
+
+  const pageLink = page.locator(`a[href="${targetHref}"]:visible`).first();
+  await expect(pageLink).toBeVisible();
+  await pageLink.click();
+}
+
 async function waitForInteractiveHome(page: Page) {
   await expect(page.locator(".home-main")).toBeVisible();
   await page.waitForFunction(() => {
@@ -12,7 +41,7 @@ async function waitForInteractiveHome(page: Page) {
 }
 
 test.describe("SPA Client Navigation Gate", () => {
-  test("Header navigation maintains client-side routing without full document reload or full-screen loading", async ({
+  test("Primary navigation maintains client-side routing without full document reload or full-screen loading", async ({
     page,
   }) => {
     test.setTimeout(90_000);
@@ -64,39 +93,13 @@ test.describe("SPA Client Navigation Gate", () => {
     ];
 
     for (const step of navSteps) {
-      const headerNav = page.locator("header[data-site-header]");
-      await expect(headerNav).toBeVisible();
+      await expect(page.locator(formalHeaderSelector).first()).toBeVisible();
 
       // Ensure full-screen LoadingPage is never displayed before click
       await expect(page.locator(".status-page")).toHaveCount(0);
       await expect(page.getByText("Getting things ready for you")).toHaveCount(0);
 
-      const mobileMenuToggle = headerNav.locator('button[aria-controls="site-mobile-navigation"]');
-      const isMobile = await mobileMenuToggle.isVisible();
-
-      if (isMobile) {
-        if (step.targetHref === "/") {
-          const brandLink = headerNav.locator('a[href="/"]').first();
-          await expect(brandLink).toBeVisible();
-          await brandLink.click();
-        } else {
-          await mobileMenuToggle.click();
-          const mobileDrawer = page.locator("#site-mobile-navigation");
-          await expect(mobileDrawer).toBeVisible();
-          const targetLink = mobileDrawer.locator(`a[href="${step.targetHref}"]`).first();
-          await expect(targetLink).toBeVisible();
-          await targetLink.click();
-        }
-      } else {
-        const targetLink =
-          step.targetHref === "/"
-            ? headerNav.locator('a[href="/"]').first()
-            : headerNav
-                .locator(`nav[aria-label="Primary navigation"] a[href="${step.targetHref}"]`)
-                .first();
-        await expect(targetLink).toBeVisible();
-        await targetLink.click();
-      }
+      await clickFormalNavigation(page, step.targetHref);
 
       // Wait for URL to update
       await page.waitForURL((url) => url.pathname === step.expectedPathname);
@@ -105,8 +108,8 @@ test.describe("SPA Client Navigation Gate", () => {
       await expect(page.locator(".status-page")).toHaveCount(0);
       await expect(page.getByText("Getting things ready for you")).toHaveCount(0);
 
-      // Shell remains mounted
-      await expect(page.locator("header[data-site-header]")).toBeVisible();
+      // Exactly one formal header remains mounted for the active route.
+      await expect(page.locator(formalHeaderSelector)).toHaveCount(1);
     }
 
     // Cross-document policy boundaries reload; the ordinary Finder/Print/Leaderboard steps remain SPA.

@@ -12,7 +12,7 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     });
   });
 
-  test("8. 统一 Header 使用正式路由，首页局部锚点仍保持有效", async ({ page }) => {
+  test("8. 首页 page-owned Header 使用正式路由，局部锚点仍保持有效", async ({ page }) => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
@@ -24,21 +24,20 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     await expect(page.locator(".home-directory")).toHaveCount(0);
     await expect(page.locator("#categories")).toBeAttached();
 
-    const primary = page.getByRole("navigation", { name: "Primary navigation" });
+    const primary = page.getByRole("navigation", { name: "Main navigation" });
     for (const [name, href] of [
       ["Home", "/"],
-      ["Find Questions", "/find-questions"],
-      ["Print", "/print"],
-      ["Leaderboards", "/leaderboards"],
+      ["Questions", "/find-questions"],
+      ["Categories", "#categories"],
+      ["Leaderboard", "/leaderboards"],
+      ["Create", "/play"],
     ] as const) {
       await expect(primary.getByRole("link", { name, exact: true })).toHaveAttribute("href", href);
     }
-    await expect(primary.getByRole("link", { name: "Categories", exact: true })).toHaveCount(0);
-    await expect(primary.getByRole("link", { name: "Create", exact: true })).toHaveCount(0);
+    await expect(page.locator("[data-site-header]")).toHaveCount(0);
 
-    const playLink = page.getByRole("link", { name: "Play Now", exact: true }).first();
-    await expect(playLink).toHaveAttribute("href", "/play");
-    await playLink.click();
+    const createLink = primary.getByRole("link", { name: "Create", exact: true });
+    await createLink.click();
     await expect(page).toHaveURL(/\/play$/);
 
     await page.goto("/");

@@ -1,4 +1,33 @@
-import { expect, test, type Request } from "@playwright/test";
+import { expect, test, type Page, type Request } from "@playwright/test";
+
+const formalHeaderSelector =
+  "header[data-site-header]:visible, header[data-home-design-header]:visible, header[data-kids-design-header]:visible";
+
+async function clickFormalNavigation(page: Page, targetHref: string) {
+  const header = page.locator(formalHeaderSelector).first();
+  await expect(header).toBeVisible();
+
+  const directLink = header.locator(`a[href="${targetHref}"]:visible`).first();
+  if (await directLink.isVisible()) {
+    await directLink.click();
+    return;
+  }
+
+  const mobileMenuToggle = header.locator('button[aria-controls="site-mobile-navigation"]:visible');
+  if (await mobileMenuToggle.isVisible()) {
+    await mobileMenuToggle.click();
+    const targetLink = page
+      .locator(`#site-mobile-navigation a[href="${targetHref}"]:visible`)
+      .first();
+    await expect(targetLink).toBeVisible();
+    await targetLink.click();
+    return;
+  }
+
+  const pageLink = page.locator(`a[href="${targetHref}"]:visible`).first();
+  await expect(pageLink).toBeVisible();
+  await pageLink.click();
+}
 
 const viewports = [
   { name: "Mobile (390x844)", width: 390, height: 844, isMobile: true },
@@ -79,38 +108,12 @@ for (const vp of viewports) {
       ];
 
       for (const step of navSteps) {
-        const headerNav = page.locator("header[data-site-header]");
-        await expect(headerNav).toBeVisible();
+        await expect(page.locator(formalHeaderSelector).first()).toBeVisible();
 
         // Ensure full-screen LoadingPage is never displayed
         await expect(page.locator(".status-page")).toHaveCount(0);
 
-        if (vp.isMobile) {
-          if (step.targetHref === "/") {
-            const brandLink = headerNav.locator('a[href="/"]').first();
-            await expect(brandLink).toBeVisible();
-            await brandLink.click();
-          } else {
-            const mobileMenuToggle = headerNav.locator(
-              'button[aria-controls="site-mobile-navigation"]',
-            );
-            await mobileMenuToggle.click();
-            const mobileDrawer = page.locator("#site-mobile-navigation");
-            await expect(mobileDrawer).toBeVisible();
-            const targetLink = mobileDrawer.locator(`a[href="${step.targetHref}"]`).first();
-            await expect(targetLink).toBeVisible();
-            await targetLink.click();
-          }
-        } else {
-          const targetLink =
-            step.targetHref === "/"
-              ? headerNav.locator('a[href="/"]').first()
-              : headerNav
-                  .locator(`nav[aria-label="Primary navigation"] a[href="${step.targetHref}"]`)
-                  .first();
-          await expect(targetLink).toBeVisible();
-          await targetLink.click();
-        }
+        await clickFormalNavigation(page, step.targetHref);
 
         await page.waitForURL((url) => url.pathname === step.expectedPathname);
 
@@ -125,8 +128,8 @@ for (const vp of viewports) {
           true,
         );
 
-        // Verify shell remains mounted
-        await expect(page.locator("header[data-site-header]")).toBeVisible();
+        // Exactly one formal header remains mounted for the active route.
+        await expect(page.locator(formalHeaderSelector)).toHaveCount(1);
       }
 
       // Assert that the only document navigation is the intentional transition to the Kids route

@@ -3,11 +3,11 @@
 import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
 import { parseVoteStats } from "../domain/finder";
 import type { Question, VoteStats } from "../types";
-import { Arrow, ChoiceFrame } from "./home-art";
+import { Arrow, ChoiceFrame, HomeArt } from "./home-art";
 import { PlayHeading, OptionPanels } from "./play/art";
 import { KidsChoicePanels } from "./kids/art";
 import { QuestionVisual } from "./question-visual";
-import { getQuestionVisual, hasQuestionVisual } from "../data/question-visuals";
+import { getQuestionVisual } from "../data/question-visuals";
 
 export interface DuelArenaProps {
   readonly appearance?: "default" | "illustrated-play" | "illustrated-home" | "illustrated-kids";
@@ -277,7 +277,10 @@ export function DuelArena({
     );
 
   if (appearance === "illustrated-home") {
-    const hasVisual = hasQuestionVisual(question.id);
+    const percentageA = currentStats?.percentageA;
+    const percentageB = currentStats?.percentageB;
+    const totalVotes = currentStats?.total;
+
     return (
       <section
         ref={arenaRef}
@@ -286,83 +289,101 @@ export function DuelArena({
         className="home-hero-arena"
         aria-labelledby="hero-question"
       >
-        <h2 id="hero-question">{question.question}</h2>
+        <h2 id="hero-question" className="sr-only">
+          {question.question}
+        </h2>
         <div className="choice-grid">
-          {(["A", "B"] as const).map((option) => (
-            <button
-              type="button"
-              key={option}
-              className={`choice-card ${option === "A" ? "dog-card" : "cat-card"}`}
-              aria-pressed={userPick === option}
-              disabled={isSubmitting}
-              onClick={() => void handleVote(option)}
-            >
-              {hasVisual ? (
-                <div className="home-choice-visual">
-                  <QuestionVisual
-                    questionId={question.id}
-                    mode={option === "A" ? "option-a" : "option-b"}
-                    alt={option === "A" ? question.optionA : question.optionB}
-                    sizes="(max-width: 600px) calc(100vw - 49px), 600px"
-                  />
-                </div>
-              ) : (
-                <ChoiceFrame variant={option === "A" ? "dog" : "cat"} />
-              )}
-              <span className="choice-label">Option {option}</span>
-              <span className="choice-text">
-                {option === "A" ? question.optionA : question.optionB}
-              </span>
-              <span className="choice-feedback">
-                {isSubmitting
-                  ? "Recording…"
-                  : userPick === option
-                    ? "✓ Your Choice"
-                    : `Choose ${option}`}
-              </span>
-              {hasVoted && currentStats && (
-                <span className="choice-result">
-                  {option === "A" ? currentStats.percentageA : currentStats.percentageB}% ·{" "}
-                  {option === "A" ? currentStats.votesA : currentStats.votesB} votes
-                </span>
-              )}
-            </button>
-          ))}
+          <button
+            type="button"
+            className="choice-card dog-card"
+            aria-label={`Choose: ${question.optionA}`}
+            aria-pressed={userPick === "A"}
+            disabled={isSubmitting}
+            onClick={() => void handleVote("A")}
+          >
+            <ChoiceFrame variant="dog" />
+            <HomeArt
+              src="hero/hero-dog"
+              width={147}
+              height={93}
+              sizes="147px"
+              className="pet-art dog-art"
+            />
+            <span>{question.optionA}</span>
+          </button>
           <span className="or-badge" aria-hidden="true">
             OR
           </span>
+          <button
+            type="button"
+            className="choice-card cat-card"
+            aria-label={`Choose: ${question.optionB}`}
+            aria-pressed={userPick === "B"}
+            disabled={isSubmitting}
+            onClick={() => void handleVote("B")}
+          >
+            <ChoiceFrame variant="cat" />
+            <HomeArt
+              src="hero/hero-cat"
+              width={129}
+              height={93}
+              sizes="129px"
+              className="pet-art cat-art"
+            />
+            <span>{question.optionB}</span>
+          </button>
         </div>
-        <p className="home-vote-status" aria-live="polite">
-          {hasVoted && currentStats
-            ? `Total of ${currentStats.total.toLocaleString()} votes received. Choose the other side to change your vote.`
-            : "Pick A or B to play. Real votes. Real results."}
-        </p>
+
+        <div className="vote-summary" aria-live="polite">
+          <strong className="dog-percent">
+            {percentageA === undefined ? "—" : `${percentageA}%`}
+          </strong>
+          <div className="vote-middle">
+            <div
+              className="vote-bar"
+              role="img"
+              aria-label={
+                percentageA === undefined || percentageB === undefined
+                  ? "Loading community vote results"
+                  : `${percentageA}% option A, ${percentageB}% option B`
+              }
+            >
+              {percentageA !== undefined && (
+                <span style={{ width: `${Math.max(0, Math.min(100, percentageA))}%` }} />
+              )}
+            </div>
+            <span className="vote-count">
+              {isSubmitting
+                ? "Recording your choice…"
+                : totalVotes === undefined
+                  ? "Loading votes…"
+                  : `${totalVotes.toLocaleString()} votes`}
+            </span>
+          </div>
+          <strong className="cat-percent">
+            {percentageB === undefined ? "—" : `${percentageB}%`}
+          </strong>
+        </div>
+
         {currentErrorMessage && (
-          <p className="home-vote-error" role="alert">
+          <p className="home-vote-error home-vote-error-overlay" role="alert">
             {currentErrorMessage}{" "}
-            <button type="button" onClick={() => setRefreshCount((c) => c + 1)}>
+            <button type="button" onClick={() => setRefreshCount((count) => count + 1)}>
               Retry
             </button>
           </p>
         )}
-        <div className="home-play-actions">
-          <button type="button" className="choice-cta dark-button" onClick={onNext}>
-            Next Question <Arrow />
-          </button>
-          <button type="button" className="section-link" onClick={onRandom}>
-            Random
-          </button>
-          {onOpenPresenter && (
-            <button
-              ref={presenterButtonRef}
-              type="button"
-              className="section-link"
-              onClick={onOpenPresenter}
-            >
-              Presenter Mode
-            </button>
-          )}
-        </div>
+
+        <button
+          type="button"
+          className="choice-cta dark-button"
+          onClick={() =>
+            arenaRef.current?.querySelector<HTMLButtonElement>(".choice-card")?.focus()
+          }
+        >
+          Make Your Choice
+          <Arrow />
+        </button>
       </section>
     );
   }
