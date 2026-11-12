@@ -349,9 +349,7 @@ export function DuelArena({
               }
             >
               {percentageA !== undefined && (
-                <span
-                  style={{ width: `${Math.max(0, Math.min(100, percentageA))}%` }}
-                />
+                <span style={{ width: `${Math.max(0, Math.min(100, percentageA))}%` }} />
               )}
             </div>
             <span className="vote-count">
