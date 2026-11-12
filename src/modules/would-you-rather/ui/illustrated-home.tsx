@@ -164,6 +164,7 @@ export function IllustratedHome({
   questions,
   approvedQuestionCount,
   browseHref = "/find-questions",
+  authEnabled = false,
 }: {
   leaderboard?: LeaderboardResult;
   children: ReactNode;
@@ -173,6 +174,7 @@ export function IllustratedHome({
   approvedQuestionCount: number;
   browseHref?: string;
   trendingSlot?: ReactNode;
+  authEnabled?: boolean;
 }) {
   const highlights = questions.slice(0, 3);
   const rankings =
@@ -253,12 +255,16 @@ export function IllustratedHome({
           >
             <HomeSearchIcon />
           </Link>
-          <Link href="/sign-in" className="login-button" prefetch={false}>
-            Log in
-          </Link>
-          <Link href="/sign-up" className="signup-button" prefetch={false}>
-            Sign up
-          </Link>
+          {authEnabled ? (
+            <>
+              <Link href="/sign-in" className="login-button" prefetch={false}>
+                Log in
+              </Link>
+              <Link href="/sign-up" className="signup-button" prefetch={false}>
+                Sign up
+              </Link>
+            </>
+          ) : null}
         </div>
       </header>
       <section className="hero" aria-labelledby="page-title">

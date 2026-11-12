@@ -8,6 +8,7 @@ import "./kids.css";
 import { AdSenseSiteCode } from "@/components/advertising/adsense-site-code";
 import { LandingPage } from "@/components/landing/landing-page";
 import { JsonLd } from "@/components/seo/json-ld";
+import { featuresConfig } from "@/config/features.config";
 import { localeBundle } from "@/config/locales.config";
 import { routeRegistry } from "@/config/routes.config";
 import { seoLandingForRoute } from "@/config/seo-landings.config";
@@ -105,7 +106,10 @@ export default async function SegmentPage({ params }: SegmentPageProps) {
       {route === "/would-you-rather-questions-for-kids" ? (
         <>
           {isAdSenseRuntimeEnabled() && <AdSenseSiteCode />}
-          <KidsPage questions={getQuestionsByCollection("kids")} />
+          <KidsPage
+            questions={getQuestionsByCollection("kids")}
+            authEnabled={featuresConfig.auth.enabled}
+          />
         </>
       ) : (
         <main>

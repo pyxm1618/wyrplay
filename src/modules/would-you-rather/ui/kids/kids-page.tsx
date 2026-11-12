@@ -30,7 +30,7 @@ function topicMotif(question: Question) {
   return "imagination";
 }
 
-function KidsHeader() {
+function KidsHeader({ authEnabled }: { authEnabled: boolean }) {
   return (
     <header className="kids-header" data-kids-design-header>
       <div className="kids-header-inner">
@@ -48,12 +48,16 @@ function KidsHeader() {
           <Link className="kids-search" href="/find-questions" aria-label="Search questions">
             <FinderIcon name="search" />
           </Link>
-          <Link className="kids-login" href="/sign-in">
-            Log in
-          </Link>
-          <Link className="kids-signup" href="/sign-up">
-            Sign up
-          </Link>
+          {authEnabled ? (
+            <>
+              <Link className="kids-login" href="/sign-in">
+                Log in
+              </Link>
+              <Link className="kids-signup" href="/sign-up">
+                Sign up
+              </Link>
+            </>
+          ) : null}
         </div>
       </div>
     </header>
@@ -125,7 +129,13 @@ function KidsPresenter({
   );
 }
 
-export function KidsPage({ questions }: { questions: readonly Question[] }) {
+export function KidsPage({
+  questions,
+  authEnabled = false,
+}: {
+  questions: readonly Question[];
+  authEnabled?: boolean;
+}) {
   const approved = filterQuestions(questions, { collection: "kids", onlyApproved: true });
   const [age, setAge] = useState<AgeGroup | undefined>();
   const [activeId, setActiveId] = useState<string>(approved[0]?.id ?? "");
@@ -171,7 +181,7 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
         Skip to kids arena
       </a>
 
-      <KidsHeader />
+      <KidsHeader authEnabled={authEnabled} />
 
       <main>
         <section className="kids-hero" aria-labelledby="kids-title">
