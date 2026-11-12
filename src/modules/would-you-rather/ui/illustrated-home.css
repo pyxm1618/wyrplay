@@ -3071,3 +3071,107 @@
     display: block;
   }
 }
+
+
+/* PR #107 V107-H01 / V107-M01: frozen Homepage authority over the live voting renderer.
+   Business state remains owned by DuelArena; these rules only restore Homepage presentation. */
+.illustrated-home .dog-percent {
+  color: #ff3417;
+}
+.illustrated-home .cat-percent {
+  color: #008bde;
+}
+.illustrated-home .vote-middle {
+  width: calc(var(--home-unit) * 276);
+}
+.illustrated-home .vote-bar {
+  height: calc(var(--home-unit) * 12);
+  border-radius: calc(var(--home-unit) * 20);
+  background: #009ce7;
+  overflow: hidden;
+  margin-top: calc(var(--home-unit) * 1);
+}
+.illustrated-home .vote-bar span {
+  display: block;
+  height: 100%;
+  border-radius: calc(var(--home-unit) * 20);
+  background: linear-gradient(90deg, #ff5937, #ff903c);
+  clip-path: polygon(0 0, 98% 0, 100% 50%, 98% 100%, 0 100%);
+}
+.illustrated-home .vote-count {
+  display: block;
+  font-size: calc(var(--home-unit) * 12);
+  font-weight: 600;
+  line-height: calc(var(--home-unit) * 17);
+  margin-top: calc(var(--home-unit) * 3);
+}
+.illustrated-home .home-vote-error-overlay {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--home-unit) * 186);
+  width: calc(var(--home-unit) * 525);
+  margin: 0;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+.illustrated-home .home-secondary-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+.illustrated-home .home-secondary-controls .section-link {
+  min-height: 44px;
+  font-size: 14px;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .illustrated-home .vote-middle {
+    width: calc(100vw - calc(var(--home-unit) * 142));
+  }
+  .illustrated-home .vote-summary > strong {
+    font-size: calc(var(--home-unit) * 24);
+  }
+}
+
+@media (min-width: 601px) {
+  .illustrated-home .header-actions {
+    transform: translateY(calc(var(--home-unit) * -4));
+  }
+  .illustrated-home .home-hero-arena {
+    position: relative;
+    width: calc(var(--home-unit) * 525);
+    margin: 0 auto;
+  }
+  .illustrated-home .home-hero-arena .choice-grid {
+    left: calc(var(--home-unit) * -1.5);
+    width: calc(var(--home-unit) * 525);
+    height: calc(var(--home-unit) * 180);
+    grid-template-columns: calc(var(--home-unit) * 249) calc(var(--home-unit) * 249);
+    gap: calc(var(--home-unit) * 27);
+  }
+  .illustrated-home .home-hero-arena .choice-card {
+    height: calc(var(--home-unit) * 180);
+    min-height: calc(var(--home-unit) * 180);
+    padding: 0 calc(var(--home-unit) * 10) calc(var(--home-unit) * 26);
+    gap: 0;
+    justify-content: flex-end;
+  }
+  .illustrated-home .home-hero-arena .choice-frame {
+    width: calc(var(--home-unit) * 249);
+    height: calc(var(--home-unit) * 180);
+  }
+  .illustrated-home .home-hero-arena .or-badge {
+    top: calc(var(--home-unit) * 62);
+    left: calc(var(--home-unit) * 222);
+    width: calc(var(--home-unit) * 83);
+    height: calc(var(--home-unit) * 72);
+    font-size: calc(var(--home-unit) * 42);
+  }
+  .illustrated-home .home-hero-arena .choice-card > span {
+    font-size: calc(var(--home-unit) * 24);
+    line-height: calc(var(--home-unit) * 24);
+  }
+}
