@@ -296,7 +296,6 @@ test("778px reference Header and Hero match the frozen reconstruction geometry",
   });
 });
 
-
 test("778×2021 lower page matches Authority geometry and emits pixel evidence", async ({
   page,
 }, info) => {
@@ -352,7 +351,9 @@ test("778×2021 lower page matches Authority geometry and emits pixel evidence",
   await expect(page.locator("#question-search")).toHaveCount(0);
   await expect(page.locator(".home-faq")).toHaveCount(0);
   await expect(page.getByText("Real votes from real people around the world.")).toHaveCount(0);
-  await expect(page.locator("#community .community-subtitle")).toContainText("not user testimonials");
+  await expect(page.locator("#community .community-subtitle")).toContainText(
+    "not user testimonials",
+  );
   await expect(page.locator(".create-button")).toBeDisabled();
 
   const screenshot = await page.screenshot({

@@ -104,7 +104,6 @@ const occasions = [
   },
 ] as const;
 
-
 const communityNotes = [
   {
     text: "Example reaction · That was a close one!",
@@ -728,7 +727,9 @@ export function IllustratedHome({
           />
         </div>
         <h2>See What Others Think</h2>
-        <p className="community-subtitle">Example reactions for presentation only — not user testimonials.</p>
+        <p className="community-subtitle">
+          Example reactions for presentation only — not user testimonials.
+        </p>
         <div className="quote-grid">
           {communityNotes.map((note) => (
             <blockquote key={note.text}>
