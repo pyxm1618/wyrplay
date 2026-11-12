@@ -25,9 +25,10 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       // Arena 正常展示第一道正式题目，绝非审核中空状态
       await expect(page.getByText("Dilemmas are Currently Under Editorial Review")).toHaveCount(0);
       const arenaHeading = page.locator("#play h2").first();
-      await expect(arenaHeading).toBeVisible();
+      await expect(arenaHeading).toHaveClass(/sr-only/);
       const headingText = await arenaHeading.innerText();
       expect(headingText.length).toBeGreaterThan(10);
+      await expect(page.locator(".hero #play button[aria-pressed]")).toHaveCount(2);
 
       // Arena 切题按钮正常渲染
       await expect(page.getByRole("button", { name: /Next Question/i })).toBeVisible();
@@ -209,7 +210,7 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
         });
       });
 
-      const optionA = page.locator("#play button:has-text('Option A')").first();
+      const optionA = page.locator(".hero #play button[aria-pressed]").first();
       await optionA.click();
 
       // 页面展示错误提示，不崩溃白屏
@@ -254,8 +255,9 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       await page.goto("/");
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
 
-      const optionA = page.locator("#play button:has-text('Option A')").first();
-      const optionB = page.locator("#play button:has-text('Option B')").first();
+      const homepageChoices = page.locator(".hero #play button[aria-pressed]");
+      const optionA = homepageChoices.nth(0);
+      const optionB = homepageChoices.nth(1);
       await expect(optionA).toHaveAttribute("aria-pressed", "false");
       await expect(optionB).toHaveAttribute("aria-pressed", "false");
 
