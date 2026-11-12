@@ -95,12 +95,8 @@ test("production rendered SEO matches the route registry", async ({ page }) => {
       `${route.route}: primary keyword tokens must be present in visible content`,
     ).toBe(1);
 
-    if (route.route === "/") {
-      expect(densityPct, "/: primary keyword density must be at least 3%").toBeGreaterThanOrEqual(
-        3,
-      );
-    }
-
+    // Density remains an audit metric only. Homepage visual Authority is not allowed to
+    // reintroduce keyword stuffing solely to hit an arbitrary percentage threshold.
     const renderedInternalPaths = new Set(
       await page.locator('a[href^="/"]').evaluateAll((links) =>
         links.flatMap((link) => {
@@ -212,16 +208,12 @@ test("production AdSense pre-review readiness verification", async ({ page, requ
   const adsScript = page.locator('script[src*="adsbygoogle"]');
   await expect(adsScript).toHaveCount(0);
 
-  // 6. 首页 Create CTA 为 Coming soon，点击弹出 Toast 不发生跳转
+  // 6. 首页 Create CTA 保持 Authority 外观，但真实能力必须明确为 disabled / Coming soon
   const createBtn = page.locator("button.create-button");
   await expect(createBtn).toBeVisible();
-  await expect(createBtn).toContainText("Coming soon");
-
-  const startUrl = page.url();
-  await createBtn.click();
-  expect(page.url()).toBe(startUrl);
-
-  const toast = page.locator('.create-toast[role="status"]');
-  await expect(toast).toBeVisible();
-  await expect(toast).toHaveText("Coming soon — question creation is on the way.");
+  await expect(createBtn).toContainText("Create");
+  await expect(createBtn).toBeDisabled();
+  await expect(createBtn).toHaveAttribute("aria-label", "Create (coming soon)");
+  await expect(createBtn).toHaveAttribute("title", "Coming soon");
+  await expect(page.locator('.create-toast[role="status"]')).toHaveCount(0);
 });
