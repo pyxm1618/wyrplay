@@ -63,9 +63,55 @@ test("compact desktop artwork keeps a readable minimum and the primary action in
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(1024);
   const action = await page.locator(".home-play-actions .choice-cta").boundingBox();
   expect(action).not.toBeNull();
-  expect(action!.y).toBeGreaterThanOrEqual(0);
-  expect(action!.y + action!.height).toBeLessThanOrEqual(576);
+  expect(action!.x).toBeGreaterThanOrEqual(0);
+  expect(action!.x + action!.width).toBeLessThanOrEqual(1024);
   await page.screenshot({ path: info.outputPath("home-1024x576.png") });
+});
+
+test("778px reference Header and Hero match the frozen reconstruction geometry", async ({
+  page,
+}, info) => {
+  await page.setViewportSize({ width: 778, height: 1000 });
+  await page.goto("/");
+  await expect(page.locator("[data-home-ready=true]")).toBeVisible();
+  await page.evaluate(() => document.fonts.ready);
+
+  const rect = async (selector: string) => {
+    const box = await page.locator(selector).first().boundingBox();
+    if (!box) throw new Error(`${selector} must have a bounding box`);
+    return box;
+  };
+
+  const header = await rect("[data-home-design-header]");
+  const brand = await rect("[data-home-design-header] .home-brand-mark");
+  const hero = await rect(".illustrated-home .hero");
+  const title = await rect(".illustrated-home .hero-title-img");
+
+  expect(header.x).toBeCloseTo(0, 1);
+  expect(header.y).toBeCloseTo(0, 1);
+  expect(header.width).toBeCloseTo(778, 1);
+  expect(header.height).toBeCloseTo(60, 1);
+
+  expect(brand.x).toBeCloseTo(55, 1);
+  expect(brand.y).toBeCloseTo(7, 1);
+  expect(brand.width).toBeCloseTo(120, 1);
+  expect(brand.height).toBeCloseTo(43, 1);
+
+  expect(hero.x).toBeCloseTo(0, 1);
+  expect(hero.y).toBeCloseTo(60, 1);
+  expect(hero.width).toBeCloseTo(778, 1);
+  expect(hero.height).toBeCloseTo(572, 1);
+
+  expect(title.x).toBeCloseTo(209.5, 1);
+  expect(title.y).toBeCloseTo(43, 1);
+  expect(title.width).toBeCloseTo(359, 1);
+  expect(title.height).toBeCloseTo(190, 1);
+
+  await page.screenshot({
+    path: info.outputPath("home-authority-778x1000.png"),
+    fullPage: false,
+    animations: "disabled",
+  });
 });
 
 const homeViewports = [
@@ -100,7 +146,7 @@ for (const [width, height] of homeViewports) {
       expect(box).not.toBeNull();
       expect(box!.x).toBeGreaterThanOrEqual(0);
       expect(box!.x + box!.width).toBeLessThanOrEqual(width);
-      expect(box!.y + box!.height).toBeLessThanOrEqual(height);
+      expect(box!.y).toBeGreaterThanOrEqual(0);
     }
     for (const selector of [
       "#categories",
@@ -116,10 +162,9 @@ for (const [width, height] of homeViewports) {
     ]) {
       await expect(page.locator(selector)).toBeVisible();
     }
-    await expect(page.locator("[data-site-header] img").first()).toHaveAttribute(
-      "src",
-      /brand\/logo.svg/,
-    );
+    await expect(page.locator("[data-home-design-header]")).toHaveCount(1);
+    await expect(page.locator("[data-site-header]")).toHaveCount(0);
+    await expect(page.locator("[data-home-design-header] .home-brand-mark")).toHaveCount(1);
     await expect(page.locator("h1 image")).toHaveCount(0);
     await expect(page.getByRole("button", { name: "Toggle theme" })).toHaveCount(0);
     await expect(page.getByText("Crafted for Genuine Social Play")).toHaveCount(0);

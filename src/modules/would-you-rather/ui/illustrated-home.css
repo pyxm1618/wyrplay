@@ -2886,8 +2886,8 @@
 }
 
 /* Homepage original-design authority restoration.
-   This intentionally overrides only later shared/responsive drift affecting the
-   measured Header + Hero composition; live product controls remain production-owned. */
+   Only the target page's Header + Hero composition is restored here.
+   The live question/voting controls remain the current production implementation. */
 @media (min-width: 601px) {
   .illustrated-home.homepage {
     width: 100%;
@@ -2916,13 +2916,13 @@
   }
   .illustrated-home .site-header nav {
     display: flex;
+    align-items: center;
     gap: calc(var(--home-unit) * 22);
     margin-left: calc(var(--home-unit) * 41);
     font-family: Arial, sans-serif;
     font-size: calc(var(--home-unit) * 9);
     font-weight: 400;
-    line-height: normal;
-    transform: translateY(calc(var(--home-unit) * -4));
+    white-space: nowrap;
   }
   .illustrated-home .site-header nav a {
     padding: calc(var(--home-unit) * 3) 0;
@@ -2930,7 +2930,6 @@
   }
   .illustrated-home .header-actions {
     gap: calc(var(--home-unit) * 9);
-    transform: translateY(calc(var(--home-unit) * -4));
   }
   .illustrated-home .search-button {
     width: calc(var(--home-unit) * 29);
@@ -2938,6 +2937,10 @@
     min-width: 0;
     min-height: 0;
     margin: 0 calc(var(--home-unit) * 8) 0 calc(var(--home-unit) * 9);
+  }
+  .illustrated-home .search-button svg {
+    width: calc(var(--home-unit) * 16);
+    height: calc(var(--home-unit) * 16);
   }
   .illustrated-home .login-button,
   .illustrated-home .signup-button {
@@ -2948,6 +2951,7 @@
     width: calc(var(--home-unit) * 68);
     border-radius: calc(var(--home-unit) * 24);
     font-size: calc(var(--home-unit) * 12);
+    font-weight: 600;
   }
   .illustrated-home .signup-button {
     width: calc(var(--home-unit) * 73);
@@ -2958,19 +2962,24 @@
     padding: 0;
   }
   .illustrated-home .hero-intro {
-    height: calc(var(--home-unit) * 208);
+    height: calc(var(--home-unit) * 225);
     padding-top: 0;
   }
   .illustrated-home .hero h1 {
-    top: 0;
-    height: auto;
-    margin-bottom: 0;
+    height: calc(var(--home-unit) * 190);
+    top: calc(var(--home-unit) * -17);
+    margin: 0;
+  }
+  .illustrated-home .hero-title-wrapper {
+    height: calc(var(--home-unit) * 190);
   }
   .illustrated-home .hero-title-img {
-    width: calc(var(--home-unit) * 330);
+    width: calc(var(--home-unit) * 359);
+    height: calc(var(--home-unit) * 190);
+    object-fit: contain;
   }
   .illustrated-home .hero-intro h2 {
-    margin-top: calc(var(--home-unit) * 2);
+    margin-top: calc(var(--home-unit) * -17);
     font-size: calc(var(--home-unit) * 18);
     line-height: calc(var(--home-unit) * 22);
     letter-spacing: calc(var(--home-unit) * -0.35);
@@ -2982,8 +2991,67 @@
     line-height: calc(var(--home-unit) * 15);
   }
   .illustrated-home .speech-bubble {
-    right: calc(var(--home-unit) * 96);
-    top: calc(var(--home-unit) * 78);
+    right: calc(var(--home-unit) * 89);
+    top: calc(var(--home-unit) * 96);
+    font-size: calc(var(--home-unit) * 15);
+    line-height: calc(var(--home-unit) * 17);
+    transform: rotate(-19deg);
+    padding: calc(var(--home-unit) * 19) calc(var(--home-unit) * 12)
+      calc(var(--home-unit) * 17);
+    box-shadow: calc(var(--home-unit) * -4) calc(var(--home-unit) * -6) 0 #ffe5a1;
+  }
+  .illustrated-home .home-hero-arena {
+    width: calc(var(--home-unit) * 525);
+    margin: 0 auto;
+  }
+  .illustrated-home .home-hero-arena > h2 {
+    max-width: calc(var(--home-unit) * 525);
+    margin: 0 auto calc(var(--home-unit) * 4);
+    padding: 0;
+    font-size: calc(var(--home-unit) * 15);
+    line-height: calc(var(--home-unit) * 18);
+    background: transparent;
+  }
+  .illustrated-home .home-hero-arena .choice-grid {
+    width: calc(var(--home-unit) * 525);
+    height: calc(var(--home-unit) * 180);
+    grid-template-columns: calc(var(--home-unit) * 249) calc(var(--home-unit) * 249);
+    gap: calc(var(--home-unit) * 27);
+  }
+  .illustrated-home .home-hero-arena .choice-card {
+    height: calc(var(--home-unit) * 180);
+    min-height: calc(var(--home-unit) * 180);
+    padding: calc(var(--home-unit) * 8) calc(var(--home-unit) * 14);
+    gap: calc(var(--home-unit) * 2);
+  }
+  .illustrated-home .home-choice-visual {
+    width: calc(var(--home-unit) * 92);
+    max-width: calc(var(--home-unit) * 92);
+    margin: 0 auto calc(var(--home-unit) * 2);
+  }
+  .illustrated-home .home-hero-arena .choice-label,
+  .illustrated-home .home-hero-arena .choice-feedback,
+  .illustrated-home .home-hero-arena .choice-result {
+    font-size: calc(var(--home-unit) * 10);
+  }
+  .illustrated-home .home-hero-arena .choice-text {
+    font-size: calc(var(--home-unit) * 15);
+  }
+  .illustrated-home .home-vote-status,
+  .illustrated-home .home-vote-error {
+    margin: calc(var(--home-unit) * 2) auto;
+    font-size: calc(var(--home-unit) * 10);
+    line-height: calc(var(--home-unit) * 13);
+  }
+  .illustrated-home .home-play-actions {
+    gap: calc(var(--home-unit) * 6);
+  }
+  .illustrated-home .home-play-actions .choice-cta,
+  .illustrated-home .home-play-actions .section-link {
+    min-height: calc(var(--home-unit) * 30);
+    height: calc(var(--home-unit) * 30);
+    padding: 0 calc(var(--home-unit) * 14);
+    font-size: calc(var(--home-unit) * 12);
   }
   .illustrated-home .hero-bottom {
     height: calc(var(--home-unit) * 46);

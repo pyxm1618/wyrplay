@@ -22,11 +22,18 @@ test.beforeEach(async ({ page }) => {
 for (const [width, height] of sizes)
   test(`${width}×${height}: sections, expanded cards, navigation, demo and real choices`, async ({
     page,
-  }) => {
+  }, info) => {
     await page.setViewportSize({ width, height });
     await page.goto(route);
     await expect(page.locator(".kids-page")).toBeVisible();
     await page.evaluate(() => document.fonts.ready);
+    if ([375, 390, 768, 1440, 1920].includes(width)) {
+      await page.screenshot({
+        path: info.outputPath(`kids-top-${width}x${height}.png`),
+        fullPage: false,
+        animations: "disabled",
+      });
+    }
     for (const section of [
       "header",
       ".kids-hero",
