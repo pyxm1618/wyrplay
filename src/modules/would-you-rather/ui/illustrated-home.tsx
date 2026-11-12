@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { DocumentBoundaryLink as Link } from "@/components/navigation/document-boundary-link";
-import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
+import { useEffect, type ReactNode, type CSSProperties } from "react";
 import { FEATURED_COLLECTIONS } from "../data/collections";
 import type { Question } from "../types";
 import { hasQuestionVisual } from "../data/question-visuals";
@@ -13,22 +13,18 @@ import { rankLeaderboard, type LeaderboardResult } from "../domain/leaderboard";
 const categories = [
   {
     title: "Popular",
+    description: "Most voted",
     crop: [33, 686, 106, 87],
     color: "popular",
+    art: "popular-source",
     href: "/leaderboards",
-  },
-  {
-    title: "For Kids",
-    description: "Clean & imaginative",
-    crop: [514, 686, 115, 87],
-    color: "kids",
-    key: "kids",
   },
   {
     title: "Funny",
     description: "Lighten the mood",
     crop: [144, 686, 112, 87],
     color: "funny",
+    art: "funny",
     key: "funny",
   },
   {
@@ -36,6 +32,7 @@ const categories = [
     description: "Perfect for groups",
     crop: [261, 686, 123, 87],
     color: "friends",
+    art: "friends",
     key: "friends",
   },
   {
@@ -43,19 +40,30 @@ const categories = [
     description: "Better conversations",
     crop: [389, 686, 120, 87],
     color: "couples",
+    art: "couples",
     key: "couples",
   },
   {
+    title: "Classroom",
+    description: "Great for discussion",
+    crop: [514, 686, 115, 87],
+    color: "classroom",
+    art: "classroom",
+    key: "kids",
+  },
+  {
     title: "Hard Questions",
+    description: "Challenge your mind",
     crop: [634, 686, 116, 87],
     color: "hard",
+    art: "hard-source",
     key: "hard",
   },
 ] as const;
 const steps = [
-  { title: "Explore", description: "Find your audience, occasion and mood", color: "#009eff" },
+  { title: "Explore", description: "Browse or get a random question", color: "#009eff" },
   { title: "Choose", description: "Pick the option you prefer", color: "#ff782f" },
-  { title: "See Results", description: "Real votes, never invented percentages", color: "#00b849" },
+  { title: "See Results", description: "Instantly see what others chose", color: "#00b849" },
   { title: "Discuss", description: "Share and debate with friends", color: "#7645ff" },
 ];
 const occasions = [
@@ -93,6 +101,34 @@ const occasions = [
     description: "Better conversations",
     crop: [622, 1947, 29, 30],
     href: "/would-you-rather-questions-for-couples",
+  },
+] as const;
+
+
+const communityNotes = [
+  {
+    text: "Example reaction · That was a close one!",
+    asset: "community/avatar-1",
+    width: 25,
+    height: 25,
+  },
+  {
+    text: "Example reaction · I’d choose the other option.",
+    asset: "community/avatar-2",
+    width: 25,
+    height: 26,
+  },
+  {
+    text: "Example prompt · What made you pick that?",
+    asset: "community/avatar-3",
+    width: 25,
+    height: 25,
+  },
+  {
+    text: "Example reaction · Let’s try another question.",
+    asset: "community/avatar-4",
+    width: 26,
+    height: 26,
   },
 ] as const;
 
@@ -156,23 +192,19 @@ function HomeSearchIcon() {
 }
 
 export function IllustratedHome({
-  children,
   arena,
   onPlayQuestion,
   leaderboard,
   trendingSlot,
   questions,
   approvedQuestionCount,
-  browseHref = "/find-questions",
   authEnabled = false,
 }: {
   leaderboard?: LeaderboardResult;
-  children: ReactNode;
   arena: ReactNode;
   onPlayQuestion: (id: string, question?: Question) => void;
   questions: readonly Question[];
   approvedQuestionCount: number;
-  browseHref?: string;
   trendingSlot?: ReactNode;
   authEnabled?: boolean;
 }) {
@@ -205,26 +237,6 @@ export function IllustratedHome({
     return () => window.removeEventListener("wyr:play-question", handler);
   }, []);
 
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
-  const toastTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const handleCreateClick = () => {
-    setToastMessage("Coming soon — question creation is on the way.");
-    if (toastTimeoutRef.current) {
-      clearTimeout(toastTimeoutRef.current);
-    }
-    toastTimeoutRef.current = setTimeout(() => {
-      setToastMessage(null);
-    }, 3000);
-  };
-
-  useEffect(() => {
-    return () => {
-      if (toastTimeoutRef.current) {
-        clearTimeout(toastTimeoutRef.current);
-      }
-    };
-  }, []);
   return (
     <>
       <ThemeToggle fixedLight />
@@ -404,11 +416,7 @@ export function IllustratedHome({
         aria-label="Popular categories"
       >
         <div className="home-container">
-          <Heading
-            title="Popular Would You Rather Questions"
-            href="#question-search"
-            label="Explore categories"
-          />
+          <Heading title="Popular Categories" href="#question-search" label="See all categories" />
           <div className="category-grid">
             {categories.map((category) => {
               const collection = "key" in category ? FEATURED_COLLECTIONS[category.key] : null;
@@ -417,28 +425,16 @@ export function IllustratedHome({
               const isKids = targetHref === "/would-you-rather-questions-for-kids";
               const content = (
                 <>
-                  {category.color === "popular" ||
-                  category.color === "hard" ||
-                  category.color === "kids" ? (
-                    <Image
-                      src={`/home-art/categories/${category.color}-no-subtitle.webp`}
-                      alt=""
-                      width={1061}
-                      height={1330}
-                      className="category-art-card"
-                      sizes={categoryImageSizes(category.crop[2])}
-                    />
-                  ) : (
-                    <Image
-                      src={`/home-art/categories/${category.color}.webp`}
-                      alt=""
-                      width={category.crop[2]}
-                      height={category.crop[3]}
-                      sizes={categoryImageSizes(category.crop[2])}
-                      className="art-crop category-art"
-                    />
-                  )}
+                  <Image
+                    src={`/home-art/categories/${category.art}.webp`}
+                    alt=""
+                    width={category.crop[2]}
+                    height={category.crop[3]}
+                    sizes={categoryImageSizes(category.crop[2])}
+                    className="art-crop category-art"
+                  />
                   <span className="category-title">{category.title}</span>
+                  <span className="category-description">{category.description}</span>
                 </>
               );
               if (isKids) {
@@ -471,7 +467,7 @@ export function IllustratedHome({
         aria-label="Today's highlights"
       >
         <div className="home-container">
-          <Heading title="Today’s Would You Rather Questions" href="/find-questions" />
+          <Heading title="Today’s Highlights" href="/find-questions" />
           <div className="highlight-grid">
             {highlights.map((question, index) => (
               <button
@@ -512,7 +508,7 @@ export function IllustratedHome({
           </div>
         </div>
       </section>
-      <section className="how-section section-shell" aria-label="How it works">
+      <section id="how-it-works" className="how-section section-shell" aria-label="How it works">
         <div className="home-container how-container">
           <div className="steps-decoration" aria-hidden="true">
             <HomeArt
@@ -538,7 +534,7 @@ export function IllustratedHome({
               className="art-crop step-ribbon-blue"
             />
           </div>
-          <h2>How to Play Would You Rather Questions</h2>
+          <h2>How It Works</h2>
           <ol className="steps-grid">
             {steps.map((step, index) => (
               <li key={step.title} style={{ "--step-color": step.color } as CSSProperties}>
@@ -558,7 +554,7 @@ export function IllustratedHome({
         aria-label="Question rankings"
       >
         <div className="home-container">
-          <Heading title="Trending Would You Rather Questions" href="/leaderboards" />
+          <Heading title="Trending Questions" href="/leaderboards" />
           <div className="trending-grid">
             <div className="trending-list">
               {trendingSlot ??
@@ -613,18 +609,21 @@ export function IllustratedHome({
                 <button
                   type="button"
                   className="dark-button create-button"
-                  onClick={handleCreateClick}
+                  disabled
+                  aria-label="Create (coming soon)"
+                  title="Coming soon"
                 >
-                  <span aria-hidden="true">＋</span>Coming soon
+                  <span aria-hidden="true">＋</span>Create
                 </button>
               </div>
               <Image
-                src="/home-art/bulb-hand.png"
-                width={1122}
-                height={1402}
+                src="/home-art/create/source-right.webp"
+                width={156}
+                height={191}
                 alt=""
                 className="bulb-art"
-                sizes="(max-width: 600px) 160px, (max-width: 1244.8px) 20.5656vw, 256px"
+                sizes="(max-width: 600px) 160px, (max-width: 1244.8px) 20.051414vw, 249.6px"
+                unoptimized
               />
               <span className="create-doodle doodle-one" aria-hidden="true">
                 ✚
@@ -636,8 +635,28 @@ export function IllustratedHome({
           </div>
         </div>
       </section>
-      <section className="statistics home-real-statistics" aria-label="Question library">
+      <section
+        id="statistics"
+        className="statistics home-real-statistics"
+        aria-label="Live site statistics"
+      >
         <div className="home-container statistics-container">
+          <div className="statistic">
+            <HomeArt
+              src="icons/players-statistic"
+              width={48}
+              height={47}
+              sizes="(max-width: 600px) 48px, (max-width: 1244.8px) 6.169666vw, 76.8px"
+            />
+            <p>
+              <strong>
+                {leaderboard?.status === "ready"
+                  ? leaderboard.snapshot.anonymousVoters.toLocaleString()
+                  : "—"}
+              </strong>
+              <span>Players</span>
+            </p>
+          </div>
           <div className="statistic">
             <HomeArt
               src="icons/question-statistic"
@@ -646,8 +665,8 @@ export function IllustratedHome({
               sizes="(max-width: 600px) 48px, (max-width: 1244.8px) 6.169666vw, 76.8px"
             />
             <p>
-              <strong>{approvedQuestionCount}</strong>
-              <span>Would You Rather Questions</span>
+              <strong>{approvedQuestionCount.toLocaleString()}</strong>
+              <span>Questions</span>
             </p>
           </div>
           <div className="statistic">
@@ -659,12 +678,80 @@ export function IllustratedHome({
             />
             <p>
               <strong>{Object.keys(FEATURED_COLLECTIONS).length}</strong>
-              <span>Collections</span>
+              <span>Categories</span>
+            </p>
+          </div>
+          <div className="statistic">
+            <HomeArt
+              src="icons/community-votes-statistic"
+              width={48}
+              height={47}
+              sizes="(max-width: 600px) 48px, (max-width: 1244.8px) 6.169666vw, 76.8px"
+            />
+            <p>
+              <strong>
+                {leaderboard?.status === "ready"
+                  ? leaderboard.snapshot.totalVotes.toLocaleString()
+                  : "—"}
+              </strong>
+              <span>Community Votes</span>
             </p>
           </div>
         </div>
       </section>
-      <section className="together-section" aria-label="Play together anywhere">
+      <section
+        id="community"
+        className="community-section dark-section"
+        aria-label="Community choices"
+      >
+        <HomeArt
+          src="community/top-wave"
+          width={778}
+          height={24}
+          sizes="(max-width: 1244.8px) 100vw, 1244.8px"
+          className="community-top-wave"
+        />
+        <div className="community-reference-details" aria-hidden="true">
+          <HomeArt
+            src="community/decor-left"
+            width={245}
+            height={88}
+            sizes="(max-width: 600px) 0px, (max-width: 1244.8px) 31.491003vw, 392px"
+            className="community-decoration-left"
+          />
+          <HomeArt
+            src="community/decor-right"
+            width={253}
+            height={88}
+            sizes="(max-width: 600px) 0px, (max-width: 1244.8px) 32.519280vw, 404.8px"
+            className="community-decoration-right"
+          />
+        </div>
+        <h2>See What Others Think</h2>
+        <p className="community-subtitle">Example reactions for presentation only — not user testimonials.</p>
+        <div className="quote-grid">
+          {communityNotes.map((note) => (
+            <blockquote key={note.text}>
+              <HomeArt
+                src={note.asset}
+                width={note.width}
+                height={note.height}
+                sizes="(max-width: 600px) 25px, (max-width: 1244.8px) 3.213368vw, 40px"
+                className="community-avatar"
+              />
+              <p>{note.text}</p>
+            </blockquote>
+          ))}
+        </div>
+        <HomeArt
+          src="community/planet"
+          width={778}
+          height={112}
+          sizes="(max-width: 600px) 160vw, (max-width: 1244.8px) 100vw, 1244.8px"
+          className="planet-art"
+        />
+      </section>
+      <section id="play-together" className="together-section" aria-label="Play together anywhere">
         <HomeArt
           src="decorations/together-edge-left"
           width={62}
@@ -694,11 +781,8 @@ export function IllustratedHome({
           className="together-flourish flourish-right"
         />
         <div className="home-container together-container">
-          <h2>Play Together with Would You Rather Questions</h2>
-          <p>
-            Bring a few would you rather questions to game night, or use Presenter Mode on a shared
-            screen.
-          </p>
+          <h2>Play Together, Anywhere</h2>
+          <p>Perfect for friends, families, classrooms or just curious minds.</p>
           <div className="occasion-grid">
             {occasions.map((occasion) => {
               const isKids = occasion.href.startsWith("/would-you-rather-questions-for-kids");
@@ -737,64 +821,6 @@ export function IllustratedHome({
           </div>
         </div>
       </section>
-      <div className="home-live-experience">
-        <div className="home-container">
-          <h2 id="tool-demo-title">Find More Would You Rather Questions</h2>
-          <p>Search by keyword and filter by audience, occasion, tone or difficulty.</p>
-          {children}
-          <Link className="section-link" href={browseHref} prefetch={false}>
-            Browse all questions
-            <Arrow />
-          </Link>
-        </div>
-      </div>
-      <HomeFaq />
-      <div
-        role="status"
-        aria-live="polite"
-        className={`create-toast ${toastMessage ? "visible" : ""}`}
-      >
-        {toastMessage}
-      </div>
     </>
-  );
-}
-
-function HomeFaq() {
-  const answers = [
-    {
-      question: "What makes a great Would You Rather question?",
-      answer:
-        "Two choices that both deserve a second thought. Pick one, explain why, and invite your friends to defend the other side. There are no right answers.",
-    },
-    {
-      question: "How do you play a round of would you rather questions?",
-      answer:
-        "Choose A or B to record your vote and see the real community results. Choose the other option to change your vote. If voting is unavailable, we say so instead of inventing numbers.",
-    },
-    {
-      question: "Are these would you rather questions good for groups?",
-      answer:
-        "Start with the Classroom collection and check each question’s age rating and suitability for your group. Open Presenter Mode beside the live question for a shared display, use Previous or Next to move through questions, and Escape to exit.",
-    },
-    {
-      question: "Where can I find would you rather questions for kids, friends, or couples?",
-      answer:
-        "Use the category cards and filters to open the collection that fits your group, then choose any reviewed dilemma to play in the live arena.",
-    },
-  ];
-  return (
-    <section className="home-faq section-shell" aria-labelledby="home-faq-title">
-      <div className="home-container">
-        <p className="faq-eyebrow">A little help before your next debate</p>
-        <h2 id="home-faq-title">Would You Rather Questions: FAQ</h2>
-        {answers.map(({ question, answer }) => (
-          <details key={question}>
-            <summary>{question}</summary>
-            <p>{answer}</p>
-          </details>
-        ))}
-      </div>
-    </section>
   );
 }
