@@ -52,9 +52,11 @@ for (const [width, height] of sizes)
       viewport: innerWidth,
       scroll: document.documentElement.scrollWidth,
       minBody: Math.min(
-        ...[...document.querySelectorAll(".kids-page main p,.kids-page main a,.kids-page main button")].map((e) =>
-          parseFloat(getComputedStyle(e).fontSize),
-        ),
+        ...[
+          ...document.querySelectorAll(
+            ".kids-page main p,.kids-page main a,.kids-page main button",
+          ),
+        ].map((e) => parseFloat(getComputedStyle(e).fontSize)),
       ),
     }));
     expect(metrics.scroll).toBe(metrics.viewport);
