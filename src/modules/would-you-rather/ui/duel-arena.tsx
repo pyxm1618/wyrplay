@@ -7,7 +7,7 @@ import { Arrow, ChoiceFrame, HomeArt } from "./home-art";
 import { PlayHeading, OptionPanels } from "./play/art";
 import { KidsChoicePanels } from "./kids/art";
 import { QuestionVisual } from "./question-visual";
-import { getQuestionVisual, hasQuestionVisual } from "../data/question-visuals";
+import { getQuestionVisual } from "../data/question-visuals";
 
 export interface DuelArenaProps {
   readonly appearance?: "default" | "illustrated-play" | "illustrated-home" | "illustrated-kids";
