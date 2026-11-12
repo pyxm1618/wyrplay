@@ -335,6 +335,25 @@ export function WyrExperience({
       {/* 1. 核心 Live 对决 Arena */}
       {appearance !== "illustrated-home" && arena}
 
+      {appearance === "illustrated-home" && playableQuestions.length > 0 && (
+        <div className="home-secondary-controls" aria-label="Question controls">
+          <button type="button" className="section-link" onClick={handleNext}>
+            Next Question
+          </button>
+          <button type="button" className="section-link" onClick={handleRandom}>
+            Random
+          </button>
+          <button
+            ref={presenterTriggerRef}
+            type="button"
+            className="section-link"
+            onClick={() => setIsPresenterOpen(true)}
+          >
+            Presenter Mode
+          </button>
+        </div>
+      )}
+
       {/* 2. 搜索与筛选控制栏 (放置于长目录前面) */}
       <div
         id="question-search"
