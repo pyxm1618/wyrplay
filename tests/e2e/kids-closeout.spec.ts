@@ -70,8 +70,10 @@ for (const [width, height] of sizes)
     await page.getByRole("button", { name: "Show fewer questions", exact: true }).click();
     await expect(page.locator(".kids-reviewed-card")).toHaveCount(Math.min(8, kidsCount));
     await expect(page.locator("header")).toHaveCount(1);
+    await expect(page.locator(".kids-header")).toHaveCount(1);
+    await expect(page.locator("[data-site-header]")).toHaveCount(0);
     await expect(page.locator("footer")).toHaveCount(1);
-    await expect(page.locator(".kids-header,.kids-footer")).toHaveCount(0);
+    await expect(page.locator(".kids-footer")).toHaveCount(0);
     for (const summary of await page.locator(".kids-faq summary").all()) {
       await summary.click();
       await expect(summary.locator("..")).not.toHaveAttribute("open", "");

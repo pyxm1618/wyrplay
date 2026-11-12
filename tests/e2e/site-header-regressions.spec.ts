@@ -71,3 +71,16 @@ test("auth-enabled header exposes login and signup at every breakpoint boundary"
   );
   expect(fitsViewport).toBe(true);
 });
+
+
+test("homepage and For Kids render only their page-owned design header", async ({ page }) => {
+  await page.setViewportSize({ width: 778, height: 1000 });
+
+  await page.goto("/");
+  await expect(page.locator("[data-home-design-header]")).toHaveCount(1);
+  await expect(page.locator("[data-site-header]")).toHaveCount(0);
+
+  await page.goto("/would-you-rather-questions-for-kids");
+  await expect(page.locator("[data-kids-design-header]")).toHaveCount(1);
+  await expect(page.locator("[data-site-header]")).toHaveCount(0);
+});

@@ -10,15 +10,15 @@ import { KidsArt, KidsBurst, KidsChoicePanels, KidsMotif, KidsArenaEdge } from "
 
 const faq = [
   [
-    "Are these Would You Rather questions for kids clean and age-appropriate?",
+    "Are these questions clean and age-appropriate?",
     "This collection is selected for wholesome, kid-friendly and school-safe play.",
   ],
   [
     "What ages are these questions for?",
-    "These Would You Rather questions for kids are reviewed for ages 4–6, 7–9, and 10–12, so you can choose prompts that fit your group.",
+    "The collection includes questions reviewed for ages 4–6, 7–9, and 10–12, so you can choose questions that fit your group.",
   ],
   [
-    "Can I use these Would You Rather questions for kids in a classroom?",
+    "Can I use these questions in a classroom?",
     "Yes. Classroom-friendly questions can be used for morning meetings, icebreakers, discussion activities, and group games.",
   ],
 ] as const;
@@ -28,6 +28,36 @@ function topicMotif(question: Question) {
   if (/game|entertainment|sport|school|learning/.test(topics)) return "games";
   if (/nature|animal|outdoor|adventure/.test(topics)) return "outdoors";
   return "imagination";
+}
+
+function KidsHeader() {
+  return (
+    <header className="kids-header" data-kids-design-header>
+      <div className="kids-header-inner">
+        <Link className="kids-brand" href="/" aria-label="WYRPLAY home">
+          <KidsArt name="logo" />
+        </Link>
+        <nav aria-label="Main navigation">
+          <Link href="/">Home</Link>
+          <Link href="/find-questions">Questions</Link>
+          <Link href="/questions">Categories</Link>
+          <Link href="/leaderboards">Leaderboard</Link>
+          <Link href="/play">Create</Link>
+        </nav>
+        <div className="kids-header-actions">
+          <Link className="kids-search" href="/find-questions" aria-label="Search questions">
+            <FinderIcon name="search" />
+          </Link>
+          <Link className="kids-login" href="/sign-in">
+            Log in
+          </Link>
+          <Link className="kids-signup" href="/sign-up">
+            Sign up
+          </Link>
+        </div>
+      </div>
+    </header>
+  );
 }
 
 function KidsPresenter({
@@ -141,6 +171,8 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
         Skip to kids arena
       </a>
 
+      <KidsHeader />
+
       <main>
         <section className="kids-hero" aria-labelledby="kids-title">
           <nav className="kids-breadcrumb" aria-label="Breadcrumb">
@@ -160,8 +192,8 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
               <span className="kids-blue">Kids</span>
             </h1>
             <p>
-              Fun, imaginative kids Would You Rather questions
-              <br /> for school classrooms, family time, and road trips.
+              Fun, imaginative Would You Rather questions
+              <br /> for kids, classrooms, family time, and road trips.
             </p>
             <div className="kids-hero-actions">
               <button
@@ -195,10 +227,10 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
           <KidsArenaEdge side="right" />
           <div className="kids-arena-heading">
             <div className="kids-eyebrow">
-              Clean &amp; Kid-Friendly Questions
+              Kids &amp; Classroom Deck
               <KidsBurst />
             </div>
-            <h2 id="kids-arena-title">Play Would You Rather Questions for Kids</h2>
+            <h2 id="kids-arena-title">Interactive Kids Arena</h2>
             <p>Pick A or B, then talk about why.</p>
           </div>
           <span className="kids-question-label">
@@ -244,12 +276,12 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
         <section id="questions" className="kids-browse" aria-labelledby="kids-browse-title">
           <h2 id="kids-browse-title">
             <KidsBurst />
-            Browse Kids Would You Rather Questions by Age
+            Browse Would You Rather Questions for Kids
             <KidsBurst />
           </h2>
           <p className="kids-browse-intro">
-            Browse Would You Rather questions for kids by age, then pick the prompts that fit your
-            group before you play.
+            Looking for ideas before you play? Browse kid-friendly questions and pick the ones that
+            fit your group.
           </p>
           <div className="kids-age-filters" role="group" aria-label="Filter by age">
             {([undefined, "4-6", "7-9", "10-12"] as const).map((value) => (
@@ -297,7 +329,7 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
               aria-label={expanded ? "Show fewer questions" : "Browse more kids questions"}
               onClick={() => setExpanded(!expanded)}
             >
-              {expanded ? "Show fewer questions" : "Browse More Would You Rather for Kids"}
+              {expanded ? "Show fewer questions" : "Browse more kids questions"}
               <FinderIcon name="arrow" />
             </button>
             <KidsArt name="browse-spark" />
@@ -307,7 +339,7 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
           <KidsArt name="uses-cloud" className="kids-uses-cloud" />
           <h2 id="kids-uses-title">
             <KidsBurst />
-            Ways to Use Would You Rather Questions for Kids
+            Great Ways to Use Kids Dilemmas
             <KidsBurst />
           </h2>
           <div className="kids-use-grid">
@@ -315,17 +347,17 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
               {
                 art: "classroom",
                 title: "Morning classroom meetings",
-                body: "Use Would You Rather questions for kids as quick classroom warmups that get everyone talking.",
+                body: "Start class with a quick question that gets everyone talking.",
               },
               {
                 art: "road",
                 title: "Long family road trips",
-                body: "Use Would You Rather questions for kids on road trips for easy, screen-free family conversation.",
+                body: "Pass the time with imaginative choices everyone can answer.",
               },
               {
                 art: "dinner",
                 title: "Dinner table icebreakers",
-                body: "Use Would You Rather questions for kids at dinner to turn short answers into family conversations.",
+                body: "Turn short answers into fun family conversations.",
               },
             ].map((use) => (
               <article key={use.art}>
@@ -339,7 +371,7 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
           </div>
         </section>
         <section className="kids-faq" aria-labelledby="kids-faq-title">
-          <h2 id="kids-faq-title">Would You Rather Questions for Kids FAQ</h2>
+          <h2 id="kids-faq-title">Kids Questions FAQ</h2>
           <div className="kids-faq-rows">
             {faq.map(([question, answer]) => (
               <details key={question} open>
@@ -396,7 +428,7 @@ export function KidsPage({ questions }: { questions: readonly Question[] }) {
         <section className="kids-closing" aria-labelledby="kids-closing-title">
           <KidsArt name="closing-left" className="kids-closing-left" />
           <KidsArt name="closing-right" className="kids-closing-right" />
-          <h2 id="kids-closing-title">Start Playing Would You Rather Questions for Kids</h2>
+          <h2 id="kids-closing-title">Start Playing Kids Questions</h2>
           <p>Pick a question and start the conversation.</p>
           <button className="kids-pill" onClick={jumpToArena}>
             Jump to kids arena
