@@ -1,15 +1,13 @@
 import { expect, test, type Page, type Request } from "@playwright/test";
 
 const formalHeaderSelector =
-  'header[data-site-header]:visible, header[data-home-design-header]:visible, header[data-kids-design-header]:visible';
+  "header[data-site-header]:visible, header[data-home-design-header]:visible, header[data-kids-design-header]:visible";
 
 async function clickFormalNavigation(page: Page, targetHref: string) {
   const header = page.locator(formalHeaderSelector).first();
   await expect(header).toBeVisible();
 
-  const directLink = header
-    .locator(`a[href="${targetHref}"]:visible`)
-    .first();
+  const directLink = header.locator(`a[href="${targetHref}"]:visible`).first();
   if (await directLink.isVisible()) {
     await directLink.click();
     return;
