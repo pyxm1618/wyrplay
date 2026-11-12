@@ -3072,7 +3072,6 @@
   }
 }
 
-
 /* PR #107 V107-H01 / V107-M01: frozen Homepage authority over the live voting renderer.
    Business state remains owned by DuelArena; these rules only restore Homepage presentation. */
 .illustrated-home .dog-percent {
