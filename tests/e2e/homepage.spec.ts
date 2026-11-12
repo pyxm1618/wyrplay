@@ -124,9 +124,10 @@ test("778px reference Header and Hero match the frozen reconstruction geometry",
 
   expectBox("header", [0, 0, 778, 60]);
   expectBox("brand", [55, 7, 120, 43]);
-  expectBox("search", [535.140625, 10, 29, 29]);
-  expectBox("login", [581.140625, 9.5, 68, 30]);
-  expectBox("signup", [658.140625, 9.5, 73, 30]);
+  expectBox("nav", [234, 14.5, 274.140625, 20]);
+  expectBox("search", [535.140625, 10, 27.59375, 29]);
+  expectBox("login", [579.734375, 9.5, 64.796875, 30]);
+  expectBox("signup", [653.53125, 9.5, 69.46875, 30]);
   expectBox("hero", [0, 60, 778, 572]);
   expectBox("title", [209.5, 43, 359, 190]);
   expectBox("grid", [125, 285, 525, 180]);
