@@ -416,7 +416,7 @@ export function IllustratedHome({
         aria-label="Popular categories"
       >
         <div className="home-container">
-          <Heading title="Popular Categories" href="#question-search" label="See all categories" />
+          <Heading title="Popular Categories" href="/find-questions" label="See all categories" />
           <div className="category-grid">
             {categories.map((category) => {
               const collection = "key" in category ? FEATURED_COLLECTIONS[category.key] : null;
