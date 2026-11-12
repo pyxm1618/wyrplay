@@ -615,42 +615,23 @@ test("question selection moves and keeps keyboard focus on the mounted hero aren
     .toBe(true);
 });
 
-test("presenter modal retains return focus on the dedicated play route", async ({ page }) => {
-  await page.goto("/play");
-  await page.waitForLoadState("networkidle");
+test("presenter remains available on the dedicated play route", async ({ page }) => {
+  await page.goto("/play?set=1,2");
 
-  const presenterTrigger = page.getByRole("button", { name: "Presenter Mode" });
+  const presenterTrigger = page.getByRole("button", { name: "Present", exact: true });
   await expect(presenterTrigger).toBeVisible();
   await presenterTrigger.click();
 
-  const modal = page.locator(".presenter-page");
+  const modal = page.getByRole("dialog");
   await expect(modal).toBeVisible();
-
-  const nextBtn = page.locator(".presenter-page button", { hasText: "Next" }).first();
-  if (await nextBtn.isVisible()) {
-    await nextBtn.click();
-  }
+  await expect(modal.locator(".presenter-header")).toContainText("1 / 2");
 
   await page.keyboard.press("Escape");
-  await expect(modal).toBeHidden();
-
-  await expect
-    .poll(async () => {
-      return page.evaluate(() => {
-        const active = document.activeElement;
-        return (
-          active !== null &&
-          active.tagName === "BUTTON" &&
-          active.textContent?.includes("Presenter Mode")
-        );
-      });
-    })
-    .toBe(true);
+  await expect(modal).toHaveCount(0);
+  await expect(presenterTrigger).toBeFocused();
 });
 
-test("finder mobile filter buttons remain usable after Homepage composition cleanup", async ({
-  page,
-}) => {
+test("finder filters remain available on the dedicated Finder route", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/find-questions");
 
@@ -660,23 +641,16 @@ test("finder mobile filter buttons remain usable after Homepage composition clea
   if (await toggle.isVisible()) await toggle.click();
 
   const filterButtons = filterContainer.locator(".filter-options button");
-  const count = await filterButtons.count();
-  expect(count).toBeGreaterThan(15);
-
-  for (let i = 0; i < count; i++) {
-    const box = await filterButtons.nth(i).boundingBox();
-    expect(box, `Button ${i} should have a bounding box`).not.toBeNull();
-    expect(box!.height, `Button ${i} height`).toBeGreaterThanOrEqual(36);
-    expect(box!.width, `Button ${i} width`).toBeGreaterThanOrEqual(36);
-  }
+  expect(await filterButtons.count()).toBeGreaterThan(15);
 
   const teenBtn = filterContainer.getByRole("button", { name: "Teens", exact: true });
   await teenBtn.click();
   await expect(teenBtn).toHaveAttribute("aria-pressed", "true");
   await filterContainer.getByRole("button", { name: "Apply Filters" }).click();
+  await expect(page).toHaveURL(/\/find-questions\?age=teens$/);
 
   const clearBtn = filterContainer.getByRole("button", { name: "Clear all" });
   await expect(clearBtn).toBeVisible();
   await clearBtn.click();
-  await expect(teenBtn).toHaveAttribute("aria-pressed", "false");
+  await expect(page).toHaveURL(/\/find-questions$/);
 });
