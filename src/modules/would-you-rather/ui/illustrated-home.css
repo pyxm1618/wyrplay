@@ -2996,8 +2996,7 @@
     font-size: calc(var(--home-unit) * 15);
     line-height: calc(var(--home-unit) * 17);
     transform: rotate(-19deg);
-    padding: calc(var(--home-unit) * 19) calc(var(--home-unit) * 12)
-      calc(var(--home-unit) * 17);
+    padding: calc(var(--home-unit) * 19) calc(var(--home-unit) * 12) calc(var(--home-unit) * 17);
     box-shadow: calc(var(--home-unit) * -4) calc(var(--home-unit) * -6) 0 #ffe5a1;
   }
   .illustrated-home .home-hero-arena {
