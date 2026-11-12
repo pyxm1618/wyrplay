@@ -7,7 +7,9 @@ async function clickFormalNavigation(page: Page, targetHref: string) {
   const header = page.locator(formalHeaderSelector).first();
   await expect(header).toBeVisible();
 
-  const directLink = header.locator(`a[href="${targetHref}"]:visible`).first();
+  const directLink = header
+    .locator(`a[href="${targetHref}"]:visible`)
+    .first();
   if (await directLink.isVisible()) {
     await directLink.click();
     return;
