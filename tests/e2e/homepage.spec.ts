@@ -108,7 +108,7 @@ function comparePngs(reference: Buffer, candidate: Buffer) {
     const b = rgbAt(actual, pixel);
     let pixelChanged = false;
     for (let channel = 0; channel < 3; channel += 1) {
-      const delta = Math.abs(a[channel] - b[channel]);
+      const delta = Math.abs(a[channel]! - b[channel]!);
       totalAbsoluteDelta += delta;
       maxChannelDelta = Math.max(maxChannelDelta, delta);
       if (delta > 8) pixelChanged = true;
