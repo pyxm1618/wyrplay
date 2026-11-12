@@ -72,7 +72,6 @@ test("auth-enabled header exposes login and signup at every breakpoint boundary"
   expect(fitsViewport).toBe(true);
 });
 
-
 test("homepage and For Kids render only their page-owned design header", async ({ page }) => {
   await page.setViewportSize({ width: 778, height: 1000 });
 
