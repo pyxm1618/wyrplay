@@ -103,6 +103,20 @@ for (const width of [375, 390, 768, 1024, 1280, 1440] as const) {
       await expect(page.locator("[data-home-design-header]")).toHaveCount(0);
       await expect(page.locator("[data-kids-design-header]")).toHaveCount(0);
 
+      if (route === "/") {
+        const [headerBox, homepageBox] = await Promise.all([
+          header.boundingBox(),
+          page.locator(".illustrated-home.homepage").boundingBox(),
+        ]);
+        if (!headerBox || !homepageBox) {
+          throw new Error("SiteHeader and homepage root must have bounding boxes");
+        }
+        expect(
+          homepageBox.y - (headerBox.y + headerBox.height),
+          `Homepage must start immediately below SiteHeader at ${width}px`,
+        ).toBeCloseTo(0, 1);
+      }
+
       const menuButton = header.getByRole("button", { name: "Open mobile menu" });
       if (width < 1280) {
         await expect(menuButton).toBeVisible();
