@@ -68,8 +68,14 @@ test("all major public routes render exactly one authoritative SiteHeader", asyn
   for (const route of publicRoutes) {
     await page.goto(route);
     await expect(page.locator("[data-site-header]"), `${route}: SiteHeader count`).toHaveCount(1);
-    await expect(page.locator("[data-home-design-header]"), `${route}: retired Home header`).toHaveCount(0);
-    await expect(page.locator("[data-kids-design-header]"), `${route}: retired Kids header`).toHaveCount(0);
+    await expect(
+      page.locator("[data-home-design-header]"),
+      `${route}: retired Home header`,
+    ).toHaveCount(0);
+    await expect(
+      page.locator("[data-kids-design-header]"),
+      `${route}: retired Kids header`,
+    ).toHaveCount(0);
     await expect(
       page.getByRole("navigation", { name: "Primary navigation" }),
       `${route}: primary navigation`,
@@ -127,9 +133,9 @@ for (const viewport of [
   { width: 390, height: 844 },
   { width: 768, height: 1024 },
 ] as const) {
-  test(`homepage mobile navigation remains operable at ${viewport.width}x${viewport.height}`, async ({
-    page,
-  }) => {
+  test(
+    `homepage mobile navigation remains operable at ${viewport.width}x${viewport.height}`,
+    async ({ page }) => {
     await page.setViewportSize(viewport);
     await page.goto("/");
 
@@ -137,8 +143,9 @@ for (const viewport of [
     const menuButton = header.getByRole("button", { name: "Open mobile menu" });
     await expect(menuButton).toBeVisible();
     await menuButton.click();
-    await expectNavigationLinks(page, true);
-  });
+      await expectNavigationLinks(page, true);
+    },
+  );
 }
 
 test("mobile navigation closes when pathname changes through a persistent header action", async ({
