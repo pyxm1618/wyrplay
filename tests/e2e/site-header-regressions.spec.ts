@@ -129,19 +129,18 @@ for (const viewport of [
   { width: 390, height: 844 },
   { width: 768, height: 1024 },
 ] as const) {
-  test(
-    `homepage mobile navigation remains operable at ${viewport.width}x${viewport.height}`,
-    async ({ page }) => {
-      await page.setViewportSize(viewport);
-      await page.goto("/");
+  test(`homepage mobile navigation remains operable at ${viewport.width}x${viewport.height}`, async ({
+    page,
+  }) => {
+    await page.setViewportSize(viewport);
+    await page.goto("/");
 
-      const header = page.locator("[data-site-header]");
-      const menuButton = header.getByRole("button", { name: "Open mobile menu" });
-      await expect(menuButton).toBeVisible();
-      await menuButton.click();
-      await expectNavigationLinks(page, true);
-    },
-  );
+    const header = page.locator("[data-site-header]");
+    const menuButton = header.getByRole("button", { name: "Open mobile menu" });
+    await expect(menuButton).toBeVisible();
+    await menuButton.click();
+    await expectNavigationLinks(page, true);
+  });
 }
 
 test("mobile navigation closes when pathname changes through a persistent header action", async ({
