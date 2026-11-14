@@ -172,7 +172,9 @@ test("homepage does not overflow a 375px viewport", async ({ page }) => {
   expect(overflow).toBe(false);
 });
 
-test("homepage global brand runtime never requests the frozen reference artwork", async ({ page }) => {
+test(
+  "homepage global brand runtime never requests the frozen reference artwork",
+  async ({ page }) => {
   const requestedPaths: string[] = [];
 
   page.on("request", (request) => {
@@ -194,7 +196,8 @@ test("homepage global brand runtime never requests the frozen reference artwork"
   expect(runtimePaths.filter((path) => path === "/home-art/reference-art.png")).toEqual([]);
   expect(runtimePaths.some((path) => path === "/brand/logo.svg")).toBe(true);
   expect(runtimePaths.some((path) => path === "/home-art/home-logo.webp")).toBe(false);
-});
+  },
+);
 
 test("compact desktop artwork keeps a readable minimum and the primary action in the fold", async ({
   page,
