@@ -106,9 +106,6 @@
   .kids-related {
     width: calc(100% - 28px);
   }
-  .kids-search {
-    display: none;
-  }
   .kids-page h1 {
     font-size: 36px;
     letter-spacing: -0.6px;
