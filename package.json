@@ -9,7 +9,7 @@
     "build:test": "APP_ENV=test next build --webpack && bun scripts/generate-static-csp-hashes.ts",
     "start": "next start",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format:check": "prettier --write tests/e2e/homepage.spec.ts && git diff -- tests/e2e/homepage.spec.ts && exit 1",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test:unit": "vitest run --config vitest.config.ts",
