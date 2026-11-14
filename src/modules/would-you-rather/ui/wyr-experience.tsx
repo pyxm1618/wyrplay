@@ -62,7 +62,6 @@ function HomeHydrationGate({ children }: { readonly children: React.ReactNode })
 export interface WyrExperienceProps {
   readonly leaderboard?: LeaderboardResult;
   readonly appearance?: "default" | "illustrated-home";
-  readonly authEnabled?: boolean;
   readonly questions: readonly Question[];
   readonly approvedQuestionCount?: number;
   readonly categoryBadge?: string;
@@ -74,7 +73,6 @@ export interface WyrExperienceProps {
 
 export function WyrExperience({
   appearance = "default",
-  authEnabled = false,
   leaderboard = { status: "unavailable" },
   questions: initialQuestions,
   approvedQuestionCount,
@@ -420,7 +418,6 @@ export function WyrExperience({
   return appearance === "illustrated-home" ? (
     <HomeHydrationGate>
       <IllustratedHome
-        authEnabled={authEnabled}
         arena={arena}
         questions={initialQuestions}
         approvedQuestionCount={approvedQuestionCount ?? initialQuestions.length}
