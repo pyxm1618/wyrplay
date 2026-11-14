@@ -267,8 +267,8 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
     });
   });
 
-  test.describe("2. Mobile 375px Viewport & Page-Owned Header", () => {
-    test("375px 视口无横向溢出且 page-owned Header 保持可用", async ({ page }) => {
+  test.describe("2. Mobile 375px Viewport & Shared Header", () => {
+    test("375px 视口无横向溢出且 authoritative SiteHeader 保持可用", async ({ page }) => {
       await page.setViewportSize({ width: 375, height: 812 });
       await page.goto("/");
       await expect(page.locator("[data-home-ready=true]")).toBeEnabled();
@@ -277,13 +277,21 @@ test.describe("WYRPlay Real Browser Interactions & E2E Acceptance", () => {
       const innerWidth = await page.evaluate(() => window.innerWidth);
       expect(scrollWidth).toBeLessThanOrEqual(innerWidth);
 
-      await expect(page.locator("[data-home-design-header]")).toBeVisible();
-      await expect(page.locator("[data-site-header]")).toHaveCount(0);
-      await expect(page.locator("button[aria-label='Open mobile menu']")).toHaveCount(0);
-      await expect(page.locator("[data-home-design-header] .home-brand-mark")).toBeVisible();
+      const header = page.locator("[data-site-header]");
+      await expect(header).toHaveCount(1);
+      await expect(page.locator("[data-home-design-header]")).toHaveCount(0);
+      await expect(header.getByRole("link", { name: "WYRPlay Home", exact: true })).toBeVisible();
+
+      const menuButton = header.getByRole("button", { name: "Open mobile menu" });
+      await expect(menuButton).toBeVisible();
+      await menuButton.click();
+
+      const mobileNav = header.getByRole("navigation", { name: "Mobile navigation" });
+      await expect(mobileNav).toBeVisible();
       await expect(
-        page.locator("[data-home-design-header] a[aria-label='Search questions']"),
+        mobileNav.getByRole("link", { name: "Find Questions", exact: true }),
       ).toBeVisible();
+      await expect(mobileNav.getByRole("link", { name: "Play Now", exact: true })).toBeVisible();
     });
   });
 
