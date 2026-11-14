@@ -136,13 +136,13 @@ for (const viewport of [
   test(
     `homepage mobile navigation remains operable at ${viewport.width}x${viewport.height}`,
     async ({ page }) => {
-    await page.setViewportSize(viewport);
-    await page.goto("/");
+      await page.setViewportSize(viewport);
+      await page.goto("/");
 
-    const header = page.locator("[data-site-header]");
-    const menuButton = header.getByRole("button", { name: "Open mobile menu" });
-    await expect(menuButton).toBeVisible();
-    await menuButton.click();
+      const header = page.locator("[data-site-header]");
+      const menuButton = header.getByRole("button", { name: "Open mobile menu" });
+      await expect(menuButton).toBeVisible();
+      await menuButton.click();
       await expectNavigationLinks(page, true);
     },
   );
