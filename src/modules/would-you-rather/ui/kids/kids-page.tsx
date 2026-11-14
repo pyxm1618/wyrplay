@@ -30,40 +30,6 @@ function topicMotif(question: Question) {
   return "imagination";
 }
 
-function KidsHeader({ authEnabled }: { authEnabled: boolean }) {
-  return (
-    <header className="kids-header" data-kids-design-header>
-      <div className="kids-header-inner">
-        <Link className="kids-brand" href="/" aria-label="WYRPLAY home">
-          <KidsArt name="logo" />
-        </Link>
-        <nav aria-label="Main navigation">
-          <Link href="/">Home</Link>
-          <Link href="/find-questions">Questions</Link>
-          <Link href="/questions">Categories</Link>
-          <Link href="/leaderboards">Leaderboard</Link>
-          <Link href="/play">Create</Link>
-        </nav>
-        <div className="kids-header-actions">
-          <Link className="kids-search" href="/find-questions" aria-label="Search questions">
-            <FinderIcon name="search" />
-          </Link>
-          {authEnabled ? (
-            <>
-              <Link className="kids-login" href="/sign-in">
-                Log in
-              </Link>
-              <Link className="kids-signup" href="/sign-up">
-                Sign up
-              </Link>
-            </>
-          ) : null}
-        </div>
-      </div>
-    </header>
-  );
-}
-
 function KidsPresenter({
   questionId,
   a,
@@ -131,7 +97,6 @@ function KidsPresenter({
 
 export function KidsPage({
   questions,
-  authEnabled = false,
 }: {
   questions: readonly Question[];
   authEnabled?: boolean;
@@ -180,8 +145,6 @@ export function KidsPage({
       <a className="kids-skip" href="#play">
         Skip to kids arena
       </a>
-
-      <KidsHeader authEnabled={authEnabled} />
 
       <main>
         <section className="kids-hero" aria-labelledby="kids-title">
