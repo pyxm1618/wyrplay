@@ -95,11 +95,7 @@ function KidsPresenter({
   );
 }
 
-export function KidsPage({
-  questions,
-}: {
-  questions: readonly Question[];
-}) {
+export function KidsPage({ questions }: { questions: readonly Question[] }) {
   const approved = filterQuestions(questions, { collection: "kids", onlyApproved: true });
   const [age, setAge] = useState<AgeGroup | undefined>();
   const [activeId, setActiveId] = useState<string>(approved[0]?.id ?? "");
