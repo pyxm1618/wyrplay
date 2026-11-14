@@ -336,12 +336,7 @@ test("778×2021 lower page matches Authority geometry and emits pixel evidence",
     await expect(locator).toHaveCount(1);
     const box = await locator.boundingBox();
     if (!box) throw new Error(`${contract.selector} must have a bounding box`);
-    const actual: [number, number, number, number] = [
-      box.x,
-      box.y - root.y,
-      box.width,
-      box.height,
-    ];
+    const actual: [number, number, number, number] = [box.x, box.y - root.y, box.width, box.height];
     measured[name] = actual.map((value) => Number(value.toFixed(3))) as [
       number,
       number,
@@ -353,9 +348,10 @@ test("778×2021 lower page matches Authority geometry and emits pixel evidence",
     });
   }
   expect(maxDeviation, "maximum lower-page geometry deviation").toBeLessThanOrEqual(0.05);
-  expect(
-    (await page.locator("#play-together").boundingBox())!.y - root.y + 155,
-  ).toBeCloseTo(1961, 5);
+  expect((await page.locator("#play-together").boundingBox())!.y - root.y + 155).toBeCloseTo(
+    1961,
+    5,
+  );
 
   await expect(page.locator("#categories .category-card")).toHaveCount(6);
   await expect(page.locator(".highlight-card")).toHaveCount(3);
