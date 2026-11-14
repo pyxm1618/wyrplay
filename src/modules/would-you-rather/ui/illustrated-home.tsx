@@ -167,8 +167,6 @@ function Heading({
   );
 }
 
-
-
 export function IllustratedHome({
   arena,
   onPlayQuestion,
