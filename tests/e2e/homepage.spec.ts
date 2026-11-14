@@ -175,27 +175,27 @@ test("homepage does not overflow a 375px viewport", async ({ page }) => {
 test(
   "homepage global brand runtime never requests the frozen reference artwork",
   async ({ page }) => {
-  const requestedPaths: string[] = [];
+    const requestedPaths: string[] = [];
 
-  page.on("request", (request) => {
-    requestedPaths.push(new URL(request.url()).pathname);
-  });
+    page.on("request", (request) => {
+      requestedPaths.push(new URL(request.url()).pathname);
+    });
 
-  await page.goto("/");
-  const logo = page.locator("[data-site-header] img[src='/brand/logo.svg']");
-  await expect(logo).toBeVisible();
-  await page.waitForLoadState("networkidle");
+    await page.goto("/");
+    const logo = page.locator("[data-site-header] img[src='/brand/logo.svg']");
+    await expect(logo).toBeVisible();
+    await page.waitForLoadState("networkidle");
 
-  const resourcePaths = await page.evaluate(() =>
-    (performance.getEntriesByType("resource") as PerformanceResourceTiming[]).map(
-      (entry) => new URL(entry.name).pathname,
-    ),
-  );
+    const resourcePaths = await page.evaluate(() =>
+      (performance.getEntriesByType("resource") as PerformanceResourceTiming[]).map(
+        (entry) => new URL(entry.name).pathname,
+      ),
+    );
 
-  const runtimePaths = [...requestedPaths, ...resourcePaths];
-  expect(runtimePaths.filter((path) => path === "/home-art/reference-art.png")).toEqual([]);
-  expect(runtimePaths.some((path) => path === "/brand/logo.svg")).toBe(true);
-  expect(runtimePaths.some((path) => path === "/home-art/home-logo.webp")).toBe(false);
+    const runtimePaths = [...requestedPaths, ...resourcePaths];
+    expect(runtimePaths.filter((path) => path === "/home-art/reference-art.png")).toEqual([]);
+    expect(runtimePaths.some((path) => path === "/brand/logo.svg")).toBe(true);
+    expect(runtimePaths.some((path) => path === "/home-art/home-logo.webp")).toBe(false);
   },
 );
 
