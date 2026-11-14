@@ -183,7 +183,6 @@ export function IllustratedHome({
   questions: readonly Question[];
   approvedQuestionCount: number;
   trendingSlot?: ReactNode;
-  authEnabled?: boolean;
 }) {
   const highlights = questions.slice(0, 3);
   const rankings =
