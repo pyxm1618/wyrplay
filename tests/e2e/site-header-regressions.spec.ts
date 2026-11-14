@@ -24,11 +24,7 @@ const navigationLinks = [
   ["Play Now", "/play"],
 ] as const;
 
-const responsiveRoutes = [
-  "/",
-  "/would-you-rather-questions-for-kids",
-  "/find-questions",
-] as const;
+const responsiveRoutes = ["/", "/would-you-rather-questions-for-kids", "/find-questions"] as const;
 
 async function denyAnalytics(page: Page) {
   await page.addInitScript(() => {
