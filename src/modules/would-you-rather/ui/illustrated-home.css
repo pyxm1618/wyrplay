@@ -138,80 +138,6 @@
   overflow-y: visible;
   background: radial-gradient(ellipse at 5% 60%, #fff1de, transparent 45%), #fff9f0;
 }
-.illustrated-home .site-header {
-  height: calc(var(--home-unit) * 60);
-  padding: calc(var(--home-unit) * 7) calc(var(--home-unit) * 55) calc(var(--home-unit) * 10);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: calc(var(--home-unit) * 18);
-  position: relative;
-  z-index: 2;
-}
-.illustrated-home .brand {
-  display: block;
-  width: calc(var(--home-unit) * 120);
-  height: calc(var(--home-unit) * 43);
-  flex-shrink: 0;
-}
-.illustrated-home .brand .art-crop {
-  width: calc(var(--home-unit) * 120);
-  height: calc(var(--home-unit) * 43);
-}
-.illustrated-home .site-header nav {
-  display: flex;
-  gap: calc(var(--home-unit) * 22);
-  align-items: center;
-  font-family: Arial, sans-serif;
-  font-size: calc(var(--home-unit) * 9);
-  white-space: nowrap;
-  margin-left: calc(var(--home-unit) * 41);
-}
-.illustrated-home .site-header nav a,
-.illustrated-home .site-header nav button {
-  padding: calc(var(--home-unit) * 3) 0;
-  background: transparent;
-  line-height: calc(var(--home-unit) * 13);
-}
-.illustrated-home .site-header nav .active {
-  border-bottom: calc(var(--home-unit) * 1) solid #08111b;
-}
-.illustrated-home .header-actions {
-  display: flex;
-  align-items: center;
-  gap: calc(var(--home-unit) * 9);
-}
-.illustrated-home .search-button {
-  display: grid;
-  place-items: center;
-  width: calc(var(--home-unit) * 29);
-  height: calc(var(--home-unit) * 29);
-  background: #fff7ed;
-  border-radius: 50%;
-  margin: 0 calc(var(--home-unit) * 8) 0 calc(var(--home-unit) * 9);
-}
-.illustrated-home .search-button svg {
-  width: calc(var(--home-unit) * 16);
-  height: calc(var(--home-unit) * 16);
-}
-.illustrated-home .login-button,
-.illustrated-home .signup-button {
-  height: calc(var(--home-unit) * 30);
-  width: calc(var(--home-unit) * 68);
-  border-radius: calc(var(--home-unit) * 24);
-  font-weight: 600;
-  font-size: calc(var(--home-unit) * 12);
-  white-space: nowrap;
-}
-.illustrated-home .login-button {
-  border: calc(var(--home-unit) * 1) solid #b9baba;
-  background: transparent;
-}
-.illustrated-home .signup-button {
-  width: calc(var(--home-unit) * 73);
-  color: white;
-  background: var(--ink);
-}
 .illustrated-home .hero {
   position: relative;
   isolation: isolate;
@@ -1080,25 +1006,6 @@
   .illustrated-home {
     --home-unit: 1px;
   }
-  .illustrated-home .site-header {
-    padding: calc(var(--home-unit) * 8) calc(var(--home-unit) * 18);
-    height: calc(var(--home-unit) * 60);
-    gap: calc(var(--home-unit) * 10);
-  }
-  .illustrated-home .site-header nav {
-    display: none;
-  }
-  .illustrated-home .header-actions {
-    gap: calc(var(--home-unit) * 7);
-  }
-  .illustrated-home .search-button {
-    margin: 0;
-    width: calc(var(--home-unit) * 28);
-  }
-  .illustrated-home .login-button,
-  .illustrated-home .signup-button {
-    width: calc(var(--home-unit) * 57);
-  }
   .illustrated-home .hero {
     height: calc(var(--home-unit) * 580);
   }
@@ -1366,9 +1273,6 @@
   top: calc(var(--home-unit) * -48);
   right: calc(var(--home-unit) * 27);
 }
-.illustrated-home .site-header {
-  background: linear-gradient(100deg, #fff4e3, #fffcf7 45%, #fff9f0);
-}
 .illustrated-home .section-heading {
   align-items: flex-start;
 }
@@ -1518,11 +1422,6 @@
     );
   }
 }
-
-.illustrated-home .site-header nav,
-.illustrated-home .header-actions {
-  transform: translateY(calc(var(--home-unit) * -4));
-}
 .illustrated-home .choice-card::before {
   display: none;
 }
@@ -1556,14 +1455,6 @@
   .illustrated-home .hero-cloud-left {
     display: none;
   }
-  .illustrated-home .site-header nav,
-  .illustrated-home .header-actions {
-    transform: none;
-  }
-}
-
-.illustrated-home .site-header {
-  background: transparent;
 }
 @media (max-width: 600px) {
   .illustrated-home .together-edge,
@@ -1713,22 +1604,6 @@
   justify-content: center;
   text-decoration: none;
 }
-.illustrated-home .home-login {
-  display: grid;
-  place-items: center;
-}
-.illustrated-home .home-menu {
-  display: none;
-  background: transparent;
-  font-size: 22px;
-}
-.illustrated-home .home-mobile-nav {
-  display: grid;
-  gap: 12px;
-  padding: 16px 24px;
-  font-size: 16px;
-  background: var(--cream);
-}
 .illustrated-home .hero-bottom {
   justify-content: center;
 }
@@ -1821,24 +1696,8 @@
   .illustrated-home {
     --home-unit: 1px;
   }
-  .illustrated-home .home-menu {
-    display: block;
-  }
-  .illustrated-home .site-header {
-    padding-inline: 14px;
-    gap: 6px;
-  }
-  .illustrated-home .header-actions {
-    gap: 6px;
-  }
-  .illustrated-home .home-login {
-    display: none;
-  }
 }
 @media (min-width: 601px) {
-  .illustrated-home .home-mobile-nav {
-    display: none;
-  }
 }
 .illustrated-home.homepage {
   width: 100%;
@@ -1900,14 +1759,6 @@
   .illustrated-home {
     --home-unit: calc(100vw / 778);
   }
-  .illustrated-home .site-header {
-    padding-inline: 20px;
-  }
-  .illustrated-home .site-header nav {
-    margin-left: 0;
-    gap: 12px;
-    font-size: 10px;
-  }
 }
 .home-main {
   font-family: WyrCondensed, WyrCondensedFallback, Arial, sans-serif;
@@ -1948,11 +1799,6 @@
 .illustrated-home .home-reading h2 {
   font-size: 28px;
   line-height: 1.25;
-}
-.illustrated-home .header-actions {
-  padding: 0;
-  margin: 0;
-  min-width: 0;
 }
 
 /* ==========================================================================
@@ -2038,11 +1884,6 @@
   }
 }
 @media (min-width: 601px) and (max-height: 900px) {
-  .illustrated-home .site-header {
-    height: clamp(60px, 9dvh, calc(var(--home-unit) * 60));
-    padding-top: clamp(7px, 1.2dvh, calc(var(--home-unit) * 7));
-    padding-bottom: clamp(8px, 1.4dvh, calc(var(--home-unit) * 10));
-  }
 }
 
 /* Wide decoration stage: move edge-anchored art without scaling the images or hero. */
@@ -2096,37 +1937,6 @@
 }
 .site-footer-illustrated > div {
   max-width: 1244.8px;
-}
-.illustrated-home .brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: auto;
-  height: auto;
-  font-size: clamp(22px, 2vw, 30px);
-  font-weight: 900;
-  letter-spacing: -1px;
-}
-.illustrated-home .brand img {
-  width: 40px;
-  height: 40px;
-}
-.illustrated-home .site-header nav {
-  margin-left: 0;
-  font:
-    600 clamp(14px, 1.1vw, 16px)/1.4 WyrCondensed,
-    WyrCondensedFallback,
-    Arial,
-    sans-serif;
-  gap: clamp(12px, 1.7vw, 24px);
-}
-.illustrated-home .header-actions {
-  transform: none;
-}
-.illustrated-home .search-button,
-.illustrated-home .home-menu {
-  min-width: 44px;
-  min-height: 44px;
 }
 .illustrated-home .hero {
   height: auto;
@@ -2327,18 +2137,6 @@
   text-align: center;
 }
 @media (max-width: 1000px) {
-  .illustrated-home .site-header nav {
-    display: none;
-  }
-  .illustrated-home .home-menu {
-    display: block;
-  }
-  .illustrated-home .home-mobile-nav {
-    display: grid;
-  }
-  .illustrated-home .site-header {
-    padding-inline: 20px;
-  }
 }
 
 @media (max-width: 600px) {
@@ -2484,14 +2282,6 @@
 }
 
 @media (max-width: 600px) {
-  .illustrated-home .site-header nav,
-  .illustrated-home .login-button,
-  .illustrated-home .signup-button {
-    display: none;
-  }
-  .illustrated-home .site-header {
-    min-height: 60px;
-  }
 }
 
 /* Homepage lower-page authority: the sole post-production owner for Hero-below composition. */
@@ -3074,7 +2864,7 @@
 }
 
 /* Homepage original-design authority restoration.
-   Only the target page's Header + Hero composition is restored here.
+   Only the target page's Hero composition is restored here.
    The live question/voting controls remain the current production implementation. */
 @media (min-width: 601px) {
   .illustrated-home.homepage {
@@ -3083,66 +2873,6 @@
     margin-inline: auto;
     overflow: hidden;
     background: radial-gradient(ellipse at 5% 60%, #fff1de, transparent 45%), #fff9f0;
-  }
-  .illustrated-home .site-header {
-    height: calc(var(--home-unit) * 60);
-    padding: calc(var(--home-unit) * 7) calc(var(--home-unit) * 55) calc(var(--home-unit) * 10);
-    gap: calc(var(--home-unit) * 18);
-  }
-  .illustrated-home .brand {
-    display: block;
-    width: calc(var(--home-unit) * 120);
-    height: calc(var(--home-unit) * 43);
-    flex-shrink: 0;
-    font-size: inherit;
-    font-weight: inherit;
-    letter-spacing: normal;
-  }
-  .illustrated-home .brand .art-crop {
-    width: calc(var(--home-unit) * 120);
-    height: calc(var(--home-unit) * 43);
-  }
-  .illustrated-home .site-header nav {
-    display: flex;
-    align-items: center;
-    gap: calc(var(--home-unit) * 22);
-    margin-left: calc(var(--home-unit) * 41);
-    font-family: Arial, sans-serif;
-    font-size: calc(var(--home-unit) * 9);
-    font-weight: 400;
-    white-space: nowrap;
-  }
-  .illustrated-home .site-header nav a {
-    padding: calc(var(--home-unit) * 3) 0;
-    line-height: calc(var(--home-unit) * 13);
-  }
-  .illustrated-home .header-actions {
-    gap: calc(var(--home-unit) * 9);
-  }
-  .illustrated-home .search-button {
-    width: calc(var(--home-unit) * 29);
-    height: calc(var(--home-unit) * 29);
-    min-width: 0;
-    min-height: 0;
-    margin: 0 calc(var(--home-unit) * 8) 0 calc(var(--home-unit) * 9);
-  }
-  .illustrated-home .search-button svg {
-    width: calc(var(--home-unit) * 16);
-    height: calc(var(--home-unit) * 16);
-  }
-  .illustrated-home .login-button,
-  .illustrated-home .signup-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: calc(var(--home-unit) * 30);
-    width: calc(var(--home-unit) * 68);
-    border-radius: calc(var(--home-unit) * 24);
-    font-size: calc(var(--home-unit) * 12);
-    font-weight: 600;
-  }
-  .illustrated-home .signup-button {
-    width: calc(var(--home-unit) * 73);
   }
   .illustrated-home .hero {
     height: calc(var(--home-unit) * 572);
@@ -3313,9 +3043,6 @@
 }
 
 @media (min-width: 601px) {
-  .illustrated-home .header-actions {
-    transform: translateY(calc(var(--home-unit) * -4));
-  }
   .illustrated-home .home-hero-arena {
     position: relative;
     width: calc(var(--home-unit) * 525);
