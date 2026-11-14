@@ -115,79 +115,6 @@
   height: 20px;
   flex-shrink: 0;
 }
-.kids-header {
-  width: 100%;
-  background: #fdfaf5;
-}
-.kids-header-inner {
-  width: calc(100% - 48px);
-  max-width: var(--kids-content);
-  min-height: 68px;
-  margin-inline: auto;
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-.kids-brand {
-  display: flex;
-  align-items: center;
-  width: 120px;
-  flex: 0 0 120px;
-}
-.kids-brand .kids-art {
-  width: 120px;
-  height: auto;
-}
-.kids-header nav {
-  display: flex;
-  align-items: center;
-  gap: clamp(18px, 2vw, 30px);
-  margin-left: 8px;
-  font-size: 15px;
-  line-height: 1;
-  font-weight: 700;
-  white-space: nowrap;
-}
-.kids-header nav a {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-}
-.kids-header-actions {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  white-space: nowrap;
-}
-.kids-header .kids-search {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  min-height: 38px;
-  border-radius: 50%;
-  background: #fff7ed;
-}
-.kids-login,
-.kids-signup {
-  min-height: 38px;
-  padding-inline: 18px;
-  border: 1px solid #bfc7cf;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-}
-.kids-signup {
-  color: white !important;
-  background: #07111d;
-  border-color: #07111d;
-}
-.kids-header :is(a):hover {
-  text-decoration: none;
-}
 
 .kids-art {
   display: block;
@@ -212,17 +139,6 @@
   width: calc(100% - 48px);
   max-width: var(--kids-content);
   margin-inline: auto;
-}
-.kids-search {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-}
-.kids-search svg {
-  width: 22px;
-  height: 22px;
 }
 .kids-skip {
   position: absolute;
@@ -1047,9 +963,6 @@
   .kids-related {
     width: calc(100% - 28px);
   }
-  .kids-search {
-    display: none;
-  }
   .kids-page h1 {
     font-size: 36px;
     letter-spacing: -0.6px;
@@ -1328,63 +1241,6 @@
 }
 
 @media (max-width: 900px) {
-  .kids-header-inner {
-    flex-wrap: wrap;
-    gap: 6px 14px;
-    padding-block: 8px;
-  }
-  .kids-brand {
-    width: 110px;
-    flex-basis: 110px;
-  }
-  .kids-brand .kids-art {
-    width: 110px;
-  }
-  .kids-header-actions {
-    gap: 6px;
-  }
-  .kids-login,
-  .kids-signup {
-    min-height: 34px;
-    padding-inline: 12px;
-    font-size: 14px;
-  }
-  .kids-header .kids-search {
-    width: 34px;
-    height: 34px;
-    min-height: 34px;
-  }
-  .kids-header nav {
-    order: 3;
-    width: 100%;
-    margin-left: 0;
-    justify-content: space-between;
-    gap: 6px;
-    font-size: 13px;
-  }
-  .kids-header nav a {
-    min-height: 36px;
-  }
 }
 @media (max-width: 430px) {
-  .kids-header-inner {
-    width: calc(100% - 28px);
-    gap: 4px 8px;
-  }
-  .kids-brand {
-    width: 96px;
-    flex-basis: 96px;
-  }
-  .kids-brand .kids-art {
-    width: 96px;
-  }
-  .kids-login,
-  .kids-signup {
-    padding-inline: 9px;
-    font-size: 13px;
-  }
-  .kids-header nav {
-    font-size: 11.5px;
-    gap: 3px;
-  }
 }
