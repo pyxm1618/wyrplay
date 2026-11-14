@@ -232,8 +232,13 @@ test("778px reference Hero keeps the frozen reconstruction geometry below SiteHe
   await expect(page.locator("[data-site-header]")).toHaveCount(1);
   await expect(page.locator("[data-home-design-header]")).toHaveCount(0);
 
+  const headerBox = await page.locator("[data-site-header]").boundingBox();
   const root = await page.locator(".illustrated-home.homepage").boundingBox();
-  if (!root) throw new Error("homepage root must have a bounding box");
+  if (!headerBox || !root) throw new Error("SiteHeader and homepage root must have bounding boxes");
+  expect(
+    root.y - (headerBox.y + headerBox.height),
+    "SiteHeader and homepage root must be vertically adjacent",
+  ).toBeCloseTo(0, 1);
 
   const rectRelativeToRoot = async (selector: string) => {
     const box = await page.locator(selector).first().boundingBox();
