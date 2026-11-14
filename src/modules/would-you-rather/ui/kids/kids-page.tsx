@@ -99,7 +99,6 @@ export function KidsPage({
   questions,
 }: {
   questions: readonly Question[];
-  authEnabled?: boolean;
 }) {
   const approved = filterQuestions(questions, { collection: "kids", onlyApproved: true });
   const [age, setAge] = useState<AgeGroup | undefined>();
