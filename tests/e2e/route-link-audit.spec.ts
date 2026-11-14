@@ -12,32 +12,34 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     });
   });
 
-  test("8. 首页 page-owned Header 使用正式路由，局部锚点仍保持有效", async ({ page }) => {
+  test("8. 首页共享 Header 使用 authoritative routes，页面局部锚点保持 page-local", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
-    const initialUrl = new URL(page.url());
-    expect(initialUrl.pathname).toBe("/");
-    expect(initialUrl.hash).toBe("");
-
+    await expect(page.locator("[data-site-header]")).toHaveCount(1);
+    await expect(page.locator("[data-home-design-header]")).toHaveCount(0);
     await expect(page.locator("#play")).toBeAttached();
-    await expect(page.locator(".home-directory")).toHaveCount(0);
     await expect(page.locator("#categories")).toBeAttached();
 
-    const primary = page.getByRole("navigation", { name: "Main navigation" });
+    const primary = page.getByRole("navigation", { name: "Primary navigation" });
     for (const [name, href] of [
       ["Home", "/"],
-      ["Questions", "/find-questions"],
-      ["Categories", "#categories"],
-      ["Leaderboard", "/leaderboards"],
-      ["Create", "/play"],
+      ["For Kids", "/would-you-rather-questions-for-kids"],
+      ["Find Questions", "/find-questions"],
+      ["Print", "/print"],
+      ["Leaderboards", "/leaderboards"],
     ] as const) {
       await expect(primary.getByRole("link", { name, exact: true })).toHaveAttribute("href", href);
     }
-    await expect(page.locator("[data-site-header]")).toHaveCount(0);
 
-    const createLink = primary.getByRole("link", { name: "Create", exact: true });
-    await createLink.click();
+    const playNow = page
+      .locator("[data-site-header]")
+      .getByRole("link", { name: "Play Now", exact: true });
+    await expect(playNow).toHaveAttribute("href", "/play");
+    await playNow.click();
     await expect(page).toHaveURL(/\/play$/);
 
     await page.goto("/");
@@ -47,7 +49,6 @@ test.describe("Route, Link, Anchor & SEO Surface Permanent Audit Gate", () => {
     await finderLink.click();
     await expect(page).toHaveURL(/\/find-questions$/);
   });
-
   test("7. 全站同源链接、Hash 锚点目标与公共面无死链爬取门禁 (Crawl Gate)", async ({ page }) => {
     const seedRoutes = [
       "/",

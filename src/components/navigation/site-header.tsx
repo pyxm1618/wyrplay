@@ -31,9 +31,6 @@ export function SiteHeader({
   authEnabled?: boolean;
 }> = {}) {
   const pathname = usePathname();
-
-  if (pathname === "/" || pathname === "/would-you-rather-questions-for-kids") return null;
-
   return <SiteHeaderContent pathname={pathname} locale={locale} authEnabled={authEnabled} />;
 }
 

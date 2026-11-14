@@ -1,7 +1,6 @@
 import { expect, test, type Page, type Request } from "@playwright/test";
 
-const formalHeaderSelector =
-  "header[data-site-header]:visible, header[data-home-design-header]:visible, header[data-kids-design-header]:visible";
+const formalHeaderSelector = "header[data-site-header]:visible";
 
 async function clickFormalNavigation(page: Page, targetHref: string) {
   const header = page.locator(formalHeaderSelector).first();

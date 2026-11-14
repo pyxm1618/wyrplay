@@ -172,7 +172,9 @@ test("homepage does not overflow a 375px viewport", async ({ page }) => {
   expect(overflow).toBe(false);
 });
 
-test("homepage logo runtime never requests the frozen reference artwork", async ({ page }) => {
+test("homepage global brand runtime never requests the frozen reference artwork", async ({
+  page,
+}) => {
   const requestedPaths: string[] = [];
 
   page.on("request", (request) => {
@@ -180,7 +182,7 @@ test("homepage logo runtime never requests the frozen reference artwork", async 
   });
 
   await page.goto("/");
-  const logo = page.locator("[data-home-design-header] .home-brand-mark");
+  const logo = page.locator("[data-site-header] img[src='/brand/logo.svg']");
   await expect(logo).toBeVisible();
   await page.waitForLoadState("networkidle");
 
@@ -192,7 +194,8 @@ test("homepage logo runtime never requests the frozen reference artwork", async 
 
   const runtimePaths = [...requestedPaths, ...resourcePaths];
   expect(runtimePaths.filter((path) => path === "/home-art/reference-art.png")).toEqual([]);
-  expect(runtimePaths.some((path) => path === "/home-art/home-logo.webp")).toBe(true);
+  expect(runtimePaths.some((path) => path === "/brand/logo.svg")).toBe(true);
+  expect(runtimePaths.some((path) => path === "/home-art/home-logo.webp")).toBe(false);
 });
 
 test("compact desktop artwork keeps a readable minimum and the primary action in the fold", async ({
@@ -218,7 +221,7 @@ test("compact desktop artwork keeps a readable minimum and the primary action in
   await page.screenshot({ path: info.outputPath("home-1024x576.png") });
 });
 
-test("778px reference Header and Hero match the frozen reconstruction geometry", async ({
+test("778px reference Hero keeps the frozen reconstruction geometry below SiteHeader", async ({
   page,
 }, info) => {
   await page.setViewportSize({ width: 778, height: 1000 });
@@ -226,19 +229,24 @@ test("778px reference Header and Hero match the frozen reconstruction geometry",
   await expect(page.locator("[data-home-ready=true]")).toBeVisible();
   await page.evaluate(() => document.fonts.ready);
 
-  const rect = async (selector: string) => {
+  await expect(page.locator("[data-site-header]")).toHaveCount(1);
+  await expect(page.locator("[data-home-design-header]")).toHaveCount(0);
+
+  const headerBox = await page.locator("[data-site-header]").boundingBox();
+  const root = await page.locator(".illustrated-home.homepage").boundingBox();
+  if (!headerBox || !root) throw new Error("SiteHeader and homepage root must have bounding boxes");
+  expect(
+    root.y - (headerBox.y + headerBox.height),
+    "SiteHeader and homepage root must be vertically adjacent",
+  ).toBeCloseTo(0, 1);
+
+  const rectRelativeToRoot = async (selector: string) => {
     const box = await page.locator(selector).first().boundingBox();
     if (!box) throw new Error(`${selector} must have a bounding box`);
-    return box;
+    return { ...box, y: box.y - root.y };
   };
 
   const selectors = {
-    header: "[data-home-design-header]",
-    brand: "[data-home-design-header] .home-brand-mark",
-    nav: "[data-home-design-header] nav",
-    search: "[data-home-design-header] .search-button",
-    login: "[data-home-design-header] .login-button",
-    signup: "[data-home-design-header] .signup-button",
     hero: ".illustrated-home .hero",
     title: ".illustrated-home .hero-title-img",
     grid: ".illustrated-home .hero #play .choice-grid",
@@ -246,9 +254,12 @@ test("778px reference Header and Hero match the frozen reconstruction geometry",
   } as const;
   const boxes = Object.fromEntries(
     await Promise.all(
-      Object.entries(selectors).map(async ([name, selector]) => [name, await rect(selector)]),
+      Object.entries(selectors).map(async ([name, selector]) => [
+        name,
+        await rectRelativeToRoot(selector),
+      ]),
     ),
-  ) as Record<keyof typeof selectors, Awaited<ReturnType<typeof rect>>>;
+  ) as Record<keyof typeof selectors, Awaited<ReturnType<typeof rectRelativeToRoot>>>;
 
   const expectBox = (
     name: keyof typeof selectors,
@@ -256,32 +267,15 @@ test("778px reference Header and Hero match the frozen reconstruction geometry",
   ) => {
     const box = boxes[name];
     expect(box.x, `${name} x`).toBeCloseTo(expected[0], 1);
-    expect(box.y, `${name} y`).toBeCloseTo(expected[1], 1);
+    expect(box.y, `${name} y relative to homepage root`).toBeCloseTo(expected[1], 1);
     expect(box.width, `${name} width`).toBeCloseTo(expected[2], 1);
     expect(box.height, `${name} height`).toBeCloseTo(expected[3], 1);
   };
 
-  console.info(
-    `[HOME-AUTHORITY-GEOMETRY] ${JSON.stringify(
-      Object.fromEntries(
-        Object.entries(boxes).map(([name, box]) => [
-          name,
-          [box.x, box.y, box.width, box.height].map((value) => Number(value.toFixed(2))),
-        ]),
-      ),
-    )}`,
-  );
-
-  expectBox("header", [0, 0, 778, 60]);
-  expectBox("brand", [55, 7, 120, 43]);
-  expectBox("nav", [234, 14.5, 274.140625, 20]);
-  expectBox("search", [535.140625, 10, 27.59375, 29]);
-  expectBox("login", [579.734375, 9.5, 64.796875, 30]);
-  expectBox("signup", [653.53125, 9.5, 69.46875, 30]);
-  expectBox("hero", [0, 60, 778, 572]);
-  expectBox("title", [209.5, 43, 359, 190]);
-  expectBox("grid", [125, 285, 525, 180]);
-  expectBox("cta", [262, 511, 254, 51]);
+  expectBox("hero", [0, 0, 778, 572]);
+  expectBox("title", [209.5, -17, 359, 190]);
+  expectBox("grid", [125, 225, 525, 180]);
+  expectBox("cta", [262, 451, 254, 51]);
 
   await expect(page.locator(".illustrated-home .hero #play > h2")).toHaveClass(/sr-only/);
   await expect(page.locator(".illustrated-home .hero .home-secondary-controls")).toHaveCount(0);
@@ -305,19 +299,34 @@ test("778×2021 lower page matches Authority geometry and emits pixel evidence",
   await page.evaluate(() => document.fonts.ready);
   await page.waitForLoadState("networkidle");
 
+  const root = await page.locator(".illustrated-home.homepage").boundingBox();
+  if (!root) throw new Error("homepage root must have a bounding box");
+
   const expected = {
-    categories: { selector: "#categories", box: [0, 632, 778, 218] },
-    highlights: { selector: ".highlights-section", box: [0, 850, 778, 240] },
-    how: { selector: "#how-it-works", box: [0, 1090, 778, 140] },
-    trending: { selector: "#trending", box: [0, 1230, 778, 290] },
-    statistics: { selector: "#statistics", box: [0, 1520, 778, 73] },
-    community: { selector: "#community", box: [0, 1593, 778, 273] },
-    together: { selector: "#play-together", box: [0, 1866, 778, 155] },
-    categoryOne: { selector: "#categories .category-card:nth-child(1)", box: [33, 686, 106, 135] },
-    categoryTwo: { selector: "#categories .category-card:nth-child(2)", box: [144, 686, 112, 135] },
-    highlightOne: { selector: ".highlight-card:nth-child(1)", box: [41, 905, 219, 157] },
-    highlightTwo: { selector: ".highlight-card:nth-child(2)", box: [274, 905, 226, 157] },
-    create: { selector: "#trending .create-panel", box: [432, 1274, 314, 237] },
+    categories: { selector: "#categories", box: [0, 572, 778, 218] },
+    highlights: { selector: ".highlights-section", box: [0, 790, 778, 240] },
+    how: { selector: "#how-it-works", box: [0, 1030, 778, 140] },
+    trending: { selector: "#trending", box: [0, 1170, 778, 290] },
+    statistics: { selector: "#statistics", box: [0, 1460, 778, 73] },
+    community: { selector: "#community", box: [0, 1533, 778, 273] },
+    together: { selector: "#play-together", box: [0, 1806, 778, 155] },
+    categoryOne: {
+      selector: "#categories .category-card:nth-child(1)",
+      box: [33, 626, 106, 135],
+    },
+    categoryTwo: {
+      selector: "#categories .category-card:nth-child(2)",
+      box: [144, 626, 112, 135],
+    },
+    highlightOne: {
+      selector: ".highlight-card:nth-child(1)",
+      box: [41, 845, 219, 157],
+    },
+    highlightTwo: {
+      selector: ".highlight-card:nth-child(2)",
+      box: [274, 845, 226, 157],
+    },
+    create: { selector: "#trending .create-panel", box: [432, 1214, 314, 237] },
   } as const;
 
   const measured: Record<string, [number, number, number, number]> = {};
@@ -327,7 +336,7 @@ test("778×2021 lower page matches Authority geometry and emits pixel evidence",
     await expect(locator).toHaveCount(1);
     const box = await locator.boundingBox();
     if (!box) throw new Error(`${contract.selector} must have a bounding box`);
-    const actual: [number, number, number, number] = [box.x, box.y, box.width, box.height];
+    const actual: [number, number, number, number] = [box.x, box.y - root.y, box.width, box.height];
     measured[name] = actual.map((value) => Number(value.toFixed(3))) as [
       number,
       number,
@@ -339,7 +348,10 @@ test("778×2021 lower page matches Authority geometry and emits pixel evidence",
     });
   }
   expect(maxDeviation, "maximum lower-page geometry deviation").toBeLessThanOrEqual(0.05);
-  expect((await page.locator("#play-together").boundingBox())!.y + 155).toBeCloseTo(2021, 5);
+  expect((await page.locator("#play-together").boundingBox())!.y - root.y + 155).toBeCloseTo(
+    1961,
+    5,
+  );
 
   await expect(page.locator("#categories .category-card")).toHaveCount(6);
   await expect(page.locator(".highlight-card")).toHaveCount(3);
@@ -429,9 +441,8 @@ for (const [width, height] of homeViewports) {
     ]) {
       await expect(page.locator(selector)).toBeVisible();
     }
-    await expect(page.locator("[data-home-design-header]")).toHaveCount(1);
-    await expect(page.locator("[data-site-header]")).toHaveCount(0);
-    await expect(page.locator("[data-home-design-header] .home-brand-mark")).toHaveCount(1);
+    await expect(page.locator("[data-home-design-header]")).toHaveCount(0);
+    await expect(page.locator("[data-site-header]")).toHaveCount(1);
     await expect(page.locator("h1 image")).toHaveCount(0);
     await expect(page.getByRole("button", { name: "Toggle theme" })).toHaveCount(0);
     await expect(page.getByText("Crafted for Genuine Social Play")).toHaveCount(0);
