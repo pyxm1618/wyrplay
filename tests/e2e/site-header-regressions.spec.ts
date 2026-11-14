@@ -80,7 +80,7 @@ test("all major public routes render exactly one authoritative SiteHeader", asyn
       page.getByRole("navigation", { name: "Main navigation" }),
       `${route}: duplicate global navigation`,
     ).toHaveCount(0);
-    await expect(page.locator("footer"), `${route}: SiteFooter count`).toHaveCount(1);
+    await expect(page.locator("[data-site-footer]"), `${route}: SiteFooter count`).toHaveCount(1);
   }
 });
 
