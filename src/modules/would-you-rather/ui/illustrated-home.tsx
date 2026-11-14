@@ -7,7 +7,6 @@ import type { Question } from "../types";
 import { hasQuestionVisual } from "../data/question-visuals";
 import { Arrow, HomeArt } from "./home-art";
 import { QuestionVisual } from "./question-visual";
-import { ThemeToggle } from "./theme-toggle";
 import { rankLeaderboard, type LeaderboardResult } from "../domain/leaderboard";
 
 const categories = [
@@ -168,27 +167,7 @@ function Heading({
   );
 }
 
-function HomeBrandMark() {
-  return (
-    <Image
-      className="art-crop home-brand-mark"
-      src="/home-art/home-logo.webp"
-      alt="WYRPLAY"
-      width={120}
-      height={43}
-      unoptimized
-    />
-  );
-}
 
-function HomeSearchIcon() {
-  return (
-    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <circle cx="10.5" cy="10.5" r="6.3" stroke="currentColor" strokeWidth="2" />
-      <path d="m15.2 15.2 4.5 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
 
 export function IllustratedHome({
   arena,
@@ -197,7 +176,6 @@ export function IllustratedHome({
   trendingSlot,
   questions,
   approvedQuestionCount,
-  authEnabled = false,
 }: {
   leaderboard?: LeaderboardResult;
   arena: ReactNode;
@@ -238,53 +216,6 @@ export function IllustratedHome({
 
   return (
     <>
-      <ThemeToggle fixedLight />
-      <a
-        href="#play"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
-      >
-        Skip to play
-      </a>
-      <header className="site-header" data-home-design-header>
-        <Link href="/" aria-label="WYRPLAY home" className="brand" prefetch={false}>
-          <HomeBrandMark />
-        </Link>
-        <nav aria-label="Main navigation">
-          <Link href="/" className="active" aria-current="page" prefetch={false}>
-            Home
-          </Link>
-          <Link href="/find-questions" prefetch={false}>
-            Questions
-          </Link>
-          <a href="#categories">Categories</a>
-          <Link href="/leaderboards" prefetch={false}>
-            Leaderboard
-          </Link>
-          <Link href="/play" prefetch={false}>
-            Create
-          </Link>
-        </nav>
-        <div className="header-actions">
-          <Link
-            href="/find-questions"
-            className="search-button"
-            aria-label="Search questions"
-            prefetch={false}
-          >
-            <HomeSearchIcon />
-          </Link>
-          {authEnabled ? (
-            <>
-              <Link href="/sign-in" className="login-button" prefetch={false}>
-                Log in
-              </Link>
-              <Link href="/sign-up" className="signup-button" prefetch={false}>
-                Sign up
-              </Link>
-            </>
-          ) : null}
-        </div>
-      </header>
       <section className="hero" aria-labelledby="page-title">
         <div className="hero-stage-backdrop" aria-hidden="true">
           <Image
