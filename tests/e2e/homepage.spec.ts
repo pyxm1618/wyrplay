@@ -303,22 +303,10 @@ test("778×2021 lower page matches Authority geometry and emits pixel evidence",
     statistics: { selector: "#statistics", box: [0, 1460, 778, 73] },
     community: { selector: "#community", box: [0, 1533, 778, 273] },
     together: { selector: "#play-together", box: [0, 1806, 778, 155] },
-    categoryOne: {
-      selector: "#categories .category-card:nth-child(1)",
-      box: [33, 626, 106, 135],
-    },
-    categoryTwo: {
-      selector: "#categories .category-card:nth-child(2)",
-      box: [144, 626, 112, 135],
-    },
-    highlightOne: {
-      selector: ".highlight-card:nth-child(1)",
-      box: [41, 845, 219, 157],
-    },
-    highlightTwo: {
-      selector: ".highlight-card:nth-child(2)",
-      box: [274, 845, 226, 157],
-    },
+    categoryOne: { selector: "#categories .category-card:nth-child(1)", box: [33, 626, 106, 135] },
+    categoryTwo: { selector: "#categories .category-card:nth-child(2)", box: [144, 626, 112, 135] },
+    highlightOne: { selector: ".highlight-card:nth-child(1)", box: [41, 845, 219, 157] },
+    highlightTwo: { selector: ".highlight-card:nth-child(2)", box: [274, 845, 226, 157] },
     create: { selector: "#trending .create-panel", box: [432, 1214, 314, 237] },
   } as const;
 
