@@ -18,6 +18,9 @@ describe("buildContentSecurityPolicy", () => {
     expect(scriptDirective).not.toContain("'unsafe-inline'");
     expect(scriptDirective).not.toContain("'unsafe-eval'");
     expect(csp).toContain("upgrade-insecure-requests");
+    const imageDirective = csp.match(/(?:^|; )img-src ([^;]+)/)?.[1] ?? "";
+    expect(imageDirective).toContain("https://startupfa.me");
+    expect(imageDirective).toContain("https://www.betterlaunch.co");
   });
 
   it("admits only enabled third-party analytics and Turnstile origins", () => {
