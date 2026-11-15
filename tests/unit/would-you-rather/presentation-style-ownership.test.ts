@@ -35,6 +35,6 @@ describe("presentation style ownership", () => {
   });
   it("keeps homepage styles owned by the homepage rather than marketing layout", () => {
     expect(read("src/app/(marketing)/layout.tsx")).not.toContain('import "./home.css"');
-    expect(read("src/app/(marketing)/page.tsx")).toContain('import "./home.css"');
+    expect(read("src/app/(home)/page.tsx")).toContain('import "./home.css"');
   });
 });

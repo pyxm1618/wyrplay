@@ -84,9 +84,9 @@ it("illustrated-home hero-title sizes contains desktop viewport height 24vh cons
   expect(tsxContent).toContain("(min-width: 1024px) and (max-height: 1100px) min(400px, 24vh)");
 });
 
-it("marketing page.tsx does not preload bold font to avoid mobile LCP bandwidth competition", () => {
+it("homepage page.tsx does not preload bold font to avoid mobile LCP bandwidth competition", () => {
   const pageContent = fs.readFileSync(
-    path.resolve(process.cwd(), "src/app/(marketing)/page.tsx"),
+    path.resolve(process.cwd(), "src/app/(home)/page.tsx"),
     "utf-8",
   );
   expect(pageContent).not.toContain("roboto-condensed-bold.woff2");
