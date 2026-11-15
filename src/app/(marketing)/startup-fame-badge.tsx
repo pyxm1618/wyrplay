@@ -14,10 +14,7 @@ export function HomepageStartupFameBadge() {
   if (!portalTarget) return null;
 
   return createPortal(
-    <div
-      data-home-startup-fame-badge
-      className="flex w-full justify-center py-4 print:hidden"
-    >
+    <div data-home-startup-fame-badge className="flex w-full justify-center py-4 print:hidden">
       <a
         href="https://startupfa.me/s/wyrplay?utm_source=www.wyrplay.com"
         target="_blank"
