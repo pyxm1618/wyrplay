@@ -1,49 +1,41 @@
 import { expect, test } from "@playwright/test";
 
-const INNER_ROUTES = ["/find-questions", "/would-you-rather-questions-for-kids"] as const;
+const badgeSelector = "[data-home-startup-fame-badge]";
+const footerSelector = "[data-site-footer]";
+const badgeLink = "https://startupfa.me/s/wyrplay?utm_source=www.wyrplay.com";
+const badgeImage = "https://startupfa.me/badge?t=small&theme=default";
 
-test("Startup Fame badge is present in the server HTML after the footer", async ({ request }) => {
-  const response = await request.get("/");
-  expect(response.ok()).toBe(true);
+test("Startup Fame badge is server-rendered below footer only", async ({ page, request }) => {
+  const homeResponse = await request.get("/");
+  expect(homeResponse.ok()).toBe(true);
 
-  const html = await response.text();
-  const footerIndex = html.indexOf("data-site-footer");
-  const badgeIndex = html.indexOf("data-home-startup-fame-badge");
+  const html = await homeResponse.text();
+  expect(html.indexOf(footerSelector)).toBeGreaterThan(-1);
+  expect(html.indexOf(badgeSelector)).toBeGreaterThan(html.indexOf(footerSelector));
 
-  expect(footerIndex).toBeGreaterThan(-1);
-  expect(badgeIndex).toBeGreaterThan(footerIndex);
-
-  for (const route of INNER_ROUTES) {
-    const routeResponse = await request.get(route);
-    expect(routeResponse.ok(), route).toBe(true);
-    expect((await routeResponse.text()).includes("data-home-startup-fame-badge"), route).toBe(false);
-  }
-});
-
-test("Startup Fame badge appears only on the homepage", async ({ page }) => {
   await page.goto("/");
+  await expect(page.locator(footerSelector)).toHaveCount(1);
 
-  await expect(page.locator("[data-site-footer]")).toHaveCount(1);
-
-  const badge = page.locator("[data-home-startup-fame-badge]");
+  const badge = page.locator(badgeSelector);
   await expect(badge).toBeVisible();
 
   const link = badge.locator("a");
-  await expect(link).toHaveAttribute(
-    "href",
-    "https://startupfa.me/s/wyrplay?utm_source=www.wyrplay.com",
-  );
+  await expect(link).toHaveAttribute("href", badgeLink);
   await expect(link).toHaveAttribute("target", "_blank");
   await expect(link).toHaveAttribute("rel", "noopener noreferrer");
 
   const image = badge.locator("img");
-  await expect(image).toHaveAttribute("src", "https://startupfa.me/badge?t=small&theme=default");
+  await expect(image).toHaveAttribute("src", badgeImage);
   await expect(image).toHaveAttribute("alt", "WYR Play - Featured on Startup Fame");
   await expect(image).toHaveAttribute("width", "240");
   await expect(image).toHaveAttribute("height", "36");
 
-  for (const route of INNER_ROUTES) {
+  for (const route of ["/find-questions", "/would-you-rather-questions-for-kids"]) {
+    const response = await request.get(route);
+    expect(response.ok()).toBe(true);
+    expect((await response.text()).includes(badgeSelector)).toBe(false);
+
     await page.goto(route);
-    await expect(page.locator("[data-home-startup-fame-badge]"), route).toHaveCount(0);
+    await expect(page.locator(badgeSelector)).toHaveCount(0);
   }
 });
