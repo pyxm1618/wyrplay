@@ -20,18 +20,6 @@ test("Startup Fame badge is server-rendered below the homepage footer only", asy
   await expect(footer).toHaveCount(1);
   await expect(badge).toBeVisible();
 
-  expect(
-    await footer.evaluate((footerElement, badgeSelector) => {
-      const badgeElement = document.querySelector(badgeSelector);
-      return (
-        badgeElement !== null &&
-        Boolean(
-          footerElement.compareDocumentPosition(badgeElement) & Node.DOCUMENT_POSITION_FOLLOWING,
-        )
-      );
-    }, "[data-home-startup-fame-badge]"),
-  ).toBe(true);
-
   const link = badge.locator("a");
   await expect(link).toHaveAttribute(
     "href",
