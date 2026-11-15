@@ -9,7 +9,9 @@ test("Startup Fame badge appears only below the homepage footer", async ({ page 
   await expect(badge).toBeVisible();
 
   expect(
-    await badge.evaluate((element) => element.previousElementSibling?.matches("[data-site-footer]")),
+    await badge.evaluate((element) =>
+      element.previousElementSibling?.matches("[data-site-footer]"),
+    ),
   ).toBe(true);
 
   const link = badge.locator("a");
