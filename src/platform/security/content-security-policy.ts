@@ -55,6 +55,7 @@ export function buildContentSecurityPolicy(input: ContentSecurityPolicyInput): s
     : [
         "'self'",
         "https://media.wyrplay.com",
+        "https://startupfa.me",
         "data:",
         "blob:",
         ...(input.analytics.ga4 ? ["https://www.google-analytics.com"] : []),
