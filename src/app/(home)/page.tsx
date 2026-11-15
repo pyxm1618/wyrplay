@@ -20,8 +20,6 @@ import { webApplicationJsonLd, websiteJsonLd } from "@/platform/seo/structured-d
 
 import { connection } from "next/server";
 
-import { HomepageStartupFameBadge } from "./startup-fame-badge";
-
 export const metadata: Metadata = metadataForRoute(routeRegistry, "/", currentSeoEnvironment());
 
 async function HomepageTrendingAsync() {
@@ -72,7 +70,6 @@ export default async function HomePage() {
         })}
       />
       <LandingPage sections={homeConfig.sections} />
-      <HomepageStartupFameBadge />
     </main>
   );
 }

@@ -1,6 +1,18 @@
 import { expect, test } from "@playwright/test";
 
-test("Startup Fame badge appears only below the homepage footer", async ({ page }) => {
+test("Startup Fame badge is server-rendered below the homepage footer only", async ({
+  page,
+  request,
+}) => {
+  const response = await request.get("/");
+  expect(response.ok()).toBe(true);
+
+  const html = await response.text();
+  const footerHtmlIndex = html.indexOf("data-site-footer");
+  const badgeHtmlIndex = html.indexOf("data-home-startup-fame-badge");
+  expect(footerHtmlIndex).toBeGreaterThan(-1);
+  expect(badgeHtmlIndex).toBeGreaterThan(footerHtmlIndex);
+
   await page.goto("/");
 
   const footer = page.locator("[data-site-footer]");
@@ -9,9 +21,13 @@ test("Startup Fame badge appears only below the homepage footer", async ({ page 
   await expect(badge).toBeVisible();
 
   expect(
-    await badge.evaluate((element) =>
-      element.previousElementSibling?.matches("[data-site-footer]"),
-    ),
+    await footer.evaluate((footerElement, badgeSelector) => {
+      const badgeElement = document.querySelector(badgeSelector);
+      return (
+        badgeElement !== null &&
+        Boolean(footerElement.compareDocumentPosition(badgeElement) & Node.DOCUMENT_POSITION_FOLLOWING)
+      );
+    }, "[data-home-startup-fame-badge]"),
   ).toBe(true);
 
   const link = badge.locator("a");
@@ -29,6 +45,10 @@ test("Startup Fame badge appears only below the homepage footer", async ({ page 
   await expect(image).toHaveAttribute("height", "36");
 
   for (const route of ["/find-questions", "/would-you-rather-questions-for-kids"]) {
+    const routeResponse = await request.get(route);
+    expect(routeResponse.ok(), route).toBe(true);
+    expect((await routeResponse.text()).includes("data-home-startup-fame-badge"), route).toBe(false);
+
     await page.goto(route);
     await expect(page.locator("[data-home-startup-fame-badge]"), route).toHaveCount(0);
   }
