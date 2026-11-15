@@ -1,15 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 
-export function HomepageStartupFameBadge() {
-  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
+const subscribe = () => () => {};
 
-  useEffect(() => {
-    const footer = document.querySelector<HTMLElement>("[data-site-footer]");
-    setPortalTarget(footer?.parentElement ?? null);
-  }, []);
+function getSnapshot() {
+  return document.querySelector<HTMLElement>("[data-site-footer]")?.parentElement ?? null;
+}
+
+function getServerSnapshot() {
+  return null;
+}
+
+export function HomepageStartupFameBadge() {
+  const portalTarget = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   if (!portalTarget) return null;
 
