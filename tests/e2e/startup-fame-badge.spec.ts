@@ -71,12 +71,7 @@ test("homepage badges are server-rendered below footer only", async ({ browser }
   const badgeHrefs = await badgeRow.locator(":scope > a").evaluateAll((links) =>
     links.map((link) => link.getAttribute("href")),
   );
-  expect(badgeHrefs).toEqual([
-    startupBadgeLink,
-    betterLaunchLink,
-    shipstryLink,
-    startupBaseLink,
-  ]);
+  expect(badgeHrefs).toEqual([startupBadgeLink, betterLaunchLink, shipstryLink, startupBaseLink]);
 
   for (const route of ["/find-questions", "/would-you-rather-questions-for-kids"]) {
     await page.goto(route);
