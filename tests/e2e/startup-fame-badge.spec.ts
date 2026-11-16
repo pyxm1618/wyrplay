@@ -11,8 +11,7 @@ const betterLaunchLink = "https://www.betterlaunch.co/product/wyr-play";
 const betterLaunchImage = "https://www.betterlaunch.co/badge-live-gradient.svg";
 const shipstryLink = "https://shipstry.com/";
 const shipstryImage = "https://shipstry.com/badges/featured.svg";
-const startupBaseLink =
-  "https://startupbase.io/products/wyr-play?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-light";
+const startupBaseLink = "https://startupbase.io/products/wyr-play?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-light";
 const startupBaseImage = "https://statics.startupbase.io/site/badges/launched-on-sb.svg";
 
 test("homepage badges are server-rendered below footer only", async ({ browser }) => {
