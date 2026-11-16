@@ -21,6 +21,8 @@ describe("buildContentSecurityPolicy", () => {
     const imageDirective = csp.match(/(?:^|; )img-src ([^;]+)/)?.[1] ?? "";
     expect(imageDirective).toContain("https://startupfa.me");
     expect(imageDirective).toContain("https://www.betterlaunch.co");
+    expect(imageDirective).toContain("https://shipstry.com");
+    expect(imageDirective).toContain("https://statics.startupbase.io");
   });
 
   it("admits only enabled third-party analytics and Turnstile origins", () => {
