@@ -11,7 +11,8 @@ const betterLaunchLink = "https://www.betterlaunch.co/product/wyr-play";
 const betterLaunchImage = "https://www.betterlaunch.co/badge-live-gradient.svg";
 const shipstryLink = "https://shipstry.com/";
 const shipstryImage = "https://shipstry.com/badges/featured.svg";
-const startupBaseLink = "https://startupbase.io/products/wyr-play?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-light";
+const startupBaseLink =
+  "https://startupbase.io/products/wyr-play?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-light";
 const startupBaseImage = "https://statics.startupbase.io/site/badges/launched-on-sb.svg";
 
 test("homepage badges are server-rendered below footer only", async ({ browser }) => {
@@ -65,12 +66,14 @@ test("homepage badges are server-rendered below footer only", async ({ browser }
   await expect(startupBaseImageElement).toHaveAttribute("src", startupBaseImage);
   await expect(startupBaseImageElement).toHaveAttribute("alt", "Launched on StartupBase");
   await expect(startupBaseImageElement).toHaveAttribute("height", "55");
-  expect(await startupBaseImageElement.evaluate((image) => image.style.width)).toBe("auto");
+  await expect(startupBaseImageElement).toHaveAttribute("style", /width:\s*auto/);
 
-  const badgeHrefs = await badgeRow.locator(":scope > a").evaluateAll((links) =>
-    links.map((link) => link.getAttribute("href")),
-  );
-  expect(badgeHrefs).toEqual([startupBadgeLink, betterLaunchLink, shipstryLink, startupBaseLink]);
+  const badgeLinks = badgeRow.locator(":scope > a");
+  await expect(badgeLinks).toHaveCount(4);
+  await expect(badgeLinks.nth(0)).toHaveAttribute("href", startupBadgeLink);
+  await expect(badgeLinks.nth(1)).toHaveAttribute("href", betterLaunchLink);
+  await expect(badgeLinks.nth(2)).toHaveAttribute("href", shipstryLink);
+  await expect(badgeLinks.nth(3)).toHaveAttribute("href", startupBaseLink);
 
   for (const route of ["/find-questions", "/would-you-rather-questions-for-kids"]) {
     await page.goto(route);
