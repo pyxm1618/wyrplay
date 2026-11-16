@@ -66,7 +66,7 @@ test("homepage badges are server-rendered below footer only", async ({ browser }
   await expect(startupBaseImageElement).toHaveAttribute("src", startupBaseImage);
   await expect(startupBaseImageElement).toHaveAttribute("alt", "Launched on StartupBase");
   await expect(startupBaseImageElement).toHaveAttribute("height", "55");
-  await expect(startupBaseImageElement).toHaveCSS("width", "auto");
+  expect(await startupBaseImageElement.evaluate((image) => image.style.width)).toBe("auto");
 
   const badgeHrefs = await badgeRow.locator(":scope > a").evaluateAll((links) =>
     links.map((link) => link.getAttribute("href")),
