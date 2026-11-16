@@ -9,6 +9,11 @@ const startupBadgeLink = "https://startupfa.me/s/wyrplay?utm_source=www.wyrplay.
 const startupBadgeImage = "https://startupfa.me/badge?t=small&theme=default";
 const betterLaunchLink = "https://www.betterlaunch.co/product/wyr-play";
 const betterLaunchImage = "https://www.betterlaunch.co/badge-live-gradient.svg";
+const shipstryLink = "https://shipstry.com/";
+const shipstryImage = "https://shipstry.com/badges/featured.svg";
+const startupBaseLink =
+  "https://startupbase.io/products/wyr-play?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-light";
+const startupBaseImage = "https://statics.startupbase.io/site/badges/launched-on-sb.svg";
 
 test("homepage badges are server-rendered below footer only", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
@@ -43,16 +48,43 @@ test("homepage badges are server-rendered below footer only", async ({ browser }
   await expect(betterLaunchImageElement).toHaveAttribute("width", "200");
   await expect(betterLaunchImageElement).toHaveAttribute("height", "56");
 
-  const startupBox = await startupLink.boundingBox();
-  const betterLaunchBox = await betterLaunchLinkElement.boundingBox();
-  expect(startupBox).not.toBeNull();
-  expect(betterLaunchBox).not.toBeNull();
-  expect(betterLaunchBox?.x ?? 0).toBeGreaterThan(startupBox?.x ?? 0);
+  const shipstryLinkElement = badgeRow.locator(`a[href="${shipstryLink}"]`);
+  await expect(shipstryLinkElement).toHaveAttribute("target", "_blank");
+  await expect(shipstryLinkElement).toHaveAttribute("rel", "noopener noreferrer");
+
+  const shipstryImageElement = shipstryLinkElement.locator("img");
+  await expect(shipstryImageElement).toHaveAttribute("src", shipstryImage);
+  await expect(shipstryImageElement).toHaveAttribute("alt", "Featured on Shipstry");
+  await expect(shipstryImageElement).toHaveAttribute("width", "220");
+  await expect(shipstryImageElement).toHaveAttribute("height", "52");
+
+  const startupBaseLinkElement = badgeRow.locator(`a[href="${startupBaseLink}"]`);
+  await expect(startupBaseLinkElement).toHaveAttribute("target", "_blank");
+  await expect(startupBaseLinkElement).toHaveAttribute("rel", "noopener noreferrer");
+
+  const startupBaseImageElement = startupBaseLinkElement.locator("img");
+  await expect(startupBaseImageElement).toHaveAttribute("src", startupBaseImage);
+  await expect(startupBaseImageElement).toHaveAttribute("alt", "Launched on StartupBase");
+  await expect(startupBaseImageElement).toHaveAttribute("height", "55");
+  await expect(startupBaseImageElement).toHaveCSS("width", "auto");
+
+  const badgeHrefs = await badgeRow.locator(":scope > a").evaluateAll((links) =>
+    links.map((link) => link.getAttribute("href")),
+  );
+  expect(badgeHrefs).toEqual([
+    startupBadgeLink,
+    betterLaunchLink,
+    shipstryLink,
+    startupBaseLink,
+  ]);
 
   for (const route of ["/find-questions", "/would-you-rather-questions-for-kids"]) {
     await page.goto(route);
     await expect(page.locator(startupBadgeSelector)).toHaveCount(0);
-    await expect(page.locator(betterLaunchBadgeSelector)).toHaveCount(0);
+    await expect(page.locator(`a[href="${startupBadgeLink}"]`)).toHaveCount(0);
+    await expect(page.locator(`a[href="${betterLaunchLink}"]`)).toHaveCount(0);
+    await expect(page.locator(`a[href="${shipstryLink}"]`)).toHaveCount(0);
+    await expect(page.locator(`a[href="${startupBaseLink}"]`)).toHaveCount(0);
   }
 
   await context.close();
