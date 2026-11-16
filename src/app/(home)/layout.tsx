@@ -60,6 +60,7 @@ export default function HomeLayout({ children }: Readonly<{ children: ReactNode 
           <img
             src="https://statics.startupbase.io/site/badges/launched-on-sb.svg"
             alt="Launched on StartupBase"
+            width="206.25"
             height="55"
             style={{ height: "55px", width: "auto" }}
           />

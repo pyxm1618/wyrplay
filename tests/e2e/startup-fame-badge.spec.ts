@@ -65,6 +65,7 @@ test("homepage badges are server-rendered below footer only", async ({ browser }
   const startupBaseImageElement = startupBaseLinkElement.locator("img");
   await expect(startupBaseImageElement).toHaveAttribute("src", startupBaseImage);
   await expect(startupBaseImageElement).toHaveAttribute("alt", "Launched on StartupBase");
+  await expect(startupBaseImageElement).toHaveAttribute("width", "206.25");
   await expect(startupBaseImageElement).toHaveAttribute("height", "55");
   await expect(startupBaseImageElement).toHaveAttribute("style", /width:\s*auto/);
 

@@ -147,12 +147,7 @@ for (const route of routes) {
       images.flatMap((image) => {
         const width = Number(image.getAttribute("width"));
         const height = Number(image.getAttribute("height"));
-        const isStartupBaseBadge =
-          image.getAttribute("src") ===
-            "https://statics.startupbase.io/site/badges/launched-on-sb.svg" &&
-          height === 55 &&
-          image.style.width === "auto";
-        if ((width > 0 && height > 0) || isStartupBaseBadge) return [];
+        if (width > 0 && height > 0) return [];
         return [image.getAttribute("src") ?? "unknown-image"];
       }),
     );
