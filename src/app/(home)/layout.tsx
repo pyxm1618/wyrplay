@@ -42,6 +42,29 @@ export default function HomeLayout({ children }: Readonly<{ children: ReactNode 
             height="56"
           />
         </a>
+        <a href="https://shipstry.com/" target="_blank" rel="noopener noreferrer">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://shipstry.com/badges/featured.svg"
+            alt="Featured on Shipstry"
+            width="220"
+            height="52"
+          />
+        </a>
+        <a
+          href="https://startupbase.io/products/wyr-play?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-light"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://statics.startupbase.io/site/badges/launched-on-sb.svg"
+            alt="Launched on StartupBase"
+            width="206.25"
+            height="55"
+            style={{ height: "55px", width: "auto" }}
+          />
+        </a>
       </div>
       <AnalyticsBoundary />
     </>
