@@ -23,6 +23,11 @@ describe("buildContentSecurityPolicy", () => {
     expect(imageDirective).toContain("https://www.betterlaunch.co");
     expect(imageDirective).toContain("https://shipstry.com");
     expect(imageDirective).toContain("https://statics.startupbase.io");
+    expect(imageDirective).toContain("https://firstlook.tools");
+    expect(imageDirective).toContain("https://twelve.tools");
+    expect(imageDirective).toContain("https://www.codehype.ai");
+    expect(imageDirective).toContain("https://www.founder.best");
+    expect(imageDirective).toContain("https://assets.bestsky.tools");
   });
 
   it("admits only enabled third-party analytics and Turnstile origins", () => {
