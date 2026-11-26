@@ -49,7 +49,7 @@ const BADGES: readonly Badge[] = [
     href: "https://startupbase.io/products/wyr-play?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-light",
     src: "https://statics.startupbase.io/site/badges/launched-on-sb.svg",
     alt: "Launched on StartupBase",
-    width: 206.25,
+    width: 206,
     height: 55,
     style: { height: "55px", width: "auto" },
   },
@@ -98,7 +98,7 @@ const BADGES: readonly Badge[] = [
     src: "https://assets.bestsky.tools/badges/featured-light.svg",
     alt: "Featured on BestskyTools",
     width: 150,
-    height: 48.461538,
+    height: 48,
     style: { width: "150px", height: "auto" },
   },
 ] as const;

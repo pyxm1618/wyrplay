@@ -35,7 +35,7 @@ const EXPECTED_BADGES = [
     href: "https://startupbase.io/products/wyr-play?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-light",
     src: "https://statics.startupbase.io/site/badges/launched-on-sb.svg",
     alt: "Launched on StartupBase",
-    width: "206.25",
+    width: "206",
     height: "55",
   },
   {
@@ -71,7 +71,7 @@ const EXPECTED_BADGES = [
     src: "https://assets.bestsky.tools/badges/featured-light.svg",
     alt: "Featured on BestskyTools",
     width: "150",
-    height: "48.461538",
+    height: "48",
   },
 ] as const;
 
@@ -129,7 +129,7 @@ test("homepage badge marquee is server-rendered below footer with nine primary b
 
   const bestskyImage = primaryLinks.nth(8).locator("img");
   await expect(bestskyImage).toHaveAttribute("width", "150");
-  await expect(bestskyImage).toHaveAttribute("height", "48.461538");
+  await expect(bestskyImage).toHaveAttribute("height", "48");
 
   await context.close();
 });
